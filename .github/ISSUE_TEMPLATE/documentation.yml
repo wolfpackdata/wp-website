@@ -1,0 +1,23 @@
+name: Documentation
+description: A docs-only or help-text change (no behavior change).
+title: "docs: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Filing a documentation issue. It will be labeled `documentation` automatically.
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs documenting or correcting
+      description: The doc, page, or help text and what is wrong, missing, or unclear.
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: File path, URL, or section, if known.
+    validations:
+      required: false
