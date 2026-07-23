@@ -45,9 +45,9 @@ Same pattern as the Q3 page. Brand → `https://www.wolfstrategyllc.com`. Links:
 - Kicker (mono `.k` voice): `Rates & engagement guide · last reviewed <Month YYYY>`
 - H1 (Ry's approved draft-1 wording, 2026-07-23):
   > **Know the rate before the call.**
-- Lede (same ruling): *"Pricing shouldn't require a discovery process. Review everything
-  here, then book thirty unbilled minutes to see if the fit is real."* One coral CTA (the
-  calendar). Optional ghost CTA → `#coaching`.
+- Lede (Ry's follow-up wording, 2026-07-23): *"Pricing shouldn't require a discovery
+  process. Review everything here, then let's have an exploratory call to see if the fit
+  is real."* One coral CTA (the calendar). Optional ghost CTA → `#coaching`.
 - Credential stats strip ports from the Q3 hero (20 yrs data & code · 10 yrs COO · 3+ yrs
   building with AI · outcomes over activity · …) — this is most of the page's proof budget (R7).
 
