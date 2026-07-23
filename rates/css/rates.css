@@ -156,6 +156,16 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 }
 .path h3 { font-size: 1.05rem; margin-bottom: 10px; }
 .path p { font-size: 0.9375rem; color: var(--muted); }
+.path__shot {
+  width: 100%; aspect-ratio: 16 / 9;
+  object-fit: cover;               /* zoom-to-fit the frame, aspect ratio intact */
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); margin-bottom: 14px;
+}
+.path__shot--placeholder {
+  border-style: dashed; border-color: var(--faint);
+  display: flex; align-items: center; justify-content: center;
+}
 .fit__note { margin-top: 26px; font-size: 0.9375rem; color: var(--muted); max-width: 72ch; }
 .fit__note strong { color: var(--white); font-weight: 600; }
 
