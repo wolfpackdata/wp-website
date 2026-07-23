@@ -53,8 +53,9 @@ Conventions the page must keep:
   intake-form links.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
-- The two "Two ways to work with Wolfpack" tiles hold **dashed image placeholders** until
-  Ry supplies the 912×513 images (#11) — swap instructions live in HTML comments there.
+- The two "Two ways to work with Wolfpack" tiles carry Ry's images
+  (`img/path-engineering.png` / `img/path-coaching.png`, #11) in fixed 16:9 `.path__shot`
+  frames (`object-fit: cover`).
 
 ## `ai-coaching/` — AI Coaching for Professionals landing page
 Replaces the Wix page at `wolfstrategyllc.com/general-7` (Ry repoints the Wix nav link
