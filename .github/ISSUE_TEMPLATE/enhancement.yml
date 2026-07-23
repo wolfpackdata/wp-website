@@ -1,0 +1,30 @@
+name: Enhancement
+description: A new feature or an improvement to existing behavior.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposing an enhancement. It will be labeled `enhancement` automatically. If it
+        also fixes broken behavior, add `bug` as well after creating.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What need or friction is this addressing?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should be built or changed, and roughly how.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
