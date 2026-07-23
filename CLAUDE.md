@@ -24,14 +24,37 @@ link doesn't resolve, warn Ry it's dead, then search the Notion teamspace for th
 
 ## What this repo is
 The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. Currently
-holds the ROI calculator (`roi-calculator/`) and the AI Coaching landing page
-(`ai-coaching/`, see below); more site pieces land here as they're built.
-Verify by opening the page in a browser.
+holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
+(`ai-coaching/`, see below), and the public rates page (`rates/`, see below); more site
+pieces land here as they're built. Verify by opening the page in a browser.
 
 GitHub Pages is **on** for this repo, serving `main` at
 `https://wolfpackdata.github.io/wp-website/` (no custom domain, no root `index.html` — the
 root 404s, which is expected). The ROI calculator is live at `/roi-calculator/` and is
-linked from the Wix site's *AI Coaching* page. **Merging to `main` is deploying.**
+linked from the Wix site's *AI Coaching* page; the public rates page is live at `/rates/`.
+**Merging to `main` is deploying.**
+
+## `rates/` — public rates page
+The **public, indexable, evergreen** rates page — live at
+`https://wolfpackdata.github.io/wp-website/rates/` (deployed 2026-07-23; Wix links to it,
+Ry manages the Wix side). It is the public sibling of the **direct-link Q3 page** in
+`wolfpackdata/wp-rates-page` (`intake.wolfstrategyllc.com/rates_2026Q3/`, noindex), and is
+**derived from it** under `docs/public-rates-consistency-contract.md` — the operating rule
+is *depth may differ, facts may not*. Planning set: `docs/public-rates-design-brief.md`
+(Ry's strategy), `docs/public-rates-design-spec.md` (blueprint + rulings ledger).
+
+Conventions the page must keep:
+- **Sync is prompted, not automatic:** when the Q3 page changes, Ry prompts a session here
+  to port the change per the contract (mirror set vs. enumerated deltas). A change that
+  fits no rule is a new ruling — ask Ry, then record it in the contract. Update the
+  *"rates last reviewed"* line (hero kicker + footer) whenever a sync lands.
+- **Evergreen:** no version stamp or quarter in the URL, headline, or framing.
+- **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8) — no
+  intake-form links.
+- **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
+  the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
+- The two "Two ways to work with Wolfpack" tiles hold **dashed image placeholders** until
+  Ry supplies the 912×513 images (#11) — swap instructions live in HTML comments there.
 
 ## `ai-coaching/` — AI Coaching for Professionals landing page
 Replaces the Wix page at `wolfstrategyllc.com/general-7` (Ry repoints the Wix nav link
