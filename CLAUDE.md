@@ -24,13 +24,47 @@ link doesn't resolve, warn Ry it's dead, then search the Notion teamspace for th
 
 ## What this repo is
 The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. Currently
-holds the ROI calculator (`roi-calculator/`); more site pieces land here as they're built.
+holds the ROI calculator (`roi-calculator/`) and the AI Coaching landing page
+(`ai-coaching/`, see below); more site pieces land here as they're built.
 Verify by opening the page in a browser.
 
 GitHub Pages is **on** for this repo, serving `main` at
 `https://wolfpackdata.github.io/wp-website/` (no custom domain, no root `index.html` — the
 root 404s, which is expected). The ROI calculator is live at `/roi-calculator/` and is
 linked from the Wix site's *AI Coaching* page. **Merging to `main` is deploying.**
+
+## `ai-coaching/` — AI Coaching for Professionals landing page
+Replaces the Wix page at `wolfstrategyllc.com/general-7` (Ry repoints the Wix nav link
+himself). Like the rates page, it ships by **copying the folder into
+`wolfpackdata/ai-coaching-intake`** (which owns `intake.wolfstrategyllc.com`) — target URL
+`intake.wolfstrategyllc.com/ai-coaching` — only after Ry approves it locally. **Not yet
+deployed as of 2026-07-22.** When it ships, update the Web Property Map *and* this file.
+(Merging this repo to `main` also publishes it at the github.io path — fine, same policy
+as `roi-calculator/`.)
+
+Conventions the page must keep:
+- **Design system inherited from `wolfpackdata/wp-rates-page`** (`css/rates.css` there is
+  the pattern library). Coral `#F95954` is strictly rationed; the allowed uses are listed
+  in the header comment of `ai-coaching/css/coaching.css` — keep that comment true. Where
+  coral is a fill, text on it is navy, never white (AA).
+- **Public and indexable** (unlike the noindex rates page), and **no external requests** —
+  fonts and images are self-hosted in the subfolder.
+- **The one correct booking-calendar link is `https://calendar.app.google/13EANJ63HKqMc76z6`**
+  (the rates page shipped a wrong one — `wolfpackdata/wp-rates-page#21`). The funnel is
+  book-first: the intake link is sent after booking, so this page deliberately does not
+  link the intake form.
+- The reviews section holds **dashed placeholder cards** until Ry inserts real student
+  reviews (instructions live in an HTML comment above that section — don't remove it
+  until real reviews are in).
+- Approved assets only: the `claude-memory-by-surface` infographic, Ryan's portrait, and
+  the logo. The other coaching infographics (mentality shift, prompting tips) are
+  **reserved for live sessions** — don't add them to public pages.
+
+## Verifying pages at phone width
+Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot
+to the requested width, which fakes horizontal overflow on "mobile" captures. For a true
+phone-width render, embed the page in a 390px-wide `<iframe>` inside a wider host page and
+screenshot that — media queries respond to the iframe's own viewport.
 
 ## Web Property Map — check it every session
 The brand's public pages are spread across a Wix site and three repos. The source of truth
