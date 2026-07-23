@@ -29,7 +29,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R6 | Coaching depth | **Exact pack prices**, all four packs — low-ticket transparency models the posture. |
 | R7 | Proof content | **Compact credibility only.** About-Ryan block + hero credential stats. No application-screenshot grid — proof lives on the upcoming "Business Applications built" page; link it from here once it exists. |
 | R8 | Terms depth | **Condensed trust terms.** Keep: no added fees/taxes, ACH −2%, 2-yr rate grandfathering, 90-day change notice, no-contract hourly, 30-day project out, billing-questions email. Drop: Net 7 (ruled out in draft-1 feedback, 2026-07-23), retainer-due-in-full, coupon math, coaching billing mechanics. |
-| R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/13EANJ63HKqMc76z6`). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
+| R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/WUQnihH9GEEJRMARA` — the 30-minute-call calendar per #8; the old `13EANJ…` link is the 45-min tutoring calendar). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
 | R10 | Dating | **Evergreen.** No version stamp in headline/URL/framing. Quiet *"rates last reviewed: \<Month YYYY\>"* line instead (hero kicker + footer). |
 
 ## 3. Page architecture (in order)

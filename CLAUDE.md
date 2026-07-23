@@ -49,10 +49,12 @@ Conventions the page must keep:
   coral is a fill, text on it is navy, never white (AA).
 - **Public and indexable** (unlike the noindex rates page), and **no external requests** —
   fonts and images are self-hosted in the subfolder.
-- **The one correct booking-calendar link is `https://calendar.app.google/13EANJ63HKqMc76z6`**
-  (the rates page shipped a wrong one — `wolfpackdata/wp-rates-page#21`). The funnel is
-  book-first: the intake link is sent after booking, so this page deliberately does not
-  link the intake form.
+- **The one correct booking link for 30-minute-call CTAs is
+  `https://calendar.app.google/WUQnihH9GEEJRMARA`** (#8). The old link
+  (`…/13EANJ63HKqMc76z6`) is the **45-minute tutoring-engagements calendar** — valid for
+  tutoring only, never for the call funnel. (History: the rates page once shipped a third,
+  wrong link — `wolfpackdata/wp-rates-page#21`.) The funnel is book-first: the intake link
+  is sent after booking, so this page deliberately does not link the intake form.
 - The reviews section holds **dashed placeholder cards** until Ry inserts real student
   reviews (instructions live in an HTML comment above that section — don't remove it
   until real reviews are in).
