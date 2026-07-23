@@ -26,9 +26,9 @@ sync is a prompted, manual port (see §3).
   every-6th-free, never-expires, nonrefundable.
 - The coupon **fact** (Focus/Solo include a shareable 25%-off coaching coupon, terms
   apply) — the public page states it in one line; only the depth differs.
-- Terms values that the public page shows: Net 7 · no added fees/taxes · ACH −2% ·
+- Terms values that the public page shows: no added fees/taxes · ACH −2% ·
   2-yr grandfathering · ≥90-day rate-change notice · no-contract hourly · 30-day project
-  notice · `fin@wolfstrategyllc.com`.
+  notice · `fin@wolfstrategyllc.com`. (Net 7 dropped from the public page — see D10.)
 - The booking calendar URL: `https://calendar.app.google/13EANJ63HKqMc76z6` (the **one**
   correct link — the Q3 page once shipped a wrong one, `wp-rates-page#21`).
 - Contact email `main@wolfstrategyllc.com`, LinkedIn URL.
@@ -43,14 +43,14 @@ sync is a prompted, manual port (see §3).
 |---|-----------------------------------|-----|
 | D1 | Indexed (+ canonical, OG tags); Q3 is `noindex, nofollow` | The page is meant to be found |
 | D2 | Evergreen URL `…/rates/` + "last reviewed" line; no version stamp or quarter in URL/headline | Brief: evergreen, not quarter-stamped |
-| D3 | Hero copy: transparency posture ("Every rate we charge is on this page") instead of the two-products catalog opener | Cold reader; the posture is the hook |
+| D3 | Hero copy: transparency posture ("Know the rate before the call." — Ry's draft-1 wording, 2026-07-23) instead of the two-products catalog opener | Cold reader; the posture is the hook |
 | D4 | New "context before numbers" framing section + **standard-engagements / custom-quote note** | Brief directives |
 | D5 | **No kickoff-retainer amounts** (incl. the hourly "$525 kickoff" line) and **no rate-ladder bar chart** | Ruled: monthly prices yes, itemization no |
 | D6 | Process section reframed as "the call" — what it is / isn't — and promoted; retainer language softened | The call is the conversion goal |
 | D7 | **No intake-form links anywhere**; coaching CTA is the calendar | Book-first funnel (intake sent after booking) — matches `ai-coaching/` |
 | D8 | Coupon bridge compressed to a one-line perk; $50-invoice-credit mechanics omitted | Deal mechanics read transactional to strangers |
 | D9 | **No application-screenshot portfolio grid** and no placeholder button; proof = hero stats + compact About | Proof lives on the upcoming Applications page; dead buttons spend trust |
-| D10 | Terms condensed to the trust-bearing subset (§1); retainer-due-in-full and coaching-billing mechanics omitted | Match depth to what the page shows |
+| D10 | Terms condensed to the trust-bearing subset (§1); retainer-due-in-full, coaching-billing mechanics, **and the Net-7 line** omitted (Net-7 drop ruled by Ry in draft-1 feedback, 2026-07-23) | Match depth to what the page shows |
 | D11 | **No phone number** in contact | Indexed page; scrape/spam exposure |
 | D12 | About Ryan trimmed to ~2 paragraphs | Compact-credibility ruling |
 

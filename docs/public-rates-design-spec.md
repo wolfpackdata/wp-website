@@ -28,7 +28,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R5 | Project tier depth | **Monthly prices shown.** Each tier: name, monthly $, hrs/wk, contract length, effective $/hr, save %. **Dropped:** kickoff-retainer amounts and the bar-chart rate ladder. |
 | R6 | Coaching depth | **Exact pack prices**, all four packs — low-ticket transparency models the posture. |
 | R7 | Proof content | **Compact credibility only.** About-Ryan block + hero credential stats. No application-screenshot grid — proof lives on the upcoming "Business Applications built" page; link it from here once it exists. |
-| R8 | Terms depth | **Condensed trust terms.** Keep: Net 7, no added fees/taxes, ACH −2%, 2-yr rate grandfathering, 90-day change notice, no-contract hourly, 30-day project out, billing-questions email. Drop: retainer-due-in-full, coupon math, coaching billing mechanics. |
+| R8 | Terms depth | **Condensed trust terms.** Keep: no added fees/taxes, ACH −2%, 2-yr rate grandfathering, 90-day change notice, no-contract hourly, 30-day project out, billing-questions email. Drop: Net 7 (ruled out in draft-1 feedback, 2026-07-23), retainer-due-in-full, coupon math, coaching billing mechanics. |
 | R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/13EANJ63HKqMc76z6`). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
 | R10 | Dating | **Evergreen.** No version stamp in headline/URL/framing. Quiet *"rates last reviewed: \<Month YYYY\>"* line instead (hero kicker + footer). |
 
@@ -43,10 +43,11 @@ Same pattern as the Q3 page. Brand → `https://www.wolfstrategyllc.com`. Links:
 
 ### 3.2 Hero
 - Kicker (mono `.k` voice): `Rates & engagement guide · last reviewed <Month YYYY>`
-- H1, the posture itself. Directional copy:
-  > **Every rate we charge is on this page.**
-- Lede: no "starting at," no quote theater — read the numbers, then spend thirty unbilled
-  minutes on your problem. One coral CTA (the calendar). Optional ghost CTA → `#coaching`.
+- H1 (Ry's approved draft-1 wording, 2026-07-23):
+  > **Know the rate before the call.**
+- Lede (same ruling): *"Pricing shouldn't require a discovery process. Review everything
+  here, then book thirty unbilled minutes to see if the fit is real."* One coral CTA (the
+  calendar). Optional ghost CTA → `#coaching`.
 - Credential stats strip ports from the Q3 hero (20 yrs data & code · 10 yrs COO · 3+ yrs
   building with AI · outcomes over activity · …) — this is most of the page's proof budget (R7).
 
@@ -110,7 +111,7 @@ link. No superlatives — the numbers are the adjectives.
 
 ### 3.9 Billing & terms, condensed (`#terms`)
 "The fine print, in plain sight" framing survives — on a public page it's the proof of the
-hero's claim. Single condensed group (R8): Net 7 · no added fees or taxes · ACH takes 2%
+hero's claim. Single condensed group (R8): no added fees or taxes · ACH takes 2%
 off · rates grandfathered 2 years for active clients · ≥90 days' notice before any rate
 change · hourly has no contract · ending a project takes 30 days' notice · questions
 welcome → `fin@wolfstrategyllc.com`.
