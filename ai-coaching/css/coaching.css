@@ -1,0 +1,337 @@
+/* ==========================================================================
+   Wolfpack AI Coaching for Professionals — wolfstrategyllc.com brand
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+   Design system inherited from wp-rates-page (css/rates.css).
+
+   Coral discipline, in one place so it can't drift: coral is allowed on the
+   nav CTA, the hero kicker, the solid CTAs (hero + contact), the two accent
+   bands (24/7 support bridge + price band left border), link hover, and the
+   focus ring. Nothing else. Where coral is a FILL, text on it is navy
+   (5.8:1), never white (fails AA).
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono:      ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Sticky nav
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(0, 11, 41, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 28px; height: 58px;
+}
+.nav__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-right: auto;
+}
+.nav__brand:hover { color: var(--white); }
+.nav__logo { width: 30px; height: 30px; }
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav__links { display: flex; gap: 22px; list-style: none; }
+.nav__links a {
+  font-size: 0.8125rem; font-weight: 600; text-decoration: none; color: var(--muted);
+}
+.nav__links a:hover { color: var(--white); }
+.nav__cta {
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--coral); color: var(--navy) !important;
+  padding: 8px 16px; border-radius: var(--radius);
+  white-space: nowrap;
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; }
+.hero__watermark {
+  position: absolute; right: 0; top: 24px;
+  width: 380px; height: 380px; opacity: 0.14; pointer-events: none;
+  user-select: none;
+}
+.hero__inner { position: relative; padding: 96px 0 72px; max-width: 720px; }
+.hero__kicker {
+  font-family: var(--mono); font-size: 0.9375rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--coral); margin-bottom: 20px;
+}
+.hero__title { font-size: clamp(2.3rem, 5.4vw, 3.5rem); margin-bottom: 22px; }
+.hero__lede { font-size: 1.0625rem; color: var(--muted); max-width: 58ch; }
+.hero__lede strong { color: var(--white); font-weight: 600; }
+.hero__lede + .hero__lede { margin-top: 12px; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 38px; }
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; padding: 13px 26px; border-radius: var(--radius);
+}
+.btn--solid { background: var(--coral); color: var(--navy); }
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+.btn--ghost { border: 1px solid var(--line); color: var(--white); }
+.btn--ghost:hover { border-color: var(--coral); color: var(--coral); }
+.hero__stats { display: flex; flex-wrap: wrap; gap: 10px 26px; list-style: none; }
+.hero__stats li {
+  font-family: var(--mono); font-size: 0.9375rem; letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.hero__stats li::before { content: "▸ "; color: var(--faint); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section { padding: 76px 0; scroll-margin-top: 70px; }
+.section--line { border-top: 1px solid var(--line); }
+.section__head { max-width: 680px; margin-bottom: 44px; }
+.section__kicker { display: block; margin-bottom: 12px; }
+.section__title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
+.section__lede { color: var(--muted); }
+
+/* ==========================================================================
+   The promise — three cards under "bring your biggest time-sink"
+   ========================================================================== */
+
+.promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.promise__card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px 24px;
+}
+.promise__card h3 { font-size: 1rem; margin-bottom: 10px; }
+.promise__card p { font-size: 0.9375rem; color: var(--muted); }
+
+/* ==========================================================================
+   Ability ladder — five tiers, ascending; coaching starts wherever you are
+   ========================================================================== */
+
+.ladder {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+  align-items: end; margin: 48px 0 18px;
+}
+.ladder__tierno {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
+}
+.ladder__bar {
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) 0 0; margin-bottom: 10px;
+}
+.ladder__step:nth-child(1) .ladder__bar { height: 30px; }
+.ladder__step:nth-child(2) .ladder__bar { height: 52px; }
+.ladder__step:nth-child(3) .ladder__bar { height: 74px; }
+.ladder__step:nth-child(4) .ladder__bar { height: 96px; }
+.ladder__step:nth-child(5) .ladder__bar { height: 118px; border-color: var(--faint); }
+.ladder__tier { font-weight: 600; font-size: 0.875rem; }
+.ladder__meta { font-size: 0.8125rem; color: var(--faint); }
+.ladder__caption { font-size: 0.875rem; color: var(--muted); margin-bottom: 44px; }
+
+/* ==========================================================================
+   Role tracks
+   ========================================================================== */
+
+.tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.track {
+  background: var(--surface); border: 1px solid var(--line); border-top: 2px solid var(--faint);
+  border-radius: var(--radius); padding: 26px 24px;
+}
+.track__label { display: block; margin-bottom: 12px; }
+.track h3 { font-size: 1rem; margin-bottom: 10px; }
+.track p { font-size: 0.9375rem; color: var(--muted); }
+
+/* ==========================================================================
+   Process steps
+   ========================================================================== */
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; list-style: none; counter-reset: step; }
+.steps li {
+  counter-increment: step;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px 22px;
+}
+.steps li::before {
+  content: "0" counter(step);
+  display: block; font-family: var(--mono); font-size: 0.9375rem;
+  letter-spacing: 0.14em; color: var(--faint); margin-bottom: 14px;
+}
+.steps h3 { font-size: 0.9375rem; margin-bottom: 8px; }
+.steps p { font-size: 0.8125rem; color: var(--muted); }
+
+/* ==========================================================================
+   Accent bands — 24/7 support bridge + price band
+   ========================================================================== */
+
+.bridge {
+  background: var(--surface-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--coral);
+  border-radius: var(--radius); padding: 30px 34px;
+  display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center;
+}
+.steps + .bridge { margin-top: 28px; }
+.bridge__pct { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 2.6rem; line-height: 1; }
+.bridge__pct span { display: block; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-top: 6px; }
+.bridge h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.bridge p { font-size: 0.9375rem; color: var(--muted); max-width: 68ch; }
+.bridge p strong { color: var(--white); font-weight: 600; }
+
+/* ==========================================================================
+   What you'll learn — checklist + curriculum handout
+   ========================================================================== */
+
+.split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start; }
+.check-list { list-style: none; }
+.check-list li { padding: 7px 0 7px 26px; position: relative; color: var(--muted); }
+.check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--white); }
+.check-list li strong { color: var(--white); font-weight: 600; }
+.check-list--half { max-width: 680px; }
+.handout { align-self: center; }
+.handout__img {
+  width: 100%;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.handout__cap { font-size: 0.8125rem; color: var(--faint); margin-top: 10px; }
+
+/* ==========================================================================
+   Your coach
+   ========================================================================== */
+
+.about {
+  display: grid; grid-template-columns: 220px 1fr; gap: 36px; align-items: start;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 34px;
+}
+.about__photo { border-radius: var(--radius); }
+.about h3 { font-size: 1.2rem; margin-bottom: 4px; }
+.about__roles {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 16px;
+}
+.about p { font-size: 0.9375rem; color: var(--muted); }
+.about p + p { margin-top: 10px; }
+.about__link { display: inline-block; margin-top: 16px; font-size: 0.875rem; font-weight: 600; }
+
+/* ==========================================================================
+   Student reviews — placeholder styling drops off with the modifier class
+   ========================================================================== */
+
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px 22px;
+  display: flex; flex-direction: column;
+}
+.review p { font-size: 0.9375rem; color: var(--muted); }
+.review p::before { content: "\201C"; }
+.review p::after { content: "\201D"; }
+.review footer {
+  margin-top: auto; padding-top: 14px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--faint);
+}
+.review--placeholder { border-style: dashed; background: transparent; }
+.review--placeholder p { color: var(--faint); font-style: italic; }
+.review--placeholder p::before, .review--placeholder p::after { content: ""; }
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.contact-list { display: flex; flex-wrap: wrap; gap: 8px 30px; list-style: none; margin-top: 26px; }
+.contact-list a { font-size: 0.9375rem; color: var(--muted); }
+.contact-note { margin-top: 18px; font-size: 0.8125rem; color: var(--faint); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 36px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--faint); }
+.foot__meta a { color: var(--muted); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .promise, .tracks, .reviews { grid-template-columns: 1fr 1fr 1fr; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .split { grid-template-columns: 1fr; gap: 32px; }
+  .hero__watermark { width: 300px; height: 300px; right: -90px; }
+}
+
+@media (max-width: 820px) {
+  .promise, .tracks, .reviews { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav__links { display: none; }
+  .hero__inner { padding: 64px 0 52px; }
+  .section { padding: 56px 0; }
+  .ladder { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .ladder__meta { display: none; }
+  .steps { grid-template-columns: 1fr; }
+  .bridge { grid-template-columns: 1fr; gap: 14px; }
+  .about { grid-template-columns: 1fr; }
+  .about__photo { width: 170px; }
+}
