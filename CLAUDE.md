@@ -59,12 +59,12 @@ Conventions the page must keep:
 
 ## `ai-coaching/` — AI Coaching for Professionals landing page
 Replaces the Wix page at `wolfstrategyllc.com/general-7` (Ry repoints the Wix nav link
-himself). Like the rates page, it ships by **copying the folder into
-`wolfpackdata/ai-coaching-intake`** (which owns `intake.wolfstrategyllc.com`) — target URL
-`intake.wolfstrategyllc.com/ai-coaching` — only after Ry approves it locally. **Not yet
-deployed as of 2026-07-22.** When it ships, update the Web Property Map *and* this file.
-(Merging this repo to `main` also publishes it at the github.io path — fine, same policy
-as `roi-calculator/`.)
+himself). Like the Q3 rates page, it ships by **copying the folder into
+`wolfpackdata/ai-coaching-intake`** (which owns `intake.wolfstrategyllc.com`).
+**Deployed 2026-07-23** at `intake.wolfstrategyllc.com/ai-coaching`
+(`ai-coaching-intake#14`/PR #15) — this repo remains the **source of truth**; never edit
+the deployed copy, re-copy on change. Also served at the github.io path since the same
+day's `main` release — fine, same policy as `roi-calculator/`.
 
 Conventions the page must keep:
 - **Design system inherited from `wolfpackdata/wp-rates-page`** (`css/rates.css` there is
