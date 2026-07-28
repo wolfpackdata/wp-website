@@ -34,13 +34,20 @@ root 404s, which is expected). The ROI calculator is served at `/roi-calculator/
 **canonical public URL is `https://intake.wolfstrategyllc.com/roi-calculator/`** since
 2026-07-28 (Ry copied the folder into `ai-coaching-intake`; this repo stays the source of
 truth — never edit the deployed copy, re-copy on change, same policy as `ai-coaching/`) —
-use the intake URL when linking it. The public rates page is live at `/rates/`.
+use the intake URL when linking it. The public rates page is served at `/rates/`, but its
+**canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** since
+2026-07-28 (#59 — same deployed-copy policy, see the `rates/` section).
 **Merging to `main` is deploying.**
 
 ## `rates/` — public rates page
-The **public, indexable, evergreen** rates page — live at
-`https://wolfpackdata.github.io/wp-website/rates/` (deployed 2026-07-23; Wix links to it,
-Ry manages the Wix side). It is the public sibling of the **direct-link Q3 page** in
+The **public, indexable, evergreen** rates page — **canonical public URL
+`https://intake.wolfstrategyllc.com/rates_public/`** since 2026-07-28 (#59; deployed copy
+in `wolfpackdata/ai-coaching-intake` `rates_public/`, `ai-coaching-intake#34` — this repo
+stays the source of truth; never edit the deployed copy, re-copy on change, same policy as
+`ai-coaching/` and `roi-calculator/`). Also served at
+`https://wolfpackdata.github.io/wp-website/rates/` (first deployed 2026-07-23; its
+canonical tag points at the intake URL). Use the intake URL when linking it; Ry manages
+the Wix side. It is the public sibling of the **direct-link Q3 page** in
 `wolfpackdata/wp-rates-page` (`intake.wolfstrategyllc.com/rates_2026Q3/`, noindex), and is
 **derived from it** under `docs/public-rates-consistency-contract.md` — the operating rule
 is *depth may differ, facts may not*. Planning set: `docs/public-rates-design-brief.md`

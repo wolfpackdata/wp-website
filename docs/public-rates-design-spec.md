@@ -3,7 +3,7 @@
 **Responds to:** [public-rates-design-brief.md](public-rates-design-brief.md) (Ry's strategy brief — authoritative where they'd conflict)
 **Companion doc:** [public-rates-consistency-contract.md](public-rates-consistency-contract.md) (what mirrors the Q3 page vs. what intentionally differs)
 **Status:** Planning approved rulings baked in · no code written yet
-**Target:** `rates/` in this repo → `https://wolfpackdata.github.io/wp-website/rates/` (Wix links to it, same pattern as the ROI calculator)
+**Target:** `rates/` in this repo → canonical public URL `https://intake.wolfstrategyllc.com/rates_public/` (deployed copy in `ai-coaching-intake`, R12; also serves at `https://wolfpackdata.github.io/wp-website/rates/`)
 
 ---
 
@@ -23,7 +23,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 |---|--------|----------|
 | R1 | Phone number | **Dropped.** Contact = email + LinkedIn + calendar CTA only. |
 | R2 | Coupon bridge | **Compressed.** 25% shareable coaching coupon stated as a Focus/Solo perk; the $50-invoice-credit mechanics stay on the Q3 page. |
-| R3 | Public home | **github.io path**, Wix links to it (Ry repoints Wix himself). |
+| R3 | Public home | **github.io path**, Wix links to it (Ry repoints Wix himself). **Superseded by R12 (2026-07-28)** — the public home is now the intake URL. |
 | R4 | Folder / URL | **`rates/`** (renamed from `rate-page-public/`). Evergreen — no quarter in the URL. |
 | R5 | Project tier depth | **Monthly prices shown.** Each tier: name, monthly $, hrs/wk, contract length, effective $/hr, save %. **Dropped:** kickoff-retainer amounts and the bar-chart rate ladder. |
 | R6 | Coaching depth | **Exact pack prices**, all four packs — low-ticket transparency models the posture. |
@@ -32,6 +32,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/zHNd1NA9wzb4VRLw5` — the 30-minute-call calendar per #32, 2026-07-28; supersedes `WUQnihH9GEEJRMARA`, #8; the separate `13EANJ…` link is the 45-min tutoring calendar). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
 | R10 | Dating | **Evergreen.** No version stamp in headline/URL/framing. Quiet *"rates last reviewed: \<Month YYYY\>"* line instead (hero kicker + footer). |
 | R11 | ROI-calculator cross-link (added 2026-07-28) | The coaching section mirrors the Q3 page's **second, navy-ghost button** linking the AI ROI Calculator at its canonical public URL `https://intake.wolfstrategyllc.com/roi-calculator/` (source in this repo's `roi-calculator/`) — see the contract's mirror-set entry (`wp-rates-page#39`/#40). A consideration-stage **tool link, not a funnel fork**: the calendar CTA stays first and primary, and R9's book-first / no-intake-links rule is untouched. The Q3 page's skeptic-nudge line above the row does **not** port (contract D13; Ry, 2026-07-28). |
+| R12 | Public home → intake subdomain (added 2026-07-28) | **Canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** — a deployed copy in `ai-coaching-intake/rates_public/` (`ai-coaching-intake#34` / #59 here), same copy-on-change policy as the ROI calculator: this repo stays the source of truth, never edit the deployed copy, re-copy on change. The page's canonical/`og:url`/`og:image` tags point at the intake URL; the github.io path still serves. Supersedes R3. |
 
 ## 3. Page architecture (in order)
 
@@ -153,9 +154,9 @@ portfolio placeholder does **not** port) · no dark-pattern anything.
 
 - `<title>`: `Rates & Engagement Guide — Wolfpack Data & Strategy` (no quarter/version).
 - Meta description: transparency posture + the two offerings, ~155 chars.
-- **No robots meta** (indexable). Canonical: `https://wolfpackdata.github.io/wp-website/rates/`
-  — revisit the canonical if the page later moves behind a custom domain (Web Property
-  Map governs; one Pages custom domain per repo).
+- **No robots meta** (indexable). Canonical: `https://intake.wolfstrategyllc.com/rates_public/`
+  (R12, 2026-07-28 — the anticipated custom-domain move happened via a deployed copy in
+  `ai-coaching-intake`; Web Property Map governs; one Pages custom domain per repo).
 - OG/Twitter tags: title, description, `og:image` (logo or a purpose-made card — decide at
   build), `og:url` = canonical.
 - **No external requests**: fonts + images self-hosted in `rates/` (copy font files and
