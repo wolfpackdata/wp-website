@@ -31,6 +31,14 @@
 
 html { scroll-behavior: smooth; }
 
+/* The path cards (below) make smooth scrolling a primary navigation path — honour a
+   reduced-motion preference for the jump itself and for the affordances that signal it. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .path__link::after, .path__shot { transition: none; }
+  .path__link:hover::after { transform: none; }
+}
+
 body {
   background: var(--navy);
   color: var(--white);
@@ -156,12 +164,30 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 }
 .path h3 { font-size: 1.05rem; margin-bottom: 10px; }
 .path p { font-size: 0.9375rem; color: var(--muted); }
+
+/* Each card is an entry point to its own section — heading and image both jump there.
+   The heading link is the single tab stop (the image link is aria-hidden/tabindex="-1"),
+   and the trailing arrow is the rest-state cue that the heading is clickable. */
+.path__link { text-decoration: none; }
+.path__link::after {
+  content: "\2193";                /* ↓ — jumps down-page, not off-site (that's ↗) */
+  margin-left: 0.35em;             /* a leading space in generated content collapses away */
+  color: var(--faint);
+  transition: transform 0.15s ease, color 0.15s ease;
+  display: inline-block;
+}
+.path__link:hover::after { color: var(--coral); transform: translateY(2px); }
+.path__link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.path__shot-link { display: block; margin-bottom: 14px; }
 .path__shot {
   width: 100%; aspect-ratio: 16 / 9;
   object-fit: cover;               /* zoom-to-fit the frame, aspect ratio intact */
   background: var(--surface-2); border: 1px solid var(--line);
-  border-radius: var(--radius); margin-bottom: 14px;
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease, filter 0.15s ease;
 }
+.path__shot-link:hover .path__shot { border-color: var(--faint); filter: brightness(1.06); }
 .fit__note { margin-top: 26px; font-size: 0.9375rem; color: var(--muted); max-width: 72ch; }
 .fit__note strong { color: var(--white); font-weight: 600; }
 

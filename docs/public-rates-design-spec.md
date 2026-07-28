@@ -33,6 +33,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R10 | Dating | **Evergreen.** No version stamp in headline/URL/framing. Quiet *"rates last reviewed: \<Month YYYY\>"* line instead (hero kicker + footer). |
 | R11 | ROI-calculator cross-link (added 2026-07-28) | The coaching section mirrors the Q3 page's **second, navy-ghost button** linking the AI ROI Calculator at its canonical public URL `https://intake.wolfstrategyllc.com/roi-calculator/` (source in this repo's `roi-calculator/`) — see the contract's mirror-set entry (`wp-rates-page#39`/#40). A consideration-stage **tool link, not a funnel fork**: the calendar CTA stays first and primary, and R9's book-first / no-intake-links rule is untouched. The Q3 page's skeptic-nudge line above the row does **not** port (contract D13; Ry, 2026-07-28). |
 | R12 | Public home → intake subdomain (added 2026-07-28) | **Canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** — a deployed copy in `ai-coaching-intake/rates_public/` (`ai-coaching-intake#34` / #59 here), same copy-on-change policy as the ROI calculator: this repo stays the source of truth, never edit the deployed copy, re-copy on change. The page's canonical/`og:url`/`og:image` tags point at the intake URL; the github.io path still serves. Supersedes R3. |
+| R13 | Path cards are navigation (added 2026-07-28) | The two §3.3 path cards **jump to their sections**: the **heading and the image** of each card link to `#engagements` (AI Engineering & Applications) and `#coaching` (AI Coaching for Professionals) — Ry, 2026-07-28 (#62). **Relative fragments, never absolute intake URLs** — the page serves from two origins (intake `…/rates_public/` and github.io `…/rates/`), and an absolute href would send a github.io reader cross-origin instead of scrolling; the fragment resolves to `https://intake.wolfstrategyllc.com/rates_public/#coaching` at the canonical home. The image link is `aria-hidden` + `tabindex="-1"` so the heading link is the card's single tab stop and single announced link. Rest-state cue is a muted `↓` (`↗` stays reserved for off-site links); hover coral is the existing allowed "link hover" use, so the coral ration is unchanged. Public-page-only — contract D14. |
 
 ## 3. Page architecture (in order)
 
@@ -64,6 +65,9 @@ page. Contents:
 - **Standard-engagements note (verbatim intent):** the rates below are standard
   engagements; **larger or unusual scopes are custom-quoted.** (Preserves negotiating room
   without undermining the transparency posture.)
+- **The two path cards are the section's navigation** (R13): each card's heading and image
+  scroll to that path's own section — left → `#engagements`, right → `#coaching`. A reader
+  who self-selects here doesn't hunt for the matching prices.
 
 ### 3.4 Projects — standard engagements (`#engagements`)
 Section lede carries the rate-curve rationale (voice: where a number has a rationale, show
