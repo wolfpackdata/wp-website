@@ -69,15 +69,24 @@
         <span class="k section__kicker">Before the numbers</span>
         <h2 class="section__title" id="fit-title">Two ways to work with Wolfpack</h2>
       </div>
+      <!-- Each card jumps to its own section. Hrefs stay RELATIVE fragments: the page is
+           served from two origins (github.io /rates/ and intake /rates_public/), and an
+           absolute href would send a github.io reader cross-origin instead of scrolling.
+           The image link is aria-hidden + tabindex="-1" so the heading link is the single
+           tab stop and the single announced link per card. -->
       <div class="paths">
         <article class="path">
-          <h3>AI Engineering &amp; Applications</h3>
-          <img class="path__shot" src="img/path-engineering.png" alt="Illustration of Wolfpack AI engineering and applications work" width="1660" height="948" loading="lazy">
+          <h3><a class="path__link" href="#engagements">AI Engineering &amp; Applications</a></h3>
+          <a class="path__shot-link" href="#engagements" tabindex="-1" aria-hidden="true">
+            <img class="path__shot" src="img/path-engineering.png" alt="Illustration of Wolfpack AI engineering and applications work" width="1660" height="948" loading="lazy">
+          </a>
           <p>For teams that need analytics, automation, or AI systems built around how the business actually works. An engagement reserves weekly time for your project, runs on a scope of work we iterate on together, and keeps the work visible — shared plans, decisions, and documentation, no black boxes.</p>
         </article>
         <article class="path">
-          <h3>AI Coaching for Professionals</h3>
-          <img class="path__shot" src="img/path-coaching.png" alt="Illustration of Wolfpack AI coaching for professionals" width="1655" height="950" loading="lazy">
+          <h3><a class="path__link" href="#coaching">AI Coaching for Professionals</a></h3>
+          <a class="path__shot-link" href="#coaching" tabindex="-1" aria-hidden="true">
+            <img class="path__shot" src="img/path-coaching.png" alt="Illustration of Wolfpack AI coaching for professionals" width="1655" height="950" loading="lazy">
+          </a>
           <p>For working professionals — engineers, executives, and everyone between — who want AI to be part of how they actually work. 45-minute 1:1 video sessions, no contract, no prerequisites. Start this week.</p>
         </article>
       </div>
