@@ -271,6 +271,7 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .pack__note { margin-top: auto; font-size: 0.8125rem; color: var(--faint); padding-top: 10px; border-top: 1px solid var(--line); }
 .coaching__foot { font-size: 0.8125rem; color: var(--faint); margin-bottom: 28px; max-width: 72ch; }
 .coaching__foot strong { color: var(--muted); font-weight: 600; }
+.coaching__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
 
 /* ==========================================================================
    About Ryan

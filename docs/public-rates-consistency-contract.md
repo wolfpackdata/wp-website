@@ -38,6 +38,16 @@ sync is a prompted, manual port (see §3).
   consistent. The `13EANJ…` link is the separate **45-minute tutoring calendar** — never
   use it for 30-minute-call CTAs. (The Q3 page also once shipped a third, wrong link —
   `wp-rates-page#21`.)
+- The coaching section's closing two-button row (added upstream 2026-07-28,
+  `wp-rates-page#39`/#40): the **second** button is a navy-ghost link to the
+  **AI ROI Calculator**, labeled *"Calculate what AI is worth to you."* The **first**
+  button differs by design (D7: calendar CTA here, intake CTA there) and stays first and
+  primary; the ROI button's label/ghost style/second position, and its target — the
+  calculator's canonical public URL
+  `https://intake.wolfstrategyllc.com/roi-calculator/` (moved to the intake domain by Ry,
+  2026-07-28; the source still lives in this repo's `roi-calculator/`) — mirror exactly.
+  The Q3 page's skeptic-nudge line above the row does **not** port (D13).
+  (Ported via #46; nudge dropped via #50.)
 - Nav structure follows the Q3 page for sections both pages carry — e.g. both dropped the
   "Terms" nav link on 2026-07-28 (ruled by Ry; the terms sections themselves stay) and
   renamed "Coaching" → "AI Coaching". Nav items for Q3-only sections (Portfolio — D9) are
@@ -64,6 +74,7 @@ sync is a prompted, manual port (see §3).
 | D10 | Terms condensed to the trust-bearing subset (§1); retainer-due-in-full, coaching-billing mechanics, **and the Net-7 line** omitted (Net-7 drop ruled by Ry in draft-1 feedback, 2026-07-23) | Match depth to what the page shows |
 | D11 | **No phone number** in contact | Indexed page; scrape/spam exposure |
 | D12 | About Ryan trimmed to ~2 paragraphs | Compact-credibility ruling |
+| D13 | **No skeptic-nudge line** (*"Skeptical of AI hype? Good — run your own numbers."*) above the coaching CTA row — the Q3 page keeps it | Ruled off the public page by Ry, 2026-07-28 (#50) |
 
 ## 3. Sync workflow (Ry's stated process: update Q3 first, then prompt the port here)
 
