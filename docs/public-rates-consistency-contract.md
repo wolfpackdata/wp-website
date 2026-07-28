@@ -3,7 +3,9 @@
 **The two pages are one document at two depths.** The direct-link page
 (`wolfpackdata/wp-rates-page` → `intake.wolfstrategyllc.com/rates_2026Q3/`, noindex) is
 the detailed, quarter-stamped source of truth for all pricing. The public page
-(`wp-website/rates/`, indexed, evergreen) is derived from it. **Consistency means: every
+(`wp-website/rates/`, indexed, evergreen; canonical public URL
+`intake.wolfstrategyllc.com/rates_public/` since 2026-07-28 — spec R12) is derived from
+it. **Consistency means: every
 fact the public page states matches the current direct-link page exactly. Depth may
 differ; facts may not.** Anything not on the delta list below is, by definition, supposed
 to match.
@@ -63,7 +65,7 @@ sync is a prompted, manual port (see §3).
 | # | Public page difference vs. Q3 page | Why |
 |---|-----------------------------------|-----|
 | D1 | Indexed (+ canonical, OG tags); Q3 is `noindex, nofollow` | The page is meant to be found |
-| D2 | Evergreen URL `…/rates/` + "last reviewed" line; no version stamp or quarter in URL/headline | Brief: evergreen, not quarter-stamped |
+| D2 | Evergreen URL (canonical `…/rates_public/`, github.io `…/rates/` — spec R12) + "last reviewed" line; no version stamp or quarter in URL/headline | Brief: evergreen, not quarter-stamped |
 | D3 | Hero copy: transparency posture ("Know the rate before the call." — Ry's draft-1 wording, 2026-07-23) instead of the two-products catalog opener | Cold reader; the posture is the hook |
 | D4 | New "context before numbers" framing section + **standard-engagements / custom-quote note** | Brief directives |
 | D5 | **No kickoff-retainer amounts** (incl. the hourly "$525 kickoff" line) and **no rate-ladder bar chart** | Ruled: monthly prices yes, itemization no |
