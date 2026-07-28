@@ -274,8 +274,12 @@
     or a student ID). Then delete the review--placeholder class from that card to
     switch off the dashed placeholder styling. Add or remove cards freely; the grid
     handles 1–6 cleanly.
+
+    The whole section is currently HIDDEN (the hidden attribute on the <section>
+    below) until real reviews are in. When inserting the first real review, also
+    remove that hidden attribute to bring the section back.
   -->
-  <section class="section section--line" id="reviews" aria-labelledby="reviews-title">
+  <section class="section section--line" id="reviews" aria-labelledby="reviews-title" hidden>
     <div class="wrap">
       <div class="section__head">
         <span class="k section__kicker">Student reviews</span>
