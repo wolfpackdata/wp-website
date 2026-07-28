@@ -49,7 +49,8 @@ Conventions the page must keep:
   fits no rule is a new ruling — ask Ry, then record it in the contract. Update the
   *"rates last reviewed"* line (hero kicker + footer) whenever a sync lands.
 - **Evergreen:** no version stamp or quarter in the URL, headline, or framing.
-- **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8) — no
+- **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8; current
+  URL per #32 — see the booking-link note in the `ai-coaching/` section) — no
   intake-form links.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
@@ -73,11 +74,15 @@ Conventions the page must keep:
   coral is a fill, text on it is navy, never white (AA).
 - **Public and indexable** (unlike the noindex rates page), and **no external requests** —
   fonts and images are self-hosted in the subfolder.
-- **The one correct booking link for 30-minute-call CTAs is
-  `https://calendar.app.google/WUQnihH9GEEJRMARA`** (#8). The old link
-  (`…/13EANJ63HKqMc76z6`) is the **45-minute tutoring-engagements calendar** — valid for
-  tutoring only, never for the call funnel. (History: the rates page once shipped a third,
-  wrong link — `wolfpackdata/wp-rates-page#21`.) The funnel is book-first: the intake link
+- **30-minute-call CTAs use the intro calendar — current URL
+  `https://calendar.app.google/zHNd1NA9wzb4VRLw5`** (#32, 2026-07-28; supersedes
+  `WUQnihH9GEEJRMARA`, #8). Google periodically regenerates share URLs for the *same*
+  calendar, so older intro-call URLs (like `WUQ…`) still resolve to the same booking page
+  — this page deliberately stays on `WUQ…` for now (Ry, 2026-07-28); use the current URL
+  for new/edited CTAs. The `…/13EANJ63HKqMc76z6` link is genuinely different — the
+  **45-minute tutoring-engagements calendar**, valid for tutoring only, never for the call
+  funnel. (History: the rates page once shipped a third, wrong link —
+  `wolfpackdata/wp-rates-page#21`.) The funnel is book-first: the intake link
   is sent after booking, so this page deliberately does not link the intake form.
 - The reviews section holds **dashed placeholder cards** until Ry inserts real student
   reviews (instructions live in an HTML comment above that section — don't remove it
