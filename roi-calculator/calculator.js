@@ -165,6 +165,7 @@
     out.annualValue.textContent = currency.format(annualValue);
     out.aiCost.textContent = currency.format(annualAiCost);
     out.netValue.textContent = currency.format(netAnnualValue);
+    out.netValue.classList.toggle('negative', netAnnualValue < 0);
     out.updatedLaborValue.textContent = currency.format(updatedLaborValue);
     out.updatedLaborValuePct.textContent = laborValuePctText;
     out.updatedLaborValuePct.classList.remove('positive', 'negative');
