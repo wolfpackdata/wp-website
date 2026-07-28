@@ -77,6 +77,7 @@ sync is a prompted, manual port (see §3).
 | D11 | **No phone number** in contact | Indexed page; scrape/spam exposure |
 | D12 | About Ryan trimmed to ~2 paragraphs | Compact-credibility ruling |
 | D13 | **No skeptic-nudge line** (*"Skeptical of AI hype? Good — run your own numbers."*) above the coaching CTA row — the Q3 page keeps it | Ruled off the public page by Ry, 2026-07-28 (#50) |
+| D14 | The two "Two ways to work with Wolfpack" path cards **are navigation** — heading and image both link to that path's section (`#engagements` / `#coaching`) — a public-only affordance (spec R13) | The framing section is public-only (D4), so its cards have no Q3 counterpart to diverge from; navigation, not a fact — nothing in the mirror set moves |
 
 ## 3. Sync workflow (Ry's stated process: update Q3 first, then prompt the port here)
 
