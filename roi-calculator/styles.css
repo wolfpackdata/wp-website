@@ -311,6 +311,9 @@ a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
 .result-sub.negative { color: var(--negative); }
 .result-sub.positive { color: var(--positive); }
 
+/* A net loss reads as one: the net-value row goes negative-red */
+.result-value.negative { color: var(--negative); }
+
 .info-icon {
   display: inline-flex;
   align-items: center;
