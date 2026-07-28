@@ -30,8 +30,11 @@ pieces land here as they're built. Verify by opening the page in a browser.
 
 GitHub Pages is **on** for this repo, serving `main` at
 `https://wolfpackdata.github.io/wp-website/` (no custom domain, no root `index.html` — the
-root 404s, which is expected). The ROI calculator is live at `/roi-calculator/` and is
-linked from the Wix site's *AI Coaching* page; the public rates page is live at `/rates/`.
+root 404s, which is expected). The ROI calculator is served at `/roi-calculator/`, but its
+**canonical public URL is `https://intake.wolfstrategyllc.com/roi-calculator/`** since
+2026-07-28 (Ry copied the folder into `ai-coaching-intake`; this repo stays the source of
+truth — never edit the deployed copy, re-copy on change, same policy as `ai-coaching/`) —
+use the intake URL when linking it. The public rates page is live at `/rates/`.
 **Merging to `main` is deploying.**
 
 ## `rates/` — public rates page
@@ -51,7 +54,9 @@ Conventions the page must keep:
 - **Evergreen:** no version stamp or quarter in the URL, headline, or framing.
 - **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8; current
   URL per #32 — see the booking-link note in the `ai-coaching/` section) — no
-  intake-form links.
+  intake-form links. Exception that isn't one: the coaching section carries a navy-ghost
+  link to the ROI calculator (spec R11, mirrors `wp-rates-page#39`) — a
+  consideration-stage tool link, not a second funnel CTA; the calendar CTA stays primary.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
 - The two "Two ways to work with Wolfpack" tiles carry Ry's images
