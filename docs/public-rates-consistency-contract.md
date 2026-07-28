@@ -30,10 +30,18 @@ sync is a prompted, manual port (see §3).
   2-yr grandfathering · ≥90-day rate-change notice · no-contract hourly · 30-day project
   notice · `fin@wolfstrategyllc.com`. (Net 7 dropped from the public page — see D10.)
 - The booking calendar URL for 30-minute-call CTAs:
-  `https://calendar.app.google/WUQnihH9GEEJRMARA` (#8). ⚠️ Depth exception until the Q3
-  page catches up: the Q3 page still carries the old `13EANJ…` link, which is the
-  **45-minute tutoring calendar** — do **not** mirror it back; see §4. (The Q3 page also
-  once shipped a third, wrong link — `wp-rates-page#21`.)
+  `https://calendar.app.google/zHNd1NA9wzb4VRLw5` — the Q3 page's current link, mirrored
+  here 2026-07-28 (#32; supersedes `WUQnihH9GEEJRMARA`, #8). ℹ️ Google periodically
+  regenerates share URLs for the **same** calendar (Ry, 2026-07-28), so a URL difference
+  between pages is benign — old intro-call URLs keep resolving to the same booking page.
+  Still mirror the Q3 page's current URL on each sync so the pair stays textually
+  consistent. The `13EANJ…` link is the separate **45-minute tutoring calendar** — never
+  use it for 30-minute-call CTAs. (The Q3 page also once shipped a third, wrong link —
+  `wp-rates-page#21`.)
+- Nav structure follows the Q3 page for sections both pages carry — e.g. both dropped the
+  "Terms" nav link on 2026-07-28 (ruled by Ry; the terms sections themselves stay) and
+  renamed "Coaching" → "AI Coaching". Nav items for Q3-only sections (Portfolio — D9) are
+  omitted here; the public-only "Engagements" item stays.
 - Contact email `main@wolfstrategyllc.com`, LinkedIn URL.
 - Wolfpack Advantage list content; About-Ryan facts (titles, track-record numbers,
   credentials); credential stats strip.
@@ -83,8 +91,10 @@ A handoff prompt will be authored **after Ry approves a good version of the publ
   - The Q3 page links the coaching intake form twice ("Start with the 2-minute intake" /
     "skip the call") — this predates the **book-first** funnel decision (intake sent after
     booking) that both `ai-coaching/` and the public rates page follow.
-  - The Q3 page's booking CTAs still point at `calendar.app.google/13EANJ63HKqMc76z6`,
-    which is the **45-minute tutoring calendar**; 30-minute-call CTAs belong on
-    `calendar.app.google/WUQnihH9GEEJRMARA` (`wp-website#8` — site-wide fix; also touches
-    `ai-coaching-intake` and the Wix site).
+  - ✅ **Resolved 2026-07-28:** the Q3 page's booking CTAs no longer point at the
+    45-minute tutoring calendar (`13EANJ…`) — wp-rates-page#32/#34 moved them to the
+    intro calendar (`zHNd1NA9wzb4VRLw5`), and the public page mirrors it
+    (`wp-website#32`). The `ai-coaching/` pages remain on `WUQnihH9GEEJRMARA` — a prior
+    URL of the **same** intro calendar, so equivalent — deliberately untouched (Ry,
+    2026-07-28).
   - Ry's call on when to reconcile both.
