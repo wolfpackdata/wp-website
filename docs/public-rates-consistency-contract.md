@@ -38,6 +38,16 @@ sync is a prompted, manual port (see §3).
   consistent. The `13EANJ…` link is the separate **45-minute tutoring calendar** — never
   use it for 30-minute-call CTAs. (The Q3 page also once shipped a third, wrong link —
   `wp-rates-page#21`.)
+- The coaching section's closing block (added upstream 2026-07-28,
+  `wp-rates-page#39`/#40): a skeptic-nudge line — *"Skeptical of AI hype? Good — run your
+  own numbers."* — above a two-button row whose **second** button is a navy-ghost link to
+  the **AI ROI Calculator**, labeled *"Calculate what AI is worth to you."* The **first**
+  button differs by design (D7: calendar CTA here, intake CTA there) and stays first and
+  primary; the nudge text, the ROI button's label/ghost style/second position, and its
+  target — the calculator's canonical public URL
+  `https://intake.wolfstrategyllc.com/roi-calculator/` (moved to the intake domain by Ry,
+  2026-07-28; the source still lives in this repo's `roi-calculator/`) — mirror exactly.
+  (Ported via #46.)
 - Nav structure follows the Q3 page for sections both pages carry — e.g. both dropped the
   "Terms" nav link on 2026-07-28 (ruled by Ry; the terms sections themselves stay) and
   renamed "Coaching" → "AI Coaching". Nav items for Q3-only sections (Portfolio — D9) are

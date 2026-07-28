@@ -31,6 +31,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R8 | Terms depth | **Condensed trust terms.** Keep: no added fees/taxes, ACH −2%, 2-yr rate grandfathering, 90-day change notice, no-contract hourly, 30-day project out, billing-questions email. Drop: Net 7 (ruled out in draft-1 feedback, 2026-07-23), retainer-due-in-full, coupon math, coaching billing mechanics. |
 | R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/WUQnihH9GEEJRMARA` — the 30-minute-call calendar per #8; the old `13EANJ…` link is the 45-min tutoring calendar). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
 | R10 | Dating | **Evergreen.** No version stamp in headline/URL/framing. Quiet *"rates last reviewed: \<Month YYYY\>"* line instead (hero kicker + footer). |
+| R11 | ROI-calculator cross-link (added 2026-07-28) | The coaching section mirrors the Q3 page's skeptic-nudge line + **second, navy-ghost button** linking the AI ROI Calculator at its canonical public URL `https://intake.wolfstrategyllc.com/roi-calculator/` (source in this repo's `roi-calculator/`) — see the contract's mirror-set entry (`wp-rates-page#39`/#40). A consideration-stage **tool link, not a funnel fork**: the calendar CTA stays first and primary, and R9's book-first / no-intake-links rule is untouched. |
 
 ## 3. Page architecture (in order)
 
@@ -103,6 +104,10 @@ Trim only if the page runs long — the list is proof, and proof budget is thin 
 - **Compressed coupon perk** (R2), one line inside this section (no standalone bridge):
   *Focus and Solo project clients get a shareable 25%-off coaching coupon (terms apply).*
 - **CTA = the calendar link** (R9). No intake link, no "skip the call" note.
+- Closing block (R11, mirrors Q3): nudge line *"Skeptical of AI hype? Good — run your own
+  numbers."* above a two-button row — coral-ghost calendar CTA first, navy-ghost
+  *"Calculate what AI is worth to you"* → `https://intake.wolfstrategyllc.com/roi-calculator/`
+  second.
 
 ### 3.8 About Ryan (compact — R7)
 Photo + name + roles line + a trimmed bio (~2 short paragraphs max: the operator-with-an-
