@@ -143,7 +143,7 @@ Currency-formatted inputs (salary, hourly rate, tool cost, education cost) accep
 ## Open questions
 
 - Exact GitHub repo name / URL path for the page (not yet created — files currently live locally only).
-- ~~Final CTA destination~~ — **Decided:** CTA and header both link to the live main site, `https://www.wolfstrategyllc.com`, with the CTA pointing specifically to `https://www.wolfstrategyllc.com/contact-3`.
+- ~~Final CTA destination~~ — **Decided** (superseded 2026-07-28, #34): the closing CTA points at the 30-minute intro-call calendar (`https://calendar.app.google/zHNd1NA9wzb4VRLw5`, book-first funnel — the original `contact-3` form link is retired); the header/back links still go to the live main site, `https://www.wolfstrategyllc.com`.
 - Whether to add basic analytics (e.g., simple pageview tracking) to see if the calculator gets used.
 
 ## Next steps

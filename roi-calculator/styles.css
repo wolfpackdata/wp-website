@@ -1,50 +1,67 @@
+/* ==========================================================================
+   Wolfpack AI Tool ROI Calculator — wolfstrategyllc.com brand
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+   Design system inherited from wp-rates-page (css/rates.css), as on ai-coaching.
+
+   Coral discipline, in one place so it can't drift: coral is allowed on the
+   intro kicker, the solid CTA button, the interactive control accents
+   (slider thumbs, the selected toggle fill, the live slider values), link
+   hover, and the focus ring. Nothing else — headline stats are white unless
+   the sign colors take over. Where coral is a FILL, text on it is navy
+   (5.8:1), never white (fails AA).
+   ========================================================================== */
+
 :root {
-  --color-bg: #000b29;
-  --color-surface: #0a1638;
-  --color-surface-alt: #10204a;
-  --color-border: #24325c;
-  --color-text: #ffffff;
-  --color-text-muted: #bfc2ca;
-  --color-accent: #f95954;
-  --color-accent-dark: #d6413c;
-  --color-positive: #4ade80;
-  --color-negative: #f87171;
-  --color-info: #8fb8e8;
-  --radius: 10px;
-  --wrap-width: 1080px;
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --positive:  #4ADE80;
+  --negative:  #F87171;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono: ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: "Roboto", system-ui, -apple-system, Arial, sans-serif;
-  font-weight: 300;
-  line-height: 1.5;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, .panel-title, .headline-value, .brand {
-  font-family: "Roboto", system-ui, -apple-system, Arial, sans-serif;
-  font-weight: 700;
+h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
 }
 
-.wrap {
-  max-width: var(--wrap-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
+/* ==========================================================================
+   Header
+   ========================================================================== */
 
 .site-header {
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--navy);
+  border-bottom: 1px solid var(--line);
   padding: 18px 0;
 }
 
@@ -58,11 +75,15 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-text);
+  color: var(--white);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
   letter-spacing: 0.02em;
 }
+
+.brand:hover { color: var(--white); }
 
 .brand-mark {
   width: 28px;
@@ -71,70 +92,86 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
 }
 
 .back-link {
-  color: var(--color-text-muted);
+  color: var(--muted);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.2s ease;
 }
 
-.back-link:hover {
-  color: var(--color-text);
-}
+/* Coral: link hover */
+.back-link:hover { color: var(--coral); }
+
+/* ==========================================================================
+   Intro
+   ========================================================================== */
 
 .intro {
-  padding: 48px 0 32px;
-  max-width: 640px;
+  padding: 56px 0 36px;
+  max-width: 680px;
+}
+
+/* Coral: the kicker */
+.intro-kicker {
+  color: var(--coral);
+  margin-bottom: 14px;
 }
 
 .intro h1 {
-  font-size: 2rem;
-  margin: 0 0 12px;
+  font-size: 2.1rem;
+  margin-bottom: 14px;
 }
 
-.intro p {
-  color: var(--color-text-muted);
-  margin: 0;
-}
+.intro p { color: var(--muted); }
+
+/* ==========================================================================
+   Calculator grid & panels
+   ========================================================================== */
 
 .calculator-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 24px;
   align-items: start;
-  padding-bottom: 48px;
+  padding-bottom: 56px;
 }
 
 .panel {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
 }
 
 .panel-title {
-  margin: 0 0 20px;
-  font-size: 1.1rem;
-  color: var(--color-text-muted);
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: var(--faint);
+  margin-bottom: 22px;
 }
+
+/* ==========================================================================
+   Form fields
+   ========================================================================== */
 
 .field-group {
   border: none;
-  padding: 0;
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 }
 
 .field-group legend {
-  padding: 0 0 8px;
+  padding-bottom: 8px;
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--muted);
 }
 
 .toggle-row {
   display: flex;
   gap: 8px;
-  background: var(--color-surface-alt);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 4px;
 }
@@ -143,10 +180,10 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   flex: 1;
   text-align: center;
   padding: 8px 12px;
-  border-radius: calc(var(--radius) - 4px);
+  border-radius: 2px;
   cursor: pointer;
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--muted);
 }
 
 .toggle-option input {
@@ -155,38 +192,36 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   pointer-events: none;
 }
 
+/* Coral: selected toggle fill — text on it is navy, never white (AA) */
 .toggle-option:has(input:checked) {
-  background: var(--color-accent);
-  color: #1a1206;
+  background: var(--coral);
+  color: var(--navy);
   font-weight: 600;
 }
 
-.field {
-  margin: 0 0 20px;
-}
+.field { margin-bottom: 20px; }
 
 .field-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 }
 
-.field-pair .field {
-  margin-bottom: 0;
-}
+.field-pair .field { margin-bottom: 0; }
 
 .field label {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--muted);
   margin-bottom: 8px;
 }
 
+/* Coral: live slider values (paired with the coral slider thumbs) */
 .live-val {
-  color: var(--color-accent);
+  color: var(--coral);
   font-weight: 600;
 }
 
@@ -194,53 +229,54 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
 .field input[type="text"].field-input {
   width: 100%;
   padding: 10px 12px;
-  background: var(--color-surface-alt);
-  border: 1px solid var(--color-border);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  color: var(--color-text);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
   font-size: 1rem;
 }
 
+/* Coral: the focus ring */
 .field input[type="number"]:focus,
 .field input[type="text"].field-input:focus,
 .field input[type="range"]:focus {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--coral);
   outline-offset: 2px;
 }
 
-.input-prefix {
-  position: relative;
-}
+.input-prefix { position: relative; }
 
 .input-prefix .prefix-symbol {
   position: absolute;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-text-muted);
+  color: var(--muted);
   pointer-events: none;
   font-size: 1rem;
   z-index: 1;
 }
 
-.field input[type="text"].currency-input {
-  padding-left: 26px;
-}
+.field input[type="text"].currency-input { padding-left: 26px; }
 
+/* Coral: slider thumbs */
 .field input[type="range"] {
   width: 100%;
-  accent-color: var(--color-accent);
+  accent-color: var(--coral);
 }
 
 .field-hint {
-  margin: 8px 0 0;
+  margin-top: 8px;
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: var(--faint);
 }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
+
+/* ==========================================================================
+   Results
+   ========================================================================== */
 
 .results-panel {
   position: sticky;
@@ -252,15 +288,13 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   justify-content: space-between;
   align-items: baseline;
   padding: 10px 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
-.result-row:last-of-type {
-  border-bottom: none;
-}
+.result-row:last-of-type { border-bottom: none; }
 
 .result-label {
-  color: var(--color-text-muted);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -274,13 +308,11 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   font-weight: 600;
 }
 
-.result-sub.negative {
-  color: var(--color-negative);
-}
+.result-sub.negative { color: var(--negative); }
+.result-sub.positive { color: var(--positive); }
 
-.result-sub.positive {
-  color: var(--color-positive);
-}
+/* A net loss reads as one: the net-value row goes negative-red */
+.result-value.negative { color: var(--negative); }
 
 .info-icon {
   display: inline-flex;
@@ -290,12 +322,11 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   height: 14px;
   margin-left: 6px;
   border-radius: 50%;
-  border: 1px solid var(--color-info);
-  color: var(--color-info);
-  opacity: 0.55;
+  border: 1px solid var(--faint);
+  color: var(--faint);
+  opacity: 0.7;
   background: transparent;
-  padding: 0;
-  font-family: "Roboto", system-ui, -apple-system, Arial, sans-serif;
+  font-family: var(--mono);
   font-size: 10px;
   font-weight: 700;
   line-height: 1;
@@ -320,15 +351,18 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
   width: max-content;
   max-width: 220px;
   padding: 8px 10px;
-  border-radius: 6px;
-  background: var(--color-surface-alt);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--white);
   font-size: 0.75rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.4;
   text-align: left;
   white-space: normal;
+  /* display:none (not just visibility) so the hidden tooltip's max-content
+     box can't widen the page — at 390px it used to cause horizontal scroll */
+  display: none;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.15s ease;
@@ -339,6 +373,7 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
 
 .info-icon:hover::before,
 .info-icon:focus-visible::before {
+  display: block;
   opacity: 1;
   visibility: visible;
 }
@@ -351,8 +386,8 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
 }
 
 .headline-stat {
-  background: var(--color-surface-alt);
-  border: 1px solid var(--color-border);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
   text-align: center;
@@ -360,81 +395,84 @@ h1, h2, h3, .panel-title, .headline-value, .brand {
 
 .headline-label {
   display: block;
+  font-family: var(--mono);
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  letter-spacing: 0.14em;
+  color: var(--faint);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
   margin-bottom: 6px;
 }
 
 .headline-value {
   display: block;
+  font-family: 'Roboto', system-ui, sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--white);
   font-variant-numeric: tabular-nums;
 }
 
-.headline-value.negative {
-  color: var(--color-negative);
-}
+.headline-value.negative { color: var(--negative); }
+.headline-value.positive { color: var(--positive); }
 
-.headline-value.positive {
-  color: var(--color-positive);
-}
+/* ==========================================================================
+   CTA & footer
+   ========================================================================== */
 
 .cta {
   text-align: center;
-  padding: 32px 0 56px;
-  border-top: 1px solid var(--color-border);
+  padding: 40px 0 64px;
+  border-top: 1px solid var(--line);
 }
 
 .cta h2 {
   font-size: 1.3rem;
-  margin: 0 0 12px;
+  margin-bottom: 18px;
 }
 
-.cta a {
-  color: var(--color-accent);
+/* Coral: the solid CTA — navy text on the coral fill, never white (AA) */
+.btn--solid {
+  display: inline-block;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  background: var(--coral);
+  color: var(--navy);
 }
 
-.cta a:hover {
-  color: var(--color-accent-dark);
-}
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
 
 .site-footer {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--line);
   padding: 20px 0;
-  color: var(--color-text-muted);
+  color: var(--faint);
   font-size: 0.85rem;
 }
 
-@media (max-width: 800px) {
-  .calculator-grid {
-    grid-template-columns: 1fr;
-  }
+/* ==========================================================================
+   Phone width
+   ========================================================================== */
 
-  .results-panel {
-    position: static;
-  }
+@media (max-width: 800px) {
+  .calculator-grid { grid-template-columns: 1fr; }
+
+  .results-panel { position: static; }
 
   .field-pair {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  .field-pair .field {
-    margin-bottom: 20px;
-  }
+  .field-pair .field { margin-bottom: 20px; }
 
   .header-inner {
     flex-wrap: wrap;
     gap: 8px;
   }
 
-  .brand {
-    font-size: 1rem;
-  }
+  .brand { font-size: 1rem; }
+
+  .intro h1 { font-size: 1.7rem; }
 }
