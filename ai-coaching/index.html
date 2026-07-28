@@ -29,7 +29,7 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#coach">Your coach</a></li>
     </ul>
-    <a class="nav__cta" href="https://calendar.app.google/WUQnihH9GEEJRMARA" target="_blank" rel="noopener">Book a session</a>
+    <a class="nav__cta" href="https://calendar.app.google/WUQnihH9GEEJRMARA" target="_blank" rel="noopener">Book an intro</a>
   </div>
 </nav>
 
@@ -239,7 +239,7 @@
         <p class="bridge__pct">$135<span>from · per session</span></p>
         <div>
           <h3>No contract. No prerequisites.</h3>
-          <p>Single 45-minute sessions from <strong>$135</strong> — book one and see what happens. <strong>Discounted multi-session packs</strong> are available when you&rsquo;re ready for more.</p>
+          <p>Single 45-minute sessions from <strong>$135</strong> — book one and see what happens. <strong>Discounted multi-session packs</strong> — save up to 20% — when you&rsquo;re ready for more.</p>
         </div>
       </div>
     </div>
@@ -253,7 +253,7 @@
         <h2 class="section__title" id="coach-title">Taught by someone who builds with AI every day</h2>
       </div>
       <div class="about">
-        <img class="about__photo" src="img/ryan-hickey.jpg" alt="Portrait of Ryan Hickey" width="640" height="853">
+        <img class="about__photo" src="img/ryan-hickey-square.jpg" alt="Portrait of Ryan Hickey" width="800" height="800">
         <div>
           <h3>Ryan Hickey</h3>
           <p class="about__roles">AI Engineer · Data Scientist · Software Developer · COO · Cornell OR&amp;IE</p>
@@ -274,8 +274,12 @@
     or a student ID). Then delete the review--placeholder class from that card to
     switch off the dashed placeholder styling. Add or remove cards freely; the grid
     handles 1–6 cleanly.
+
+    The whole section is currently HIDDEN (the hidden attribute on the <section>
+    below) until real reviews are in. When inserting the first real review, also
+    remove that hidden attribute to bring the section back.
   -->
-  <section class="section section--line" id="reviews" aria-labelledby="reviews-title">
+  <section class="section section--line" id="reviews" aria-labelledby="reviews-title" hidden>
     <div class="wrap">
       <div class="section__head">
         <span class="k section__kicker">Student reviews</span>

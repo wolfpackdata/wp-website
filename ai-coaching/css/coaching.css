@@ -158,9 +158,12 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
    ========================================================================== */
 
 .ladder {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
-  align-items: end; margin: 48px 0 18px;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0 14px;
+  margin: 48px 0 18px;
 }
+/* Each step subgrids onto four shared rows (tier no. / bar / name / meta), so
+   bar bottoms and tier names stay on one axis however the meta text wraps. */
+.ladder__step { display: grid; grid-template-rows: subgrid; grid-row: span 4; }
 .ladder__tierno {
   font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
@@ -168,6 +171,7 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .ladder__bar {
   background: var(--surface-2); border: 1px solid var(--line);
   border-radius: var(--radius) var(--radius) 0 0; margin-bottom: 10px;
+  align-self: end;
 }
 .ladder__step:nth-child(1) .ladder__bar { height: 30px; }
 .ladder__step:nth-child(2) .ladder__bar { height: 52px; }
@@ -328,7 +332,7 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
   .nav__links { display: none; }
   .hero__inner { padding: 64px 0 52px; }
   .section { padding: 56px 0; }
-  .ladder { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .ladder { grid-template-columns: repeat(5, 1fr); gap: 0 8px; }
   .ladder__meta { display: none; }
   .steps { grid-template-columns: 1fr; }
   .bridge { grid-template-columns: 1fr; gap: 14px; }
