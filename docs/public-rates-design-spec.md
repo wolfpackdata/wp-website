@@ -29,7 +29,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R6 | Coaching depth | **Exact pack prices**, all four packs — low-ticket transparency models the posture. |
 | R7 | Proof content | **Compact credibility only.** About-Ryan block + hero credential stats. No application-screenshot grid — proof lives on the upcoming "Business Applications built" page; link it from here once it exists. |
 | R8 | Terms depth | **Condensed trust terms.** Keep: no added fees/taxes, ACH −2%, 2-yr rate grandfathering, 90-day change notice, no-contract hourly, 30-day project out, billing-questions email. Drop: Net 7 (ruled out in draft-1 feedback, 2026-07-23), retainer-due-in-full, coupon math, coaching billing mechanics. |
-| R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/WUQnihH9GEEJRMARA` — the 30-minute-call calendar per #8; the old `13EANJ…` link is the 45-min tutoring calendar). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
+| R9 | Funnel | **One CTA: book the call** (`https://calendar.app.google/zHNd1NA9wzb4VRLw5` — the 30-minute-call calendar per #32, 2026-07-28; supersedes `WUQnihH9GEEJRMARA`, #8; the separate `13EANJ…` link is the 45-min tutoring calendar). **No intake-form links anywhere** — coaching is book-first; the intake is sent after booking (matches the approved `ai-coaching/` page, deliberately diverges from the Q3 page's two intake links). |
 | R10 | Dating | **Evergreen.** No version stamp in headline/URL/framing. Quiet *"rates last reviewed: \<Month YYYY\>"* line instead (hero kicker + footer). |
 | R11 | ROI-calculator cross-link (added 2026-07-28) | The coaching section mirrors the Q3 page's **second, navy-ghost button** linking the AI ROI Calculator at its canonical public URL `https://intake.wolfstrategyllc.com/roi-calculator/` (source in this repo's `roi-calculator/`) — see the contract's mirror-set entry (`wp-rates-page#39`/#40). A consideration-stage **tool link, not a funnel fork**: the calendar CTA stays first and primary, and R9's book-first / no-intake-links rule is untouched. The Q3 page's skeptic-nudge line above the row does **not** port (contract D13; Ry, 2026-07-28). |
 
@@ -40,7 +40,9 @@ screenshotted, and read out of context.
 
 ### 3.1 Sticky nav
 Same pattern as the Q3 page. Brand → `https://www.wolfstrategyllc.com`. Links:
-**Engagements · How it works · Coaching · Terms** (no Portfolio — R7). Coral CTA: **Book a call**.
+**Engagements · How it works · AI Coaching** (no Portfolio — R7; the "Terms" link dropped
+and "Coaching" renamed "AI Coaching" on 2026-07-28, mirroring the Q3 nav — see the
+contract's nav entry). Coral CTA: **Book an intro**.
 
 ### 3.2 Hero
 - Kicker (mono `.k` voice): `Rates & engagement guide · last reviewed <Month YYYY>`
