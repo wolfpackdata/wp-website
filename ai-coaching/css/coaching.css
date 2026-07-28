@@ -230,6 +230,11 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .bridge p { font-size: 0.9375rem; color: var(--muted); max-width: 68ch; }
 .bridge p strong { color: var(--white); font-weight: 600; }
 
+/* Quiet aside under the price band — a text link, never a second button,
+   so the booking CTA keeps sole button status */
+.pricing__aside { margin-top: 18px; font-size: 0.9375rem; color: var(--muted); }
+.pricing__aside a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+
 /* ==========================================================================
    What you'll learn — checklist + curriculum handout
    ========================================================================== */
