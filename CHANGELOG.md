@@ -8,6 +8,12 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Canonical tag on the AI Coaching page** (#5) pointing at
+  `https://intake.wolfstrategyllc.com/ai-coaching/`, so the github.io copy and
+  the intake deploy no longer compete as duplicate content. The tag carries over
+  unchanged when the folder is copied into `wolfpackdata/ai-coaching-intake`,
+  where it becomes a correct self-referential canonical.
+
 ### Changed
 
 ### Fixed
