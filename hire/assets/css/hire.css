@@ -1,0 +1,597 @@
+/* ==========================================================================
+   Wolfpack Hire Pages — résumé landing pages (eng-only + eng-music)
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+
+   One stylesheet, both pages. Derived from rates/css/rates.css and
+   ai-coaching/css/coaching.css — the pattern library — and from
+   ryan-resume-dev/resume_design/ for the header slab, which is a screen-scale
+   port of the shipped résumé header (header-footer-spec.md §9).
+
+   Design rule, from docs/hire-pages-design-plan.md §2: every visual element is
+   real product evidence, an honestly-rendered data structure, or typographic
+   hierarchy. Nothing decorative. The restraint is the design.
+
+   Coral discipline, in one place so it can't drift. Coral is allowed on:
+     1. the nav CTA                       5. the case-study IN PREPARATION chip
+     2. the hero CTA                      6. the closing contact CTA
+     3. the hero contact-line rule        7. link hover
+     4. the availability status dot       8. the focus ring
+   Nothing else. Not a section heading, not a job title, not a date, not a
+   skill chip, not a timeline band. Where coral is a FILL, text on it is navy
+   (5.8:1), never white (fails AA).
+
+   The RML mark (music page, one placement) is the sole exception to the
+   two-colour palette — see resume_design/header-footer-spec.md §5.
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono:      ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px;
+  clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Skip link — this is a long document; a keyboard reader needs the escape
+   ========================================================================== */
+
+.skip {
+  position: absolute; left: 24px; top: -60px; z-index: 30;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 18px;
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip:focus { top: 12px; color: var(--white); }
+
+/* ==========================================================================
+   Sticky nav + scroll-spy rail
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(0, 11, 41, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 26px; height: 58px;
+}
+.nav__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-right: auto;
+}
+.nav__brand:hover { color: var(--white); }
+.nav__logo { width: 30px; height: 30px; border-radius: var(--radius); }
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.nav__links { display: flex; gap: 20px; list-style: none; }
+.nav__links a {
+  font-family: var(--mono);
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; color: var(--faint);
+  padding: 4px 0; border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.nav__links a:hover { color: var(--white); }
+/* Scroll-spy: the current section is stated in white with a hairline, not in
+   coral — the ration is spent, and a moving accent would be noise. */
+.nav__links a[aria-current="true"] { color: var(--white); border-bottom-color: var(--faint); }
+.nav__cta {
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--coral); color: var(--navy) !important;
+  padding: 8px 16px; border-radius: var(--radius); white-space: nowrap;
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Hero slab — a screen-scale port of the résumé's own header composition:
+   name / role line / contact line under a coral rule. This is what makes the
+   page read as *this document*, authored, rather than as a template.
+   ========================================================================== */
+
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; }
+.hero__watermark {
+  position: absolute; right: -40px; top: 40px;
+  width: 380px; height: 380px; opacity: 0.10; pointer-events: none;
+  user-select: none;
+}
+.hero__inner {
+  position: relative; padding: 76px 0 64px;
+  display: grid; grid-template-columns: 1fr 200px; gap: 48px; align-items: start;
+}
+
+.hero__name {
+  font-size: clamp(2.5rem, 6.4vw, 4.25rem);
+  letter-spacing: 0.005em;
+  line-height: 1.02;                 /* résumé value — uppercase has no descenders */
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero__role {
+  font-weight: 600; font-size: clamp(0.9375rem, 1.7vw, 1.125rem);
+  letter-spacing: 0.01em; color: var(--muted); max-width: 40ch;
+}
+.hero__role .sep { color: var(--faint); }
+
+/* The availability line — the only first-person claim on the page. */
+.hero__avail {
+  display: flex; align-items: baseline; gap: 10px;
+  margin: 26px 0 24px;
+  font-family: var(--mono); font-size: 0.8125rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); max-width: 62ch; line-height: 1.7;
+}
+.hero__dot {
+  flex: none; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--coral); transform: translateY(-2px);
+}
+
+/* Contact line + the résumé's signature coral rule, ported literally. */
+.hero__contact {
+  display: flex; flex-wrap: wrap; gap: 4px 14px;
+  list-style: none;
+  font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 0.015em;
+  color: var(--muted);
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--coral);
+}
+.hero__contact a { color: var(--muted); text-decoration: none; }
+.hero__contact a:hover { color: var(--coral); }
+.hero__contact li + li::before { content: "·"; color: var(--faint); margin-right: 14px; }
+
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 34px; }
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; padding: 13px 26px; border-radius: var(--radius);
+}
+.btn--solid { background: var(--coral); color: var(--navy); }
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+.btn--ghost { border: 1px solid var(--line); color: var(--white); }
+.btn--ghost:hover { border-color: var(--faint); color: var(--white); }
+.btn--sm { font-size: 0.8125rem; padding: 11px 20px; }
+.btn__meta {
+  display: block; font-family: var(--mono); font-weight: 400;
+  font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--faint); margin-top: 3px;
+}
+
+.hero__stats { display: flex; flex-wrap: wrap; gap: 10px 26px; list-style: none; }
+.hero__stats li {
+  font-family: var(--mono); font-size: 0.875rem; letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.hero__stats li::before { content: "▸ "; color: var(--faint); }
+
+.hero__portrait {
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 22%;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section { padding: 76px 0; scroll-margin-top: 70px; }
+.section--line { border-top: 1px solid var(--line); }
+.section__head { max-width: 720px; margin-bottom: 44px; }
+.section__kicker { display: block; margin-bottom: 12px; }
+.section__title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
+.section__lede { color: var(--muted); }
+
+/* ==========================================================================
+   Professional summary — the one section whose job is to be *read*.
+   Generous measure, larger type, and the design gets out of the way.
+   ========================================================================== */
+
+.summary { max-width: 68ch; }
+.summary p { font-size: 1.125rem; color: var(--muted); }
+.summary p + p { margin-top: 20px; }
+.summary strong { color: var(--white); font-weight: 600; }
+
+/* ==========================================================================
+   Career timeline — the centrepiece. A CSS-grid band chart, 2009 → now.
+   The overlaps ARE the story: a linear list flattens concurrency into
+   nothing. Bands carry no coral (the ration is spent) — they are surface-2
+   with a hairline, and the current three take a lighter fill + arrow terminus.
+   ========================================================================== */
+
+.timeline {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 30px 32px 26px;
+}
+
+/* 17 columns = 2009…2026 inclusive, one per year. Rows are laid on the same
+   grid so a band's start/end column IS its date range — no magic numbers. */
+.tl__scale,
+.tl__row {
+  display: grid;
+  grid-template-columns: 210px repeat(18, 1fr);
+  align-items: center;
+  gap: 0 10px;
+}
+.tl__scale { padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+.tl__tick {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
+  color: var(--faint); text-align: left;
+}
+.tl__row { padding: 7px 0; }
+.tl__row + .tl__row { border-top: 1px solid rgba(34, 46, 82, 0.5); }
+
+.tl__label {
+  font-size: 0.8125rem; font-weight: 600; color: var(--white);
+  padding-right: 14px; line-height: 1.35;
+}
+.tl__label span {
+  display: block; font-family: var(--mono); font-size: 0.6875rem;
+  font-weight: 400; letter-spacing: 0.06em; color: var(--faint);
+  text-transform: uppercase; margin-top: 2px;
+}
+
+.tl__band {
+  position: relative;
+  height: 26px; border-radius: 3px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  display: flex; align-items: center; padding: 0 10px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
+  color: var(--muted); white-space: nowrap; overflow: hidden;
+  transform-origin: left center;
+}
+/* Roles still running get a lighter fill and an open right edge, so "ongoing"
+   is legible without a legend. */
+.tl__band--now {
+  background: #16224b; border-color: var(--faint);
+  border-right: none; border-radius: 3px 0 0 3px;
+}
+.tl__band--now::after {
+  content: ""; position: absolute; right: 0; top: -1px; bottom: -1px; width: 12px;
+  background: linear-gradient(to right, #16224b, rgba(22, 34, 75, 0));
+  border-top: 1px solid var(--faint); border-bottom: 1px solid var(--faint);
+}
+
+.tl__note {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line);
+  font-size: 0.8125rem; color: var(--faint); max-width: 74ch;
+}
+
+/* Phone: the chart becomes a labelled stack. A horizontally-scrolling gantt on
+   a 390px screen is a bad experience and deliberately does not ship. */
+.tl__stack { display: none; }
+.tl__stack li {
+  list-style: none; padding: 12px 0;
+  border-top: 1px solid rgba(34, 46, 82, 0.6);
+  display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+}
+.tl__stack-i { display: block; font-family: 'Montserrat', sans-serif; }
+.tl__stack b { font-size: 0.875rem; font-weight: 600; display: block; }
+.tl__stack-i > span {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
+  color: var(--faint); text-transform: uppercase;
+}
+.tl__stack em {
+  font-style: normal; font-family: var(--mono); font-size: 0.75rem;
+  letter-spacing: 0.06em; color: var(--muted); white-space: nowrap;
+}
+
+/* ==========================================================================
+   Professional experience
+   ========================================================================== */
+
+.roles { display: grid; gap: 18px; }
+.role {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 30px;
+}
+.role__head {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: baseline; gap: 6px 20px; margin-bottom: 16px;
+}
+.role__title { font-size: 1.0625rem; }
+.role__org {
+  font-weight: 600; font-size: 0.9375rem; color: var(--muted);
+  display: block; margin-top: 3px;
+}
+.role__dates {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+  color: var(--faint); white-space: nowrap;
+}
+.role__bullets { list-style: none; display: grid; gap: 9px; }
+.role__bullets li {
+  position: relative; padding-left: 22px;
+  font-size: 0.9375rem; color: var(--muted);
+}
+.role__bullets li::before { content: "▸"; position: absolute; left: 0; color: var(--faint); }
+
+/* ==========================================================================
+   Core expertise matrix
+   ========================================================================== */
+
+.matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.mgroup {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px 26px;
+}
+.mgroup__label { display: block; margin-bottom: 16px; font-size: 0.75rem; }
+.mgroup__skills { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; }
+.mgroup__skills li {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.02em;
+  color: var(--muted);
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 3px; padding: 5px 10px;
+}
+
+/* ==========================================================================
+   Applications & systems — the portfolio gallery.
+   Blurbs are VERBATIM from the résumé YAML (verify_facts.py guards those
+   strings; a paraphrase here would be a second, unguarded copy).
+   ========================================================================== */
+
+.apps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.app {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px;
+}
+.app__shot {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  object-fit: cover; object-position: 50% 0;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); margin-bottom: 16px;
+}
+/* app-notion-system.png is 543×506 — near-square and low-res. A full-width
+   16:9 cover frame would visibly soften it, so it gets a 4:3 frame at half
+   width. Reads as an intentional rhythm break rather than a defect. */
+.app--narrow .app__shot { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+.app__name { font-size: 1rem; margin-bottom: 8px; }
+.app__blurb { font-size: 0.9375rem; color: var(--muted); }
+/* Used where the screenshot shows a related-but-not-identical artefact to the
+   one the résumé names — the caption stays honest without editing the résumé. */
+.app__cap {
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--faint); margin: -8px 0 12px;
+}
+
+/* ==========================================================================
+   Case studies — designed placeholders, sized as though written.
+   Not "coming soon" apology copy: a table of contents for work in progress.
+   ========================================================================== */
+
+.cases { display: grid; gap: 18px; counter-reset: cs; }
+.case {
+  counter-increment: cs;
+  display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px 30px;
+}
+.case__shot {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 0;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+/* Case 02 has no screenshot in the inventory yet. Its frame is a live panel,
+   not a broken image — drop a file in later and it becomes a normal card. */
+.case__shot--empty {
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--faint);
+  background: var(--surface-2) repeating-linear-gradient(
+    -45deg, transparent 0 9px, rgba(34, 46, 82, 0.5) 9px 10px);
+}
+.case__num {
+  display: block; font-family: var(--mono); font-size: 0.75rem;
+  letter-spacing: 0.14em; color: var(--faint); margin-bottom: 10px;
+}
+.case__num::before { content: "Case " counter(cs, decimal-leading-zero); }
+.case__title { font-size: 1.0625rem; margin-bottom: 10px; }
+.case__blurb { font-size: 0.9375rem; color: var(--muted); margin-bottom: 16px; }
+.case__chip {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--coral);
+  border: 1px solid var(--coral); border-radius: var(--radius);
+  padding: 5px 12px;
+}
+
+/* ==========================================================================
+   Music & creative technology — music page only.
+   The RML mark is the single third-colour placement on either page
+   (resume_design/header-footer-spec.md §5). It is a recovered raster: clean at
+   this size, and it must NOT be scaled up. No coral fill sits in this section.
+   ========================================================================== */
+
+.rml-lockup {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 22px;
+}
+.rml-lockup img {
+  height: 44px; width: auto;
+  background: var(--navy); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 7px 12px;
+}
+.rml-lockup span { font-size: 0.75rem; }
+
+.music-close {
+  margin-top: 18px; padding: 22px 26px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.9375rem; color: var(--muted);
+}
+
+/* ==========================================================================
+   Focus + education + simple lists
+   ========================================================================== */
+
+.plainlist { display: grid; gap: 10px; list-style: none; max-width: 78ch; }
+.plainlist li {
+  position: relative; padding-left: 22px;
+  font-size: 0.9375rem; color: var(--muted);
+}
+.plainlist li::before { content: "▸"; position: absolute; left: 0; color: var(--faint); }
+
+.edu {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px 30px;
+  display: grid; gap: 14px; max-width: 78ch;
+}
+.edu__degree { font-size: 1rem; }
+.edu__school {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--faint); margin-top: 4px; display: block;
+}
+.edu__note { font-size: 0.9375rem; color: var(--muted); }
+
+/* ==========================================================================
+   Closing contact block — the hero slab inverted. The document opens and
+   closes on the same information.
+   ========================================================================== */
+
+.close {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 40px 42px;
+}
+.close__title { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 12px; }
+.close__lede { color: var(--muted); max-width: 60ch; margin-bottom: 28px; }
+.close__grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 40px; list-style: none;
+  padding-top: 26px; margin-top: 28px; border-top: 1px solid var(--line);
+}
+.close__grid li { display: grid; gap: 3px; }
+.close__grid .k { font-size: 0.6875rem; }
+.close__grid a, .close__grid span {
+  font-family: var(--mono); font-size: 0.875rem; color: var(--muted);
+  text-decoration: none; word-break: break-word;
+}
+.close__grid a:hover { color: var(--coral); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 36px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--faint); }
+.foot__meta a { color: var(--muted); }
+
+/* ==========================================================================
+   Scroll reveal
+   ========================================================================== */
+
+/* Scoped to .js so the page renders COMPLETE with JavaScript off or broken.
+   A résumé that needs JS to be readable is a broken résumé — same failure
+   mode as the v2.1 image-only header in header-footer-spec.md §9. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(.2,.6,.2,1),
+              transform 0.5s cubic-bezier(.2,.6,.2,1);
+  transition-delay: var(--d, 0ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+/* Timeline bands draw left→right rather than fading — the gesture matches what
+   the band means. */
+.js .tl__band { transform: scaleX(0); transition: transform 0.7s cubic-bezier(.2,.6,.2,1); transition-delay: var(--d, 0ms); }
+.js .tl__row.is-in .tl__band { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  /* Everything renders final-state. reveal.js also declines to attach. */
+  .js .reveal, .js .tl__band { opacity: 1; transform: none; transition: none; }
+  .skip { transition: none; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .nav__links { display: none; }
+  .tl__scale, .tl__row { grid-template-columns: 170px repeat(17, 1fr); }
+  .tl__label { font-size: 0.75rem; }
+}
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero__portrait { width: 168px; }
+  .hero__watermark { width: 280px; right: -80px; }
+  .matrix, .apps { grid-template-columns: 1fr; }
+  .case { grid-template-columns: 1fr; gap: 22px; }
+  .app--narrow .app__shot { aspect-ratio: 16 / 9; }
+  /* Below this width the band chart stops being legible — swap to the stack.
+     The note explains the band terminus, so it goes with the bands. */
+  .tl__scale, .tl__row, .tl__note { display: none; }
+  .tl__stack { display: block; }
+  .timeline { padding: 8px 24px 22px; }
+}
+
+@media (max-width: 640px) {
+  .hero__inner { padding: 56px 0 48px; }
+  .section { padding: 56px 0; }
+  .close { padding: 30px 24px; }
+  .close__grid { grid-template-columns: 1fr; }
+  .role, .app, .case, .mgroup, .edu { padding: 22px 20px; }
+  .hero__ctas .btn { width: 100%; text-align: center; }
+  .tl__stack li { flex-direction: column; gap: 4px; }
+  /* Run-in separators only make sense on a run-in line. Once each contact
+     wraps to its own row, a leading "·" reads as a broken bullet. */
+  .hero__contact { flex-direction: column; gap: 6px; }
+  .hero__contact li + li::before { content: none; }
+}
