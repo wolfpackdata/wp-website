@@ -143,11 +143,11 @@ sections:
             platforms, and AI-enabled workflows around how each client’s business
             actually works, delivered against a scope of work iterated on together.
           - >-
-            Built and run a bespoke AI development command center wiring Claude
-            Code, GitHub, and Notion into one supervised pipeline — every agent
-            action planned against a task, logged, and reviewable — and leave
-            behind reusable AI skills and agents that keep creating value after
-            launch.
+            Built and run a bespoke AI development command center: a Python
+            engine wiring Claude Code, OpenAI Codex, GitHub, Notion, and
+            BigQuery into one supervised pipeline — every agent action planned
+            against a task, logged, and reviewable — and leave behind reusable
+            AI skills and agents that keep creating value after launch.
           - >-
             Run each engagement in an isolated, confidential commercial AI
             environment with a Data Processing Agreement in place — never a shared
@@ -249,10 +249,11 @@ sections:
       - name: Notion–GitHub AI Dev Command Center
         body: >-
           A bespoke command center for AI-accelerated development: a skills-based
-          planning, project-management, and AI-supervision suite wiring Claude
-          Code, GitHub, and Notion into a single pipeline. Every agent action is
-          planned against a tracked task, logged, and reviewable — transparent
-          human + agent software development at speed, with an audit trail rather
+          planning, project-management, and AI-supervision suite built on a Python
+          engine that wires Claude Code, OpenAI Codex, GitHub, Notion, and
+          BigQuery into a single pipeline. Every agent action is planned against a
+          tracked task, logged, and reviewable — transparent human + agent
+          software development at blistering speed, with an audit trail rather
           than a black box.
       - name: SetMaster 3
         body: >-
@@ -298,10 +299,18 @@ sections:
     title: Education
     lines:
       - Cornell University (2007) B.S. Operations Research & Industrial Engineering
+      # This is the only place music appears on the eng-only résumé, so it
+      # carries the spans as well as the training. Sentences 2 and 4 are
+      # verbatim shared with eng_music — edit both or neither (verify_facts.py
+      # SHARED enforces it).
       - >-
-        Thirty-six years of piano performance and 20+ years of studio production
-        and audio engineering — a long-running second discipline in real-time
-        systems, signal processing, and creative tooling.
+        Ten years of classical piano study with a university professor, inside
+        36 years at the instrument, 23 years paid to perform, and 20+ years of
+        studio production and audio engineering. Sound engineering and
+        composition learned through mentors, online programs, and practice. A
+        long-running second discipline in real-time systems, signal processing,
+        and creative tooling. Music and audio are passions that I will study and
+        explore for the rest of my life.
 
   - type: bullets
     title: Current Technical Focus

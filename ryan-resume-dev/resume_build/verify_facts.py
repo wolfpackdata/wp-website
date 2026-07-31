@@ -63,12 +63,19 @@ FIGURES = {
     "$300K": "Auto SOSS revenue at the start of the growth run",
     "$30M": "Auto SOSS revenue at the end of it",
     "$20k": "Tromml platform MRR",
-    "20+ years": "coding experience; also studio production and DJ performance",
+    # The four music spans are four different numbers and none of them is a
+    # career length (D-009). Through v2.3 "36 years" covered a "36-year music
+    # career" and "20+ years" covered DJ performance; both were wrong and both
+    # are retired here.
+    "20+ years": "coding experience; also studio production, recording, and audio engineering",
     "17 years": "leading tech/analytics/ops — In4mation 2009 to now (was '14+' through v1)",
-    "36 years": "piano performance and study",
+    "36 years": "piano playing and study — a practice span, never a career span",
+    "23 years": "paid music performance, since 2003",
+    "10 years": "classical piano study with a university professor (D-010; the copy spells it 'Ten years', so this row documents the fact rather than matching a pattern)",
     "up to 20 people": "team and vendor span at Auto SOSS",
+    "2003": "paid music performance start",
     "2007": "Cornell B.S.",
-    "2009": "In4mation and Niceman start",
+    "2009": "In4mation and Niceman start; professional DJ work starts",
     "2012": "In4mation end",
     "2015": "Auto SOSS start",
     "2016": "Niceman end",
@@ -98,6 +105,12 @@ SHARED = {
     # v2.1: RML is named on both, so a reader who searches it finds the same
     # entity from either résumé. Dropping it from one would break that.
     "RML Creative LLC is named": r"RML Creative LLC",
+    # v2.4 (D-010): the music training. Both Education panels state it, in
+    # sentences Ry wrote and approved verbatim — the surrounding prose differs
+    # by audience but these two clauses may not. Retiring "self-taught" only
+    # held on one page; this makes it hold on both.
+    "ten years of classical study, with a teacher": r"[Tt]en years of classical piano study with a university professor",
+    "the engineering was taught too": r"Sound engineering and composition\s+learned through mentors, online programs, and practice",
 }
 
 
