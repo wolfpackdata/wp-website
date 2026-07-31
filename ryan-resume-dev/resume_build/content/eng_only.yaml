@@ -1,0 +1,320 @@
+# =============================================================================
+# eng-only — engineering résumé for non-music companies
+#
+# Sibling of eng_music.yaml. Built from the v2 round plan (docs/v2-plan.md).
+#
+# Music is reduced to subtle depth, not hidden: no music sections, no Music
+# Technology skill group. What remains is Niceman Music Studio — deliberately
+# framed as a built facility and a commercial business rather than an artist
+# project, because on this résumé its job is to (a) cover 2012–2015 and (b) show
+# someone who engineers physical systems and carries a P&L. SetMaster 3 keeps
+# its slot as the Python/TypeScript application it is, described without the
+# vendor names.
+#
+# Where the two résumés state the same fact they must state it identically —
+# see verify_facts.py. Niceman in particular now appears on both, described two
+# ways; the dates, the paying-client claim, and the publishing/licensing claim
+# are the shared facts and must not drift.
+# =============================================================================
+
+meta:
+  slug: eng-only
+  output_dir: ../eng_only
+  variant: eng                   # picks the role line; header is text since v2.2
+  footer_org: Wolfpack Data & Strategy
+  title: Ryan Hickey — Résumé (engineering)
+  subject: AI Engineer · Data & AI Systems Architect · COO · Technical Operator
+  source: v2 round plan (docs/v2-plan.md)
+
+sections:
+
+  - type: prose
+    title: Professional Summary
+    paragraphs:
+      - >-
+        AI engineer, data scientist, software developer, and technology operator
+        with 20+ years of coding experience and 17 years leading technology,
+        analytics, and operational initiatives. Combines deep expertise in software
+        architecture, Python development, SQL, cloud analytics, financial modeling,
+        automation, and systems design with modern AI development workflows using
+        Claude Code, OpenAI Codex, ChatGPT, and GitHub Copilot.
+      - >-
+        Known for designing and delivering production-ready software, internal
+        tools, workflow automation, and decision-support systems through
+        AI-accelerated development practices. COO and partner of an eight-figure
+        e-commerce brand through its climb from $300K to $30M, and head of
+        insights & analytics at an AI SaaS company where the quantitative platform
+        he built became a $20k-MRR product; financial modeling and forecasting
+        run through every role since 2009, so solutions get designed with the P&L
+        in mind. Now focused on AI engineering as its own discipline — building
+        agentic systems and shipping public software.
+
+  - type: grid
+    title: Core Expertise
+    columns: 2
+    items:
+      - label: AI Engineering & Agent Development
+        skills:
+          - Prompt Engineering
+          - Claude Code
+          - Claude Skills & Subagents
+          - OpenAI Codex
+          - ChatGPT
+          - GitHub Copilot
+          - Model Context Protocol (MCP)
+          - AI Agent Design
+          - Multi-Agent Orchestration
+          - Agentic Development Environments
+          - Rapid Prototyping
+      - label: Software Engineering & Architecture
+        skills:
+          - Python
+          - SQL
+          - VBA & Advanced Excel
+          - API-First Application Development
+          - Custom Web Applications
+          - Systems Design
+          - Data Architecture
+          - GitHub Actions & GitFlow
+          - CI/CD
+          - Technical Documentation
+      - label: Data & Analytics Engineering
+        skills:
+          - dbt
+          - BigQuery
+          - PostgreSQL
+          - Looker & Looker Studio
+          - Dagster
+          - ETL & Analytics Pipelines
+          - Warehouse Modeling
+          - Cloud Analytics
+      - label: Quantitative Modeling & Forecasting
+        skills:
+          - Financial Modeling
+          - Forecasting
+          - Scenario & Simulation Modeling
+          - Pricing Optimization
+          - Revenue Management
+          - Unit Economics
+          - P&L Modeling
+      - label: Product & Operations Leadership
+        skills:
+          - Technical Project Leadership
+          - Scope Definition & SOW Process
+          - Notion API & Databases
+          - Cross-Functional Team Management
+          - Vendor & Partner Management
+          - Strategic Planning
+          - Operational Scaling
+
+  - type: experience
+    title: Professional Experience
+    roles:
+      - title: Head of Insights & Analytics
+        org: Tromml Inc.
+        dates: 2023–2026
+        bullets:
+          - >-
+            Built the company’s first quantitative insights platform, transforming
+            operational data into software tools and AI-assisted workflows,
+            generating $20k in MRR through SaaS subscription access to the platform.
+          - >-
+            Designed scalable data architecture and warehouse models using dbt, SQL,
+            Python, BigQuery, Looker, Dagster and modern development practices.
+          - >-
+            Built AI-assisted analysis tools and workflow automation systems
+            supporting product, engineering, and customer teams.
+          - >-
+            Developed ETL and analytics pipelines for enterprise clients that
+            transformed transaction, inventory, and ops data from multiple systems
+            into executive-ready visualizations, simulation tools, and
+            decision-support models.
+
+      - title: Founder & Principal Consultant
+        org: Wolfpack Data & Strategy LLC
+        dates: 2023–Present
+        bullets:
+          - >-
+            Founded and currently lead a technology consulting practice focused on
+            AI-assisted software development, workflow automation, analytics
+            engineering, and business systems architecture.
+          - >-
+            Design and build custom web applications, internal tools, data
+            platforms, and AI-enabled workflows around how each client’s business
+            actually works, delivered against a scope of work iterated on together.
+          - >-
+            Built and run a bespoke AI development command center wiring Claude
+            Code, GitHub, and Notion into one supervised pipeline — every agent
+            action planned against a task, logged, and reviewable — and leave
+            behind reusable AI skills and agents that keep creating value after
+            launch.
+          - >-
+            Run each engagement in an isolated, confidential commercial AI
+            environment with a Data Processing Agreement in place — never a shared
+            client workspace.
+          - >-
+            Deliver live dashboards and financial models that show what is working
+            and prove the ROI, with plans, decisions, and documentation kept in
+            Notion so projects stay fully visible to the client.
+          - >-
+            Advise and train organizations on AI adoption, workflow automation,
+            software modernization, and technology strategy, including 1:1
+            technical coaching for engineers already building with AI.
+
+      - title: Chief Operating Officer & Partner
+        org: Auto SOSS Inc. / Shock Surplus
+        dates: 2015–2025
+        bullets:
+          - >-
+            Served as primary systems architect and quantitative leader during
+            growth from $300K to $30M in annual revenue.
+          - >-
+            Wrote the company’s proprietary pricing and inventory algorithms in
+            Python and SQL — the systems behind how the catalog was priced and how
+            inventory was bought and held.
+          - >-
+            Built the financial planning, forecasting, and operational automation
+            systems the business ran on.
+          - >-
+            Led cross-functional internal teams and external vendor partners of up
+            to 20 people across operations, engineering, analytics, eCommerce, and
+            systems implementation initiatives.
+
+      - title: Director of Marketing Science
+        org: In4mation Insights
+        dates: 2009–2012
+        bullets:
+          - >-
+            Led quantitative consulting engagements for major retailers,
+            manufacturers, and enterprise clients.
+          - >-
+            Built software solutions and analytical applications using SAS, SQL,
+            VBA, R, Python, MATLAB, SPSS, Tableau, and advanced Excel.
+          - >-
+            Specialized in pricing optimization, forecasting, revenue management,
+            and data-driven business strategy.
+
+      # v2.1 — RML Creative sits INSIDE Professional Experience, deliberately,
+      # rather than under a "Professional Musician Experience" heading at the
+      # end. Same facts either way, but a heading makes music a *category* of the
+      # candidacy; a work-history entry makes it a business he runs. It also puts
+      # the LLC name on the page, which is the search hook — a reader who googles
+      # RML finds a real body of work — and names the third entity, so the
+      # multi-LLC operator picture is visible without a section announcing it.
+      - title: Founder & Producer
+        org: RML Creative LLC
+        dates: 2023–Present
+        bullets:
+          - >-
+            Run a creative technology business at the intersection of music and
+            software — the entity behind SetMaster 3, and the studio workflow and
+            automation systems built around it, integrating custom software,
+            hardware, and analog signal chains.
+          - >-
+            Produce, compose, and perform original electronic music, and deliver
+            music technology education, under an LLC run alongside the consulting
+            practice.
+
+      # Title matches eng_music.yaml exactly — same company, same title on both
+      # résumés. verify_facts.py enforces it.
+      - title: Founder & Owner
+        org: Niceman Music Studio LLC
+        dates: 2009–2016
+        bullets:
+          - >-
+            Designed and built a flat-response acoustic recording environment to
+            commercial specification and ran it as a working studio with paying
+            clients.
+          - >-
+            Produced, engineered, and released an original music catalog that was
+            published and licensed for use.
+
+  - type: projects
+    title: Selected AI Applications & Systems
+    items:
+      - name: E-commerce Intelligence Platform — Tromml Inc.
+        body: >-
+          Built and shipped an e-commerce intelligence platform alongside a senior
+          AI Engineer/CTO, using AI-accelerated development throughout. Python,
+          dbt, PostgreSQL, BigQuery, and Looker Studio behind an interface that
+          lets business users query complex operational data through
+          natural-language interaction instead of filing analyst requests. Reached
+          $20k MRR as a subscription product.
+      - name: The $30M Data Backbone — Auto SOSS Inc. / Shock Surplus
+        body: >-
+          The pricing, inventory, forecasting, and operational automation systems
+          that carried an eight-figure e-commerce brand from $300K to $30M in
+          annual revenue. Written in Python and SQL, designed and owned end to end
+          while serving as COO — the engineering and the P&L were the same job.
+      - name: Notion–GitHub AI Dev Command Center
+        body: >-
+          A bespoke command center for AI-accelerated development: a skills-based
+          planning, project-management, and AI-supervision suite wiring Claude
+          Code, GitHub, and Notion into a single pipeline. Every agent action is
+          planned against a tracked task, logged, and reviewable — transparent
+          human + agent software development at speed, with an audit trail rather
+          than a black box.
+      - name: SetMaster 3
+        body: >-
+          An offline, cross-platform desktop-class web application — TypeScript
+          and React over a Python analysis engine, shipping double-clickable
+          installers for Windows and macOS with no terminal required. Parses a
+          proprietary XML catalog format strictly read-only and reconciles it
+          against third-party API exports through years of accumulated
+          name-normalization and fuzzy-matching heuristics, with compound
+          filtering and a structured editor over the result. Now at v3.0.3 after
+          three issue-driven fix rounds; it replaces a Python/Excel-VBA prototype
+          used professionally for years.
+      - name: pdpd
+        body: >-
+          An AI e-commerce frontend tool that fixes, generates, A/B tests, and
+          version-controls product description page catalogs running to millions of
+          pages. Python and FastAPI with a per-instance Postgres cluster and
+          cloud-ready storage, model, and secrets seams. In alpha, built from a
+          full written specification.
+      - name: BQL Analytics Provisioner
+        body: >-
+          Provisions a standardized, layered BigQuery analytics environment — raw,
+          staging, clean, analysis — and wires Looker Studio on top, in minutes
+          instead of a week of console clicks. Python CLI, built so the client owns
+          the Google Cloud project and can revoke consultant access at any time.
+      - name: Time-Trackify
+        body: >-
+          An agent that reconstructs a workday from the evidence it already left
+          behind — local repositories, GitHub, Notion, calendar, and mail — matches
+          each session to a real project, and pushes billable entries to Clockify
+          with provenance attached. Python, local-first, privacy-scoped by design.
+      - name: AI Coaching Program & Curriculum
+        body: >-
+          An applied AI enablement program built on a five-tier ability model and
+          three role tracks, from professionals who have never used AI to engineers
+          already shipping with it. Covers prompting that transfers context, memory
+          and project configuration, verification habits that make AI output safe to
+          sign, and confidentiality judgment fitted to a student’s industry and
+          employer policy — the last of which makes it usable in law, healthcare,
+          finance, education, and HR.
+
+  - type: lines
+    title: Education
+    lines:
+      - Cornell University (2007) B.S. Operations Research & Industrial Engineering
+      - >-
+        Thirty-six years of piano performance and 20+ years of studio production
+        and audio engineering — a long-running second discipline in real-time
+        systems, signal processing, and creative tooling.
+
+  - type: bullets
+    title: Current Technical Focus
+    note: (2026)
+    bullets:
+      - >-
+        Production AI systems engineering, agentic workflow architecture, and LLM
+        orchestration across Anthropic Claude, OpenAI GPT-4o, Codex, and emerging
+        model ecosystems
+      - >-
+        API-first AI application development, tool use/function calling,
+        multi-agent coordination patterns, and Model Context Protocol (MCP)
+        integration
+      - >-
+        Claude Certified Architect – Foundations (CCA-F) certification, target
+        completion Q4 2026

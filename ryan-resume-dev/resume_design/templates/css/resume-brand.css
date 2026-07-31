@@ -1,0 +1,306 @@
+/* ==========================================================================
+   Ryan Hickey résumé — header & footer artboards
+   wolfstrategyllc.com brand, adapted for print/PDF.
+
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings ·
+   Montserrat body · monospace micro-labels. Same system as
+   wp-website/rates/css/rates.css and ai-coaching/css/coaching.css.
+
+   CORAL DISCIPLINE — in one place so it can't drift. On a résumé there are
+   exactly THREE places coral may appear, and no artboard uses more than two:
+     1. the 3px rule along the bottom edge of the header banner
+     2. the 1px hairline along the top edge of the footer
+     3. (optional, body only) the rule under a section heading
+   Nothing else. The name is never coral. The role line is never coral.
+   Where coral is a FILL, text on it is navy — never white (fails AA).
+
+   ARTBOARDS ARE PRINT-EXACT. Sizes are declared in CSS inches (1in = 96px
+   exactly), so a full-page screenshot at device-scale-factor 3.125 is a
+   300 DPI PNG that drops into Word at 100% with no resampling.
+   ========================================================================== */
+
+:root {
+  /* --- Shared brand ------------------------------------------------- */
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+
+  /* --- On navy (dark banner) ---------------------------------------- */
+  --muted:     #BFC2CA;   /* 10.9:1 on navy — body-legible, use for contact */
+  --faint:     #808594;   /*  5.3:1 on navy — separators + micro-labels only */
+  --line:      #222E52;   /* hairline dividers inside the navy field */
+
+  /* --- On white (light banner) — print-only tokens ------------------- */
+  --ink:       #000B29;   /* 19.4:1 — the name */
+  --ink-70:    #4A5068;   /*  7.9:1 — the role line, footer text */
+  --ink-45:    #6B7186;   /*  4.8:1 — AA floor; smallest readable grey */
+  --ink-sep:   #9AA0B0;   /* decorative separators ONLY — below AA */
+  --rule:      #D8DBE4;   /* hairline dividers on white */
+
+  --mono: ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+img { display: block; }
+
+/* ==========================================================================
+   Artboard shell
+   The <body> is the artboard so a full-page screenshot IS the asset —
+   no cropping step, no stray margin.
+   ========================================================================== */
+
+body.artboard {
+  width: 7.5in;            /* Letter, 0.5in side margins */
+  overflow: hidden;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body.artboard--header  { height: 1.3333in; }
+body.artboard--footer  { height: 0.2708in; }
+
+/* Compact header: same composition, one line tighter. Add class="compact"
+   to <body> — the spec calls this the "second page / two-column CV" size. */
+body.artboard--header.compact { height: 1.0in; }
+body.artboard--header.compact .hdr {
+  padding: 0 0.26in;
+  --hdr-indent: calc(0.42in + 0.28in + 1px);
+}
+body.artboard--header.compact .hdr__top     { gap: 0.14in; }
+body.artboard--header.compact .hdr__name    { font-size: 21pt; }
+body.artboard--header.compact .hdr__role    { font-size: 7.5pt; }
+body.artboard--header.compact .hdr__contact { font-size: 6pt; }
+body.artboard--header.compact .hdr__mark    { width: 0.42in; height: 0.42in; }
+body.artboard--header.compact .hdr__div     { height: 0.46in; }
+body.artboard--header.compact .hdr__hr      { margin: 0.05in 0 0.045in var(--hdr-indent); }
+body.artboard--header.compact .hdr__rml     { height: 0.27in; }
+
+/* ==========================================================================
+   Header banner
+
+   Two rows, because the contact line is the longest string in the whole
+   composition and fighting it into the same row as the marks forces the type
+   down to an unreadable size:
+
+     row 1   [wolf] │ RYAN HICKEY                          [RML mark]
+             │        AI Engineer · Data & AI Systems Architect · …
+     ─────── hairline, indented to the text column ──────────────────
+     row 2   ryan@… · linkedin.com/in/… · San Francisco Bay Area
+     ═══════ coral 3px, full bleed ══════════════════════════════════
+
+   The vertical hairline after the wolf and the horizontal one above the
+   contact row are what make this read as a designed system rather than three
+   logos sharing a rectangle. Row 2 is indented to align with the name, so the
+   left edge of the type column is a single unbroken line.
+   ========================================================================== */
+
+.hdr {
+  --hdr-indent: calc(0.6in + 0.36in + 1px);   /* mark + two gaps + divider */
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.28in;
+}
+
+.hdr__top {
+  display: flex;
+  align-items: center;
+  gap: 0.18in;
+}
+
+.hdr__mark {                       /* the constellation wolf */
+  width: 0.6in; height: 0.6in;
+  flex: none;
+  border-radius: 3px;              /* the PNG has a navy field; on white this
+                                      reads as a deliberate navy chip */
+}
+
+.hdr__div {                        /* vertical hairline */
+  width: 1px; height: 0.62in;
+  flex: none;
+}
+
+.hdr__stack { flex: 1 1 auto; min-width: 0; }
+
+.hdr__hr {                         /* horizontal hairline above the contact row */
+  height: 1px;
+  margin: 0.075in 0 0.065in;
+  margin-left: var(--hdr-indent);
+}
+
+.hdr__name {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 27pt;
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hdr__role {
+  font-weight: 600;
+  font-size: 8pt;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  margin-top: 0.055in;
+  white-space: nowrap;
+}
+
+.hdr__contact {
+  font-family: var(--mono);
+  /* 6pt, not 6.5: four run-in items (v2 added the GitHub URL) at 6.5pt ran the
+     line into the right padding, and the row is nowrap + overflow:hidden, so it
+     clips rather than wraps. 6pt is already the compact banner's contact size,
+     so this is a value the system already carries, not a new one. */
+  font-size: 6pt;
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+  margin-left: var(--hdr-indent);
+  white-space: nowrap;
+}
+
+.sep { padding: 0 0.055in; }       /* the · between run-in items */
+
+.hdr__rml {                        /* RML Creative — music résumé only */
+  height: 0.38in;
+  width: auto;
+  flex: none;
+}
+
+/* --- Coral: the one accent on the banner --------------------------- */
+.hdr__rule {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: var(--coral);
+}
+
+/* --- Dark banner (navy field) --------------------------------------- */
+.artboard--dark                { background: var(--navy); }
+.artboard--dark .hdr__name     { color: var(--white); }
+.artboard--dark .hdr__role     { color: var(--muted); }
+.artboard--dark .hdr__contact  { color: var(--muted); }
+.artboard--dark .sep           { color: var(--faint); }
+.artboard--dark .hdr__div,
+.artboard--dark .hdr__hr       { background: var(--line); }
+
+/* --- Light banner (white field) ------------------------------------- */
+.artboard--light               { background: var(--white); }
+.artboard--light .hdr__name    { color: var(--ink); }
+.artboard--light .hdr__role    { color: var(--ink-70); }
+.artboard--light .hdr__contact { color: var(--ink-45); }
+.artboard--light .sep          { color: var(--ink-sep); }
+.artboard--light .hdr__div,
+.artboard--light .hdr__hr      { background: var(--rule); }
+
+/* The RML letterforms are WHITE, so on a white field they would vanish. The
+   mark always needs a dark ground — on the light banner that is an explicit
+   navy chip, which also rhymes with the wolf-mark chip on its left. */
+.artboard--light .hdr__rml {
+  background: var(--navy);
+  border-radius: 3px;
+  padding: 0.06in 0.08in;
+  height: 0.38in;
+  box-sizing: content-box;
+}
+
+/* ==========================================================================
+   Footer strip
+   Ship this as NATIVE WORD TEXT when you need a live page number — the
+   artboard exists so the typography is unambiguous, and for the one-page
+   résumé where "Page 1 of 1" is noise anyway.
+   ========================================================================== */
+
+.ftr {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2in;
+  padding: 0.06in 0.32in 0;
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ftr__rule {                       /* coral hairline, top edge */
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 1px;
+  background: var(--coral);
+}
+
+.ftr__id   { white-space: nowrap; }
+.ftr__page { white-space: nowrap; }
+
+.artboard--dark  .ftr           { background: var(--navy); }
+.artboard--dark  .ftr__id       { color: var(--muted); }
+.artboard--dark  .ftr__page     { color: var(--faint); }
+.artboard--dark  .ftr .sep      { color: var(--faint); }
+
+.artboard--light .ftr           { background: var(--white); }
+.artboard--light .ftr__id       { color: var(--ink-70); }
+.artboard--light .ftr__page     { color: var(--ink-45); }
+.artboard--light .ftr .sep      { color: var(--ink-sep); }
+
+/* ==========================================================================
+   PAGE PROOF — review only, NOT part of the shipped system
+   A Letter page at 0.5in margins so the header and footer can be judged in
+   context against real résumé body copy. Nothing below this line describes
+   how the body of the résumé must look; it is filler at plausible sizes.
+   ========================================================================== */
+
+body.proof {
+  width: 8.5in; height: 11in;
+  background: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  color: var(--ink);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+
+.proof__band  { flex: none; }                 /* header banner, full text width */
+.proof__body  { flex: 1 1 auto; padding: 0.28in 0.5in 0; }
+.proof__foot  { flex: none; }
+
+body.proof > .proof__band,
+body.proof > .proof__foot { margin: 0 0.5in; }
+body.proof > .proof__band { margin-top: 0.5in; }
+body.proof > .proof__foot { margin-bottom: 0.42in; }
+
+.proof__band .artboard,
+.proof__foot .artboard { display: block; }
+
+.proof__h {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 700; font-size: 9.5pt;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink);
+  margin: 0.2in 0 0.02in;
+  padding-bottom: 0.045in;
+  border-bottom: 2px solid var(--coral);     /* coral slot 3 — section rules */
+}
+.proof__h:first-child { margin-top: 0; }
+.proof__p  { font-size: 8.5pt; line-height: 1.45; color: var(--ink-70); margin-top: 0.075in; }
+.proof__jt { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 9pt;
+             margin-top: 0.13in; text-transform: uppercase; letter-spacing: 0.02em; }
+.proof__jm { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.05em;
+             color: var(--ink-45); margin-top: 0.02in; text-transform: uppercase; }
+.proof__ul { list-style: none; margin-top: 0.06in; }
+.proof__ul li { font-size: 8.5pt; line-height: 1.45; color: var(--ink-70);
+                padding-left: 0.16in; text-indent: -0.16in; margin-top: 0.035in; }
+.proof__ul li::before { content: "\25B8  "; color: var(--ink-45); }
+
+/* The proof embeds the artboards as blocks rather than as the page <body>,
+   so it needs the same box on a div. Colour/typography classes are already
+   element-agnostic and are reused as-is. */
+.art          { position: relative; width: 7.5in; overflow: hidden; }
+.art--header  { height: 1.3333in; }
+.art--footer  { height: 0.2708in; }
