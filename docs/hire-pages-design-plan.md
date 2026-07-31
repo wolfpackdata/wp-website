@@ -32,6 +32,7 @@ Locked with Ry, 2026-07-30. These are settled inputs, not proposals.
 | D-005 | **Phone included** — `415-371-9613` — in both the top and bottom contact blocks. | The page's contact set is a **superset** of the résumé's contact line. §7 records exactly how, so the two artifacts can't drift by accident. |
 | D-006 | **RML mark appears in the music page's Music & Creative Technology section only.** | Same Wolfpack chrome on both pages throughout; the RML lockup is one controlled moment, invoking the third-colour exception already granted in `resume_design/header-footer-spec.md` §5. |
 | D-007 | **URLs are `/hire/ryan-hickey/` and `/hire/ryan-hickey-music/`.** | The repo folder `hire/` mirrors the deploy path exactly, so shipping is one folder copy. |
+| D-008 | **`wolfstrategyllc.com` appears at the top as a link and at the bottom as a secondary CTA** (Ry, feedback round 1) — as trust, not as funnel. | In the hero contact line, as a ghost button in the closing block, in the closing contact grid, and on the eng-only footer wordmark. It is never coral: the primary CTA stays unambiguously *Contact Ryan*. |
 
 ---
 
@@ -299,6 +300,11 @@ Education on eng-only carries the second line about piano and studio production
 as a long-running second discipline — that line is *absent* from eng-music,
 because there the whole music section says it. Preserve the difference.
 
+That second line sits in **its own labelled panel** (`.edu-aside`), not inside
+the Cornell card. It is Education content and belongs in the section, but housed
+with the degree it read as a footnote to a 2007 B.S. rather than as the separate
+twenty-year practice it describes (Ry, feedback round 1).
+
 ### 4.11 Closing contact block + footer
 
 Contact slab inverted (§4.1), full contact set repeated, both CTAs. Footer
@@ -363,10 +369,15 @@ here so the two artifacts can't drift silently.
 |---|---|---|
 | Email | `ryan@wolfstrategyllc.com` | ✓ |
 | Phone | `415-371-9613` | ✗ — **page only** (D-005) |
+| Website | `wolfstrategyllc.com` | ✗ — **page only** (D-008) |
 | LinkedIn | `linkedin.com/in/ryan-hickey-626b2798` | ✓ |
 | GitHub | `github.com/wolfpackdata` | ✓ |
 | Location | `San Francisco Bay Area` | ✓ |
 | Booking | `https://calendar.app.google/zHNd1NA9wzb4VRLw5` | ✗ — page only |
+
+The hero contact line uses a **trailing** separator (`li:not(:last-child)::after`)
+rather than a leading one. With a leading `·`, a wrap drops a stray bullet at the
+start of the next line; trailing keeps the mark glued to the item it follows.
 
 Email is `mailto:`, phone is `tel:+14153719613`, LinkedIn and GitHub are real
 links. Per `CLAUDE.md`, same-domain links open in the same tab; the calendar link

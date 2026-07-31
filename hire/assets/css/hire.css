@@ -179,7 +179,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 
 /* Contact line + the résumé's signature coral rule, ported literally. */
 .hero__contact {
-  display: flex; flex-wrap: wrap; gap: 4px 14px;
+  display: flex; flex-wrap: wrap; gap: 4px 12px;
   list-style: none;
   font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 0.015em;
   color: var(--muted);
@@ -188,23 +188,34 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 .hero__contact a { color: var(--muted); text-decoration: none; }
 .hero__contact a:hover { color: var(--coral); }
-.hero__contact li + li::before { content: "·"; color: var(--faint); margin-right: 14px; }
+/* The separator TRAILS its item rather than leading the next one. With a
+   leading separator, a wrap puts a stray "·" at the start of a line; trailing
+   keeps the dot glued to the item above, which is where it belongs. */
+.hero__contact li:not(:last-child)::after {
+  content: "·"; color: var(--faint); margin-left: 12px;
+}
 
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 34px; }
 .btn {
   display: inline-block; text-decoration: none; font-weight: 700;
-  font-size: 0.9375rem; padding: 13px 26px; border-radius: var(--radius);
+  font-size: 0.9375rem; line-height: 1.4;
+  padding: 12px 30px; border-radius: var(--radius);
+  white-space: nowrap;
 }
 .btn--solid { background: var(--coral); color: var(--navy); }
 .btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
 .btn--ghost { border: 1px solid var(--line); color: var(--white); }
 .btn--ghost:hover { border-color: var(--faint); color: var(--white); }
-.btn--sm { font-size: 0.8125rem; padding: 11px 20px; }
+/* Inline, not stacked: a second line of type inside a button makes it tall and
+   narrow, which reads as a label rather than something to click. Run-in keeps
+   every button one line high and lets width carry the extra information. */
 .btn__meta {
-  display: block; font-family: var(--mono); font-weight: 400;
-  font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--faint); margin-top: 3px;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--faint);
 }
+.btn__meta::before { content: "· "; }
+.btn--solid .btn__meta { color: rgba(0, 11, 41, 0.62); }
 
 .hero__stats { display: flex; flex-wrap: wrap; gap: 10px 26px; list-style: none; }
 .hero__stats li {
@@ -490,6 +501,17 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 .edu__note { font-size: 0.9375rem; color: var(--muted); }
 
+/* The second-discipline note is Education content, but it is not part of the
+   Cornell degree — sharing a box with it read as a footnote to the degree.
+   Its own panel, with its own label, says what it actually is. */
+.edu-aside {
+  margin-top: 16px; padding: 22px 26px; max-width: 78ch;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.edu-aside .k { display: block; margin-bottom: 10px; font-size: 0.75rem; }
+.edu-aside p { font-size: 0.9375rem; color: var(--muted); }
+
 /* ==========================================================================
    Closing contact block — the hero slab inverted. The document opens and
    closes on the same information.
@@ -589,9 +611,15 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   .close__grid { grid-template-columns: 1fr; }
   .role, .app, .case, .mgroup, .edu { padding: 22px 20px; }
   .hero__ctas .btn { width: 100%; text-align: center; }
+  /* Run-in meta is a desktop affordance: it buys width, which phones don't
+     have. Here vertical space is the cheap axis, so the meta drops to its own
+     line and the button is allowed to wrap rather than overflow. */
+  .btn { white-space: normal; padding: 12px 20px; }
+  .btn__meta { display: block; margin-top: 4px; }
+  .btn__meta::before { content: none; }
   .tl__stack li { flex-direction: column; gap: 4px; }
   /* Run-in separators only make sense on a run-in line. Once each contact
-     wraps to its own row, a leading "·" reads as a broken bullet. */
+     sits on its own row, a trailing "·" is just a dangling mark. */
   .hero__contact { flex-direction: column; gap: 6px; }
-  .hero__contact li + li::before { content: none; }
+  .hero__contact li:not(:last-child)::after { content: none; }
 }
