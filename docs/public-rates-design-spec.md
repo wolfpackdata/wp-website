@@ -3,7 +3,7 @@
 **Responds to:** [public-rates-design-brief.md](public-rates-design-brief.md) (Ry's strategy brief — authoritative where they'd conflict)
 **Companion doc:** [public-rates-consistency-contract.md](public-rates-consistency-contract.md) (what mirrors the Q3 page vs. what intentionally differs)
 **Status:** Planning approved rulings baked in · no code written yet
-**Target:** `rates/` in this repo → canonical public URL `https://intake.wolfstrategyllc.com/rates_public/` (deployed copy in `ai-coaching-intake`, R12; also serves at `https://wolfpackdata.github.io/wp-website/rates/`)
+**Target:** `rates/` in this repo → canonical public URL `https://intake.wolfstrategyllc.com/rates_public/` (deployed copy in `ai-coaching-intake`, R12 — the only live copy since GitHub Pages was turned off for this repo on 2026-07-30, #74)
 
 ---
 
