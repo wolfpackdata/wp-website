@@ -50,13 +50,16 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
 - **Experience bullets and project blurbs are verbatim from the YAML.** Those
   strings are guarded by `resume_build/verify_facts.py`; retyping them here
   creates a second, unguarded copy that will drift. Copy, don't paraphrase.
-- **One deliberate exception: music tenure.** The pages say *36 years at the
-  piano · 23 years paid to perform (since 2003) · professional DJ since 2009*.
-  `eng_music.yaml` still says *"a 36-year music career"* and *"20+ years of DJ
-  performance"*, both of which Ry corrected in feedback round 2. **The pages are
-  right and the YAML is stale** — don't sync it backwards. Fixing the résumé is
-  a build round Ry has to open; the exact edits are written up in the plan's
-  §6(c), and D-009 records the facts.
+- **Two deliberate exceptions, both music.** **Tenure:** the pages say *36 years
+  at the piano · 23 years paid to perform (since 2003) · professional DJ since
+  2009*, where `eng_music.yaml` still says *"a 36-year music career"* and *"20+
+  years of DJ performance"* (D-009). **Training:** the pages say ten years of
+  classical piano study with a university professor and sound engineering
+  learned from mentors and paid online programs; neither YAML says any of it,
+  and eng-only's panel used to be labelled *"self-taught"* (D-010). **The pages
+  are right and the YAMLs are stale** — don't sync them backwards. Fixing the
+  résumé is a build round Ry has to open; the exact edits are in the plan's
+  §6(c).
 - **The two YAMLs file music differently on purpose** — `eng_only` puts RML and
   Niceman *inside* Professional Experience so they read as businesses he runs;
   `eng_music` gives music its own section. Don't flatten that into one template.

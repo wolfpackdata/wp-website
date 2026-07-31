@@ -34,6 +34,7 @@ Locked with Ry, 2026-07-30. These are settled inputs, not proposals.
 | D-007 | **URLs are `/hire/ryan-hickey/` and `/hire/ryan-hickey-music/`.** | The repo folder `hire/` mirrors the deploy path exactly, so shipping is one folder copy. |
 | D-008 | **`wolfstrategyllc.com` appears at the top as a link and at the bottom as a secondary CTA** (Ry, feedback round 1) — as trust, not as funnel. **Revised round 2:** the bottom CTA moved *out* of the closing block into its own coda band below it. | In the hero contact line, in the closing contact grid, on the eng-only footer wordmark, and — since round 2 — as a single ghost link in the `.softcta` coda section (§4.12). Inside the closing block it had been a fourth button beside two résumé downloads, which read as a peer of the primary CTA rather than below it. It is never coral: the primary CTA stays unambiguously *Contact Ryan*. |
 | D-009 | **Music tenure is four spans, not one number** (Ry, feedback round 2). Piano: 36 years of playing and study. Paid performance: since **2003** → 23 years. Studio production/engineering: 20+ years. **Professional DJ: since 2009** → 17 years. | The pages say "36 years at the piano · 23 years paid to perform". The phrase *"a 36-year music career"* is retired — it conflated study with career — as is *"20+ years of DJ performance"*, which predated 2009 by four years. `eng_music.yaml` still carries both and is now the **stale** copy: the résumé needs the same correction on its next build round (§6c). |
+| D-010 | **The music training was taught, and both pages say so** (Ry, feedback round 3). **Ten years of classical piano study with a university professor**; sound engineering learned **from working mentors and paid online programs**. The `.edu-aside` panel — previously eng-only, and previously labelled *"self-taught"* — now runs on **both** pages under **"A second discipline, formally trained."** | *Self-taught* was factually wrong and it undersold the box: it read as a hobby that got serious, when both halves were instructed. Neither fact is anywhere in either YAML, so this is a **second** divergence for the résumé round to absorb (§6c) — and `10 years` is a new figure needing a `FIGURES` entry. |
 
 ---
 
@@ -297,14 +298,20 @@ at résumé size and no larger. 44px is well within that; it must not be scaled 
 ### 4.9 Current Technical Focus · 4.10 Education
 
 Straight ports. Current Technical Focus keeps its `(2026)` note as a mono kicker.
-Education on eng-only carries the second line about piano and studio production
-as a long-running second discipline — that line is *absent* from eng-music,
-because there the whole music section says it. Preserve the difference.
 
-That second line sits in **its own labelled panel** (`.edu-aside`), not inside
-the Cornell card. It is Education content and belongs in the section, but housed
-with the degree it read as a footnote to a 2007 B.S. rather than as the separate
-twenty-year practice it describes (Ry, feedback round 1).
+Education carries a second panel — the music training — **on both pages**
+(D-010, round 3), reversing round 1's call that eng-music didn't need it because
+the music section already said so. It sits in **its own labelled panel**
+(`.edu-aside`), not inside the Cornell card: it is Education content and belongs
+in the section, but housed with the degree it read as a footnote to a 2007 B.S.
+rather than as the separate lifelong practice it describes (Ry, feedback
+round 1).
+
+The two versions are **not** the same paragraph. eng-only's carries the training
+*and* the spans, because it is the only place on that page music appears at all.
+eng-music's carries the training and points back at the music section for the
+spans — restating them a screen below the closing strip would just read as
+padding.
 
 ### 4.11 Closing contact block + footer
 
@@ -386,14 +393,20 @@ the résumé is the wrong one. Exact strings, both in
 
 | Where | Currently says | Should say |
 |---|---|---|
-| Professional Summary ¶1 (~line 40) | `alongside a 36-year music career spanning piano performance, studio production, sound design, and DJ performance` | 36 years at the piano; 23 years paid to perform, since 2003 |
-| Music section `closing:` (~line 315) | `20+ years of DJ performance` | professional DJ since 2009 (17 years) |
+| `eng_music.yaml` Professional Summary ¶1 (~line 40) | `alongside a 36-year music career spanning piano performance, studio production, sound design, and DJ performance` | 36 years at the piano; 23 years paid to perform, since 2003 |
+| `eng_music.yaml` Music section `closing:` (~line 315) | `20+ years of DJ performance` | professional DJ since 2009 (17 years) |
+| `eng_only.yaml` Education (~line 302) | `Thirty-six years of piano performance and 20+ years of studio production` — no training, no paid-performance span | add the 23 years, the **10 years of classical study with a university professor**, and that the engineering came from mentors and paid programs (D-010) |
+
+Neither YAML mentions the training at all, so **`eng_music.yaml` needs the D-010
+facts added as well as the D-009 corrections** — the résumé is currently the only
+artifact of the three that still reads as though the music were self-taught.
 
 `verify_facts.py`'s `FIGURES` ledger needs the matching edits — `"36 years"` is
 annotated *"piano performance and study"* (still correct, but it must stop
 covering the career claim), `"20+ years"` is annotated as also covering *"DJ
-performance"* (no longer true), and `23 years` / `2003` are new entries. It
-reads the YAML, not these pages, so nothing fails today — the drift is silent.
+performance"* (no longer true), and `23 years`, `10 years`, and `2003` are new
+entries. It reads the YAML, not these pages, so nothing fails today — the drift
+is silent.
 
 **This is a résumé build round, which is Ry's call to open**, and it ends with
 `build.py` → `verify_facts.py` → `export_pdf.py` so the four files in
