@@ -537,6 +537,27 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .close__grid a:hover { color: var(--coral); }
 
 /* ==========================================================================
+   Secondary CTA — the consultancy (D-008, revised feedback round 2).
+   A coda, not a peer. It sits BELOW the closing contact block and is
+   deliberately quieter than it: shorter section padding, panel fill rather
+   than card fill, one ghost link, no coral. The page's job is a conversation
+   about a role; this is the trust link, not a second funnel.
+   ========================================================================== */
+
+.section--coda { padding: 34px 0 44px; }
+
+.softcta {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 18px 32px;
+  padding: 24px 30px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.softcta .k { display: block; margin-bottom: 9px; font-size: 0.6875rem; }
+.softcta__title { font-size: 1.0625rem; margin-bottom: 6px; }
+.softcta__lede { font-size: 0.9375rem; color: var(--muted); max-width: 52ch; }
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -610,7 +631,11 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   .close { padding: 30px 24px; }
   .close__grid { grid-template-columns: 1fr; }
   .role, .app, .case, .mgroup, .edu { padding: 22px 20px; }
-  .hero__ctas .btn { width: 100%; text-align: center; }
+  /* Restated after the .section rule above, not before it: same specificity,
+     so source order is what decides. */
+  .section--coda { padding: 28px 0 36px; }
+  .softcta { padding: 22px 20px; }
+  .hero__ctas .btn, .softcta .btn { width: 100%; text-align: center; }
   /* Run-in meta is a desktop affordance: it buys width, which phones don't
      have. Here vertical space is the cheap axis, so the meta drops to its own
      line and the button is allowed to wrap rather than overflow. */

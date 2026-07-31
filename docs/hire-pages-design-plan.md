@@ -32,7 +32,8 @@ Locked with Ry, 2026-07-30. These are settled inputs, not proposals.
 | D-005 | **Phone included** — `415-371-9613` — in both the top and bottom contact blocks. | The page's contact set is a **superset** of the résumé's contact line. §7 records exactly how, so the two artifacts can't drift by accident. |
 | D-006 | **RML mark appears in the music page's Music & Creative Technology section only.** | Same Wolfpack chrome on both pages throughout; the RML lockup is one controlled moment, invoking the third-colour exception already granted in `resume_design/header-footer-spec.md` §5. |
 | D-007 | **URLs are `/hire/ryan-hickey/` and `/hire/ryan-hickey-music/`.** | The repo folder `hire/` mirrors the deploy path exactly, so shipping is one folder copy. |
-| D-008 | **`wolfstrategyllc.com` appears at the top as a link and at the bottom as a secondary CTA** (Ry, feedback round 1) — as trust, not as funnel. | In the hero contact line, as a ghost button in the closing block, in the closing contact grid, and on the eng-only footer wordmark. It is never coral: the primary CTA stays unambiguously *Contact Ryan*. |
+| D-008 | **`wolfstrategyllc.com` appears at the top as a link and at the bottom as a secondary CTA** (Ry, feedback round 1) — as trust, not as funnel. **Revised round 2:** the bottom CTA moved *out* of the closing block into its own coda band below it. | In the hero contact line, in the closing contact grid, on the eng-only footer wordmark, and — since round 2 — as a single ghost link in the `.softcta` coda section (§4.12). Inside the closing block it had been a fourth button beside two résumé downloads, which read as a peer of the primary CTA rather than below it. It is never coral: the primary CTA stays unambiguously *Contact Ryan*. |
+| D-009 | **Music tenure is four spans, not one number** (Ry, feedback round 2). Piano: 36 years of playing and study. Paid performance: since **2003** → 23 years. Studio production/engineering: 20+ years. **Professional DJ: since 2009** → 17 years. | The pages say "36 years at the piano · 23 years paid to perform". The phrase *"a 36-year music career"* is retired — it conflated study with career — as is *"20+ years of DJ performance"*, which predated 2009 by four years. `eng_music.yaml` still carries both and is now the **stale** copy: the résumé needs the same correction on its next build round (§6c). |
 
 ---
 
@@ -313,6 +314,27 @@ follows the site pattern: wordmark left, mono meta right, hairline above —
 `header-footer-spec.md` §6. Music page swaps the trailing org for
 `RML CREATIVE`, which that spec explicitly sanctions.
 
+The closing block holds **three** buttons — book a call, PDF, DOCX. The
+consultancy link is not among them; see §4.12.
+
+### 4.12 Secondary CTA — the consultancy coda
+
+A short band between the closing block and the footer (`.section--coda` +
+`.softcta`): mono kicker `ALSO`, the name *Wolfpack Data & Strategy*, one line
+of what it is, and a single ghost link out to `wolfstrategyllc.com`. Identical
+on both pages.
+
+It exists because visiting the consultancy site is a **real but secondary**
+goal, and round 1's placement didn't say that. Sitting inside the closing block
+as a fourth ghost button, it lined up beside the two résumé downloads and read
+as one of them — a wide, oddly-labelled sibling in a row of file downloads
+(Ry, feedback round 2). Below the block, in its own quieter frame, the ordering
+is legible without a word of explanation.
+
+Rules it keeps: no coral (D-008), one link only, copy stays to a single line,
+and it is **not** in the nav — a coda you land on by scrolling past the contact
+block, never a destination the page steers you to.
+
 ---
 
 ## 5. The delta between the two pages
@@ -323,7 +345,7 @@ content differences are real and deliberate:
 | Element | eng-only | eng-music |
 |---|---|---|
 | Role line | `… · COO · Technical Operator` | `… · COO · Professional Musician` |
-| Summary ¶1 | no music clause | adds the 36-year music-career clause |
+| Summary ¶1 | no music clause | adds the music-tenure clause (D-009) |
 | Core Expertise | 5 groups — incl. **Data & Analytics Engineering** as its own group | 6 groups — data folded into Software Engineering; adds **Music Technology** and **Audio Data & Catalog Engineering** |
 | Experience | 6 roles — RML + Niceman filed *inside* the section | 4 roles |
 | Music section | none | present, with RML mark and closing line |
@@ -337,8 +359,8 @@ content differences are real and deliberate:
 
 ## 6. Content conflicts to resolve before build
 
-Two, both surfaced by pairing the copy against the imagery. Neither blocks the
-plan; both need a call.
+Three. (a) and (b) were surfaced by pairing the copy against the imagery and
+neither blocks the plan; (c) is open and outlives this repo.
 
 **(a) The SetMaster screenshot names vendors the eng-only copy avoids.**
 `eng_only.yaml` describes SetMaster without Traktor or Spotify — its header
@@ -356,6 +378,28 @@ screenshot is the branded intake page. **Recommendation:** title that card
 `AI Coaching Program — intake & delivery system` and keep the résumé's curriculum
 prose as the blurb, so the caption is honest about what's pictured without
 contradicting the résumé.
+
+**(c) OPEN — the résumé still says "a 36-year music career" (D-009).** Round 2
+corrected the pages; the source YAML was left alone, so the two now disagree and
+the résumé is the wrong one. Exact strings, both in
+`ryan-resume-dev/resume_build/content/eng_music.yaml`:
+
+| Where | Currently says | Should say |
+|---|---|---|
+| Professional Summary ¶1 (~line 40) | `alongside a 36-year music career spanning piano performance, studio production, sound design, and DJ performance` | 36 years at the piano; 23 years paid to perform, since 2003 |
+| Music section `closing:` (~line 315) | `20+ years of DJ performance` | professional DJ since 2009 (17 years) |
+
+`verify_facts.py`'s `FIGURES` ledger needs the matching edits — `"36 years"` is
+annotated *"piano performance and study"* (still correct, but it must stop
+covering the career claim), `"20+ years"` is annotated as also covering *"DJ
+performance"* (no longer true), and `23 years` / `2003` are new entries. It
+reads the YAML, not these pages, so nothing fails today — the drift is silent.
+
+**This is a résumé build round, which is Ry's call to open**, and it ends with
+`build.py` → `verify_facts.py` → `export_pdf.py` so the four files in
+`hire/assets/dl/` stop contradicting the page they download from. Until then a
+hiring manager who reads the page and then opens the PDF sees two different
+claims.
 
 ---
 
