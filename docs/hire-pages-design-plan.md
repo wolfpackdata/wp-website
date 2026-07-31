@@ -308,10 +308,20 @@ rather than as the separate lifelong practice it describes (Ry, feedback
 round 1).
 
 The two versions are **not** the same paragraph. eng-only's carries the training
-*and* the spans, because it is the only place on that page music appears at all.
-eng-music's carries the training and points back at the music section for the
-spans — restating them a screen below the closing strip would just read as
-padding.
+*and* the spans, because it is the only place on that page music appears at all;
+it also keeps a sentence about real-time systems and signal processing, which is
+the whole reason a non-music employer should care. eng-music's carries the
+training and points back at the music section for the spans — restating them a
+screen below the closing strip would just read as padding.
+
+**Two sentences are shared verbatim** across both panels (Ry's wording, round 4):
+the training sentence — *"Sound engineering and composition learned through
+mentors, online programs, and practice."* — and the closing one — *"Music and
+audio are passions that I will study and explore for the rest of my life."*
+Edit them in both files or in neither. That closing line is a deliberate register
+shift: it is the one sentence in either panel that a résumé could not have
+produced, and it is the only place the music reads as intent rather than
+credentials.
 
 ### 4.11 Closing contact block + footer
 
