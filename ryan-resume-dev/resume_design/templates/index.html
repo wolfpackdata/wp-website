@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Résumé header &amp; footer — variant gallery</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/resume-brand.css">
+<style>
+  /* Gallery chrome only — none of this is part of the design system. */
+  html { background: #EFF1F5; }
+  body.gallery {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    color: #000B29;
+    padding: 40px 24px 80px;
+    line-height: 1.55;
+  }
+  .g-wrap { max-width: 8.2in; margin: 0 auto; }
+  .g-title {
+    font-family: 'Roboto', sans-serif; font-weight: 700;
+    font-size: 1.4rem; letter-spacing: 0.02em;
+  }
+  .g-lede { color: #4A5068; font-size: 0.9rem; margin-top: 8px; max-width: 62ch; }
+  .g-h {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6B7186; margin: 44px 0 14px;
+    border-bottom: 1px solid #D8DBE4; padding-bottom: 8px;
+  }
+  .g-item { margin-bottom: 22px; }
+  .g-label {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 0.68rem; letter-spacing: 0.08em; color: #6B7186; margin-bottom: 6px;
+  }
+  .g-frame {
+    box-shadow: 0 1px 3px rgba(0,11,41,0.14), 0 0 0 1px rgba(0,11,41,0.08);
+    overflow-x: auto;                 /* 7.5in is wider than a narrow window */
+    background: #fff;
+    width: 720px;                     /* hug the artboard, don't pad it with white */
+    max-width: 100%;
+  }
+  .g-frame iframe, .g-frame img { display: block; }
+  .g-note {
+    font-size: 0.82rem; color: #4A5068; margin-top: 8px;
+    border-left: 2px solid #F95954; padding-left: 12px;
+  }
+  .g-proof { display: flex; gap: 20px; flex-wrap: wrap; }
+  .g-proof img { width: 3.6in; height: auto; box-shadow: 0 1px 3px rgba(0,11,41,0.2); }
+</style>
+</head>
+<body class="gallery">
+<div class="g-wrap">
+
+  <h1 class="g-title">Résumé header &amp; footer — variant gallery</h1>
+  <p class="g-lede">Live renders of every artboard in <code>templates/export/</code>. These
+  are the same files <code>export-png.ps1</code> turns into the 300&nbsp;DPI PNGs in
+  <code>preview/</code>. Shown here at 1&times; (96&nbsp;DPI) — judge composition and
+  hierarchy here, judge print sharpness from the PNGs.</p>
+
+  <!-- ============================ standard, dark ============================ -->
+  <div class="g-h">Standard 1.333in &middot; dark field</div>
+
+  <div class="g-item">
+    <div class="g-label">header-dark-eng &mdash; eng_only</div>
+    <div class="g-frame"><iframe src="export/header-dark-eng.html" width="720" height="128" frameborder="0" scrolling="no" title="header-dark-eng"></iframe></div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-label">header-dark-music &mdash; eng_music_combo</div>
+    <div class="g-frame"><iframe src="export/header-dark-music.html" width="720" height="128" frameborder="0" scrolling="no" title="header-dark-music"></iframe></div>
+    <p class="g-note">The RML sun is the only third colour family anywhere in the system.
+    It is allowed here because it is a mark, not a decision &mdash; and it never shares an
+    artboard with a coral fill.</p>
+  </div>
+
+  <!-- ============================ standard, light =========================== -->
+  <div class="g-h">Standard 1.333in &middot; light field</div>
+
+  <div class="g-item">
+    <div class="g-label">header-light-eng &mdash; eng_only</div>
+    <div class="g-frame"><iframe src="export/header-light-eng.html" width="720" height="128" frameborder="0" scrolling="no" title="header-light-eng"></iframe></div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-label">header-light-music &mdash; eng_music_combo</div>
+    <div class="g-frame"><iframe src="export/header-light-music.html" width="720" height="128" frameborder="0" scrolling="no" title="header-light-music"></iframe></div>
+    <p class="g-note">Both marks become navy chips on white &mdash; the wolf because its
+    PNG has no alpha, the RML because its letterforms are white. Made deliberate with a
+    matching 3px radius so they read as a pair.</p>
+  </div>
+
+  <!-- ================================ compact =============================== -->
+  <div class="g-h">Compact 1.0in &middot; continuation pages, or a tight page 1</div>
+
+  <div class="g-item">
+    <div class="g-label">header-compact-dark-eng</div>
+    <div class="g-frame"><iframe src="export/header-compact-dark-eng.html" width="720" height="96" frameborder="0" scrolling="no" title="header-compact-dark-eng"></iframe></div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-label">header-compact-dark-music</div>
+    <div class="g-frame"><iframe src="export/header-compact-dark-music.html" width="720" height="96" frameborder="0" scrolling="no" title="header-compact-dark-music"></iframe></div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-label">header-compact-light-eng</div>
+    <div class="g-frame"><iframe src="export/header-compact-light-eng.html" width="720" height="96" frameborder="0" scrolling="no" title="header-compact-light-eng"></iframe></div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-label">header-compact-light-music</div>
+    <div class="g-frame"><iframe src="export/header-compact-light-music.html" width="720" height="96" frameborder="0" scrolling="no" title="header-compact-light-music"></iframe></div>
+  </div>
+
+  <!-- ================================ footers =============================== -->
+  <div class="g-h">Footer strip 0.27in</div>
+
+  <div class="g-item">
+    <div class="g-label">footer-light</div>
+    <div class="g-frame"><iframe src="export/footer-light.html" width="720" height="26" frameborder="0" scrolling="no" title="footer-light"></iframe></div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-label">footer-dark</div>
+    <div class="g-frame"><iframe src="export/footer-dark.html" width="720" height="26" frameborder="0" scrolling="no" title="footer-dark"></iframe></div>
+    <p class="g-note">Ship the footer as native Word text whenever the r&eacute;sum&eacute;
+    runs past one page &mdash; the page number has to be a live field. Recipe in
+    <code>header-footer-spec.md</code> &sect;7.</p>
+  </div>
+
+  <!-- ============================== page proofs ============================= -->
+  <div class="g-h">Page proofs &mdash; the system in context</div>
+  <div class="g-proof">
+    <img src="../preview/page-proof-dark-eng.png" alt="Letter page proof, dark header, engineering variant">
+    <img src="../preview/page-proof-light-music.png" alt="Letter page proof, light header, music variant">
+  </div>
+  <p class="g-note">Review artefacts only. The body copy is filler at plausible sizes so
+  line lengths are honest &mdash; it is not a r&eacute;sum&eacute; body template.</p>
+
+  <!-- ============================== the old one ============================= -->
+  <div class="g-h">For comparison &mdash; the banner being replaced</div>
+  <div class="g-frame"><img src="../assets/_current-header-for-reference.png" alt="The current résumé banner" style="width:720px"></div>
+  <p class="g-note">Extracted from <code>eng_music_combo/…docx</code>. 7.5 &times; 2.09in
+  &mdash; over a fifth of the page. Its yellow-green (<code>#DADA60</code>) and near-black
+  (<code>#07080B</code>) appear nowhere on wolfstrategyllc.com; the new system replaces them
+  with navy and coral.</p>
+
+</div>
+</body>
+</html>
