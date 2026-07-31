@@ -13,8 +13,8 @@ Writes both résumés next to the folder each belongs to:
 
 | Target | Content | Output |
 |---|---|---|
-| `eng-music` | `content/eng_music.yaml` | `../eng_music_combo/Ryan_Hickey_Resume_eng-music_v2.2.docx` |
-| `eng-only` | `content/eng_only.yaml` | `../eng_only/Ryan_Hickey_Resume_eng-only_v2.2.docx` |
+| `eng-music` | `content/eng_music.yaml` | `../eng_music_combo/Ryan_Hickey_Resume_eng-music_v2.3.docx` |
+| `eng-only` | `content/eng_only.yaml` | `../eng_only/Ryan_Hickey_Resume_eng-only_v2.3.docx` |
 
 Useful flags — `--only eng-only`, `--release`, `--density tight`, `--fonts safe`,
 `--suffix`. `--help` for the rest.
@@ -63,6 +63,9 @@ content actually stops, which matters more than the page count:
 v2.2 bought back a little room — the text header is shorter than the 1.333in
 banner it replaced — and dropped the file from ~130KB to ~41KB, since the PNG
 was most of it.
+
+v2.3 is content-only (about fifteen words added to the command-center entry and
+the matching Wolfpack bullet) and was not re-measured in Word.
 
 The v2 round ships at default density: Ry set the tolerance at 2.5 pages and both
 land just past it, so buying a page back is not worth the compression.

@@ -4,6 +4,23 @@ Newest first. One version per round, both résumés
 ([Keep a Changelog](https://keepachangelog.com), [SemVer](https://semver.org)).
 The round plan for each major lives in `docs/`.
 
+## [2.3] — 2026-07-31
+
+Content-only round: Ry's correction to how the AI Dev Command Center is
+described. Same edit landed on the two `hire/` landing pages in the same commit,
+so the résumés and the public pages keep saying the same thing about it.
+
+### Changed
+
+- The **Notion–GitHub AI Dev Command Center** portfolio entry and the matching
+  Wolfpack bullet now name the system's **Python engine** and list **OpenAI
+  Codex** and **BigQuery** alongside Claude Code, GitHub, and Notion. The
+  pipeline was understated before — it read as three SaaS tools wired together
+  rather than a system with something running it.
+- *"human + agent software development at speed"* → **"at blistering speed"**.
+
+No design, build, or fact-table changes.
+
 ## [2.2] — 2026-07-30
 
 Triggered by an outside review of the eng-only résumé, which called the image
