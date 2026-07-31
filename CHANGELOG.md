@@ -8,15 +8,52 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [1.2.0] - 2026-07-31
+
+Adds a fourth site piece — the résumé landing pages — and the build workbench
+behind their downloads. Everything here ships to
+`intake.wolfstrategyllc.com`; this repo still serves nothing itself.
+
+### Added
+
+- **Two résumé landing pages** at `hire/` (#76) —
+  [`/hire/ryan-hickey/`](https://intake.wolfstrategyllc.com/hire/ryan-hickey/)
+  (eng-only) and
+  [`/hire/ryan-hickey-music/`](https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/)
+  (eng-music). Long-scroll pages carrying the full content of both résumés for
+  hiring managers, with a career timeline, application portfolio, case studies,
+  and `.docx`/`.pdf` downloads. They are **`noindex`, direct-link only** — two
+  differently-framed résumés for the same person indexed side by side reads
+  badly — and unlike the other page folders they share one `hire/assets/`
+  directory rather than carrying their own font copies. Design plan, decisions
+  ledger, and acceptance criteria in `docs/hire-pages-design-plan.md`.
+- **The résumé build workbench** under `ryan-resume-dev/` (#72) — YAML content
+  compiled to on-brand `.docx` by `build.py`, checked against a declared fact
+  table by `verify_facts.py`, and exported to PDF and staged into
+  `hire/assets/dl/` under their public names by `export_pdf.py`. The rename is
+  scripted precisely so a rebuilt résumé can't leave a stale download behind.
 - **Canonical tag on the AI Coaching page** (#5) pointing at
   `https://intake.wolfstrategyllc.com/ai-coaching/`, so the github.io copy and
   the intake deploy no longer compete as duplicate content. The tag carries over
   unchanged when the folder is copied into `wolfpackdata/ai-coaching-intake`,
   where it becomes a correct self-referential canonical.
 
-### Changed
-
 ### Fixed
+
+- **The résumés overstated the music career and omitted that the training was
+  formal** (#77, résumé v2.4). The landing pages had been corrected two feedback
+  rounds earlier and the YAML behind them had not, so the downloads contradicted
+  the page offering them — and nothing caught it, because `verify_facts.py`
+  reads the YAML rather than the pages. Retired *"a 36-year music career"*
+  (which collapsed four different spans and picked the study one) and *"20+
+  years of DJ performance"* (four years early); added the training facts to both
+  résumés, which had carried none of them. The fact table gained rows for the
+  new spans and two `SHARED` guards so the shared sentences can't drift apart on
+  one résumé alone.
 
 ## [1.1.0] - 2026-07-28
 
@@ -82,5 +119,6 @@ that landed each change in
 - The ROI calculator header uses the Wolfpack logo (#45).
 - The 30-minute-call CTAs pointed at the wrong booking calendar (#13).
 
-[Unreleased]: https://github.com/wolfpackdata/wp-website/compare/v1.1.0...develop
+[Unreleased]: https://github.com/wolfpackdata/wp-website/compare/v1.2.0...develop
+[1.2.0]: https://github.com/wolfpackdata/wp-website/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/wolfpackdata/wp-website/releases/tag/v1.1.0

@@ -14,7 +14,10 @@ is [`docs/hire-pages-design-plan.md`](../docs/hire-pages-design-plan.md).
 
 ## Status
 
-**First draft complete, not deployed.** Issue #76, branch `feat/76-hire-pages`.
+**Deployed 2026-07-31** with wp-website **v1.2.0** (#76, #77) to
+`https://intake.wolfstrategyllc.com/hire/…` via `ai-coaching-intake#44`. This repo stays
+the source of truth — never edit the deployed copy; re-copy the whole `hire/` folder on
+change.
 
 - [x] `assets/fonts/` — 14 woff2 (Roboto + Montserrat)
 - [x] `assets/img/` — 8 app screenshots, wolf mark, RML mark, 2 portraits
