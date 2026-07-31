@@ -4,6 +4,49 @@ Newest first. One version per round, both résumés
 ([Keep a Changelog](https://keepachangelog.com), [SemVer](https://semver.org)).
 The round plan for each major lives in `docs/`.
 
+## [2.4] — 2026-07-31
+
+The music facts, corrected. The `hire/` landing pages fixed these across their
+feedback rounds 2 and 3 and the YAML was left behind, so the `.docx` and `.pdf`
+the pages offered for download contradicted the page offering them
+([#77](https://github.com/wolfpackdata/wp-website/issues/77), refs
+[#76](https://github.com/wolfpackdata/wp-website/issues/76)). Nothing failed
+while that was true — `verify_facts.py` reads the YAML, not the pages — which is
+the whole reason it needed a task instead of a red build.
+
+### Changed
+
+- **"A 36-year music career" is retired** (D-009). It collapsed four different
+  spans into one number, and the one it picked was the study span. Summary ¶1 on
+  eng-music now reads *36 years at the piano and 23 years paid to perform …
+  professional DJ work since 2009*, verbatim from the landing page.
+- **"20+ years of DJ performance" → "professional DJ since 2009"** in the Music
+  section's `closing:` strip — the old figure was four years early — and the
+  strip gains *23 years paid to perform, since 2003*.
+- `FIGURES` re-annotated so the retired readings can't come back quietly:
+  `"36 years"` is now *a practice span, never a career span* and `"20+ years"` no
+  longer claims DJ performance.
+
+### Added
+
+- **The training, on both résumés** (D-010): ten years of classical piano study
+  with a university professor, and sound engineering and composition learned
+  through mentors, online programs, and practice. Neither YAML had said any of
+  it, which left the résumé the last artifact reading as though the music were
+  self-taught. eng-only's Education panel carries the spans too, because it is
+  the only place music appears on that page; eng-music's leaves them to the
+  Music section a page above.
+- `FIGURES` rows for `23 years`, `10 years`, and `2003`.
+- **Two `SHARED` rows guarding the training sentences.** They are Ry's wording,
+  used verbatim on both résumés and both landing pages. Check 3 now fails if one
+  side is edited alone — the same class of silent drift this round existed to
+  clean up.
+
+### Measured
+
+Not re-measured in Word. Net change is roughly a paragraph added to each
+Education section.
+
 ## [2.3] — 2026-07-31
 
 Content-only round: Ry's correction to how the AI Dev Command Center is

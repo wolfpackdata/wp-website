@@ -50,16 +50,14 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
 - **Experience bullets and project blurbs are verbatim from the YAML.** Those
   strings are guarded by `resume_build/verify_facts.py`; retyping them here
   creates a second, unguarded copy that will drift. Copy, don't paraphrase.
-- **Two deliberate exceptions, both music.** **Tenure:** the pages say *36 years
-  at the piano · 23 years paid to perform (since 2003) · professional DJ since
-  2009*, where `eng_music.yaml` still says *"a 36-year music career"* and *"20+
-  years of DJ performance"* (D-009). **Training:** the pages say ten years of
-  classical piano study with a university professor and sound engineering
-  learned from mentors and paid online programs; neither YAML says any of it,
-  and eng-only's panel used to be labelled *"self-taught"* (D-010). **The pages
-  are right and the YAMLs are stale** — don't sync them backwards. Fixing the
-  résumé is a build round Ry has to open; the exact edits are in the plan's
-  §6(c).
+- **No exceptions left.** These pages ran ahead of the YAML on two music facts
+  for two rounds — the tenure split (D-009) and the training (D-010) — and the
+  résumé v2.4 round (#77) brought the YAML up to them. Both files now say the
+  same thing, so the verbatim rule above holds without a carve-out. The four
+  music spans are **four numbers, not one**: 36 years at the piano · 23 years
+  paid to perform, since 2003 · 20+ years of studio production · professional DJ
+  since 2009. Never collapse them into a single "music career" figure, on either
+  side; `verify_facts.py`'s `FIGURES` ledger annotates each one to say so.
 - **The two YAMLs file music differently on purpose** — `eng_only` puts RML and
   Niceman *inside* Professional Experience so they read as businesses he runs;
   `eng_music` gives music its own section. Don't flatten that into one template.

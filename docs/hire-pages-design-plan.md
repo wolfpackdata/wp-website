@@ -396,9 +396,13 @@ screenshot is the branded intake page. **Recommendation:** title that card
 prose as the blurb, so the caption is honest about what's pictured without
 contradicting the résumé.
 
-**(c) OPEN — the résumé still says "a 36-year music career" (D-009).** Round 2
-corrected the pages; the source YAML was left alone, so the two now disagree and
-the résumé is the wrong one. Exact strings, both in
+**(c) RESOLVED in résumé round v2.4 ([#77](https://github.com/wolfpackdata/wp-website/issues/77)) — the résumé said "a 36-year music career" (D-009).** Round 2
+corrected the pages; the source YAML was left alone, so the two disagreed and
+the résumé was the wrong one. The table below is the record of what was changed;
+all three rows landed in `v2.4`, `verify_facts.py`'s `FIGURES` ledger was
+re-annotated, the D-010 training sentences were added to both YAMLs and are now
+guarded by `SHARED`, and `export_pdf.py` refreshed the four artifacts in
+`hire/assets/dl/`. Exact strings, both in
 `ryan-resume-dev/resume_build/content/eng_music.yaml`:
 
 | Where | Currently says | Should say |
@@ -407,22 +411,20 @@ the résumé is the wrong one. Exact strings, both in
 | `eng_music.yaml` Music section `closing:` (~line 315) | `20+ years of DJ performance` | professional DJ since 2009 (17 years) |
 | `eng_only.yaml` Education (~line 302) | `Thirty-six years of piano performance and 20+ years of studio production` — no training, no paid-performance span | add the 23 years, the **10 years of classical study with a university professor**, and that the engineering came from mentors and paid programs (D-010) |
 
-Neither YAML mentions the training at all, so **`eng_music.yaml` needs the D-010
-facts added as well as the D-009 corrections** — the résumé is currently the only
-artifact of the three that still reads as though the music were self-taught.
+Neither YAML mentioned the training at all, so **`eng_music.yaml` took the D-010
+facts as well as the D-009 corrections** — before v2.4 the résumé was the only
+artifact of the three that still read as though the music were self-taught. Both
+Education sections now carry it, and the two sentences Ry wrote verbatim are
+guarded by `verify_facts.py`'s `SHARED` set, so they cannot drift apart the way
+the tenure facts did.
 
-`verify_facts.py`'s `FIGURES` ledger needs the matching edits — `"36 years"` is
-annotated *"piano performance and study"* (still correct, but it must stop
-covering the career claim), `"20+ years"` is annotated as also covering *"DJ
+`verify_facts.py`'s `FIGURES` ledger took the matching edits — `"36 years"` was
+annotated *"piano performance and study"* (still correct, but it had to stop
+covering the career claim), `"20+ years"` was annotated as also covering *"DJ
 performance"* (no longer true), and `23 years`, `10 years`, and `2003` are new
-entries. It reads the YAML, not these pages, so nothing fails today — the drift
-is silent.
-
-**This is a résumé build round, which is Ry's call to open**, and it ends with
-`build.py` → `verify_facts.py` → `export_pdf.py` so the four files in
-`hire/assets/dl/` stop contradicting the page they download from. Until then a
-hiring manager who reads the page and then opens the PDF sees two different
-claims.
+entries. The check reads the YAML, not these pages, so nothing failed while the
+drift existed — **that silence is the lesson**, and it is why the fix needed a
+tracked task rather than a red build.
 
 ---
 

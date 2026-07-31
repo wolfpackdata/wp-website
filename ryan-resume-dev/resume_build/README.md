@@ -13,8 +13,8 @@ Writes both résumés next to the folder each belongs to:
 
 | Target | Content | Output |
 |---|---|---|
-| `eng-music` | `content/eng_music.yaml` | `../eng_music_combo/Ryan_Hickey_Resume_eng-music_v2.3.docx` |
-| `eng-only` | `content/eng_only.yaml` | `../eng_only/Ryan_Hickey_Resume_eng-only_v2.3.docx` |
+| `eng-music` | `content/eng_music.yaml` | `../eng_music_combo/Ryan_Hickey_Resume_eng-music_v2.4.docx` |
+| `eng-only` | `content/eng_only.yaml` | `../eng_only/Ryan_Hickey_Resume_eng-only_v2.4.docx` |
 
 Useful flags — `--only eng-only`, `--release`, `--density tight`, `--fonts safe`,
 `--suffix`. `--help` for the rest.
@@ -64,8 +64,9 @@ v2.2 bought back a little room — the text header is shorter than the 1.333in
 banner it replaced — and dropped the file from ~130KB to ~41KB, since the PNG
 was most of it.
 
-v2.3 is content-only (about fifteen words added to the command-center entry and
-the matching Wolfpack bullet) and was not re-measured in Word.
+v2.3 and v2.4 are content-only and were not re-measured in Word — v2.3 added
+about fifteen words to the command-center entry, v2.4 about a paragraph to each
+Education section.
 
 The v2 round ships at default density: Ry set the tolerance at 2.5 pages and both
 land just past it, so buying a page back is not worth the compression.
@@ -95,7 +96,10 @@ Five checks against one declared fact table at the top of the script:
 
 Check 3 is the one that earns its keep day to day: the two résumés state the
 same facts in deliberately different words, so nothing but this stops them
-drifting apart. Check 4 keeps the design record and the shipped strings in
+drifting apart. Its reach stops at this folder, though — v2.4 exists because the
+`hire/` landing pages carried corrected music facts for two rounds while these
+YAMLs carried the wrong ones, and no check here can see that. When a fact lives
+in both places, fixing one is half the job. Check 4 keeps the design record and the shipped strings in
 agreement — they live in different folders and nothing else couples them.
 
 Check 5 is the odd one out: it reads the built `.docx`, not the YAML, so run

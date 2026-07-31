@@ -299,10 +299,18 @@ sections:
     title: Education
     lines:
       - Cornell University (2007) B.S. Operations Research & Industrial Engineering
+      # This is the only place music appears on the eng-only résumé, so it
+      # carries the spans as well as the training. Sentences 2 and 4 are
+      # verbatim shared with eng_music — edit both or neither (verify_facts.py
+      # SHARED enforces it).
       - >-
-        Thirty-six years of piano performance and 20+ years of studio production
-        and audio engineering — a long-running second discipline in real-time
-        systems, signal processing, and creative tooling.
+        Ten years of classical piano study with a university professor, inside
+        36 years at the instrument, 23 years paid to perform, and 20+ years of
+        studio production and audio engineering. Sound engineering and
+        composition learned through mentors, online programs, and practice. A
+        long-running second discipline in real-time systems, signal processing,
+        and creative tooling. Music and audio are passions that I will study and
+        explore for the rest of my life.
 
   - type: bullets
     title: Current Technical Focus

@@ -37,9 +37,10 @@ sections:
         expertise in software architecture, Python development, SQL, cloud
         analytics, financial modeling, automation, and systems design with modern
         AI development workflows using Claude Code, OpenAI Codex, ChatGPT, and
-        GitHub Copilot — alongside a 36-year music career spanning piano
-        performance, studio production, sound design, and DJ performance that
-        makes him a practitioner in the domain rather than a visitor to it.
+        GitHub Copilot — alongside 36 years at the piano and 23 years paid to
+        perform, spanning studio production, sound design, and professional DJ
+        work since 2009, which makes him a practitioner in the domain rather
+        than a visitor to it.
       - >-
         Known for designing and delivering production-ready software, internal
         tools, workflow automation, and decision-support systems through
@@ -266,6 +267,16 @@ sections:
     title: Education
     lines:
       - Cornell University (2007) B.S. Operations Research & Industrial Engineering
+      # The spans live in the Music section's closing strip a page above; this
+      # line carries only the training, so it doesn't restate them. eng_only's
+      # counterpart carries both, because music appears nowhere else on it.
+      # Sentences 2 and 3 are verbatim shared with eng_only — edit both or
+      # neither (verify_facts.py SHARED enforces it).
+      - >-
+        Ten years of classical piano study with a university professor sits
+        under the 36 years at the instrument. Sound engineering and composition
+        learned through mentors, online programs, and practice. Music and audio
+        are passions that I will study and explore for the rest of my life.
 
   - type: bullets
     title: Current Technical Focus
@@ -313,8 +324,8 @@ sections:
             Produced, engineered, composed, and arranged an original progressive
             electronic catalog that was published and licensed for use.
     closing: >-
-      36 years of piano performance and study · 20+ years of studio production,
-      recording, and audio engineering · 20+ years of DJ performance · deep
-      working familiarity with Native Instruments, Ableton, Steinberg, Universal
-      Audio, Reason Studios, Arturia, SSL, RME, and Focusrite hardware and
-      software ecosystems.
+      36 years of piano performance and study · 23 years paid to perform, since
+      2003 · 20+ years of studio production, recording, and audio engineering ·
+      professional DJ since 2009 · deep working familiarity with Native
+      Instruments, Ableton, Steinberg, Universal Audio, Reason Studios, Arturia,
+      SSL, RME, and Focusrite hardware and software ecosystems.
