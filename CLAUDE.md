@@ -25,29 +25,48 @@ link doesn't resolve, warn Ry it's dead, then search the Notion teamspace for th
 ## What this repo is
 The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. Currently
 holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
-(`ai-coaching/`, see below), and the public rates page (`rates/`, see below); more site
-pieces land here as they're built. Verify by opening the page in a browser.
+(`ai-coaching/`, see below), the public rates page (`rates/`, see below), and the two
+résumé landing pages (`hire/`, see below); more site pieces land here as they're built.
+Verify by opening the page in a browser.
 
-GitHub Pages is **on** for this repo, serving `main` at
-`https://wolfpackdata.github.io/wp-website/` (no custom domain, no root `index.html` — the
-root 404s, which is expected). The ROI calculator is served at `/roi-calculator/`, but its
-**canonical public URL is `https://intake.wolfstrategyllc.com/roi-calculator/`** since
-2026-07-28 (Ry copied the folder into `ai-coaching-intake`; this repo stays the source of
-truth — never edit the deployed copy, re-copy on change, same policy as `ai-coaching/`) —
-use the intake URL when linking it. The public rates page is served at `/rates/`, but its
-**canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** since
-2026-07-28 (#59 — same deployed-copy policy, see the `rates/` section).
-**Merging to `main` is deploying.**
+One exception to "no build step": `ryan-resume-dev/` is a Python workbench that compiles
+résumé YAML to `.docx`/`.pdf` and stages the four downloads the `hire/` pages link. It
+builds *inputs* to the site, not the site — the pages themselves are still hand-written
+static files.
+
+GitHub Pages is **off** for this repo (turned off 2026-07-30, #74). It used to serve
+`main` at `https://wolfpackdata.github.io/wp-website/`; those URLs now 404. Nothing linked
+to them — the `/ai-coaching/` and `/rates/` copies both had canonical tags pointing at the
+intake originals, and `/roi-calculator/` had been linked from nowhere since 2026-07-28.
+
+**This repo serves nothing. Merging to `main` is not deploying.** Every page here reaches
+the public only as a **manual copy into `wolfpackdata/ai-coaching-intake`**, which owns
+`intake.wolfstrategyllc.com` — so a change is live only once that copy is re-made and
+merged there. This repo stays the source of truth for all three; never edit a deployed
+copy. The canonical public URLs:
+
+| Folder here | Canonical public URL | Since |
+|---|---|---|
+| `roi-calculator/` | `https://intake.wolfstrategyllc.com/roi-calculator/` | 2026-07-28 |
+| `rates/` | `https://intake.wolfstrategyllc.com/rates_public/` | 2026-07-28 (#59) |
+| `ai-coaching/` | `https://intake.wolfstrategyllc.com/ai-coaching/` | 2026-07-28 |
+| `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
+| `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
+
+`hire/` deploys as **one folder**, not two — both pages share its `assets/`.
+
+Pages can be turned back on if a page ever needs to serve from here — it was
+`source: main /`, `build_type: legacy`, no CNAME, HTTPS enforced.
 
 ## `rates/` — public rates page
 The **public, indexable, evergreen** rates page — **canonical public URL
 `https://intake.wolfstrategyllc.com/rates_public/`** since 2026-07-28 (#59; deployed copy
 in `wolfpackdata/ai-coaching-intake` `rates_public/`, `ai-coaching-intake#34` — this repo
 stays the source of truth; never edit the deployed copy, re-copy on change, same policy as
-`ai-coaching/` and `roi-calculator/`). Also served at
-`https://wolfpackdata.github.io/wp-website/rates/` (first deployed 2026-07-23; its
-canonical tag points at the intake URL). Use the intake URL when linking it; Ry manages
-the Wix side. It is the public sibling of the **direct-link Q3 page** in
+`ai-coaching/` and `roi-calculator/`). It also served at
+`https://wolfpackdata.github.io/wp-website/rates/` from 2026-07-23 until Pages was turned
+off on 2026-07-30 (#74); the intake copy is now the only live one. Ry manages the Wix
+side. It is the public sibling of the **direct-link Q3 page** in
 `wolfpackdata/wp-rates-page` (`intake.wolfstrategyllc.com/rates_2026Q3/`, noindex), and is
 **derived from it** under `docs/public-rates-consistency-contract.md` — the operating rule
 is *depth may differ, facts may not*. Planning set: `docs/public-rates-design-brief.md`
@@ -76,8 +95,9 @@ himself). Like the Q3 rates page, it ships by **copying the folder into
 `wolfpackdata/ai-coaching-intake`** (which owns `intake.wolfstrategyllc.com`).
 **Deployed 2026-07-23** at `intake.wolfstrategyllc.com/ai-coaching`
 (`ai-coaching-intake#14`/PR #15) — this repo remains the **source of truth**; never edit
-the deployed copy, re-copy on change. Also served at the github.io path since the same
-day's `main` release — fine, same policy as `roi-calculator/`.
+the deployed copy, re-copy on change. It also served at the github.io path from that same
+day's `main` release until Pages was turned off on 2026-07-30 (#74); the intake copy is
+now the only live one.
 
 Conventions the page must keep:
 - **Design system inherited from `wolfpackdata/wp-rates-page`** (`css/rates.css` there is
@@ -102,6 +122,35 @@ Conventions the page must keep:
 - Approved assets only: the `claude-memory-by-surface` infographic, Ryan's portrait, and
   the logo. The other coaching infographics (mentality shift, prompting tips) are
   **reserved for live sessions** — don't add them to public pages.
+
+## `hire/` — the two résumé landing pages
+Long-scroll landing pages carrying the full content of Ryan's two résumés, aimed at
+**hiring managers** (not clients — that's `rates/` and `ai-coaching/`).
+**Deployed 2026-07-31** with v1.2.0 (#76) to
+`intake.wolfstrategyllc.com/hire/ryan-hickey/` and `…/hire/ryan-hickey-music/`
+(`ai-coaching-intake#44`) — same policy as every other page here: this repo is the source
+of truth, never edit the deployed copy, re-copy on change. Folder README:
+[`hire/README.md`](hire/README.md); full design plan and decisions ledger:
+[`docs/hire-pages-design-plan.md`](docs/hire-pages-design-plan.md).
+
+Conventions the pages must keep:
+- **`noindex, nofollow`, direct-link only.** Ry sends the URL. Two differently-framed
+  résumés for the same person indexed side by side reads badly — that is the whole
+  reason. Don't add them to a sitemap and don't link them from `rates/`,
+  `ai-coaching/`, or Wix.
+- **They make a time-sensitive claim.** The hero says Ry is actively seeking a role.
+  **When he lands one, these pages need editing or unpublishing** — they will not
+  quietly age into being harmless.
+- **One shared `assets/` folder**, unlike the other page folders, which each carry their
+  own font copies. `hire/` deploys as a single unit; the pages reference `../assets/…`.
+- **Content comes from the résumé YAML, verbatim.** Experience bullets and project blurbs
+  are guarded by `ryan-resume-dev/resume_build/verify_facts.py`; retyping them into the
+  HTML creates a second, unguarded copy that will drift. Copy, don't paraphrase — and
+  when a fact changes, change it in **both** places. v2.4 (#77) exists because a
+  correction landed on the pages and not in the YAML, and nothing could see the gap.
+- **The four downloads in `assets/dl/` are owned by `export_pdf.py`** — never rename or
+  replace them by hand. Rebuild with
+  `python build.py ; python verify_facts.py ; python export_pdf.py`.
 
 ## Verifying pages at phone width
 Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot
