@@ -28,26 +28,35 @@ holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
 (`ai-coaching/`, see below), and the public rates page (`rates/`, see below); more site
 pieces land here as they're built. Verify by opening the page in a browser.
 
-GitHub Pages is **on** for this repo, serving `main` at
-`https://wolfpackdata.github.io/wp-website/` (no custom domain, no root `index.html` — the
-root 404s, which is expected). The ROI calculator is served at `/roi-calculator/`, but its
-**canonical public URL is `https://intake.wolfstrategyllc.com/roi-calculator/`** since
-2026-07-28 (Ry copied the folder into `ai-coaching-intake`; this repo stays the source of
-truth — never edit the deployed copy, re-copy on change, same policy as `ai-coaching/`) —
-use the intake URL when linking it. The public rates page is served at `/rates/`, but its
-**canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** since
-2026-07-28 (#59 — same deployed-copy policy, see the `rates/` section).
-**Merging to `main` is deploying.**
+GitHub Pages is **off** for this repo (turned off 2026-07-30, #74). It used to serve
+`main` at `https://wolfpackdata.github.io/wp-website/`; those URLs now 404. Nothing linked
+to them — the `/ai-coaching/` and `/rates/` copies both had canonical tags pointing at the
+intake originals, and `/roi-calculator/` had been linked from nowhere since 2026-07-28.
+
+**This repo serves nothing. Merging to `main` is not deploying.** Every page here reaches
+the public only as a **manual copy into `wolfpackdata/ai-coaching-intake`**, which owns
+`intake.wolfstrategyllc.com` — so a change is live only once that copy is re-made and
+merged there. This repo stays the source of truth for all three; never edit a deployed
+copy. The canonical public URLs:
+
+| Folder here | Canonical public URL | Since |
+|---|---|---|
+| `roi-calculator/` | `https://intake.wolfstrategyllc.com/roi-calculator/` | 2026-07-28 |
+| `rates/` | `https://intake.wolfstrategyllc.com/rates_public/` | 2026-07-28 (#59) |
+| `ai-coaching/` | `https://intake.wolfstrategyllc.com/ai-coaching/` | 2026-07-28 |
+
+Pages can be turned back on if a page ever needs to serve from here — it was
+`source: main /`, `build_type: legacy`, no CNAME, HTTPS enforced.
 
 ## `rates/` — public rates page
 The **public, indexable, evergreen** rates page — **canonical public URL
 `https://intake.wolfstrategyllc.com/rates_public/`** since 2026-07-28 (#59; deployed copy
 in `wolfpackdata/ai-coaching-intake` `rates_public/`, `ai-coaching-intake#34` — this repo
 stays the source of truth; never edit the deployed copy, re-copy on change, same policy as
-`ai-coaching/` and `roi-calculator/`). Also served at
-`https://wolfpackdata.github.io/wp-website/rates/` (first deployed 2026-07-23; its
-canonical tag points at the intake URL). Use the intake URL when linking it; Ry manages
-the Wix side. It is the public sibling of the **direct-link Q3 page** in
+`ai-coaching/` and `roi-calculator/`). It also served at
+`https://wolfpackdata.github.io/wp-website/rates/` from 2026-07-23 until Pages was turned
+off on 2026-07-30 (#74); the intake copy is now the only live one. Ry manages the Wix
+side. It is the public sibling of the **direct-link Q3 page** in
 `wolfpackdata/wp-rates-page` (`intake.wolfstrategyllc.com/rates_2026Q3/`, noindex), and is
 **derived from it** under `docs/public-rates-consistency-contract.md` — the operating rule
 is *depth may differ, facts may not*. Planning set: `docs/public-rates-design-brief.md`
@@ -76,8 +85,9 @@ himself). Like the Q3 rates page, it ships by **copying the folder into
 `wolfpackdata/ai-coaching-intake`** (which owns `intake.wolfstrategyllc.com`).
 **Deployed 2026-07-23** at `intake.wolfstrategyllc.com/ai-coaching`
 (`ai-coaching-intake#14`/PR #15) — this repo remains the **source of truth**; never edit
-the deployed copy, re-copy on change. Also served at the github.io path since the same
-day's `main` release — fine, same policy as `roi-calculator/`.
+the deployed copy, re-copy on change. It also served at the github.io path from that same
+day's `main` release until Pages was turned off on 2026-07-30 (#74); the intake copy is
+now the only live one.
 
 Conventions the page must keep:
 - **Design system inherited from `wolfpackdata/wp-rates-page`** (`css/rates.css` there is
