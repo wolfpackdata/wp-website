@@ -164,7 +164,9 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 .hero__role .sep { color: var(--faint); }
 
-/* The availability line — the only first-person claim on the page. */
+/* The availability line — the first of the page's few first-person moments.
+   Résumé content stays third person; Ry speaks directly only here, in the
+   closing block, in the consultancy coda, and in the music training panel. */
 .hero__avail {
   display: flex; align-items: baseline; gap: 10px;
   margin: 26px 0 24px;
