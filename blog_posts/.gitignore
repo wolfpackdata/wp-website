@@ -1,0 +1,5 @@
+# Push-time build artifacts. Regenerated on every push; never the source of truth.
+media.json
+tags.json
+payload.json
+__pycache__/

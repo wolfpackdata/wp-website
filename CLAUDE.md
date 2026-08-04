@@ -30,10 +30,11 @@ résumé landing pages (`hire/`, see below), the long-form case studies (`case_s
 see below), and the portfolio landing page (`portfolio/`, see below); more site pieces
 land here as they're built. Verify by opening the page in a browser.
 
-One exception to "no build step": `ryan-resume-dev/` is a Python workbench that compiles
-résumé YAML to `.docx`/`.pdf` and stages the four downloads the `hire/` pages link. It
-builds *inputs* to the site, not the site — the pages themselves are still hand-written
-static files.
+Two exceptions to "no build step", both Python workbenches that build *inputs* rather than
+the site itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the
+four downloads the `hire/` pages link; `blog_posts/tools/` converts blog markdown to the
+Wix payload format (`blog_posts/`, see below). Neither produces a page in this repo — the
+pages themselves are still hand-written static files.
 
 GitHub Pages is **off** for this repo (turned off 2026-07-30, #74). It used to serve
 `main` at `https://wolfpackdata.github.io/wp-website/`; those URLs now 404. Nothing linked
@@ -211,6 +212,36 @@ Conventions the page must keep:
   `hire/assets/js/reveal.js` apart from its header comment.
 - **One CTA, the 30-minute intro call.** The outbound `/rates_public/` link sits in a quiet
   coda band and is navigation, not a second funnel CTA.
+
+## `blog_posts/` — blog content, authored here, pushed to Wix
+The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
+into the repo so posts are written in markdown, reviewed in git, and pushed to the Wix Blog
+through the API instead of pasted by hand. Folder README:
+[`blog_posts/README.md`](blog_posts/README.md), which carries the full convention list,
+front matter schema, and push procedure.
+
+**This is the only folder here whose output does not go to `ai-coaching-intake`.** It
+targets the Wix site directly, so the deployment table above does not apply to it.
+
+Conventions this folder must keep:
+- **One subfolder per post**, named `YYYY-MM-DD-slug`, containing exactly `post.md`, the
+  cover image, and any post-specific assets. The folder name is **not** the URL — that comes
+  from the `slug` front matter key. Start from `_template/post.md`.
+- **Wix does not accept markdown.** The body field is `richContent` (Ricos, a node tree), so
+  `blog_posts/tools/md_to_ricos.py` is the deterministic transform between them. Same
+  markdown always yields the same post, which is what makes re-pushing an edit safe. Run its
+  tests (`python -m unittest discover blog_posts/tools`) before merging a converter change.
+- **The converter never talks to Wix.** It reads files and writes JSON; the push is a
+  separate step through the already-authenticated Wix connector, so **no API key lives in
+  this repo.** Images and tags are resolved to Wix IDs and passed in as maps.
+- **Posts land as unpublished drafts.** Ry reviews in the Wix dashboard and publishes. The
+  converter has `--publish`, deliberately not the default.
+- **Three verified fidelity limits**, documented in the README and not to be re-litigated
+  from the docs: Wix strips `FONT_FAMILY` so inline code has no styling; the `hashtags`
+  field is not settable and tags must go through the Tags API as `tagIds`; a draft's `url`
+  preview is title-derived even when `seoSlug` is set correctly.
+- Post copy follows [`docs/ryan-blog-tone.md`](docs/ryan-blog-tone.md), whose §9 checklist
+  runs directly against `post.md` — no head or scripts to strip first.
 
 ## Verifying pages at phone width
 Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot
