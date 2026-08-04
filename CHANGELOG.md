@@ -8,7 +8,23 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- `case_studies/` — a workspace for long-form, client-facing case studies, with a **shared**
+  `case-study-assets/` (CSS, JS, fonts, image) so every case study inherits the same chrome
+  and scroll animation rather than re-deriving it. The stylesheet is the generalized
+  descendant of `sm3-assets/css/sm3-case.css`: same type scale, same six-use coral ration,
+  same reveal timing, with SetMaster's product-specific magenta/cyan palette exception
+  dropped and its transition-row table replaced by a reusable `.dtable`. (#91)
+- The first case study, **The Model Is Your Business Beacon**
+  (`case_studies/ops_fin_model_support/`), arguing that an operational financial model is an
+  operating tool that belongs ahead of go-to-market product work. Public and indexed, one
+  CTA to the 30-minute call plus a ghost link to the ROI calculator. Ships with `M-01`–`M-06`
+  placeholders for the modeling screenshots Ry has yet to capture. (#91)
+
 ### Changed
+
+- `hire/` — on both résumé pages, the second "In preparation" case-study placeholder is
+  replaced by a real, linked card for the financial model case study. It is the only card of
+  the three that is a live link, so it carries a button instead of a chip. (#91)
 
 ### Fixed
 
