@@ -25,9 +25,10 @@ link doesn't resolve, warn Ry it's dead, then search the Notion teamspace for th
 ## What this repo is
 The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. Currently
 holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
-(`ai-coaching/`, see below), the public rates page (`rates/`, see below), and the two
-résumé landing pages (`hire/`, see below); more site pieces land here as they're built.
-Verify by opening the page in a browser.
+(`ai-coaching/`, see below), the public rates page (`rates/`, see below), the two
+résumé landing pages (`hire/`, see below), the long-form case studies (`case_studies/`,
+see below), and the portfolio landing page (`portfolio/`, see below); more site pieces
+land here as they're built. Verify by opening the page in a browser.
 
 One exception to "no build step": `ryan-resume-dev/` is a Python workbench that compiles
 résumé YAML to `.docx`/`.pdf` and stages the four downloads the `hire/` pages link. It
@@ -53,6 +54,7 @@ copy. The canonical public URLs:
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
+| `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | **not yet deployed** (#95) |
 
 `hire/` deploys as **one folder**, not two — both pages share its `assets/`.
 
@@ -178,6 +180,37 @@ Conventions these pages must keep:
 - Copy follows [`docs/ryan-blog-tone.md`](docs/ryan-blog-tone.md). Its §9 checklist is
   runnable: strip head, comments, and scripts from the built page, then count em dashes,
   exclamation points, question marks, and contractions. All four should be zero.
+
+## `portfolio/` — portfolio & case study landing page
+One page presenting the case studies written so far and the applications and workflows in
+the portfolio, at `https://intake.wolfstrategyllc.com/portfolio/`. **Built 2026-08-04
+(#95), not yet deployed.** Folder README: [`portfolio/README.md`](portfolio/README.md);
+full design plan and decisions ledger:
+[`docs/portfolio-page-design-plan.md`](docs/portfolio-page-design-plan.md).
+
+Conventions the page must keep:
+- **Its audience is clients *and* hiring companies — that is the whole design constraint.**
+  Every other page here serves one or the other. It is also why the page carries the
+  applications and case studies but none of the résumé apparatus (no timeline, experience
+  bullets, expertise matrix, education, or downloads): work evidence reads the same to both
+  audiences, career narrative does not.
+- **Public and indexed, and it must never link the `hire/` pages.** Those are `noindex`,
+  direct-link only, deliberately linked from nothing; a public indexed page linking them
+  defeats that in one step. Hiring managers get the résumé from Ry directly.
+- **Application names and blurbs are verbatim from `eng_only.yaml`** — the same strings the
+  `hire/` pages carry, using the `eng_only` framing throughout (so `SetMaster 3`, never
+  `eng_music`'s `RML SetMaster 3`). **`verify_facts.py` check 6 enforces this** across this
+  page and both `hire/` pages, reporting the exact divergence point on a mismatch. Do not
+  tone-edit the ported blurbs; `docs/ryan-blog-tone.md` §8 exempts résumé-derived content
+  precisely so a third wording cannot appear.
+- **The hero copy is a marked placeholder awaiting Ry**, not an oversight. When the real
+  copy lands, delete the `.ph-copy` block and its rule in `css/portfolio.css` — which also
+  returns the coral ration from eight uses to seven.
+- **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
+  `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
+  `hire/assets/js/reveal.js` apart from its header comment.
+- **One CTA, the 30-minute intro call.** The outbound `/rates_public/` link sits in a quiet
+  coda band and is navigation, not a second funnel CTA.
 
 ## Verifying pages at phone width
 Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot

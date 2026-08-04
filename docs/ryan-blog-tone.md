@@ -210,6 +210,12 @@ page is already a direct address. Keep the role-naming from §2 in headers and h
   and guarded by `ryan-resume-dev/resume_build/verify_facts.py`. Do not tone-edit them.
   Copy, do not paraphrase. Tone guidance applies only to the connective page copy around
   them.
+- **`portfolio/`** — same carve-out, same reason. Its eight application cards are verbatim
+  from `eng_only.yaml`, and since `wp-website#95` **`verify_facts.py` check 6 actively
+  compares them** (and the `hire/` pages' cards) against the YAML, so a tone edit fails the
+  check rather than drifting quietly. Those blurbs carry em dashes that §3 bans everywhere
+  else; leave them. Tone guidance binds the kickers, ledes, case-study blurbs, and closing
+  block, all of which pass §9.
 - **`rates/`** — derived from `wolfpackdata/wp-rates-page` under
   [`docs/public-rates-consistency-contract.md`](public-rates-consistency-contract.md).
   *Depth may differ, facts may not.* This guide can shape how a fact reads, never which

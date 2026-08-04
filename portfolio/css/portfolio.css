@@ -1,0 +1,425 @@
+/* ==========================================================================
+   Wolfpack Portfolio & Case Studies — portfolio/
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+
+   Derived from hire/assets/css/hire.css, which is itself derived from
+   rates/css/rates.css and ai-coaching/css/coaching.css — the pattern library.
+   The .apps gallery and .case row geometry are ported deliberately unchanged:
+   this page is meant to read as a sibling of the hire pages' portfolio section,
+   which is the section Ry pointed at as the model for the whole page.
+
+   What did NOT come across from hire.css, and why: the career timeline, role
+   cards, expertise matrix, education panels, and the RML lockup. Those are
+   résumé apparatus. This page shows the work, not the career — see
+   docs/portfolio-page-design-plan.md §2.
+
+   Design rule, inherited: every visual element is real product evidence, an
+   honestly-rendered data structure, or typographic hierarchy. Nothing
+   decorative. The restraint is the design.
+
+   Coral discipline, in one place so it can't drift. Coral is allowed on:
+     1. the nav CTA                    5. the closing contact CTA
+     2. the hero CTA                   6. link hover
+     3. the hero rule                  7. the focus ring
+     4. the case-study IN PREPARATION chip
+     8. the hero placeholder's label — TEMPORARY, see below
+   Nothing else. Not a section heading, not an app name, not a figure. Where
+   coral is a FILL, text on it is navy (5.8:1), never white (fails AA). Both
+   coral fills here (.nav__cta, .btn--solid) set navy text; the other four uses
+   are coral ON navy, which is the safe direction.
+
+   Use 8 is the one temporary entry and the page ships with 8 rather than 7 on
+   purpose: the .ph-copy label is a warning marker, and coral is the only ink in
+   this palette that reads as one. It goes away with the placeholder (D-004), at
+   which point this list returns to seven. It is enumerated rather than waved
+   through because an un-enumerated use is exactly how a ration starts drifting.
+
+   The placeholder's hatch FILL is separately not a coral use — it is the same
+   surface-2 + hairline device as .case__shot--empty, so an unwritten hero reads
+   as "awaiting copy" rather than as a design choice.
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono:      ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px;
+  clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Skip link — this is a long document; a keyboard reader needs the escape
+   ========================================================================== */
+
+.skip {
+  position: absolute; left: 24px; top: -60px; z-index: 30;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 18px;
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip:focus { top: 12px; color: var(--white); }
+
+/* ==========================================================================
+   Sticky nav + scroll-spy rail
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(0, 11, 41, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 26px; height: 58px;
+}
+.nav__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-right: auto;
+}
+.nav__brand:hover { color: var(--white); }
+.nav__logo { width: 30px; height: 30px; border-radius: var(--radius); }
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.nav__links { display: flex; gap: 20px; list-style: none; }
+.nav__links a {
+  font-family: var(--mono);
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; color: var(--faint);
+  padding: 4px 0; border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.nav__links a:hover { color: var(--white); }
+/* Scroll-spy: the current section is stated in white with a hairline, not in
+   coral — the ration is spent, and a moving accent would be noise. */
+.nav__links a[aria-current="true"] { color: var(--white); border-bottom-color: var(--faint); }
+.nav__cta {
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--coral); color: var(--navy) !important;
+  padding: 8px 16px; border-radius: var(--radius); white-space: nowrap;
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Hero slab
+
+   Narrower than the hire pages' hero by design: no portrait, no contact list,
+   no stat row. This page's evidence is the galleries below, and a hero that
+   competes with them delays the first screenshot past the fold.
+   ========================================================================== */
+
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; }
+.hero__watermark {
+  position: absolute; right: -40px; top: 30px;
+  width: 340px; height: 340px; opacity: 0.10; pointer-events: none;
+  user-select: none;
+}
+.hero__inner { position: relative; padding: 72px 0 60px; max-width: 760px; }
+.hero__kicker { display: block; margin-bottom: 16px; }
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: 0.005em;
+  line-height: 1.06;
+  margin-bottom: 20px;
+}
+.hero__stand {
+  font-size: clamp(1rem, 1.6vw, 1.1875rem);
+  color: var(--muted); max-width: 62ch;
+  padding-bottom: 18px;
+  border-bottom: 3px solid var(--coral);   /* the résumé's signature rule */
+}
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* --------------------------------------------------------------------------
+   Hero copy placeholder (design plan D-004).
+
+   The hero has to address a prospective client and a hiring manager in the
+   same breath, which is a positioning judgment, not a copy task — so it ships
+   unwritten and visibly so. Same hatch device as .case__shot--empty, so it
+   reads as the repo's established "awaiting content" marker rather than as a
+   styling choice someone might mistake for finished.
+
+   DELETE this rule when the real copy lands; nothing else depends on it.
+   -------------------------------------------------------------------------- */
+.ph-copy {
+  border: 1px dashed var(--faint); border-radius: var(--radius);
+  padding: 22px 24px; margin-bottom: 22px;
+  background: var(--surface) repeating-linear-gradient(
+    -45deg, transparent 0 11px, rgba(34, 46, 82, 0.35) 11px 12px);
+}
+.ph-copy__label {
+  display: block; margin-bottom: 12px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--coral);
+}
+.ph-copy p { font-size: 0.9375rem; color: var(--muted); max-width: 66ch; }
+.ph-copy p + p { margin-top: 10px; }
+.ph-copy code {
+  font-family: var(--mono); font-size: 0.8125rem; color: var(--white);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; line-height: 1.4;
+  padding: 12px 30px; border-radius: var(--radius);
+  white-space: nowrap;
+}
+.btn--solid { background: var(--coral); color: var(--navy); }
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+.btn--ghost { border: 1px solid var(--line); color: var(--white); }
+.btn--ghost:hover { border-color: var(--faint); color: var(--white); }
+/* Inline, not stacked: a second line of type inside a button makes it tall and
+   narrow, which reads as a label rather than something to click. */
+.btn__meta {
+  font-family: var(--mono); font-weight: 400;
+  font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--faint);
+}
+.btn__meta::before { content: "· "; }
+.btn--solid .btn__meta { color: rgba(0, 11, 41, 0.62); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section { padding: 76px 0; scroll-margin-top: 70px; }
+.section--line { border-top: 1px solid var(--line); }
+.section__head { max-width: 720px; margin-bottom: 44px; }
+.section__kicker { display: block; margin-bottom: 12px; }
+.section__title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
+.section__lede { color: var(--muted); }
+
+/* ==========================================================================
+   Applications & systems — the portfolio gallery, and the reason this page
+   exists. Blurbs are VERBATIM from eng_only.yaml; verify_facts.py check 6
+   compares this file's blurbs against the YAML, so a paraphrase here fails
+   the build rather than drifting quietly (design plan D-006).
+   ========================================================================== */
+
+.apps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.app {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px;
+}
+.app__shot {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  object-fit: cover; object-position: 50% 0;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); margin-bottom: 16px;
+}
+/* app-notion-system.png is 543×506 — near-square and low-res. A full-width
+   16:9 cover frame would visibly soften it, so it gets a 4:3 frame instead.
+   Reads as an intentional rhythm break rather than a defect. */
+.app--narrow .app__shot { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+.app__name { font-size: 1rem; margin-bottom: 8px; }
+.app__blurb { font-size: 0.9375rem; color: var(--muted); }
+/* Used where the screenshot shows a related-but-not-identical artifact to the
+   one the blurb names — the caption stays honest without editing the blurb. */
+.app__cap {
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--faint); margin: -8px 0 12px;
+}
+
+/* ==========================================================================
+   Case studies — the deeper read. Same geometry as the hire pages' .cases
+   grid, so a reader who has seen both recognizes the card.
+   ========================================================================== */
+
+.cases { display: grid; gap: 18px; counter-reset: cs; }
+.case {
+  counter-increment: cs;
+  display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px 30px;
+}
+.case__shot {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 0;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+/* A live panel, not a broken image — drop a file in later and it becomes a
+   normal card with no layout change. */
+.case__shot--empty {
+  display: grid; place-items: center; text-align: center;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--faint);
+  padding: 12px;
+  background: var(--surface-2) repeating-linear-gradient(
+    -45deg, transparent 0 9px, rgba(34, 46, 82, 0.5) 9px 10px);
+}
+.case__num {
+  display: block; font-family: var(--mono); font-size: 0.75rem;
+  letter-spacing: 0.14em; color: var(--faint); margin-bottom: 10px;
+}
+.case__num::before { content: "Case " counter(cs, decimal-leading-zero); }
+.case__title { font-size: 1.0625rem; margin-bottom: 10px; }
+.case__blurb { font-size: 0.9375rem; color: var(--muted); margin-bottom: 16px; }
+.case__chip {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--coral);
+  border: 1px solid var(--coral); border-radius: var(--radius);
+  padding: 5px 12px;
+}
+
+/* ==========================================================================
+   Closing block — one CTA, the 30-minute intro call. The repo-wide book-first
+   rule: no intake-form link, no résumé download, no second funnel.
+   ========================================================================== */
+
+.close {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 40px 42px;
+}
+.close__title { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 12px; }
+.close__lede { color: var(--muted); max-width: 62ch; margin-bottom: 28px; }
+
+/* ==========================================================================
+   Secondary link band — rates. A coda, not a peer, and not a second CTA.
+
+   Ported from hire.css's .softcta, where the same device carries the
+   consultancy link below the contact block. The reasoning transfers: half this
+   page's audience is a prospective client, and the honest next step for one who
+   has just read the work is what it costs. It is deliberately quieter than the
+   closing block — panel fill rather than card fill, one ghost link, no coral —
+   the same way rates/ links the ROI calculator as a consideration-stage tool
+   rather than a competing funnel.
+   ========================================================================== */
+
+.section--coda { padding: 34px 0 44px; }
+
+.softcta {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 18px 32px;
+  padding: 24px 30px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.softcta .k { display: block; margin-bottom: 9px; font-size: 0.6875rem; }
+.softcta__title { font-size: 1.0625rem; margin-bottom: 6px; }
+.softcta__lede { font-size: 0.9375rem; color: var(--muted); max-width: 52ch; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 36px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--faint); }
+.foot__meta a { color: var(--muted); }
+
+/* ==========================================================================
+   Scroll reveal
+   ========================================================================== */
+
+/* Scoped to .js so the page renders COMPLETE with JavaScript off or broken.
+   A portfolio that needs JS to show the work is a broken portfolio. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(.2,.6,.2,1),
+              transform 0.5s cubic-bezier(.2,.6,.2,1);
+  transition-delay: var(--d, 0ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  /* Everything renders final-state. reveal.js also declines to attach. */
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .skip { transition: none; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .nav__links { display: none; }
+}
+
+@media (max-width: 900px) {
+  .hero__watermark { width: 260px; right: -70px; }
+  .apps { grid-template-columns: 1fr; }
+  .case { grid-template-columns: 1fr; gap: 22px; }
+  .app--narrow .app__shot { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 640px) {
+  .hero__inner { padding: 52px 0 46px; }
+  .section { padding: 56px 0; }
+  .close { padding: 30px 24px; }
+  .app, .case { padding: 22px 20px; }
+  .ph-copy { padding: 18px 18px; }
+  /* Restated after the .section rule above, not before it: same specificity,
+     so source order is what decides. */
+  .section--coda { padding: 28px 0 36px; }
+  .softcta { padding: 22px 20px; }
+  .hero__ctas .btn, .softcta .btn, .close .btn { width: 100%; text-align: center; }
+  /* Run-in meta is a desktop affordance: it buys width, which phones don't
+     have. Here vertical space is the cheap axis, so the meta drops to its own
+     line and the button is allowed to wrap rather than overflow. */
+  .btn { white-space: normal; padding: 12px 20px; }
+  .btn__meta { display: block; margin-top: 4px; }
+  .btn__meta::before { content: none; }
+}
