@@ -52,6 +52,7 @@ copy. The canonical public URLs:
 | `ai-coaching/` | `https://intake.wolfstrategyllc.com/ai-coaching/` | 2026-07-28 |
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
+| `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
 
 `hire/` deploys as **one folder**, not two — both pages share its `assets/`.
 
@@ -151,6 +152,32 @@ Conventions the pages must keep:
 - **The four downloads in `assets/dl/` are owned by `export_pdf.py`** — never rename or
   replace them by hand. Rebuild with
   `python build.py ; python verify_facts.py ; python export_pdf.py`.
+
+## `case_studies/` — long-form case studies
+Client-facing long-form case studies sharing one stylesheet and one animation script.
+**Deployed 2026-08-04** (#91). Folder README:
+[`case_studies/README.md`](case_studies/README.md), which carries the full convention list.
+The first one is **The Model Is Your Business Beacon** (`ops_fin_model_support/`), an
+argument that an operational financial model belongs ahead of go-to-market product work.
+
+Conventions these pages must keep:
+- **The shared stylesheet is the point.** Every case study loads
+  `case-study-assets/css/case-study.css`. No per-page stylesheet, no inline `<style>`. If a
+  page needs something the shared sheet lacks, add it to the shared sheet so the next case
+  study inherits it. `reveal.js` is copied byte-identical from `sm3-assets/`, never
+  rewritten, so reveal timing and scroll-spy match every other long-form page here.
+- **Folder name is not the URL path**, like `sm3-specific-pages/` and unlike `hire/`.
+  Deploying copies `case-study-assets/` and the case study's own folder to the intake repo
+  **root**, renaming the page folder to its URL slug. `planning/` never deploys.
+- **Public and indexed**, unlike the SetMaster 3 case study. Different audience: these speak
+  to founders and SMB directors, not hiring managers, so being found is the point.
+- **No client named, no testimonial invented.** Anonymize by shape. Illustrative figures are
+  labeled illustrative inside the figure itself, not in a footnote.
+- **Coral is rationed to six uses**, listed in the header comment of `case-study.css`, and
+  the sheet introduces **no hues** beyond the navy system and a neutral figure ground.
+- Copy follows [`docs/ryan-blog-tone.md`](docs/ryan-blog-tone.md). Its §9 checklist is
+  runnable: strip head, comments, and scripts from the built page, then count em dashes,
+  exclamation points, question marks, and contractions. All four should be zero.
 
 ## Verifying pages at phone width
 Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot
