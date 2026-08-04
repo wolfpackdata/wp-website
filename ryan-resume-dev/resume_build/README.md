@@ -128,7 +128,7 @@ resume_build/
 │   ├── eng_music.yaml       engineering + music, for music-adjacent companies
 │   └── eng_only.yaml        engineering, music reduced to subtle depth
 └── resumekit/
-    ├── brand.py             tokens mirrored from resume_design (colours, sizes, paths)
+    ├── brand.py             tokens mirrored from resume_design (colors, sizes, paths)
     ├── styles.py            builds the named Word styles from those tokens
     ├── blocks.py            one renderer per section type
     ├── docx_helpers.py      raw-XML bits python-docx doesn't expose
@@ -157,7 +157,7 @@ sections:
   - type: projects     # title + items[]{name, body}
 ```
 
-Every section also takes an optional `note:` — a small grey parenthetical set
+Every section also takes an optional `note:` — a small gray parenthetical set
 beside the heading. `experience` also takes `closing:`, one body paragraph after
 the last role.
 

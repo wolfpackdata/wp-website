@@ -29,7 +29,7 @@
    sidebar label, not a table row. Where coral is a FILL, text on it is navy
    (5.8:1), never white (fails AA).
 
-   NO NEW HUES. This sheet introduces zero colours beyond the navy system and
+   NO NEW HUES. This sheet introduces zero colors beyond the navy system and
    the neutral figure ground. A table that needs to mark one row as the
    important one does it with weight, a background lift, and a mono chip. If a
    future case study genuinely needs an accent, add it here with a written
@@ -56,7 +56,7 @@
      .ph, and .dtable only — never page chrome, never page type. */
   --fig-bg:    #0A0A0A;
   --fig-row:   #1A1A1A;
-  --fig-lift:  #23262E;   /* the one emphasised row in a .dtable */
+  --fig-lift:  #23262E;   /* the one emphasized row in a .dtable */
   --fig-line:  #2A2A2A;
   --fig-text:  #E6E6E6;
   --fig-dim:   #9C9C9C;
@@ -275,7 +275,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 
 /* Designed placeholder. Sized at the exact final aspect ratio, so dropping the
-   real file in changes nothing about the layout. Never a grey box, never a
+   real file in changes nothing about the layout. Never a gray box, never a
    "coming soon". It is decorative until it holds a real asset, hence
    aria-hidden in the markup. */
 .ph {
@@ -392,7 +392,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 
 /* ==========================================================================
    Honesty list — the limits of the thing the page is arguing for.
-   Chips are grey, deliberately. A red chip would read as an error state; these
+   Chips are gray, deliberately. A red chip would read as an error state; these
    are boundaries, stated plainly.
    ========================================================================== */
 

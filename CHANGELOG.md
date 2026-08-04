@@ -25,6 +25,14 @@ All notable changes to this project are documented here. The format follows
 - `hire/` — on both résumé pages, the second "In preparation" case-study placeholder is
   replaced by a real, linked card for the financial model case study. It is the only card of
   the three that is a live link, so it carries a button instead of a chip. (#91)
+- **British spellings normalized to American** across 19 files, 71 replacements: page copy,
+  CSS and JS comments, and planning docs in `case_studies/`, `hire/`, `rates/`,
+  `sm3-specific-pages/`, `ryan-resume-dev/`, and `docs/`. Mostly `colour`, `grey`,
+  `artefact`, `centrepiece`, `labelled`, and `behaviour`. Done with an explicit word-pair
+  list rather than a blanket `-ise` → `-ize` regex, which would have corrupted `advertise`,
+  `exercise`, `enterprise`, `analysis`, and a dozen others. `.srt` transcripts are excluded
+  as verbatim records, and the `-wards` group is excluded as usage rather than spelling.
+  (#93)
 
 ### Fixed
 

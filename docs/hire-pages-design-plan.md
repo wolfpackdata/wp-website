@@ -30,11 +30,11 @@ Locked with Ry, 2026-07-30. These are settled inputs, not proposals.
 | D-003 | **PDF + DOCX both downloadable.** | New `export_pdf.py` in `resume_build/` (Word COM — confirmed available, v16.0). Four files in `hire/assets/dl/`. |
 | D-004 | **Imagery sourced from `wp-rates-page/img/`** plus this repo's résumé design assets. | Eight app screenshots, the wolf mark, the RML mark, two portraits — all copied in. No stock photography anywhere. |
 | D-005 | **Phone included** — `415-371-9613` — in both the top and bottom contact blocks. | The page's contact set is a **superset** of the résumé's contact line. §7 records exactly how, so the two artifacts can't drift by accident. |
-| D-006 | **RML mark appears in the music page's Music & Creative Technology section only.** | Same Wolfpack chrome on both pages throughout; the RML lockup is one controlled moment, invoking the third-colour exception already granted in `resume_design/header-footer-spec.md` §5. |
+| D-006 | **RML mark appears in the music page's Music & Creative Technology section only.** | Same Wolfpack chrome on both pages throughout; the RML lockup is one controlled moment, invoking the third-color exception already granted in `resume_design/header-footer-spec.md` §5. |
 | D-007 | **URLs are `/hire/ryan-hickey/` and `/hire/ryan-hickey-music/`.** | The repo folder `hire/` mirrors the deploy path exactly, so shipping is one folder copy. |
 | D-008 | **`wolfstrategyllc.com` appears at the top as a link and at the bottom as a secondary CTA** (Ry, feedback round 1) — as trust, not as funnel. **Revised round 2:** the bottom CTA moved *out* of the closing block into its own coda band below it. | In the hero contact line, in the closing contact grid, on the eng-only footer wordmark, and — since round 2 — as a single ghost link in the `.softcta` coda section (§4.12). Inside the closing block it had been a fourth button beside two résumé downloads, which read as a peer of the primary CTA rather than below it. It is never coral: the primary CTA stays unambiguously *Contact Ryan*. |
 | D-009 | **Music tenure is four spans, not one number** (Ry, feedback round 2). Piano: 36 years of playing and study. Paid performance: since **2003** → 23 years. Studio production/engineering: 20+ years. **Professional DJ: since 2009** → 17 years. | The pages say "36 years at the piano · 23 years paid to perform". The phrase *"a 36-year music career"* is retired — it conflated study with career — as is *"20+ years of DJ performance"*, which predated 2009 by four years. `eng_music.yaml` still carries both and is now the **stale** copy: the résumé needs the same correction on its next build round (§6c). |
-| D-010 | **The music training was taught, and both pages say so** (Ry, feedback round 3). **Ten years of classical piano study with a university professor**; sound engineering learned **from working mentors and paid online programs**. The `.edu-aside` panel — previously eng-only, and previously labelled *"self-taught"* — now runs on **both** pages under **"A second discipline, formally trained."** | *Self-taught* was factually wrong and it undersold the box: it read as a hobby that got serious, when both halves were instructed. Neither fact is anywhere in either YAML, so this is a **second** divergence for the résumé round to absorb (§6c) — and `10 years` is a new figure needing a `FIGURES` entry. |
+| D-010 | **The music training was taught, and both pages say so** (Ry, feedback round 3). **Ten years of classical piano study with a university professor**; sound engineering learned **from working mentors and paid online programs**. The `.edu-aside` panel — previously eng-only, and previously labeled *"self-taught"* — now runs on **both** pages under **"A second discipline, formally trained."** | *Self-taught* was factually wrong and it undersold the box: it read as a hobby that got serious, when both halves were instructed. Neither fact is anywhere in either YAML, so this is a **second** divergence for the résumé round to absorb (§6c) — and `10 years` is a new figure needing a `FIGURES` entry. |
 
 ---
 
@@ -43,7 +43,7 @@ Locked with Ry, 2026-07-30. These are settled inputs, not proposals.
 **The résumé as a system readout.**
 
 `resume_design/brand-reference.md` §4 already names the brand's voice — *"the
-engineering document voice"*: mono labels, quiet greys, one rationed accent. The
+engineering document voice"*: mono labels, quiet grays, one rationed accent. The
 concept here is a deliberate escalation of that idea at screen scale, not a
 departure from it. The page is a document that behaves like an instrument panel:
 the same content a hiring manager would get in a PDF, but paced into sections,
@@ -181,7 +181,7 @@ The YAML's two paragraphs, verbatim, at generous measure (~68ch) and
 section that should feel like *reading*, and the design's job is to get out of
 the way.
 
-### 4.3 Career timeline — the centrepiece
+### 4.3 Career timeline — the centerpiece
 
 A horizontal band chart, CSS grid, 2009 → 2026+, one row per role. Every value
 comes from the YAML `dates` fields; nothing is invented.
@@ -212,7 +212,7 @@ Bands are `--surface-2` with a 1px `--line` border; the current three carry a
 right-pointing terminus instead of a hard edge. **No coral** — the ration is
 spent (§3). Bands animate their width in on scroll (§8).
 
-Mobile: below 760px the chart becomes a vertical stack of date-labelled rows. A
+Mobile: below 760px the chart becomes a vertical stack of date-labeled rows. A
 horizontally-scrolling gantt on a phone is a bad experience and won't ship.
 
 ### 4.4 Professional Experience
@@ -275,7 +275,7 @@ contents for work in progress.
 Each frame carries a stable `id` (`#case-30m`, `#case-tracking`, `#case-setmaster`)
 so the future case-study pages can be linked in without re-cutting the section.
 Case 02 has no matching screenshot in the inventory; its frame is a `--surface-2`
-panel with the mono chip centred. Ry can drop a sanitized image in later and it
+panel with the mono chip centered. Ry can drop a sanitized image in later and it
 becomes a normal card with no code change.
 
 ### 4.8 Music & Creative Technology — music page only
@@ -287,8 +287,8 @@ vendor-ecosystem list).
 **The RML mark (D-006).** Placed as the section's own lockup at the head of the
 section, ~44px tall, on a navy chip with `border-radius: 4px` — exactly the
 treatment `header-footer-spec.md` §5 specifies for the mark on a light ground,
-inverted for the dark field. This invokes the standing third-colour exception
-(the orange→violet sun) and is the **only** place on either page where a colour
+inverted for the dark field. This invokes the standing third-color exception
+(the orange→violet sun) and is the **only** place on either page where a color
 outside navy/coral appears. Per that same spec it never shares space with a coral
 fill — so no coral CTA sits inside this section.
 
@@ -301,7 +301,7 @@ Straight ports. Current Technical Focus keeps its `(2026)` note as a mono kicker
 
 Education carries a second panel — the music training — **on both pages**
 (D-010, round 3), reversing round 1's call that eng-music didn't need it because
-the music section already said so. It sits in **its own labelled panel**
+the music section already said so. It sits in **its own labeled panel**
 (`.edu-aside`), not inside the Cornell card: it is Education content and belongs
 in the section, but housed with the degree it read as a footnote to a 2007 B.S.
 rather than as the separate lifelong practice it describes (Ry, feedback
@@ -344,7 +344,7 @@ on both pages.
 It exists because visiting the consultancy site is a **real but secondary**
 goal, and round 1's placement didn't say that. Sitting inside the closing block
 as a fourth ghost button, it lined up beside the two résumé downloads and read
-as one of them — a wide, oddly-labelled sibling in a row of file downloads
+as one of them — a wide, oddly-labeled sibling in a row of file downloads
 (Ry, feedback round 2). Below the block, in its own quieter frame, the ordering
 is legible without a word of explanation.
 
@@ -370,7 +370,7 @@ content differences are real and deliberate:
 | SetMaster card | "SetMaster 3", vendor names deliberately absent | "RML SetMaster 3", Traktor and Spotify named |
 | Education | 2 lines | 1 line |
 | Footer org | Wolfpack Data & Strategy | RML Creative |
-| Third colour | none | RML sun, music section only |
+| Third color | none | RML sun, music section only |
 
 ---
 
@@ -475,7 +475,7 @@ Two non-negotiables:
 
 1. **`prefers-reduced-motion: reduce` bypasses all of it.** The observer never
    attaches; everything renders final-state. The existing stylesheets already
-   honour this and the pattern carries over.
+   honor this and the pattern carries over.
 2. **No-JS safety.** JS adds a `.js` class to `<html>` on load; the hidden
    initial state is scoped `.js .reveal { … }`. With JS off or broken, every
    element renders visible. **A résumé that requires JavaScript to be readable is
@@ -577,7 +577,7 @@ Follow-ups this creates:
    in `CLAUDE.md` (headless Chrome fakes overflow below ~492px — don't trust a raw
    mobile screenshot).
 7. Accessibility pass: heading order, contrast on every pair, focus-visible on
-   every interactive element, `prefers-reduced-motion` honoured, JS-off render.
+   every interactive element, `prefers-reduced-motion` honored, JS-off render.
 
 **Acceptance criteria** — status after the first draft
 
@@ -603,7 +603,7 @@ Follow-ups this creates:
 characters are all present; Word's PDF renderer emits a kerning adjustment that
 extractors read as whitespace. The `.docx` is unaffected — `verify_facts.py`
 check 5 parses its contact block cleanly. This is the reason the DOCX button is
-labelled **“DOCX · ATS”**: PDF for humans, DOCX for the portal. Fixing it means
+labeled **“DOCX · ATS”**: PDF for humans, DOCX for the portal. Fixing it means
 touching character spacing in the résumé build, which is out of scope for this
 round and would need re-verification of both documents.
 

@@ -3,7 +3,7 @@
 
    Copied byte for byte from sm3-assets/js/reveal.js, which was copied from
    hire/assets/js/reveal.js. Only this header comment differs. Copying rather
-   than rewriting is the point: the reveal timing and the scroll-spy behaviour
+   than rewriting is the point: the reveal timing and the scroll-spy behavior
    are supposed to be identical across every long-form page in this repo, and
    a rewrite is how two pages quietly stop matching. Shared by every case study
    in case_studies/.

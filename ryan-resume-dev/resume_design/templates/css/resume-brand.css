@@ -33,7 +33,7 @@
   /* --- On white (light banner) — print-only tokens ------------------- */
   --ink:       #000B29;   /* 19.4:1 — the name */
   --ink-70:    #4A5068;   /*  7.9:1 — the role line, footer text */
-  --ink-45:    #6B7186;   /*  4.8:1 — AA floor; smallest readable grey */
+  --ink-45:    #6B7186;   /*  4.8:1 — AA floor; smallest readable gray */
   --ink-sep:   #9AA0B0;   /* decorative separators ONLY — below AA */
   --rule:      #D8DBE4;   /* hairline dividers on white */
 
@@ -299,7 +299,7 @@ body.proof > .proof__foot { margin-bottom: 0.42in; }
 .proof__ul li::before { content: "\25B8  "; color: var(--ink-45); }
 
 /* The proof embeds the artboards as blocks rather than as the page <body>,
-   so it needs the same box on a div. Colour/typography classes are already
+   so it needs the same box on a div. Color/typography classes are already
    element-agnostic and are reused as-is. */
 .art          { position: relative; width: 7.5in; overflow: hidden; }
 .art--header  { height: 1.3333in; }
