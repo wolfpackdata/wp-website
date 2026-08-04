@@ -10,13 +10,14 @@ move, and the question worth asking permanently is different:
     each other?
 
 Checks 1–4 run on the YAML rather than the .docx, so a failure points at the
-line you would edit. Check 5 is the exception and says why:
+line you would edit. Checks 5 and 6 are the exceptions and say why:
 
   1. every role's (title, org, dates) appears in EMPLOYERS
   2. every figure on either page appears in FIGURES
   3. every fact in SHARED that appears on one résumé appears on both
   4. the banner artboards, brand.CONTACT, and each meta.subject all agree
   5. the built .docx actually yields the name and contact details as text
+  6. the website's HTML copies of the project blurbs still match the YAML
 
     python build.py && python verify_facts.py    # 5 reads what build.py wrote
     # exit 0 = clean, 1 = drift, and it says where
@@ -41,6 +42,18 @@ CONTENT = {
 }
 ARTBOARDS = HERE.parent / "resume_design" / "templates" / "export"
 VERSION_FILE = HERE / "VERSION"
+
+# Website pages that carry the project blurbs as hand-written HTML, and the
+# résumé each one is copied from. Check 6 compares them; see its docstring.
+REPO_ROOT = HERE.parent.parent
+HTML_PAGES = {
+    "portfolio/": (REPO_ROOT / "portfolio" / "index.html", "eng-only"),
+    "hire/ryan-hickey/": (REPO_ROOT / "hire" / "ryan-hickey" / "index.html", "eng-only"),
+    "hire/ryan-hickey-music/": (
+        REPO_ROOT / "hire" / "ryan-hickey-music" / "index.html",
+        "eng-music",
+    ),
+}
 
 
 # --------------------------------------------------------------------------
@@ -277,6 +290,99 @@ def check_parseable(contents: dict[str, dict], errors: list[str]) -> None:
             )
 
 
+def plain(markup: str) -> str:
+    """HTML (or plain YAML text) reduced to comparable prose: tags dropped,
+    entities resolved, whitespace collapsed. `&amp;` and `&rsquo;` in the pages
+    are the same characters as `&` and `’` in the YAML, and a YAML folded block
+    is the same sentence as a long HTML line — both differences are encoding,
+    not content, so neither may register as drift."""
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", markup))).strip()
+
+
+def project_items(content: dict) -> dict[str, str]:
+    """name -> body for every item in the résumé's `projects` section."""
+    out: dict[str, str] = {}
+    for sec in content["sections"]:
+        if sec.get("type") != "projects":
+            continue
+        for item in sec.get("items", []):
+            out[plain(item["name"])] = plain(item["body"])
+    return out
+
+
+def check_html_blurbs(contents: dict[str, dict], errors: list[str]) -> None:
+    """The second check that reads something other than the YAML, and the only
+    one that leaves ryan-resume-dev entirely.
+
+    The hire/ and portfolio/ pages retype the project names and blurbs as HTML
+    by hand. Three copies of each string now exist and nothing forced them to
+    agree: through v2.4 this checker validated the YAML against itself and never
+    opened a web page, so a hire/ blurb could have been edited in place and no
+    check would have noticed. The portfolio page made that a third copy, which
+    is what prompted closing the gap (wp-website#95, design plan D-006).
+
+    Every .app__name and .app__blurb on each page must appear verbatim in that
+    page's source résumé. The comparison is one-directional on purpose: a page
+    may show a SUBSET of the résumé's projects (the music résumé carries seven,
+    the eng-only one eight), but it may not show a string the résumé does not.
+
+    Cards are matched by NAME so a failing blurb can be reported against its
+    expected text with the point of divergence marked. Reporting only "this
+    string is not in the YAML" is technically complete and practically useless
+    on a 90-word blurb.
+    """
+    for label, (path, variant) in HTML_PAGES.items():
+        if not path.exists():
+            errors.append(
+                f"{label}: HTML_PAGES names a page that does not exist — {path}\n"
+                f"    if the page was removed or moved, remove or update its row"
+            )
+            continue
+
+        page = path.read_text(encoding="utf-8")
+        items = project_items(contents[variant])
+
+        # (name, blurb) per card, in document order. Anchored to the <article>
+        # so a card missing one of the two is a parse failure, not a silent skip.
+        cards = re.findall(
+            r'<h3 class="app__name">(.*?)</h3>\s*'
+            r'<p class="app__blurb">(.*?)</p>',
+            page,
+            re.S,
+        )
+        if not cards:
+            errors.append(
+                f"{label}: no .app__name / .app__blurb pairs found — the markup "
+                f"changed, and this check is now silently guarding nothing"
+            )
+            continue
+
+        for raw_name, raw_blurb in cards:
+            name, blurb = plain(raw_name), plain(raw_blurb)
+            if name not in items:
+                errors.append(
+                    f"{label}: .app__name is not in {CONTENT[variant].name} — "
+                    f"{name!r}\n"
+                    f"    add the project to the YAML, or fix the name on the page"
+                )
+                continue
+            expected = items[name]
+            if blurb != expected:
+                at = next(
+                    (i for i, (a, b) in enumerate(zip(blurb, expected)) if a != b),
+                    min(len(blurb), len(expected)),
+                )
+                errors.append(
+                    f"{label}: .app__blurb for {name!r} is not verbatim from "
+                    f"{CONTENT[variant].name}\n"
+                    f"    diverges at character {at}\n"
+                    f"    page: …{blurb[max(0, at - 30):at + 50]!r}\n"
+                    f"    yaml: …{expected[max(0, at - 30):at + 50]!r}\n"
+                    f"    fix the page to match the YAML, or change the YAML "
+                    f"first and re-copy"
+                )
+
+
 def main() -> int:
     errors: list[str] = []
     contents = {n: load(p) for n, p in CONTENT.items()}
@@ -289,6 +395,7 @@ def main() -> int:
     check_shared(texts, errors)
     check_header(contents, errors)
     check_parseable(contents, errors)
+    check_html_blurbs(contents, errors)
 
     unused = EMPLOYERS - seen
     if unused:
@@ -305,7 +412,8 @@ def main() -> int:
 
     print(
         f"OK — {len(EMPLOYERS)} roles, {len(FIGURES)} figures, "
-        f"{len(SHARED)} shared facts, headers consistent, contact block parseable."
+        f"{len(SHARED)} shared facts, headers consistent, contact block parseable, "
+        f"{len(HTML_PAGES)} HTML pages verbatim."
     )
     return 0
 
