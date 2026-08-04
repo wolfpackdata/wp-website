@@ -185,7 +185,7 @@ what it is and how to get it.
 
 Wordmark lockup left: the RML mark (from `setmaster3/docs/design/brand/rml-mark.svg`)
 + **SetMaster 3** re-set in Inter — never a bitmap of a wordmark, per the RML
-usage rules. Anchors centre, in `--type-label` style. Orange **Download** button
+usage rules. Anchors center, in `--type-label` style. Orange **Download** button
 right. Collapses to wordmark + button below 760px; anchors move into a details
 disclosure, not a hamburger overlay.
 
@@ -228,7 +228,7 @@ disclosure, not a hamburger overlay.
 - **Stat row** reuses the `▸`-bullet pattern from `hire/`. Values in orange,
   labels in `--type-label`. The tenure stat is **"in pro use since 2023"** (C-07)
   — a year, not a duration, so it never needs updating and never goes stale.
-- **The video is the hero's centre of gravity.** Until it exists, the frame
+- **The video is the hero's center of gravity.** Until it exists, the frame
   carries the designed placeholder (§9) at the exact final aspect ratio, so the
   hero's composition never changes when the real file lands.
 
@@ -368,7 +368,7 @@ single source per §6.4 — not typed into four cards.
 ### 4.8 Download band — the conversion moment
 
 Full spec in §6. Visually: a bordered `--bg-panel` band, the orange button
-centred and oversized, the platform table below it, and the "no Python, no Node,
+centered and oversized, the platform table below it, and the "no Python, no Node,
 no terminal" line — which is the single most reassuring sentence available for
 the technical-but-not-developer audience this page is aimed at.
 
@@ -460,7 +460,7 @@ to handle it, and today it resolves to a truthful unavailable state.
 - **macOS** → the primary slot renders a `--bg-row` panel, not a disabled orange
   button. Copy: *"The Mac build is not ready yet. It is written, and it is waiting
   on a Mac to build and verify it. Watch the repository and it will appear here."*
-  With a ghost **Watch the repo** button. A greyed-out button that does nothing is
+  With a ghost **Watch the repo** button. A grayed-out button that does nothing is
   worse than an honest sentence.
 - **Linux / unknown / no JS** → the full platform table, which is also always
   present further down the band for anyone downloading for a different machine
@@ -549,10 +549,10 @@ The only page in this folder that gets any of this.
 Every media slot ships as a **designed placeholder at the exact final aspect
 ratio**, so dropping the real file in changes nothing about the layout.
 
-A placeholder is: a `--bg-row` panel, a 1px dashed `--border-subtle`, a centred
+A placeholder is: a `--bg-row` panel, a 1px dashed `--border-subtle`, a centered
 `--type-label` caption naming what goes there and its target dimensions, and a
 mono asset id (`A-V1`, `A-02`…) matching `03-assets-and-capture-list.md`. Never
-a grey box, never a "coming soon," never a stock image standing in.
+a gray box, never a "coming soon," never a stock image standing in.
 
 **The page must look deliberate with every placeholder still in it** — that is the
 test. It is also the same pattern the `hire/` pages used for their case-study

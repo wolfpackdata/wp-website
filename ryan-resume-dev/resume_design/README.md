@@ -19,7 +19,7 @@ already overruled one design decision here.
 resume_design/
 ├── README.md                  ← you are here
 ├── brand-reference.md         WHY: the extracted brand system + its sources
-├── header-footer-spec.md      WHAT: geometry, type, colour, copy, Word recipes
+├── header-footer-spec.md      WHAT: geometry, type, color, copy, Word recipes
 ├── ats-guidelines.md          WHO READS IT FIRST: parser constraints on the design
 ├── assets/
 │   ├── wolfpack-logo.png      constellation wolf (navy field baked in, no alpha)
@@ -50,7 +50,7 @@ resampling.
 | `header-light-eng.png` | 7.5 × 1.33in | `eng_only/` — print / portal |
 | `header-compact-*.png` | 7.5 × 1.00in | continuation pages, or a tight page 1 |
 | `footer-dark.png` / `footer-light.png` | 7.5 × 0.27in | one-page résumés only — see below |
-| `page-proof-*.png` | 8.5 × 11in | **review artefacts, not for pasting** |
+| `page-proof-*.png` | 8.5 × 11in | **review artifacts, not for pasting** |
 
 > ⚠️ **Since v2.2 none of these PNGs go into a résumé.** The header ships as
 > plain text on every build, because the picture version put Ryan's name and

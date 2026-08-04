@@ -1,10 +1,10 @@
 # Résumé header & footer — specification
 
-The buildable half of this package. Every value here is realised in
+The buildable half of this package. Every value here is realized in
 `templates/css/resume-brand.css` and rendered to `preview/`, so the spec and the
-artefacts can't drift — if you change one, re-run the export and check the other.
+artifacts can't drift — if you change one, re-run the export and check the other.
 
-Rationale for the colours, fonts, and marks lives in `brand-reference.md`.
+Rationale for the colors, fonts, and marks lives in `brand-reference.md`.
 
 > **v2.2 — the shipped résumé no longer embeds the banner.** The header is
 > plain text on every build; see §9 for why. §§2–5 still describe the banner
@@ -82,7 +82,7 @@ is the composition — don't break it to gain width.
 Line-height on the name is 1.02 — tight, because a single uppercase line has no
 descenders and default leading leaves it floating.
 
-## 4. Colour and the coral ration
+## 4. Color and the coral ration
 
 | Element | Dark banner | Light banner |
 |---|---|---|
@@ -119,7 +119,7 @@ Where coral is ever used as a **fill**, the text on it is navy, never white.
   it, never place it on coral.
 - **RML** — `assets/rml-logo.png`, music variant only. White letterforms, so it
   always needs a dark ground: bare on the dark banner, on a navy chip on the
-  light one. It is the **only** place a third colour family (the orange→violet
+  light one. It is the **only** place a third color family (the orange→violet
   sun) is allowed, and it never shares an artboard with a coral fill.
 
 ## 6. Exact content strings
@@ -186,13 +186,13 @@ Word recipe:
 1. Insert → Footer → Blank. Set the footer distance from edge to **0.42in**.
 2. One paragraph. Clear the default tab stops; add a **right-aligned tab stop at
    7.5in**.
-3. Paragraph → Borders → **Top border**: colour `#F95954`, width **0.75pt**.
+3. Paragraph → Borders → **Top border**: color `#F95954`, width **0.75pt**.
    Border options → spacing from text **6pt**.
 4. Type: `RYAN HICKEY · RYAN@WOLFSTRATEGYLLC.COM · WOLFPACK DATA & STRATEGY`
    → Tab → `PAGE ` → Insert → Field → **Page** → ` OF ` → Insert → Field →
    **NumPages**.
 5. Select all of it: **Consolas 6.5pt**, All Caps on, Font → Advanced →
-   **Spacing: Expanded by 0.4pt**. Colour `#4A5068`; recolour the page-number run
+   **Spacing: Expanded by 0.4pt**. Color `#4A5068`; recolour the page-number run
    to `#6B7186`.
 
 `0.75pt` and `2.25pt` are the print equivalents of the 1px and 3px rules — CSS

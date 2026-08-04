@@ -37,7 +37,7 @@ deployed site, so paths are never rewritten.
   sheet with a comment explaining why, so the next case study inherits it.
 - **`reveal.js` is copied, never rewritten.** It is byte-identical to
   `sm3-assets/js/reveal.js` and `hire/assets/js/reveal.js` apart from its header comment. The
-  reveal timing and scroll-spy behaviour are supposed to match every other long-form page in
+  reveal timing and scroll-spy behavior are supposed to match every other long-form page in
   this repo, and a rewrite is how two pages quietly stop matching.
 - **Coral is rationed to six uses**, listed in the header comment of `case-study.css`. Keep
   that comment true. Where coral is a fill, text on it is navy, never white (AA).
@@ -47,7 +47,7 @@ deployed site, so paths are never rewritten.
   properly if one is ever genuinely needed.
 - **No external requests.** Fonts and images are self-hosted in `case-study-assets/`, the
   same rule every other page folder in this repo keeps.
-- **Placeholders ship, grey boxes do not.** Unshot assets use the `.ph` device, sized at the
+- **Placeholders ship, gray boxes do not.** Unshot assets use the `.ph` device, sized at the
   exact final aspect ratio, carrying an ID and a description of what to capture. Dropping the
   real file in changes nothing about the layout.
 - **The page renders complete with JavaScript off.** The hidden initial state is scoped to a

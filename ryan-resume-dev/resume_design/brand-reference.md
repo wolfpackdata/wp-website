@@ -33,7 +33,7 @@ closest thing the brand has to a written standard:
 
 | Token | Hex | RGB | Role |
 |---|---|---|---|
-| Navy | `#000B29` | 0, 11, 41 | The brand field. Backgrounds, and the ink colour on white. |
+| Navy | `#000B29` | 0, 11, 41 | The brand field. Backgrounds, and the ink color on white. |
 | Coral | `#F95954` | 249, 89, 84 | **Rationed accent.** See §3. |
 | White | `#FFFFFF` | 255, 255, 255 | Type on navy. |
 | Muted | `#BFC2CA` | 191, 194, 202 | Secondary type on navy — 10.9:1, safe at small sizes. |
@@ -41,18 +41,18 @@ closest thing the brand has to a written standard:
 | Surface | `#0A1435` | 10, 20, 53 | Card fill one step up from navy. |
 | Line | `#222E52` | 34, 46, 82 | Hairline dividers inside a navy field. |
 
-The site is dark-only, so it has no on-white greys. These are **added for print**
+The site is dark-only, so it has no on-white grays. These are **added for print**
 and are the only tokens in this package that aren't lifted verbatim:
 
 | Token | Hex | Contrast on white | Role |
 |---|---|---|---|
 | `--ink` | `#000B29` | 19.4:1 | The name. Same navy, used as ink. |
 | `--ink-70` | `#4A5068` | 7.9:1 | Role line, footer text, body copy. |
-| `--ink-45` | `#6B7186` | 4.8:1 | The smallest grey that still clears WCAG AA. |
+| `--ink-45` | `#6B7186` | 4.8:1 | The smallest gray that still clears WCAG AA. |
 | `--ink-sep` | `#9AA0B0` | 3.0:1 | **Decorative separators only** — below AA, never words. |
 | `--rule` | `#D8DBE4` | — | Hairline dividers on white. |
 
-### Colours that are NOT in the brand
+### Colors that are NOT in the brand
 
 The current résumé banner uses a yellow-green (`#DADA60` in the contact line and
 the baseline stripe) on a near-black field (`#07080B`). Neither appears anywhere
@@ -65,7 +65,7 @@ every other Wolfpack surface.
 
 ## 3. The coral ration — the one rule that matters most
 
-Coral is the brand's only saturated colour, and both stylesheets go out of their
+Coral is the brand's only saturated color, and both stylesheets go out of their
 way to enumerate where it may appear so it can't creep. `rates.css` allows it on
 the nav CTA, the hero CTA, the featured tier, the call CTA, the coaching ghost
 CTA, the contact CTA, link hover, and the focus ring. Nothing else.
@@ -81,7 +81,7 @@ Two hard constraints carry over unchanged:
 
 - **Where coral is a fill, text on it is navy — never white.** White on coral
   fails AA; navy on coral passes. Both stylesheets say so in their header comment.
-- **Coral is never a type colour** for anything longer than a label.
+- **Coral is never a type color** for anything longer than a label.
 
 ---
 
@@ -123,9 +123,9 @@ Two things to know about the RML mark:
    banner the spec gives it an explicit navy chip, which also rhymes with the
    wolf chip on the opposite side.
 
-The RML sun is orange/violet and sits outside the two-colour brand. That is
+The RML sun is orange/violet and sits outside the two-color brand. That is
 accounted for in the spec: on any artboard carrying the RML mark, it is the sole
-place a third colour family is permitted, and it never appears alongside a coral
+place a third color family is permitted, and it never appears alongside a coral
 fill — only alongside the coral hairline rules.
 
 ## 6. Other structural motifs carried over
@@ -136,7 +136,7 @@ fill — only alongside the coral hairline rules.
 | Corner radius | `--radius: 4px` | 3px on the logo chips (4px reads heavy at print scale) |
 | Section rule | `.section--line` — 1px `--line` top border | 2pt coral rule under section headings |
 | Footer | wordmark left, mono meta right, hairline above | identical structure, at 6.5pt |
-| Voice | "engineering document" — mono labels, quiet greys, one accent | unchanged |
+| Voice | "engineering document" — mono labels, quiet grays, one accent | unchanged |
 
 ---
 

@@ -133,7 +133,7 @@ def all_strings(node) -> list[str]:
 
 
 def flat_text(content: dict) -> str:
-    """One whitespace-normalised blob, so a fact broken across YAML folded
+    """One whitespace-normalized blob, so a fact broken across YAML folded
     lines still matches a regex written the way a human would write it."""
     return re.sub(r"\s+", " ", " ".join(all_strings(content)))
 
@@ -223,7 +223,7 @@ def check_header(contents: dict[str, dict], errors: list[str]) -> None:
 
 def docx_text(path: Path) -> str:
     """The document body as a naive parser sees it: every <w:t> in reading
-    order, whitespace-normalised. Deliberately ignores images and the Word
+    order, whitespace-normalized. Deliberately ignores images and the Word
     header/footer parts, because a good number of ATS parsers do too."""
     with zipfile.ZipFile(path) as z:
         xml = z.read("word/document.xml").decode("utf-8")

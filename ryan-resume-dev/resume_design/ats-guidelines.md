@@ -20,10 +20,10 @@ Scope: this document covers the whole `.docx`. The header specifically is
 > text with all formatting discarded.
 
 Anything that fails that test is a defect, however good it looks. Anything that
-passes is fair game, including tables, colour, and unusual type.
+passes is fair game, including tables, color, and unusual type.
 
-The corollary matters as much: **this is not a licence to design badly.** ATS
-folklore ("no tables ever", "no colour", "one column or nothing") mostly
+The corollary matters as much: **this is not a license to design badly.** ATS
+folklore ("no tables ever", "no color", "one column or nothing") mostly
 predates the parsers in use now, and most of it is unverified. Test the claim
 against the actual file — §5 — and design freely inside what survives.
 
@@ -153,6 +153,6 @@ if a parser is ever seen mangling it.
   are read as dishonest by any human who finds them, and the résumé's actual
   problem was never keyword density.
 - **The table stays.** See §3 — the reading order was tested, not assumed.
-- **Colour and the coral ration stay.** Neither affects text extraction at all.
+- **Color and the coral ration stay.** Neither affects text extraction at all.
 - **The page count is not being cut for ATS reasons.** Length is a human-reader
   question; parsers do not care.

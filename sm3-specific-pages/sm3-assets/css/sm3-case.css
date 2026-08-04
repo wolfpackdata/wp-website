@@ -25,7 +25,7 @@
    those frames stays Wolfpack navy. Scoped to .shot and .trow only, and
    magenta and cyan appear ONLY as a pair, ONLY as the Out/In semantic.
    Magenta without cyan is a bug: it means the semantic was borrowed as a
-   decorative colour. Same shape of exception as the RML mark on hire/.
+   decorative color. Same shape of exception as the RML mark on hire/.
    ========================================================================== */
 
 :root {
@@ -266,7 +266,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 
 /* Designed placeholder. Sized at the exact final aspect ratio, so dropping the
-   real file in changes nothing about the layout. Never a grey box, never a
+   real file in changes nothing about the layout. Never a gray box, never a
    "coming soon" (planning/03-assets-and-capture-list.md §4). It is decorative
    until it holds a real asset, hence aria-hidden in the markup. */
 .ph {
@@ -312,7 +312,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   color: var(--app-text);
 }
 /* No gridlines and no cell borders, per the application's own rule: separation
-   comes from striping, spacing, and group colour, not from rules. */
+   comes from striping, spacing, and group color, not from rules. */
 .trow th, .trow td { border: 0; padding: 9px 12px; text-align: left; }
 
 /* Density is a feature in this application, and a table stretched to 100% is
@@ -386,7 +386,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 
 /* ==========================================================================
    Roadmap + honesty list — "What Is Not Finished".
-   Status chips are grey, deliberately. A red "not ready" chip would read as
+   Status chips are gray, deliberately. A red "not ready" chip would read as
    an error state; this is a plan, stated plainly.
    ========================================================================== */
 

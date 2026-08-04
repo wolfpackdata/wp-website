@@ -31,7 +31,7 @@
 
 html { scroll-behavior: smooth; }
 
-/* The path cards (below) make smooth scrolling a primary navigation path — honour a
+/* The path cards (below) make smooth scrolling a primary navigation path — honor a
    reduced-motion preference for the jump itself and for the affordances that signal it. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
