@@ -22,21 +22,15 @@
      2. the hero CTA                   6. link hover
      3. the hero rule                  7. the focus ring
      4. the case-study IN PREPARATION chip
-     8. the hero placeholder's label — TEMPORARY, see below
    Nothing else. Not a section heading, not an app name, not a figure. Where
    coral is a FILL, text on it is navy (5.8:1), never white (fails AA). Both
-   coral fills here (.nav__cta, .btn--solid) set navy text; the other four uses
+   coral fills here (.nav__cta, .btn--solid) set navy text; the other five uses
    are coral ON navy, which is the safe direction.
 
-   Use 8 is the one temporary entry and the page ships with 8 rather than 7 on
-   purpose: the .ph-copy label is a warning marker, and coral is the only ink in
-   this palette that reads as one. It goes away with the placeholder (D-004), at
-   which point this list returns to seven. It is enumerated rather than waved
-   through because an un-enumerated use is exactly how a ration starts drifting.
-
-   The placeholder's hatch FILL is separately not a coral use — it is the same
-   surface-2 + hairline device as .case__shot--empty, so an unwritten hero reads
-   as "awaiting copy" rather than as a design choice.
+   Back to seven as of 2026-08-04: an eighth, temporary use carried the hero
+   placeholder's warning label, and it went away with the placeholder when Ry
+   wrote the real copy (D-004). Use 4 is currently unused, since both case cards
+   are live links, and the chip stays for the next unpublished study.
    ========================================================================== */
 
 :root {
@@ -179,33 +173,9 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
-/* --------------------------------------------------------------------------
-   Hero copy placeholder (design plan D-004).
-
-   The hero has to address a prospective client and a hiring manager in the
-   same breath, which is a positioning judgment, not a copy task — so it ships
-   unwritten and visibly so. Same hatch device as .case__shot--empty, so it
-   reads as the repo's established "awaiting content" marker rather than as a
-   styling choice someone might mistake for finished.
-
-   DELETE this rule when the real copy lands; nothing else depends on it.
-   -------------------------------------------------------------------------- */
-.ph-copy {
-  border: 1px dashed var(--faint); border-radius: var(--radius);
-  padding: 22px 24px; margin-bottom: 22px;
-  background: var(--surface) repeating-linear-gradient(
-    -45deg, transparent 0 11px, rgba(34, 46, 82, 0.35) 11px 12px);
-}
-.ph-copy__label {
-  display: block; margin-bottom: 12px;
-  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--coral);
-}
-.ph-copy p { font-size: 0.9375rem; color: var(--muted); max-width: 66ch; }
-.ph-copy p + p { margin-top: 10px; }
-.ph-copy code {
-  font-family: var(--mono); font-size: 0.8125rem; color: var(--white);
-}
+/* The hero copy placeholder (.ph-copy) that lived here was deleted 2026-08-04
+   when Ry wrote the real headline and standfirst, which is exactly what D-004
+   said would happen. Its removal is what returns the coral ration to seven. */
 
 /* ==========================================================================
    Buttons
@@ -327,30 +297,10 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .close__title { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 12px; }
 .close__lede { color: var(--muted); max-width: 62ch; margin-bottom: 28px; }
 
-/* ==========================================================================
-   Secondary link band — rates. A coda, not a peer, and not a second CTA.
-
-   Ported from hire.css's .softcta, where the same device carries the
-   consultancy link below the contact block. The reasoning transfers: half this
-   page's audience is a prospective client, and the honest next step for one who
-   has just read the work is what it costs. It is deliberately quieter than the
-   closing block — panel fill rather than card fill, one ghost link, no coral —
-   the same way rates/ links the ROI calculator as a consideration-stage tool
-   rather than a competing funnel.
-   ========================================================================== */
-
-.section--coda { padding: 34px 0 44px; }
-
-.softcta {
-  display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: space-between; gap: 18px 32px;
-  padding: 24px 30px;
-  background: var(--surface-2); border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-.softcta .k { display: block; margin-bottom: 9px; font-size: 0.6875rem; }
-.softcta__title { font-size: 1.0625rem; margin-bottom: 6px; }
-.softcta__lede { font-size: 0.9375rem; color: var(--muted); max-width: 52ch; }
+/* The .softcta / .section--coda rates band that lived here was removed
+   2026-08-04 (Ry) along with the section that used it, so these rules were
+   dead. The device is still in hire.css if a future section wants it.
+   See design plan D-011. */
 
 /* ==========================================================================
    Footer
@@ -410,12 +360,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   .section { padding: 56px 0; }
   .close { padding: 30px 24px; }
   .app, .case { padding: 22px 20px; }
-  .ph-copy { padding: 18px 18px; }
-  /* Restated after the .section rule above, not before it: same specificity,
-     so source order is what decides. */
-  .section--coda { padding: 28px 0 36px; }
-  .softcta { padding: 22px 20px; }
-  .hero__ctas .btn, .softcta .btn, .close .btn { width: 100%; text-align: center; }
+  .hero__ctas .btn, .close .btn { width: 100%; text-align: center; }
   /* Run-in meta is a desktop affordance: it buys width, which phones don't
      have. Here vertical space is the cheap axis, so the meta drops to its own
      line and the button is allowed to wrap rather than overflow. */

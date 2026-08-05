@@ -30,11 +30,13 @@ résumé landing pages (`hire/`, see below), the long-form case studies (`case_s
 see below), and the portfolio landing page (`portfolio/`, see below); more site pieces
 land here as they're built. Verify by opening the page in a browser.
 
-Two exceptions to "no build step", both Python workbenches that build *inputs* rather than
-the site itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the
-four downloads the `hire/` pages link; `blog_posts/tools/` converts blog markdown to the
-Wix payload format (`blog_posts/`, see below). Neither produces a page in this repo — the
-pages themselves are still hand-written static files.
+Three exceptions to "no build step", all Python that builds *inputs* rather than the site
+itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the four
+downloads the `hire/` pages link; `blog_posts/tools/` converts blog markdown to the Wix
+payload format (`blog_posts/`, see below); and
+`case_studies/ops_fin_model_support/planning/hero/build_hero.py` composes that case study's
+hero image from a source screenshot. None produces a page in this repo — the pages
+themselves are still hand-written static files.
 
 GitHub Pages is **off** for this repo (turned off 2026-07-30, #74). It used to serve
 `main` at `https://wolfpackdata.github.io/wp-website/`; those URLs now 404. Nothing linked
@@ -181,7 +183,16 @@ Conventions these pages must keep:
 - **Public and indexed**, unlike the SetMaster 3 case study. Different audience: these speak
   to founders and SMB directors, not hiring managers, so being found is the point.
 - **No client named, no testimonial invented.** Anonymize by shape. Illustrative figures are
-  labeled illustrative inside the figure itself, not in a footnote.
+  labeled illustrative inside the figure itself, not in a footnote. A screenshot of real
+  client work is anonymized **in the pixels** — the financial model hero's source workbook
+  lists team members by first name, and that column is blurred in the committed source *and*
+  again at build time. "Too small to read" is a bet that nobody zooms; check new captures at
+  5x or 6x.
+- **The financial model hero is generated, and its generator ships with it.**
+  `ops_fin_model_support/planning/hero/build_hero.py` composes
+  `case-study-assets/img/fin-model-beacon-hero.jpg` from the source capture beside it.
+  Generator and input sit under `planning/`, so neither deploys; only the finished image
+  does. Rebuild rather than retouch.
 - **Coral is rationed to six uses**, listed in the header comment of `case-study.css`, and
   the sheet introduces **no hues** beyond the navy system and a neutral figure ground.
 - Copy follows [`docs/ryan-blog-tone.md`](docs/ryan-blog-tone.md). Its §9 checklist is
@@ -210,14 +221,18 @@ Conventions the page must keep:
   page and both `hire/` pages, reporting the exact divergence point on a mismatch. Do not
   tone-edit the ported blurbs; `docs/ryan-blog-tone.md` §8 exempts résumé-derived content
   precisely so a third wording cannot appear.
-- **The hero copy is a marked placeholder awaiting Ry**, not an oversight. When the real
-  copy lands, delete the `.ph-copy` block and its rule in `css/portfolio.css` — which also
-  returns the coral ration from eight uses to seven.
+- **The hero copy is Ry's** (written 2026-08-04, resolving the placeholder it shipped with):
+  *Systems, apps, and projects* over *"Selected examples of recent applications, data systems,
+  and AI workflows built and evolving, with some case studies below."* It addresses **neither
+  audience directly** — it names the work, which reads the same to a client and an employer.
+  Don't re-point it at one of them. Coral is back to **seven** uses.
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.
-- **One CTA, the 30-minute intro call.** The outbound `/rates_public/` link sits in a quiet
-  coda band and is navigation, not a second funnel CTA.
+- **One CTA and exactly one destination on the entire page: the 30-minute intro call.** No
+  intake-form link, no résumé download, no rates link. A quiet `/rates_public/` coda band
+  briefly existed and **Ry cut it** (2026-08-04, plan D-011), so this page is the book-first
+  rule at its strictest. Don't re-add a second destination without asking.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*

@@ -47,38 +47,18 @@
 </nav>
 
 <!-- ========== Hero ==========
-     The hero copy is a PLACEHOLDER by decision, not by oversight
-     (docs/portfolio-page-design-plan.md D-004). It has to address a prospective
-     client and a hiring manager in the same breath, which is a positioning
-     judgment for Ry rather than a copy task.
-
-     The working headline and standfirst below are deliberately plain and
-     factual so that nothing false or embarrassing ships if this page goes live
-     before the real copy lands. Replace BOTH, then delete the .ph-copy block
-     and its rule in css/portfolio.css. Nothing else depends on either.
-
-     Ry's portrait is available at hire/assets/img/ryan-hickey-portrait.jpg if
-     the finished hero wants one; it is deliberately not designed in yet. -->
+     Copy is Ry's, written 2026-08-04, and it resolves the placeholder this
+     section shipped with (design plan D-004). The .ph-copy block and its rules
+     in css/portfolio.css are gone with it, which also returns the coral ration
+     to seven uses. Treat the headline and standfirst as his words. -->
 <header class="hero" id="top">
   <div class="wrap">
     <img class="hero__watermark" src="img/wolfpack-logo.png" alt="" aria-hidden="true" width="340" height="340">
     <div class="hero__inner">
-
-      <div class="ph-copy" role="note">
-        <span class="ph-copy__label">Placeholder &middot; hero copy to be written</span>
-        <p>Ry writes the headline and standfirst below. The hero has one job that
-          no other page here has: speak to a prospective client and a hiring
-          company at the same time, without picking a side.</p>
-        <p>The text currently in place is a factual stand-in, safe to ship but
-          not the positioning. Replace it, then delete this block and the
-          <code>.ph-copy</code> rule in <code>css/portfolio.css</code>.</p>
-      </div>
-
       <span class="k hero__kicker">Portfolio &amp; case studies &middot; Ryan Hickey</span>
-      <h1 class="hero__title">Case studies and built work</h1>
-      <p class="hero__stand">The applications, data systems, and AI workflows built
-        and shipped so far, and the long-form case studies written about them.
-        Client platforms, in-house tools, and builds in flight.</p>
+      <h1 class="hero__title">Systems, apps, and projects</h1>
+      <p class="hero__stand">Selected examples of recent applications, data systems,
+        and AI workflows built and evolving, with some case studies below.</p>
 
       <div class="hero__ctas">
         <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book an intro call <span class="btn__meta">30 minutes</span></a>
@@ -184,16 +164,6 @@
       </div>
 
       <div class="cases">
-        <article class="case reveal" id="case-fin-model">
-          <div class="case__shot case__shot--empty" aria-hidden="true">Figures in preparation</div>
-          <div>
-            <span class="case__num"></span>
-            <h3 class="case__title">The Model Is Your Business Beacon: a financial model as an operating tool</h3>
-            <p class="case__blurb">Why an operational financial model belongs in front of the product: the three-statement package, the weekly cadence that keeps it useful, and how it settles which work actually gets done.</p>
-            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/ops-fin-model-case-study/">Read the case study</a>
-          </div>
-        </article>
-
         <article class="case reveal" id="case-setmaster">
           <img class="case__shot" src="img/app-setmaster.png" alt="" aria-hidden="true" width="1494" height="848" loading="lazy">
           <div>
@@ -201,6 +171,16 @@
             <h3 class="case__title">SetMaster 3: from problem, to prototype, to a shipped web app</h3>
             <p class="case__blurb">A years-old spreadsheet workaround rebuilt as a cross-platform application: the matching heuristics, the offline-first architecture, and three issue-driven fix rounds to v3.0.3.</p>
             <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
+          </div>
+        </article>
+
+        <article class="case reveal" id="case-fin-model">
+          <div class="case__shot case__shot--empty" aria-hidden="true">Figures in preparation</div>
+          <div>
+            <span class="case__num"></span>
+            <h3 class="case__title">The Model Is Your Business Beacon: a financial model as an operating tool</h3>
+            <p class="case__blurb">Why an operational financial model belongs in front of the product: the three-statement package, the weekly cadence that keeps it useful, and how it settles which work actually gets done.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/ops-fin-model-case-study/">Read the case study</a>
           </div>
         </article>
       </div>
@@ -215,10 +195,16 @@
   <section class="section section--line" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
       <div class="close reveal">
-        <h2 class="close__title" id="contact-title">The smallest next step is a conversation.</h2>
-        <p class="close__lede">Thirty minutes on what you are building, what is in the
-          way, and whether any of the work above maps onto it. If it does not, I
-          will say so.</p>
+        <!-- Rewritten 2026-08-04: Ry's verdict on the previous header and lede
+             was that both were terrible, and he was right. "The smallest next
+             step is a conversation" took a structural instruction from
+             docs/ryan-blog-tone.md §7 and used it as a headline, which is
+             consultant-speak, and "whether any of the work above maps onto it"
+             was doing the same. The CTA below is unchanged, deliberately. -->
+        <h2 class="close__title" id="contact-title">Start with a call</h2>
+        <p class="close__lede">Thirty minutes on what you are building and what is in
+          the way. If nothing above fits the problem, I will say so on the call
+          rather than talk around it.</p>
 
         <div class="hero__ctas">
           <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book an intro call <span class="btn__meta">30 minutes</span></a>
@@ -227,24 +213,13 @@
     </div>
   </section>
 
-  <!-- ========== Secondary link band — rates ==========
-       A coda, not a second CTA. Ported from the hire pages' .softcta, where the
-       same device carries the consultancy link below the contact block. Half
-       this page's audience is a prospective client, and the honest next step for
-       one who has just read the work is what it costs. Quieter than the closing
-       block by construction: panel fill, one ghost link, never coral. -->
-  <section class="section section--line section--coda" aria-labelledby="rates-title">
-    <div class="wrap">
-      <div class="softcta reveal">
-        <div>
-          <span class="k">Also</span>
-          <h2 class="softcta__title" id="rates-title">Rates and services</h2>
-          <p class="softcta__lede">What engagements cost, and how the work is scoped.</p>
-        </div>
-        <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/rates_public/">View the rates</a>
-      </div>
-    </div>
-  </section>
+  <!-- The rates coda that sat here was removed 2026-08-04 (Ry). It was a quiet
+       .softcta band linking /rates_public/, argued for on the grounds that half
+       this page's audience is a prospective client. Ry cut it, so the closing
+       block is now the last thing on the page and the intro call is the only
+       destination anywhere on it. The .softcta and .section--coda rules came out
+       of css/portfolio.css with it; the device still lives in hire.css if a
+       future section wants it. See design plan D-011. -->
 
 </main>
 
