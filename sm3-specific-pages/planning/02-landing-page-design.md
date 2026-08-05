@@ -575,9 +575,15 @@ frames, which is the proof it works.
 
 ## 10. Headline options
 
+**CLOSED 2026-08-05. None of them.** Ry wrote the headline himself:
+**"Build Better DJ Sets, Faster"**, over *"Turn your Spotify® and Traktor®
+playlists into a focused, data-driven workflow for discovering tracks, organizing
+music, and preparing sets. Mix more, scroll less."* See §13 B-10. The four options
+below are kept as the record of what was proposed, not as live choices.
+
 | # | Headline | Reads as |
 |---|---|---|
-| 1 | *Set preparation for people who prepare.* | Confident, a little exclusive, matches "not for beginners." **Recommended.** |
+| 1 | *Set preparation for people who prepare.* | Confident, a little exclusive, matches "not for beginners." **Was recommended; not chosen.** |
 | 2 | *Your catalog, finally queryable.* | Leads with catalog analysis — the wrong half first (§4.5). |
 | 3 | *One row. One transition.* | Leads with the core idea; needs the subhead to carry all the context. |
 | 4 | *The tedious part, automated.* | Ry's own framing. Truest to the thesis, weakest as a hero. |
@@ -637,7 +643,9 @@ the landing page read like a personal blog post with a download button on it.
 
 All nine claim conflicts are closed (`04-claims-ledger.md` §2). Remaining:
 
-1. **Headline** (§10) and the hero kicker.
+1. ~~**Headline** (§10) and the hero kicker.~~ **CLOSED 2026-08-05:** Ry wrote both
+   the headline and the standfirst (§13 B-10). The kicker is unchanged, and it is
+   the one piece of hero copy still the spec's.
 2. **Does the page name Ry at all** beyond band 10? (`00-overview.md` §9.5)
 3. **Video count and length** (§8, and `03-…` §3) — the critical-path blocker, and
    the only thing here Claude cannot produce.
@@ -672,11 +680,12 @@ with the other finished pages in this repo.
 | B-02 | **The install band is two authored columns, not an OS-detecting component.** | §6.2's `navigator.userAgentData` detection promoting one platform into a primary slot. | Ry asked for both platforms visible side by side. §6.3 already said the platform table is the base case and detection is only a promotion, so dropping the promotion leaves the base case, which is the honest, JavaScript-free version. The page now ships **no** platform-detection JavaScript at all. |
 | B-03 | ~~**The macOS column carries steps, marked pending.**~~ **Superseded the same day: macOS is a real download.** | §6.2's macOS slot was one honest sentence plus a Watch-the-repo button. | Built as a pending column, then rewritten hours later when **v3.0.4 shipped the signed `.dmg`** (2026-08-05). The column now carries the four disk-image steps, a `Signed and notarized` chip, and the Apple silicon and macOS 14 requirement, and the orange fill ration grew to four because both platforms are now real downloads. C-03 narrowed rather than lapsed: see §3.4. |
 | B-04 | **No video, and no video placeholder.** | §4.2 and D-007 made the hero video the page's centre of gravity, with a designed placeholder until it existed. | "Keep it simple", plus a full-width dashed frame at the top of the page would push the install band under the fold, which is the one thing B-01 exists to prevent. The four real screenshots carry the visual load. When Ry captures video, the hero frame goes back per §9. |
-| B-05 | **Band 10, "Who made this", is cut.** | Portrait, two sentences, and links to the case study, the intro call, and `wolfstrategyllc.com` (§4.10). | Ry: no CTA to book a call or see other work beyond the header button. The page now has one CTA, the nav Download, and three outbound destinations total: the release asset, the public repo, and the case study. The main-site link went with it, so the footer carries the repo, the licence, and the version only. |
+| B-05 | **Band 10, "Who made this", is cut.** | Portrait, two sentences, and links to the case study, the intro call, and `wolfstrategyllc.com` (§4.10). | Ry: no CTA to book a call or see other work beyond the header button. One solid CTA, the nav Download. **Amended the same day:** Ry asked for a bare `wolfstrategyllc.com` button above the footer, so the main-site link came back on its own, as site chrome rather than as part of an authored block. **The intro call did not come back and does not.** Four outbound destinations now: the release artifacts, the repo, the case study, and the main site. |
 | B-06 | **Roboto 700 / Montserrat / system mono, not Inter / JetBrains Mono.** | §2's type stack. | "Fit stylistically with the other final pages." Both families are already self-hosted in `sm3-assets/fonts/`; Inter and JetBrains Mono would have meant two more self-hosted families and would have made this the only page in the repo with its own typography. The **palette stays SetMaster 3's own** per D-004, which is what makes it read as a product surface. |
 | B-07 | **Release facts are authored in HTML with a checklist comment**, not read from one inline object. | §6.4. | Populating the download button from a JSON object needs JavaScript, and §6.3 requires the download band to be complete without it. The comment at the top of `index.html` lists the five places a release touches. The §6.4 prohibition on fetching `api.github.com` at runtime stands. |
 | B-08 | **Purple is the section eyebrow labels and the wordmark numeral**, headings stay white. | §2 put section headings in a brand accent. | White headings on near-black match the case study and every other page here; purple eyebrows give the accent its NI-panel job without spending it on 1.5rem of type per band. The stylesheet's ration comment states what is actually done. |
 | B-09 | **The transition-row table is cut. §4.3 is copy only.** | §4.3 called it the most important band on the page and predicted it would be cut for being "not marketing." | Ry cut it, 2026-08-05. It was cut for being an image in a section that reads better without one, which is not the reason §4.3 defended against, and the copy beat it carried stays. Its CSS came out of `sm3-landing.css` with it rather than being left dead, so **magenta and cyan are now absent from this page entirely** and their pair rule holds by absence. The case study still renders the table from its own stylesheet, so nothing was lost from the project. |
+| B-10 | **The hero headline and standfirst are Ry's, replacing both drafts.** | §10 option 1, *"Set preparation for people who prepare."*, over a standfirst naming the two halves of the product. | Ry wrote both on 2026-08-05: **"Build Better DJ Sets, Faster"** over *"Turn your Spotify® and Traktor® playlists into a focused, data-driven workflow for discovering tracks, organizing music, and preparing sets. Mix more, scroll less."* It closes §12 item 1. His version leads with the outcome where the spec's led with the posture, and it is the only copy on the page that addresses the reader in the imperative. The single edit to his words is the ® on both marks, which D-006 requires. The old two-tone treatment went with the old headline; a non-breaking space holds "DJ Sets" together, since the line otherwise broke after "DJ". |
 
 **Unchanged and load-bearing:** D-004's palette, D-006's trademark discipline (® on
 every visible Traktor, Native Instruments, Spotify, and Rekordbox; Exportify plain;
