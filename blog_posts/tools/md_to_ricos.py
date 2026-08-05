@@ -302,6 +302,43 @@ def _paragraph(text: str) -> dict:
     }
 
 
+def _spacer() -> dict:
+    """An empty paragraph, which Wix renders as one blank line."""
+    return {
+        "type": "PARAGRAPH",
+        "id": _next_id("sp"),
+        "nodes": [],
+        "paragraphData": {},
+    }
+
+
+def space_blocks(nodes: list) -> list:
+    """Insert a blank paragraph between every pair of adjacent block nodes.
+
+    Markdown separates paragraphs with a blank line, but Ricos does not carry
+    that blank line as anything: consecutive PARAGRAPH nodes arrive butted
+    together and Wix renders them with no gap, so a post that reads correctly
+    in ``post.md`` reads as one dense slab on the site.
+
+    The fix is an empty PARAGRAPH rather than a margin or a line height. Wix
+    strips styling it does not recognize when it saves a draft (the same
+    behavior that costs inline code its FONT_FAMILY -- see README "Known
+    fidelity limits"), and an empty paragraph is exactly what the Wix editor
+    itself writes when an author presses Enter twice. It is therefore the one
+    spacing device known to survive the round trip.
+
+    Applied at payload assembly rather than inside ``markdown_to_nodes`` so the
+    parser stays a pure markdown-to-blocks transform and spacing stays a single
+    presentation decision in one place.
+    """
+    spaced: list = []
+    for node in nodes:
+        if spaced:
+            spaced.append(_spacer())
+        spaced.append(node)
+    return spaced
+
+
 def _image_node(src: str, alt: str, media_map: dict, images: list) -> dict:
     images.append(src)
     media_id = media_map.get(src)
@@ -482,6 +519,7 @@ def build_payload(
     nodes = markdown_to_nodes(body, media_map, images)
     if not nodes:
         raise PostError("Post body is empty.")
+    nodes = space_blocks(nodes)
 
     cover = meta.get("cover")
     if cover:

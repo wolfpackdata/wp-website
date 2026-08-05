@@ -65,6 +65,25 @@ of the pipeline is that `post.md` fully determines the post.
 Decorations nest (`**bold *both* bold**`), inline code is literal inside, and
 `snake_case` underscores do not open emphasis.
 
+## Paragraph spacing
+
+**Every block gets a blank line after it, inserted automatically.** Markdown
+separates paragraphs with a blank line, but Ricos does not carry that blank line
+as anything, so consecutive `PARAGRAPH` nodes arrive butted together and Wix
+renders them as one dense slab with no gap between them. `space_blocks()`
+inserts an empty `PARAGRAPH` between every pair of adjacent block nodes to
+restore it.
+
+An empty paragraph, and not a margin or a line height, because Wix strips
+styling it does not recognize when it saves a draft (the same behavior that
+costs inline code its `FONT_FAMILY`, below) and an empty paragraph is exactly
+what the Wix editor writes when an author presses Enter twice. It is the one
+spacing device known to survive the round trip.
+
+**Do not hand-author blank paragraphs in `post.md` to force spacing.** They are
+added at payload assembly, so a manual one arrives doubled. Write normal
+markdown and let the converter space it.
+
 ## Known fidelity limits
 
 Verified against the live Wix API by pushing a draft and reading it back. These

@@ -237,6 +237,10 @@ Conventions this folder must keep:
   `blog_posts/tools/md_to_ricos.py` is the deterministic transform between them. Same
   markdown always yields the same post, which is what makes re-pushing an edit safe. Run its
   tests (`python -m unittest discover blog_posts/tools`) before merging a converter change.
+- **Blank lines between paragraphs are inserted by the converter, never by hand.** Ricos does
+  not carry markdown's blank line, so Wix renders consecutive paragraphs butted together;
+  `space_blocks()` puts an empty `PARAGRAPH` between every pair of adjacent blocks to restore
+  the gap (#109). Authoring a blank paragraph in `post.md` to force spacing arrives doubled.
 - **The converter never talks to Wix.** It reads files and writes JSON; the push is a
   separate step through the already-authenticated Wix connector, so **no API key lives in
   this repo.** Images and tags are resolved to Wix IDs and passed in as maps.

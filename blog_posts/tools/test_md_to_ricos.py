@@ -21,6 +21,7 @@ from md_to_ricos import (
     parse_inline,
     reset_ids,
     slugify,
+    space_blocks,
 )
 
 MEMBER = "e00ee638-af7f-4aac-aa2b-c99d795ecf78"
@@ -306,6 +307,63 @@ class PayloadTests(unittest.TestCase):
         with self.assertRaises(PostError) as ctx:
             build_payload(post, MEMBER)
         self.assertIn("409,600", str(ctx.exception))
+
+
+class SpacingTests(unittest.TestCase):
+    """Wix renders butted-together PARAGRAPH nodes with no gap. See space_blocks."""
+
+    def setUp(self):
+        reset_ids()
+
+    def _post(self, text, files=()):
+        d = Path(tempfile.mkdtemp())
+        (d / "post.md").write_text(text, encoding="utf-8")
+        for name in files:
+            (d / name).write_bytes(b"x")
+        return d
+
+    def test_spacer_between_every_pair(self):
+        nodes = space_blocks(markdown_to_nodes("one\n\ntwo\n\nthree\n"))
+        self.assertEqual(
+            [n["type"] for n in nodes],
+            ["PARAGRAPH"] * 5,
+        )
+        self.assertEqual([bool(n["nodes"]) for n in nodes],
+                         [True, False, True, False, True])
+
+    def test_spacer_is_an_empty_paragraph(self):
+        nodes = space_blocks(markdown_to_nodes("one\n\ntwo\n"))
+        self.assertEqual(nodes[1]["type"], "PARAGRAPH")
+        self.assertEqual(nodes[1]["nodes"], [])
+        self.assertEqual(nodes[1]["paragraphData"], {})
+
+    def test_no_leading_or_trailing_spacer(self):
+        nodes = space_blocks(markdown_to_nodes("only\n"))
+        self.assertEqual(len(nodes), 1)
+        self.assertTrue(nodes[0]["nodes"])
+
+    def test_spacing_separates_mixed_blocks(self):
+        nodes = space_blocks(markdown_to_nodes("# H\n\npara\n\n- item\n"))
+        self.assertEqual(
+            [n["type"] for n in nodes],
+            ["HEADING", "PARAGRAPH", "PARAGRAPH", "PARAGRAPH", "BULLETED_LIST"],
+        )
+
+    def test_empty_input_stays_empty(self):
+        self.assertEqual(space_blocks([]), [])
+
+    def test_build_payload_applies_spacing(self):
+        post = self._post("---\ntitle: T\n---\nfirst\n\nsecond\n")
+        payload, _, _ = build_payload(post, MEMBER)
+        nodes = payload["draftPost"]["richContent"]["nodes"]
+        self.assertEqual(len(nodes), 3)
+        self.assertEqual(nodes[1]["nodes"], [])
+
+    def test_spacing_is_deterministic(self):
+        post = self._post("---\ntitle: T\n---\nfirst\n\nsecond\n\nthird\n")
+        a, _, _ = build_payload(post, MEMBER)
+        b, _, _ = build_payload(post, MEMBER)
+        self.assertEqual(json.dumps(a), json.dumps(b))
 
 
 class TemplateTests(unittest.TestCase):
