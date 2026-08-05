@@ -2,8 +2,8 @@
 title: A Financial Model Is an Operating Document
 slug: financial-model-is-an-operating-document
 excerpt: Most founders build the financial model for the accountant and the raise, and they build it late. It is an operating document, and the exercise of building it matters more than the accuracy of the numbers inside it.
-cover: cover.png
-cover_alt: Placeholder cover, pending capture of the financial model figures.
+cover: cover.jpg
+cover_alt: A financial model workbook lit from behind, with beams of light fanning out above it into the dark.
 date: 2026-08-04
 tags: [financial modeling, startups]
 featured: false
@@ -82,9 +82,16 @@ Tag ids created for this post (the blog had none before it):
   financial modeling  3b027fc6-d495-43be-82e5-f77370ef33d1
   startups            4d4603e8-19e4-4644-bb2f-2f238826a9d5
 Cover media id: e00ee6_664c2a5edec14b4a9cc9befe36beca75~mv2.png
+  STALE. That id is the flat navy _template placeholder this post first shipped
+  with, and it is what the LIVE DRAFT still shows. The cover in this folder is
+  now cover.jpg, the generated beacon hero from the case study (wp-website#113,
+  swapped in #117). Two steps remain before the draft matches this folder:
+  upload cover.jpg to the Wix Media Manager for a new media id, then PATCH
+  /blog/v3/draft-posts/5ea73438-d74b-4ce4-ae67-72086e0ae957 with a rebuilt
+  payload. Ask Ry first — a rebuilt payload overwrites anything edited in the
+  dashboard since the first push.
 
-Cover is the flat navy placeholder from _template. The financial model case
-study's own six M-nn figures are commented out pending capture (wp-website#99),
-so there is no real art for this post yet. Swap cover.png and re-upload when
-they land.
+The six M-nn figures inside the case study are still commented out pending
+capture (wp-website#99). This cover is not one of them and does not unblock
+them; it is that page's hero, which is a different asset.
 -->
