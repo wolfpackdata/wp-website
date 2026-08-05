@@ -10,6 +10,17 @@ and whose public, downloadable mirror is
 | **Landing page** ("hype page") | `setmaster3/` | `intake.wolfstrategyllc.com/setmaster3/` | Hiring managers first, advanced/technical DJs second | **indexed** |
 | **Case study** | `setmaster3-case-study/` | `intake.wolfstrategyllc.com/setmaster3-case-study/` | Hiring managers, plus clients reaching it from the portfolio page | **indexed** since 2026-08-04 (was `noindex, nofollow`) |
 
+**Deployed 2026-08-04.** The case study is live at
+`https://intake.wolfstrategyllc.com/setmaster3-case-study/` (#104, re-deployed the same day
+with #108 for the indexing flip). The landing page at `/setmaster3/` is **still unbuilt and
+404s** — nothing links it any more, since the case study's download button was removed for
+exactly that reason.
+
+**Deploying this folder: copy the git-tracked file list, never mirror the folder.**
+`sm3-assets/img/` holds one gitignored capture that leaks a Windows user directory, and a
+folder mirror would publish it. Use `git ls-files sm3-specific-pages/…` as the source.
+`planning/` never deploys.
+
 **Status: planning only.** No page has been built. The eight execution steps are
 tracked as issues [#82–#89](https://github.com/wolfpackdata/wp-website/issues) with
 matching Wolfpack Tasks — the table in
