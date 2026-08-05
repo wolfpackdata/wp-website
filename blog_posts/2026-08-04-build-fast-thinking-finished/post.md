@@ -81,9 +81,23 @@ by, or sponsored by Native Instruments®, Spotify®, or Exportify.
 Traktor® is a registered trademark of Native Instruments GmbH.*
 
 <!--
-HELD FROM THE WIX PUSH. The case study this links is noindex, nofollow and is
-not deployed yet (wp-website#88, #89), so the link 404s today. Push this post
-only after that page is live. See wp-website#102.
+Wix draft post id: b6dd8bcc-63f5-4e7b-9813-4ca4a9954f2d
+Pushed 2026-08-04 as an unpublished draft. To update rather than duplicate,
+PATCH /blog/v3/draft-posts/b6dd8bcc-63f5-4e7b-9813-4ca4a9954f2d.
+
+Tag ids created for this post:
+  AI engineering  1e614466-776a-4b7e-9fa8-5da9e3eee0f3
+  case study      a17d4279-ca05-428e-9fb2-d5f69aa3f814
+Cover media id: e00ee6_42342c5cd72542628ca9952778ffc9d1~mv2.png
+
+This post was originally held from the push because the case study it links
+was noindex and undeployed (#102). #108 indexed that page and it is now live
+and returning 200, so the hold no longer applied and the post went up.
+
+Cover is sm3-assets/img/a01-track-playlist-matrix.png resized to 1200px wide,
+which is blog-cover width. Checked before upload: the capture shows track
+metadata only, no filesystem paths, unlike the A-08 original that is gitignored
+for leaking a Windows user directory.
 
 Trademark discipline is inherited from the SetMaster 3 pages: every visible
 Traktor / Native Instruments / Spotify carries the registered mark, Exportify
