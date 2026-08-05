@@ -78,11 +78,15 @@ in the deployed site — the paths are never rewritten.
   happens** (Ry, 2026-08-05). Windows left, macOS right, side by side above the
   fold on a laptop, authored in HTML so both columns are complete with JavaScript
   off. The hero is deliberately short for the same reason.
-- **The landing page carries exactly one CTA, the Download button in its header**
-  (Ry, 2026-08-05). No intro call, no rates, no portfolio, no "who made this"
-  block. Its only other outbound links are the download itself, the public repo,
-  and one link to the case study at the very bottom. Do not re-add the intro call
-  that `02-landing-page-design.md` §4.10 specced.
+- **The landing page carries exactly one solid CTA, the Download button in its
+  header** (Ry, 2026-08-05). **No intro call, no rates, no portfolio, no "who made
+  this" block** — do not re-add the intro call that `02-landing-page-design.md`
+  §4.10 specced. Four outbound destinations, all of them ghost links or the
+  download itself: the release artifacts, the public repo, one link to the case
+  study low on the page, and a bare **`wolfstrategyllc.com`** button above the
+  footer (Ry, 2026-08-05, same shape the portfolio page uses). The main-site button
+  is site chrome and does not open the page to funnel CTAs; the intro-call
+  prohibition is unchanged.
 - **Both pages use the repo's Roboto 700 / Montserrat stack** and a system mono,
   not the Inter and JetBrains Mono the design spec named. The two families are
   already self-hosted in `sm3-assets/fonts/`, and adopting two more would have

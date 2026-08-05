@@ -210,6 +210,11 @@ h1, h2, h3, h4 {
 .band { padding: 84px 0; scroll-margin-top: 70px; }
 .band--panel { background: var(--bg-panel); }
 .band--line { border-top: 1px solid var(--border-subtle); }
+/* One button and nothing else. Full band padding would read as an empty
+   section with a stray control in it. */
+.band--slim { padding: 40px 0; }
+
+.site { display: flex; justify-content: center; }
 
 .band__head { max-width: 62ch; margin-bottom: 40px; }
 .band__head .k { display: block; margin-bottom: 14px; }
@@ -230,7 +235,6 @@ h1, h2, h3, h4 {
   max-width: 16ch;
   margin-bottom: 24px;
 }
-.hero__title span { color: var(--text-secondary); }
 .hero__stand {
   font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
   color: var(--text-secondary);
