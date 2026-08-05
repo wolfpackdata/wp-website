@@ -4,10 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Direct-link only. Two differently-framed portfolio artifacts for the same
-     person indexed side by side reads badly, and this page speaks to the same
-     audience as hire/, from which it is linked. See planning/00-overview.md D-003. -->
-<meta name="robots" content="noindex, nofollow">
+<!-- INDEXED since 2026-08-04 (Ry). This page shipped noindex because
+     planning/00-overview.md D-003 had it inherit hire/'s direct-link posture:
+     same audience, linked from there, so it followed the résumés' rules.
+
+     That premise no longer holds. The page is now linked from the public
+     indexed portfolio page and from a public blog post (#103), so its audience
+     is no longer just hiring managers, and it was the only thing in that set
+     that is a case study rather than a résumé. Keeping it out of search bought
+     nothing and hid a finished piece of work.
+
+     Note this is now the intended end state for BOTH SetMaster 3 pages: D-003
+     already had the landing page indexed, so when /setmaster3/ ships the two
+     will both be indexable and should be given distinct titles and
+     descriptions, one a product page and one a narrative. -->
+<meta name="robots" content="index, follow">
 
 <title>SetMaster 3: From a Spreadsheet on a Plane to a Robust Application · Case Study</title>
 <meta name="description" content="Data engineering meets DJ engineering. A professional DJ built his own set preparation tool three times in three years. The third is a specified, tested, offline web application.">
@@ -683,17 +694,26 @@
           SetMaster 3 is free, MIT licensed, and available now for Windows. The source
           is public and every release publishes a SHA-256 hash alongside the artifact.
         </p>
+        <!-- Reworded with the download button, 2026-08-04. This sentence used to
+             offer "download it and open it against your own collection", which
+             was the button's copy and now has nothing behind it. Restore the
+             download half when /setmaster3/ ships. -->
         <p class="close__lede">
-          The smallest next step is to look at it. Read the code, or download it and
-          open it against your own collection, which it will not modify.
+          The smallest next step is to read the code. It is all public, including the
+          matching heuristics and the read-only parser this piece describes.
         </p>
         <p class="close__lede">
           If you are hiring for AI engineering, data platform, or technical operations
           work, the fastest way to talk about any of this is a call.
         </p>
+        <!-- The "Download SetMaster 3" ghost button was removed 2026-08-04. It
+             pointed at /setmaster3/, the product landing page, which does not
+             exist yet and was returning 404 on the live page. "Source on GitHub"
+             moved up into its slot rather than a placeholder going in: a dead
+             button is worse than one fewer button. Put the download back when
+             /setmaster3/ ships. -->
         <div class="close__ctas">
           <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Ryan</a>
-          <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/setmaster3/">Download SetMaster 3</a>
           <a class="btn btn--ghost" href="https://github.com/wolfpackdata/setmaster" target="_blank" rel="noopener">Source on GitHub</a>
         </div>
 

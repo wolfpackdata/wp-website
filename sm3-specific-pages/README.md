@@ -8,7 +8,7 @@ and whose public, downloadable mirror is
 | Page | Folder | Public URL | Audience | Robots |
 |---|---|---|---|---|
 | **Landing page** ("hype page") | `setmaster3/` | `intake.wolfstrategyllc.com/setmaster3/` | Hiring managers first, advanced/technical DJs second | **indexed** |
-| **Case study** | `setmaster3-case-study/` | `intake.wolfstrategyllc.com/setmaster3-case-study/` | Hiring managers | **noindex, nofollow** |
+| **Case study** | `setmaster3-case-study/` | `intake.wolfstrategyllc.com/setmaster3-case-study/` | Hiring managers, plus clients reaching it from the portfolio page | **indexed** since 2026-08-04 (was `noindex, nofollow`) |
 
 **Status: planning only.** No page has been built. The eight execution steps are
 tracked as issues [#82–#89](https://github.com/wolfpackdata/wp-website/issues) with

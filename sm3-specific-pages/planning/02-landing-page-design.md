@@ -519,7 +519,10 @@ The only page in this folder that gets any of this.
   available, and it is currently empty.
 - Real `alt` text on every screenshot describing *what the screen shows*, not
   "screenshot of SetMaster 3."
-- **No sitemap entry for the case study** — it is noindex.
+- ~~No sitemap entry for the case study, it is noindex.~~ **The case study went
+  indexed on 2026-08-04** (D-003 revised), so it belongs in a sitemap on the same
+  terms as this page. Note this repo has no sitemap at all today, so there is
+  nothing to add it to yet.
 
 ---
 
