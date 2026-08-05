@@ -9,8 +9,8 @@ tags: [financial modeling, startups]
 featured: false
 ---
 
-Better than nine out of ten of the founders, directors, and managers I talk to
-hold the same idea about what a financial model is for. It's for the accountant.
+Most of the business leaders I talk to hold the same idea about what a financial
+model is for. It's for the accountant.
 It's for the raise. And it isn't worth much time until the business is far
 enough along to make it correct.
 
