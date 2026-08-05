@@ -39,13 +39,13 @@ FastAPI and a Python pipeline behind React 18, Vite, and TypeScript. 206 backend
 
 The interesting constraint was the port. Version two carried years of accumulated matching and normalization logic, every rule of it a bug hit during real work. So restructuring the stages was allowed and changing the behavior was not. The ported pipeline runs against a real 6,810 track collection and its output is compared to the old engine's byte for byte. Anything that changes the result fails the build, including changes that look like improvements.
 
-The release bundles its own relocatable CPython. No Python install, no Node, no terminal. Double click a launcher and the UI opens in your browser on localhost.
+The release bundles its own relocatable CPython. No Python install, no Node, no terminal. On Windows you double click a launcher. On macOS you open the app from Applications. Either way the UI opens in your browser on localhost.
 
 Public repo, sha256 published with the release.
 
 ## What Is Not Ready
 
-Windows is available now. The Mac build is written and structurally fixed, and it is waiting on a Mac to build and verify it. Rekordbox® import is planned with no timeline. Perform Mode and the natural language filter bar are specified and deferred, not abandoned.
+Windows and macOS are both available now. The Mac build arrived on 2026-08-05 as a signed, notarized app inside a disk image: drag it to Applications and open it, with no terminal and no security detour. It needs Apple silicon and macOS 14 or later, and Intel Macs are not supported. The end to end suite and the golden master pipeline tests have never been run on macOS, and the Mac artifact passed its own clean install check instead. Rekordbox® import is planned with no timeline. Perform Mode and the natural language filter bar are specified and deferred, not abandoned.
 
 SetMaster 3 contains no AI. It was built with it, which is a different claim.
 
@@ -64,16 +64,26 @@ yet, so the first push is a POST to /blog/v3/draft-posts, not a PATCH.
 
 TWO THINGS TO SETTLE BEFORE PUSHING:
 
-1. The CTA is dead today. https://intake.wolfstrategyllc.com/setmaster3/ is
-   unbuilt and 404s (#85, #86; sm3-specific-pages/README.md). The sibling post
-   was held from the push for exactly this reason once already, when its case
-   study was still undeployed, and went up only after #108 made the page return
-   200. Same gate applies here.
-2. Ry's brief says the landing page will carry downloads and install
-   instructions for BOTH platforms. Claims ledger C-03 is a hard rule against
-   claiming macOS until a Mac artifact exists, so this post says "Windows is
-   available now" and describes the Mac build as waiting. When the Mac artifact
-   ships, that paragraph is the line to update.
+1. The CTA is still dead. https://intake.wolfstrategyllc.com/setmaster3/ is
+   BUILT as of 2026-08-05 (#85, #86, PRs #138/#140/#142) but NOT DEPLOYED, so
+   it still 404s. The sibling post was held from the push for exactly this
+   reason once already, when its case study was still undeployed, and went up
+   only after #108 made the page return 200. Same gate applies here: push this
+   only once /setmaster3/ returns 200.
+2. The test counts in "For the Engineers" are the v3.0.3 figures. v3.0.4
+   reports backend 199 passed / 3 skipped and frontend 624 passed / 5 skipped,
+   and backend counts vary by machine because collection-dependent tests skip
+   when the real Traktor collection is absent. Get the real numbers from a run
+   before pushing. The landing page carries the same total (867) in two places
+   and the case study once, so all four move together.
+
+SETTLED 2026-08-05: macOS. This note previously held item 2 open on C-03, the
+hard rule against claiming macOS before a Mac artifact existed. v3.0.4 met that
+condition: SetMaster 3 was built and acceptance-tested on a Mac and ships as a
+signed, notarized .app inside a .dmg. "What Is Not Ready" now says both
+platforms are available and carries the narrower limits that replaced the old
+claim: Apple silicon, macOS 14 or later, no Intel, and suites never run on
+macOS. Do not round that up to plain "macOS support" in a later edit.
 
 TITLE is Ry's, given verbatim in the brief. The README's rule that a post
 carries its case study's title does not bind here: this is a product
@@ -99,7 +109,10 @@ section 1. Nothing new is asserted here. Specifically:
   6,810 tracks . build table (Build #1 acceptance collection)
   first public release 2026-07-31, MIT, sha256 . build table
   three years of professional use since 2023 . C-07
-  Windows now / Mac waiting . C-03, phrased in its approved form
+  Windows and macOS both available . v3.0.4 changelog and fix report, with
+    C-03 narrowed rather than lifted: Apple silicon, macOS 14 or later, no
+    Intel, suites never run on macOS
+  signed, notarized .app inside a .dmg . v3.0.4 changelog, issue #214
   Rekordbox planned, Perform Mode deferred . history table
   "contains no AI, built with it" . prohibitions table, the easiest mistake to make
 
