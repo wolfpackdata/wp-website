@@ -259,6 +259,26 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   border-radius: var(--radius);
 }
 
+/* Keep a delivered capture at its own proportions instead of cropping it into
+   the frame's nominal ratio.
+
+   Needed because the planned ratios and the real captures disagree. SetMaster
+   is a wide desktop-class UI and its screenshots land near 2:1 — A-01 and A-02
+   at 2.10, A-08 at 1.98 — against frames speced at 16:9 and 4:3. `cover` would
+   have solved that by cropping the sides, which is the one thing these shots
+   cannot afford: A-01's whole point is scale and its open filter panel sits at
+   the right edge, and A-08 at 4:3 would have lost a third of its width.
+
+   So the frame yields to the image rather than the reverse. No aspect-ratio, no
+   cover, nothing cropped. The `.ph` placeholders keep their nominal ratios,
+   because a placeholder has no intrinsic size to defer to.
+
+   With aspect-ratio auto and the global `img { height: auto }`, the box already
+   matches the image exactly, so object-fit is a no-op here. It is set to
+   `contain` rather than `fill` anyway: if a future capture arrives at a
+   different size, contain letterboxes it and fill would silently stretch it. */
+.shot--natural { aspect-ratio: auto; object-fit: contain; }
+
 .figure figcaption {
   margin-top: 12px;
   font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;

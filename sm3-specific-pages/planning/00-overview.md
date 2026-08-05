@@ -284,9 +284,16 @@ Remaining:
    is *"people who want to hire me"*, but the aesthetic is *"if Native Instruments
    owned it."* Recommendation: product-first page, one authored moment low on it,
    linking the case study and `hire/`.
-5. **Which version of SetMaster the flight-to-LA anecdote used** (`01-…` S8).
-   Ry supplied the anecdote 2026-07-31 and it now anchors the case study's S8. If
-   it was **SM3**, one extra clause turns the deferred Perform Mode from a listed
-   limitation into a considered trade — alt-tabbing to the set editor already
-   covers the live case.
-6. **Titles and headlines** — `01-…` §10 and `02-…` §10.
+5. ~~**Which version of SetMaster the flight-to-LA anecdote used**~~ —
+   **CLOSED (Ry, 2026-07-31): SetMaster 2.** It anchors the case study's S8, where
+   it now argues *for* the deferred Perform Mode. On the landing page it stays,
+   naming no version, because the story does not depend on one (`02-…` §4.4).
+6. **Titles and headlines.** The **case study title is closed** (`01-…` §10):
+   *"SetMaster 3: From a Spreadsheet on a Plane to a Robust Application."* The
+   **landing headline is still open** (`02-…` §10).
+7. **Which favicon the landing page carries.** Ry's instruction of 2026-07-31 was
+   the Wolfpack mark on every page in this repo, and it is now on all six built
+   pages. The landing page is not built yet, and `03-…` §6 specifies the
+   **application's own** favicon for it, so that the browser tab matches the running
+   app. Both readings are defensible and they cannot both apply. Ry decides before
+   the landing page ships.
