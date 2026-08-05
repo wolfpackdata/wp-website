@@ -55,7 +55,13 @@ copy. The canonical public URLs:
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
+| `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **`noindex`, direct-link only** | 2026-08-04 (#104) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | **not yet deployed** (#95) |
+
+`sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
+`sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
+folder:** `sm3-assets/img/` holds one gitignored capture that leaks a Windows user directory,
+and a folder mirror would publish it. `git ls-files sm3-specific-pages/…` is the safe source.
 
 `hire/` deploys as **one folder**, not two — both pages share its `assets/`.
 
