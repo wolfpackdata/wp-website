@@ -18,19 +18,20 @@
    decorative. The restraint is the design.
 
    Coral discipline, in one place so it can't drift. Coral is allowed on:
-     1. the nav CTA                    5. the closing contact CTA
-     2. the hero CTA                   6. link hover
-     3. the hero rule                  7. the focus ring
-     4. the case-study IN PREPARATION chip
+     1. the nav CTA                    4. the case-study IN PREPARATION chip
+     2. the hero CTA                   5. link hover
+     3. the hero rule                  6. the focus ring
    Nothing else. Not a section heading, not an app name, not a figure. Where
    coral is a FILL, text on it is navy (5.8:1), never white (fails AA). Both
-   coral fills here (.nav__cta, .btn--solid) set navy text; the other five uses
+   coral fills here (.nav__cta, .btn--solid) set navy text; the other four uses
    are coral ON navy, which is the safe direction.
 
-   Back to seven as of 2026-08-04: an eighth, temporary use carried the hero
-   placeholder's warning label, and it went away with the placeholder when Ry
-   wrote the real copy (D-004). Use 4 is currently unused, since both case cards
-   are live links, and the chip stays for the next unpublished study.
+   Six, down from seven on 2026-08-04, and the count has only ever gone down.
+   An eighth, temporary use carried the hero placeholder's warning label and went
+   away with the placeholder when Ry wrote the real copy (D-004); the closing
+   contact CTA went when Ry cut that whole block (D-013). Use 4 is currently
+   unused, since both case cards are live links with real images, and the chip
+   stays for the next unpublished study.
    ========================================================================== */
 
 :root {
@@ -285,19 +286,14 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   padding: 5px 12px;
 }
 
-/* ==========================================================================
-   Closing block — one CTA, the 30-minute intro call. The repo-wide book-first
-   rule: no intake-form link, no résumé download, no second funnel.
-   ========================================================================== */
+/* The closing block that lived here is gone too, removed 2026-08-04 (Ry, D-013),
+   which took .close, .close__title, and .close__lede with it — the same reason
+   the coda rules below went, and in the same afternoon. The page now ends on the
+   case studies, and the intro call reaches the reader through the nav CTA and the
+   hero CTA instead. The equivalent rules are still in hire.css if a future page
+   wants a closing panel; do not re-add one here without asking Ry.
 
-.close {
-  background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 40px 42px;
-}
-.close__title { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 12px; }
-.close__lede { color: var(--muted); max-width: 62ch; margin-bottom: 28px; }
-
-/* The .softcta / .section--coda rates band that lived here was removed
+   The .softcta / .section--coda rates band that lived here was removed
    2026-08-04 (Ry) along with the section that used it, so these rules were
    dead. The device is still in hire.css if a future section wants it.
    See design plan D-011. */
@@ -358,9 +354,8 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 @media (max-width: 640px) {
   .hero__inner { padding: 52px 0 46px; }
   .section { padding: 56px 0; }
-  .close { padding: 30px 24px; }
   .app, .case { padding: 22px 20px; }
-  .hero__ctas .btn, .close .btn { width: 100%; text-align: center; }
+  .hero__ctas .btn { width: 100%; text-align: center; }
   /* Run-in meta is a desktop affordance: it buys width, which phones don't
      have. Here vertical space is the cheap axis, so the meta drops to its own
      line and the button is allowed to wrap rather than overflow. */

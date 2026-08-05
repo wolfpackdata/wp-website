@@ -40,7 +40,8 @@
     <ul class="nav__links">
       <li><a href="#applications">Applications</a></li>
       <li><a href="#cases">Case studies</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <!-- No Contact item: the #contact section it pointed at was cut (D-013), and
+           the nav's own coral Book a call button is the contact route. -->
     </ul>
     <a class="nav__cta" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book a call</a>
   </div>
@@ -175,7 +176,12 @@
         </article>
 
         <article class="case reveal" id="case-fin-model">
-          <div class="case__shot case__shot--empty" aria-hidden="true">Figures in preparation</div>
+          <!-- Was the "Figures in preparation" panel until 2026-08-04. Honest while
+               the case study had no figure; it has one now (#113), so the card
+               carries it. Built by that case study's own generator at card width
+               rather than by re-encoding the page-sized JPEG, so this file is a
+               sibling of the hero and not a copy of it. -->
+          <img class="case__shot" src="img/case-fin-model.jpg" alt="" aria-hidden="true" width="1400" height="788" loading="lazy">
           <div>
             <span class="case__num"></span>
             <h3 class="case__title">The Model Is Your Business Beacon: a financial model as an operating tool</h3>
@@ -187,39 +193,30 @@
     </div>
   </section>
 
-  <!-- ========== Closing block ==========
-       ONE CTA, the 30-minute intro call, per the repo-wide book-first rule.
-       No intake-form link, no résumé download, and deliberately no link to
+  <!-- ========== The page ends on the case studies ==========
+       Two closing sections stood here and Ry cut both, on the same day, in that
+       order (design plan D-011 then D-013).
+
+       First the rates coda: a quiet .softcta band linking /rates_public/, argued
+       for on the grounds that half this page's audience is a prospective client.
+       Then the closing "Start with a call" block itself, whose header and lede
+       had been rewritten hours earlier (D-012) — the rewrite was not the problem,
+       the block was.
+
+       What that leaves is deliberate rather than an omission. The page still
+       carries the intro call twice, in the nav and in the hero, both pointing at
+       the same 30-minute calendar, so the book-first rule holds and there is
+       still exactly one destination on the whole page. The last thing a reader
+       now meets is a case study and a button to read it, which is the strongest
+       thing on the page to end on.
+
+       Still no intake-form link, no résumé download, and deliberately no link to
        either hire/ page — those are noindex and direct-link only, and a public
-       indexed page linking them defeats that in one step (design plan D-003). -->
-  <section class="section section--line" id="contact" aria-labelledby="contact-title">
-    <div class="wrap">
-      <div class="close reveal">
-        <!-- Rewritten 2026-08-04: Ry's verdict on the previous header and lede
-             was that both were terrible, and he was right. "The smallest next
-             step is a conversation" took a structural instruction from
-             docs/ryan-blog-tone.md §7 and used it as a headline, which is
-             consultant-speak, and "whether any of the work above maps onto it"
-             was doing the same. The CTA below is unchanged, deliberately. -->
-        <h2 class="close__title" id="contact-title">Start with a call</h2>
-        <p class="close__lede">Thirty minutes on what you are building and what is in
-          the way. If nothing above fits the problem, I will say so on the call
-          rather than talk around it.</p>
+       indexed page linking them defeats that in one step (D-003).
 
-        <div class="hero__ctas">
-          <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book an intro call <span class="btn__meta">30 minutes</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- The rates coda that sat here was removed 2026-08-04 (Ry). It was a quiet
-       .softcta band linking /rates_public/, argued for on the grounds that half
-       this page's audience is a prospective client. Ry cut it, so the closing
-       block is now the last thing on the page and the intro call is the only
-       destination anywhere on it. The .softcta and .section--coda rules came out
-       of css/portfolio.css with it; the device still lives in hire.css if a
-       future section wants it. See design plan D-011. -->
+       The .close, .close__title, and .close__lede rules came out of
+       css/portfolio.css with the block, the way .softcta and .section--coda left
+       with the coda. Do not re-add a closing section without asking Ry. -->
 
 </main>
 
