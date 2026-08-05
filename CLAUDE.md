@@ -229,13 +229,18 @@ Conventions the page must keep:
   and AI workflows built and evolving, with some case studies below."* It addresses **neither
   audience directly** — it names the work, which reads the same to a client and an employer.
   Don't re-point it at one of them. Coral is down to **six** uses.
-- **The page ends on the case studies.** The closing "Start with a call" section was cut
-  2026-08-04 (#115, plan D-013), the same day its copy was rewritten — the rewrite was fine,
-  the block was not wanted. The intro call still reaches the reader twice, through the nav CTA
-  and the hero CTA, so the one-destination rule below is untouched. Don't re-add a closing
-  section, and don't restore the `#contact` nav item; there is no `#contact` section left for
-  it to point at. Both case cards now carry a real image, the financial model one using the
-  case study's beacon hero built at card width.
+- **The page ends on the case studies, then a bare intro-call button.** The closing
+  "Start with a call" section was cut 2026-08-04 (#115, plan D-013), the same day its copy was
+  rewritten — the rewrite was fine, the block was not wanted. **Don't re-add a closing
+  *section*.** But a closing *button* is now correct: on 2026-08-05 (#130) Ry moved the hero's
+  "Book an intro call" button to just above the footer, deliberately bare — no heading, no
+  lede, no section chrome — so the reader meets the work before the ask. **That button is not
+  a D-013 violation; leave it there.** `.hero__ctas` left with it, and the coral ration is
+  still six because the button moved rather than being duplicated. The intro call still
+  reaches the reader twice, through the nav CTA and this button, so the one-destination rule
+  below is untouched. Don't restore the `#contact` nav item; there is no `#contact` section
+  left for it to point at. Both case cards carry a real image, the financial model one using
+  the case study's beacon hero built at card width.
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.

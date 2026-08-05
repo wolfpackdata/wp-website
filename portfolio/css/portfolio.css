@@ -19,7 +19,10 @@
 
    Coral discipline, in one place so it can't drift. Coral is allowed on:
      1. the nav CTA                    4. the case-study IN PREPARATION chip
-     2. the hero CTA                   5. link hover
+     2. the closing intro-call button  5. link hover
+        (was the hero CTA until
+         2026-08-05, #130 — moved,
+         not duplicated)
      3. the hero rule                  6. the focus ring
    Nothing else. Not a section heading, not an app name, not a figure. Where
    coral is a FILL, text on it is navy (5.8:1), never white (fails AA). Both
@@ -176,7 +179,9 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   padding-bottom: 18px;
   border-bottom: 3px solid var(--coral);   /* the résumé's signature rule */
 }
-.hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+/* .hero__ctas is gone: the hero's only button moved to the foot of the page on
+   2026-08-05 (#130), leaving the wrapper empty, so it left with the button —
+   the same way .close and .softcta left with the blocks they served. */
 
 /* The hero copy placeholder (.ph-copy) that lived here was deleted 2026-08-04
    when Ry wrote the real headline and standfirst, which is exactly what D-004
@@ -212,6 +217,13 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 
 .section { padding: 76px 0; scroll-margin-top: 70px; }
 .section--line { border-top: 1px solid var(--line); }
+
+/* Closing intro-call button (#130). Bare by instruction — no heading, no lede,
+   no section chrome. It still takes .section's vertical rhythm and pairs with
+   .section--line, so it reads as the page's last block of content rather than
+   something bolted onto the footer. The footer supplies its own top border and
+   padding below this. */
+.endcta { padding: 76px 0; }
 .section__head { max-width: 720px; margin-bottom: 44px; }
 .section__kicker { display: block; margin-bottom: 12px; }
 .section__title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
@@ -359,7 +371,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   .hero__inner { padding: 52px 0 46px; }
   .section { padding: 56px 0; }
   .app, .case { padding: 22px 20px; }
-  .hero__ctas .btn { width: 100%; text-align: center; }
+  .endcta .btn { width: 100%; text-align: center; }
   /* Run-in meta is a desktop affordance: it buys width, which phones don't
      have. Here vertical space is the cheap axis, so the meta drops to its own
      line and the button is allowed to wrap rather than overflow. */
