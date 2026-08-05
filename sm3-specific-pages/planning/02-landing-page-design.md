@@ -157,8 +157,13 @@ tightened**:
    by, or sponsored by Native Instruments®, Spotify®, or Exportify. Traktor® is a
    registered trademark of Native Instruments GmbH. Spotify® is a registered
    trademark of Spotify AB."*
-4. **No claim of macOS support** until an artifact exists and the checklist passes
-   (C-03). The page says what is true, in the download block, in one line.
+4. ~~**No claim of macOS support** until an artifact exists and the checklist
+   passes (C-03).~~ **Condition met 2026-08-05 with v3.0.4**, which was built and
+   acceptance-tested on a Mac and ships as a signed, notarized `.app` inside a
+   `.dmg`. The rule does not disappear, it narrows: the page claims **Apple
+   silicon, macOS 14 or later, Intel not supported**, and says in the roadmap band
+   that the suites have never been run on macOS. Rounding that up to "macOS
+   support" is the same failure C-03 was written to prevent.
 5. **No invented adoption.** No user counts, no testimonials, no "trusted by," no
    star ratings, no fake press logos. The page has real proof — a public release
    with a sha256, a passing test suite, three years of professional use — and it
@@ -665,20 +670,27 @@ with the other finished pages in this repo.
 |---|---|---|---|
 | B-01 | **Install is band 2, directly under a short hero.** | Download was band 8 of eleven (§4.8). | Ry's ordering. The page's job is the download, so the conversion moment is above the fold on a laptop rather than eight screens down. The hero lost its video frame to make room. |
 | B-02 | **The install band is two authored columns, not an OS-detecting component.** | §6.2's `navigator.userAgentData` detection promoting one platform into a primary slot. | Ry asked for both platforms visible side by side. §6.3 already said the platform table is the base case and detection is only a promotion, so dropping the promotion leaves the base case, which is the honest, JavaScript-free version. The page now ships **no** platform-detection JavaScript at all. |
-| B-03 | **The macOS column carries steps, marked pending.** | §6.2's macOS slot was one honest sentence plus a Watch-the-repo button. | A two-column install with an empty right column is not an install layout. The column keeps the honest sentence and the ghost button, and adds the documented `.command` launch contract from the repository at reduced emphasis, so a Mac reader learns what installing will involve. **C-03 is intact:** nothing claims macOS support, the chip reads *Not yet published*, and the roadmap band repeats it. |
+| B-03 | ~~**The macOS column carries steps, marked pending.**~~ **Superseded the same day: macOS is a real download.** | §6.2's macOS slot was one honest sentence plus a Watch-the-repo button. | Built as a pending column, then rewritten hours later when **v3.0.4 shipped the signed `.dmg`** (2026-08-05). The column now carries the four disk-image steps, a `Signed and notarized` chip, and the Apple silicon and macOS 14 requirement, and the orange fill ration grew to four because both platforms are now real downloads. C-03 narrowed rather than lapsed: see §3.4. |
 | B-04 | **No video, and no video placeholder.** | §4.2 and D-007 made the hero video the page's centre of gravity, with a designed placeholder until it existed. | "Keep it simple", plus a full-width dashed frame at the top of the page would push the install band under the fold, which is the one thing B-01 exists to prevent. The four real screenshots carry the visual load. When Ry captures video, the hero frame goes back per §9. |
 | B-05 | **Band 10, "Who made this", is cut.** | Portrait, two sentences, and links to the case study, the intro call, and `wolfstrategyllc.com` (§4.10). | Ry: no CTA to book a call or see other work beyond the header button. The page now has one CTA, the nav Download, and three outbound destinations total: the release asset, the public repo, and the case study. The main-site link went with it, so the footer carries the repo, the licence, and the version only. |
 | B-06 | **Roboto 700 / Montserrat / system mono, not Inter / JetBrains Mono.** | §2's type stack. | "Fit stylistically with the other final pages." Both families are already self-hosted in `sm3-assets/fonts/`; Inter and JetBrains Mono would have meant two more self-hosted families and would have made this the only page in the repo with its own typography. The **palette stays SetMaster 3's own** per D-004, which is what makes it read as a product surface. |
 | B-07 | **Release facts are authored in HTML with a checklist comment**, not read from one inline object. | §6.4. | Populating the download button from a JSON object needs JavaScript, and §6.3 requires the download band to be complete without it. The comment at the top of `index.html` lists the five places a release touches. The §6.4 prohibition on fetching `api.github.com` at runtime stands. |
 | B-08 | **Purple is the section eyebrow labels and the wordmark numeral**, headings stay white. | §2 put section headings in a brand accent. | White headings on near-black match the case study and every other page here; purple eyebrows give the accent its NI-panel job without spending it on 1.5rem of type per band. The stylesheet's ration comment states what is actually done. |
+| B-09 | **The transition-row table is cut. §4.3 is copy only.** | §4.3 called it the most important band on the page and predicted it would be cut for being "not marketing." | Ry cut it, 2026-08-05. It was cut for being an image in a section that reads better without one, which is not the reason §4.3 defended against, and the copy beat it carried stays. Its CSS came out of `sm3-landing.css` with it rather than being left dead, so **magenta and cyan are now absent from this page entirely** and their pair rule holds by absence. The case study still renders the table from its own stylesheet, so nothing was lost from the project. |
 
 **Unchanged and load-bearing:** D-004's palette, D-006's trademark discipline (® on
 every visible Traktor, Native Instruments, Spotify, and Rekordbox; Exportify plain;
-zero NI assets; the unaffiliated line in the footer of the page), C-03, §4.3's
-HTML transition row, §4.7's four claim cards, §4.9's roadmap band, §7's SEO set,
-§8's motion and no-external-request rules, and §11's voice, which the built page
-passes at zero em dashes, zero exclamation points, zero rhetorical questions, and
-one apostrophe, a possessive.
+zero NI assets; the unaffiliated line in the footer of the page), C-03 **as narrowed
+by v3.0.4** (§3.4), §4.7's four claim cards, §4.9's roadmap band, §7's SEO set,
+§8's motion and no-external-request rules, and §11's voice, which both pages still
+pass at zero em dashes, zero exclamation points, zero rhetorical questions, and zero
+contractions.
+
+**Blocking the deploy, and only the deploy:** the page links two v3.0.4 artifacts
+by exact filename, and the public mirror is still a release behind, carrying only
+the Windows zip. **Publish v3.0.4 at `wolfpackdata/setmaster` with both artifacts
+attached before this page ships**, or both buttons 404. The warning is repeated at
+the top of `index.html`, which is where a deploy session will actually be looking.
 
 **Still open after the build:** the hero video and any further captures (§12.3),
 the favicon question (`00-overview.md` §9.7 — the page ships the Wolfpack mark, to
