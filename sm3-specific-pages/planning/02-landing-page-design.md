@@ -5,12 +5,17 @@ The "hype page." Ry's creative brief, verbatim:
 > *"More like if Native Instruments owned SetMaster 3 and had a landing page for
 > it, and they were showing its origin story and its awesome functionality."*
 
+**Built 2026-08-05.** The page exists at `setmaster3/index.html` and this spec is now a
+record of the intent behind it rather than a plan for it. **Read §13 before editing the
+page**: Ry gave new instructions on the day it was built, and they override several
+sections here.
+
 - **Page:** `intake.wolfstrategyllc.com/setmaster3/` · **indexed**
 - **Audience:** people who might hire Ry first; advanced and technical DJs second.
   **Not beginners** — Ry was explicit. *"It's supposed to be impressive as well."*
 - **Depth:** highlights drawn from the case-study material, with *"the history
   just being interesting"* — not a second telling of the case study.
-- **Status:** spec. Not built.
+- **Status:** built 2026-08-05, not deployed. §13 carries what changed.
 
 ---
 
@@ -640,3 +645,42 @@ All nine claim conflicts are closed (`04-claims-ledger.md` §2). Remaining:
 6. ~~Confirm the anecdote cut~~ — **CLOSED.** Ry reinstated it (§4.4): which
    version the story used does not matter to it. The aside names no version and
    no feature.
+
+---
+
+## 13. What the built page does differently (2026-08-05)
+
+Written at build time, not reconstructed after it. Ry's instruction on the day was
+short and it changes the shape of the page, so it is recorded here rather than left
+as an undocumented difference between a spec and a file.
+
+**His instruction, in substance:** design and build it, keep it simple; the top of
+the page is a side-by-side two-column install, Windows left and Mac right; follow
+this spec the rest of the way; the goal is the download; below the install put a
+feature list and screenshots; at the bottom link the case study; no CTA to book a
+call or see other work beyond the button in the header; it must fit stylistically
+with the other finished pages in this repo.
+
+| # | Change | Was | Why |
+|---|---|---|---|
+| B-01 | **Install is band 2, directly under a short hero.** | Download was band 8 of eleven (§4.8). | Ry's ordering. The page's job is the download, so the conversion moment is above the fold on a laptop rather than eight screens down. The hero lost its video frame to make room. |
+| B-02 | **The install band is two authored columns, not an OS-detecting component.** | §6.2's `navigator.userAgentData` detection promoting one platform into a primary slot. | Ry asked for both platforms visible side by side. §6.3 already said the platform table is the base case and detection is only a promotion, so dropping the promotion leaves the base case, which is the honest, JavaScript-free version. The page now ships **no** platform-detection JavaScript at all. |
+| B-03 | **The macOS column carries steps, marked pending.** | §6.2's macOS slot was one honest sentence plus a Watch-the-repo button. | A two-column install with an empty right column is not an install layout. The column keeps the honest sentence and the ghost button, and adds the documented `.command` launch contract from the repository at reduced emphasis, so a Mac reader learns what installing will involve. **C-03 is intact:** nothing claims macOS support, the chip reads *Not yet published*, and the roadmap band repeats it. |
+| B-04 | **No video, and no video placeholder.** | §4.2 and D-007 made the hero video the page's centre of gravity, with a designed placeholder until it existed. | "Keep it simple", plus a full-width dashed frame at the top of the page would push the install band under the fold, which is the one thing B-01 exists to prevent. The four real screenshots carry the visual load. When Ry captures video, the hero frame goes back per §9. |
+| B-05 | **Band 10, "Who made this", is cut.** | Portrait, two sentences, and links to the case study, the intro call, and `wolfstrategyllc.com` (§4.10). | Ry: no CTA to book a call or see other work beyond the header button. The page now has one CTA, the nav Download, and three outbound destinations total: the release asset, the public repo, and the case study. The main-site link went with it, so the footer carries the repo, the licence, and the version only. |
+| B-06 | **Roboto 700 / Montserrat / system mono, not Inter / JetBrains Mono.** | §2's type stack. | "Fit stylistically with the other final pages." Both families are already self-hosted in `sm3-assets/fonts/`; Inter and JetBrains Mono would have meant two more self-hosted families and would have made this the only page in the repo with its own typography. The **palette stays SetMaster 3's own** per D-004, which is what makes it read as a product surface. |
+| B-07 | **Release facts are authored in HTML with a checklist comment**, not read from one inline object. | §6.4. | Populating the download button from a JSON object needs JavaScript, and §6.3 requires the download band to be complete without it. The comment at the top of `index.html` lists the five places a release touches. The §6.4 prohibition on fetching `api.github.com` at runtime stands. |
+| B-08 | **Purple is the section eyebrow labels and the wordmark numeral**, headings stay white. | §2 put section headings in a brand accent. | White headings on near-black match the case study and every other page here; purple eyebrows give the accent its NI-panel job without spending it on 1.5rem of type per band. The stylesheet's ration comment states what is actually done. |
+
+**Unchanged and load-bearing:** D-004's palette, D-006's trademark discipline (® on
+every visible Traktor, Native Instruments, Spotify, and Rekordbox; Exportify plain;
+zero NI assets; the unaffiliated line in the footer of the page), C-03, §4.3's
+HTML transition row, §4.7's four claim cards, §4.9's roadmap band, §7's SEO set,
+§8's motion and no-external-request rules, and §11's voice, which the built page
+passes at zero em dashes, zero exclamation points, zero rhetorical questions, and
+one apostrophe, a possessive.
+
+**Still open after the build:** the hero video and any further captures (§12.3),
+the favicon question (`00-overview.md` §9.7 — the page ships the Wolfpack mark, to
+match the other five built pages), and the OG image, which is currently the set
+editor screenshot rather than the 1200×630 composite §7 asks for.

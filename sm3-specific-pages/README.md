@@ -10,21 +10,25 @@ and whose public, downloadable mirror is
 | **Landing page** ("hype page") | `setmaster3/` | `intake.wolfstrategyllc.com/setmaster3/` | Hiring managers first, advanced/technical DJs second | **indexed** |
 | **Case study** | `setmaster3-case-study/` | `intake.wolfstrategyllc.com/setmaster3-case-study/` | Hiring managers, plus clients reaching it from the portfolio page | **indexed** since 2026-08-04 (was `noindex, nofollow`) |
 
-**Deployed 2026-08-04.** The case study is live at
+**Case study deployed 2026-08-04** at
 `https://intake.wolfstrategyllc.com/setmaster3-case-study/` (#104, re-deployed the same day
-with #108 for the indexing flip). The landing page at `/setmaster3/` is **still unbuilt and
-404s** — nothing links it any more, since the case study's download button was removed for
-exactly that reason.
+with #108 for the indexing flip).
+
+**Landing page built 2026-08-05 (#85, #86) and NOT deployed.** `/setmaster3/` still 404s
+in production until the folder is copied into `ai-coaching-intake`. Two things wait on that
+deploy and neither has been done: the case study's "Where to Find It" block still has its
+download button removed with a comment saying to restore it when `/setmaster3/` ships, and
+the public repo's `homepage` field is still empty.
 
 **Deploying this folder: copy the git-tracked file list, never mirror the folder.**
 `sm3-assets/img/` holds one gitignored capture that leaks a Windows user directory, and a
 folder mirror would publish it. Use `git ls-files sm3-specific-pages/…` as the source.
 `planning/` never deploys.
 
-**Status: planning only.** No page has been built. The eight execution steps are
-tracked as issues [#82–#89](https://github.com/wolfpackdata/wp-website/issues) with
-matching Wolfpack Tasks — the table in
-[`planning/00-overview.md`](planning/00-overview.md) §7 maps them.
+**Status: both pages built.** The eight execution steps are tracked as issues
+[#82–#89](https://github.com/wolfpackdata/wp-website/issues) with matching Wolfpack Tasks —
+the table in [`planning/00-overview.md`](planning/00-overview.md) §7 maps them. Step 8, the
+ship to intake, is the one still open for the landing page.
 
 The plan set lives in [`planning/`](planning/) and is the thing to read first:
 
@@ -70,6 +74,20 @@ in the deployed site — the paths are never rewritten.
   dark NI-inspired palette, the case study uses the Wolfpack navy/coral system it
   shares with `hire/`. `00-overview.md` §4 is the rule that keeps that from
   becoming an accident.
+- **The landing page's job is the download, and the install band is where it
+  happens** (Ry, 2026-08-05). Windows left, macOS right, side by side above the
+  fold on a laptop, authored in HTML so both columns are complete with JavaScript
+  off. The hero is deliberately short for the same reason.
+- **The landing page carries exactly one CTA, the Download button in its header**
+  (Ry, 2026-08-05). No intro call, no rates, no portfolio, no "who made this"
+  block. Its only other outbound links are the download itself, the public repo,
+  and one link to the case study at the very bottom. Do not re-add the intro call
+  that `02-landing-page-design.md` §4.10 specced.
+- **Both pages use the repo's Roboto 700 / Montserrat stack** and a system mono,
+  not the Inter and JetBrains Mono the design spec named. The two families are
+  already self-hosted in `sm3-assets/fonts/`, and adopting two more would have
+  made the landing page the only page in this repo with its own typography. The
+  dark palette, the label style, and the density are what carry the product look.
 - **No external network requests**, same as every other page here. Fonts, images,
   **and video** are self-hosted in `assets/`. This is why the video budget in
   `03-assets-and-capture-list.md` §3 exists.
