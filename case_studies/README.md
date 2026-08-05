@@ -8,7 +8,9 @@ they read as a set rather than as pages that happen to look similar.
 | **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91), re-deployed same day with its figure placeholders hidden (#99) |
 
 Linked from the `.cases` grid on both `hire/` pages, where it replaced the
-transaction-tracking placeholder. It is the only card there that is a live link.
+transaction-tracking placeholder, and from the portfolio page. As of 2026-08-04 it is no longer
+the only live card there: the SetMaster 3 case study deployed the same day and its chip became a
+link too, leaving one `In preparation` card of three on the `hire/` pages.
 
 ## Folder layout
 

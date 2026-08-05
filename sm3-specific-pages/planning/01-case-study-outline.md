@@ -6,7 +6,7 @@ You're not going to write the whole case study yet. We're going to iterate on an
 outline first."* Nothing below is finished prose, and the beats are written to be
 argued with, cut, and reordered.
 
-- **Page:** `intake.wolfstrategyllc.com/setmaster3-case-study/` · `noindex, nofollow`
+- **Page:** `intake.wolfstrategyllc.com/setmaster3-case-study/` · **`index, follow`** since 2026-08-04 (was `noindex, nofollow`; D-003 revised)
 - **Audience:** people who might hire Ry. One audience, not two.
 - **Target length:** 2,200–2,800 words of body copy across 11 sections.
 - **Sources:** the 2026-07-31 transcript (T), the `wolfpackdata/setmaster3` repo

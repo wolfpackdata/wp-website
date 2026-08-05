@@ -91,10 +91,11 @@ come from a CSS counter, so they renumber themselves.
 and its chip became a link, which is what the device was for. No `.case__chip` is in use on the
 page right now; the rule stays in the stylesheet for the next unpublished study.
 
-**Linking a `noindex` case study is fine.** Design plan **D-010** settles it: the no-links rule
-(**D-003**) is about the `hire/` **résumés** specifically, not about `noindex`. A case study
-carries none of the résumé's problems, and neither published study links back to `hire/`, so
-nothing here creates a path to those pages.
+**The no-links rule is about the `hire/` résumés specifically, not about `noindex`.** Design
+plan **D-003** and **D-010** settle it: a case study carries none of the résumé's problems, and
+neither published study links back to `hire/`, so nothing here creates a path to those pages.
+As of 2026-08-04 both linked case studies are **indexed** anyway, so this page links nothing
+`noindex` at all. The rule that still binds: **never link `hire/`.**
 
 **Use an absolute URL for a case-study link, not a relative one.** In this repo a case study
 lives at `case_studies/<name>/`, but it deploys to its own root-level slug, so the two layouts

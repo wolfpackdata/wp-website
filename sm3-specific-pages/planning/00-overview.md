@@ -25,7 +25,7 @@ documents, not pages.
 | Secondary audience | Advanced / technical DJs — **not beginners** | none |
 | Job | Make SetMaster 3 look like a real product, and get it downloaded | Prove how it was conceived, built, and shipped |
 | Register | Product marketing. Confident, dense, visual | Engineering-document voice. Evidence over adjectives |
-| Robots | **indexed** | **noindex, nofollow** |
+| Robots | **indexed** | **indexed** since 2026-08-04 (was `noindex, nofollow`; see D-003) |
 | Design system | SetMaster 3's own dark NI-inspired palette | Wolfpack navy/coral, shared with `hire/` |
 | Depth | Highlights, drawn from the case-study material | The full story |
 
@@ -43,7 +43,7 @@ Settled with Ry 2026-07-31. These are inputs, not proposals.
 |---|---|---|
 | D-001 | **Two sibling top-level URLs** — `/setmaster3/` and `/setmaster3-case-study/`. | The workspace folder is not a deploy path; deploy copies its three inner folders. §6. |
 | D-002 | **Shared `sm3-assets/`, namespaced.** Both pages share one fonts/img/video/css folder. | Pages reference `../sm3-assets/…`, which resolves identically here and deployed. Not `assets/` — that name lands at the intake root beside the intake form's own generic `css/`, `img/`, `js/`. |
-| D-003 | **Landing page is indexed; case study is `noindex, nofollow`.** | The landing page is a public product page for a public repo and should be findable. The case study speaks to the same audience as `hire/`, is linked from it, and inherits its direct-link posture. Landing page gets real SEO work (§7 of `02-landing-page-design.md`); the case study gets none. |
+| D-003 | ~~Landing page is indexed; case study is `noindex, nofollow`~~ → **both pages are indexed** (revised 2026-08-04, Ry) | Original reasoning: the landing page is a public product page for a public repo and should be findable, while the case study speaks to the same audience as `hire/`, is linked from it, and inherits its direct-link posture. **That premise stopped holding once the case study shipped.** It is now linked from the public indexed portfolio page and from a public blog post (`wp-website#103`), so its audience is no longer only hiring managers, and it was the one item inheriting the résumés' posture without being a résumé. Keeping it out of search bought nothing and hid finished work. **Consequence to handle when `/setmaster3/` ships:** two indexable pages about one product, so give them distinct titles and descriptions, one a product page and one a narrative, and expect the landing page to be the one that should rank. The case study still gets no dedicated SEO work. |
 | D-004 | **The landing page uses SetMaster 3's own design system**, not Wolfpack navy — near-black surfaces, orange/blue signal accents, magenta/cyan Out/In identity, the RML mark. Ry's brief: *"more like if Native Instruments owned SetMaster 3 and had a landing page for it."* | The page looks like the product. Tokens are ported from `setmaster3/planning/03-ui-design.md` §3, not invented. §4 below governs the seam with the case study. |
 | D-005 | **OS-detected download with an honest macOS state.** One primary button resolves to the visitor's platform asset; macOS shows a truthful "not yet built" state; a repo button sits beside it. Degrades to a platform chooser with JS off. | Satisfies the transcript's *"two buttons, one to the public repo in a new tab and another one just to download in one click"* while staying truthful — see C-03. Full component spec: `02-landing-page-design.md` §6. |
 | D-006 | **"As if Native Instruments owned it" is a visual brief and nothing more.** | No NI/Traktor logo, icon, screenshot, or lifted asset ever ships. ® on every visible Traktor / Native Instruments / Spotify; "Exportify" plain. Both pages carry the unaffiliated line. Inherited from `setmaster3/planning/03-ui-design.md` §1.3 and **hardened here**, because that rule was written for a local app and these pages are public marketing, where an implied endorsement is a materially bigger problem. |
@@ -247,7 +247,9 @@ Same shape as the `hire/` round, because the same failure modes apply.
       unaffiliated-software line.
 - [ ] No page claims macOS support (C-03).
 - [ ] Landing page: indexed, canonical, OG/Twitter cards, `SoftwareApplication`
-      structured data. Case study: `noindex, nofollow` + self-referential canonical.
+      structured data. Case study: **indexed** since 2026-08-04 (D-003 revised) +
+      self-referential canonical. Both indexable means both need distinct titles
+      and descriptions so they do not compete for the same query.
 - [ ] Both render complete and readable with **JavaScript disabled** — including
       the download block, which falls back to a platform chooser.
 - [ ] `prefers-reduced-motion: reduce` bypasses all motion; every video is
