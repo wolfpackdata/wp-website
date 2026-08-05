@@ -21,6 +21,7 @@ case_studies/                ← NOT a deploy path; a workspace
 └── ops_fin_model_support/                                       ├─ deployed
     ├── index.html                                               ┘
     └── planning/            ← outline, decisions, source brief  (not deployed)
+        └── hero/            ← the hero image generator + its source capture
 ```
 
 Like `sm3-specific-pages/`, **this folder's name is not the URL path.** Deploying is a copy
@@ -66,6 +67,23 @@ deployed site, so paths are never rewritten.
   broken document.
 - **No client is ever named, and no testimonial is ever invented.** Anonymize by shape.
   Illustrative figures are labeled as illustrative, in the figure itself, not in a footnote.
+  - **A screenshot of real client work is anonymized in the pixels, not by being small.**
+    The financial model hero was the first case: its source workbook lists team members by
+    first name, and "the text is only two pixels tall" is not anonymization, it is a bet
+    that nobody will zoom. That column is blurred in the committed source capture *and*
+    again at build time, and the figcaption says identifying details are obscured. Check any
+    new capture at 5x or 6x before it ships, not at page scale.
+- **A generated figure ships with the thing that generated it.** The financial model hero is
+  composed, not shot: `ops_fin_model_support/planning/hero/build_hero.py` takes the source
+  capture in the same folder and writes
+  `case-study-assets/img/fin-model-beacon-hero.jpg`. The generator and its input live under
+  `planning/`, so neither deploys, and only the finished image does. An asset nobody can
+  rebuild is an asset nobody can correct.
+  - Anything generated still answers to the palette rules above. The hero's light is white
+    carrying a trace of coral, its fringes are a tint of the navy, and its one coral element
+    mirrors the coral border on `.hero__stand` immediately above it on the page. Coral drawn
+    inside a JPEG does not spend a use from the stylesheet's ration of six, but it does have
+    to look like it belongs to the same system.
 - **This repo serves nothing.** These pages reach the public only by copying into
   `wolfpackdata/ai-coaching-intake`. This repo stays the source of truth, never edit the
   deployed copy, re-copy on change.
