@@ -103,12 +103,23 @@ Trademark discipline is inherited from the SetMaster 3 pages: every visible
 Traktor / Native Instruments / Spotify carries the registered mark, Exportify
 renders plain, and the unaffiliated line ships with any public page naming them.
 
-TITLE CHANGED 2026-08-04 (#119), AFTER THIS DRAFT WAS PUSHED. Ry's call is that a
-post carries the same title as its case study, so this is now the case study's h1
-verbatim, replacing "The Build Was Fast Because the Thinking Was Finished". The
-LIVE DRAFT STILL SHOWS THE OLD TITLE until it is PATCHed with a rebuilt payload,
-which waits on Ry — a rebuilt payload overwrites anything edited in the dashboard
-since the push. The slug is deliberately unchanged, so the eventual public URL is
-still /the-build-was-fast-because-the-thinking-was-finished. The title is quoted
-in the front matter because it contains a colon.
+TITLE CHANGED 2026-08-04 (#119), AFTER THIS DRAFT WAS PUSHED, and the draft is now
+caught up. Ry's call is that a post carries the same title as its case study, so
+this is the case study's h1 verbatim, replacing "The Build Was Fast Because the
+Thinking Was Finished". The title is quoted in the front matter because it
+contains a colon. The slug is deliberately unchanged, so the public URL on publish
+is still /the-build-was-fast-because-the-thinking-was-finished.
+
+RE-PUSHED 2026-08-04 10:20 PM PT, title only. Verified by reading the draft back:
+39 rich-content nodes before and after, excerpt, seoSlug, both tagIds, cover media
+id, memberId, and UNPUBLISHED status all unchanged. This post's cover is
+unaffected by the beacon hero work; it keeps its Track-Playlist Matrix capture.
+
+Two things this confirmed, both worth not rediscovering. A PATCH is a PARTIAL
+UPDATE — only the fields sent are touched, so the body does not need resending and
+was not, which makes the README's "PATCH with the rebuilt payload" the heavy option
+rather than the required one. And the draft url preview moved to
+/post/setmaster-3-from-a-spreadsheet-on-a-plane-to-a-robust-application while
+seoSlug stayed put, which is the title-derived-preview limit the README already
+documents, observed again rather than newly discovered.
 -->

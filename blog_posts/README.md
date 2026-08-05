@@ -155,8 +155,24 @@ of git.
 ### Re-pushing an edited post
 
 A draft post has an ID. To update rather than duplicate, `PATCH
-/blog/v3/draft-posts/{id}` with the rebuilt payload. Record the returned ID when
-a post is first pushed — without it the next push creates a second post.
+/blog/v3/draft-posts/{id}`. Record the returned ID when a post is first pushed —
+without it the next push creates a second post.
+
+**The PATCH is a partial update: only the fields you send are touched.** Verified
+2026-08-04 by patching a draft with `{id, title}` alone and reading it back — the
+rich content, excerpt, `seoSlug`, `tagIds`, cover, `memberId`, and `UNPUBLISHED`
+status all survived. So a retitle or a cover swap is a two-field patch, and
+resending the whole rebuilt payload is the heavy option rather than the required
+one. Prefer the small patch: it cannot clobber what it does not mention.
+
+Send the rebuilt payload when the **body** actually changed. Before you do, check
+whether anyone has edited the draft in the Wix dashboard, because a rebuilt body
+overwrites theirs. The cheap check is to hash the live body text against a freshly
+built payload and compare — identical hashes mean nobody has touched it and the
+push is safe.
+
+The request shape is `{"draftPost": {"id": …, …}, "action": "UPDATE"}`. There is no
+field mask.
 
 ## Site facts
 
