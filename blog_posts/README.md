@@ -33,7 +33,7 @@ Start from [`_template/post.md`](_template/post.md).
 
 | Key | Required | What it does |
 |---|---|---|
-| `title` | **yes** | Post title. Also the fallback for `slug` and cover alt text. |
+| `title` | **yes** | Post title. Also the fallback for `slug` and cover alt text. **Quote it if it contains a colon.** |
 | `slug` | no | URL path — `wolfstrategyllc.com/post/<slug>`. Derived from the title if omitted. |
 | `excerpt` | no | Feed and social preview text. Wix autogenerates one if omitted. |
 | `cover` | no | Filename of the hero image, in this folder. |
@@ -41,6 +41,13 @@ Start from [`_template/post.md`](_template/post.md).
 | `date` | no | Intended publish date. Recorded for the author; Wix stamps its own on publish. |
 | `tags` | no | Wix blog tags, resolved to tag IDs at push time. Inline `[a, b]` or a block list. |
 | `featured` | no | `true` marks the post featured on the blog. |
+
+**A post that has a case study carries the case study's title, verbatim.** Ry's rule, set
+2026-08-04 (#119): the same piece of work should not be called two different things in two
+places. Take the case study's `h1`, not its `<title>` tag — the tag carries a subtitle and a
+`· Case Study` suffix that exist for the browser tab and the search result, not as the name of
+the work. **Retitling does not touch the slug**, which is set explicitly so the URL stays put;
+and a title with a colon in it, which this pairing tends to produce, must be quoted.
 
 Unknown keys are a hard error rather than a silent no-op, so a typo surfaces
 before the push instead of after it.

@@ -255,6 +255,11 @@ Conventions this folder must keep:
 - **One subfolder per post**, named `YYYY-MM-DD-slug`, containing exactly `post.md`, the
   cover image, and any post-specific assets. The folder name is **not** the URL — that comes
   from the `slug` front matter key. Start from `_template/post.md`.
+- **A post that has a case study carries the case study's title, verbatim** (Ry, 2026-08-04,
+  #119). One piece of work, one name. Take the case study's `h1`, not its `<title>` tag, which
+  carries a subtitle and a `· Case Study` suffix meant for the tab and the SERP. Retitling
+  never touches the `slug`, so the URL stays put, and a title containing a colon has to be
+  quoted in the front matter.
 - **Wix does not accept markdown.** The body field is `richContent` (Ricos, a node tree), so
   `blog_posts/tools/md_to_ricos.py` is the deterministic transform between them. Same
   markdown always yields the same post, which is what makes re-pushing an edit safe. Run its

@@ -1,5 +1,5 @@
 ---
-title: The Build Was Fast Because the Thinking Was Finished
+title: "SetMaster 3: From a Spreadsheet on a Plane to a Robust Application"
 slug: the-build-was-fast-because-the-thinking-was-finished
 excerpt: Twenty-five days from specification to public release, with zero deviations from a written model policy. The speed is not the interesting part. The reproducibility is.
 cover: cover.png
@@ -102,4 +102,13 @@ for leaking a Windows user directory.
 Trademark discipline is inherited from the SetMaster 3 pages: every visible
 Traktor / Native Instruments / Spotify carries the registered mark, Exportify
 renders plain, and the unaffiliated line ships with any public page naming them.
+
+TITLE CHANGED 2026-08-04 (#119), AFTER THIS DRAFT WAS PUSHED. Ry's call is that a
+post carries the same title as its case study, so this is now the case study's h1
+verbatim, replacing "The Build Was Fast Because the Thinking Was Finished". The
+LIVE DRAFT STILL SHOWS THE OLD TITLE until it is PATCHed with a rebuilt payload,
+which waits on Ry — a rebuilt payload overwrites anything edited in the dashboard
+since the push. The slug is deliberately unchanged, so the eventual public URL is
+still /the-build-was-fast-because-the-thinking-was-finished. The title is quoted
+in the front matter because it contains a colon.
 -->

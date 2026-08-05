@@ -1,5 +1,5 @@
 ---
-title: A Financial Model Is an Operating Document
+title: The Model Is Your Business Beacon
 slug: financial-model-is-an-operating-document
 excerpt: Most founders build the financial model for the accountant and the raise, and they build it late. It is an operating document, and the exercise of building it matters more than the accuracy of the numbers inside it.
 cover: cover.jpg
@@ -94,4 +94,13 @@ Cover media id: e00ee6_664c2a5edec14b4a9cc9befe36beca75~mv2.png
 The six M-nn figures inside the case study are still commented out pending
 capture (wp-website#99). This cover is not one of them and does not unblock
 them; it is that page's hero, which is a different asset.
+
+TITLE CHANGED 2026-08-04 (#119), AFTER THIS DRAFT WAS PUSHED. Ry's call is that a
+post carries the same title as its case study, so this is now the case study's h1
+verbatim, replacing "A Financial Model Is an Operating Document". The LIVE DRAFT
+STILL SHOWS THE OLD TITLE, and the same PATCH that fixes the cover fixes the
+title. The slug is deliberately unchanged, so the eventual public URL is still
+/financial-model-is-an-operating-document. Note the old title survives inside the
+case study's own <title> tag as its subtitle, which is where that phrasing still
+earns its place.
 -->
