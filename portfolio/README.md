@@ -68,17 +68,30 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
 
 - **Do not tone-edit the ported blurbs.** [`docs/ryan-blog-tone.md`](../docs/ryan-blog-tone.md)
   §8 exempts résumé-derived content precisely so a third wording cannot appear. The tone rules
-  bind the section kickers, ledes, case-study blurbs, and closing block only, and those pass
-  the §9 checklist.
+  bind the section kickers, ledes, and case-study blurbs only, and those pass the §9
+  checklist. They bound the closing block too until that block was cut (D-013).
 - **SetMaster 3 uses the `eng_only` framing**, not `eng_music`'s "RML SetMaster 3" (D-005).
   One source YAML for all eight cards.
 - **The coral ration is enumerated in the header comment of `css/portfolio.css`.** Keep that
-  comment true. **Seven uses**, back down from a temporary eighth that carried the hero
-  placeholder's label and left with it.
+  comment true. **Six uses**, and the count has only ever gone down: a temporary eighth carried
+  the hero placeholder's label and left with it, and the closing CTA left with its block
+  (D-013).
 - **One CTA and exactly one destination on the whole page: the 30-minute intro call.** No
   intake-form link, no résumé download, no rates link. A `/rates_public/` coda band briefly
   existed and **Ry cut it** on 2026-08-04 (**D-011**), so this is now the book-first rule at its
   strictest. Do not re-add a second destination without a ruling.
+- **The page ends on the case studies, and that is deliberate.** The closing "Start with a
+  call" section was cut on 2026-08-04 (**D-013**), the day after its copy was rewritten — the
+  rewrite was fine, the block was not wanted. The intro call still reaches the reader twice,
+  through the nav CTA and the hero CTA, so nothing about the one-destination rule changed. Do
+  not re-add a closing section, and do not "restore" the `#contact` nav item: there is no
+  `#contact` section for it to point at.
+- **Every case card carries a real image.** The financial model card showed a `Figures in
+  preparation` panel until its case study had a figure; it now carries that page's beacon hero
+  (#113), built at card width by
+  `case_studies/ops_fin_model_support/planning/hero/build_hero.py` rather than re-encoded from
+  the page-sized file. The `.case__shot--empty` device stays in the stylesheet for the next
+  unpublished study.
 - **`reveal.js` is copied, never rewritten** — byte-identical to `hire/assets/js/reveal.js`
   apart from its header comment, so reveal timing and scroll-spy match every other long-form
   page here.

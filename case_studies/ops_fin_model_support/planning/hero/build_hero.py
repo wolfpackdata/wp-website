@@ -1,7 +1,12 @@
 """
 Build the hero image for the financial model case study.
 
-    python build_hero.py <source.png> <out.png>
+    python build_hero.py <source.png> <out.jpg> [out_width]
+
+`out_width` defaults to 2100, the size the case study page loads. Pass a smaller
+one for a derivative — the portfolio card and the blog post cover are both built
+this way, from this composition, rather than by re-encoding the delivered JPEG.
+One composition, several sizes, no generational loss.
 
 The composition is a beacon: the operating model is the light source, the navy
 field around it is the business you cannot see into yet, and the beams are the
@@ -322,12 +327,13 @@ final += rng.normal(0.0, 0.35 / 255.0, final.shape).astype(np.float32)
 
 img = Image.fromarray((np.clip(final, 0, 1) * 255 + 0.5).astype(np.uint8))
 
-# Composed at 2400 and delivered at OUT_W. The figure is never wider than about
-# 1050 CSS pixels inside .wrap, so OUT_W covers a 2x display with room to spare,
-# and the downsample costs nothing visible while taking a quarter off the file.
-# The composition is tuned in 2400-pixel coordinates, so this is a final resize
-# rather than a smaller canvas; changing W would move every constant above.
-OUT_W = 2100
+# Composed at 2400 and delivered at OUT_W. The case study figure is never wider
+# than about 1050 CSS pixels inside .wrap, so the 2100 default covers a 2x
+# display with room to spare, and the downsample costs nothing visible while
+# taking a quarter off the file. The composition is tuned in 2400-pixel
+# coordinates, so this is a final resize rather than a smaller canvas; changing W
+# would move every constant above.
+OUT_W = int(sys.argv[3]) if len(sys.argv) > 3 else 2100
 img = img.resize((OUT_W, round(OUT_W * H / W)), Image.LANCZOS)
 
 if out_path.lower().endswith((".jpg", ".jpeg")):

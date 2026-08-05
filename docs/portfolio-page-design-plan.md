@@ -47,7 +47,8 @@ guidance applies only to the connective page copy around them." The blurbs are d
 em dashes, which §3 bans everywhere else. Tone-editing them here would create a third
 wording of each blurb, differing from both the YAML and the `hire/` pages, guarded by
 nothing. Drift is the larger risk, so the tone rules bind only the section kickers, ledes,
-and the closing block.
+and the case-study blurbs Ry wrote. The closing block was the fourth thing they bound until
+that block was cut (D-013).
 
 ## 3. Structure
 
@@ -55,9 +56,8 @@ and the closing block.
 nav (sticky, scroll-spy)
 hero            ← PLACEHOLDER, Ry writes this (D-004)
 applications    ← 8 cards, verbatim from eng_only.yaml
-case studies    ← 1 live card + 1 in-preparation
-close           ← one CTA: 30-minute intro call
-footer
+case studies    ← 2 live cards, both with a real image (D-013)
+footer          ← the page ends on the case studies; close block cut (D-013)
 ```
 
 Section order puts applications before case studies deliberately. The applications gallery
@@ -83,7 +83,10 @@ other long-form page here, and a rewrite is how two pages quietly stop matching.
 
 **Coral ration**, enumerated in the header comment of `css/portfolio.css` and kept true:
 
-1. nav CTA · 2. hero CTA · 3. hero rule · 4. in-preparation chip · 5. closing CTA · 6. link hover · 7. focus ring
+1. nav CTA · 2. hero CTA · 3. hero rule · 4. in-preparation chip · 5. link hover · 6. focus ring
+
+Six since 2026-08-04, when the closing CTA went with its block (D-013). Use 4 is unused today
+because both case cards are live links with real images; the chip stays for the next study.
 
 Where coral is a fill, text on it is navy (5.8:1), never white.
 
@@ -98,6 +101,7 @@ Where coral is a fill, text on it is navy (5.8:1), never white.
 | **D-004** | ~~Hero copy ships as a marked placeholder~~ → **RESOLVED 2026-08-04, Ry wrote it** | The hero had to speak to a client and a hiring manager in the same breath, which is a positioning judgment rather than a copy task, so it shipped as a visibly-marked placeholder. Ry's copy: **"Systems, apps, and projects"** over *"Selected examples of recent applications, data systems, and AI workflows built and evolving, with some case studies below."* The `.ph-copy` block and its CSS are deleted, which is also what returned the coral ration to seven. Note his framing solved the two-audience problem by **not addressing either audience directly** — it just names the work, which reads the same to a client and to an employer. |
 | **D-011** | **No rates link on this page.** The `.softcta` coda band is removed | It carried a quiet `/rates_public/` link, argued for on the grounds that half the audience is a prospective client and the honest next step after seeing work is what it costs. **Ry cut it, 2026-08-04.** The closing block is now the last thing on the page and the intro call is the only destination anywhere on it, which is the book-first rule at its strictest. The `.softcta` and `.section--coda` rules came out of the stylesheet with the section; the device still lives in `hire.css`. |
 | **D-012** | The closing header and lede are **rewritten** | They read *"The smallest next step is a conversation."* over *"…whether any of the work above maps onto it."* Ry's verdict was that both were terrible, and he was right: the header took a structural instruction from [`ryan-blog-tone.md`](ryan-blog-tone.md) §7 (*close on the smallest next step*) and used it as a headline, which is consultant-speak, and *"maps onto"* was doing the same. Now **"Start with a call"** over *"Thirty minutes on what you are building and what is in the way. If nothing above fits the problem, I will say so on the call rather than talk around it."* **The CTA itself is unchanged** — that was Ry's explicit instruction, and the §4.4 immediate-caveat is kept because it is the most honest line in the block. |
+| **D-013** | **The closing block is cut entirely, and the financial model card gets a real image** | Two changes Ry asked for in the same breath, hours after D-012 rewrote that block's copy. **The rewrite was not the problem; the block was.** Cutting it does not weaken the funnel: the intro call still reaches the reader twice, in the nav CTA and the hero CTA, both on the same 30-minute calendar, so *exactly one destination on the whole page* survives untouched and this remains the book-first rule at its strictest. What changes is where the reader lands at the end — on a case study and a button to read it, which is the strongest thing the page has to close on. Three tidy-ups follow mechanically: the nav's `#contact` item would have been a dead anchor and is gone, `.close`/`.close__title`/`.close__lede` left the stylesheet the way `.softcta` left with D-011, and the coral ration drops from **seven to six**. Second half of the same decision: the financial model card's `Figures in preparation` panel is replaced with the case study's new beacon hero (#113), generated at card width from the same composition rather than re-encoded from the page-sized file. Every case card now carries a real image, so use 4 of the coral ration (the IN PREPARATION chip) is live-but-unused and stays for the next study. |
 | **D-005** | SetMaster 3 uses the **engineering framing** | `eng_only.yaml` says `SetMaster 3`; `eng_music.yaml` says `RML SetMaster 3` with different emphasis. One source YAML for all eight cards keeps the page internally consistent and the drift check single-sourced. Ruling: Ry, 2026-08-04. |
 | **D-006** | `verify_facts.py` gains **check 6**, comparing app blurbs in the HTML against the YAML | This page is the third copy of those strings. Until now nothing compared any HTML copy to the YAML, so the `hire/` pages were unguarded too. Check 6 closes both gaps at once. Ruling: Ry, 2026-08-04. |
 | **D-007** | One CTA, the 30-minute intro call | The repo-wide book-first rule. No intake-form link, no resume download, no second funnel. |
@@ -113,10 +117,12 @@ Where coral is a fill, text on it is navy (5.8:1), never white.
 - [ ] All eight app blurbs byte-identical to `eng_only.yaml`; `verify_facts.py` check 6 passing.
 - [ ] Exactly one CTA destination, the intro calendar.
 - [ ] No link to either `hire/` page.
-- [ ] Coral used only for the seven placements in §4.
+- [ ] Coral used only for the six placements in §4.
 - [ ] Connective copy passes the `ryan-blog-tone.md` §9 checklist; ported blurbs exempt per §2.
 - [x] Hero copy written by Ry, placeholder and its CSS removed (D-004 resolved).
-- [x] Exactly one destination on the whole page: the intro call (D-011 removed the rates coda).
+- [x] Exactly one destination on the whole page: the intro call (D-011 removed the rates coda,
+  D-013 removed the closing block, and the destination is unchanged by both).
+- [x] Every case card carries a real image; no `Figures in preparation` panel remains (D-013).
 
 ## 7. Entry points
 
