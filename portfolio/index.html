@@ -63,10 +63,9 @@
       <h1 class="hero__title">Systems, apps, and projects</h1>
       <p class="hero__stand">Selected examples of recent applications, data systems,
         and AI workflows built and evolving, with some case studies below.</p>
-
-      <div class="hero__ctas">
-        <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book an intro call <span class="btn__meta">30 minutes</span></a>
-      </div>
+      <!-- No CTA here. The intro-call button moved to the foot of the page
+           (Ry, 2026-08-05, #130) so the reader meets the work before the ask.
+           .hero__ctas went with it. -->
     </div>
   </div>
 </header>
@@ -207,11 +206,10 @@
        the block was.
 
        What that leaves is deliberate rather than an omission. The page still
-       carries the intro call twice, in the nav and in the hero, both pointing at
-       the same 30-minute calendar, so the book-first rule holds and there is
-       still exactly one destination on the whole page. The last thing a reader
-       now meets is a case study and a button to read it, which is the strongest
-       thing on the page to end on.
+       carries the intro call twice, in the nav and — since 2026-08-05 — in the
+       bare button below, both pointing at the same 30-minute calendar, so the
+       book-first rule holds and there is still exactly one destination on the
+       whole page.
 
        Still no intake-form link, no résumé download, and deliberately no link to
        either hire/ page — those are noindex and direct-link only, and a public
@@ -219,7 +217,25 @@
 
        The .close, .close__title, and .close__lede rules came out of
        css/portfolio.css with the block, the way .softcta and .section--coda left
-       with the coda. Do not re-add a closing section without asking Ry. -->
+       with the coda. Do not re-add a closing SECTION without asking Ry — the
+       button below is not one, see its own note. -->
+
+  <!-- ========== Closing intro-call button ==========
+       Ry, 2026-08-05 (#130): the hero's button, moved here. Deliberately bare —
+       no heading, no lede, no section framing, by explicit instruction.
+
+       This is NOT a reversal of D-013 above. That cut a closing SECTION for its
+       copy and its chrome; none of that returns, and .close/.close__title/
+       .close__lede stay deleted. One existing element moved down the page.
+       Nothing was added, so the coral ration is still six.
+
+       Reading order is the whole point: the case studies now land before the ask
+       rather than after it. -->
+  <div class="endcta section--line">
+    <div class="wrap">
+      <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book an intro call <span class="btn__meta">30 minutes</span></a>
+    </div>
+  </div>
 
 </main>
 
