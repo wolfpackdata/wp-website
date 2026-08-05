@@ -20,8 +20,35 @@ All notable changes to this project are documented here. The format follows
   CTA to the 30-minute call plus a ghost link to the ROI calculator. Ships with `M-01`–`M-06`
   placeholders for the modeling screenshots Ry has yet to capture. (#91)
 
+- `sm3-specific-pages/setmaster3/` — **the SetMaster 3 landing page**, the product page the
+  folder has carried a spec for since 2026-07-31. A short hero, then a **two-column install
+  band with Windows left and macOS right**, the transition-row explainer, three
+  screenshot-led feature rows, four checkable claims, the roadmap band, and the origin story
+  ending on the single link to the case study. **One solid CTA, the nav Download.** Both
+  install columns are authored in HTML rather than promoted by platform detection, so the
+  band is complete with JavaScript off and the page ships no download JavaScript at all.
+  Not deployed: `/setmaster3/` still 404s until the folder is copied into
+  `ai-coaching-intake`. (#85, #86)
+- `sm3-assets/css/sm3-landing.css` — the second stylesheet in that folder, deliberately kept
+  apart from `sm3-case.css`. SetMaster 3's own near-black palette on the repo's Roboto and
+  Montserrat, with an enumerated accent ration in its header comment: four orange fills, two
+  orange text uses, blue for focus only, purple on the section eyebrows and the wordmark
+  numeral. (#85)
+
 ### Changed
 
+- **Both SetMaster 3 pages carry the v3.0.4 macOS installer** (2026-08-05), which ships
+  macOS as a signed, notarized `SetMaster.app` inside a drag-to-Applications `.dmg`, built
+  and acceptance-tested on a Mac for the first time. The landing page's macOS column becomes
+  a real download; the case study gains a **The Mac Installer** subsection and loses its
+  "Windows is verified end to end, macOS is not" opening. **C-03 narrowed rather than
+  lapsed** — both pages now claim Apple silicon, macOS 14 or later, no Intel, and say the
+  suites have never run on macOS. **The download links 404 until v3.0.4 is published to the
+  public mirror with both artifacts attached.** (#139)
+- `blog_posts/2026-08-05-introducing-setmaster/post.md` — the *What Is Not Ready* section
+  described the Mac build as waiting on a Mac, which v3.0.4 falsified. The post stays
+  unpushed: its **Get SetMaster 3** CTA points at `/setmaster3/`, and its hold note gates the
+  push on that URL returning 200. (#139)
 - `hire/` — on both résumé pages, the second "In preparation" case-study placeholder is
   replaced by a real, linked card for the financial model case study. It is the only card of
   the three that is a live link, so it carries a button instead of a chip. (#91)
