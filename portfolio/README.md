@@ -87,6 +87,15 @@ gets a `.btn--ghost` link; an unpublished one gets the `.case__chip` "In prepara
 the same size, so adding the link later changes one element and not the layout. Case numbers
 come from a CSS counter, so they renumber themselves.
 
+**Both cards are live links as of 2026-08-04.** The SetMaster 3 study deployed that day (#104)
+and its chip became a link, which is what the device was for. No `.case__chip` is in use on the
+page right now; the rule stays in the stylesheet for the next unpublished study.
+
+**Linking a `noindex` case study is fine.** Design plan **D-010** settles it: the no-links rule
+(**D-003**) is about the `hire/` **résumés** specifically, not about `noindex`. A case study
+carries none of the résumé's problems, and neither published study links back to `hire/`, so
+nothing here creates a path to those pages.
+
 **Use an absolute URL for a case-study link, not a relative one.** In this repo a case study
 lives at `case_studies/<name>/`, but it deploys to its own root-level slug, so the two layouts
 share no relative path.
