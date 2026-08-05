@@ -81,26 +81,34 @@ PATCH /blog/v3/draft-posts/5ea73438-d74b-4ce4-ae67-72086e0ae957.
 Tag ids created for this post (the blog had none before it):
   financial modeling  3b027fc6-d495-43be-82e5-f77370ef33d1
   startups            4d4603e8-19e4-4644-bb2f-2f238826a9d5
-Cover media id: e00ee6_664c2a5edec14b4a9cc9befe36beca75~mv2.png
-  STALE. That id is the flat navy _template placeholder this post first shipped
-  with, and it is what the LIVE DRAFT still shows. The cover in this folder is
-  now cover.jpg, the generated beacon hero from the case study (wp-website#113,
-  swapped in #117). Two steps remain before the draft matches this folder:
-  upload cover.jpg to the Wix Media Manager for a new media id, then PATCH
-  /blog/v3/draft-posts/5ea73438-d74b-4ce4-ae67-72086e0ae957 with a rebuilt
-  payload. Ask Ry first — a rebuilt payload overwrites anything edited in the
-  dashboard since the first push.
+Cover media id: e00ee6_968265a70ca94b618a73890a08d4ad7f~mv2.jpg
+  The beacon hero (wp-website#113, swapped into this folder in #117). Uploaded to
+  the Media Manager and patched onto the draft 2026-08-04 10:20 PM PT, together
+  with the new title. Wix reports it 1200x675, which is what was sent.
+  Superseded: e00ee6_664c2a5edec14b4a9cc9befe36beca75~mv2.png, the flat navy
+  _template placeholder this post first shipped with. It still sits in the Media
+  Manager; nothing points at it.
 
 The six M-nn figures inside the case study are still commented out pending
 capture (wp-website#99). This cover is not one of them and does not unblock
 them; it is that page's hero, which is a different asset.
 
-TITLE CHANGED 2026-08-04 (#119), AFTER THIS DRAFT WAS PUSHED. Ry's call is that a
-post carries the same title as its case study, so this is now the case study's h1
-verbatim, replacing "A Financial Model Is an Operating Document". The LIVE DRAFT
-STILL SHOWS THE OLD TITLE, and the same PATCH that fixes the cover fixes the
-title. The slug is deliberately unchanged, so the eventual public URL is still
-/financial-model-is-an-operating-document. Note the old title survives inside the
-case study's own <title> tag as its subtitle, which is where that phrasing still
-earns its place.
+TITLE CHANGED 2026-08-04 (#119), AFTER THIS DRAFT WAS PUSHED, and the draft is now
+caught up. Ry's call is that a post carries the same title as its case study, so
+this is the case study's h1 verbatim, replacing "A Financial Model Is an Operating
+Document". The old title survives inside the case study's own <title> tag as its
+subtitle, which is where that phrasing still earns its place. The slug is
+deliberately unchanged, so the public URL on publish is still
+/financial-model-is-an-operating-document.
+
+RE-PUSHED 2026-08-04 10:20 PM PT. Title and cover in one PATCH. Verified by reading
+the draft back: 35 rich-content nodes before and after, excerpt, seoSlug, both
+tagIds, memberId, and UNPUBLISHED status all unchanged.
+
+A PATCH here is a PARTIAL UPDATE, which is worth knowing before the next one. Only
+the fields sent are touched, so the body did not need resending and was not. The
+README's "PATCH with the rebuilt payload" is therefore the heavy option, not the
+required one. Measured first rather than assumed: the live body text was hashed
+against a freshly built payload, came back identical on both posts, and then one
+draft was patched title-only and read back to confirm nothing else moved.
 -->
