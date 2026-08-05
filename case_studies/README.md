@@ -5,7 +5,7 @@ they read as a set rather than as pages that happen to look similar.
 
 | Case study | Folder | Planned public URL | Audience | Robots | Status |
 |---|---|---|---|---|---|
-| **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91) |
+| **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91), re-deployed same day with its figure placeholders hidden (#99) |
 
 Linked from the `.cases` grid on both `hire/` pages, where it replaced the
 transaction-tracking placeholder. It is the only card there that is a live link.
@@ -50,6 +50,15 @@ deployed site, so paths are never rewritten.
 - **Placeholders ship, gray boxes do not.** Unshot assets use the `.ph` device, sized at the
   exact final aspect ratio, carrying an ID and a description of what to capture. Dropping the
   real file in changes nothing about the layout.
+  - **Exception in force on the financial model page since 2026-08-04 (#99).** Its six `M-nn`
+    figures are **commented out** in `index.html`, so the live page shows no unfilled figure
+    at all. Ry's call while the captures are outstanding. The rule above answers *what an
+    unfilled slot should look like*; this answers *whether one should appear*, and on a public
+    page awaiting captures the answer was no. **The markup is commented, never deleted** — the
+    ids and descriptions are the capture brief and the layout is already built to take the
+    real image. Restoring one is an uncomment; filling one is the `.ph` to `.shot` swap. Do
+    not "tidy" these blocks away, and do not restore them without asking. Tracked in the
+    Notion task *10. Capture and insert the six financial model case study figures*.
 - **The page renders complete with JavaScript off.** The hidden initial state is scoped to a
   `.js` class that `reveal.js` adds. A document that needs JavaScript to be readable is a
   broken document.
