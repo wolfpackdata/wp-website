@@ -71,19 +71,30 @@ a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
   align-items: center;
 }
 
+/* .brand is layout only; the type treatment lives on .brand-wordmark below, so
+   this page's header matches every other page's .nav__brand / .nav__wordmark
+   split rather than carrying its own one-off styling. */
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
   color: var(--white);
   text-decoration: none;
-  font-family: 'Roboto', system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
 }
 
 .brand:hover { color: var(--white); }
+
+/* The shared header wordmark treatment. Identical to .nav__wordmark in
+   rates/, ai-coaching/, portfolio/, case-study-assets/, and sm3-assets/ —
+   one company name, one type treatment, every page. No white-space: nowrap,
+   so it wraps rather than overflowing at phone width. */
+.brand-wordmark {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
 .brand-mark {
   width: 28px;
@@ -472,7 +483,8 @@ a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
     gap: 8px;
   }
 
-  .brand { font-size: 1rem; }
+  /* No mobile size override for the wordmark. At 0.8125rem it is already the
+     small end of the scale on every page, and the other pages don't scale it. */
 
   .intro h1 { font-size: 1.7rem; }
 }
