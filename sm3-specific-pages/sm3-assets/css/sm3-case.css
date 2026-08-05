@@ -123,10 +123,14 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 .nav__brand:hover { color: var(--white); }
 .nav__logo { width: 30px; height: 30px; border-radius: var(--radius); }
+/* No white-space: nowrap. The wordmark is "Wolfpack Data & Strategy" on every page
+   here, and at phone width it has to share the bar with the coral CTA — nowrap
+   would push the nav into horizontal overflow rather than wrapping to a second
+   line. Matches rates/ and ai-coaching/, which have carried the full string
+   beside a CTA since they shipped. */
 .nav__wordmark {
   font-family: 'Roboto', sans-serif; font-weight: 700;
   font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
-  white-space: nowrap;
 }
 .nav__links { display: flex; gap: 20px; list-style: none; }
 .nav__links a {
