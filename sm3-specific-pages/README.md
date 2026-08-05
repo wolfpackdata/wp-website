@@ -97,9 +97,18 @@ in the deployed site — the paths are never rewritten.
   renders plain, **no Native Instruments asset ever ships**, and both pages carry
   the unaffiliated-software line. "Designed as if Native Instruments owned it" is a
   *visual brief*, never a claim of affiliation.
-- **The Mac build does not exist yet.** No page may claim macOS support until an
-  artifact ships and `build-notes/macos-release-verification.md` passes. See
-  `04-claims-ledger.md` C-03.
+- **The Mac build exists as of v3.0.4 (2026-08-05), and the claim is now bounded
+  rather than forbidden.** C-03's condition was met: SetMaster 3 was built and
+  acceptance-tested on a Mac, and it ships as a signed, notarized `.app` inside a
+  `.dmg`. What replaced the old prohibition is a **narrower** claim both pages must
+  keep true: **Apple silicon, macOS 14 (Sonoma) or later, Intel not supported**, and
+  the end-to-end and golden-master suites have never been run on macOS. Do not round
+  that up to "macOS support" in a later edit.
+- **The download links point at the public mirror, which lags the private repo.** A
+  version bump in `wolfpackdata/setmaster3` is not a published artifact. Before
+  deploying, check that the release exists at `wolfpackdata/setmaster` **with both
+  artifacts attached** — the landing page links a `.zip` and a `.dmg` by exact
+  filename, and a mirror one release behind makes both buttons 404.
 - **This repo serves nothing.** These pages reach the public only by copying
   `sm3-specific-pages/` into `wolfpackdata/ai-coaching-intake`. Same policy as
   every other page here: this repo is the source of truth, never edit the deployed
