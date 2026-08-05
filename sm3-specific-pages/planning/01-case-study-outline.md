@@ -67,11 +67,12 @@ Seven movements. The section list in §3 hangs off this.
 **Purpose:** state the thesis and the outcome in the space above the fold.
 
 - Kicker: `CASE STUDY · 2026`
-- Title: working title — *"SetMaster 3: from a spreadsheet on a plane to a shipped
-  application."* Alternatives in §10.
-- Standfirst, ~40 words: a professional DJ built his own set-preparation tool
-  three times in three years. The third one is a specified, tested, offline web
-  app anyone can download.
+- Title: **decided (Ry, round 4)** — *"SetMaster 3: From a Spreadsheet on a Plane
+  to a Robust Application."* Retired alternatives in §10.
+- Standfirst, ~45 words: **Ry's framing (round 4)** — data engineering meets DJ
+  engineering; he needed a road-worthy set preparation tool, so he built one three
+  times in three years, and the third is a specified, tested, offline web
+  application any DJ can download.
 - Four stat tiles, all sourced:
   `25 days spec → public release` · `74 issues across 4 build rounds` ·
   `867 automated tests` · `byte-identical pipeline port`
@@ -194,8 +195,9 @@ and it is the section most at risk of turning into an AI-hype paragraph.
 
 Beats, in order:
 
-1. **Why rebuild at all.** Becoming a cloud architect in early 2025 reframed it as
-   a web app (T). The blocking defect was structural: the prototype's Traktor®
+1. **Why rebuild at all.** Building apps with Claude, starting in early 2025,
+   reframed it as a web app (Ry, round 4 — supersedes the transcript's *cloud
+   architect*). The blocking defect was structural: the prototype's Traktor®
    connection was **Windows-only**, and *"the OS split must not survive"* (R,
    `00-overview.md` §3).
 2. **Spec before code.** Ry gave Claude the prototype and all the VBA and they
@@ -557,9 +559,10 @@ Still open:
    and it changed shape in round 2 when "eight years" became three.
 2. **Is S6 too long at 750 words?** It is 30% of the page. My read: it is the
    section the audience actually reads, and it should be the longest.
-3. **Which title?** Options in §10 — one was retired in round 2 and replaced.
-4. **The SM2 year** (C-08) — "~2024" is derived from *"used it for like a year"*,
-   not stated. Confirm it or the origin-story panel drops its year.
+3. ~~**Which title?**~~ — **CLOSED, round 4.** Option 1 with *robust* for
+   *shipped*. See §10.
+4. ~~**The SM2 year** (C-08)~~ — **CLOSED, round 4: "leave it" (Ry).** The prose
+   stays dateless on SetMaster 2 and the derived ~2024 figure never ships.
 5. ~~An anecdote from three years of use~~ — **CLOSED, round 3.** Ry supplied the
    flight-to-LA story and confirmed it was **SetMaster 2**. It anchors S8.
 
@@ -590,9 +593,13 @@ follows:
 
 ## 10. Title options
 
+**Closed in round 4.** Ry took option 1 with one word changed: *shipped* became
+**robust**. The live title is *"SetMaster 3: From a Spreadsheet on a Plane to a
+Robust Application."* The table below is the record of what was considered.
+
 | # | Title | Reads as |
 |---|---|---|
-| 1 | *SetMaster 3: from a spreadsheet on a plane to a shipped application* | Narrative. Uses the best concrete image in the transcript. **Recommended.** |
+| 1 | *SetMaster 3: from a spreadsheet on a plane to a shipped application* | Narrative. Uses the best concrete image in the transcript. **Chosen, with *shipped* → *robust*.** |
 | 2 | *Three years, three rewrites, one idea: building SetMaster 3* | Structural. **Replaces round 1's "Eight years…"**, retired by C-07 — and it is stronger at three, because the number now reads as pace rather than tenure |
 | 3 | *Specifying before building: how SetMaster 3 got made* | Engineering-first; the truest to S6 and the least inviting |
 | 4 | *The tedious part* | Ry's own framing, minimal. Strong if the standfirst carries the weight |
@@ -635,3 +642,22 @@ objection a skeptical reader is already forming.
 **Still awaiting Ry:** the five items in §8 — now including **which version of
 SetMaster the LA story used**, which is a one-clause difference but a meaningful
 one. None of them blocks the prose.
+
+**Round 4** — 2026-07-31, after the page was built. Ry's followup list on the
+Notion task, worked against both the copy deck and the live page.
+
+- **The standfirst is now Ry's own framing** and opens on *data engineering meets
+  DJ engineering* rather than on the job title. The change is recorded in
+  `05-case-study-copy.md`.
+- **The title takes *robust* for *shipped*.** §10 closed.
+- **Two claims closed by ruling rather than by evidence:** the SetMaster 2 year
+  stays out (*"leave it"*), and the hours-per-month estimate keeps its hedge.
+- ***Cloud architect* is retired from the S6 opening** in favor of *"I began
+  building apps with Claude."* This is the second time a transcript fact has been
+  superseded by a direct instruction from Ry (the first was C-07's *eight years*),
+  and the ledger now carries a source class for it.
+- **The favicon** was added here and to `roi-calculator/`, the two pages in the
+  repo that lacked one.
+
+**Still open after round 4:** whether S6 is too long at 750 words (§8 item 2),
+and the four outstanding screenshots, which are Ry's to capture.

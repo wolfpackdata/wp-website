@@ -3,11 +3,24 @@
 Everything the two pages need that does not exist yet, and the contract for what
 ships while it doesn't.
 
-**The headline fact:** across both repos there is **exactly one** SetMaster 3
-screenshot in existence — `hire/assets/img/app-setmaster.png` (1494×848), reused
-on the `hire/` pages. There is **no** video of any kind. Media is therefore the
-critical path for the landing page, and it is the only part of this work that
-Claude cannot produce.
+**The headline fact, as of 2026-08-04:** Ry delivered **three** captures (A-01, A-02, A-08),
+so the **case study page is now fully illustrated with zero placeholders left**. Before that
+there was exactly one SetMaster 3 screenshot in existence, `app-setmaster.png` (1494×848),
+which still serves A-03.
+
+**Still true:** there is **no video of any kind**, so media remains the critical path for the
+**landing page**, and it is the only part of this work Claude cannot produce.
+
+**Two lessons from the delivered batch, worth reading before capturing more:**
+
+1. **The planned aspect ratios were wrong.** All three landed near **2:1** (2.10, 2.11, 1.98),
+   not the 16:9 and 4:3 speced below. SetMaster is a wide desktop-class UI and that is simply
+   how it captures. Forcing them into the nominal frames would have cropped the sides, so the
+   case study gained a `.shot--natural` class that lets a capture keep its own proportions.
+   **Treat the ratios in the table below as estimates, not requirements.**
+2. **The privacy rule in §1 earned its place immediately.** A-08 arrived with a Windows user
+   directory and a local studio path visible, and shipped redacted. Check the frame for paths
+   *before* capturing, not after.
 
 Ry's brief: *"you'll want to have placeholders for me to put videos for me
 showing the app, and different parts of the app, and placeholders for nifty
@@ -41,14 +54,14 @@ has an unambiguous slot.
 
 | id | Shows | Used on | Frame | Notes |
 |---|---|---|---|---|
-| **A-01** | **Track-Playlist Matrix at full scale** — many rows, many playlist columns, a filter active, the breadcrumb populated | Landing hero (fallback if no video), case study S1 | 16:9 | The single most impressive screen in the app. Scale *is* the point — don't crop it down to a tidy dozen rows. |
-| **A-02** | **Set editor**, a real set, several transition rows, RED/YELLOW/box formatting visible, emoji in the *I like* column, STATS panel showing all four stats | Landing band 4, case study S7 | 16:9 | The product's heart. Pick a set with genuinely varied formatting. |
+| **A-01** | **Track-Playlist Matrix at full scale** — many rows, many playlist columns, a filter active, the breadcrumb populated | Landing hero (fallback if no video), case study S1 | ~~16:9~~ **2.10** | ✅ **DELIVERED 2026-08-04** as `sm3-assets/img/a01-track-playlist-matrix.png` (1908×907). 178 of 3,604 tracks, 83 playlists, filter panel open on BPM range + keys + release year. Live on the case study. |
+| **A-02** | **Set editor**, a real set, several transition rows, RED/YELLOW/box formatting visible, emoji in the *I like* column, STATS panel showing all four stats | Landing band 4, case study S7 | ~~16:9~~ **2.11** | ✅ **DELIVERED 2026-08-04** as `sm3-assets/img/a02-set-editor.png` (1904×904). Real set, varied formatting, emoji in *I like*, sidebar expanded with the RML lockup. **The STATS panel is closed**, so if the four stats matter, this needs a re-shoot with it open. |
 | **A-03** | **Playlist Compare Tool** — a comparison page with Go get / Organize / Match flags and at least one blank-cell note filled in | Landing band 5, case study S5 | 16:9 | **Partially satisfied.** `app-setmaster.png` (1494×848) is a real Compare Tool shot and is **live on the case-study page now**. It shows the flags but **no annotated blank cell**, so this row stays open for a replacement that includes one: the note is the feature that survives re-runs, and it is the part worth picturing. |
 | **A-04** | **Matrix filter drawer open** — BPM range slider, key selection, the compound filter mid-construction | Landing band 5 | 4:3 or 16:10 | Shows *how* the filtering works, which A-01 only shows the result of. |
 | **A-05** | **Home / LaunchPad** with the pipeline status chip after a successful run | Landing band 7 | 16:9 | Optional. Supports the "offline, local" claims. |
 | **A-06** | **Transition-row diagram** | Landing band 3, case study S3 | — | **Not a screenshot — built in HTML/CSS** (`02-…` §4.3). Listed here so it isn't mistaken for a missing capture. |
-| **A-07** | **SetMaster 2 workbook**, a real multi-tab set | Case study S3, landing band 6 | 16:9 | Already exists: `setmaster3/docs/sources/screenshots/02-playlist-tab-example-1.png` and `03-…-2.png`. Check them for machine paths before reuse. |
-| **A-08** | **SM2 LaunchPad tab** | Case study S4 | 16:9 | Exists: `docs/sources/screenshots/01-launchpad-tab.png`. |
+| ~~**A-07**~~ | ~~**SetMaster 2 workbook**, a real multi-tab set~~ | ~~Case study S3, landing band 6~~ | — | ❌ **RETIRED 2026-08-04**, Ry's call. Cut from the case study, not deferred. The section's prose carries the workbook era on its own and A-08 already pictures SetMaster 2. **Still open for the landing page** if band 6 wants it. |
+| **A-08** | **SM2 LaunchPad tab** | Case study S4 | ~~4:3~~ **1.98** | ✅ **DELIVERED 2026-08-04** as `sm3-assets/img/a08-sm2-launchpad.png` (1434×724). ⚠️ **The delivered capture leaked two machine paths** (a Windows user directory and a local studio path) in the collection-path fields, exactly what §1 forbids. Shipped **redacted**: both values are covered and the figcaption says so. The un-redacted original is **gitignored and was never committed**, so the leak is not in history. A re-shoot with those fields cleared would let the redaction go. |
 | **A-09** | **Settings → About**, showing version and the offline/read-only statement | Case study S6 | 4:3 | Optional. Good evidence for the read-only claim. |
 | **A-10** | **OG share image**, 1200×630 — A-01 with a title bar composited over it | Landing `<meta>` | 1200×630 | Composed from A-01; not a separate capture. |
 
@@ -159,7 +172,7 @@ redistribute. Note it in the CSS header comment.
 | **"SetMaster 3" wordmark** | **Re-set live in Inter**, never a bitmap | The RML usage rules are explicit: the app never ships a bitmap of the wordmark, and neither does this page. |
 | **Wolfpack mark** | `hire/assets/img/wolfpack-logo.png` | Case study only. |
 | **Ryan portrait** | `hire/assets/img/ryan-hickey-portrait.jpg` | Case study, and landing band 10 if §11.3 says the page names him. |
-| **Favicon** | The app's own — `setmaster3/frontend/public/favicon.svg` | Landing page. Makes the tab match the running app, which is a nice touch for anyone who has it open. |
+| **Favicon** | The app's own — `setmaster3/frontend/public/favicon.svg` | Landing page. Makes the tab match the running app, which is a nice touch for anyone who has it open. ⚠️ **Contested.** Ry's 2026-07-31 instruction put the **Wolfpack mark** on every page in this repo, and the case study now carries it. This row is the only thing that disagrees. Open item 7 in `00-overview.md` §9. |
 
 **Forbidden, restated because this is the asset doc and it is where someone will
 look:** no Native Instruments, Traktor®, Rekordbox®, or Spotify® logo, icon, UI
@@ -175,13 +188,13 @@ and **must not** be confused for shippable assets.
 In priority order — the first two unblock a buildable landing page:
 
 - [ ] **A-V1** hero loop (8–12 s, silent) — highest value, lowest effort
-- [ ] **A-01** matrix at full scale
-- [ ] **A-02** set editor with real formatting
+- [x] **A-01** matrix at full scale — delivered 2026-08-04
+- [x] **A-02** set editor with real formatting — delivered 2026-08-04 (STATS panel closed; re-shoot only if the four stats matter)
 - [ ] **A-03** compare page with a note
 - [ ] Answer §3.3 — video scope, narration, editing
 - [ ] **A-04** filter drawer
 - [ ] **A-V2**, **A-V3** walkthroughs
-- [ ] Confirm **A-07 / A-08** SM2 screenshots are clean of machine paths
+- [x] Confirm **A-08** is clean of machine paths — **it was not.** Two paths were leaking; shipped redacted, original gitignored. A-07 is retired, so nothing to check there. Optional: re-shoot A-08 with the collection-path fields cleared so the redaction can come off
 - [ ] **A-05**, **A-09** (optional)
 
 Everything else — fonts, marks, the A-06 diagram, the OG composite — Claude can

@@ -10,7 +10,13 @@ because it read the YAML and not the pages. *That silence was the lesson.* These
 pages have no automated fact check at all, so the ledger is the control.
 
 **Sources:** `T` = Ry's 2026-07-31 transcript · `R` = the `wolfpackdata/setmaster3`
-repo (path given) · `P` = the public `wolfpackdata/setmaster` repo.
+repo (path given) · `P` = the public `wolfpackdata/setmaster` repo · `Ry` = a direct
+instruction from Ry, dated.
+
+**`Ry` outranks `T`.** The transcript is Ry thinking out loud; a later instruction is
+Ry deciding. Where the two disagree, the row records both and says which one ships,
+so a fact that changed does not read as a fact that was never checked. Two rows carry
+this so far: the *eight years* retirement (C-07) and the *cloud architect* line in S6.
 
 ---
 
@@ -88,7 +94,7 @@ Safe to write. Each traces to a checkable source.
 | Used during set prep, not live | T | case study |
 | The lightbulb: a one-off flow joining SM2's Python output to exportify.net CSVs of his Spotify® playlists | T | case study |
 | That flow "saved hours every month" | T | case study |
-| Becoming a cloud architect in **early 2025** reframed it as a web app; work started **early July 2026** | T | case study |
+| **Building apps with Claude**, starting in **early 2025**, reframed it as a web app; work started **early July 2026** | Ry, 2026-07-31 (supersedes T, which said *cloud architect*) | case study |
 | The prototype's Traktor® connection was **Windows-only** — the primary motivation for the rebuild | R `00-overview.md` §3 | case study |
 | Rekordbox® collection import is **planned, no timeline** | T; R `00-overview.md` §6 lists it out of scope today | both |
 | Perform Mode and the natural-language filter bar are **deferred** | R `00-overview.md` §6 | landing band 9 |

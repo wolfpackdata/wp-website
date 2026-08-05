@@ -1,6 +1,6 @@
-# SetMaster 3: From a Spreadsheet on a Plane to a Shipped Application
+# SetMaster 3: From a Spreadsheet on a Plane to a Robust Application
 
-> **Copy deck, draft 1** (2026-07-31). Written to
+> **Copy deck, draft 2** (2026-07-31). Written to
 > [`01-case-study-outline.md`](01-case-study-outline.md) in the house voice defined by
 > [`docs/ryan-blog-tone.md`](../../docs/ryan-blog-tone.md). Every fact traces to
 > [`04-claims-ledger.md`](04-claims-ledger.md). This is the text the page gets built
@@ -10,9 +10,9 @@
 
 **Kicker:** CASE STUDY · 2026
 
-I am a professional DJ. I built my own set preparation tool three times in three
-years. The third one is a specified, tested, offline web application that anyone
-can download and run on their own machine.
+Data engineering meets DJ engineering. I needed a road-worthy set preparation tool,
+so I built one three times in three years. The third is a specified, tested,
+offline web application that any DJ can download and run on their own machine.
 
 | | |
 |---|---|
@@ -138,9 +138,9 @@ queried.
 
 ## The Rebuild
 
-I became a cloud architect in early 2025, and the job changed how I looked at the
-workbook. I did not get time to act on it until this year, and the web application
-version started in early July 2026.
+I began building apps with Claude in early 2025, and that changed how I looked at
+the workbook. I did not get time to act on it until this year, and the web
+application version started in early July 2026.
 
 There was also a defect that no amount of additions to the workbook was going to
 fix. The prototype's connection to Traktor® was Windows only. That was the single
@@ -493,16 +493,41 @@ aside, so that the flight in S8 pays it off directly.
 **The thesis pull quote lost its quotation marks.** It reads as the piece's own
 conclusion rather than as something being quoted, which is what §3.6 asks for.
 
+## What changed in draft 2
+
+Ry's followup list on the Notion task, 2026-07-31. All four changes are also applied
+to the built page at `setmaster3-case-study/index.html`; the deck and the page are
+the two copies that drift, so neither is edited alone.
+
+1. **The standfirst is Ry's framing**, replacing *"I am a professional DJ…"*. It
+   opens on the discipline collision rather than on the job title, names the tool
+   *road-worthy* rather than *bespoke*, and widens the last clause from *anyone* to
+   *any DJ*, which is the actual audience.
+2. **The title reads *Robust Application*** rather than *Shipped Application*.
+   *Shipped* was an engineer's word for an engineer's milestone; *robust* is a
+   claim the page then spends 867 tests supporting.
+3. ***"I became a cloud architect in early 2025"* is now *"I began building apps
+   with Claude in early 2025"***. The following clause changed from *"and the job
+   changed how I looked at the workbook"* to *"and that changed…"*, because *the
+   job* no longer had an antecedent. The transcript said cloud architect; this
+   supersedes it (see `04-claims-ledger.md`).
+4. **The page carries a favicon** (the Wolfpack mark), matching every other page in
+   the repo.
+
 ## Open items
 
-1. **Title.** Option 1 is used here. §10 of the outline holds the other three.
-2. **The hours-per-month figure.** Currently hedged as an uninstrumented estimate.
-   That is the honest framing, and Ry may prefer to drop the number entirely.
+1. ~~**Title.** Option 1 is used here~~ — **CLOSED (Ry, 2026-07-31).** Option 1
+   with one word changed: *shipped* became **robust**. It also settles the clash
+   with the new standfirst, which ends on *"offline web application"* — the title
+   no longer ends on the same noun.
+2. ~~**The hours-per-month figure**~~ — **CLOSED (Ry, 2026-07-31).** The hedged
+   estimate stays as written.
 3. ~~"Rekordbox" carries no ®~~ — **CLOSED (Ry, 2026-07-31).** It now carries one,
    here and across the whole planning set. This extends the repo's enumerated
    trademark rule, which listed only Traktor, Native Instruments, and Spotify.
-4. **The SetMaster 2 year** is not stated in the prose, only "the next version".
-   That sidesteps the soft ~2024 date. If Ry confirms it, one sentence gains a year.
+4. ~~**The SetMaster 2 year** is not stated in the prose~~ — **CLOSED (Ry,
+   2026-07-31): "leave it."** The prose stays dateless on SetMaster 2, and the soft
+   ~2024 figure never reaches the page.
 5. **The 6,810 figure** appears in the main column. The ledger notes the build
    report cites both 6,810 and 7,033. 6,810 is the acceptance-run number and is the
    one used.

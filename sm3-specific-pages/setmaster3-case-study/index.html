@@ -4,14 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Direct-link only. Two differently-framed portfolio artefacts for the same
+<!-- Direct-link only. Two differently-framed portfolio artifacts for the same
      person indexed side by side reads badly, and this page speaks to the same
      audience as hire/, from which it is linked. See planning/00-overview.md D-003. -->
 <meta name="robots" content="noindex, nofollow">
 
-<title>SetMaster 3: From a Spreadsheet on a Plane to a Shipped Application · Case Study</title>
-<meta name="description" content="A professional DJ built his own set preparation tool three times in three years. The third is a specified, tested, offline web application. A case study in specifying before building.">
+<title>SetMaster 3: From a Spreadsheet on a Plane to a Robust Application · Case Study</title>
+<meta name="description" content="Data engineering meets DJ engineering. A professional DJ built his own set preparation tool three times in three years. The third is a specified, tested, offline web application.">
 <link rel="canonical" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">
+<link rel="icon" type="image/png" href="../sm3-assets/img/wolfpack-logo.png">
 
 <link rel="stylesheet" href="../sm3-assets/css/fonts.css">
 <link rel="stylesheet" href="../sm3-assets/css/sm3-case.css">
@@ -47,11 +48,12 @@
   <section class="hero">
     <div class="wrap hero__inner">
       <span class="k hero__kicker">Case Study &middot; 2026</span>
-      <h1 class="hero__title">SetMaster 3: From a Spreadsheet on a Plane to a Shipped Application</h1>
+      <h1 class="hero__title">SetMaster 3: From a Spreadsheet on a Plane to a Robust Application</h1>
       <p class="hero__stand">
-        I am a professional DJ. I built my own set preparation tool three times in
-        three years. The third one is a specified, tested, offline web application
-        that anyone can download and run on their own machine.
+        Data engineering meets DJ engineering. I needed a road-worthy set preparation
+        tool, so I built one three times in three years. The third is a specified,
+        tested, offline web application that any DJ can download and run on their
+        own machine.
       </p>
 
       <ul class="stats">
@@ -62,12 +64,10 @@
       </ul>
 
       <figure class="figure figure--wide reveal">
-        <div class="ph" aria-hidden="true">
-          <span class="ph__id">A-01</span>
-          <span class="ph__what">Track-Playlist Matrix at full scale, filter active</span>
-          <span class="ph__dim">16 : 9</span>
-        </div>
-        <figcaption>The Track-Playlist Matrix. Screenshot pending capture.</figcaption>
+        <img class="shot shot--natural" src="../sm3-assets/img/a01-track-playlist-matrix.png"
+             alt="The Track-Playlist Matrix showing 178 of 3,604 tracks across 83 playlists, with the filter panel open on a BPM range, a key selection, and a release-year range"
+             width="1908" height="907" loading="lazy">
+        <figcaption>The Track-Playlist Matrix. 178 of 3,604 tracks matching one compound filter, across 83 playlists.</figcaption>
       </figure>
     </div>
   </section>
@@ -176,7 +176,7 @@
             <li><span class="sw sw--in"></span><b>Cyan is where you are landing</b></li>
           </ul>
         </div>
-        <figcaption>Read across the line. Illustrative rows, drawn in the application's own colours.</figcaption>
+        <figcaption>Read across the line. Illustrative rows, drawn in the application's own colors.</figcaption>
       </figure>
 
       <div class="prose reveal">
@@ -202,14 +202,11 @@
         </p>
       </div>
 
-      <figure class="figure reveal">
-        <div class="ph" aria-hidden="true">
-          <span class="ph__id">A-07</span>
-          <span class="ph__what">SetMaster 2 workbook, a real multi-tab set</span>
-          <span class="ph__dim">16 : 9</span>
-        </div>
-        <figcaption>A set tab in the SetMaster 2 workbook. Screenshot pending capture.</figcaption>
-      </figure>
+      <!-- A-07 (SetMaster 2 workbook, a real multi-tab set) was dropped here at
+           Ry's request, 2026-08-04. Not pending, not hidden: cut. The section's
+           prose carries the workbook-era story on its own, and A-08 below
+           already pictures SetMaster 2. Retired in the capture list too, so the
+           A-nn ids stay a true index of what the page wants. -->
     </div>
   </section>
 
@@ -239,12 +236,15 @@
       </div>
 
       <figure class="figure reveal">
-        <div class="ph ph--43" aria-hidden="true">
-          <span class="ph__id">A-08</span>
-          <span class="ph__what">SetMaster 2 LaunchPad tab</span>
-          <span class="ph__dim">4 : 3</span>
-        </div>
-        <figcaption>The SetMaster 2 LaunchPad. Screenshot pending capture.</figcaption>
+        <!-- The two collection-path fields are redacted. The capture showed a
+             Windows user directory and a local studio path, which the capture
+             brief forbids shipping; the un-redacted original is gitignored and
+             was never committed. Nothing material is lost, the field labels
+             still say what they are. -->
+        <img class="shot shot--natural" src="../sm3-assets/img/a08-sm2-launchpad.png"
+             alt="The SetMaster 2 LaunchPad tab: a set selector, buttons for a new set from template and for jumping to the Track-Playlist Matrix, the Traktor collection and repository path fields with their values redacted, and the Python tools that read the collection and rebuild the tables"
+             width="1434" height="724" loading="lazy">
+        <figcaption>The SetMaster 2 LaunchPad. Collection paths redacted.</figcaption>
       </figure>
     </div>
   </section>
@@ -301,9 +301,9 @@
       <h2 class="section__title reveal">The Rebuild</h2>
       <div class="prose reveal">
         <p>
-          I became a cloud architect in early 2025, and the job changed how I looked
-          at the workbook. I did not get time to act on it until this year, and the
-          web application version started in early July 2026.
+          I began building apps with Claude in early 2025, and that changed how I
+          looked at the workbook. I did not get time to act on it until this year,
+          and the web application version started in early July 2026.
         </p>
         <p>
           There was also a defect that no amount of additions to the workbook was
@@ -579,12 +579,10 @@
       </div>
 
       <figure class="figure reveal">
-        <div class="ph" aria-hidden="true">
-          <span class="ph__id">A-02</span>
-          <span class="ph__what">Set editor, real set, formatting and all four stats visible</span>
-          <span class="ph__dim">16 : 9</span>
-        </div>
-        <figcaption>The SetMaster 3 set editor. Screenshot pending capture.</figcaption>
+        <img class="shot shot--natural" src="../sm3-assets/img/a02-set-editor.png"
+             alt="The set editor open on a real set, showing paired out-track and in-track rows with BPM and key, tempo adjustments, hotcue and loop markers, color-coded emphasis, and per-transition mix notes"
+             width="1904" height="904" loading="lazy">
+        <figcaption>The SetMaster 3 set editor. One real set, read as paired out-track and in-track rows.</figcaption>
       </figure>
     </div>
   </section>
