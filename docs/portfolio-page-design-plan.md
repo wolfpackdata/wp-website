@@ -95,7 +95,9 @@ Where coral is a fill, text on it is navy (5.8:1), never white.
 | **D-002** | Public and **indexed** | Unlike `hire/`. Being found is the point for both audiences, and this page has no differently-framed twin to collide with in search results. |
 | **D-003** | **No links to the `/hire/` pages** — and **this rule is about the résumés specifically, not about `noindex`** | Those two pages carry Ry's résumé and a time-sensitive claim that he is actively seeking a role. Linking that from a public client-facing page tells every prospective client he is job-hunting, and puts both framings of one résumé a click apart. Hiring managers get the résumé from Ry directly. Ruling: Ry, 2026-08-04. **Scope corrected 2026-08-04 — see D-010. `noindex` is a symptom of this rule, never its cause**, so do not generalise it to every noindex page. |
 | **D-010** | **Linking the SetMaster 3 case study is fine, and the card is a live link** | The card was briefly held back on the theory that D-003 extended to any `noindex`, direct-link-only page, and that case study was one. **That was wrong** (Ry, 2026-08-04). What settles it: the case study contains **no link to `hire/`** — the only `hire/` string in that file is an HTML comment — so linking it creates no path to the résumés, and it is a **case study, not a résumé**, so none of D-003's actual harm applies. A public blog post (#103) already linked it, so it was not new exposure either. **Correction, same day:** this entry first claimed the case study's `noindex` protected it against the planned `/setmaster3/` landing page. That was an inference and it was wrong — `sm3-specific-pages/planning/00-overview.md` D-003 records the real reason, which was that it inherited `hire/`'s direct-link posture. **Moot now:** Ry flipped the case study to **indexed** on 2026-08-04, so both linked case studies are indexed and this page links nothing `noindex` at all. |
-| **D-004** | Hero copy ships as a **marked placeholder** | The hero has to speak to a client and a hiring manager in the same breath, which is a positioning judgment, not a copy task. Ry writes it. The placeholder is visually obvious and carries an HTML comment stating what it needs. Ruling: Ry, 2026-08-04. |
+| **D-004** | ~~Hero copy ships as a marked placeholder~~ → **RESOLVED 2026-08-04, Ry wrote it** | The hero had to speak to a client and a hiring manager in the same breath, which is a positioning judgment rather than a copy task, so it shipped as a visibly-marked placeholder. Ry's copy: **"Systems, apps, and projects"** over *"Selected examples of recent applications, data systems, and AI workflows built and evolving, with some case studies below."* The `.ph-copy` block and its CSS are deleted, which is also what returned the coral ration to seven. Note his framing solved the two-audience problem by **not addressing either audience directly** — it just names the work, which reads the same to a client and to an employer. |
+| **D-011** | **No rates link on this page.** The `.softcta` coda band is removed | It carried a quiet `/rates_public/` link, argued for on the grounds that half the audience is a prospective client and the honest next step after seeing work is what it costs. **Ry cut it, 2026-08-04.** The closing block is now the last thing on the page and the intro call is the only destination anywhere on it, which is the book-first rule at its strictest. The `.softcta` and `.section--coda` rules came out of the stylesheet with the section; the device still lives in `hire.css`. |
+| **D-012** | The closing header and lede are **rewritten** | They read *"The smallest next step is a conversation."* over *"…whether any of the work above maps onto it."* Ry's verdict was that both were terrible, and he was right: the header took a structural instruction from [`ryan-blog-tone.md`](ryan-blog-tone.md) §7 (*close on the smallest next step*) and used it as a headline, which is consultant-speak, and *"maps onto"* was doing the same. Now **"Start with a call"** over *"Thirty minutes on what you are building and what is in the way. If nothing above fits the problem, I will say so on the call rather than talk around it."* **The CTA itself is unchanged** — that was Ry's explicit instruction, and the §4.4 immediate-caveat is kept because it is the most honest line in the block. |
 | **D-005** | SetMaster 3 uses the **engineering framing** | `eng_only.yaml` says `SetMaster 3`; `eng_music.yaml` says `RML SetMaster 3` with different emphasis. One source YAML for all eight cards keeps the page internally consistent and the drift check single-sourced. Ruling: Ry, 2026-08-04. |
 | **D-006** | `verify_facts.py` gains **check 6**, comparing app blurbs in the HTML against the YAML | This page is the third copy of those strings. Until now nothing compared any HTML copy to the YAML, so the `hire/` pages were unguarded too. Check 6 closes both gaps at once. Ruling: Ry, 2026-08-04. |
 | **D-007** | One CTA, the 30-minute intro call | The repo-wide book-first rule. No intake-form link, no resume download, no second funnel. |
@@ -113,7 +115,8 @@ Where coral is a fill, text on it is navy (5.8:1), never white.
 - [ ] No link to either `hire/` page.
 - [ ] Coral used only for the seven placements in §4.
 - [ ] Connective copy passes the `ryan-blog-tone.md` §9 checklist; ported blurbs exempt per §2.
-- [ ] Hero placeholder visibly marked, not mistakable for finished copy.
+- [x] Hero copy written by Ry, placeholder and its CSS removed (D-004 resolved).
+- [x] Exactly one destination on the whole page: the intro call (D-011 removed the rates coda).
 
 ## 7. Entry points
 
@@ -124,7 +127,7 @@ structurally. Ry's instruction was *less is more*, so the proposed set is **two 
    discovery path and the reason the page is indexed. **Ry's hands only** — Wix is not in git
    and no session here can change it.
 2. **The ops financial model case study**, in its closing area, linking back to this page
-   using the `.softcta` coda device. A reader who finishes the one published case study is the
+   using `hire.css`'s `.softcta` coda device. A reader who finishes a published case study is the
    warmest audience this page has. **Deliberately not implemented in #95:** editing that page
    means re-deploying `case_studies/` alongside `portfolio/`, doubling the round's deploy
    surface, which is a cost Ry should choose rather than absorb.
@@ -137,10 +140,10 @@ strong discovery path for work evidence, so it is not worth spending the excepti
 hiring manager to a page they have effectively already read. No sitemap entry: this repo has
 no sitemap and the page is indexable without one.
 
-**The reverse direction** is already built: `portfolio/` links out to `/rates_public/` in a
-quiet coda band, serving the client half of the audience without becoming a second funnel CTA.
-That is an outbound link on a new page rather than an amendment to an existing one, so it
-needed no ruling.
+**The reverse direction was built and then cut.** `portfolio/` briefly linked out to
+`/rates_public/` in a quiet coda band, on the argument that it served the client half of the
+audience without becoming a second funnel CTA. **Ry removed it on 2026-08-04** (D-011), so the
+page now has exactly one destination anywhere on it: the intro call.
 
 ## 8. Deploying
 

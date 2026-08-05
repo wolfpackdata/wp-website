@@ -22,7 +22,7 @@ by copying into `wolfpackdata/ai-coaching-intake`. See *Deploying* below.
 - [x] `css/portfolio.css`, `css/fonts.css`
 - [x] `js/reveal.js`
 - [x] `index.html`
-- [ ] Hero copy — **placeholder, awaiting Ry** (see below)
+- [x] Hero copy — **written by Ry 2026-08-04**; placeholder and its CSS removed
 - [ ] Deployed to `ai-coaching-intake`
 
 Verified: zero external requests, zero horizontal overflow at 320/360/390/414/768/1024/
@@ -31,12 +31,14 @@ Verified: zero external requests, zero horizontal overflow at 320/360/390/414/76
 
 ## Four things to know
 
-**1. The hero copy is a placeholder, on purpose.** It has to address a prospective client and
-a hiring company in the same breath, which is a positioning judgment rather than a copy task
-(design plan D-004). The `.ph-copy` block in `index.html` says so on the page itself, and the
-headline and standfirst under it are deliberately plain and factual so nothing false ships if
-the page goes live first. **When the real copy lands, delete the `.ph-copy` block and its rule
-in `css/portfolio.css`** — that also returns the coral ration to seven uses.
+**1. The hero copy is Ry's, written 2026-08-04.** It shipped as a marked placeholder first,
+because the hero had to address a prospective client and a hiring company in the same breath
+and that is a positioning judgment rather than a copy task (design plan D-004). His answer is
+worth noting: **"Systems, apps, and projects"** over *"Selected examples of recent
+applications, data systems, and AI workflows built and evolving, with some case studies
+below."* It solves the two-audience problem by addressing **neither audience directly** — it
+just names the work, which reads the same to a client and to an employer. Do not re-point it at
+one of them.
 
 **2. Audience is both clients and hiring companies, and that is the whole design
 constraint.** Every other page here serves one or the other, which is why none of them could
@@ -71,11 +73,12 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
 - **SetMaster 3 uses the `eng_only` framing**, not `eng_music`'s "RML SetMaster 3" (D-005).
   One source YAML for all eight cards.
 - **The coral ration is enumerated in the header comment of `css/portfolio.css`.** Keep that
-  comment true. It currently lists eight uses because the placeholder label is one of them,
-  marked temporary; it returns to seven when the hero copy lands.
-- **One CTA, the 30-minute intro call.** No intake-form link, no résumé download. The
-  outbound `/rates_public/` link sits in a quiet coda band and is navigation, not a second
-  funnel CTA.
+  comment true. **Seven uses**, back down from a temporary eighth that carried the hero
+  placeholder's label and left with it.
+- **One CTA and exactly one destination on the whole page: the 30-minute intro call.** No
+  intake-form link, no résumé download, no rates link. A `/rates_public/` coda band briefly
+  existed and **Ry cut it** on 2026-08-04 (**D-011**), so this is now the book-first rule at its
+  strictest. Do not re-add a second destination without a ruling.
 - **`reveal.js` is copied, never rewritten** — byte-identical to `hire/assets/js/reveal.js`
   apart from its header comment, so reveal timing and scroll-spy match every other long-form
   page here.
