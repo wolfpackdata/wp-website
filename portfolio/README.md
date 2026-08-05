@@ -14,8 +14,10 @@ issue [#95](https://github.com/wolfpackdata/wp-website/issues/95).
 
 ## Status
 
-**Built, not yet deployed.** The folder is complete and verified; it reaches the public only
-by copying into `wolfpackdata/ai-coaching-intake`. See *Deploying* below.
+**Built and deployed.** Live at `https://intake.wolfstrategyllc.com/portfolio/` since
+2026-08-05 ([#126](https://github.com/wolfpackdata/wp-website/issues/126)). This repo stays
+the source of truth; it reaches the public only by re-copying into
+`wolfpackdata/ai-coaching-intake`. See *Deploying* below.
 
 - [x] `fonts/` — 14 woff2 (Roboto + Montserrat), copied from `hire/assets/fonts/`
 - [x] `img/` — 8 app screenshots + the wolf mark
@@ -23,7 +25,7 @@ by copying into `wolfpackdata/ai-coaching-intake`. See *Deploying* below.
 - [x] `js/reveal.js`
 - [x] `index.html`
 - [x] Hero copy — **written by Ry 2026-08-04**; placeholder and its CSS removed
-- [ ] Deployed to `ai-coaching-intake`
+- [x] Deployed to `ai-coaching-intake` — 2026-08-05, `ai-coaching-intake#51`
 
 Verified: zero external requests, zero horizontal overflow at 320/360/390/414/768/1024/
 1440px, complete render with JavaScript disabled, single H1 with clean heading order,
@@ -123,6 +125,12 @@ This repo **serves nothing.** The page goes live only by copying `portfolio/` in
 `wolfpackdata/ai-coaching-intake`, which owns `intake.wolfstrategyllc.com`. The folder here
 mirrors the deploy path, so it is a single copy of `portfolio/` into that repo's root with no
 path rewriting.
+
+**This file is the one exception — `README.md` does not deploy.** It is internal build
+documentation, and unlike `hire/` (which is `noindex` and does carry its README into the
+intake repo) this page is **public and indexed**. Copy from `git ls-files portfolio` minus
+this file. If the `hire/README.md` already sitting in the intake repo ever bothers you, it
+can come out the same way — flagged, not actioned.
 
 **This repo stays the source of truth. Never edit the deployed copy; re-copy on change.**
 
