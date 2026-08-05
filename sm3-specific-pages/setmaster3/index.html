@@ -5,14 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ======================================================================
+     ⚠ BEFORE DEPLOYING: v3.0.4 must be published to the public mirror first.
+
+     This page links two v3.0.4 assets. As of 2026-08-05 the newest release at
+     github.com/wolfpackdata/setmaster is v3.0.4's predecessor, carrying only
+     the Windows zip, so BOTH download buttons here 404 until Ry publishes
+     v3.0.4 with both artifacts attached. The private repo's own v3.0.4 fix
+     report calls this out as its third close-out item, for exactly this
+     reason: v3.0.3 shipped with only the Windows zip, so anything advertising
+     a .dmg advertised a file that could not be downloaded.
+
      RELEASE FACTS — update all five on a new SetMaster 3 release.
 
-       v3.0.3 · 2026-07-31 · 72 MB · sha256 57ce5a23…1aeb
+       v3.0.4 · 2026-08-05 · Windows x64 zip + Apple silicon .dmg
 
        1. the hero status line
-       2. the Windows download button and its meta line
-       3. the SHA-256 line under it
-       4. the JSON-LD softwareVersion and downloadUrl
+       2. both download buttons and their meta lines
+       3. the artifact names in both step lists
+       4. the JSON-LD softwareVersion, operatingSystem, and downloadUrl
        5. the footer version
 
      The design spec (§6.4) wanted these declared once and read from a single
@@ -30,7 +40,7 @@
      title and description are deliberately unlike the case study's: this one
      is a product page and should be the one that ranks for the product. -->
 <title>SetMaster 3 &middot; Offline DJ set preparation and catalog analysis for Traktor&reg;</title>
-<meta name="description" content="Offline, free, and open source. SetMaster 3 is a transition editor and a Traktor&reg; catalog analyzer that runs entirely on your own machine. Download for Windows.">
+<meta name="description" content="Offline, free, and open source. SetMaster 3 is a transition editor and a Traktor&reg; catalog analyzer that runs entirely on your own machine. Free for Windows and macOS.">
 <link rel="canonical" href="https://intake.wolfstrategyllc.com/setmaster3/">
 <link rel="icon" type="image/png" href="../sm3-assets/img/wolfpack-logo.png">
 
@@ -53,10 +63,10 @@
   "@type": "SoftwareApplication",
   "name": "SetMaster 3",
   "applicationCategory": "MultimediaApplication",
-  "operatingSystem": "Windows",
-  "softwareVersion": "3.0.3",
+  "operatingSystem": ["Windows", "macOS 14.0"],
+  "softwareVersion": "3.0.4",
   "url": "https://intake.wolfstrategyllc.com/setmaster3/",
-  "downloadUrl": "https://github.com/wolfpackdata/setmaster/releases/download/v3.0.3/SetMaster3-3.0.3-windows-x64.zip",
+  "downloadUrl": "https://github.com/wolfpackdata/setmaster/releases/download/v3.0.4/SetMaster3-3.0.4-windows-x64.zip",
   "license": "https://opensource.org/licenses/MIT",
   "description": "An offline DJ set preparation and catalog analysis tool. A structured transition editor plus read-only analysis of a Traktor collection against Spotify playlist exports.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -105,11 +115,11 @@
 
       <p class="status__line">
         <span class="status__dot" aria-hidden="true"></span>
-        <span>v3.0.3</span>
+        <span>v3.0.4</span>
         <span class="status__sep">&middot;</span>
-        <span>released 2026-07-31</span>
+        <span>released 2026-08-05</span>
         <span class="status__sep">&middot;</span>
-        <span>72 MB</span>
+        <span>Windows and macOS</span>
         <span class="status__sep">&middot;</span>
         <span>free</span>
         <span class="status__sep">&middot;</span>
@@ -132,10 +142,11 @@
     <div class="wrap">
       <div class="band__head reveal">
         <span class="k k--accent">Install</span>
-        <h2 class="band__title">Download it, unpack it, double-click it.</h2>
+        <h2 class="band__title">Download it and open it.</h2>
         <p class="band__lede">
-          Every release is a self-contained payload with its own bundled CPython
-          runtime. <strong>No Python, no Node, no terminal, no installer.</strong>
+          Every release carries its own bundled CPython runtime, so there is nothing
+          to install first on either platform. <strong>No Python, no Node, no
+          terminal.</strong>
         </p>
       </div>
 
@@ -150,59 +161,66 @@
           </div>
 
           <ol class="steps">
-            <li>Download <strong>SetMaster3-3.0.3-windows-x64.zip</strong> and save it anywhere.</li>
-            <li>Unpack the zip. What you get is an ordinary folder, not an installer.</li>
-            <li>Double-click <code>SetMaster 3.vbs</code>. Nothing appears to happen for a few seconds while it starts.</li>
+            <li>Download <strong>SetMaster3-3.0.4-windows-x64.zip</strong>.</li>
+            <li>Unpack it into <code>C:\Program Files\SetMaster3</code>, which is the recommended home for it. Windows asks for permission to write there. Any other folder works just as well.</li>
+            <li>Open the <code>launchers</code> folder and double-click <code>SetMaster 3.vbs</code>. Nothing appears to happen for a few seconds while it starts.</li>
             <li>It opens in your default browser. To stop it, double-click <code>Stop SetMaster 3.vbs</code>.</li>
           </ol>
 
           <p class="plat__note">
-            Double-clicking the launcher again while it is already running brings the
-            app back up in the browser rather than starting a second copy.
+            Your sets, notes, and settings live in your Windows app-data folder rather
+            than in the program folder, so replacing the folder with a newer version
+            never touches them. Double-clicking the launcher again while it is already
+            running brings the app back up in the browser rather than starting a
+            second copy.
           </p>
 
           <div class="plat__foot">
             <a class="btn btn--dl btn--wide"
-               href="https://github.com/wolfpackdata/setmaster/releases/download/v3.0.3/SetMaster3-3.0.3-windows-x64.zip">
+               href="https://github.com/wolfpackdata/setmaster/releases/download/v3.0.4/SetMaster3-3.0.4-windows-x64.zip">
               Download for Windows
-              <span class="btn__meta">.zip &middot; 72 MB &middot; v3.0.3</span>
+              <span class="btn__meta">.zip &middot; v3.0.4 &middot; 64-bit</span>
             </a>
-            <span class="sha"><b>SHA-256</b><br>57ce5a23f74593d2ceb7a3c1d861da28e944ee3266530bb693a7b9e84ea11aeb</span>
+            <span class="sha"><b>SHA-256</b><br>Published in the release notes for every artifact.</span>
           </div>
         </div>
 
-        <!-- macOS: the honest state. A greyed-out button that does nothing is
-             worse than a sentence that says what is true (spec §6.2). The steps
-             are the documented macOS launch contract from the repository, shown
-             so a Mac reader knows what installing will involve, and marked
-             pending so nothing here reads as a shipping claim. -->
+        <!-- macOS shipped in v3.0.4 (2026-08-05) as a signed, notarized .app
+             inside a drag-to-Applications disk image, and this column was
+             rewritten from its "not yet published" state that day. The
+             requirement line is not decoration: the bundled NumPy is
+             macosx_14_0_arm64, so the app claims 14.0 and the builder refuses
+             to produce an image that claims otherwise. Intel is not supported
+             and the page says so rather than leaving it to be discovered. -->
         <div class="plat reveal">
           <div class="plat__head">
             <h3 class="plat__os">macOS</h3>
-            <span class="plat__req">Apple silicon or Intel</span>
-            <span class="chip">Not yet published</span>
+            <span class="plat__req">Apple silicon &middot; macOS 14 or later</span>
+            <span class="chip">Signed and notarized</span>
           </div>
 
-          <p class="plat__note">
-            The macOS launchers and the macOS build script are written and
-            structurally verified. No build of SetMaster 3 has ever been run on a
-            Mac, so v3.0.3 ships for Windows only. These are the steps the Mac
-            install will take once an artifact exists.
-          </p>
-
-          <ol class="steps steps--pending">
-            <li>Download the macOS archive for your chip, Apple silicon or Intel.</li>
-            <li>Unpack the <code>.tar.gz</code> by double-clicking it in Finder, which keeps the launcher permissions intact.</li>
-            <li>Right-click <code>SetMaster 3.command</code> and choose Open, then Open again. macOS asks once, because the app is not signed by an Apple-registered developer.</li>
-            <li>It opens in your default browser. To stop it, double-click <code>Stop SetMaster 3.command</code>.</li>
+          <ol class="steps">
+            <li>Download <strong>SetMaster-3.0.4-macos-arm64.dmg</strong> and double-click it.</li>
+            <li>Drag the <strong>SetMaster</strong> icon onto the Applications folder beside it, then eject the disk image.</li>
+            <li>Open SetMaster from Applications or Launchpad. It opens in your default browser after a couple of seconds.</li>
+            <li>To stop it, right-click the SetMaster icon in the Dock and choose Quit. Closing the browser tab leaves it running.</li>
           </ol>
 
+          <p class="plat__note">
+            The app is signed with a Developer ID, notarized, and stapled, so it opens
+            like any other Mac app. There is no right-click-to-open step and no
+            Privacy and Security detour. Apple silicon only: Intel Macs are not
+            supported. Every Apple silicon Mac can run macOS 14, and the update is
+            free.
+          </p>
+
           <div class="plat__foot">
-            <a class="btn btn--ghost btn--wide" href="https://github.com/wolfpackdata/setmaster"
-               target="_blank" rel="noopener">
-              Watch the repository
-              <span class="btn__meta">The Mac build appears there first</span>
+            <a class="btn btn--dl btn--wide"
+               href="https://github.com/wolfpackdata/setmaster/releases/download/v3.0.4/SetMaster-3.0.4-macos-arm64.dmg">
+              Download for macOS
+              <span class="btn__meta">.dmg &middot; v3.0.4 &middot; Apple silicon</span>
             </a>
+            <span class="sha"><b>SHA-256</b><br>Published in the release notes for every artifact.</span>
           </div>
         </div>
       </div>
@@ -240,44 +258,13 @@
         </p>
       </div>
 
-      <figure class="reveal">
-        <div class="trow">
-          <table>
-            <caption class="visually-hidden">One transition row: the outgoing track on the left, the incoming track on the right.</caption>
-            <thead>
-              <tr>
-                <th class="grp grp--out" colspan="4" scope="colgroup">Out Track</th>
-                <th class="grp grp--in divide" colspan="4" scope="colgroup">In Track</th>
-              </tr>
-              <tr>
-                <th class="col" scope="col">Track</th>
-                <th class="col num" scope="col">T&nbsp;#</th>
-                <th class="col num" scope="col">Lows</th>
-                <th class="col num" scope="col">Level</th>
-                <th class="col divide" scope="col">Track</th>
-                <th class="col num" scope="col">M&nbsp;#</th>
-                <th class="col num" scope="col">BPM</th>
-                <th class="col num" scope="col">Key</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Nightdrive</td><td class="num">3</td><td class="num">OUT</td><td class="num">HOT</td>
-                <td class="divide">Cosmic Dub</td><td class="num">2</td><td class="num">122</td><td class="num">Gbm</td>
-              </tr>
-              <tr>
-                <td>Cosmic Dub</td><td class="num">4</td><td class="num">SWAP</td><td class="num">MID</td>
-                <td class="divide">Late Transmission</td><td class="num">1</td><td class="num">124</td><td class="num">Dbm</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul class="trow__legend">
-            <li><span class="sw sw--out"></span><b>Magenta is where you are leaving</b></li>
-            <li><span class="sw sw--in"></span><b>Cyan is where you are landing</b></li>
-          </ul>
-        </div>
-        <figcaption class="caption">Read across the line. Illustrative rows, drawn in the application's own colors.</figcaption>
-      </figure>
+      <!-- The rendered transition row that stood here was cut on Ry's
+           instruction, 2026-08-05. The band is now copy only, and it is the one
+           band on the page with no visual. Its styles went with it rather than
+           being left dead in sm3-landing.css; the case study still renders the
+           same table from its own stylesheet, which is where that markup now
+           lives in full. Magenta and cyan no longer appear anywhere on this
+           page, so the Out/In pair rule holds by absence. -->
     </div>
   </section>
 
@@ -420,8 +407,12 @@
           <p><strong>Rekordbox&reg; collection import.</strong> There is no date on it.</p>
         </li>
         <li>
-          <span class="chip">In progress</span>
-          <p><strong>The macOS build.</strong> Written and structurally verified, waiting on a Mac to build and test it against the release checklist.</p>
+          <span class="chip">Not tested</span>
+          <p><strong>The end-to-end suite and the pipeline golden-master tests on macOS.</strong> They pass on Windows and have never been run on a Mac. The macOS artifact has its own acceptance test, which it passed on a clean install.</p>
+        </li>
+        <li>
+          <span class="chip">Not supported</span>
+          <p><strong>Intel Macs, and macOS 13 or earlier.</strong> The bundled numerical libraries ship for Apple silicon on macOS 14, and the disk image refuses to build if anything inside it needs more than the app claims.</p>
         </li>
         <li>
           <span class="chip">Deferred</span>
@@ -507,7 +498,7 @@
   <div class="wrap foot__inner">
     <span class="foot__wordmark">SetMaster <i>3</i></span>
     <span class="foot__meta">
-      v3.0.3 &middot; MIT licensed &middot;
+      v3.0.4 &middot; MIT licensed &middot;
       <a href="https://github.com/wolfpackdata/setmaster" target="_blank" rel="noopener">github.com/wolfpackdata/setmaster</a>
     </span>
   </div>

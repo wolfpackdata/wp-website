@@ -459,6 +459,13 @@
           in live situations while it was being fixed.
         </p>
         <p>
+          A fifth round followed in August, and it has an unusual shape for this
+          project: almost none of it is application code. It is the macOS installer,
+          the generator that builds the public mirror, and two findings about what the
+          artifacts actually contained. What was missing by then was never a feature.
+          It was a way for a stranger to install this on a Mac.
+        </p>
+        <p>
           The acceptance criteria were demonstrated against my real files rather than
           fixtures. The real collection loads at 6,810 tracks across 149 playlists. The
           digging workflow I use most, which finds curated tracks I have never put in a
@@ -486,6 +493,53 @@
           CPython with the locked dependencies installed into it, and the artifact
           smoke check fails the build if a developer virtual environment ever appears
           inside it.
+        </p>
+      </div>
+
+      <!-- Added 2026-08-05, the day v3.0.4 shipped the signed .dmg. It closes the
+           Windows-only defect this section's parent names as the largest single
+           reason to rebuild, so it belongs in the argument rather than in a
+           postscript. -->
+      <h3 class="section__sub reveal">The Mac Installer</h3>
+      <div class="prose reveal">
+        <p>
+          The first version shipped for Windows only, which was the thing the rebuild
+          was supposed to fix and the one thing it had not yet delivered. A month
+          later it has. <strong>SetMaster now ships on macOS as a signed, notarized
+          application inside a drag-to-Applications disk image.</strong> Open it, drag
+          it, and open it from Applications like any other Mac app. There is no
+          right-click-to-open, no trip through Privacy and Security, and no terminal.
+        </p>
+        <p>
+          Getting there was mostly signing. Apple's convenient option, signing the
+          bundle with one recursive command, passes local verification and is then
+          rejected at notarization. The bundled CPython carries dozens of nested
+          binaries, mostly the numerical libraries, and every one has to be signed
+          individually from the inside out before the outer bundle is sealed. The
+          image is then notarized and stapled twice: once as the application, once as
+          the image built from it.
+        </p>
+        <p>
+          Two findings in that round are the more interesting part, because they are
+          the same shape. <strong>Each was a claim that was true of the thing measured
+          and false of the thing shipped.</strong>
+        </p>
+        <p>
+          The first: compiled Python bytecode records the absolute path of the source
+          it came from, and that path is what a user sees in a traceback. Nearly three
+          thousand files in the macOS payload named my home directory, and the
+          previous release had gone out that way. No source scan could have caught it,
+          because those paths exist in no source tree; they are written at build time.
+          The fix was a second gate in a different place, one that scans the finished
+          artifact rather than the tree it came from.
+        </p>
+        <p>
+          The second: the application declared it would run on macOS 11, and the
+          bundled numerical libraries required macOS 14. Someone on an older Mac could
+          have installed it and never started it. The builder now walks every binary
+          inside the image and refuses to build when anything needs more than the
+          application claims. That is why the release says Apple silicon and macOS 14
+          or later, and why it does not say Intel.
         </p>
       </div>
 
@@ -522,18 +576,29 @@
 
       <h3 class="section__sub reveal">What Is Not Finished</h3>
       <div class="prose reveal">
-        <p>Windows is verified end to end. macOS is not.</p>
+        <!-- Rewritten 2026-08-05. This list used to open "Windows is verified end
+             to end. macOS is not", with an Unverified chip for a platform that had
+             never been built. Both statements stopped being true when the .dmg
+             shipped, so the list now records the narrower limits that replaced
+             them rather than being quietly deleted. -->
+        <p>Both platforms ship. Neither claim is wider than what was tested.</p>
       </div>
       <ul class="status reveal">
         <li>
-          <span class="chip">Unverified</span>
+          <span class="chip">Untested</span>
           <p>
-            The macOS launchers and the macOS build script are written and structurally
-            correct, and no build of SetMaster 3 has ever been run on a Mac, because no
-            Mac was available. The release ships as Windows only and the changelog says
-            so in three places a reader would actually look. There is a written
-            checklist that would earn the macOS claim, and it is tracked as an open
-            issue.
+            The end-to-end suite and the golden-master pipeline tests have never been
+            run on macOS. They pass on Windows. The macOS artifact has its own
+            acceptance check, which it passed on a fresh account on a clean machine,
+            and that is a smaller claim than a green suite.
+          </p>
+        </li>
+        <li>
+          <span class="chip">Unsupported</span>
+          <p>
+            Intel Macs, and macOS 13 or earlier. The bundled numerical libraries ship
+            for Apple silicon on macOS 14, so the application says so and the builder
+            enforces it.
           </p>
         </li>
         <li>
@@ -691,8 +756,9 @@
       <div class="close reveal">
         <h2 class="close__title">Where to Find It</h2>
         <p class="close__lede">
-          SetMaster 3 is free, MIT licensed, and available now for Windows. The source
-          is public and every release publishes a SHA-256 hash alongside the artifact.
+          SetMaster 3 is free, MIT licensed, and available now for Windows and for
+          Apple silicon Macs on macOS 14 or later. The source is public and every
+          release publishes a SHA-256 hash alongside the artifact.
         </p>
         <!-- Reworded with the download button, 2026-08-04. This sentence used to
              offer "download it and open it against your own collection", which

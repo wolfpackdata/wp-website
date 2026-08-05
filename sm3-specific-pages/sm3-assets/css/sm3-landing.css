@@ -1,6 +1,6 @@
 /* ==========================================================================
    SetMaster 3 — landing page (the product page)
-   Near-black #0A0A0A · orange/blue signal accents · magenta/cyan Out/In
+   Near-black #0A0A0A · orange/blue signal accents · purple section labels
 
    The SECOND stylesheet in this folder, and it must stay second. The case
    study (sm3-case.css) wears Wolfpack navy because it is a portfolio
@@ -19,21 +19,34 @@
 
    ACCENT RATION, in one place so it cannot drift.
 
-   --accent-orange, as a FILL. Three uses, and text on it is #0A0A0A, never
+   --accent-orange, as a FILL. Four uses, and text on it is #0A0A0A, never
    white (#FF6A00 on white is 2.9:1 and fails AA; on near-black it is 8.4:1):
      1. the nav Download button
-     2. the primary Download button in the install band
-     3. the live release status dot
+     2. the Windows Download button
+     3. the macOS Download button
+     4. the live release status dot
    --accent-orange, as TEXT or BORDER. Two uses:
-     4. the hero stat values
-     5. link hover
+     5. the hero stat values
+     6. link hover
    --accent-blue: focus rings only. It is the application's focus colour and
    it stays that here.
-   --brand-magenta / --brand-cyan: ONE use, always as a pair, scoped to
-   .trow. They are the Out/In track semantic, never decoration. Magenta
-   without cyan is a bug: it means the semantic was borrowed as a colour.
    --brand-purple: the section eyebrow labels and the wordmark numeral.
    Nothing else. Not a heading, not a stat, not a border.
+
+   The fill ration went from three to four on 2026-08-05, when macOS shipped
+   as a signed .dmg (v3.0.4) and the install band gained a second real
+   download. Two equal platforms with one orange button between them would
+   have made the ration a lie about the product rather than a discipline: the
+   ghost button existed because there was nothing to download, not because
+   macOS was the lesser half. Growing it is a decision; letting it grow
+   silently is the failure this comment prevents.
+
+   --brand-magenta / --brand-cyan are NOT USED ON THIS PAGE. They were the
+   Out/In track pair in the transition-row table, and Ry cut that table on
+   2026-08-05, so the variables and every rule that read them came out with
+   it. The case study still carries both, in sm3-case.css. If a future band
+   pictures a transition row again, they come back TOGETHER: magenta without
+   cyan means the Out/In semantic was borrowed as a decorative colour.
    ========================================================================== */
 
 :root {
@@ -52,9 +65,8 @@
   --accent-orange: #FF6A00;
   --accent-blue:   #3D7BFD;
 
-  /* Brand accents */
-  --brand-magenta: #FF4FD8;   /* OUT track — always paired with cyan */
-  --brand-cyan:    #4DE8E8;   /* IN track  — always paired with magenta */
+  /* Brand accent. The magenta/cyan Out-In pair is deliberately absent — see
+     the ration note above; it lives in sm3-case.css. */
   --brand-purple:  #9B5CFF;
 
   --radius:  6px;
@@ -79,7 +91,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 
 a { color: var(--text-primary); }
-a:hover { color: var(--accent-orange); }             /* orange use 5 of 5 */
+a:hover { color: var(--accent-orange); }             /* orange use 6 of 6 */
 a:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 3px; }
 
 h1, h2, h3, h4 {
@@ -91,7 +103,7 @@ h1, h2, h3, h4 {
 /* Every number on this page is tabular. It is the borderless-grid rule from
    the application, and it is what makes a spec table read as an instrument
    panel rather than as prose with digits in it. */
-.num, .status__line, .stats b, .trow table, .sha { font-variant-numeric: tabular-nums; }
+.num, .status__line, .stats b, .sha { font-variant-numeric: tabular-nums; }
 
 .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
 
@@ -156,7 +168,7 @@ h1, h2, h3, h4 {
 }
 .nav__links a:hover { color: var(--text-primary); }
 /* Scroll-spy marks the current section with a hairline, not with an accent.
-   A moving orange underline would be a fourth fill and pure noise. */
+   A moving orange underline would be a fifth fill and pure noise. */
 .nav__links a[aria-current="true"] {
   color: var(--text-primary); border-bottom-color: var(--text-muted);
 }
@@ -171,7 +183,7 @@ h1, h2, h3, h4 {
   padding: 13px 28px; border-radius: var(--radius);
   white-space: nowrap;
 }
-.btn--dl { background: var(--accent-orange); color: var(--bg-app); }   /* orange fill 2 of 3 */
+.btn--dl { background: var(--accent-orange); color: var(--bg-app); }   /* orange fills 2 and 3 of 4 */
 .btn--dl:hover { color: var(--bg-app); filter: brightness(1.08); }
 .btn--ghost { border: 1px solid var(--border-subtle); color: var(--text-primary); }
 .btn--ghost:hover { border-color: var(--text-secondary); color: var(--text-primary); }
@@ -186,7 +198,7 @@ h1, h2, h3, h4 {
    is not a section anchor. */
 .nav__cta {
   font-size: 0.8125rem; font-weight: 700; text-decoration: none;
-  background: var(--accent-orange); color: var(--bg-app) !important;  /* orange fill 1 of 3 */
+  background: var(--accent-orange); color: var(--bg-app) !important;  /* orange fill 1 of 4 */
   padding: 8px 16px; border-radius: var(--radius-s); white-space: nowrap;
 }
 .nav__cta:hover { filter: brightness(1.08); }
@@ -236,7 +248,7 @@ h1, h2, h3, h4 {
 }
 .status__dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent-orange);                 /* orange fill 3 of 3 */
+  background: var(--accent-orange);                 /* orange fill 4 of 4 */
   flex: none;
 }
 .status__sep { color: var(--text-muted); }
@@ -252,7 +264,7 @@ h1, h2, h3, h4 {
 .stats b {
   display: block; font-family: 'Roboto', sans-serif; font-weight: 700;
   font-size: 1.375rem; line-height: 1.2; margin-bottom: 8px;
-  color: var(--accent-orange);                      /* orange text 4 of 5 */
+  color: var(--accent-orange);                      /* orange text 5 of 6 */
 }
 .stats span {
   font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
@@ -277,11 +289,17 @@ h1, h2, h3, h4 {
   border-radius: var(--radius); padding: 30px 32px;
   display: flex; flex-direction: column;
 }
+/* Grid rather than a wrapping flex row: the two cards carry requirement lines
+   of very different lengths, and letting them wrap where they like put the
+   chips on different rows and knocked the two step lists out of alignment.
+   Platform and requirement on row one, status chip on row two, both cards. */
 .plat__head {
-  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  display: grid; grid-template-columns: auto 1fr; row-gap: 12px; column-gap: 12px;
+  align-items: baseline;
   padding-bottom: 18px; margin-bottom: 22px;
   border-bottom: 1px solid var(--border-subtle);
 }
+.plat__head .chip { grid-column: 1 / -1; justify-self: start; }
 .plat__os { font-size: 1.25rem; }
 .plat__req { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
              text-transform: uppercase; color: var(--text-muted); }
@@ -332,58 +350,11 @@ h1, h2, h3, h4 {
 }
 .install__foot .k { display: block; margin-bottom: 4px; }
 
-/* ==========================================================================
-   The transition row. Built in HTML rather than captured, because it is a
-   table: it stays sharp at every density, a screen reader can read it, it
-   weighs nothing, and it cannot go stale against a UI change the way a
-   screenshot does. Copied in shape from sm3-case.css.
-   ========================================================================== */
-
-.trow {
-  background: var(--bg-panel);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  padding: 22px 24px;
-  overflow-x: auto;                    /* wide content scrolls itself */
-}
-.band--panel .trow { background: var(--bg-app); }
-.trow table {
-  width: 100%; min-width: 520px;
-  border-collapse: collapse;
-  font-family: var(--mono); font-size: 0.8125rem;
-  color: var(--text-primary);
-}
-/* No gridlines: separation comes from striping, spacing, and group colour,
-   per the application's own rule. */
-.trow th, .trow td { border: 0; padding: 9px 12px; text-align: left; }
-.trow .num { width: 1%; white-space: nowrap; }
-.trow .grp {
-  font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
-  padding-bottom: 4px;
-}
-.trow .grp--out { color: var(--brand-magenta); }
-.trow .grp--in  { color: var(--brand-cyan); }
-.trow .col {
-  font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-secondary); font-weight: 400;
-  border-bottom: 1px solid var(--border-subtle);
-}
-.trow tbody tr:nth-child(odd) td { background: var(--bg-row); }
-.trow .divide { border-left: 1px solid #3A3A3A; padding-left: 18px; }
-.trow__legend {
-  display: flex; flex-wrap: wrap; gap: 8px 28px;
-  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-subtle);
-  list-style: none;
-  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
-  color: var(--text-secondary);
-}
-.trow__legend b { font-weight: 400; }
-.trow__legend .sw {
-  display: inline-block; width: 8px; height: 8px; border-radius: 2px;
-  margin-right: 8px; vertical-align: 1px;
-}
-.trow__legend .sw--out { background: var(--brand-magenta); }
-.trow__legend .sw--in  { background: var(--brand-cyan); }
+/* The .trow transition-row table styles were removed on 2026-08-05 with the
+   markup they dressed (Ry cut the visual from the "One row is one transition"
+   band). The table itself is not gone from the project: sm3-case.css carries
+   its own copy and the case study still renders it. Bringing it back here
+   means bringing back --brand-magenta and --brand-cyan as a pair. */
 
 .caption {
   margin-top: 12px;
@@ -548,7 +519,6 @@ h1, h2, h3, h4 {
   .hero { padding: 46px 0 44px; }
   .cards { grid-template-columns: 1fr; }
   .plat { padding: 24px 22px; }
-  .trow { padding: 18px 16px; }
   .status li { grid-template-columns: 1fr; gap: 8px; }
   .status .chip { justify-self: start; }
   .btn { white-space: normal; padding: 13px 20px; }
