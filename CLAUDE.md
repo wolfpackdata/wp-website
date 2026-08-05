@@ -58,7 +58,7 @@ copy. The canonical public URLs:
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
-| `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | **not yet deployed** (#95) |
+| `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
 
 `sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
 `sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
@@ -92,9 +92,12 @@ Conventions the page must keep:
 - **Evergreen:** no version stamp or quarter in the URL, headline, or framing.
 - **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8; current
   URL per #32 — see the booking-link note in the `ai-coaching/` section) — no
-  intake-form links. Exception that isn't one: the coaching section carries a navy-ghost
-  link to the ROI calculator (spec R11, mirrors `wp-rates-page#39`) — a
-  consideration-stage tool link, not a second funnel CTA; the calendar CTA stays primary.
+  intake-form links. **Two exceptions that aren't one**, both navy-ghost, both
+  consideration-stage links rather than funnel forks, and neither displacing the calendar
+  CTA as primary: the coaching section's link to the ROI calculator (spec R11, mirrors
+  `wp-rates-page#39`), and the closing `#work` section's *"See recent projects"* link to
+  the portfolio (spec R14 / contract D15, #127 — this is how contract D9 resolves).
+  **Neither may become coral**; the ration in `rates/css/rates.css` is fully spent.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
 - The two "Two ways to work with Wolfpack" tiles carry Ry's images
@@ -202,7 +205,7 @@ Conventions these pages must keep:
 ## `portfolio/` — portfolio & case study landing page
 One page presenting the case studies written so far and the applications and workflows in
 the portfolio, at `https://intake.wolfstrategyllc.com/portfolio/`. **Built 2026-08-04
-(#95), not yet deployed.** Folder README: [`portfolio/README.md`](portfolio/README.md);
+(#95), deployed 2026-08-05 (#126).** Folder README: [`portfolio/README.md`](portfolio/README.md);
 full design plan and decisions ledger:
 [`docs/portfolio-page-design-plan.md`](docs/portfolio-page-design-plan.md).
 
@@ -239,7 +242,11 @@ Conventions the page must keep:
 - **One CTA and exactly one destination on the entire page: the 30-minute intro call.** No
   intake-form link, no résumé download, no rates link. A quiet `/rates_public/` coda band
   briefly existed and **Ry cut it** (2026-08-04, plan D-011), so this page is the book-first
-  rule at its strictest. Don't re-add a second destination without asking.
+  rule at its strictest. Don't re-add a second destination without asking. The header
+  wordmark's link to `wolfstrategyllc.com` (#126) is **not** a second destination — it is
+  site chrome, matching every other page here; it replaced a `#top` anchor that made sense
+  only while the page was unpublished. Note the rates page now links *here* (spec R14), so
+  the two pages are deliberately one-way: rates → portfolio, never back.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*

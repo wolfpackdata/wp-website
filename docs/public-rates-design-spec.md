@@ -34,6 +34,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R11 | ROI-calculator cross-link (added 2026-07-28) | The coaching section mirrors the Q3 page's **second, navy-ghost button** linking the AI ROI Calculator at its canonical public URL `https://intake.wolfstrategyllc.com/roi-calculator/` (source in this repo's `roi-calculator/`) — see the contract's mirror-set entry (`wp-rates-page#39`/#40). A consideration-stage **tool link, not a funnel fork**: the calendar CTA stays first and primary, and R9's book-first / no-intake-links rule is untouched. The Q3 page's skeptic-nudge line above the row does **not** port (contract D13; Ry, 2026-07-28). |
 | R12 | Public home → intake subdomain (added 2026-07-28) | **Canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** — a deployed copy in `ai-coaching-intake/rates_public/` (`ai-coaching-intake#34` / #59 here), same copy-on-change policy as the ROI calculator: this repo stays the source of truth, never edit the deployed copy, re-copy on change. The page's canonical/`og:url`/`og:image` tags point at the intake URL; the github.io path still serves. Supersedes R3. |
 | R13 | Path cards are navigation (added 2026-07-28) | The two §3.3 path cards **jump to their sections**: the **heading and the image** of each card link to `#engagements` (AI Engineering & Applications) and `#coaching` (AI Coaching for Professionals) — Ry, 2026-07-28 (#62). **Relative fragments, never absolute intake URLs** — the page serves from two origins (intake `…/rates_public/` and github.io `…/rates/`), and an absolute href would send a github.io reader cross-origin instead of scrolling; the fragment resolves to `https://intake.wolfstrategyllc.com/rates_public/#coaching` at the canonical home. The image link is `aria-hidden` + `tabindex="-1"` so the heading link is the card's single tab stop and single announced link. Rest-state cue is a muted `↓` (`↗` stays reserved for off-site links); hover coral is the existing allowed "link hover" use, so the coral ration is unchanged. Public-page-only — contract D14. |
+| R14 | Portfolio cross-link (added 2026-08-05) | A closing `#work` section below `#contact` with a single **navy-ghost** button, *"See recent projects"*, linking the portfolio at its canonical public URL `https://intake.wolfstrategyllc.com/portfolio/` (source in this repo's `portfolio/`) — Ry, 2026-08-05 (#127). **This closes D9**, which dropped the Q3 page's application-screenshot grid on the note that *"proof lives on the upcoming Applications page"* — that page now exists, so this is the link to it rather than a grid rebuilt here. A consideration-stage **link, not a funnel fork**, exactly as R11: the calendar CTA stays primary and R9's book-first / no-intake-links rule is untouched. **Ghost, never coral** — the ration in `rates/css/rates.css` is fully spent and a coral button here would compete with the booking CTA directly above it. **Absolute URL is correct here** (unlike R13's fragments): the portfolio is a different page, not a section of this one. Public-page-only — the Q3 page has no counterpart — contract D15. |
 
 ## 3. Page architecture (in order)
 
@@ -131,7 +132,16 @@ welcome → `fin@wolfstrategyllc.com`.
 "Bring us the problem" framing from Q3. Coral CTA (calendar) + `main@wolfstrategyllc.com`
 + LinkedIn. **No phone (R1), no intake note (R9).**
 
-### 3.11 Footer
+### 3.11 Portfolio cross-link (`#work`) — R14
+Closing section, **below** `#contact`. Kicker *"Before you decide"* · title *"See what the
+work looks like"* · one-line lede tying rates to the work they buy · a single **navy-ghost**
+button *"See recent projects"* → `https://intake.wolfstrategyllc.com/portfolio/`.
+
+Sits last at Ry's instruction (2026-08-05), so the final section is a consideration-stage
+offramp rather than the booking ask. **No coral** (ration spent — see R14), and no second
+destination beyond the portfolio.
+
+### 3.12 Footer
 Wordmark · *rates last reviewed \<Month YYYY\>* · link to wolfstrategyllc.com.
 
 ## 4. What is banned (the not-salesy contract)
