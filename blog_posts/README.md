@@ -14,9 +14,14 @@ survive — change `post.md` and re-push.
 blog_posts/
   2026-08-04-the-model-is-your-beacon/
     post.md          # front matter + markdown body
-    cover.png        # hero image
+    cover.jpg        # hero image — .png or .jpg, whichever suits the art
     diagram.png      # optional, post-specific assets
 ```
+
+The cover's **extension is not fixed**; the `cover` front matter key names the file, and the
+converter reads it from there. `_template/` ships a `.png` placeholder, but a photographic or
+composed cover belongs in JPEG — the financial model post's cover is a 1200px JPEG at 165 KB
+where the same image as PNG would be roughly eight times that.
 
 Folder name is `YYYY-MM-DD-slug`, dated by intended publish date. The folder
 name is **not** the URL — the URL comes from the `slug` front matter key (or is
