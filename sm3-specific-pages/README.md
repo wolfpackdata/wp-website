@@ -14,21 +14,39 @@ and whose public, downloadable mirror is
 `https://intake.wolfstrategyllc.com/setmaster3-case-study/` (#104, re-deployed the same day
 with #108 for the indexing flip).
 
-**Landing page built 2026-08-05 (#85, #86) and NOT deployed.** `/setmaster3/` still 404s
-in production until the folder is copied into `ai-coaching-intake`. Two things wait on that
-deploy and neither has been done: the case study's "Where to Find It" block still has its
-download button removed with a comment saying to restore it when `/setmaster3/` ships, and
-the public repo's `homepage` field is still empty.
+**Landing page deployed 2026-08-05 (#144).** `/setmaster3/` returns 200 and serves
+`index, follow`, so **both** SetMaster 3 pages are now live and indexed. It shipped the same
+day `v3.0.4` published the first macOS artifact, and the page carries two real downloads:
+the Windows zip and the signed, notarized Apple silicon `.dmg`.
+
+One of the two things that waited on this deploy is done: the case study's "Where to Find
+It" block has its **download button back**, pointing at `../setmaster3/`, verified 200
+before it went in. **The public repo's `homepage` field is still empty** and is the highest
+value inbound link available to the landing page — see the open item at the end of this file.
+
+⚠️ **Three claims went stale or false the day `v3.0.4` shipped**, and all three were fixed in
+#144: the test total (867 → **897**), the round count (four rounds / 74 issues → **five /
+93**), and a **SHA-256 claim that was simply false** — six places said a hash ships with
+every release artifact, and `v3.0.4` publishes none. See `planning/04-claims-ledger.md`
+C-10 and C-11. **The lesson is procedural, not factual:** these pages have no automated
+fact check, the ledger is the only control, and a release changed the facts without anyone
+touching a word of copy. Re-read the ledger against the live release on every release.
 
 **Deploying this folder: copy the git-tracked file list, never mirror the folder.**
 `sm3-assets/img/` holds one gitignored capture that leaks a Windows user directory, and a
 folder mirror would publish it. Use `git ls-files sm3-specific-pages/…` as the source.
 `planning/` never deploys.
 
-**Status: both pages built.** The eight execution steps are tracked as issues
-[#82–#89](https://github.com/wolfpackdata/wp-website/issues) with matching Wolfpack Tasks —
-the table in [`planning/00-overview.md`](planning/00-overview.md) §7 maps them. Step 8, the
-ship to intake, is the one still open for the landing page.
+**Status: both pages built and both deployed.** The eight execution steps are tracked as
+issues [#82–#89](https://github.com/wolfpackdata/wp-website/issues) with matching Wolfpack
+Tasks — the table in [`planning/00-overview.md`](planning/00-overview.md) §7 maps them. Step
+8, the ship to intake, closed for the landing page on 2026-08-05 (#144).
+
+**Open, and worth doing:** the public repo's `homepage` field
+(`github.com/wolfpackdata/setmaster`) is empty. Pointing it at
+`https://intake.wolfstrategyllc.com/setmaster3/` is the single highest-value inbound link
+the landing page can get, and it costs one API call. It is deliberately not done in #144:
+it writes to the public repo rather than this one.
 
 The plan set lives in [`planning/`](planning/) and is the thing to read first:
 

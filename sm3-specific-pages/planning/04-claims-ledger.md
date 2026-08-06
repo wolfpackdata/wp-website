@@ -41,7 +41,7 @@ Safe to write. Each traces to a checkable source.
 | Compound filter and sort across the whole collection, beyond what Traktor® offers | T; R `02-features/track-playlist-matrix.md` | both |
 | Comparison blank-cell notes **survive every re-run** (fail-safe snapshot-merge) | R `01-data-model.md` §6.3; verified in `build-notes/final-report.md` criterion 2 | both |
 | Spotify® side is file-based via exportify.net CSVs — no Spotify API | R `00-overview.md` §2 | both |
-| Windows and macOS launchers; double-click, no terminal | R `00-overview.md` §3 | landing (with C-03) |
+| Windows and macOS launchers; double-click, no terminal | R `00-overview.md` §3 | landing (with C-03, **as narrowed**) |
 | Release payload bundles its own CPython — no Python, no Node, no terminal needed | R `release/README.md` | landing |
 | Dark theme only | R `03-ui-design.md` §1.1 item 3 | — |
 
@@ -56,10 +56,13 @@ Safe to write. Each traces to a checkable source.
 | First commit **2026-07-06** | R `git log --reverse` | case study |
 | Build #1 complete **2026-07-07**, tagged `v3.0.0-build1` | R `CHANGELOG.md`, tags | case study |
 | Fix rounds v3.0.1 (2026-07-08), v3.0.2 (2026-07-09), v3.0.3 (2026-07-30) | R `CHANGELOG.md`, tags | case study |
-| **Build #1 plus three hardening rounds — 74 issues** (round sizes 26 / 12 / 36) | R `CHANGELOG.md` (C-02) | case study |
+| **Build #1 plus four hardening rounds — 93 issues** (round sizes 26 / 12 / 36 / 19) | R `CHANGELOG.md` (C-02, revised by C-10) | both |
 | First public release **2026-07-31**, `v3.0.3` | P releases | both |
 | **25 days** from first commit to public release | derived: 2026-07-06 → 2026-07-31 | both |
-| Current test totals: **206** backend pytest · **624** frontend vitest · **37** Playwright e2e = **867** | R `build-notes/v3.0.3-fix-report.md` final gate | both |
+| Current test totals: **236** backend pytest · **624** frontend vitest · **37** Playwright e2e = **897** | R `build-notes/v3.0.4-release-unblock-report.md` §2.2 final gate | both |
+| Second public release **2026-08-05**, `v3.0.4` — Windows x64 zip **and** Apple silicon `.dmg` | P releases (verified live 2026-08-05) | both |
+| Windows artifact `SetMaster3-3.0.4-windows-x64.zip`, **102 MB**; macOS artifact `SetMaster-3.0.4-macos-arm64.dmg`, **87 MB** | P release assets | landing |
+| macOS build is **signed, notarized, and stapled**; passed a clean-install acceptance test on a quarantined download | R `build-notes/v3.0.4-fix-report.md` | both |
 | Build #1 acceptance verified against Ry's **real** collection: 6,810 tracks × 149 playlists | R `build-notes/final-report.md` criterion 1 | case study |
 | Signature digging workflow returned **111** rows in one pass | R same | case study |
 | Ry tested the web app **in live DJ situations** during the fix rounds | T | case study |
@@ -70,9 +73,9 @@ Safe to write. Each traces to a checkable source.
 | The scanner has already caught a real leak (a `C:\Users\…` string in a UI placeholder) | R same | case study |
 | A virtualenv is not a portable runtime, so the payload ships a relocatable python-build-standalone CPython; the smoke check fails the artifact if a `.venv` appears | R `release/README.md` | case study |
 | Stack: FastAPI + Python pipeline · React 18 + Vite + TypeScript · pytest / vitest / Playwright | R `CLAUDE.md` | case study sidebar |
-| **MIT licensed** | P `LICENSE` (SPDX: MIT) | landing |
-| sha256 published with the release artifact | P release body | landing |
-| Windows artifact: `SetMaster3-3.0.3-windows-x64.zip`, **72 MB** (75,716,256 bytes) | P release assets | landing |
+| **MIT licensed** | P `LICENSE` (SPDX: MIT; re-verified via the license API 2026-08-05, after the mirror was regenerated) | landing |
+| ~~sha256 published with the release artifact~~ | **RETRACTED — see C-11. Never write this.** | neither |
+| ~~Windows artifact: `SetMaster3-3.0.3-windows-x64.zip`, 72 MB~~ | superseded by the v3.0.4 row above | — |
 
 ### History
 
@@ -105,24 +108,38 @@ Safe to write. Each traces to a checkable source.
 
 ## 2. Conflicts — all resolved
 
-Nine were opened 2026-07-31; **all nine are closed** (Ry's rulings, same day).
-Kept in full rather than deleted: each records *why* a claim reads the way it does,
-which is what stops a future edit from quietly reopening it.
+Nine were opened 2026-07-31 and closed the same day; **two more were opened and
+closed on 2026-08-05**, when `v3.0.4` shipped and the pages were deployed. All
+eleven are closed. Kept in full rather than deleted: each records *why* a claim
+reads the way it does, which is what stops a future edit from quietly reopening
+it.
 
 | id | Subject | Outcome |
 |---|---|---|
 | C-01 | Catalog size | ~7,000 in Traktor®, library "many times that size" |
-| C-02 | Build rounds | Build #1 + three hardening rounds, 74 issues |
-| C-03 | macOS | Standing rule — no page claims support |
+| C-02 | Build rounds | ~~Build #1 + three hardening rounds, 74 issues~~ → **revised by C-10** |
+| C-03 | macOS | **NARROWED 2026-08-05, not lapsed** — Apple silicon, macOS 14+ |
 | C-04 | Lexicon | Case study only, never the landing page |
 | C-05 | Anthropic portfolio | Substance kept, company name dropped |
 | C-06 | Orchestration detail | Yes — S6 sidebar, written to impress |
 | C-07 | Years in use | **2023 → three years.** "Eight years" retired |
 | C-08 | Origin-story dates | 2023 / ~2024 / 2026 — middle cell soft |
 | C-09 | License | MIT |
+| **C-10** | Build rounds after v3.0.4 | **Five rounds, 93 issues** (26/12/36/19); the 19 is soft |
+| **C-11** | SHA-256 per release | **RETRACTED — no release publishes one. Never write it** |
 
-**Nothing here blocks the prose any more.** One soft cell remains (C-08's SM2
-year, derived rather than stated) and it degrades safely.
+**Nothing here blocks the prose any more.** Two soft cells remain and both
+degrade safely: C-08's SM2 year, derived rather than stated, and C-10's
+nineteen-issue v3.0.4 round, consistent with how 26/12/36 were counted rather
+than stated by a source.
+
+**Both 2026-08-05 rulings came from the same cause and are worth reading
+together:** a release shipped, and three claims that had been true of `v3.0.3`
+stopped being true of `v3.0.4` without anyone editing a word. Two were stale
+(the round count, the test total) and one was false (the checksum). §4 already
+said version-dependent values need a release checklist; C-10 and C-11 are what
+it costs when the checklist is a paragraph in a planning document rather than a
+step someone runs.
 
 ### C-01 — The catalog size figures — RESOLVED
 
@@ -157,23 +174,93 @@ against the changelog:
 
 Round sizes 26 / 12 / 36, dated 2026-07-08 / 07-09 / 07-30.
 
-### C-03 — macOS support ⛔ **hard rule, not a preference**
+### C-03 — macOS support — **NARROWED 2026-08-05, not lapsed** ⛔ still a hard rule
 
-**Fact.** No macOS artifact exists. `v3.0.3` ships Windows only. The `.command`
-launchers and `build-macos.sh` are written and structurally fixed, but **no build
-of SetMaster 3 has ever been run on a Mac**, and the repo's own changelog leads
-with that. Issue #182 tracks the verification pass.
+**What changed.** `v3.0.4` shipped on 2026-08-05 with
+`SetMaster-3.0.4-macos-arm64.dmg`: a signed, notarized, stapled `.app` in a
+drag-to-Applications disk image, built and acceptance-tested on a real Mac
+against a quarantined download. The condition C-03 was waiting on is met, and
+both pages now carry a working macOS download.
 
-**Rule for both pages:**
-- ✅ *"Windows available now. The Mac build is written and waiting on a Mac to
-  build and verify it."*
-- ❌ *"Available for Windows and macOS"* · ❌ a macOS download button that
-  resolves to anything · ❌ `operatingSystem: ["Windows","macOS"]` in structured
-  data · ❌ "cross-platform" without the qualifier.
+**The rule did not disappear. It narrowed, and the narrow version is still hard:**
+- ✅ *"Apple silicon, macOS 14 (Sonoma) or later."* Every visible macOS claim
+  carries that qualifier.
+- ✅ Naming what is still unverified: the end-to-end suite and the golden-master
+  pipeline tests **have never run on macOS**. The artifact passed its own
+  clean-install acceptance test instead, which is a different and smaller claim.
+- ❌ **"Intel Macs"** — not supported, and the page says so rather than leaving
+  it to be discovered on first launch.
+- ❌ **"macOS 13 or earlier"** — the bundled NumPy is `macosx_14_0_arm64`, the
+  app claims 14.0, and the builder refuses to produce an image claiming less.
+- ❌ Plain **"macOS support"**, **"cross-platform"**, or `operatingSystem:
+  ["Windows","macOS"]` with no version floor.
 
-The repo went out of its way to state this honestly in three places. A marketing
-page that quietly re-inflates the claim would undo that, and it is the exact kind
-of thing a technical visitor checks.
+**Why this row stays instead of being deleted.** The failure it guards against
+never was "claiming macOS" in the abstract; it was *rounding a qualified platform
+claim up to an unqualified one*. That failure is still available, and it is now
+easier to make, because the qualifier is a detail rather than a whole missing
+platform. A later edit that quietly drops "Apple silicon, macOS 14 or later"
+re-opens C-03 exactly as it stood.
+
+**Superseded phrasing, recorded so it is not restored:** *"The Mac build is
+written and waiting on a Mac to build and verify it."* True until 2026-08-05,
+false after it. It appeared on the landing page, the case study, and the blog
+post; all three were corrected.
+
+### C-10 — Build rounds after v3.0.4 — RESOLVED (Ry, 2026-08-05)
+
+**Was:** C-02 fixed the figure at **build #1 plus three hardening rounds, 74
+issues** (round sizes 26 / 12 / 36). `v3.0.4` is a fourth hardening round, so the
+landing page's *"Four rounds, 74 issues"* and the case study's *"Four Rounds,
+Seventy-Four Issues"* both went stale the day the release shipped. The case
+study's **body** already described the fifth round; only the headline figures
+lagged, which is the more dangerous shape of staleness because the page
+contradicts itself rather than simply being old.
+
+**RESOLVED — five rounds, 93 issues.**
+
+> **Build #1 plus four hardening rounds — 93 issues** (round sizes 26 / 12 / 36 / 19).
+
+**The 19 is the softest number on either page, and it is recorded as such.** It
+is a count of unique `#NNN` references in the `CHANGELOG.md` 3.0.4 section, which
+is the same accounting that produced 26 / 12 / 36, so it is consistent rather
+than sourced. It is deliberately *not* the private repo's closed-issue count for
+the period (15) or its lifetime closed count (99); those use different
+accounting, and mixing them is how a page ends up with a number no source
+supports. If a future release makes this figure awkward again, drop the issue
+count rather than re-deriving it: the round count and the test total are both
+checkable, and the issue count buys little next to them.
+
+### C-11 — SHA-256 published with each release — **RETRACTED (Ry, 2026-08-05)**
+
+**Was:** the ledger carried *"sha256 published with the release artifact"*
+(sourced to the v3.0.3 release body), and **six** places in shipped copy said so:
+four on the landing page (both download cards, the "downloading for another
+machine" note, the *Open source* card), one in the case study's closing block,
+and one in the blog post.
+
+**Fact, checked against the live release before deploying.** `v3.0.4` publishes
+**no checksum at all** — not in the release body, and not as a checksums asset.
+The release carries exactly two files, the Windows zip and the macOS `.dmg`.
+`v3.0.3`'s body mentioned a hash once, which is how the claim got into the
+ledger and then into copy, and it was never re-checked against the next release.
+
+**RESOLVED — every instance removed. Never write it again until a release
+actually publishes hashes.** Replacement phrasing, which is true and needs no
+maintenance: *"every release and every artifact listed publicly on GitHub."*
+
+**This is the ledger's own failure mode, caught by its own procedure.** §4 says
+version-dependent values go stale on every release and that updating them belongs
+in the `setmaster3` release checklist. A hash is exactly that kind of value, and
+it is worse than a stale number: a wrong test count is embarrassing, an
+advertised checksum that does not exist invites a technical reader to go looking
+and find nothing. **If hashes are added to a future release, this row is the
+thing to edit first, then the six places.**
+
+⚠️ **Do not confuse this with the two SHA-256 claims that remain true.** The case
+study says `collection.nml` integrity is checked with SHA-256 snapshots in
+`testdata/`, and that the acceptance harness hashes against the known collection
+file. Those are about **test fixtures**, are sourced, and stay.
 
 ### C-04 — Naming Lexicon — RESOLVED
 

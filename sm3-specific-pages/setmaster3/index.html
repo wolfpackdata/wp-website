@@ -5,15 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ======================================================================
-     ⚠ BEFORE DEPLOYING: v3.0.4 must be published to the public mirror first.
-
-     This page links two v3.0.4 assets. As of 2026-08-05 the newest release at
-     github.com/wolfpackdata/setmaster is v3.0.4's predecessor, carrying only
-     the Windows zip, so BOTH download buttons here 404 until Ry publishes
-     v3.0.4 with both artifacts attached. The private repo's own v3.0.4 fix
-     report calls this out as its third close-out item, for exactly this
-     reason: v3.0.3 shipped with only the Windows zip, so anything advertising
-     a .dmg advertised a file that could not be downloaded.
+     RELEASE GATE — CLEARED 2026-08-05. v3.0.4 is published on the public
+     mirror with both artifacts attached, and both download URLs below were
+     requested and answered before this page deployed. The gate that stood
+     here is kept as a rule rather than deleted, because it applies again on
+     every release: this page must never advertise an artifact before the
+     public release carries it. v3.0.3 shipped Windows-only, so anything
+     naming a .dmg named a file nobody could download.
 
      RELEASE FACTS — update all five on a new SetMaster 3 release.
 
@@ -134,7 +132,7 @@
 
       <ul class="stats">
         <li class="reveal"><b>2023</b><span>In professional use since</span></li>
-        <li class="reveal"><b>867</b><span>Automated tests, passing</span></li>
+        <li class="reveal"><b>897</b><span>Automated tests, passing</span></li>
         <li class="reveal"><b>Read&#8209;only</b><span>Your Traktor&reg; collection is never modified</span></li>
       </ul>
     </div>
@@ -187,7 +185,6 @@
               Download for Windows
               <span class="btn__meta">.zip &middot; v3.0.4 &middot; 64-bit</span>
             </a>
-            <span class="sha"><b>SHA-256</b><br>Published in the release notes for every artifact.</span>
           </div>
         </div>
 
@@ -226,15 +223,24 @@
               Download for macOS
               <span class="btn__meta">.dmg &middot; v3.0.4 &middot; Apple silicon</span>
             </a>
-            <span class="sha"><b>SHA-256</b><br>Published in the release notes for every artifact.</span>
           </div>
         </div>
       </div>
 
+      <!-- SHA-256 RETRACTED 2026-08-05 (Ry's ruling), here and in three other
+           places on this page, one in the case study, and one in the blog post.
+           The pages claimed a hash was published with every release artifact.
+           Checked against the live release before deploying: v3.0.4's notes
+           carry no checksum and the release has no checksums file, so the claim
+           was false about the very release this page advertises. It was true
+           enough of v3.0.3, whose notes mentioned one, which is how it survived
+           into copy. Do not restore any of the six until a release actually
+           publishes hashes; this is exactly the kind of checkable claim a
+           technical visitor verifies in one click. -->
       <div class="install__foot reveal">
         <p>
           <span class="k">Downloading for another machine</span>
-          Every release and every artifact is listed on GitHub, with its SHA-256.
+          Every release and every artifact is listed publicly on GitHub.
         </p>
         <p>
           <a href="https://github.com/wolfpackdata/setmaster/releases" target="_blank" rel="noopener">All releases on GitHub &#8599;</a>
@@ -383,11 +389,11 @@
         </li>
         <li class="reveal">
           <span class="k">Tested</span>
-          <p>867 automated tests across the pipeline, the application, and the interface. The pipeline is verified byte-identical to its predecessor on real data.</p>
+          <p>897 automated tests across the pipeline, the application, and the interface. The pipeline is verified byte-identical to its predecessor on real data.</p>
         </li>
         <li class="reveal">
           <span class="k">Open source</span>
-          <p>A public repository, MIT licensed, with a SHA-256 published alongside every release artifact.</p>
+          <p>A public repository, MIT licensed, with every release and every artifact listed publicly on GitHub.</p>
         </li>
       </ul>
     </div>
@@ -464,7 +470,7 @@
           <h3>Specified, then rebuilt</h3>
           <p>
             A complete specification first, then an offline web application built from
-            it. Four rounds, 74 issues, 867 tests, and a data pipeline ported
+            it. Five rounds, 93 issues, 897 tests, and a data pipeline ported
             byte-identically from the version before it.
           </p>
         </li>

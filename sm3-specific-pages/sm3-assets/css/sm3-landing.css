@@ -340,12 +340,13 @@ h1, h2, h3, h4 {
   font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px;
 }
 .plat__foot { margin-top: auto; }
-.sha {
-  display: block; margin-top: 14px;
-  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.04em;
-  color: var(--text-muted); word-break: break-all; line-height: 1.7;
-}
-.sha b { color: var(--text-secondary); font-weight: 400; letter-spacing: 0.1em; }
+/* .sha was removed 2026-08-05 along with the markup it styled. The page had
+   claimed a SHA-256 was published with every release artifact; v3.0.4 publishes
+   none, so all six instances of that claim came out (claims ledger C-11). The
+   rules are deleted rather than left dead: a styled class with no markup is an
+   invitation to find a use for it, and the only use for this one was the claim
+   that was just retracted. If a release ever publishes hashes, bring back the
+   markup and the rules together. */
 
 .install__foot {
   margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border-subtle);
