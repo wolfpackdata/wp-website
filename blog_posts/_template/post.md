@@ -36,9 +36,8 @@ Closing copy.
 
 <!--
 Reminders, per CLAUDE.md:
-  - Copy follows docs/ryan-blog-tone.md. Its section 9 checklist is runnable:
-    em dashes, exclamation points, question marks, and contractions should all
-    be zero.
+  - The voice is the writer's. There is no tone spec in this repo to check
+    against, and nothing here is auto-corrected before it reaches Wix.
   - Every image referenced here must be a real file in this folder, including
     the cover. cover.png and diagram.png ship as flat navy placeholders so the
     template converts out of the box; replace both with the real images.
