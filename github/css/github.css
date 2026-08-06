@@ -1,0 +1,220 @@
+/* ==========================================================================
+   Wolfpack — "This is my GitHub" page — github/
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+
+   Derived from portfolio/css/portfolio.css, which descends from
+   hire/assets/css/hire.css and ultimately rates/css/rates.css — the pattern
+   library. Only the parts a one-screen page actually uses came across: the
+   header bar, the hero type scale, one button, and the footer.
+
+   What did NOT come across, and why. There are no section, gallery, card, or
+   case-study rules, because there are no sections — this page is one screen with
+   one link on it. There is no .skip link, because a skip link exists to jump
+   over navigation to content and there is no navigation to jump over; the first
+   Tab lands on the wordmark and the second lands on the button. There is no
+   scroll-reveal block and no js/ folder at all, because nothing here is below
+   the fold to reveal, and a page whose whole job is one link should not need
+   JavaScript to show it. That last one is the same principle portfolio.css
+   states for .js .reveal, applied by deletion instead of by scoping.
+
+   THE ONE RULE THIS PAGE EXISTS TO KEEP: exactly one outbound destination,
+   github.com/wolfpackdata. It is not a funnel. No calendar CTA, no intake form,
+   no rates link, no résumé download, and — unlike every other page here — no
+   mailto in the footer, because Ry was explicit that this page is not for
+   contacting him. The header wordmark's link to wolfstrategyllc.com is site
+   chrome rather than a destination, exactly as portfolio/ settled it (#126).
+
+   And, inherited unchanged from portfolio/: never link the two hire/ pages.
+   They are noindex and deliberately linked from nothing. This page is noindex
+   too, which makes the prohibition weaker but not void — noindex is not access
+   control, and one page pointing at the other still hands a reader both.
+
+   Coral discipline, in one place so it can't drift. Coral is allowed on:
+     1. the GitHub button fill        3. link hover
+     2. the hero rule                 4. the focus ring
+   Nothing else. Four uses — the smallest ration of any page in this repo, which
+   is what a page with one link should cost. Where coral is a FILL, text on it is
+   navy (5.8:1), never white (fails AA); .btn--solid sets navy text and the
+   GitHub mark inside it inherits that via currentColor.
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono:      ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+
+  /* The page is short enough to be shorter than the viewport on a desktop
+     monitor. Without this the footer floats mid-screen with dead navy beneath
+     it, which reads as a page that failed to finish loading. min-height on the
+     body plus flex-grow on main pins the footer to the bottom on a tall screen
+     and lets it fall naturally on a short one. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+h1 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; width: 100%; }
+
+/* Small monospace label — the "engineering document" voice, carried over so
+   this page sounds like the others despite sharing none of their structure. */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Header
+
+   Not .nav and not sticky. A one-screen page has nothing to scroll past, so a
+   sticky bar would be chrome pinned over nothing. It keeps the shared wordmark
+   treatment (Roboto 700 / 13px / uppercase / 0.12em) that #123 unified across
+   every page here, and drops the links list and the coral CTA that sit beside
+   it elsewhere — there is nowhere else on this page to send anyone.
+   ========================================================================== */
+
+.head { border-bottom: 1px solid var(--line); }
+.head__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; height: 58px;
+}
+.head__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.head__brand:hover { color: var(--white); }
+.head__logo { width: 30px; height: 30px; border-radius: var(--radius); }
+.head__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Hero — the whole page
+   ========================================================================== */
+
+main { flex: 1 0 auto; display: flex; align-items: center; }
+
+.hero { position: relative; overflow: hidden; width: 100%; }
+.hero .wrap { position: relative; }
+.hero__watermark {
+  position: absolute; right: -40px; top: 10px;
+  width: 340px; height: 340px; opacity: 0.10; pointer-events: none;
+  user-select: none;
+}
+.hero__inner { position: relative; padding: 84px 0 88px; max-width: 720px; }
+.hero__kicker { display: block; margin-bottom: 16px; }
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: 0.005em;
+  line-height: 1.06;
+  margin-bottom: 20px;
+}
+.hero__stand {
+  font-size: clamp(1rem, 1.6vw, 1.1875rem);
+  color: var(--muted); max-width: 54ch;
+  padding-bottom: 18px;
+  border-bottom: 3px solid var(--coral);   /* the résumé's signature rule */
+  margin-bottom: 36px;
+}
+
+/* ==========================================================================
+   The button — the only outbound destination on the page
+   ========================================================================== */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; line-height: 1.4;
+  padding: 14px 28px; border-radius: var(--radius);
+  max-width: 100%;
+}
+.btn--solid { background: var(--coral); color: var(--navy); }
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+
+/* currentColor, so the mark is navy on the coral fill without a second colour
+   declaration to keep in sync with the AA rule in the header comment. */
+.btn__mark { flex: 0 0 auto; width: 20px; height: 20px; fill: currentColor; }
+.btn__label {
+  font-family: var(--mono); font-weight: 700;
+  letter-spacing: 0.01em;
+  /* The label is a URL, so it must not break mid-string on a narrow screen —
+     but it must be allowed to shrink. Below ~400px the padding and type step
+     down rather than the string wrapping, which is what keeps a 320px viewport
+     free of horizontal overflow. */
+  white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+  .btn { padding: 13px 18px; gap: 9px; font-size: 0.8125rem; }
+  .btn__mark { width: 18px; height: 18px; }
+}
+
+/* A quiet line under the button, in the labels voice. Not a second link —
+   plain text, stating where the button goes and what is on the other side. */
+.hero__note {
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 0.75rem; letter-spacing: 0.06em;
+  color: var(--faint);
+  max-width: 52ch;
+}
+
+/* ==========================================================================
+   Footer
+
+   Deliberately thinner than every other footer in this repo: wordmark and the
+   main site, no mailto. The email address is the one thing that would turn this
+   page into a contact funnel, which is the thing it is specified not to be.
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 30px 0 40px; flex: 0 0 auto; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta {
+  font-family: var(--mono); font-size: 0.6875rem;
+  letter-spacing: 0.08em; color: var(--faint);
+}
+.foot__meta a { color: var(--muted); }
+
+@media (max-width: 560px) {
+  .hero__inner { padding: 56px 0 60px; }
+  .hero__watermark { width: 240px; height: 240px; right: -60px; top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
