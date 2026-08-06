@@ -27,8 +27,9 @@ The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. 
 holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
 (`ai-coaching/`, see below), the public rates page (`rates/`, see below), the two
 résumé landing pages (`hire/`, see below), the long-form case studies (`case_studies/`,
-see below), and the portfolio landing page (`portfolio/`, see below); more site pieces
-land here as they're built. Verify by opening the page in a browser.
+see below), the portfolio landing page (`portfolio/`, see below), and the GitHub link page
+(`github/`, see below); more site pieces land here as they're built. Verify by opening the
+page in a browser.
 
 Three exceptions to "no build step", all Python that builds *inputs* rather than the site
 itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the four
@@ -60,6 +61,7 @@ copy. The canonical public URLs:
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
+| `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | **not yet deployed** (#155) |
 
 `sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
 `sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
@@ -253,6 +255,46 @@ Conventions the page must keep:
   site chrome, matching every other page here; it replaced a `#top` anchor that made sense
   only while the page was unpublished. Note the rates page now links *here* (spec R14), so
   the two pages are deliberately one-way: rates → portfolio, never back.
+
+## `github/` — the "this is my GitHub" page
+One screen with one link on it, at `https://intake.wolfstrategyllc.com/github/`. Ry sends
+this URL when a prospective partner, employer, or collaborator wants to see the code, and it
+sends them to `github.com/wolfpackdata`. **Built 2026-08-06 (#155), not yet deployed.**
+Folder README: [`github/README.md`](github/README.md), which carries the full convention list.
+
+Conventions the page must keep:
+- **Exactly one outbound destination: the GitHub profile — and it is not a funnel.** Ry's
+  instruction was explicit: *"this is not to funnel people to contact me, it is just a 'this
+  is my GitHub' link."* So no calendar CTA, no intake-form link, no rates link, no résumé
+  download, and — **uniquely in this repo — no `mailto:` in the footer.** Every other footer
+  here carries the email address; this one deliberately does not, because that is precisely
+  how a not-a-contact-page becomes a contact page. This is `portfolio/`'s one-destination
+  rule made stricter: there the destination is the intro call, here there is no intro call at
+  all. The header wordmark and footer link to `wolfstrategyllc.com` are **site chrome, not a
+  second destination**, by the precedent `portfolio/` set (#126).
+- **It states no repository count and links no individual repo.** The profile link is
+  self-updating — correct as repos are opened, renamed, archived, or made private, and the
+  page never needs an edit to keep up. A hardcoded list of repo cards is the version of this
+  page that quietly goes wrong. Context, not a dependency: at build time the account is a
+  **User** account with **two public repos** (`setmaster`, `wp-website`) against nineteen
+  private. Nothing on the page breaks when that ratio changes.
+- **`noindex, nofollow`, direct-link only**, like `hire/`. A one-link page is thin content
+  under a brand whose other indexed pages are substantial, and it would compete with
+  `/portfolio/` for the same queries — and `/portfolio/` should win those, because it *shows*
+  the work rather than pointing at it. Don't add it to a sitemap, and don't link it from Wix,
+  `portfolio/`, or `rates/`.
+- **Never link the two `hire/` pages**, inherited unchanged from `portfolio/`. Weaker here
+  since this page is itself `noindex`, but not void — `noindex` is not access control.
+- **No JavaScript and no `js/` folder**, unlike every other long-form page here. Nothing is
+  below the fold to reveal, and a page whose whole job is one link should not need a script
+  to show it.
+- **Self-contained folder** with its own `css/`, `fonts/`, `img/`, like `portfolio/` and
+  unlike `hire/`. Folder name is already the URL slug, so it copies to the intake root
+  unchanged. **`README.md` does not deploy** (same exclusion `portfolio/` carries, #129).
+- **Coral is rationed to four uses** — the smallest ration in this repo — enumerated in the
+  header comment of `css/github.css`. The GitHub mark is inlined as SVG and takes navy
+  through `fill: currentColor`, so there is no second color value to keep in sync with the AA
+  rule.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
