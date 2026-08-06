@@ -198,12 +198,16 @@ convention. Run them before merging a converter change.
 
 ## Tone
 
-Post copy follows [`docs/ryan-blog-tone.md`](../docs/ryan-blog-tone.md). Its §9
-checklist is runnable against `post.md` directly, since the markdown has no head
-or scripts to strip: em dashes, exclamation points, question marks, and
-contractions should all come back zero.
+**The voice comes from whoever writes the post, and there is no spec in this repo
+to check it against.** A written guide lived at `docs/ryan-blog-tone.md` until
+2026-08-06 and was removed (#150): it was not good enough to be binding, and the
+copywriting agent that drafts these posts already writes in Ry's voice. A
+mediocre spec sitting between Ry and an agent that knows the voice was worse than
+no spec at all.
 
-Two things to strip before counting, or the numbers lie: the front matter block,
-and HTML comments. One known false positive survives anyway — image syntax
-`![alt](file.png)` registers as an exclamation point. Count images and subtract,
-rather than rewording prose that was already fine.
+What this changes in practice: a brief written here supplies **facts, structure,
+constraints, and traps**, and stops there. It does not tell the writer how to
+build a sentence. Nothing about a draft is auto-corrected on its way to Wix —
+Ry reads it, in the folder or in the Wix dashboard, and that is the gate.
+
+The guide is still in git history if it is ever wanted back.

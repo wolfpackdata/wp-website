@@ -90,6 +90,6 @@ deployed site, so paths are never rewritten.
 
 ## Voice
 
-All copy follows [`docs/ryan-blog-tone.md`](../docs/ryan-blog-tone.md). Its §9 checklist is
-runnable: strip the head, comments, and scripts from the built page and count em dashes,
-exclamation points, question marks, and contractions. All four should be zero.
+**Judged by Ry, against no written spec.** This repo carried a voice guide until 2026-08-06
+(#150), when it was removed for not being good enough to bind anything. The case studies
+already here are the reference: read one before writing the next.

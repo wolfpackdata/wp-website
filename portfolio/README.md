@@ -68,10 +68,10 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
   cd ..\ryan-resume-dev\resume_build ; python verify_facts.py
   ```
 
-- **Do not tone-edit the ported blurbs.** [`docs/ryan-blog-tone.md`](../docs/ryan-blog-tone.md)
-  §8 exempts résumé-derived content precisely so a third wording cannot appear. The tone rules
-  bind the section kickers, ledes, and case-study blurbs only, and those pass the §9
-  checklist. They bound the closing block too until that block was cut (D-013).
+- **Do not tone-edit the ported blurbs.** They are résumé-derived, and rewording them here
+  creates a third wording that `verify_facts.py` check 6 then fails on. Everything else on the
+  page — the section kickers, ledes, and case-study blurbs — is Ry's to judge; the voice guide
+  that used to govern them was removed 2026-08-06 (#150).
 - **SetMaster 3 uses the `eng_only` framing**, not `eng_music`'s "RML SetMaster 3" (D-005).
   One source YAML for all eight cards.
 - **The coral ration is enumerated in the header comment of `css/portfolio.css`.** Keep that

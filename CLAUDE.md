@@ -199,9 +199,9 @@ Conventions these pages must keep:
   does. Rebuild rather than retouch.
 - **Coral is rationed to six uses**, listed in the header comment of `case-study.css`, and
   the sheet introduces **no hues** beyond the navy system and a neutral figure ground.
-- Copy follows [`docs/ryan-blog-tone.md`](docs/ryan-blog-tone.md). Its §9 checklist is
-  runnable: strip head, comments, and scripts from the built page, then count em dashes,
-  exclamation points, question marks, and contractions. All four should be zero.
+- **Copy is judged by Ry, against no written spec.** The repo carried a voice guide until
+  2026-08-06 (#150); it was removed because it was not good enough to be binding. Match the
+  voice of the case studies already here rather than reaching for a rulebook.
 
 ## `portfolio/` — portfolio & case study landing page
 One page presenting the case studies written so far and the applications and workflows in
@@ -222,9 +222,9 @@ Conventions the page must keep:
 - **Application names and blurbs are verbatim from `eng_only.yaml`** — the same strings the
   `hire/` pages carry, using the `eng_only` framing throughout (so `SetMaster 3`, never
   `eng_music`'s `RML SetMaster 3`). **`verify_facts.py` check 6 enforces this** across this
-  page and both `hire/` pages, reporting the exact divergence point on a mismatch. Do not
-  tone-edit the ported blurbs; `docs/ryan-blog-tone.md` §8 exempts résumé-derived content
-  precisely so a third wording cannot appear.
+  page and both `hire/` pages, reporting the exact divergence point on a mismatch. **Do not
+  tone-edit the ported blurbs** — they are résumé-derived, and rewording them here creates a
+  third wording that check 6 then fails on.
 - **The hero copy is Ry's** (written 2026-08-04, resolving the placeholder it shipped with):
   *Systems, apps, and projects* over *"Selected examples of recent applications, data systems,
   and AI workflows built and evolving, with some case studies below."* It addresses **neither
@@ -290,8 +290,9 @@ Conventions this folder must keep:
   from the docs: Wix strips `FONT_FAMILY` so inline code has no styling; the `hashtags`
   field is not settable and tags must go through the Tags API as `tagIds`; a draft's `url`
   preview is title-derived even when `seoSlug` is set correctly.
-- Post copy follows [`docs/ryan-blog-tone.md`](docs/ryan-blog-tone.md), whose §9 checklist
-  runs directly against `post.md` — no head or scripts to strip first.
+- **The voice comes from the copywriter, not from a spec in this repo.** The guide that used
+  to govern post copy was removed 2026-08-06 (#150). A brief written here carries facts,
+  structure, and constraints; it does not dictate how sentences are built.
 
 ## Verifying pages at phone width
 Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot
