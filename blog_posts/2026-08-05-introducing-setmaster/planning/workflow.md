@@ -9,7 +9,7 @@ Phase: 3 — awaiting Ry's proofread and publish
 | Notion content  | (unset — post predates the workflow skill) |
 | Notion LinkedIn | (unset — post predates the workflow skill) |
 | Notion task     | (unset — post predates the workflow skill) |
-| Wix draft ID    | (pending — filled by the push in #154) |
+| Wix draft ID    | `26bf0fe7-d36d-4dde-bb59-09b9291fa2b0` |
 | Live URL        | (unset) |
 | Slug            | `introducing-the-setmaster-application` |
 
@@ -65,3 +65,28 @@ Ry's to post.
 - 2026-08-06 — Ledger written. Hero swapped to the Track-Playlist Matrix capture, body
   swapped to the long-format draft, trademark marks and the unaffiliated line applied, 15
   citation spans stripped. First push to Wix as an unpublished draft (#154).
+- 2026-08-06 — Pushed. `POST /blog/v3/draft-posts` returned
+  `26bf0fe7-d36d-4dde-bb59-09b9291fa2b0`, status `UNPUBLISHED`, 247 nodes, 8 minutes to read.
+  Cover uploaded as media `e00ee6_eb290ffb1bcc47ecb4ac0b6f2bf5a572~mv2.png`. Both tags were
+  **new** Wix entities, created by this push: `DJ tools`
+  (`287fae4a-5f1d-46c2-943c-1fd47bfd377c`) and `music technology`
+  (`97e8df2c-d38a-4126-9dad-8219f06f8e59`).
+- 2026-08-06 — One corrective `PATCH`, then verified. The read-back showed the trademark
+  disclaimer had lost its `ITALIC` decoration in transit; the patch restored it, and a second
+  read-back confirmed all 11 decorated runs, all 247 nodes, both `/setmaster3/` links, and
+  every registered mark match `post.md`. **The live body now matches the source of truth
+  exactly**, which is what keeps the README's "hash the live body against a fresh build"
+  re-push safety check meaningful for this post.
+
+## Notes for the next session
+
+- The draft preview path reads `/post/setmaster-3-is-live-the-traktor-set-prep-tool-i-built-for-myself`.
+  That is the **title-derived preview**, the third documented fidelity limit in
+  `blog_posts/README.md`, not the real URL. `seoSlug` is stored correctly as
+  `introducing-the-setmaster-application`. Confirm in the dashboard before publishing.
+- Pushing this post needed a workaround worth knowing: the Wix **code runtime blocks fetches
+  to non-Wix hosts**, and routing the payload through Wix's media importer was denied by
+  policy, so the 95 KB payload went through `CallWixSiteAPI` as an inline body. Compact JSON
+  (`separators=(',',':')`) is 45 KB against 95 KB indented — build it compact if this has to
+  be done by hand again, and **read the result back afterwards**, because that is what caught
+  the dropped decoration.
