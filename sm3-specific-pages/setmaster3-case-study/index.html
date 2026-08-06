@@ -69,8 +69,8 @@
 
       <ul class="stats">
         <li class="reveal"><b>25 days</b><span>Specification to public release</span></li>
-        <li class="reveal"><b>74 issues</b><span>Across four build rounds</span></li>
-        <li class="reveal"><b>867 tests</b><span>Automated, passing</span></li>
+        <li class="reveal"><b>93 issues</b><span>Across five build rounds</span></li>
+        <li class="reveal"><b>897 tests</b><span>Automated, passing</span></li>
         <li class="reveal"><b>Byte-identical</b><span>Pipeline port, verified on real data</span></li>
       </ul>
 
@@ -441,7 +441,7 @@
         </p>
       </div>
 
-      <h3 class="section__sub reveal">Four Rounds, Seventy-Four Issues</h3>
+      <h3 class="section__sub reveal">Five Rounds, Ninety-Three Issues</h3>
       <div class="prose reveal">
         <p>
           Build one finished on 2026-07-07 and was tagged. After it came three
@@ -757,29 +757,33 @@
         <h2 class="close__title">Where to Find It</h2>
         <p class="close__lede">
           SetMaster 3 is free, MIT licensed, and available now for Windows and for
-          Apple silicon Macs on macOS 14 or later. The source is public and every
-          release publishes a SHA-256 hash alongside the artifact.
+          Apple silicon Macs on macOS 14 or later. The source is public, and so is
+          every release and every artifact.
         </p>
-        <!-- Reworded with the download button, 2026-08-04. This sentence used to
-             offer "download it and open it against your own collection", which
-             was the button's copy and now has nothing behind it. Restore the
-             download half when /setmaster3/ ships. -->
+        <!-- RESTORED 2026-08-05 (#144), the same day /setmaster3/ deployed. The
+             download half of this sentence was cut on 2026-08-04 because its
+             button had nothing behind it; the landing page now returns 200, so
+             both halves are back. -->
         <p class="close__lede">
-          The smallest next step is to read the code. It is all public, including the
-          matching heuristics and the read-only parser this piece describes.
+          The smallest next step is to download it and open it against your own
+          collection. Or read the code: it is all public, including the matching
+          heuristics and the read-only parser this piece describes.
         </p>
         <p class="close__lede">
           If you are hiring for AI engineering, data platform, or technical operations
           work, the fastest way to talk about any of this is a call.
         </p>
-        <!-- The "Download SetMaster 3" ghost button was removed 2026-08-04. It
-             pointed at /setmaster3/, the product landing page, which does not
-             exist yet and was returning 404 on the live page. "Source on GitHub"
-             moved up into its slot rather than a placeholder going in: a dead
-             button is worse than one fewer button. Put the download back when
-             /setmaster3/ ships. -->
+        <!-- The "Download SetMaster 3" ghost button was removed 2026-08-04
+             because it pointed at /setmaster3/, which was returning 404, and a
+             dead button is worse than one fewer button. RESTORED 2026-08-05
+             (#144) in the deploy that shipped /setmaster3/, verified 200 before
+             this went back in. It stays a ghost: "Contact Ryan" remains this
+             page's only solid CTA, because the case study's audience is hiring
+             managers and the download is the secondary path for them. The
+             product page is where the download is the point. -->
         <div class="close__ctas">
           <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Ryan</a>
+          <a class="btn btn--ghost" href="../setmaster3/">Download SetMaster 3</a>
           <a class="btn btn--ghost" href="https://github.com/wolfpackdata/setmaster" target="_blank" rel="noopener">Source on GitHub</a>
         </div>
 

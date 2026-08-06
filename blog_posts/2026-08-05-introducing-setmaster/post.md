@@ -35,13 +35,13 @@ No Spotify® API, no accounts, no cloud, no telemetry, no external calls of any 
 
 ## For the Engineers
 
-FastAPI and a Python pipeline behind React 18, Vite, and TypeScript. 206 backend tests, 624 frontend, 37 end to end.
+FastAPI and a Python pipeline behind React 18, Vite, and TypeScript. 236 backend tests, 624 frontend, 37 end to end.
 
 The interesting constraint was the port. Version two carried years of accumulated matching and normalization logic, every rule of it a bug hit during real work. So restructuring the stages was allowed and changing the behavior was not. The ported pipeline runs against a real 6,810 track collection and its output is compared to the old engine's byte for byte. Anything that changes the result fails the build, including changes that look like improvements.
 
 The release bundles its own relocatable CPython. No Python install, no Node, no terminal. On Windows you double click a launcher. On macOS you open the app from Applications. Either way the UI opens in your browser on localhost.
 
-Public repo, sha256 published with the release.
+Public repo, MIT licensed, every release and artifact listed on GitHub.
 
 ## What Is Not Ready
 
@@ -62,20 +62,24 @@ registered trademark of Spotify AB.*
 NOT PUSHED TO WIX. Authored only, per Ry (2026-08-05). No draft post id exists
 yet, so the first push is a POST to /blog/v3/draft-posts, not a PATCH.
 
-TWO THINGS TO SETTLE BEFORE PUSHING:
+BOTH PRE-PUSH ITEMS ARE NOW CLEARED (2026-08-05, #144). The post is ready to
+push whenever Ry wants it; it stays unpushed only because he has not asked.
 
-1. The CTA is still dead. https://intake.wolfstrategyllc.com/setmaster3/ is
-   BUILT as of 2026-08-05 (#85, #86, PRs #138/#140/#142) but NOT DEPLOYED, so
-   it still 404s. The sibling post was held from the push for exactly this
-   reason once already, when its case study was still undeployed, and went up
-   only after #108 made the page return 200. Same gate applies here: push this
-   only once /setmaster3/ returns 200.
-2. The test counts in "For the Engineers" are the v3.0.3 figures. v3.0.4
-   reports backend 199 passed / 3 skipped and frontend 624 passed / 5 skipped,
-   and backend counts vary by machine because collection-dependent tests skip
-   when the real Traktor collection is absent. Get the real numbers from a run
-   before pushing. The landing page carries the same total (867) in two places
-   and the case study once, so all four move together.
+1. THE CTA IS LIVE. /setmaster3/ deployed to ai-coaching-intake on 2026-08-05
+   and returns 200. The gate that held this post, and held the sibling post
+   before it until #108, is satisfied.
+2. TEST COUNTS ARE REAL NOW. "For the Engineers" carries 236 / 624 / 37 from
+   the v3.0.4 release-unblock report's final gate, run with the golden-master
+   suite active, replacing the v3.0.3 figures of 206 / 624 / 37. The total is
+   897, and the landing page (two places) and the case study (one) were moved
+   to it in the same pass, which is what "all four move together" required.
+
+SHA-256 CLAIM RETRACTED 2026-08-05 (Ry's ruling, #144). This paragraph used to
+end "Public repo, sha256 published with the release." Checked against the live
+release before deploying: v3.0.4 publishes no checksum, in its notes or as an
+asset. The claim was true enough of v3.0.3, whose notes mentioned one, which is
+how it survived into copy. Five other places said the same thing and all six
+came out together. Do not restore it until a release actually publishes hashes.
 
 SETTLED 2026-08-05: macOS. This note previously held item 2 open on C-03, the
 hard rule against claiming macOS before a Mac artifact existed. v3.0.4 met that
@@ -104,10 +108,13 @@ section 1. Nothing new is asserted here. Specifically:
   compound filter and sort beyond Traktor, notes survive re-run . product table
   file-based Spotify via Exportify, no Spotify API . product table
   bundled CPython, no Python/Node/terminal, double-click launchers . product table
-  206 / 624 / 37 tests . build table (867 total, stated as its parts here)
+  236 / 624 / 37 tests . build table (897 total, stated as its parts here),
+    from the v3.0.4 release-unblock report's final gate. Was 206/624/37=867,
+    the v3.0.3 figures, until #144.
   golden-master byte-identical port . build table
   6,810 tracks . build table (Build #1 acceptance collection)
-  first public release 2026-07-31, MIT, sha256 . build table
+  MIT license . build table (re-verified via the license API 2026-08-05)
+  releases and artifacts public on GitHub . NOT a checksum claim, see C-11
   three years of professional use since 2023 . C-07
   Windows and macOS both available . v3.0.4 changelog and fix report, with
     C-03 narrowed rather than lifted: Apple silicon, macOS 14 or later, no
