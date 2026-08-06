@@ -1,0 +1,3496 @@
+{
+  "draftPost": {
+    "title": "SetMaster 3 Is Live: The Traktor® Set-Prep Tool I Built for Myself",
+    "memberId": "e00ee638-af7f-4aac-aa2b-c99d795ecf78",
+    "richContent": {
+      "nodes": [
+        {
+          "type": "PARAGRAPH",
+          "id": "p1",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It’s up.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp181",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p2",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster 3.0.4 is officially live for Windows and macOS, and installation is now drag-and-drop on both platforms.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp182",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p3",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "No separate Python installation. No Node. No terminal commands. No setup ritual that begins with “first, open PowerShell” and ends with a musician reconsidering every decision that led them here.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp183",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p4",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Download it, open it, and start exploring your music.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp184",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p5",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster is a local, offline desktop application for preparing DJ sets and analyzing a Traktor® collection. It helps you explore, compare, filter, and organize your library without ever writing to Traktor®’s ",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "collection.nml",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": ".",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp185",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p6",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I think of it as a set-preparation copilot:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp186",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p7",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Less scrolling. More mixing.",
+                "decorations": [
+                  {
+                    "type": "BOLD",
+                    "fontWeightValue": 700
+                  }
+                ]
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp187",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p8",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Visit the SetMaster 3 page to see the features and download the application.",
+                "decorations": [
+                  {
+                    "type": "LINK",
+                    "linkData": {
+                      "link": {
+                        "url": "https://intake.wolfstrategyllc.com/setmaster3/",
+                        "target": "BLANK"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp188",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h9",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I Built the Tool I Actually Needed",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp189",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p10",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I wanted to build an application that was not fintech, business intelligence, operations software, or another tool designed to help an executive look at a dashboard before asking why a number is red.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp190",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p11",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I wanted to learn new skills, get outside my comfort zone, and build a product I genuinely needed.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp191",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p12",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That product became SetMaster.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp192",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p13",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I have been DJing and producing music for a long time. Long enough to have developed a deep catalog, a fairly refined sense of what works in a set, and the unfortunate awareness that maintaining a serious music collection can become its own unpaid administrative position.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp193",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p14",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "There is not much money in spending three hours preparing an exquisitely tuned transition between two records that twelve people may hear at 1:17 a.m.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp194",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p15",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "There is, however, considerable satisfaction in it.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp195",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p16",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "My collection has accumulated across years of gigs, digging, playlist building, production work, genre detours, abandoned set concepts, successful set concepts, and tracks I was absolutely certain I would remember without organizing properly.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp196",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p17",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I did not remember them.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp197",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p18",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The problem was no longer finding music. I had plenty of music.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp198",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p19",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The problem was getting from an idea in my head to the right group of tracks without repeatedly browsing the same playlists, opening the same folders, and relying on memory to reconstruct connections I had already discovered before.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp199",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p20",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That is the problem SetMaster solves.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp200",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h21",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The Track–Playlist Matrix",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp201",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p22",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The feature I use most is the ",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Track–Playlist Matrix",
+                "decorations": [
+                  {
+                    "type": "BOLD",
+                    "fontWeightValue": 700
+                  }
+                ]
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": ".",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp202",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p23",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It puts every track against every playlist and lets me see where a selected track appears across my collection.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp203",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p24",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That sounds simple until your Traktor® library contains years of music spread across genre playlists, gig folders, set drafts, seasonal collections, reference lists, works in progress, and categories whose original logic is now known only to a younger version of yourself.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp204",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p25",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Select a track, and SetMaster instantly shows every playlist containing it.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp205",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p26",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That creates several useful paths through the library.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp206",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p27",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I can see which musical ideas I have already associated with the track. I can find overlapping set concepts. I can identify tracks that belong in several parts of my catalog. I can also spot music that exists in the collection but was never properly organized into playlists.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp207",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p28",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The matrix currently handles thousands of tracks across dozens of playlists, turning the collection into something that can be examined as data rather than browsed one folder at a time. The SetMaster landing page shows an example with 3,604 tracks across 83 playlists.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp208",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p29",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "For me, this changes set preparation from filing paperwork into treasure hunting.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp209",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p30",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I select one track, find an old playlist, rediscover three records I forgot I owned, notice a possible transition, and suddenly “I’ll prepare a quick set” has become a three-hour archaeological expedition through dance music.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp210",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p31",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "At least it is all in tune.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp211",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h32",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Compound Filtering for Real Set Preparation",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp212",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p33",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster also lets me filter the entire Traktor® collection using several dimensions at once.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp213",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p34",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I can combine:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp214",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BULLETED_LIST",
+          "id": "list35",
+          "nodes": [
+            {
+              "type": "LIST_ITEM",
+              "id": "li36",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p37",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "BPM ranges",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li38",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p39",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Musical keys",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li40",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p41",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Release years",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li42",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p43",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Playlist membership",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li44",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p45",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Other catalog fields",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            }
+          ],
+          "bulletedListData": {
+            "indentation": 0
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp215",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p46",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The important phrase is ",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "at once",
+                "decorations": [
+                  {
+                    "type": "BOLD",
+                    "fontWeightValue": 700
+                  }
+                ]
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": ".",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp216",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p47",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "A DJ is rarely looking for “all tracks at 124 BPM” in isolation. The useful question is closer to:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp217",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BLOCKQUOTE",
+          "id": "bq48",
+          "nodes": [
+            {
+              "type": "PARAGRAPH",
+              "id": "p49",
+              "nodes": [
+                {
+                  "type": "TEXT",
+                  "id": "",
+                  "nodes": [],
+                  "textData": {
+                    "text": "Show me tracks between 122 and 125 BPM, in compatible keys, from these playlists, within this release period.",
+                    "decorations": []
+                  }
+                }
+              ],
+              "paragraphData": {}
+            }
+          ],
+          "blockquoteData": {
+            "indentation": 1
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp218",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p50",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That is how you find the record that bridges two sections of a set.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp219",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p51",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It is how you find potential mashups.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp220",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p52",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It is how you discover that a transition you have been trying to force would be much easier if you simply moved one track twenty minutes later and used something better in between.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp221",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p53",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Traktor® is excellent software for performing, organizing, and managing a collection, but SetMaster approaches the catalog from a different angle. It turns the collection into something queryable, with compound filtering across BPM, key, release year, and playlist membership.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp222",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p54",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The result is less time repeatedly rebuilding searches and more time thinking about the musical movement of the set.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp223",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h55",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Comparing Playlists Against What I Own",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp224",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p56",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Another major workflow is playlist comparison.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp225",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p57",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I use Spotify® as one part of music discovery and Traktor® as the home of the local collection I perform with. The annoying question between those two systems is:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp226",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BLOCKQUOTE",
+          "id": "bq58",
+          "nodes": [
+            {
+              "type": "PARAGRAPH",
+              "id": "p59",
+              "nodes": [
+                {
+                  "type": "TEXT",
+                  "id": "",
+                  "nodes": [],
+                  "textData": {
+                    "text": "Of everything I have been listening to, which tracks do I already own, which ones still need organizing, and which ones do I need to buy?",
+                    "decorations": []
+                  }
+                }
+              ],
+              "paragraphData": {}
+            }
+          ],
+          "blockquoteData": {
+            "indentation": 1
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp227",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p60",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Before SetMaster, that question involved more manual checking than it deserved.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp228",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p61",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster imports exported Spotify® playlist data and compares it against the local Traktor® collection. Each result can be classified as:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp229",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BULLETED_LIST",
+          "id": "list62",
+          "nodes": [
+            {
+              "type": "LIST_ITEM",
+              "id": "li63",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p64",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Go get",
+                        "decorations": [
+                          {
+                            "type": "BOLD",
+                            "fontWeightValue": 700
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li65",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p66",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Match",
+                        "decorations": [
+                          {
+                            "type": "BOLD",
+                            "fontWeightValue": 700
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li67",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p68",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Organize",
+                        "decorations": [
+                          {
+                            "type": "BOLD",
+                            "fontWeightValue": 700
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li69",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p70",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Traktor® only",
+                        "decorations": [
+                          {
+                            "type": "BOLD",
+                            "fontWeightValue": 700
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            }
+          ],
+          "bulletedListData": {
+            "indentation": 0
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp230",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p71",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Notes persist when the comparison is run again, so the workflow does not reset every time the source data changes. The application does this through local files rather than a Spotify® API connection, which keeps the workflow offline and avoids sending collection data elsewhere.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp231",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p72",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The output is not another giant music list.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp232",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p73",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It is a shorter, actionable list of tracks that require attention.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp233",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p74",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That matters because acquiring music is the enjoyable part. Reconciling three different lists to determine whether I already bought a track is less artistically nourishing.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp234",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h75",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "One Row Is One Transition",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp235",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p76",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster did not begin as a catalog-analysis application.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp236",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p77",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The original idea was a set editor built around a simple principle:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp237",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p78",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "One row is one transition.",
+                "decorations": [
+                  {
+                    "type": "BOLD",
+                    "fontWeightValue": 700
+                  }
+                ]
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp238",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p79",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Most playlist interfaces display tracks vertically, one after another. That works well for showing order, but it does not fully describe what happens between two tracks.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp239",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p80",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "A DJ transition has two sides:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp240",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BULLETED_LIST",
+          "id": "list81",
+          "nodes": [
+            {
+              "type": "LIST_ITEM",
+              "id": "li82",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p83",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "The track you are leaving",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li84",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p85",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "The track you are entering",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            }
+          ],
+          "bulletedListData": {
+            "indentation": 0
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp241",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p86",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Between those two points are the actual performance decisions: timing, EQ movement, gain changes, hot cues, loops, tempo adjustments, and the notes you need to see while playing.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp242",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p87",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster reads that relationship from left to right.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp243",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p88",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The editor provides space for track order, hot-cue numbers, EQ and level moves, timing, formatting, and transition notes. It also includes a mix timer and exports sets to CSV, XLSX, and Markdown.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp244",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p89",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "This is how the application grew from “a better set spreadsheet” into a larger system for preparing music.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp245",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p90",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The first version was a Google Sheet, then an Excel workbook. SetMaster 2 added VBA and Python, turning the Traktor® collection into structured data. SetMaster 3 rebuilt the concept as a complete local application.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp246",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p91",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The workflow has been in professional use since 2023, including in my own gigs.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp247",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p92",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I say that humbly because DJing is a strange profession in which decades of musical experience can culminate in someone asking whether you brought your own table.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp248",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p93",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Still, building and testing this against real sets matters. SetMaster did not emerge from a hypothetical product exercise about how DJs might work. It came from preparing and performing actual music, noticing repeated friction, and gradually turning those problems into software.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp249",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h94",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The Collection Is Strictly Read-Only",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp250",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p95",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "One architectural decision was non-negotiable:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp251",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p96",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster does not write to Traktor®’s ",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "collection.nml",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": ".",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp252",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p97",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It opens the collection strictly read-only. That is not a checkbox or user preference. It is an architectural constraint.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp253",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p98",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "A DJ collection is too important to treat casually.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp254",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p99",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It may contain years of playlists, cue points, metadata, organization, and performance history. SetMaster is designed to analyze that collection, not modify it behind the scenes.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp255",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p100",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The application creates its own sets, notes, settings, comparisons, and derived data separately.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp256",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p101",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Your Traktor® collection remains yours.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp257",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h102",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Local Software, Packaged Like Actual Software",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp258",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p103",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "One of the largest engineering challenges was not the filtering logic or the data pipeline.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp259",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p104",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It was packaging a local Python application so it behaved like a proper desktop product.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp260",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p105",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "A developer can tolerate instructions involving virtual environments, package managers, environment variables, and command lines. A DJ who wants to prepare Saturday’s set should not need to become an adjunct DevOps engineer first.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp261",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p106",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster uses a local Python process with a browser-based interface running on ",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "localhost",
+                "decorations": []
+              }
+            },
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": ". There are no cloud accounts, no telemetry, and no external application calls.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp262",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p107",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Each release includes its own bundled CPython runtime, so the user does not need to install Python, Node, or any supporting development tools.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp263",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p108",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "On macOS, SetMaster now ships as a proper DMG:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp264",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "ORDERED_LIST",
+          "id": "list109",
+          "nodes": [
+            {
+              "type": "LIST_ITEM",
+              "id": "li110",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p111",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Open the disk image.",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li112",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p113",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Drag SetMaster into Applications.",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li114",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p115",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Launch it like another Mac application.",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            }
+          ],
+          "orderedListData": {
+            "indentation": 0
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp265",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p116",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The application is signed with Wolfpack’s Apple Developer ID, notarized by Apple, and stapled so Gatekeeper can verify it normally. The current Mac release supports Apple silicon running macOS 14 or later.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp266",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p117",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That may sound like routine packaging if you primarily use large commercial applications.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp267",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p118",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "For an independently developed local Python application, getting from “the code runs” to a signed, notarized, self-contained DMG is a substantial part of building the product.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp268",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p119",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "There is a long stretch of engineering between:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp269",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BLOCKQUOTE",
+          "id": "bq120",
+          "nodes": [
+            {
+              "type": "PARAGRAPH",
+              "id": "p121",
+              "nodes": [
+                {
+                  "type": "TEXT",
+                  "id": "",
+                  "nodes": [],
+                  "textData": {
+                    "text": "It works on my machine.",
+                    "decorations": []
+                  }
+                }
+              ],
+              "paragraphData": {}
+            }
+          ],
+          "blockquoteData": {
+            "indentation": 1
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp270",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p122",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "and:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp271",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BLOCKQUOTE",
+          "id": "bq123",
+          "nodes": [
+            {
+              "type": "PARAGRAPH",
+              "id": "p124",
+              "nodes": [
+                {
+                  "type": "TEXT",
+                  "id": "",
+                  "nodes": [],
+                  "textData": {
+                    "text": "Another person can download it without installing six dependencies and believing in themselves.",
+                    "decorations": []
+                  }
+                }
+              ],
+              "paragraphData": {}
+            }
+          ],
+          "blockquoteData": {
+            "indentation": 1
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp272",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h125",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Building It With Claude and Codex",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp273",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p126",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Claude and Codex were both deeply involved in the SetMaster 3 development process.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp274",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p127",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I used them throughout:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp275",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BULLETED_LIST",
+          "id": "list128",
+          "nodes": [
+            {
+              "type": "LIST_ITEM",
+              "id": "li129",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p130",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Product specification",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li131",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p132",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Architecture",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li133",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p134",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Implementation",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li135",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p136",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Debugging",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li137",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p138",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Test design",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li139",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p140",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Refactoring",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li141",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p142",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Packaging",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li143",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p144",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Documentation",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li145",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p146",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Release preparation",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            }
+          ],
+          "bulletedListData": {
+            "indentation": 0
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp276",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p147",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That does not mean turning over engineering judgment to a chatbot and hoping the installer emerges fully notarized.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp277",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p148",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "AI-assisted development works best for me when the tools are operating inside a clear architecture, explicit constraints, strong test coverage, and a carefully managed development process.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp278",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p149",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster 3 was specified before it was rebuilt. The process went through five rounds, 93 tracked issues, and a data-pipeline port verified as byte-identical to the previous version on real data.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp279",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p150",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The current application has 897 automated tests across the data pipeline, application, and interface.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp280",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p151",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Those details matter more to me than saying the application was “built with AI.”",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp281",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p152",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The interesting question is not whether AI generated code.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp282",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p153",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The interesting question is whether AI helped me build a better-specified, better-tested, more complete product than I could have produced through my previous development workflow.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp283",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p154",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "In this case, it did.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp284",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p155",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster gave me a reason to refine my AI architecture toolset while working in a problem space I know deeply. I could evaluate the output not only as an engineer, but as the end user who had to prepare a real set with it.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp285",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p156",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "A bonus aspect of this arrangement is that hours of user testing mean hours of DJing.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp286",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p157",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "This is the rare software project where saying “I need to test the product tonight” may involve a mixer, a subwoofer, and suspiciously little financial return.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp287",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h158",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Built in the Open",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp288",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p159",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster 3 is free and open source under the MIT License.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp289",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p160",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "The public repository includes the source, releases, and downloadable artifacts. The application is independently developed fan software and is not affiliated with or endorsed by Native Instruments®, Spotify®, Exportify, or AlphaTheta.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp290",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p161",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "There are still things to build.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp291",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p162",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Rekordbox® collection import is planned, but it does not have a release date. Perform Mode and a natural-language filtering interface have been specified and deferred rather than abandoned.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp292",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p163",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I have completed much more end-to-end testing on Windows than on macOS. The macOS package passed its clean-install acceptance test, but some of the larger golden-master and end-to-end test suites have not yet been run on a Mac.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp293",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p164",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That is part of why I am releasing the application openly.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp294",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p165",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "I want DJs to use it, find the rough edges, report bugs, and suggest improvements based on how they actually prepare music.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp295",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h166",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Download SetMaster 3",
+                "decorations": []
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp296",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p167",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster grew out of three things I care deeply about:",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp297",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "BULLETED_LIST",
+          "id": "list168",
+          "nodes": [
+            {
+              "type": "LIST_ITEM",
+              "id": "li169",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p170",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Traktor®",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li171",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p172",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "Software development",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            },
+            {
+              "type": "LIST_ITEM",
+              "id": "li173",
+              "nodes": [
+                {
+                  "type": "PARAGRAPH",
+                  "id": "p174",
+                  "nodes": [
+                    {
+                      "type": "TEXT",
+                      "id": "",
+                      "nodes": [],
+                      "textData": {
+                        "text": "The craft of building and performing a DJ set",
+                        "decorations": []
+                      }
+                    }
+                  ],
+                  "paragraphData": {}
+                }
+              ]
+            }
+          ],
+          "bulletedListData": {
+            "indentation": 0
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp298",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p175",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "It is the product of a deep music catalog, years of real-world set preparation, a great deal of engineering, and possibly an unreasonable belief that every tedious personal workflow can eventually become software.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp299",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p176",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "If you use Traktor® and want a faster way to explore your collection, rediscover forgotten tracks, compare playlists, and prepare more deliberate sets, visit the full SetMaster 3 page.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp300",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p177",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "That page includes the complete feature overview, current platform requirements, installation instructions, GitHub repository, and download links for Windows and macOS.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp301",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "HEADING",
+          "id": "h178",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Explore SetMaster 3 and download the application",
+                "decorations": [
+                  {
+                    "type": "LINK",
+                    "linkData": {
+                      "link": {
+                        "url": "https://intake.wolfstrategyllc.com/setmaster3/",
+                        "target": "BLANK"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "headingData": {
+            "level": 2
+          }
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp302",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p179",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "Happy SetMastering.",
+                "decorations": []
+              }
+            }
+          ],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "sp303",
+          "nodes": [],
+          "paragraphData": {}
+        },
+        {
+          "type": "PARAGRAPH",
+          "id": "p180",
+          "nodes": [
+            {
+              "type": "TEXT",
+              "id": "",
+              "nodes": [],
+              "textData": {
+                "text": "SetMaster 3 is independent fan software and is not affiliated with, endorsed by, or sponsored by Native Instruments®, Spotify®, or Exportify. Traktor® is a registered trademark of Native Instruments® GmbH. Spotify® is a registered trademark of Spotify AB.",
+                "decorations": [
+                  {
+                    "type": "ITALIC",
+                    "italicData": true
+                  }
+                ]
+              }
+            }
+          ],
+          "paragraphData": {}
+        }
+      ]
+    },
+    "excerpt": "SetMaster 3.0.4 is live for Windows and macOS, and installation is now drag-and-drop on both platforms. A local, offline desktop application for preparing DJ sets and analyzing a Traktor® collection. Less scrolling. More mixing.",
+    "tagIds": [
+      "287fae4a-5f1d-46c2-943c-1fd47bfd377c",
+      "97e8df2c-d38a-4126-9dad-8219f06f8e59"
+    ],
+    "featured": true,
+    "seoSlug": "introducing-the-setmaster-application",
+    "media": {
+      "displayed": true,
+      "custom": true,
+      "altText": "The SetMaster 3 Track-Playlist Matrix, showing 178 of 3,604 tracks across 5 of 83 playlists, with BPM range, key, and release year filters applied in the panel on the right.",
+      "wixMedia": {
+        "image": {
+          "id": "e00ee6_eb290ffb1bcc47ecb4ac0b6f2bf5a572~mv2.png"
+        }
+      }
+    }
+  },
+  "publish": false,
+  "fieldsets": [
+    "URL"
+  ]
+}
