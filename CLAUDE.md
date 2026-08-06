@@ -264,10 +264,22 @@ front matter schema, and push procedure.
 **This is the only folder here whose output does not go to `ai-coaching-intake`.** It
 targets the Wix site directly, so the deployment table above does not apply to it.
 
+**The workflow is a skill.** `wp-blog-writing-workflow` (in `.claude/skills/`, repo-local)
+runs a post from Ry's raw prompt or transcript through to a published Wix post and the site
+links that should point at it — four phases across separate sessions, resumed from a committed
+ledger at `blog_posts/<folder>/planning/workflow.md`. Prefer it over ad-hoc post creation, and
+read it before pushing anything to Wix by hand.
+
 Conventions this folder must keep:
 - **One subfolder per post**, named `YYYY-MM-DD-slug`, containing exactly `post.md`, the
   cover image, and any post-specific assets. The folder name is **not** the URL — that comes
   from the `slug` front matter key. Start from `_template/post.md`.
+- **The Wix draft ID lives in the ledger.** A push without it creates a second post instead of
+  updating the first. This is not hypothetical: the SetMaster post's markdown was edited to
+  link `/setmaster3/` and the v3.0.4 tag (#147) and the live post carries neither, because the
+  ID was recorded nowhere and nothing tracked that a re-push was owed.
+- **`planning/` is public.** This repo is public, so a source transcript or brief committed
+  there is world-readable. Nothing lands in it that Ry would not publish.
 - **A post that has a case study carries the case study's title, verbatim** (Ry, 2026-08-04,
   #119). One piece of work, one name. Take the case study's `h1`, not its `<title>` tag, which
   carries a subtitle and a `· Case Study` suffix meant for the tab and the SERP. Retitling
