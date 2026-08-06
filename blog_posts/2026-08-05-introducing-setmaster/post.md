@@ -39,9 +39,9 @@ FastAPI and a Python pipeline behind React 18, Vite, and TypeScript. 236 backend
 
 The interesting constraint was the port. Version two carried years of accumulated matching and normalization logic, every rule of it a bug hit during real work. So restructuring the stages was allowed and changing the behavior was not. The ported pipeline runs against a real 6,810 track collection and its output is compared to the old engine's byte for byte. Anything that changes the result fails the build, including changes that look like improvements.
 
-The release bundles its own relocatable CPython. No Python install, no Node, no terminal. On Windows you double click a launcher. On macOS you open the app from Applications. Either way the UI opens in your browser on localhost.
+The release bundles its own relocatable CPython. No Python install, no Node, no terminal. On Windows you double click a launcher. On macOS you open the app from Applications. Either way the UI opens in your browser on localhost. Both installers, with the steps for each platform written out, are on [the SetMaster 3 page](https://intake.wolfstrategyllc.com/setmaster3/).
 
-Public repo, MIT licensed, every release and artifact listed on GitHub.
+Public repo, MIT licensed, and every artifact listed on GitHub. The current release is [v3.0.4](https://github.com/wolfpackdata/setmaster/releases/tag/v3.0.4).
 
 ## What Is Not Ready
 
@@ -73,6 +73,19 @@ push whenever Ry wants it; it stays unpushed only because he has not asked.
    suite active, replacing the v3.0.3 figures of 206 / 624 / 37. The total is
    897, and the landing page (two places) and the case study (one) were moved
    to it in the same pass, which is what "all four move together" required.
+
+OUTBOUND LINKS, added 2026-08-05 (#146), at Ry's instruction. The post now
+carries three, and no more:
+  1. the landing page, inline in "For the Engineers", where a reader who has
+     just read the install story wants it;
+  2. the v3.0.4 release tag on GitHub, in the same paragraph as the repo and
+     the license, so the three checkable facts sit together;
+  3. the landing page again as the closing CTA, which was always there.
+The release link is deliberately the TAG page, not the releases index and not a
+direct asset URL. The index goes stale as a reference the moment a newer release
+lands, and an asset URL would duplicate the download buttons the landing page
+already carries. Still exactly one CTA destination, so the one-destination rule
+is intact: GitHub is a citation, not a second funnel.
 
 SHA-256 CLAIM RETRACTED 2026-08-05 (Ry's ruling, #144). This paragraph used to
 end "Public repo, sha256 published with the release." Checked against the live
