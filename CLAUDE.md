@@ -31,12 +31,14 @@ see below), the portfolio landing page (`portfolio/`, see below), and the GitHub
 (`github/`, see below); more site pieces land here as they're built. Verify by opening the
 page in a browser.
 
-Three exceptions to "no build step", all Python that builds *inputs* rather than the site
+Four exceptions to "no build step", all Python that builds *inputs* rather than the site
 itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the four
 downloads the `hire/` pages link; `blog_posts/tools/` converts blog markdown to the Wix
-payload format (`blog_posts/`, see below); and
+payload format (`blog_posts/`, see below);
 `case_studies/ops_fin_model_support/planning/hero/build_hero.py` composes that case study's
-hero image from a source screenshot. None produces a page in this repo — the pages
+hero image from a source screenshot; and `social-cards/build_cards.py` composes the three
+1200×627 social card images, which are committed under the page folders that use them
+(`social-cards/` itself never deploys). None produces a page in this repo — the pages
 themselves are still hand-written static files.
 
 GitHub Pages is **off** for this repo (turned off 2026-07-30, #74). It used to serve
@@ -48,7 +50,9 @@ intake originals, and `/roi-calculator/` had been linked from nowhere since 2026
 the public only as a **manual copy into `wolfpackdata/ai-coaching-intake`**, which owns
 `intake.wolfstrategyllc.com` — so a change is live only once that copy is re-made and
 merged there. This repo stays the source of truth for all three; never edit a deployed
-copy. The canonical public URLs:
+copy. Every page that deploys carries an Open Graph / social card block in its `<head>` per
+[`docs/social-cards-and-linkedin-readiness-plan.md`](docs/social-cards-and-linkedin-readiness-plan.md),
+guarded by `social-cards/check_meta.py`. The canonical public URLs:
 
 | Folder here | Canonical public URL | Since |
 |---|---|---|

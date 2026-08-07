@@ -7,3 +7,9 @@ ai-coaching/img/ryan headshot zoom 2.png
 # the page uses and what gets committed. This original was never committed, so
 # the leak is not in history — keep it that way. Safe to delete locally.
 sm3-specific-pages/sm3-assets/img/sm2 launchpad screenshot.png
+
+# Python bytecode. The four Python corners of this repo (social-cards/,
+# blog_posts/tools/, ryan-resume-dev/, the case study's planning/hero/) all
+# produce it and none of it belongs in a static site's history.
+__pycache__/
+*.pyc
