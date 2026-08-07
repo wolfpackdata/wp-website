@@ -84,6 +84,29 @@ deployed site, so paths are never rewritten.
     mirrors the coral border on `.hero__stand` immediately above it on the page. Coral drawn
     inside a JPEG does not spend a use from the stylesheet's ration of six, but it does have
     to look like it belongs to the same system.
+- **Every case study carries the full Open Graph head block.** A case study is a page people
+  paste into LinkedIn, so its link preview is part of the page. The block sits immediately
+  after the `canonical`/`icon` links and carries, without omissions:
+  - `og:type` `article` and `og:site_name` `Wolfpack Data & Strategy`.
+  - `og:url`, **identical to the page's `<link rel="canonical">`** — not similar, identical.
+  - `og:title`, the `<title>` **minus its `· Case Study` tab suffix**. The suffix is written
+    for the browser tab and the SERP; a card headline is neither.
+  - `og:description`, derived from the page's `<meta name="description">` — verbatim when it
+    fits, trimmed to whole sentences when it does not. LinkedIn truncates around 200
+    characters, and a SERP paragraph run through that cut lands mid-clause.
+  - `og:image` as an **absolute** `https://intake.wolfstrategyllc.com/…` URL pointing at a
+    committed image near 1.91:1, with `og:image:width`, `og:image:height`, and
+    `og:image:alt`. Absolute because the card is fetched by a scraper that has no page to be
+    relative to — and the URL has to survive the deploy rename, so it is
+    `case-study-assets/…`, never the folder name used here.
+  - `twitter:card` `summary_large_image`.
+
+  **`social-cards/check_meta.py` guards all of it** and runs over every page that deploys —
+  the block existed on neither case study until 2026-08-07 (#161) precisely because nothing
+  was watching. **A new case study copies the block from an existing one** and edits the
+  values; deriving it fresh from memory is how a page ends up with five of the eight tags.
+  See [`docs/social-cards-and-linkedin-readiness-plan.md`](../docs/social-cards-and-linkedin-readiness-plan.md)
+  for the sweep that added it and the reasoning behind each choice.
 - **This repo serves nothing.** These pages reach the public only by copying into
   `wolfpackdata/ai-coaching-intake`. This repo stays the source of truth, never edit the
   deployed copy, re-copy on change.

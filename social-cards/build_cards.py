@@ -1,0 +1,463 @@
+"""
+Build the three Open Graph / LinkedIn social cards this site needs.
+
+    python social-cards/build_cards.py
+
+Run from the repo root. It rebuilds all three, every time, into the page folders
+that deploy:
+
+    sm3-specific-pages/sm3-assets/img/og-setmaster3-case-study.png
+    portfolio/img/og-portfolio.png
+    ai-coaching/img/og-ai-coaching.png
+
+These images are **generated, and their generator ships with them — rebuild
+rather than retouch**, the same convention `fin-model-beacon-hero.jpg` already
+carries. A card that gets hand-edited in an image editor is a card nobody can
+change again: the next title tweak becomes a design session instead of a string
+edit. Everything here is deterministic — no timestamps, one fixed RNG seed — so
+the same checkout always produces the same three PNGs.
+
+`social-cards/` never deploys. Like `blog_posts/tools/` and the case study's
+`planning/hero/`, it builds *inputs* to the site rather than any part of it.
+
+THE HARD CONSTRAINT IS LEGIBILITY AT 360 PIXELS.
+LinkedIn renders a Featured tile at roughly 360px wide — under a third of the
+1200px the card is authored at. So the title is set enormous by the standards of
+a page (72-96px on a 1200px canvas, i.e. 22-29px as seen), the screenshot inset
+is treated as texture rather than as something to be read, and everything else on
+the card is one wordmark line. The case-study convention already names this trap
+from the other direction — *"too small to read" is a bet that nobody zooms* — and
+a social card is the one surface where nobody can zoom.
+
+Composition, one system across all three:
+
+  * A navy field, the page's own `--navy #000B29` with the same three-stop
+    vertical gradient `build_hero.py` uses, summed in LINEAR light so a gradient
+    this wide neither bands nor goes muddy.
+  * The wordmark row at the top: the constellation wolf and WOLFPACK DATA &
+    STRATEGY, set the way the page nav sets it — Roboto 700, uppercase, tracked.
+  * The page's own title, auto-fitted to the largest size that still wraps inside
+    its line budget. A short title is therefore bigger than a long one, which is
+    what you want when the enemy is a 360px render.
+  * One coral rule under it. Exactly one coral use per card, mirroring
+    `.hero__stand`'s border-bottom — the same ration discipline the stylesheets
+    carry, applied to an image.
+  * A screenshot inset in the figure-ground frame the pages use (`--fig-bg`
+    #0A0A0A mat, 1px #2A2A2A hairline, 8px radius), running off the bottom edge.
+    The bleed is deliberate: it reads as a window into a running application
+    rather than as a thumbnail parked on a background, and it lets the shot be
+    shown at a scale where its structure survives the downscale.
+
+No hues outside the navy system, apart from whatever colour the screenshots
+themselves contain — that is the subject, not the chrome.
+
+FONTS. Every font in this repo ships as `.woff2` only, and Pillow cannot read
+woff2. Rather than commit a second copy of a typeface that would silently drift
+from the one the pages actually serve, the woff2 the page loads is converted to a
+TTF in a temp directory at build time and thrown away afterwards. No font binary
+is committed here. The face is Roboto 700 (latin subset) — this repo's heading
+face everywhere, per every stylesheet's `h1, h2, h3, h4` rule and the
+`.nav__wordmark` rule. Montserrat is the *body* face here and is deliberately not
+used: a card set in the body face would not match the headings it is quoting.
+"""
+
+import tempfile
+from pathlib import Path
+
+import numpy as np
+from fontTools.ttLib import TTFont
+from PIL import Image, ImageDraw, ImageFont
+
+ROOT = Path(__file__).resolve().parent.parent
+
+W, H = 1200, 627                     # LinkedIn's 1.91:1, at its large-card minimum
+
+# --- colors, sRGB 0-255, all from the stylesheets ---------------------------
+NAVY_TOP = (0, 5, 22)
+NAVY_MID = (0, 11, 41)               # --navy #000B29
+NAVY_BOT = (0, 4, 17)
+FIG_BG = (10, 10, 10)                # --fig-bg
+FIG_LINE = (42, 42, 42)              # --fig-line
+CORAL = (249, 89, 84)                # --coral
+WHITE = (255, 255, 255)              # --white
+MUTED = (191, 194, 202)              # --muted
+LIGHT_EDGE = (124, 147, 214)         # a tint of navy, not a new hue
+
+# --- geometry ---------------------------------------------------------------
+MARGIN = 64
+COL_W = W - 2 * MARGIN               # 1072 — everything lines up on this column
+LOGO = 44
+WORDMARK_TOP = 44
+WORDMARK_SIZE = 20
+WORDMARK_TRACK = 2.6                 # ~0.12em, matching .nav__wordmark
+TITLE_TOP = 140
+TITLE_LEAD = 1.14                    # .15 in CSS; tightened, because these are
+                                     # display sizes rather than page headings
+MAX_TITLE_H = 250                    # see fit_title — the inset's floor, really
+RULE_W, RULE_H = 132, 4              # one coral use, per .hero__stand
+RULE_GAP_ABOVE = 34
+RULE_GAP_BELOW = 44
+MAT_PAD = 10
+BORDER = 1
+PANEL_GAP = 28
+BLEED = 110                          # how far each frame runs past the bottom edge
+
+
+# ==========================================================================
+# Linear-light helpers, lifted from build_hero.py so the two generators do
+# their light math the same way. Anything summed (gradient, glow, grain) is
+# summed in linear space and converted to sRGB once, at the end.
+# ==========================================================================
+
+def srgb_to_linear(a):
+    a = np.asarray(a, dtype=np.float32)
+    return np.where(a <= 0.04045, a / 12.92, ((a + 0.055) / 1.055) ** 2.4)
+
+
+def linear_to_srgb(a):
+    a = np.clip(a, 0.0, 1.0)
+    return np.where(a <= 0.0031308, a * 12.92, 1.055 * a ** (1.0 / 2.4) - 0.055)
+
+
+def lin(rgb255):
+    """An sRGB 0-255 triple as a linear-light float triple."""
+    return srgb_to_linear(np.array(rgb255, dtype=np.float32) / 255.0)
+
+
+def _box1d(a, axis, half):
+    """Moving average of width 2*half+1 along one axis, edge-clamped."""
+    if half < 1:
+        return a
+    a = np.moveaxis(a, axis, -1)
+    pad = np.pad(a, [(0, 0)] * (a.ndim - 1) + [(half + 1, half)], mode="edge")
+    c = np.cumsum(pad, axis=-1, dtype=np.float32)
+    out = (c[..., 2 * half + 1:] - c[..., :-(2 * half + 1)]) / np.float32(2 * half + 1)
+    return np.moveaxis(out, -1, axis)
+
+
+def blur(arr, sigma, passes=3):
+    """Gaussian blur of a single-channel float field, at full resolution.
+
+    Three box passes. Written out rather than handed to PIL because PIL's
+    GaussianBlur rejects mode "F" outright, and blurring a uint8 copy quantizes
+    a glow that has to stay smooth across hundreds of pixels.
+    """
+    half = max(1, int(round(np.sqrt(12.0 * sigma * sigma / passes + 1.0) - 1.0) // 2))
+    out = np.ascontiguousarray(arr, dtype=np.float32)
+    for _ in range(passes):
+        out = _box1d(out, 0, half)
+        out = _box1d(out, 1, half)
+    return out
+
+
+# ==========================================================================
+# Fonts: woff2 -> TTF in a temp dir, never committed
+# ==========================================================================
+
+# The latin subset, picked off the `unicode-range` comments in each folder's
+# fonts.css: U+0000-00FF etc. Every string on these cards is latin, so the other
+# eight subsets are irrelevant. Sourced from portfolio/ because all four font
+# folders in this repo hold byte-identical copies of the same Google files.
+ROBOTO_700_LATIN = ROOT / "portfolio" / "fonts" / \
+    "KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjalmUiAo.woff2"
+
+
+def unwoff(woff2_path, out_path):
+    """Rewrite a woff2 as a plain TTF.
+
+    fontTools decompresses woff2 (via brotli) on load; clearing `flavor` and
+    saving writes the same glyph data back out uncompressed, which is all Pillow
+    needs. The point of doing this at build time instead of committing a TTF is
+    that the card is then guaranteed to be set in the exact file the page serves
+    — if the page's font is ever replaced, the card follows it automatically
+    rather than quietly keeping an old copy.
+    """
+    font = TTFont(str(woff2_path))
+    font.flavor = None
+    font.save(str(out_path))
+    return str(out_path)
+
+
+# ==========================================================================
+# Text helpers
+# ==========================================================================
+
+def wrap(draw, text, font, max_w):
+    """Greedy word wrap against measured pixel widths."""
+    words, lines, cur = text.split(), [], ""
+    for word in words:
+        trial = f"{cur} {word}".strip()
+        if cur and draw.textlength(trial, font=font) > max_w:
+            lines.append(cur)
+            cur = word
+        else:
+            cur = trial
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def fit_title(draw, text, ttf, max_w, max_lines, hi=96, lo=56):
+    """Largest size, in 2px steps, that wraps inside the line *and height* budget.
+
+    Sizing per card rather than per system is the whole trick behind the 360px
+    constraint: "Portfolio & Case Studies" gets to be enormous, and the SetMaster
+    title — three times the length — only gives up as much as it has to.
+
+    MAX_TITLE_H is what stops a long title from eating the card. Fitting purely
+    to the line count set the SetMaster title at 96px across three lines, which
+    left the screenshot an eighty-pixel sliver showing nothing but a toolbar —
+    technically a bleed, visually a mistake. The height cap is really a floor
+    under the inset, expressed from the other end.
+    """
+    for size in range(hi, lo - 1, -2):
+        font = ImageFont.truetype(ttf, size)
+        lines = wrap(draw, text, font, max_w)
+        if len(lines) <= max_lines and round(size * TITLE_LEAD) * len(lines) <= MAX_TITLE_H:
+            return font, lines
+    font = ImageFont.truetype(ttf, lo)
+    return font, wrap(draw, text, font, max_w)
+
+
+def tracked(draw, xy, text, font, fill, track):
+    """Draw text with letter-spacing, which Pillow has no concept of.
+
+    Only the wordmark needs it, and it needs it badly — .nav__wordmark is
+    uppercase at 0.12em, and uppercase at zero tracking reads as a different
+    piece of branding.
+    """
+    x, y = xy
+    for ch in text:
+        draw.text((x, y), ch, font=font, fill=fill)
+        x += draw.textlength(ch, font=font) + track
+    return x
+
+
+# ==========================================================================
+# The pieces of the composition
+# ==========================================================================
+
+def navy_field():
+    """The gradient field, in linear light, plus its vignette."""
+    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+    t = (yy / (H - 1))[:, :, None]
+
+    top, mid, bot = lin(NAVY_TOP), lin(NAVY_MID), lin(NAVY_BOT)
+    upper = top + (mid - top) * np.clip(t / 0.62, 0, 1)
+    lower = mid + (bot - mid) * np.clip((t - 0.62) / 0.38, 0, 1)
+    canvas = np.where(t < 0.62, upper, lower).astype(np.float32)
+
+    # A wide, very faint wash from the upper left, so the field has a direction
+    # to it. Without something like this a flat navy at card size reads as a
+    # placeholder swatch rather than as a lit scene.
+    r = np.hypot((xx - W * 0.16) / (W * 0.75), (yy - H * 0.02) / (H * 0.95))
+    canvas += (0.055 * np.exp(-r ** 1.6))[:, :, None] * lin(LIGHT_EDGE)
+
+    # Corners are pulled back toward --navy, so the card's own edges are never
+    # lighter than the page it will sit beside.
+    vx, vy = (xx - W / 2) / (W / 2), (yy - H / 2) / (H / 2)
+    vig = 1.0 - 0.42 * np.clip(np.hypot(vx * 0.88, vy * 0.82) - 0.34, 0, 2) ** 1.35
+    canvas *= vig[:, :, None]
+    return canvas
+
+
+def framed(src, frame_w, inner_h, focus=0.5):
+    """A source image in the pages' figure-ground frame, at a given size.
+
+    Mat, 1px hairline, 8px radius — the same three tokens `.shot` uses, so the
+    frame on the card and the frame around a screenshot on the page are visibly
+    the same object.
+
+    The shot is fitted the way `.path__shot` fits its images — `object-fit:
+    cover` — except anchored to the top rather than the middle, because the top
+    of an application screenshot is the part that identifies it. Covering rather
+    than merely scaling to width is what guarantees the frame actually reaches
+    past the bottom edge: scaling to width alone left the two portfolio frames
+    ending eight pixels below the canvas, which reads as clipped corners rather
+    than as a deliberate bleed.
+
+    `focus` is where the horizontal crop is taken from, 0 for the left edge and
+    0.5 for the middle. It exists because an application with a navigation rail
+    down its left side has to keep that rail: cropping the SetMaster shot from
+    the centre sliced the sidebar through the middle of a word, which reads as a
+    broken image rather than as a crop.
+    """
+    inner_w = frame_w - 2 * MAT_PAD
+    scale = max(inner_w / src.width, inner_h / src.height)
+    big = src.resize((max(inner_w, round(src.width * scale)),
+                      max(inner_h, round(src.height * scale))), Image.LANCZOS)
+    left = round((big.width - inner_w) * focus)
+    shot = big.crop((left, 0, left + inner_w, inner_h))
+
+    mat = Image.new("RGB", (frame_w, inner_h + 2 * MAT_PAD), FIG_BG)
+    mat.paste(shot, (MAT_PAD, MAT_PAD))
+    box = [0, 0, mat.size[0] - 1, mat.size[1] - 1]
+    ImageDraw.Draw(mat).rounded_rectangle(box, radius=8, outline=FIG_LINE, width=BORDER)
+
+    mask = Image.new("L", mat.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle(box, radius=8, fill=255)
+    return mat, mask
+
+
+def logo_alpha(path, size):
+    """The constellation wolf keyed off its own navy plate.
+
+    The committed logo is a navy square, and pasting a navy square onto a navy
+    gradient shows its seam. Its luminance is used as an alpha instead, so the
+    constellation floats on whatever the field happens to be doing behind it.
+    The 0.10 floor is above the plate's own luminance and below the faintest
+    line in the mark.
+    """
+    a = np.asarray(Image.open(path).convert("L").resize((size, size), Image.LANCZOS),
+                   dtype=np.float32) / 255.0
+    return np.clip((a - 0.10) / 0.90, 0.0, 1.0) ** 0.85
+
+
+# ==========================================================================
+# One card
+# ==========================================================================
+
+def build(card, ttf):
+    out_path = ROOT / card["out"]
+    canvas = navy_field()
+
+    # Text is measured on a scratch RGB image; nothing is drawn to the real
+    # canvas until the light math below is finished.
+    scratch = Image.new("RGB", (W, H))
+    draw = ImageDraw.Draw(scratch)
+
+    title_font, lines = fit_title(draw, card["title"], ttf, COL_W, card["max_lines"])
+    lead = round(title_font.size * TITLE_LEAD)
+    title_h = lead * len(lines)
+
+    rule_y = TITLE_TOP + title_h + RULE_GAP_ABOVE
+    inset_y = rule_y + RULE_H + RULE_GAP_BELOW
+
+    # --- the insets, laid out across the same column the text uses ----------
+    n = len(card["insets"])
+    frame_w = (COL_W - PANEL_GAP * (n - 1)) // n
+    inner_h = (H - inset_y) + BLEED - MAT_PAD
+    frames = []
+    for i, (rel, crop, focus) in enumerate(card["insets"]):
+        src = Image.open(ROOT / rel).convert("RGB")
+        if crop:
+            src = src.crop(crop)
+        mat, mask = framed(src, frame_w, inner_h, focus)
+        frames.append((mat, mask, MARGIN + i * (frame_w + PANEL_GAP)))
+
+    # A rim of light along each frame's top edge and upper sides. The screenshots
+    # are near-black, so without this they read as holes punched in the field
+    # rather than as objects sitting in front of it — the single tell that most
+    # gives away an image pasted onto a background.
+    rim = np.zeros((H, W), dtype=np.float32)
+    for mat, _mask, fx in frames:
+        x0, x1 = fx, fx + mat.size[0]
+        span = np.linspace(-1.0, 1.0, x1 - x0, dtype=np.float32)
+        rim[inset_y:inset_y + 2, x0:x1] = np.exp(-(span / 0.70) ** 2)
+        depth = min(H - inset_y, 170)
+        side = np.linspace(1.0, 0.0, depth, dtype=np.float32) ** 2.0
+        for sx in (x0, x1 - 2):
+            reg = rim[inset_y:inset_y + depth, sx:sx + 2]
+            rim[inset_y:inset_y + depth, sx:sx + 2] = np.maximum(reg, side[:, None] * 0.65)
+    canvas += (blur(rim, 1.6) * 0.26 + blur(rim, 11.0) * 0.30)[:, :, None] * lin(WHITE)
+
+    # --- the coral rule and its glow. One coral use. ------------------------
+    rule = np.zeros((H, W), dtype=np.float32)
+    rule[rule_y:rule_y + RULE_H, MARGIN:MARGIN + RULE_W] = 1.0
+    canvas += (blur(rule, 40) * 0.55 + blur(rule, 12) * 0.45)[:, :, None] * lin(CORAL) * 0.60
+
+    # --- the wolf, keyed onto the field -------------------------------------
+    la = logo_alpha(ROOT / card["logo"], LOGO)
+    ly, lx = WORDMARK_TOP, MARGIN
+    region = canvas[ly:ly + LOGO, lx:lx + LOGO]
+    canvas[ly:ly + LOGO, lx:lx + LOGO] = (
+        region * (1.0 - la[:, :, None]) + lin(WHITE) * la[:, :, None])
+
+    # --- linear light is done; everything from here is flat paint -----------
+    out = Image.fromarray((np.clip(linear_to_srgb(canvas), 0, 1) * 255 + 0.5).astype(np.uint8))
+    draw = ImageDraw.Draw(out)
+
+    draw.rectangle([MARGIN, rule_y, MARGIN + RULE_W - 1, rule_y + RULE_H - 1], fill=CORAL)
+
+    wm_font = ImageFont.truetype(ttf, WORDMARK_SIZE)
+    tracked(draw, (MARGIN + LOGO + 18, WORDMARK_TOP + (LOGO - WORDMARK_SIZE) // 2 - 3),
+            "WOLFPACK DATA & STRATEGY", wm_font, MUTED, WORDMARK_TRACK)
+
+    for i, line in enumerate(lines):
+        draw.text((MARGIN, TITLE_TOP + i * lead), line, font=title_font, fill=WHITE)
+
+    for mat, mask, fx in frames:
+        out.paste(mat, (fx, inset_y), mask)
+
+    # --- grain, and out ------------------------------------------------------
+    # A gradient this wide bands visibly in 8-bit without it, and LinkedIn's own
+    # re-encode makes the banding worse rather than better. Fixed seed, so the
+    # file is byte-reproducible.
+    rng = np.random.default_rng(11)
+    final = np.asarray(out, dtype=np.float32) / 255.0
+    final += rng.normal(0.0, 0.45 / 255.0, final.shape).astype(np.float32)
+    out = Image.fromarray((np.clip(final, 0, 1) * 255 + 0.5).astype(np.uint8))
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out.save(out_path, optimize=True)
+    kb = out_path.stat().st_size / 1024
+    print(f"wrote {card['out']}  {out.size[0]}x{out.size[1]}  {kb:.0f} KB  "
+          f"title {title_font.size}px x{len(lines)}")
+
+
+# ==========================================================================
+# The three cards
+# ==========================================================================
+
+CARDS = [
+    {
+        # The SetMaster 3 case study. The inset is the track-playlist matrix and
+        # deliberately NOT the set editor: the set editor is already the product
+        # page's og:image, and two LinkedIn Featured tiles carrying the identical
+        # screenshot read as one duplicated post (plan D-002).
+        "out": "sm3-specific-pages/sm3-assets/img/og-setmaster3-case-study.png",
+        "logo": "sm3-specific-pages/sm3-assets/img/wolfpack-logo.png",
+        "title": "SetMaster 3: From a Spreadsheet on a Plane to a Robust Application",
+        "max_lines": 3,
+        "insets": [("sm3-specific-pages/sm3-assets/img/a01-track-playlist-matrix.png",
+                    None, 0.5)],
+    },
+    {
+        # Two applications side by side rather than one, so the card reads as a
+        # body of work rather than as a single product — which is the entire
+        # difference between this page and the SetMaster pages.
+        "out": "portfolio/img/og-portfolio.png",
+        "logo": "portfolio/img/wolfpack-logo.png",
+        "title": "Portfolio & Case Studies",
+        "max_lines": 2,
+        # SetMaster is cropped from its left edge so its navigation rail survives;
+        # the e-commerce render is a symmetrical illustration and crops centrally.
+        "insets": [("portfolio/img/app-setmaster.png", None, 0.0),
+                   ("portfolio/img/app-ecommerce-intelligence.jpg", None, 0.5)],
+    },
+    {
+        # The claude-memory-by-surface infographic is the only coaching graphic
+        # approved for public use; the others are reserved for live sessions.
+        # It is cropped to its four panels because the full graphic carries its
+        # own wordmark and its own title, and a card with two of each reads as a
+        # screenshot of a poster rather than as a card. The crop is in the
+        # source's own pixels (1694x929).
+        "out": "ai-coaching/img/og-ai-coaching.png",
+        "logo": "ai-coaching/img/wolfpack-logo.png",
+        "title": "AI Coaching for Professionals",
+        "max_lines": 2,
+        "insets": [("ai-coaching/img/claude-memory-by-surface.png",
+                    (44, 186, 1650, 815), 0.5)],
+    },
+]
+
+
+def main():
+    with tempfile.TemporaryDirectory() as tmp:
+        ttf = unwoff(ROBOTO_700_LATIN, Path(tmp) / "roboto-700-latin.ttf")
+        for card in CARDS:
+            build(card, ttf)
+
+
+if __name__ == "__main__":
+    main()
