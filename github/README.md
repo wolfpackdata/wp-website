@@ -12,16 +12,22 @@ Built under issue [#155](https://github.com/wolfpackdata/wp-website/issues/155).
 
 ## Status
 
-**Built, not yet deployed.** It reaches the public only by copying into
-`wolfpackdata/ai-coaching-intake`. See *Deploying* below.
+**Built and deployed.** Live at `https://intake.wolfstrategyllc.com/github/` since
+2026-08-07 (`ai-coaching-intake#56`). This repo stays the source of truth; it reaches the
+public only by re-copying into `wolfpackdata/ai-coaching-intake`. See *Deploying* below.
 
 - [x] `fonts/` — 14 woff2 (Roboto + Montserrat), copied from `portfolio/fonts/`
 - [x] `img/wolfpack-logo.png`
 - [x] `css/fonts.css` (copied), `css/github.css`
 - [x] `index.html`
-- [ ] Deployed to `ai-coaching-intake`
-- [ ] `CLAUDE.md` canonical-URL table row updated with a deploy date
-- [ ] Notion **Web Property Map** given a row
+- [x] Deployed to `ai-coaching-intake` — 2026-08-07, `ai-coaching-intake#56`, from
+      `develop 5b851f4`; 18 files verified byte-identical before commit
+- [x] `CLAUDE.md` canonical-URL table row updated with a deploy date
+- [x] Notion **Web Property Map** given a row, four diagram edges, and a verification entry
+
+Verified in production after the deploy: `/github/` and all three asset paths return **200**
+requested as deep paths that had never been cached (`Age: 0`, so origin reads rather than the
+edge); `/github/README.md` returns **404**; the served HTML carries `noindex, nofollow`.
 
 Verified: zero external requests, `scrollWidth == clientWidth` at 320/340/360/375/390/414/
 430/480/481/560/768/1024/1440/1920px, complete render with no JavaScript on the page at all,
