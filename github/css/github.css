@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Wolfpack — "This is my GitHub" page — github/
+   Wolfpack — GitHub link page — github/
    Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
 
    Derived from portfolio/css/portfolio.css, which descends from
@@ -11,9 +11,10 @@
    was rustdesk.com's closing block — a bordered card holding a heading and its
    buttons and nothing else. So this page holds a heading and one button and
    nothing else. There is no kicker, no standfirst, and no explanatory note,
-   because a heading that says "This is my GitHub" above a button labeled
+   because a heading that says "Show me the code." above a button labeled
    github.com/wolfpackdata has already said all of it, and a line of prose under
-   that would be copy explaining copy.
+   that would be copy explaining copy. The heading is the READER's line and the
+   button is the answer to it — see the note in index.html before rewording it.
 
    What did NOT come across from portfolio.css, and why. No section, gallery, or
    card-grid rules — there are no sections. No .skip link: it exists to jump over
