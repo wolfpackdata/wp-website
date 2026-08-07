@@ -1,4 +1,4 @@
-# `github/` — the "this is my GitHub" page
+# `github/` — the GitHub link page
 
 One screen with one link on it. Ry sends this URL when a prospective partner, employer, or
 collaborator wants to see the code, and it sends them to
@@ -38,7 +38,7 @@ two-line standfirst, the `Opens … in a new tab.` note, and the wolf watermark 
 and every rule that served them came out of the stylesheet with them rather than being left
 orphaned. The footer went to one centered line.
 
-**Do not add a line of prose under the heading.** A heading reading *This is my GitHub* above
+**Do not add a line of prose under the heading.** A heading reading *Show me the code.* above
 a button labeled `github.com/wolfpackdata` has already said everything the page exists to
 say; a sentence under it would be copy explaining copy, which is the exact thing #158
 removed.
@@ -105,8 +105,20 @@ deploys as a single folder copy with no path rewriting.
 **The page has two strings: a heading and a button label.** That is the whole of it, and
 keeping it that way is the point of #158.
 
-The headline is Ry's own framing of the request, not a marketing rewrite of it. He described
-what he wanted as *"just a 'this is my GitHub' link"*, and the `h1` is that sentence.
+### The heading is the reader's line, not Ry's
+
+The `h1` is **"Show me the code."** — Ry's pick on 2026-08-07, replacing the literal *This is
+my GitHub* the page shipped with.
+
+It is written in the **visitor's** voice, and that is the whole mechanism: *Show me the code*
+is what someone arrives at this page wanting to say, and the button underneath is the answer
+to it. The card reads as one exchange rather than a label sitting above a link.
+
+**So do not "correct" it to the first person.** *Here's my code*, *My code*, or *See my code*
+all look like tidier versions of the same sentence and all break it — they make the heading
+Ry talking, which leaves the button answering nothing. It also carries the Linus Torvalds
+line it comes from, *"Talk is cheap. Show me the code."*, for readers who know it, without
+requiring them to.
 
 Copy on this page is Ry's to judge, against no written spec — the voice guide that used to
 govern page copy was removed 2026-08-06 (#150). Match the other pages here rather than

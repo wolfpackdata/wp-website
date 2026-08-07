@@ -256,7 +256,7 @@ Conventions the page must keep:
   only while the page was unpublished. Note the rates page now links *here* (spec R14), so
   the two pages are deliberately one-way: rates → portfolio, never back.
 
-## `github/` — the "this is my GitHub" page
+## `github/` — the GitHub link page
 One screen with one link on it, at `https://intake.wolfstrategyllc.com/github/`. Ry sends
 this URL when a prospective partner, employer, or collaborator wants to see the code, and it
 sends them to `github.com/wolfpackdata`. **Built 2026-08-06 (#155), simplified 2026-08-07
@@ -267,9 +267,11 @@ Conventions the page must keep:
 - **One centered card holding a heading and one button, and nothing else.** Ry's reference
   was `rustdesk.com`'s closing block (#158). The page has **two strings on it** — the heading
   and the button label — and that is the point rather than an unfinished state. **Do not add
-  a line of prose under the heading:** *This is my GitHub* above a button labeled
+  a line of prose under the heading:** *Show me the code.* above a button labeled
   `github.com/wolfpackdata` has already said it, and a sentence under it is copy explaining
-  copy. The kicker, standfirst, "opens in a new tab" note, and watermark it shipped with on
+  copy. **The heading is the reader's line, not Ry's** (his pick, 2026-08-07) — it is what the
+  visitor came to say and the button is the answer, so rewording it to the first person
+  (*Here's my code*) breaks the exchange and leaves the button answering nothing. The kicker, standfirst, "opens in a new tab" note, and watermark it shipped with on
   2026-08-06 were all removed the next day. The **header stays left-aligned** while the card
   centers — the centering is of the content block, and a centered logo reads as a brand
   landing page rather than a page with one job.
