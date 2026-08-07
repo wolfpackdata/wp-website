@@ -23,8 +23,29 @@ Built under issue [#155](https://github.com/wolfpackdata/wp-website/issues/155).
 - [ ] `CLAUDE.md` canonical-URL table row updated with a deploy date
 - [ ] Notion **Web Property Map** given a row
 
-Verified: zero external requests, `scrollWidth == clientWidth` at 320/360/390/414/480/560/
-768/1024/1440/1920px, complete render with no JavaScript on the page at all, single `h1`.
+Verified: zero external requests, `scrollWidth == clientWidth` at 320/340/360/375/390/414/
+430/480/481/560/768/1024/1440/1920px, complete render with no JavaScript on the page at all,
+single `h1`.
+
+## Layout — one centered card, and that is the page
+
+Simplified on 2026-08-07 (#158) from the left-aligned hero it shipped with the day before.
+Ry's reference was `rustdesk.com`'s closing block: a bordered card, centered on the page,
+holding a heading and its buttons and **nothing else**.
+
+So this page is a heading and one button. The kicker (`SOURCE CODE · RYAN HICKEY`), the
+two-line standfirst, the `Opens … in a new tab.` note, and the wolf watermark all came out,
+and every rule that served them came out of the stylesheet with them rather than being left
+orphaned. The footer went to one centered line.
+
+**Do not add a line of prose under the heading.** A heading reading *This is my GitHub* above
+a button labeled `github.com/wolfpackdata` has already said everything the page exists to
+say; a sentence under it would be copy explaining copy, which is the exact thing #158
+removed.
+
+The **header stays left-aligned** while the card centers. That is deliberate — the centering
+is of the content block, and a centered logo would read as a brand landing page rather than a
+page with one job.
 
 ## The one rule
 
@@ -81,6 +102,9 @@ deploys as a single folder copy with no path rewriting.
 
 ## Copy
 
+**The page has two strings: a heading and a button label.** That is the whole of it, and
+keeping it that way is the point of #158.
+
 The headline is Ry's own framing of the request, not a marketing rewrite of it. He described
 what he wanted as *"just a 'this is my GitHub' link"*, and the `h1` is that sentence.
 
@@ -90,11 +114,30 @@ reaching for a rulebook.
 
 ## Coral
 
-**Four uses**, enumerated in the header comment of `css/github.css` — the smallest ration of
-any page in this repo, which is what a page with one link should cost. Keep that comment
-true. Where coral is a fill, text on it is navy (5.8:1), never white (fails AA); the GitHub
-mark inside the button inherits navy through `fill: currentColor` rather than declaring its
-own color, so there is no second value to keep in sync.
+**Three uses**, enumerated in the header comment of `css/github.css` — the smallest ration of
+any page in this repo, which is what a page with one link should cost. It was four until
+2026-08-07, when the hero rule left with the standfirst it underlined (#158); as everywhere
+else in this repo, the count only ever goes down. Keep that comment true.
+
+Where coral is a fill, text on it is navy (5.8:1), never white (fails AA); the GitHub mark
+inside the button inherits navy through `fill: currentColor` rather than declaring its own
+color, so there is no second value to keep in sync.
+
+## The button's width is the fragile part
+
+The button label is a URL set in `var(--mono)`, which is a **system** font stack — Consolas
+here, SF Mono on a Mac, DejaVu Sans Mono on most Linux. Those cuts do not share metrics, so
+the rendered width of that label is **not knowable from the machine that builds this page**.
+
+Measured at 320px, the first pass fit the button into the card with **two pixels** to spare.
+That is not a fit, it is a coincidence that holds on one font stack. Two breakpoints (480px
+and 360px) now step the padding and type down, and the narrow gutter comes down with them.
+Worst case across fourteen measured widths is **375px at 16% headroom**, which absorbs a
+fallback face meaningfully wider than Consolas.
+
+**If you change the button's label, padding, or font, re-measure — don't eyeball it.** A
+screenshot cannot tell you how much room is left, and this is the one dimension on the page
+with no slack in it.
 
 ## The GitHub mark
 

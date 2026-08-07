@@ -259,10 +259,20 @@ Conventions the page must keep:
 ## `github/` — the "this is my GitHub" page
 One screen with one link on it, at `https://intake.wolfstrategyllc.com/github/`. Ry sends
 this URL when a prospective partner, employer, or collaborator wants to see the code, and it
-sends them to `github.com/wolfpackdata`. **Built 2026-08-06 (#155), not yet deployed.**
-Folder README: [`github/README.md`](github/README.md), which carries the full convention list.
+sends them to `github.com/wolfpackdata`. **Built 2026-08-06 (#155), simplified 2026-08-07
+(#158), not yet deployed.** Folder README: [`github/README.md`](github/README.md), which
+carries the full convention list.
 
 Conventions the page must keep:
+- **One centered card holding a heading and one button, and nothing else.** Ry's reference
+  was `rustdesk.com`'s closing block (#158). The page has **two strings on it** — the heading
+  and the button label — and that is the point rather than an unfinished state. **Do not add
+  a line of prose under the heading:** *This is my GitHub* above a button labeled
+  `github.com/wolfpackdata` has already said it, and a sentence under it is copy explaining
+  copy. The kicker, standfirst, "opens in a new tab" note, and watermark it shipped with on
+  2026-08-06 were all removed the next day. The **header stays left-aligned** while the card
+  centers — the centering is of the content block, and a centered logo reads as a brand
+  landing page rather than a page with one job.
 - **Exactly one outbound destination: the GitHub profile — and it is not a funnel.** Ry's
   instruction was explicit: *"this is not to funnel people to contact me, it is just a 'this
   is my GitHub' link."* So no calendar CTA, no intake-form link, no rates link, no résumé
@@ -291,10 +301,17 @@ Conventions the page must keep:
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, like `portfolio/` and
   unlike `hire/`. Folder name is already the URL slug, so it copies to the intake root
   unchanged. **`README.md` does not deploy** (same exclusion `portfolio/` carries, #129).
-- **Coral is rationed to four uses** — the smallest ration in this repo — enumerated in the
-  header comment of `css/github.css`. The GitHub mark is inlined as SVG and takes navy
-  through `fill: currentColor`, so there is no second color value to keep in sync with the AA
-  rule.
+- **Coral is rationed to three uses** — the smallest ration in this repo — enumerated in the
+  header comment of `css/github.css`. It was four until 2026-08-07, when the hero rule left
+  with the standfirst it underlined (#158); as everywhere else here, the count only ever goes
+  down. The GitHub mark is inlined as SVG and takes navy through `fill: currentColor`, so
+  there is no second color value to keep in sync with the AA rule.
+- **The button's width is the one fragile dimension.** Its label is a URL in `var(--mono)`, a
+  *system* font stack, so its rendered width is not knowable from the build machine. The
+  first pass fit it at 320px with two pixels to spare — a coincidence, not a fit. Breakpoints
+  at 480px and 360px now step padding and type down; worst case is 375px at 16% headroom.
+  **Re-measure after any change to that label, its padding, or its font — a screenshot cannot
+  show you the remaining slack.**
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
