@@ -61,7 +61,7 @@ copy. The canonical public URLs:
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
-| `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | **not yet deployed** (#155) |
+| `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | 2026-08-07 (#155) |
 
 `sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
 `sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
@@ -260,8 +260,8 @@ Conventions the page must keep:
 One screen with one link on it, at `https://intake.wolfstrategyllc.com/github/`. Ry sends
 this URL when a prospective partner, employer, or collaborator wants to see the code, and it
 sends them to `github.com/wolfpackdata`. **Built 2026-08-06 (#155), simplified 2026-08-07
-(#158), not yet deployed.** Folder README: [`github/README.md`](github/README.md), which
-carries the full convention list.
+(#158), deployed 2026-08-07** (`ai-coaching-intake#56`). Folder README:
+[`github/README.md`](github/README.md), which carries the full convention list.
 
 Conventions the page must keep:
 - **One centered card holding a heading and one button, and nothing else.** Ry's reference
