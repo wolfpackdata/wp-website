@@ -1,0 +1,531 @@
+/* ==========================================================================
+   SetMaster 3 — landing page (the product page)
+   Near-black #0A0A0A · orange/blue signal accents · purple section labels
+
+   The SECOND stylesheet in this folder, and it must stay second. The case
+   study (sm3-case.css) wears Wolfpack navy because it is a portfolio
+   document; this page wears SetMaster 3's own surface because it is a
+   product surface. planning/00-overview.md §4 says why the two must never
+   be merged into one file: a single sheet holding both palettes is how an
+   accent ration gets spent by accident.
+
+   Structure, spacing, type scale, button shapes, reveal behaviour, and the
+   footer are lifted from sm3-case.css so the two pages are recognisably the
+   same hand. Roboto 700 headings and Montserrat body are the repo's stack on
+   every built page, and the font files already sit in ../fonts/. The design
+   spec named Inter and JetBrains Mono; adopting them would have meant two
+   more self-hosted families for no gain, and the page would have stopped
+   matching its own repo. See planning/02-landing-page-design.md §13.
+
+   ACCENT RATION, in one place so it cannot drift.
+
+   --accent-orange, as a FILL. Four uses, and text on it is #0A0A0A, never
+   white (#FF6A00 on white is 2.9:1 and fails AA; on near-black it is 8.4:1):
+     1. the nav Download button
+     2. the Windows Download button
+     3. the macOS Download button
+     4. the live release status dot
+   --accent-orange, as TEXT or BORDER. Two uses:
+     5. the hero stat values
+     6. link hover
+   --accent-blue: focus rings only. It is the application's focus colour and
+   it stays that here.
+   --brand-purple: the section eyebrow labels and the wordmark numeral.
+   Nothing else. Not a heading, not a stat, not a border.
+
+   The fill ration went from three to four on 2026-08-05, when macOS shipped
+   as a signed .dmg (v3.0.4) and the install band gained a second real
+   download. Two equal platforms with one orange button between them would
+   have made the ration a lie about the product rather than a discipline: the
+   ghost button existed because there was nothing to download, not because
+   macOS was the lesser half. Growing it is a decision; letting it grow
+   silently is the failure this comment prevents.
+
+   --brand-magenta / --brand-cyan are NOT USED ON THIS PAGE. They were the
+   Out/In track pair in the transition-row table, and Ry cut that table on
+   2026-08-05, so the variables and every rule that read them came out with
+   it. The case study still carries both, in sm3-case.css. If a future band
+   pictures a transition row again, they come back TOGETHER: magenta without
+   cyan means the Out/In semantic was borrowed as a decorative colour.
+   ========================================================================== */
+
+:root {
+  /* Surfaces. Elevation is a lightness step, never a shadow. */
+  --bg-app:        #0A0A0A;
+  --bg-panel:      #141414;
+  --bg-row:        #1A1A1A;
+  --border-subtle: #2A2A2A;
+
+  /* Text */
+  --text-primary:   #E6E6E6;
+  --text-secondary: #9C9C9C;
+  --text-muted:     #6B6B6B;   /* 4.9:1 on --bg-app; labels and meta only */
+
+  /* Signal accents */
+  --accent-orange: #FF6A00;
+  --accent-blue:   #3D7BFD;
+
+  /* Brand accent. The magenta/cyan Out-In pair is deliberately absent — see
+     the ration note above; it lives in sm3-case.css. */
+  --brand-purple:  #9B5CFF;
+
+  --radius:  6px;
+  --radius-s: 4px;
+  --measure: 1100px;
+  --mono: ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--text-primary); }
+a:hover { color: var(--accent-orange); }             /* orange use 6 of 6 */
+a:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 3px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* Every number on this page is tabular. It is the borderless-grid rule from
+   the application, and it is what makes a spec table read as an instrument
+   panel rather than as prose with digits in it. */
+.num, .status__line, .stats b, .sha { font-variant-numeric: tabular-nums; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px;
+  clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+
+/* The signature label. Used generously: kickers, column heads, chips, meta.
+   It is the thing that makes the page read as a panel. */
+.k {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.k--accent { color: var(--brand-purple); }
+
+/* ==========================================================================
+   Skip link
+   ========================================================================== */
+
+.skip {
+  position: absolute; left: 24px; top: -60px; z-index: 30;
+  background: var(--bg-row); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-s); padding: 10px 18px;
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip:focus { top: 12px; color: var(--text-primary); }
+
+/* ==========================================================================
+   Sticky nav
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 26px; height: 58px;
+}
+.nav__brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.nav__logo { width: 26px; height: 26px; border-radius: var(--radius-s); }
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav__wordmark i { font-style: normal; color: var(--brand-purple); }
+.nav__links { display: flex; gap: 20px; list-style: none; }
+.nav__links a {
+  font-family: var(--mono);
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; color: var(--text-secondary);
+  padding: 4px 0; border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.nav__links a:hover { color: var(--text-primary); }
+/* Scroll-spy marks the current section with a hairline, not with an accent.
+   A moving orange underline would be a fifth fill and pure noise. */
+.nav__links a[aria-current="true"] {
+  color: var(--text-primary); border-bottom-color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; line-height: 1.4;
+  padding: 13px 28px; border-radius: var(--radius);
+  white-space: nowrap;
+}
+.btn--dl { background: var(--accent-orange); color: var(--bg-app); }   /* orange fills 2 and 3 of 4 */
+.btn--dl:hover { color: var(--bg-app); filter: brightness(1.08); }
+.btn--ghost { border: 1px solid var(--border-subtle); color: var(--text-primary); }
+.btn--ghost:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+.btn--wide { display: block; text-align: center; }
+.btn__meta {
+  display: block; margin-top: 2px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; font-weight: 400; opacity: 0.75;
+}
+
+/* The nav CTA is the page's only header CTA and the only link in the bar that
+   is not a section anchor. */
+.nav__cta {
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--accent-orange); color: var(--bg-app) !important;  /* orange fill 1 of 4 */
+  padding: 8px 16px; border-radius: var(--radius-s); white-space: nowrap;
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Bands
+   ========================================================================== */
+
+.band { padding: 84px 0; scroll-margin-top: 70px; }
+.band--panel { background: var(--bg-panel); }
+.band--line { border-top: 1px solid var(--border-subtle); }
+/* One button and nothing else. Full band padding would read as an empty
+   section with a stray control in it. */
+.band--slim { padding: 40px 0; }
+
+.site { display: flex; justify-content: center; }
+
+.band__head { max-width: 62ch; margin-bottom: 40px; }
+.band__head .k { display: block; margin-bottom: 14px; }
+.band__title { font-size: clamp(1.5rem, 3vw, 2.05rem); margin-bottom: 16px; }
+.band__lede { color: var(--text-secondary); font-size: 1.0625rem; }
+.band__lede + .band__lede { margin-top: 14px; }
+.band__lede strong { color: var(--text-primary); font-weight: 600; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero { padding: 72px 0 64px; }
+.hero__kicker { display: block; margin-bottom: 22px; }
+.hero__title {
+  font-size: clamp(2.125rem, 5.4vw, 3.5rem);
+  line-height: 1.04;
+  max-width: 16ch;
+  margin-bottom: 24px;
+}
+.hero__stand {
+  font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
+  color: var(--text-secondary);
+  max-width: 58ch;
+}
+
+/* Version, date, size, price. The four facts a technical visitor wants before
+   clicking, given without a click. Hand-maintained on purpose: see the release
+   facts comment at the top of index.html. */
+.status__line {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  margin-top: 26px;
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+.status__dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent-orange);                 /* orange fill 4 of 4 */
+  flex: none;
+}
+.status__sep { color: var(--text-muted); }
+
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  list-style: none; margin-top: 40px;
+}
+.stats li {
+  background: var(--bg-panel); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+.stats b {
+  display: block; font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 1.375rem; line-height: 1.2; margin-bottom: 8px;
+  color: var(--accent-orange);                      /* orange text 5 of 6 */
+}
+.stats span {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-muted); line-height: 1.5;
+  display: block;
+}
+
+/* ==========================================================================
+   Install — the two-column band, and the reason the page exists.
+
+   Windows left, macOS right, at every width above 760px. Below that they
+   stack, Windows first, because Windows is the platform that has an artifact.
+   Authored in HTML with both columns fully visible: nothing here is revealed
+   by script, so the band works with JavaScript off, which is the whole point
+   of a download page (design spec §6.3).
+   ========================================================================== */
+
+.install { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+.plat {
+  background: var(--bg-row); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius); padding: 30px 32px;
+  display: flex; flex-direction: column;
+}
+/* Grid rather than a wrapping flex row: the two cards carry requirement lines
+   of very different lengths, and letting them wrap where they like put the
+   chips on different rows and knocked the two step lists out of alignment.
+   Platform and requirement on row one, status chip on row two, both cards. */
+.plat__head {
+  display: grid; grid-template-columns: auto 1fr; row-gap: 12px; column-gap: 12px;
+  align-items: baseline;
+  padding-bottom: 18px; margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.plat__head .chip { grid-column: 1 / -1; justify-self: start; }
+.plat__os { font-size: 1.25rem; }
+.plat__req { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+             text-transform: uppercase; color: var(--text-muted); }
+
+/* A status chip, not a colour. A red "not ready" chip would read as an error;
+   this is a plan, stated plainly. Same decision the case study made. */
+.chip {
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-secondary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-s);
+  padding: 5px 10px; white-space: nowrap;
+}
+
+.steps { list-style: none; counter-reset: step; display: grid; gap: 16px; margin-bottom: 26px; }
+.steps li {
+  position: relative; padding-left: 34px;
+  font-size: 0.9375rem; color: var(--text-secondary);
+}
+.steps li::before {
+  counter-increment: step; content: counter(step, decimal-leading-zero);
+  position: absolute; left: 0; top: 1px;
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+.steps strong { color: var(--text-primary); font-weight: 600; }
+.steps code {
+  font-family: var(--mono); font-size: 0.8125rem;
+  background: var(--bg-app); border: 1px solid var(--border-subtle);
+  border-radius: 3px; padding: 1px 6px; color: var(--text-primary);
+}
+.steps--pending { opacity: 0.72; }
+
+.plat__note {
+  font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px;
+}
+.plat__foot { margin-top: auto; }
+/* .sha was removed 2026-08-05 along with the markup it styled. The page had
+   claimed a SHA-256 was published with every release artifact; v3.0.4 publishes
+   none, so all six instances of that claim came out (claims ledger C-11). The
+   rules are deleted rather than left dead: a styled class with no markup is an
+   invitation to find a use for it, and the only use for this one was the claim
+   that was just retracted. If a release ever publishes hashes, bring back the
+   markup and the rules together. */
+
+.install__foot {
+  margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border-subtle);
+  display: flex; flex-wrap: wrap; gap: 10px 30px; justify-content: space-between;
+  font-size: 0.9375rem; color: var(--text-secondary);
+}
+.install__foot .k { display: block; margin-bottom: 4px; }
+
+/* The .trow transition-row table styles were removed on 2026-08-05 with the
+   markup they dressed (Ry cut the visual from the "One row is one transition"
+   band). The table itself is not gone from the project: sm3-case.css carries
+   its own copy and the case study still renders it. Bringing it back here
+   means bringing back --brand-magenta and --brand-cyan as a pair. */
+
+.caption {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-muted); line-height: 1.6;
+}
+
+/* ==========================================================================
+   Feature rows — screenshot led, alternating
+   ========================================================================== */
+
+/* Equal columns, not a copy-heavy split. These are wide desktop-class
+   screenshots near 2:1, and at a third of the row they stop being evidence and
+   become texture. */
+.feat {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 44px;
+  align-items: center;
+}
+.feat + .feat { margin-top: 64px; }
+/* Flipped rows put the image second in the source and first on screen, so the
+   reading order in the markup stays copy-then-evidence on every row while the
+   page alternates visually. */
+.feat--flip .feat__shot { order: -1; }
+
+.feat__title { font-size: 1.375rem; margin: 12px 0 14px; }
+.feat__body { color: var(--text-secondary); font-size: 1rem; margin-bottom: 18px; }
+.feat__body strong { color: var(--text-primary); font-weight: 600; }
+
+.shot {
+  display: block; width: 100%;
+  background: var(--bg-app);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.feat__shot figcaption { margin-top: 12px; }
+
+.plainlist { display: grid; gap: 10px; list-style: none; }
+.plainlist li {
+  position: relative; padding-left: 22px;
+  font-size: 0.9375rem; color: var(--text-secondary);
+}
+.plainlist li::before { content: "\25B8"; position: absolute; left: 0; color: var(--text-muted); }
+.plainlist strong { color: var(--text-primary); font-weight: 600; }
+
+/* ==========================================================================
+   Claim cards + roadmap
+   ========================================================================== */
+
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; list-style: none; }
+.cards li {
+  background: var(--bg-row); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius); padding: 22px 24px;
+}
+.cards .k { display: block; margin-bottom: 10px; }
+.cards p { font-size: 0.9375rem; color: var(--text-secondary); }
+
+.status { display: grid; gap: 14px; list-style: none; max-width: 74ch; }
+.status li {
+  display: grid; grid-template-columns: 128px 1fr; gap: 18px;
+  align-items: baseline;
+  padding: 16px 0; border-top: 1px solid var(--border-subtle);
+}
+.status .chip { text-align: center; }
+.status p { font-size: 0.9375rem; color: var(--text-secondary); }
+.status strong { color: var(--text-primary); font-weight: 600; }
+
+/* ==========================================================================
+   Origin story — three panels, and the page's only outbound link that is not
+   a download or the repository
+   ========================================================================== */
+
+.origin { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; list-style: none; }
+.origin li {
+  background: var(--bg-panel); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius); padding: 24px 26px;
+}
+.band--panel .origin li { background: var(--bg-row); }
+.origin .k { display: block; margin-bottom: 6px; }
+.origin h3 { font-size: 1.0625rem; margin-bottom: 12px; }
+.origin p { font-size: 0.9375rem; color: var(--text-secondary); }
+.origin strong { color: var(--text-primary); font-weight: 600; }
+
+/* The SetMaster 2 capture is a bright spreadsheet on a near-black page, so it
+   is held to a size that reads as a figure rather than as a light source. */
+.origin__shot { margin-top: 32px; max-width: 860px; }
+
+.after {
+  margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--border-subtle);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px;
+}
+.after p { color: var(--text-secondary); max-width: 52ch; }
+
+/* ==========================================================================
+   Trademark + footer
+   ========================================================================== */
+
+.tm {
+  margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-subtle);
+  font-size: 0.8125rem; color: var(--text-muted); max-width: 78ch;
+}
+
+.foot { border-top: 1px solid var(--border-subtle); padding: 34px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__wordmark i { font-style: normal; color: var(--brand-purple); }
+.foot__meta {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.foot__meta a { color: var(--text-secondary); }
+
+/* ==========================================================================
+   Scroll reveal — scoped to .js so the page renders COMPLETE with JavaScript
+   off or broken. A download page that needs JavaScript to offer a download is
+   broken; this is the same rule applied to everything else on it.
+   ========================================================================== */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(.2,.6,.2,1),
+              transform 0.5s cubic-bezier(.2,.6,.2,1);
+  transition-delay: var(--d, 0ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .skip { transition: none; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .nav__links { display: none; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .feat { grid-template-columns: 1fr; gap: 26px; }
+  .feat--flip .feat__shot { order: 0; }
+  .feat + .feat { margin-top: 48px; }
+  .origin { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .install { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .band { padding: 56px 0; }
+  .hero { padding: 46px 0 44px; }
+  .cards { grid-template-columns: 1fr; }
+  .plat { padding: 24px 22px; }
+  .status li { grid-template-columns: 1fr; gap: 8px; }
+  .status .chip { justify-self: start; }
+  .btn { white-space: normal; padding: 13px 20px; }
+  .after .btn { width: 100%; text-align: center; }
+}

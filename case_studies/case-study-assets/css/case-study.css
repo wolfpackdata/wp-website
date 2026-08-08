@@ -1,0 +1,519 @@
+/* ==========================================================================
+   Wolfpack case studies — shared stylesheet
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+
+   This is the generalized descendant of
+   sm3-specific-pages/sm3-assets/css/sm3-case.css, which came from
+   hire/assets/css/hire.css, which came from rates/css/rates.css — the pattern
+   library. Every case study in case_studies/ loads this file, so the chrome,
+   the type scale, and the scroll-reveal timing are identical across all of
+   them by construction rather than by anyone remembering.
+
+   WHAT CHANGED FROM sm3-case.css, and why. The SetMaster sheet carried one
+   deliberate palette exception: anywhere the product was pictured, the frame
+   used SetMaster's own near-black surface and its magenta/cyan Out/In
+   identity, so the product looked like itself. That exception was earned by a
+   product having a visual identity. A case study about financial modeling has
+   no product to look like, so carrying the magenta/cyan pair forward would be
+   borrowing a semantic as decoration, which is exactly what the SM3 header
+   comment forbids. It is dropped. What survives is the neutral dark FIGURE
+   GROUND (--fig-*), kept so a screenshot sits in a frame of the same visual
+   weight it would have on the SetMaster page. The SetMaster .trow table is
+   replaced by the generic .dtable below.
+
+   CORAL DISCIPLINE, in one place so it cannot drift. Coral is allowed on:
+     1. the nav CTA                    4. the closing CTA
+     2. the hero rule                  5. link hover
+     3. the pull-quote rule            6. the focus ring
+   Nothing else. Not a section heading, not a stat value, not a subhead, not a
+   sidebar label, not a table row. Where coral is a FILL, text on it is navy
+   (5.8:1), never white (fails AA).
+
+   NO NEW HUES. This sheet introduces zero colors beyond the navy system and
+   the neutral figure ground. A table that needs to mark one row as the
+   important one does it with weight, a background lift, and a mono chip. If a
+   future case study genuinely needs an accent, add it here with a written
+   justification, the way sm3-case.css justified its one exception. Do not add
+   it inline in a page.
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono:      ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+
+  /* Neutral figure ground. Screenshots of spreadsheets and dashboards are
+     mostly light, and a light image on navy fights the page; a near-black mat
+     lets the image be the brightest thing in its own frame. Scoped to .shot,
+     .ph, and .dtable only — never page chrome, never page type. */
+  --fig-bg:    #0A0A0A;
+  --fig-row:   #1A1A1A;
+  --fig-lift:  #23262E;   /* the one emphasized row in a .dtable */
+  --fig-line:  #2A2A2A;
+  --fig-text:  #E6E6E6;
+  --fig-dim:   #9C9C9C;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px;
+  clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Skip link — these are long documents; a keyboard reader needs the escape
+   ========================================================================== */
+
+.skip {
+  position: absolute; left: 24px; top: -60px; z-index: 30;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 18px;
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip:focus { top: 12px; color: var(--white); }
+
+/* ==========================================================================
+   Sticky nav + scroll-spy rail
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(0, 11, 41, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 26px; height: 58px;
+}
+.nav__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-right: auto;
+}
+.nav__brand:hover { color: var(--white); }
+.nav__logo { width: 30px; height: 30px; border-radius: var(--radius); }
+/* No white-space: nowrap. The wordmark is "Wolfpack Data & Strategy" on every page
+   here, and at phone width it has to share the bar with the coral CTA — nowrap
+   would push the nav into horizontal overflow rather than wrapping to a second
+   line. Matches rates/ and ai-coaching/, which have carried the full string
+   beside a CTA since they shipped. */
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav__links { display: flex; gap: 20px; list-style: none; }
+.nav__links a {
+  font-family: var(--mono);
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; color: var(--faint);
+  padding: 4px 0; border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.nav__links a:hover { color: var(--white); }
+/* Scroll-spy marks the current section in white with a hairline, not coral —
+   the ration is spent, and a moving accent would be noise. */
+.nav__links a[aria-current="true"] { color: var(--white); border-bottom-color: var(--faint); }
+.nav__cta {
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--coral); color: var(--navy) !important;
+  padding: 8px 16px; border-radius: var(--radius); white-space: nowrap;
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero { border-bottom: 1px solid var(--line); }
+.hero__inner { padding: 76px 0 60px; }
+
+.hero__kicker { display: block; margin-bottom: 20px; }
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  letter-spacing: 0.005em;
+  line-height: 1.06;
+  max-width: 20ch;
+  margin-bottom: 26px;
+}
+
+.hero__stand {
+  font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+  color: var(--muted);
+  max-width: 58ch;
+  padding-bottom: 26px;
+  border-bottom: 3px solid var(--coral);   /* coral use 2 of 6 */
+}
+
+/* Stat tiles. On a practitioner-thesis page these carry BUILD AND COST facts,
+   never impact metrics: there is no instrumented client outcome to report, and
+   inventing one would be the single most damaging thing a case study could do. */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  list-style: none; margin-top: 34px;
+}
+.stats li {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+.stats b {
+  display: block; font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 1.375rem; line-height: 1.2; margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.stats span {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--faint); line-height: 1.5;
+  display: block;
+}
+
+/* ==========================================================================
+   Sections + prose
+   ========================================================================== */
+
+.section { padding: 72px 0; scroll-margin-top: 70px; }
+.section--line { border-top: 1px solid var(--line); }
+.section__title { font-size: clamp(1.5rem, 3vw, 2.05rem); margin-bottom: 28px; }
+.section__sub {
+  font-size: 1.125rem; margin: 40px 0 16px;
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+}
+
+/* The reading column. ~68ch is the measure the summary section on hire/ uses,
+   and these pages are mostly prose, so it is the default rather than a special
+   case. */
+.prose { max-width: 68ch; }
+.prose p { color: var(--muted); font-size: 1.0625rem; }
+.prose p + p { margin-top: 18px; }
+.prose strong { color: var(--white); font-weight: 600; }
+.prose a { color: var(--muted); }
+.prose a:hover { color: var(--coral); }   /* coral use 5 of 6 */
+
+/* The thesis. ONE pull quote per page, presented as the conclusion the
+   argument around it supports rather than as a claim standing alone. Two pull
+   quotes is shouting; use .verdict for the second emphasis. */
+.pull {
+  max-width: 62ch; margin: 34px 0;
+  padding: 4px 0 4px 26px;
+  border-left: 3px solid var(--coral);     /* coral use 3 of 6 */
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+  line-height: 1.3;
+}
+
+/* An attributed line, quieter than .pull. This is where a first-person verdict
+   goes when the page already spent its one pull quote. */
+.verdict {
+  max-width: 66ch; margin-top: 26px; padding: 22px 26px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 1.0625rem; color: var(--muted);
+}
+.verdict cite {
+  display: block; margin-top: 10px; font-style: normal;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--faint);
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+.figure { margin: 34px 0; }
+.figure--wide { max-width: none; }
+
+.shot {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  object-fit: cover; object-position: 50% 0;
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-line);
+  border-radius: var(--radius);
+}
+.shot--43 { aspect-ratio: 4 / 3; }
+
+.figure figcaption {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--faint); line-height: 1.6;
+}
+
+/* Designed placeholder. Sized at the exact final aspect ratio, so dropping the
+   real file in changes nothing about the layout. Never a gray box, never a
+   "coming soon". It is decorative until it holds a real asset, hence
+   aria-hidden in the markup. */
+.ph {
+  display: grid; place-content: center; gap: 8px; text-align: center;
+  width: 100%; aspect-ratio: 16 / 9; padding: 24px;
+  background: var(--fig-bg);
+  border: 1px dashed var(--fig-line);
+  border-radius: var(--radius);
+}
+.ph--43 { aspect-ratio: 4 / 3; }
+.ph__id {
+  font-family: var(--mono); font-size: 1.125rem; letter-spacing: 0.16em;
+  color: var(--fig-dim);
+}
+.ph__what {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #5E5E5E; max-width: 44ch;
+}
+.ph__dim {
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
+  color: #4A4A4A;
+}
+
+/* ==========================================================================
+   .dtable — a small data table built in HTML rather than screenshotted.
+   Inherited from the SetMaster page's ruling on its transition row: it is a
+   table, so it is a table. Sharp at every density, readable by a screen
+   reader, weightless, and it cannot go stale against an edit to the source
+   spreadsheet the way a captured image does. Reach for this whenever the
+   figure you want is four numbers, not a user interface.
+   ========================================================================== */
+
+.dtable {
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  overflow-x: auto;                    /* wide content scrolls itself */
+}
+.dtable table {
+  width: 100%; min-width: 520px;
+  border-collapse: collapse;
+  font-family: var(--mono); font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;  /* what makes a borderless grid read */
+  color: var(--fig-text);
+}
+/* No gridlines and no cell borders: separation comes from striping, spacing,
+   and column alignment, not from rules. */
+.dtable th, .dtable td { border: 0; padding: 9px 12px; text-align: left; }
+
+/* Density is the point, and a table stretched to 100% is not dense: the short
+   numeric columns inflate and the row stops reading as one line. Shrink-
+   wrapping every short column pushes the slack into the label column, which is
+   where the long values actually are. */
+.dtable .num { width: 1%; white-space: nowrap; text-align: right; }
+
+.dtable .col {
+  font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--fig-dim); font-weight: 400;
+  border-bottom: 1px solid var(--fig-line);
+}
+.dtable .col.num { text-align: right; }
+.dtable tbody tr:nth-child(odd) td { background: var(--fig-row); }
+
+/* The one row that matters, marked with weight and a lift rather than a hue.
+   See the NO NEW HUES note at the top of this file. */
+.dtable tbody tr.is-lead td { background: var(--fig-lift); color: var(--white); font-weight: 700; }
+
+.dtable .rank {
+  display: inline-block;
+  font-size: 0.5625rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 400; color: var(--fig-dim);
+  border: 1px solid var(--fig-line); border-radius: 3px;
+  padding: 3px 7px; white-space: nowrap;
+}
+.dtable tbody tr.is-lead .rank { color: var(--white); border-color: #4A4E58; }
+
+.dtable__note {
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--fig-line);
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
+  color: var(--fig-dim); line-height: 1.6;
+}
+
+/* ==========================================================================
+   Sidebars — run alongside a section, never inside the argument.
+   Each drops without affecting the spine.
+   ========================================================================== */
+
+.aside {
+  margin: 34px 0;
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 30px;
+  max-width: 68ch;
+}
+.aside__label { display: block; margin-bottom: 12px; font-size: 0.6875rem; }
+.aside__title { font-size: 1.0625rem; margin-bottom: 12px; }
+.aside p { font-size: 0.9375rem; color: var(--muted); }
+.aside p + p { margin-top: 12px; }
+
+/* A short set of numbers, set as a readout rather than a headline. */
+.readout {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  list-style: none; margin-bottom: 18px;
+}
+.readout li {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 3px; padding: 7px 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Honesty list — the limits of the thing the page is arguing for.
+   Chips are gray, deliberately. A red chip would read as an error state; these
+   are boundaries, stated plainly.
+   ========================================================================== */
+
+.status { display: grid; gap: 14px; list-style: none; max-width: 74ch; }
+.status li {
+  display: grid; grid-template-columns: 120px 1fr; gap: 18px;
+  align-items: baseline;
+  padding: 16px 0; border-top: 1px solid var(--line);
+}
+.status .chip {
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 5px 10px; text-align: center; white-space: nowrap;
+}
+.status p { font-size: 0.9375rem; color: var(--muted); }
+
+/* ==========================================================================
+   Plain lists
+   ========================================================================== */
+
+.plainlist { display: grid; gap: 10px; list-style: none; max-width: 74ch; }
+.plainlist li {
+  position: relative; padding-left: 22px;
+  font-size: 0.9375rem; color: var(--muted);
+}
+.plainlist li::before { content: "▸"; position: absolute; left: 0; color: var(--faint); }
+
+/* ==========================================================================
+   Closing block
+   ========================================================================== */
+
+.close {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 40px 42px;
+}
+.close__title { font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 14px; }
+.close__lede { color: var(--muted); max-width: 62ch; margin-bottom: 26px; }
+.close__ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; line-height: 1.4;
+  padding: 12px 30px; border-radius: var(--radius);
+  white-space: nowrap;
+}
+.btn--solid { background: var(--coral); color: var(--navy); }   /* coral use 4 of 6 */
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+.btn--ghost { border: 1px solid var(--line); color: var(--white); }
+.btn--ghost:hover { border-color: var(--faint); color: var(--white); }
+
+/* ==========================================================================
+   Fine print
+   ========================================================================== */
+
+.tm {
+  margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line);
+  font-size: 0.8125rem; color: var(--faint); max-width: 78ch;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 36px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--faint); }
+.foot__meta a { color: var(--muted); }
+
+/* ==========================================================================
+   Scroll reveal
+   ========================================================================== */
+
+/* Scoped to .js so the page renders COMPLETE with JavaScript off or broken.
+   Same rule the hire/ and SetMaster pages keep, for the same reason: a
+   document that needs JavaScript to be readable is a broken document. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(.2,.6,.2,1),
+              transform 0.5s cubic-bezier(.2,.6,.2,1);
+  transition-delay: var(--d, 0ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .skip { transition: none; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .nav__links { display: none; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .hero__inner { padding: 54px 0 46px; }
+  .section { padding: 54px 0; }
+  .stats { grid-template-columns: 1fr; }
+  .close { padding: 30px 24px; }
+  .aside { padding: 22px 20px; }
+  .dtable { padding: 18px 16px; }
+  .status li { grid-template-columns: 1fr; gap: 8px; }
+  .status .chip { justify-self: start; }
+  .close__ctas .btn { width: 100%; text-align: center; }
+  .btn { white-space: normal; padding: 12px 20px; }
+  .pull { padding-left: 18px; }
+}

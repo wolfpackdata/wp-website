@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Direct-link only, per issue #155. Ry sends this URL; nothing links to it.
+     Two reasons, and the second is the load-bearing one. It is a one-link page,
+     so indexing it puts thin content into search under a brand whose indexed
+     pages are otherwise substantial. And it would compete with /portfolio/ for
+     the same queries — /portfolio/ is the page that should win a search for
+     Ryan Hickey's work, because it shows the work rather than pointing at it. -->
+<meta name="robots" content="noindex, nofollow">
+
+<title>Ryan Hickey on GitHub &middot; Wolfpack Data &amp; Strategy</title>
+<meta name="description" content="Ryan Hickey's public GitHub repositories.">
+<link rel="canonical" href="https://intake.wolfstrategyllc.com/github/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ryan Hickey on GitHub">
+<meta property="og:description" content="Public repositories — source, commit history, and releases.">
+<meta property="og:url" content="https://intake.wolfstrategyllc.com/github/">
+<meta property="og:image" content="https://intake.wolfstrategyllc.com/github/img/wolfpack-logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="img/wolfpack-logo.png">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/github.css">
+</head>
+<body>
+
+<!-- ========== Header ==========
+     No skip link and no nav links: there is no navigation to skip over, and
+     nowhere else on the page to navigate to. Stays left-aligned while the card
+     centres — see the note on .head in css/github.css. -->
+<header class="head">
+  <div class="head__inner">
+    <a class="head__brand" href="https://www.wolfstrategyllc.com">
+      <img class="head__logo" src="img/wolfpack-logo.png" alt="" width="30" height="30">
+      <span class="head__wordmark">Wolfpack Data &amp; Strategy</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- ========== The card — the whole page ==========
+         A heading and one button, centred, and nothing else (#158). Ry's
+         reference was rustdesk.com's closing block, which is a bordered card
+         holding a heading and its buttons with no kicker, no standfirst, and no
+         explanatory note. The kicker, standfirst, and "opens in a new tab" line
+         this page shipped with on 2026-08-06 all came out with it.
+
+         THE HEADING IS THE READER'S LINE, NOT RY'S. "Show me the code." is what
+         the visitor came here to say, and the button underneath is the answer to
+         it — the card is one exchange rather than a label above a link. So do
+         not "correct" it to the first person ("Here's my code", "My code"); that
+         breaks the exchange and leaves the button answering nothing. Ry chose it
+         on 2026-08-07, and it carries the Linus Torvalds line it comes from —
+         "Talk is cheap. Show me the code." — for the readers who know it,
+         without needing them to.
+
+         Above a button labelled with the URL, it has already said everything the
+         page exists to say. A line of prose under it would be copy explaining
+         copy.
+
+         Deliberately states no repository count and links no individual repo.
+         The profile link is self-updating: it stays correct as repos are opened,
+         renamed, archived, or closed, and this page never needs editing to keep
+         up. A hardcoded list is the version of this page that quietly goes
+         wrong. Copy is Ry's to judge, like every other page here. -->
+    <section class="card">
+      <h1 class="card__title">Show me the code.</h1>
+
+      <a class="btn btn--solid" href="https://github.com/wolfpackdata" target="_blank" rel="noopener">
+        <!-- The GitHub mark, inline so the page makes zero external requests.
+             fill="currentColor" — see .btn__mark in css/github.css. -->
+        <svg class="btn__mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        </svg>
+        <span class="btn__label">github.com/wolfpackdata</span>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<!-- ========== Footer ==========
+     One centred line. No mailto, unlike every other footer in this repo: Ry was
+     explicit that this page is not for contacting him, and an email address in
+     the footer is precisely how it would become that. The wordmark is the link
+     back to the main site — site chrome, not a second destination. -->
+<footer class="foot">
+  <div class="wrap">
+    <a class="foot__wordmark" href="https://www.wolfstrategyllc.com">Wolfpack Data &amp; Strategy</a>
+  </div>
+</footer>
+
+</body>
+</html>

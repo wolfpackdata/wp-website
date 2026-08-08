@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Public and INDEXED, unlike the two hire/ pages. Two differently-framed
+     résumés for one person read badly side by side in search results, which is
+     why those carry noindex. This page has no such twin: it is one page of work
+     evidence aimed at prospective clients and hiring companies alike, and being
+     found is the point. See docs/portfolio-page-design-plan.md D-002. -->
+<meta name="robots" content="index, follow">
+
+<title>Portfolio &amp; Case Studies &middot; Ryan Hickey &middot; Wolfpack Data &amp; Strategy</title>
+<meta name="description" content="Applications, data systems, and AI workflows built and shipped, plus long-form case studies of how they were scoped and measured. Client platforms, in-house tools, and builds in flight.">
+<link rel="canonical" href="https://intake.wolfstrategyllc.com/portfolio/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wolfpack Data &amp; Strategy">
+<meta property="og:title" content="Portfolio &amp; Case Studies &middot; Ryan Hickey">
+<meta property="og:description" content="Applications, data systems, and AI workflows built and shipped, plus long-form case studies of how they were scoped and measured.">
+<meta property="og:url" content="https://intake.wolfstrategyllc.com/portfolio/">
+<meta property="og:image" content="https://intake.wolfstrategyllc.com/portfolio/img/og-portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Screenshots of SetMaster 3 and an e-commerce intelligence dashboard on a navy field, titled Portfolio &amp; Case Studies.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/wolfpack-logo.png">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+
+<a class="skip" href="#applications">Skip to content</a>
+
+<!-- ========== Sticky nav ========== -->
+<nav class="nav" aria-label="Sections">
+  <div class="nav__inner">
+    <!-- The company name goes home, matching every other page here. It was #top
+         (a same-page anchor) while this page was unpublished; on a public page the
+         wordmark is the way back to the main site, not a scroll-to-top. -->
+    <a class="nav__brand" href="https://www.wolfstrategyllc.com">
+      <img class="nav__logo" src="img/wolfpack-logo.png" alt="" width="30" height="30">
+      <span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#cases">Case studies</a></li>
+      <!-- No Contact item: the #contact section it pointed at was cut (D-013), and
+           the nav's own coral Book a call button is the contact route. -->
+    </ul>
+    <a class="nav__cta" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book a call</a>
+  </div>
+</nav>
+
+<!-- ========== Hero ==========
+     Copy is Ry's, written 2026-08-04, and it resolves the placeholder this
+     section shipped with (design plan D-004). The .ph-copy block and its rules
+     in css/portfolio.css are gone with it, which also returns the coral ration
+     to seven uses. Treat the headline and standfirst as his words. -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <img class="hero__watermark" src="img/wolfpack-logo.png" alt="" aria-hidden="true" width="340" height="340">
+    <div class="hero__inner">
+      <span class="k hero__kicker">Portfolio &amp; case studies &middot; Ryan Hickey</span>
+      <h1 class="hero__title">Systems, apps, and projects</h1>
+      <p class="hero__stand">Selected examples of recent applications, data systems,
+        and AI workflows built and evolving, with some case studies below.</p>
+      <!-- No CTA here. The intro-call button moved to the foot of the page
+           (Ry, 2026-08-05, #130) so the reader meets the work before the ask.
+           .hero__ctas went with it. -->
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ========== Applications & systems ==========
+       Blurbs are VERBATIM from
+       ryan-resume-dev/resume_build/content/eng_only.yaml (section
+       "Selected AI Applications & Systems"), the same strings the hire/ pages
+       carry. Do NOT tone-edit them: rewording here creates a third wording,
+       which is exactly what check 6 below is built to catch.
+
+       verify_facts.py check 6 compares every .app__blurb in this file against
+       that YAML, so a paraphrase fails the check rather than drifting quietly
+       (design plan D-006). Card order follows the YAML.
+
+       SetMaster 3 uses the eng_only framing, not eng_music's "RML SetMaster 3"
+       (D-005) — one source YAML for all eight cards. -->
+  <section class="section" id="applications" aria-labelledby="applications-title">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <span class="k section__kicker">Selected AI applications &amp; systems</span>
+        <h2 class="section__title" id="applications-title">Software that runs</h2>
+        <p class="section__lede">Client platforms, in-house tools, and builds in flight. Every one of them is real software, not a proposal.</p>
+      </div>
+
+      <div class="apps">
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-ecommerce-intelligence.jpg" alt="Screenshot of the E-commerce Intelligence Platform" width="1693" height="929" loading="lazy">
+          <h3 class="app__name">E-commerce Intelligence Platform — Tromml Inc.</h3>
+          <p class="app__blurb">Built and shipped an e-commerce intelligence platform alongside a senior AI Engineer/CTO, using AI-accelerated development throughout. Python, dbt, PostgreSQL, BigQuery, and Looker Studio behind an interface that lets business users query complex operational data through natural-language interaction instead of filing analyst requests. Reached $20k MRR as a subscription product.</p>
+        </article>
+
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-data-backbone.jpg" alt="Screenshot of the $30M data backbone dashboards" width="1672" height="941" loading="lazy">
+          <h3 class="app__name">The $30M Data Backbone — Auto SOSS Inc. / Shock Surplus</h3>
+          <p class="app__blurb">The pricing, inventory, forecasting, and operational automation systems that carried an eight-figure e-commerce brand from $300K to $30M in annual revenue. Written in Python and SQL, designed and owned end to end while serving as COO — the engineering and the P&amp;L were the same job.</p>
+        </article>
+
+        <article class="app app--narrow reveal">
+          <img class="app__shot" src="img/app-notion-system.png" alt="Screenshot of the Notion–GitHub AI Dev Command Center" width="543" height="506" loading="lazy">
+          <h3 class="app__name">Notion–GitHub AI Dev Command Center</h3>
+          <p class="app__blurb">A bespoke command center for AI-accelerated development: a skills-based planning, project-management, and AI-supervision suite built on a Python engine that wires Claude Code, OpenAI Codex, GitHub, Notion, and BigQuery into a single pipeline. Every agent action is planned against a tracked task, logged, and reviewable — transparent human + agent software development at blistering speed, with an audit trail rather than a black box.</p>
+        </article>
+
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-setmaster.png" alt="Screenshot of SetMaster 3" width="1494" height="848" loading="lazy">
+          <h3 class="app__name">SetMaster 3</h3>
+          <p class="app__blurb">An offline, cross-platform desktop-class web application — TypeScript and React over a Python analysis engine, shipping double-clickable installers for Windows and macOS with no terminal required. Parses a proprietary XML catalog format strictly read-only and reconciles it against third-party API exports through years of accumulated name-normalization and fuzzy-matching heuristics, with compound filtering and a structured editor over the result. Now at v3.0.3 after three issue-driven fix rounds; it replaces a Python/Excel-VBA prototype used professionally for years.</p>
+        </article>
+
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-pdpd.png" alt="Screenshot of pdpd" width="1327" height="807" loading="lazy">
+          <h3 class="app__name">pdpd</h3>
+          <p class="app__blurb">An AI e-commerce frontend tool that fixes, generates, A/B tests, and version-controls product description page catalogs running to millions of pages. Python and FastAPI with a per-instance Postgres cluster and cloud-ready storage, model, and secrets seams. In alpha, built from a full written specification.</p>
+        </article>
+
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-bql.jpg" alt="Screenshot of the BQL Analytics Provisioner" width="1536" height="1024" loading="lazy">
+          <h3 class="app__name">BQL Analytics Provisioner</h3>
+          <p class="app__blurb">Provisions a standardized, layered BigQuery analytics environment — raw, staging, clean, analysis — and wires Looker Studio on top, in minutes instead of a week of console clicks. Python CLI, built so the client owns the Google Cloud project and can revoke consultant access at any time.</p>
+        </article>
+
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-time-trackify.png" alt="Screenshot of Time-Trackify" width="1387" height="909" loading="lazy">
+          <h3 class="app__name">Time-Trackify</h3>
+          <p class="app__blurb">An agent that reconstructs a workday from the evidence it already left behind — local repositories, GitHub, Notion, calendar, and mail — matches each session to a real project, and pushes billable entries to Clockify with provenance attached. Python, local-first, privacy-scoped by design.</p>
+        </article>
+
+        <article class="app reveal">
+          <img class="app__shot" src="img/app-coaching-intake.png" alt="Screenshot of the AI Coaching intake system" width="1178" height="826" loading="lazy">
+          <p class="app__cap">Pictured: the program&rsquo;s intake &amp; delivery system</p>
+          <h3 class="app__name">AI Coaching Program &amp; Curriculum</h3>
+          <p class="app__blurb">An applied AI enablement program built on a five-tier ability model and three role tracks, from professionals who have never used AI to engineers already shipping with it. Covers prompting that transfers context, memory and project configuration, verification habits that make AI output safe to sign, and confidentiality judgment fitted to a student&rsquo;s industry and employer policy — the last of which makes it usable in law, healthcare, finance, education, and HR.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Case studies ==========
+       Two cards at launch. The ops financial model study is published and
+       indexed, so it carries a real button; SetMaster 3 uses the same
+       .case__chip "in preparation" device the hire/ pages use, so adding its
+       link later changes one element and not the layout (design plan D-008).
+
+       Absolute URL on the published one, not relative: in this repo that case
+       study lives at case_studies/ops_fin_model_support/, but it deploys to
+       /ops-fin-model-case-study/, so the two layouts share no relative path.
+
+       The blurbs here are this page's own connective copy, not résumé content,
+       so they are Ry's to judge rather than being pinned to the YAML. -->
+  <section class="section section--line" id="cases" aria-labelledby="cases-title">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <span class="k section__kicker">Case studies</span>
+        <h2 class="section__title" id="cases-title">Written up in full</h2>
+        <p class="section__lede">Long-form write-ups of how a system was scoped, built, and measured. Both are published and both are a click away.</p>
+      </div>
+
+      <div class="cases">
+        <article class="case reveal" id="case-setmaster">
+          <img class="case__shot" src="img/app-setmaster.png" alt="" aria-hidden="true" width="1494" height="848" loading="lazy">
+          <div>
+            <span class="case__num"></span>
+            <h3 class="case__title">SetMaster 3: from problem, to prototype, to a shipped web app</h3>
+            <p class="case__blurb">A years-old spreadsheet workaround rebuilt as a cross-platform application: the matching heuristics, the offline-first architecture, and three issue-driven fix rounds to v3.0.3.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
+          </div>
+        </article>
+
+        <article class="case reveal" id="case-fin-model">
+          <!-- Was the "Figures in preparation" panel until 2026-08-04. Honest while
+               the case study had no figure; it has one now (#113), so the card
+               carries it. Built by that case study's own generator at card width
+               rather than by re-encoding the page-sized JPEG, so this file is a
+               sibling of the hero and not a copy of it. -->
+          <img class="case__shot" src="img/case-fin-model.jpg" alt="" aria-hidden="true" width="1400" height="788" loading="lazy">
+          <div>
+            <span class="case__num"></span>
+            <h3 class="case__title">The Model Is Your Business Beacon: a financial model as an operating tool</h3>
+            <p class="case__blurb">Why an operational financial model belongs in front of the product: the three-statement package, the weekly cadence that keeps it useful, and how it settles which work actually gets done.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/ops-fin-model-case-study/">Read the case study</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== The page ends on the case studies ==========
+       Two closing sections stood here and Ry cut both, on the same day, in that
+       order (design plan D-011 then D-013).
+
+       First the rates coda: a quiet .softcta band linking /rates_public/, argued
+       for on the grounds that half this page's audience is a prospective client.
+       Then the closing "Start with a call" block itself, whose header and lede
+       had been rewritten hours earlier (D-012) — the rewrite was not the problem,
+       the block was.
+
+       What that leaves is deliberate rather than an omission. The page still
+       carries the intro call twice, in the nav and — since 2026-08-05 — in the
+       bare button below, both pointing at the same 30-minute calendar, so the
+       book-first rule holds and there is still exactly one destination on the
+       whole page.
+
+       Still no intake-form link, no résumé download, and deliberately no link to
+       either hire/ page — those are noindex and direct-link only, and a public
+       indexed page linking them defeats that in one step (D-003).
+
+       The .close, .close__title, and .close__lede rules came out of
+       css/portfolio.css with the block, the way .softcta and .section--coda left
+       with the coda. Do not re-add a closing SECTION without asking Ry — the
+       button below is not one, see its own note. -->
+
+  <!-- ========== Closing intro-call button ==========
+       Ry, 2026-08-05 (#130): the hero's button, moved here. Deliberately bare —
+       no heading, no lede, no section framing, by explicit instruction.
+
+       This is NOT a reversal of D-013 above. That cut a closing SECTION for its
+       copy and its chrome; none of that returns, and .close/.close__title/
+       .close__lede stay deleted. One existing element moved down the page.
+       Nothing was added, so the coral ration is still six.
+
+       Reading order is the whole point: the case studies now land before the ask
+       rather than after it. -->
+  <div class="endcta section--line">
+    <div class="wrap">
+      <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book an intro call <span class="btn__meta">30 minutes</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <span class="foot__wordmark">Wolfpack Data &amp; Strategy</span>
+    <span class="foot__meta">
+      <a href="mailto:ryan@wolfstrategyllc.com">ryan@wolfstrategyllc.com</a> &middot;
+      <a href="https://www.wolfstrategyllc.com" target="_blank" rel="noopener">wolfstrategyllc.com</a>
+    </span>
+  </div>
+</footer>
+
+<script src="js/reveal.js"></script>
+</body>
+</html>

@@ -6,11 +6,102 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-08-07
+
+Adds the long-form case studies and the SetMaster 3 product page, then makes the
+whole site presentable as a link: every page that deploys now carries an Open
+Graph block. The site is about to be the funnel for a LinkedIn campaign, and a
+link preview is the first thing anyone sees of it.
+
 ### Added
+
+- `case_studies/` — a workspace for long-form, client-facing case studies, with a **shared**
+  `case-study-assets/` (CSS, JS, fonts, image) so every case study inherits the same chrome
+  and scroll animation rather than re-deriving it. The stylesheet is the generalized
+  descendant of `sm3-assets/css/sm3-case.css`: same type scale, same six-use coral ration,
+  same reveal timing, with SetMaster's product-specific magenta/cyan palette exception
+  dropped and its transition-row table replaced by a reusable `.dtable`. (#91)
+- The first case study, **The Model Is Your Business Beacon**
+  (`case_studies/ops_fin_model_support/`), arguing that an operational financial model is an
+  operating tool that belongs ahead of go-to-market product work. Public and indexed, one
+  CTA to the 30-minute call plus a ghost link to the ROI calculator. Ships with `M-01`–`M-06`
+  placeholders for the modeling screenshots Ry has yet to capture. (#91)
+
+- `sm3-specific-pages/setmaster3/` — **the SetMaster 3 landing page**, the product page the
+  folder has carried a spec for since 2026-07-31. A short hero, then a **two-column install
+  band with Windows left and macOS right**, the transition-row explainer, three
+  screenshot-led feature rows, four checkable claims, the roadmap band, and the origin story
+  ending on the single link to the case study. **One solid CTA, the nav Download.** Both
+  install columns are authored in HTML rather than promoted by platform detection, so the
+  band is complete with JavaScript off and the page ships no download JavaScript at all.
+  Not deployed: `/setmaster3/` still 404s until the folder is copied into
+  `ai-coaching-intake`. (#85, #86)
+- `sm3-assets/css/sm3-landing.css` — the second stylesheet in that folder, deliberately kept
+  apart from `sm3-case.css`. SetMaster 3's own near-black palette on the repo's Roboto and
+  Montserrat, with an enumerated accent ration in its header comment: four orange fills, two
+  orange text uses, blue for focus only, purple on the section eyebrows and the wordmark
+  numeral. (#85)
+
+- `social-cards/` — a card generator and **three generated 1200×627 social cards**, for the
+  SetMaster 3 case study, the portfolio page, and the AI coaching page. `build_cards.py`
+  composes them from the navy design-system field, the page's own title, and a screenshot
+  inset in the same figure-ground frame the pages use; the finished images are committed into
+  the page folders that deploy, and the folder that builds them does not. That makes it the
+  **fourth exception** to this repo's "no build step" rule, alongside `ryan-resume-dev/`,
+  `blog_posts/tools/`, and the financial model hero generator — and it follows the same
+  standing convention those set: rebuild rather than retouch, because an asset nobody can
+  rebuild is an asset nobody can correct. The SetMaster card is deliberately **not** the
+  product page's set-editor screenshot; two Featured tiles carrying the same image read as a
+  duplicate. (#161)
+- `social-cards/check_meta.py` — a guard over every `index.html` that deploys, asserting the
+  required meta set is present, that `og:url` equals the page's canonical, and that every
+  `og:image` is an absolute `intake.wolfstrategyllc.com` URL resolving to a committed file.
+  Same shape and same reason as `verify_facts.py`: the Open Graph block was missing from two
+  public case studies for months because nothing was watching for it. (#161)
 
 ### Changed
 
-### Fixed
+- **Open Graph tags swept across the site** (#161), so the pages render properly as link
+  previews instead of as bare text cards. The blocking case was
+  `sm3-specific-pages/setmaster3-case-study/`, which carried **zero** `og:` and `twitter:`
+  tags on the eve of going into a LinkedIn Featured section; a sweep of all nine public pages
+  found the identical gap on `case_studies/ops_fin_model_support/` and partial blocks
+  elsewhere, so it was fixed everywhere at once rather than one page at a time. Six pages
+  edited: both case studies gain a full block with a large image — SetMaster 3 a card built
+  for it, the financial model its existing beacon hero, which is already purpose-built;
+  `portfolio/` and `ai-coaching/` upgrade from a 200×200 logo and a text-only card to
+  `summary_large_image`; and `roi-calculator/`, the one page with no `<link rel="canonical">`
+  at all, gains one plus a logo card; and `sm3-specific-pages/setmaster3/`, whose block was
+  already complete, gains the three `og:image` width/height/alt lines its large card was
+  missing, surfaced by the new guard's first run (plan D-106). `rates/`, both `hire/` pages,
+  and `github/` are untouched — already complete for their card class. `og:title` drops the `· Case Study` tab
+  suffix, and `og:description` is the page's meta description sized to LinkedIn's ~200-character
+  truncation. Reasoning and the decisions ledger:
+  `docs/social-cards-and-linkedin-readiness-plan.md`.
+
+- **Both SetMaster 3 pages carry the v3.0.4 macOS installer** (2026-08-05), which ships
+  macOS as a signed, notarized `SetMaster.app` inside a drag-to-Applications `.dmg`, built
+  and acceptance-tested on a Mac for the first time. The landing page's macOS column becomes
+  a real download; the case study gains a **The Mac Installer** subsection and loses its
+  "Windows is verified end to end, macOS is not" opening. **C-03 narrowed rather than
+  lapsed** — both pages now claim Apple silicon, macOS 14 or later, no Intel, and say the
+  suites have never run on macOS. **The download links 404 until v3.0.4 is published to the
+  public mirror with both artifacts attached.** (#139)
+- `blog_posts/2026-08-05-introducing-setmaster/post.md` — the *What Is Not Ready* section
+  described the Mac build as waiting on a Mac, which v3.0.4 falsified. The post stays
+  unpushed: its **Get SetMaster 3** CTA points at `/setmaster3/`, and its hold note gates the
+  push on that URL returning 200. (#139)
+- `hire/` — on both résumé pages, the second "In preparation" case-study placeholder is
+  replaced by a real, linked card for the financial model case study. It is the only card of
+  the three that is a live link, so it carries a button instead of a chip. (#91)
+- **British spellings normalized to American** across 19 files, 71 replacements: page copy,
+  CSS and JS comments, and planning docs in `case_studies/`, `hire/`, `rates/`,
+  `sm3-specific-pages/`, `ryan-resume-dev/`, and `docs/`. Mostly `colour`, `grey`,
+  `artefact`, `centrepiece`, `labelled`, and `behaviour`. Done with an explicit word-pair
+  list rather than a blanket `-ise` → `-ize` regex, which would have corrupted `advertise`,
+  `exercise`, `enterprise`, `analysis`, and a dozen others. `.srt` transcripts are excluded
+  as verbatim records, and the `-wards` group is excluded as usage rather than spelling.
+  (#93)
 
 ## [1.2.0] - 2026-07-31
 
@@ -119,6 +210,7 @@ that landed each change in
 - The ROI calculator header uses the Wolfpack logo (#45).
 - The 30-minute-call CTAs pointed at the wrong booking calendar (#13).
 
-[Unreleased]: https://github.com/wolfpackdata/wp-website/compare/v1.2.0...develop
+[Unreleased]: https://github.com/wolfpackdata/wp-website/compare/v1.3.0...develop
+[1.3.0]: https://github.com/wolfpackdata/wp-website/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/wolfpackdata/wp-website/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/wolfpackdata/wp-website/releases/tag/v1.1.0

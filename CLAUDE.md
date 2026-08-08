@@ -25,14 +25,21 @@ link doesn't resolve, warn Ry it's dead, then search the Notion teamspace for th
 ## What this repo is
 The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. Currently
 holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
-(`ai-coaching/`, see below), the public rates page (`rates/`, see below), and the two
-résumé landing pages (`hire/`, see below); more site pieces land here as they're built.
-Verify by opening the page in a browser.
+(`ai-coaching/`, see below), the public rates page (`rates/`, see below), the two
+résumé landing pages (`hire/`, see below), the long-form case studies (`case_studies/`,
+see below), the portfolio landing page (`portfolio/`, see below), and the GitHub link page
+(`github/`, see below); more site pieces land here as they're built. Verify by opening the
+page in a browser.
 
-One exception to "no build step": `ryan-resume-dev/` is a Python workbench that compiles
-résumé YAML to `.docx`/`.pdf` and stages the four downloads the `hire/` pages link. It
-builds *inputs* to the site, not the site — the pages themselves are still hand-written
-static files.
+Four exceptions to "no build step", all Python that builds *inputs* rather than the site
+itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the four
+downloads the `hire/` pages link; `blog_posts/tools/` converts blog markdown to the Wix
+payload format (`blog_posts/`, see below);
+`case_studies/ops_fin_model_support/planning/hero/build_hero.py` composes that case study's
+hero image from a source screenshot; and `social-cards/build_cards.py` composes the three
+1200×627 social card images, which are committed under the page folders that use them
+(`social-cards/` itself never deploys). None produces a page in this repo — the pages
+themselves are still hand-written static files.
 
 GitHub Pages is **off** for this repo (turned off 2026-07-30, #74). It used to serve
 `main` at `https://wolfpackdata.github.io/wp-website/`; those URLs now 404. Nothing linked
@@ -43,7 +50,9 @@ intake originals, and `/roi-calculator/` had been linked from nowhere since 2026
 the public only as a **manual copy into `wolfpackdata/ai-coaching-intake`**, which owns
 `intake.wolfstrategyllc.com` — so a change is live only once that copy is re-made and
 merged there. This repo stays the source of truth for all three; never edit a deployed
-copy. The canonical public URLs:
+copy. Every page that deploys carries an Open Graph / social card block in its `<head>` per
+[`docs/social-cards-and-linkedin-readiness-plan.md`](docs/social-cards-and-linkedin-readiness-plan.md),
+guarded by `social-cards/check_meta.py`. The canonical public URLs:
 
 | Folder here | Canonical public URL | Since |
 |---|---|---|
@@ -52,6 +61,16 @@ copy. The canonical public URLs:
 | `ai-coaching/` | `https://intake.wolfstrategyllc.com/ai-coaching/` | 2026-07-28 |
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
+| `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
+| `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
+| `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
+| `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
+| `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | 2026-08-07 (#155) |
+
+`sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
+`sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
+folder:** `sm3-assets/img/` holds one gitignored capture that leaks a Windows user directory,
+and a folder mirror would publish it. `git ls-files sm3-specific-pages/…` is the safe source.
 
 `hire/` deploys as **one folder**, not two — both pages share its `assets/`.
 
@@ -80,9 +99,12 @@ Conventions the page must keep:
 - **Evergreen:** no version stamp or quarter in the URL, headline, or framing.
 - **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8; current
   URL per #32 — see the booking-link note in the `ai-coaching/` section) — no
-  intake-form links. Exception that isn't one: the coaching section carries a navy-ghost
-  link to the ROI calculator (spec R11, mirrors `wp-rates-page#39`) — a
-  consideration-stage tool link, not a second funnel CTA; the calendar CTA stays primary.
+  intake-form links. **Two exceptions that aren't one**, both navy-ghost, both
+  consideration-stage links rather than funnel forks, and neither displacing the calendar
+  CTA as primary: the coaching section's link to the ROI calculator (spec R11, mirrors
+  `wp-rates-page#39`), and the closing `#work` section's *"See recent projects"* link to
+  the portfolio (spec R14 / contract D15, #127 — this is how contract D9 resolves).
+  **Neither may become coral**; the ration in `rates/css/rates.css` is fully spent.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
 - The two "Two ways to work with Wolfpack" tiles carry Ry's images
@@ -151,6 +173,203 @@ Conventions the pages must keep:
 - **The four downloads in `assets/dl/` are owned by `export_pdf.py`** — never rename or
   replace them by hand. Rebuild with
   `python build.py ; python verify_facts.py ; python export_pdf.py`.
+
+## `case_studies/` — long-form case studies
+Client-facing long-form case studies sharing one stylesheet and one animation script.
+**Deployed 2026-08-04** (#91). Folder README:
+[`case_studies/README.md`](case_studies/README.md), which carries the full convention list.
+The first one is **The Model Is Your Business Beacon** (`ops_fin_model_support/`), an
+argument that an operational financial model belongs ahead of go-to-market product work.
+
+Conventions these pages must keep:
+- **The shared stylesheet is the point.** Every case study loads
+  `case-study-assets/css/case-study.css`. No per-page stylesheet, no inline `<style>`. If a
+  page needs something the shared sheet lacks, add it to the shared sheet so the next case
+  study inherits it. `reveal.js` is copied byte-identical from `sm3-assets/`, never
+  rewritten, so reveal timing and scroll-spy match every other long-form page here.
+- **Folder name is not the URL path**, like `sm3-specific-pages/` and unlike `hire/`.
+  Deploying copies `case-study-assets/` and the case study's own folder to the intake repo
+  **root**, renaming the page folder to its URL slug. `planning/` never deploys.
+- **Public and indexed**, unlike the SetMaster 3 case study. Different audience: these speak
+  to founders and SMB directors, not hiring managers, so being found is the point.
+- **No client named, no testimonial invented.** Anonymize by shape. Illustrative figures are
+  labeled illustrative inside the figure itself, not in a footnote. A screenshot of real
+  client work is anonymized **in the pixels** — the financial model hero's source workbook
+  lists team members by first name, and that column is blurred in the committed source *and*
+  again at build time. "Too small to read" is a bet that nobody zooms; check new captures at
+  5x or 6x.
+- **The financial model hero is generated, and its generator ships with it.**
+  `ops_fin_model_support/planning/hero/build_hero.py` composes
+  `case-study-assets/img/fin-model-beacon-hero.jpg` from the source capture beside it.
+  Generator and input sit under `planning/`, so neither deploys; only the finished image
+  does. Rebuild rather than retouch.
+- **Coral is rationed to six uses**, listed in the header comment of `case-study.css`, and
+  the sheet introduces **no hues** beyond the navy system and a neutral figure ground.
+- **Copy is judged by Ry, against no written spec.** The repo carried a voice guide until
+  2026-08-06 (#150); it was removed because it was not good enough to be binding. Match the
+  voice of the case studies already here rather than reaching for a rulebook.
+
+## `portfolio/` — portfolio & case study landing page
+One page presenting the case studies written so far and the applications and workflows in
+the portfolio, at `https://intake.wolfstrategyllc.com/portfolio/`. **Built 2026-08-04
+(#95), deployed 2026-08-05 (#126).** Folder README: [`portfolio/README.md`](portfolio/README.md);
+full design plan and decisions ledger:
+[`docs/portfolio-page-design-plan.md`](docs/portfolio-page-design-plan.md).
+
+Conventions the page must keep:
+- **Its audience is clients *and* hiring companies — that is the whole design constraint.**
+  Every other page here serves one or the other. It is also why the page carries the
+  applications and case studies but none of the résumé apparatus (no timeline, experience
+  bullets, expertise matrix, education, or downloads): work evidence reads the same to both
+  audiences, career narrative does not.
+- **Public and indexed, and it must never link the `hire/` pages.** Those are `noindex`,
+  direct-link only, deliberately linked from nothing; a public indexed page linking them
+  defeats that in one step. Hiring managers get the résumé from Ry directly.
+- **Application names and blurbs are verbatim from `eng_only.yaml`** — the same strings the
+  `hire/` pages carry, using the `eng_only` framing throughout (so `SetMaster 3`, never
+  `eng_music`'s `RML SetMaster 3`). **`verify_facts.py` check 6 enforces this** across this
+  page and both `hire/` pages, reporting the exact divergence point on a mismatch. **Do not
+  tone-edit the ported blurbs** — they are résumé-derived, and rewording them here creates a
+  third wording that check 6 then fails on.
+- **The hero copy is Ry's** (written 2026-08-04, resolving the placeholder it shipped with):
+  *Systems, apps, and projects* over *"Selected examples of recent applications, data systems,
+  and AI workflows built and evolving, with some case studies below."* It addresses **neither
+  audience directly** — it names the work, which reads the same to a client and an employer.
+  Don't re-point it at one of them. Coral is down to **six** uses.
+- **The page ends on the case studies, then a bare intro-call button.** The closing
+  "Start with a call" section was cut 2026-08-04 (#115, plan D-013), the same day its copy was
+  rewritten — the rewrite was fine, the block was not wanted. **Don't re-add a closing
+  *section*.** But a closing *button* is now correct: on 2026-08-05 (#130) Ry moved the hero's
+  "Book an intro call" button to just above the footer, deliberately bare — no heading, no
+  lede, no section chrome — so the reader meets the work before the ask. **That button is not
+  a D-013 violation; leave it there.** `.hero__ctas` left with it, and the coral ration is
+  still six because the button moved rather than being duplicated. The intro call still
+  reaches the reader twice, through the nav CTA and this button, so the one-destination rule
+  below is untouched. Don't restore the `#contact` nav item; there is no `#contact` section
+  left for it to point at. Both case cards carry a real image, the financial model one using
+  the case study's beacon hero built at card width.
+- **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
+  `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
+  `hire/assets/js/reveal.js` apart from its header comment.
+- **One CTA and exactly one destination on the entire page: the 30-minute intro call.** No
+  intake-form link, no résumé download, no rates link. A quiet `/rates_public/` coda band
+  briefly existed and **Ry cut it** (2026-08-04, plan D-011), so this page is the book-first
+  rule at its strictest. Don't re-add a second destination without asking. The header
+  wordmark's link to `wolfstrategyllc.com` (#126) is **not** a second destination — it is
+  site chrome, matching every other page here; it replaced a `#top` anchor that made sense
+  only while the page was unpublished. Note the rates page now links *here* (spec R14), so
+  the two pages are deliberately one-way: rates → portfolio, never back.
+
+## `github/` — the GitHub link page
+One screen with one link on it, at `https://intake.wolfstrategyllc.com/github/`. Ry sends
+this URL when a prospective partner, employer, or collaborator wants to see the code, and it
+sends them to `github.com/wolfpackdata`. **Built 2026-08-06 (#155), simplified 2026-08-07
+(#158), deployed 2026-08-07** (`ai-coaching-intake#56`). Folder README:
+[`github/README.md`](github/README.md), which carries the full convention list.
+
+Conventions the page must keep:
+- **One centered card holding a heading and one button, and nothing else.** Ry's reference
+  was `rustdesk.com`'s closing block (#158). The page has **two strings on it** — the heading
+  and the button label — and that is the point rather than an unfinished state. **Do not add
+  a line of prose under the heading:** *Show me the code.* above a button labeled
+  `github.com/wolfpackdata` has already said it, and a sentence under it is copy explaining
+  copy. **The heading is the reader's line, not Ry's** (his pick, 2026-08-07) — it is what the
+  visitor came to say and the button is the answer, so rewording it to the first person
+  (*Here's my code*) breaks the exchange and leaves the button answering nothing. The kicker, standfirst, "opens in a new tab" note, and watermark it shipped with on
+  2026-08-06 were all removed the next day. The **header stays left-aligned** while the card
+  centers — the centering is of the content block, and a centered logo reads as a brand
+  landing page rather than a page with one job.
+- **Exactly one outbound destination: the GitHub profile — and it is not a funnel.** Ry's
+  instruction was explicit: *"this is not to funnel people to contact me, it is just a 'this
+  is my GitHub' link."* So no calendar CTA, no intake-form link, no rates link, no résumé
+  download, and — **uniquely in this repo — no `mailto:` in the footer.** Every other footer
+  here carries the email address; this one deliberately does not, because that is precisely
+  how a not-a-contact-page becomes a contact page. This is `portfolio/`'s one-destination
+  rule made stricter: there the destination is the intro call, here there is no intro call at
+  all. The header wordmark and footer link to `wolfstrategyllc.com` are **site chrome, not a
+  second destination**, by the precedent `portfolio/` set (#126).
+- **It states no repository count and links no individual repo.** The profile link is
+  self-updating — correct as repos are opened, renamed, archived, or made private, and the
+  page never needs an edit to keep up. A hardcoded list of repo cards is the version of this
+  page that quietly goes wrong. Context, not a dependency: at build time the account is a
+  **User** account with **two public repos** (`setmaster`, `wp-website`) against nineteen
+  private. Nothing on the page breaks when that ratio changes.
+- **`noindex, nofollow`, direct-link only**, like `hire/`. A one-link page is thin content
+  under a brand whose other indexed pages are substantial, and it would compete with
+  `/portfolio/` for the same queries — and `/portfolio/` should win those, because it *shows*
+  the work rather than pointing at it. Don't add it to a sitemap, and don't link it from Wix,
+  `portfolio/`, or `rates/`.
+- **Never link the two `hire/` pages**, inherited unchanged from `portfolio/`. Weaker here
+  since this page is itself `noindex`, but not void — `noindex` is not access control.
+- **No JavaScript and no `js/` folder**, unlike every other long-form page here. Nothing is
+  below the fold to reveal, and a page whose whole job is one link should not need a script
+  to show it.
+- **Self-contained folder** with its own `css/`, `fonts/`, `img/`, like `portfolio/` and
+  unlike `hire/`. Folder name is already the URL slug, so it copies to the intake root
+  unchanged. **`README.md` does not deploy** (same exclusion `portfolio/` carries, #129).
+- **Coral is rationed to three uses** — the smallest ration in this repo — enumerated in the
+  header comment of `css/github.css`. It was four until 2026-08-07, when the hero rule left
+  with the standfirst it underlined (#158); as everywhere else here, the count only ever goes
+  down. The GitHub mark is inlined as SVG and takes navy through `fill: currentColor`, so
+  there is no second color value to keep in sync with the AA rule.
+- **The button's width is the one fragile dimension.** Its label is a URL in `var(--mono)`, a
+  *system* font stack, so its rendered width is not knowable from the build machine. The
+  first pass fit it at 320px with two pixels to spare — a coincidence, not a fit. Breakpoints
+  at 480px and 360px now step padding and type down; worst case is 375px at 16% headroom.
+  **Re-measure after any change to that label, its padding, or its font — a screenshot cannot
+  show you the remaining slack.**
+
+## `blog_posts/` — blog content, authored here, pushed to Wix
+The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
+into the repo so posts are written in markdown, reviewed in git, and pushed to the Wix Blog
+through the API instead of pasted by hand. Folder README:
+[`blog_posts/README.md`](blog_posts/README.md), which carries the full convention list,
+front matter schema, and push procedure.
+
+**This is the only folder here whose output does not go to `ai-coaching-intake`.** It
+targets the Wix site directly, so the deployment table above does not apply to it.
+
+**The workflow is a skill.** `wp-blog-writing-workflow` (in `.claude/skills/`, repo-local)
+runs a post from Ry's raw prompt or transcript through to a published Wix post and the site
+links that should point at it — four phases across separate sessions, resumed from a committed
+ledger at `blog_posts/<folder>/planning/workflow.md`. Prefer it over ad-hoc post creation, and
+read it before pushing anything to Wix by hand.
+
+Conventions this folder must keep:
+- **One subfolder per post**, named `YYYY-MM-DD-slug`, containing exactly `post.md`, the
+  cover image, and any post-specific assets. The folder name is **not** the URL — that comes
+  from the `slug` front matter key. Start from `_template/post.md`.
+- **The Wix draft ID lives in the ledger.** A push without it creates a second post instead of
+  updating the first. This is not hypothetical: the SetMaster post's markdown was edited to
+  link `/setmaster3/` and the v3.0.4 tag (#147) and the live post carries neither, because the
+  ID was recorded nowhere and nothing tracked that a re-push was owed.
+- **`planning/` is public.** This repo is public, so a source transcript or brief committed
+  there is world-readable. Nothing lands in it that Ry would not publish.
+- **A post that has a case study carries the case study's title, verbatim** (Ry, 2026-08-04,
+  #119). One piece of work, one name. Take the case study's `h1`, not its `<title>` tag, which
+  carries a subtitle and a `· Case Study` suffix meant for the tab and the SERP. Retitling
+  never touches the `slug`, so the URL stays put, and a title containing a colon has to be
+  quoted in the front matter.
+- **Wix does not accept markdown.** The body field is `richContent` (Ricos, a node tree), so
+  `blog_posts/tools/md_to_ricos.py` is the deterministic transform between them. Same
+  markdown always yields the same post, which is what makes re-pushing an edit safe. Run its
+  tests (`python -m unittest discover blog_posts/tools`) before merging a converter change.
+- **Blank lines between paragraphs are inserted by the converter, never by hand.** Ricos does
+  not carry markdown's blank line, so Wix renders consecutive paragraphs butted together;
+  `space_blocks()` puts an empty `PARAGRAPH` between every pair of adjacent blocks to restore
+  the gap (#109). Authoring a blank paragraph in `post.md` to force spacing arrives doubled.
+- **The converter never talks to Wix.** It reads files and writes JSON; the push is a
+  separate step through the already-authenticated Wix connector, so **no API key lives in
+  this repo.** Images and tags are resolved to Wix IDs and passed in as maps.
+- **Posts land as unpublished drafts.** Ry reviews in the Wix dashboard and publishes. The
+  converter has `--publish`, deliberately not the default.
+- **Three verified fidelity limits**, documented in the README and not to be re-litigated
+  from the docs: Wix strips `FONT_FAMILY` so inline code has no styling; the `hashtags`
+  field is not settable and tags must go through the Tags API as `tagIds`; a draft's `url`
+  preview is title-derived even when `seoSlug` is set correctly.
+- **The voice comes from the copywriter, not from a spec in this repo.** The guide that used
+  to govern post copy was removed 2026-08-06 (#150). A brief written here carries facts,
+  structure, and constraints; it does not dictate how sentences are built.
 
 ## Verifying pages at phone width
 Headless Edge/Chrome clamps its window to a ~492px minimum and then crops the screenshot

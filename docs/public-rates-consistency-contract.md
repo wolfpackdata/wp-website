@@ -72,12 +72,13 @@ sync is a prompted, manual port (see §3).
 | D6 | Process section reframed as "the call" — what it is / isn't — and promoted; retainer language softened | The call is the conversion goal |
 | D7 | **No intake-form links anywhere**; coaching CTA is the calendar | Book-first funnel (intake sent after booking) — matches `ai-coaching/` |
 | D8 | Coupon bridge compressed to a one-line perk; $50-invoice-credit mechanics omitted | Deal mechanics read transactional to strangers |
-| D9 | **No application-screenshot portfolio grid** and no placeholder button; proof = hero stats + compact About | Proof lives on the upcoming Applications page; dead buttons spend trust |
+| D9 | **No application-screenshot portfolio grid** and no placeholder button; proof = hero stats + compact About | Proof lives on the upcoming Applications page; dead buttons spend trust. **Resolved 2026-08-05 — see D15:** that page shipped, and the public page now links it rather than rebuilding a grid. The grid itself is still banned here |
 | D10 | Terms condensed to the trust-bearing subset (§1); retainer-due-in-full, coaching-billing mechanics, **and the Net-7 line** omitted (Net-7 drop ruled by Ry in draft-1 feedback, 2026-07-23) | Match depth to what the page shows |
 | D11 | **No phone number** in contact | Indexed page; scrape/spam exposure |
 | D12 | About Ryan trimmed to ~2 paragraphs | Compact-credibility ruling |
 | D13 | **No skeptic-nudge line** (*"Skeptical of AI hype? Good — run your own numbers."*) above the coaching CTA row — the Q3 page keeps it | Ruled off the public page by Ry, 2026-07-28 (#50) |
 | D14 | The two "Two ways to work with Wolfpack" path cards **are navigation** — heading and image both link to that path's section (`#engagements` / `#coaching`) — a public-only affordance (spec R13) | The framing section is public-only (D4), so its cards have no Q3 counterpart to diverge from; navigation, not a fact — nothing in the mirror set moves |
+| D15 | A closing `#work` section with a navy-ghost **"See recent projects"** button linking `…/portfolio/` (spec R14) — public-only; the Q3 page has no counterpart | **This is how D9 resolves.** D9 dropped the Q3 application-screenshot grid because "proof lives on the upcoming Applications page"; that page shipped 2026-08-05, so the public page links it instead of rebuilding a grid. A link, not a fact — nothing in the mirror set moves, and the Q3 grid stays as it is |
 
 ## 3. Sync workflow (Ry's stated process: update Q3 first, then prompt the port here)
 

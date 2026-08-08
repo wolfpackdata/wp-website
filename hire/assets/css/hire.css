@@ -21,7 +21,7 @@
    (5.8:1), never white (fails AA).
 
    The RML mark (music page, one placement) is the sole exception to the
-   two-colour palette — see resume_design/header-footer-spec.md §5.
+   two-color palette — see resume_design/header-footer-spec.md §5.
    ========================================================================== */
 
 :root {
@@ -254,7 +254,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .summary strong { color: var(--white); font-weight: 600; }
 
 /* ==========================================================================
-   Career timeline — the centrepiece. A CSS-grid band chart, 2009 → now.
+   Career timeline — the centerpiece. A CSS-grid band chart, 2009 → now.
    The overlaps ARE the story: a linear list flattens concurrency into
    nothing. Bands carry no coral (the ration is spent) — they are surface-2
    with a hairline, and the current three take a lighter fill + arrow terminus.
@@ -318,7 +318,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   font-size: 0.8125rem; color: var(--faint); max-width: 74ch;
 }
 
-/* Phone: the chart becomes a labelled stack. A horizontally-scrolling gantt on
+/* Phone: the chart becomes a labeled stack. A horizontally-scrolling gantt on
    a 390px screen is a bad experience and deliberately does not ship. */
 .tl__stack { display: none; }
 .tl__stack li {
@@ -407,7 +407,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .app--narrow .app__shot { aspect-ratio: 4 / 3; object-position: 50% 50%; }
 .app__name { font-size: 1rem; margin-bottom: 8px; }
 .app__blurb { font-size: 0.9375rem; color: var(--muted); }
-/* Used where the screenshot shows a related-but-not-identical artefact to the
+/* Used where the screenshot shows a related-but-not-identical artifact to the
    one the résumé names — the caption stays honest without editing the résumé. */
 .app__cap {
   font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
@@ -457,7 +457,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 
 /* ==========================================================================
    Music & creative technology — music page only.
-   The RML mark is the single third-colour placement on either page
+   The RML mark is the single third-color placement on either page
    (resume_design/header-footer-spec.md §5). It is a recovered raster: clean at
    this size, and it must NOT be scaled up. No coral fill sits in this section.
    ========================================================================== */

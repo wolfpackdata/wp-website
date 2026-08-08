@@ -53,6 +53,14 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
 - **Experience bullets and project blurbs are verbatim from the YAML.** Those
   strings are guarded by `resume_build/verify_facts.py`; retyping them here
   creates a second, unguarded copy that will drift. Copy, don't paraphrase.
+  **Since `wp-website#95` that guard is real for these pages, not just for the
+  YAML:** `verify_facts.py` **check 6** compares every `.app__name` and
+  `.app__blurb` in both `index.html` files against the source résumé and reports
+  the exact point of divergence. Through v2.4 the checker never opened a web
+  page, so an app blurb could be edited here and nothing would notice — the
+  `portfolio/` page becoming a third copy is what prompted closing the gap. Note
+  the split it enforces: `ryan-hickey/` is checked against `eng_only.yaml`,
+  `ryan-hickey-music/` against `eng_music.yaml`.
 - **No exceptions left.** These pages ran ahead of the YAML on two music facts
   for two rounds — the tenure split (D-009) and the training (D-010) — and the
   résumé v2.4 round (#77) brought the YAML up to them. Both files now say the

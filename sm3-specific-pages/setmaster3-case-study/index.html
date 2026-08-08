@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- INDEXED since 2026-08-04 (Ry). This page shipped noindex because
+     planning/00-overview.md D-003 had it inherit hire/'s direct-link posture:
+     same audience, linked from there, so it followed the résumés' rules.
+
+     That premise no longer holds. The page is now linked from the public
+     indexed portfolio page and from a public blog post (#103), so its audience
+     is no longer just hiring managers, and it was the only thing in that set
+     that is a case study rather than a résumé. Keeping it out of search bought
+     nothing and hid a finished piece of work.
+
+     Note this is now the intended end state for BOTH SetMaster 3 pages: D-003
+     already had the landing page indexed, so when /setmaster3/ ships the two
+     will both be indexable and should be given distinct titles and
+     descriptions, one a product page and one a narrative. -->
+<meta name="robots" content="index, follow">
+
+<title>SetMaster 3: From a Spreadsheet on a Plane to a Robust Application · Case Study</title>
+<meta name="description" content="Data engineering meets DJ engineering. A professional DJ built his own set preparation tool three times in three years. The third is a specified, tested, offline web application.">
+<link rel="canonical" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">
+<link rel="icon" type="image/png" href="../sm3-assets/img/wolfpack-logo.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Wolfpack Data &amp; Strategy">
+<meta property="og:url" content="https://intake.wolfstrategyllc.com/setmaster3-case-study/">
+<meta property="og:title" content="SetMaster 3: From a Spreadsheet on a Plane to a Robust Application">
+<meta property="og:description" content="Data engineering meets DJ engineering. A professional DJ built his own set preparation tool three times in three years. The third is a specified, tested, offline web application.">
+<meta property="og:image" content="https://intake.wolfstrategyllc.com/sm3-assets/img/og-setmaster3-case-study.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="SetMaster 3's track and playlist matrix on a navy field, titled with the case study name.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="../sm3-assets/css/fonts.css">
+<link rel="stylesheet" href="../sm3-assets/css/sm3-case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <nav class="nav__inner" aria-label="Sections">
+    <a class="nav__brand" href="https://wolfstrategyllc.com">
+      <img class="nav__logo" src="../sm3-assets/img/wolfpack-logo.png" alt="" width="30" height="30">
+      <span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#transition">The Idea</a></li>
+      <li><a href="#rebuild">The Rebuild</a></li>
+      <li><a href="#now">What It Does</a></li>
+      <li><a href="#flight">The Flight</a></li>
+    </ul>
+    <a class="nav__cta" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Ryan</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ==================================================================
+       Hero
+       No download button here. This page's job is the argument; the
+       landing page owns conversion (outline S1).
+       ================================================================== -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <span class="k hero__kicker">Case Study &middot; 2026</span>
+      <h1 class="hero__title">SetMaster 3: From a Spreadsheet on a Plane to a Robust Application</h1>
+      <p class="hero__stand">
+        Data engineering meets DJ engineering. I needed a road-worthy set preparation
+        tool, so I built one three times in three years. The third is a specified,
+        tested, offline web application that any DJ can download and run on their
+        own machine.
+      </p>
+
+      <ul class="stats">
+        <li class="reveal"><b>25 days</b><span>Specification to public release</span></li>
+        <li class="reveal"><b>93 issues</b><span>Across five build rounds</span></li>
+        <li class="reveal"><b>897 tests</b><span>Automated, passing</span></li>
+        <li class="reveal"><b>Byte-identical</b><span>Pipeline port, verified on real data</span></li>
+      </ul>
+
+      <figure class="figure figure--wide reveal">
+        <img class="shot shot--natural" src="../sm3-assets/img/a01-track-playlist-matrix.png"
+             alt="The Track-Playlist Matrix showing 178 of 3,604 tracks across 83 playlists, with the filter panel open on a BPM range, a key selection, and a release-year range"
+             width="1908" height="907" loading="lazy">
+        <figcaption>The Track-Playlist Matrix. 178 of 3,604 tracks matching one compound filter, across 83 playlists.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section" id="problem">
+    <div class="wrap">
+      <h2 class="section__title reveal">The Tedious Part</h2>
+      <div class="prose reveal">
+        <p>
+          I keep about 7,000 tracks in Traktor&reg;, drawn from a personal music
+          library many times that size. I also perform with DJ partners, so some of
+          their catalog sits on my machine as well.
+        </p>
+        <p>
+          Preparing a set inside Traktor&reg; or Rekordbox&reg; alone was slow. The
+          slow part was never the mixing. It was the searching, the filtering, the
+          sorting, and the cross-checking against sets I had already played, so that
+          I did not put the same track in front of the same listeners too often.
+          Staying fresh is part of the job.
+        </p>
+        <p>
+          There was a second version of the same problem. I maintain Spotify&reg;
+          playlists on the go, and those playlists are a record of what I have
+          actually been listening to and want to play. Reconciling them against what
+          I own in Traktor&reg; was manual work every time.
+        </p>
+        <p>
+          Streaming was supposed to make this easier. It made it larger. When access
+          replaces ownership the library grows, and organizing a larger library is
+          more work, not less.
+        </p>
+        <p>
+          <strong>The problem was not that I had too little music. The problem was
+          that I could not get from an idea in my head to the tracks that fit it fast
+          enough.</strong>
+        </p>
+        <p>I am a data engineer. I kept seeing the automation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section section--line" id="transition">
+    <div class="wrap">
+      <h2 class="section__title reveal">One Row Is One Transition</h2>
+      <div class="prose reveal">
+        <p>
+          The first version was a Google Sheet, built in 2023. I chose Google Sheets
+          for one reason, which was cross-device backup without any work on my part.
+          It moved to Excel later.
+        </p>
+        <p>
+          I used it in professional settings immediately. It was never a side project
+          that became serious. It went straight into paid work, which is why the logic
+          inside it survived two rewrites without changing.
+        </p>
+        <p>
+          The idea that everything else grew from is small. Traktor&reg; and
+          Rekordbox&reg; present a set the way a playlist reads, top to bottom, one
+          track per row. Notes attached to a track in that layout are hard to read and
+          take up room that the track list needs.
+        </p>
+        <p>
+          So I gave a row a different job. One row is one transition. The track I am
+          coming from on the left, the track I am going into on the right, and
+          everything about the move between them in the columns in the middle.
+        </p>
+      </div>
+
+      <!-- A-06. Built in HTML rather than captured: it is a table, it should be a
+           table, and a screenshot of it would go stale against a UI change. -->
+      <figure class="figure reveal">
+        <div class="trow">
+          <table>
+            <caption class="visually-hidden">One transition row: the outgoing track on the left, the incoming track on the right.</caption>
+            <thead>
+              <tr>
+                <th class="grp grp--out" colspan="4" scope="colgroup">Out Track</th>
+                <th class="grp grp--in divide" colspan="4" scope="colgroup">In Track</th>
+              </tr>
+              <tr>
+                <th class="col" scope="col">Track</th>
+                <th class="col num" scope="col">T&nbsp;#</th>
+                <th class="col num" scope="col">Lows</th>
+                <th class="col num" scope="col">Level</th>
+                <th class="col divide" scope="col">Track</th>
+                <th class="col num" scope="col">M&nbsp;#</th>
+                <th class="col num" scope="col">BPM</th>
+                <th class="col num" scope="col">Key</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nightdrive</td><td class="num">3</td><td class="num">OUT</td><td class="num">HOT</td>
+                <td class="divide">Cosmic Dub</td><td class="num">2</td><td class="num">122</td><td class="num">Gbm</td>
+              </tr>
+              <tr>
+                <td>Cosmic Dub</td><td class="num">4</td><td class="num">SWAP</td><td class="num">MID</td>
+                <td class="divide">Late Transmission</td><td class="num">1</td><td class="num">124</td><td class="num">Dbm</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="trow__legend">
+            <li><span class="sw sw--out"></span><b>Magenta is where you are leaving</b></li>
+            <li><span class="sw sw--in"></span><b>Cyan is where you are landing</b></li>
+          </ul>
+        </div>
+        <figcaption>Read across the line. Illustrative rows, drawn in the application's own colors.</figcaption>
+      </figure>
+
+      <div class="prose reveal">
+        <p>
+          That is the part of a set that actually requires preparation. The track
+          order is a list, and a list is easy. The transition is where the cue points,
+          the level moves, the tempo changes, and the notes to myself live, and
+          reading one left to right is how I think about it when I am standing behind
+          the equipment.
+        </p>
+        <p>
+          A spreadsheet was the right container for the rest of it. Tracks move
+          earlier and later while a set develops, you replace things, you add things,
+          and you need somewhere to write down what you liked, what you did not, and
+          where you left off. Copy, paste, drag, and white space between sections did
+          all of that without my having to build any of it.
+        </p>
+        <p>
+          It grew. It became a multi-tab workbook that I added to on planes between
+          gigs, and it grew a second view for performing: zoomed in, more room, color
+          coded, so that a glance during a long set was enough to bring a rehearsed
+          transition back.
+        </p>
+      </div>
+
+      <!-- A-07 (SetMaster 2 workbook, a real multi-tab set) was dropped here at
+           Ry's request, 2026-08-04. Not pending, not hidden: cut. The section's
+           prose carries the workbook-era story on its own, and A-08 below
+           already pictures SetMaster 2. Retired in the capture list too, so the
+           A-nn ids stay a true index of what the page wants. -->
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section section--line" id="catalog">
+    <div class="wrap">
+      <h2 class="section__title reveal">The Catalog Becomes Data</h2>
+      <div class="prose reveal">
+        <p>
+          The next version added a VBA and Python backend behind the workbook. That is
+          SetMaster 2, and it is the point where the tool stopped being a spreadsheet.
+        </p>
+        <p>
+          It read my Traktor&reg; collection into the workbook so that the catalog
+          could be filtered like data instead of browsed like a folder. Compound
+          filters against key and BPM, fast switching between them, artist search. I
+          used it during set preparation and never during a performance, which kept
+          the two activities separate and kept the tool honest about what it was for.
+        </p>
+        <p>It took minutes off the tedious part, every session, for years.</p>
+        <p>
+          One thing about SetMaster 2 is worth stating plainly, because it is still
+          true of the current version. The catalog half and the set preparation half
+          were never dependent on each other. The transition editor works with nothing
+          loaded at all.
+        </p>
+      </div>
+
+      <figure class="figure reveal">
+        <!-- The two collection-path fields are redacted. The capture showed a
+             Windows user directory and a local studio path, which the capture
+             brief forbids shipping; the un-redacted original is gitignored and
+             was never committed. Nothing material is lost, the field labels
+             still say what they are. -->
+        <img class="shot shot--natural" src="../sm3-assets/img/a08-sm2-launchpad.png"
+             alt="The SetMaster 2 LaunchPad tab: a set selector, buttons for a new set from template and for jumping to the Track-Playlist Matrix, the Traktor collection and repository path fields with their values redacted, and the Python tools that read the collection and rebuild the tables"
+             width="1434" height="724" loading="lazy">
+        <figcaption>The SetMaster 2 LaunchPad. Collection paths redacted.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section section--line" id="comparison">
+    <div class="wrap">
+      <h2 class="section__title reveal">The Comparison That Changed the Tool</h2>
+      <div class="prose reveal">
+        <p>
+          Then I built a one-off flow that took the Python output from SetMaster 2,
+          imported CSV exports of my Spotify&reg; playlists from exportify.net, and
+          compared the two.
+        </p>
+        <p>
+          That is when the tool became something other than a faster spreadsheet. The
+          comparison answers a question I had been answering by hand for years: of
+          everything I have been listening to and actually want to play, which of it
+          do I not own yet. The answer is a short list. I buy from the short list, and
+          the tracks are in the next set.
+        </p>
+        <p>
+          It saved hours every month. That number is mine and it is not instrumented,
+          so treat it as an estimate from the person who was doing the work before and
+          after.
+        </p>
+        <p>
+          Lexicon deserves a mention here. Lexicon has a comparison tool and it is a
+          strong one. It did not do the bulk list filtering I wanted, which is why I
+          kept building, but this was never meant to compete with it. It is a
+          different application of the same underlying idea, which is that a music
+          catalog is metadata and metadata can be queried.
+        </p>
+      </div>
+
+      <!-- A-03, real. The only SetMaster 3 screenshot that existed when this page
+           was built. It shows the flags but not an annotated blank cell, so the
+           caption claims only what is visible and A-03 stays open in the capture
+           list for a shot that includes a note. -->
+      <figure class="figure reveal">
+        <img class="shot" src="../sm3-assets/img/app-setmaster.png" width="1494" height="848"
+             alt="The Playlist Compare Tool showing one playlist compared against the Traktor collection. Each row is flagged Go get, Match, Organize, or Traktor only, with links to reveal the local file or open the track on Spotify.">
+        <figcaption>The Playlist Compare Tool. 648 tracks in one playlist, 107 of them not matched to Traktor&reg;.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       The Rebuild — the section a hiring manager reads closest, and the
+       longest on the page by design (outline §8.2).
+       ================================================================== -->
+  <section class="section section--line" id="rebuild">
+    <div class="wrap">
+      <h2 class="section__title reveal">The Rebuild</h2>
+      <div class="prose reveal">
+        <p>
+          I began building apps with Claude in early 2025, and that changed how I
+          looked at the workbook. I did not get time to act on it until this year,
+          and the web application version started in early July 2026.
+        </p>
+        <p>
+          There was also a defect that no amount of additions to the workbook was
+          going to fix. The prototype's connection to Traktor&reg; was Windows only.
+          That was the single largest reason to rebuild rather than continue.
+        </p>
+      </div>
+
+      <h3 class="section__sub reveal">The Specification Came First</h3>
+      <div class="prose reveal">
+        <p>
+          I gave Claude the prototype and all of the VBA, and we spent several days on
+          planning documents before any application code existed. What came out of
+          that is a complete specification package: an overview, a data model, a user
+          interface specification, ten feature specifications, a decision log, and an
+          open questions document closed to zero.
+        </p>
+        <p>
+          The instruction in the repository to the agent doing the build is one
+          sentence. The specification is complete and decided, and the job is to
+          implement it, not to re-litigate it.
+        </p>
+        <p>
+          That is the artifact I would point at first. The build was fast because the
+          thinking was finished.
+        </p>
+      </div>
+
+      <aside class="aside reveal">
+        <span class="k aside__label">Sidebar</span>
+        <h4 class="aside__title">How the Build Was Run</h4>
+        <ul class="readout">
+          <li>1 day</li>
+          <li>31 decisions</li>
+          <li>0 deviations</li>
+        </ul>
+        <p>
+          The build was cost-tiered on purpose, and the policy was written down before
+          it started rather than justified after. One orchestrating agent ran on the
+          frontier model. Every sub-agent ran on Opus. No frontier sub-agents were
+          spawned at all.
+        </p>
+        <p>
+          The policy was enforced two ways, by an environment variable and by a
+          per-call model pin, and there were zero deviations across the entire build.
+        </p>
+        <p>
+          What came out of it, in about a day, was an application that passed all four
+          acceptance criteria end to end against real data. Verification ran through a
+          Playwright suite driving the real built application, re-run independently
+          rather than taken on the builder's word, and 31 build decisions were logged
+          with their reasoning as they were made.
+        </p>
+        <p>
+          The speed is not the interesting part. The reproducibility is. Anyone can get
+          an application out of a model once. The question is whether you can say why
+          it came out the way it did, and this one can, 31 times over.
+        </p>
+        <p><strong>SetMaster 3 does not contain any AI. It was built with it.</strong></p>
+      </aside>
+
+      <h3 class="section__sub reveal">The Pipeline Was Ported, Not Rewritten</h3>
+      <div class="prose reveal">
+        <p>
+          SetMaster 2's data engine carried years of accumulated fixes in its matching
+          and normalization logic: track name cleaning, playlist name normalization,
+          filename normalization, key mapping. Those fixes exist because real music
+          metadata is inconsistent, and every one of them was a bug I hit and corrected
+          while working.
+        </p>
+        <p>
+          The rule for the rebuild was that restructuring the stages was allowed and
+          changing the matching behavior was not.
+        </p>
+        <p>
+          A rule like that is worth nothing unless it can be checked. So the ported
+          pipeline is covered by golden-master tests that compare its output to the
+          original engine's output on my real collection, byte for byte. Pandas is
+          pinned and the CSV round trips between stages were kept specifically to
+          preserve those bytes.
+        </p>
+        <p>
+          <strong>The result is not that the port is probably correct. The result is
+          that the port produces the same bytes, and a change to the matching behavior
+          fails the build.</strong>
+        </p>
+      </div>
+
+      <aside class="aside reveal">
+        <span class="k aside__label">Sidebar</span>
+        <h4 class="aside__title">Golden-Master Testing</h4>
+        <p>A rewrite that is "basically the same" is a rewrite that will surprise you later.</p>
+        <p>
+          Golden-master testing sets a harder bar. The old engine and the new engine
+          both run against real data, and the outputs are compared byte for byte.
+          Anything that changes the result fails, including changes that look like
+          improvements.
+        </p>
+        <p>
+          That bar is only reachable because the data is real. Synthetic fixtures would
+          have passed while the messy cases that produced the original fixes went
+          untested.
+        </p>
+      </aside>
+
+      <h3 class="section__sub reveal">The Constraints Were Decided Before the Code</h3>
+      <div class="prose reveal">
+        <p>Three constraints were fixed at specification time and are still fixed.</p>
+        <p>
+          <code>collection.nml</code> is opened strictly read-only. SetMaster never
+          writes to it or to any other Native Instruments&reg; file. That is stated in
+          the specification, restated in the interface, and checked with SHA-256
+          snapshots of the file.
+        </p>
+        <p>
+          The application is fully offline. A local backend process and a browser
+          interface on localhost, with no cloud, no accounts, no telemetry, and no
+          external API calls. Your library never leaves your machine because there is
+          nowhere for it to go.
+        </p>
+        <p>
+          It is single user. There is no authentication and no multi-tenancy, and it
+          was not architected for either.
+        </p>
+      </div>
+
+      <h3 class="section__sub reveal">Five Rounds, Ninety-Three Issues</h3>
+      <div class="prose reveal">
+        <p>
+          Build one finished on 2026-07-07 and was tagged. After it came three
+          hardening rounds against a real backlog: 26 issues, then 12, then 36. One
+          issue, one branch, one pull request each.
+        </p>
+        <p>
+          Merging a fix does not close its issue in this repository. The issue stays
+          open until I have verified it against my own data. The person who has to
+          live with the tool is the one who decides whether it works, and that is a
+          workflow rule, not a preference.
+        </p>
+        <p>
+          I was also out playing during those rounds, so the application was being used
+          in live situations while it was being fixed.
+        </p>
+        <p>
+          A fifth round followed in August, and it has an unusual shape for this
+          project: almost none of it is application code. It is the macOS installer,
+          the generator that builds the public mirror, and two findings about what the
+          artifacts actually contained. What was missing by then was never a feature.
+          It was a way for a stranger to install this on a Mac.
+        </p>
+        <p>
+          The acceptance criteria were demonstrated against my real files rather than
+          fixtures. The real collection loads at 6,810 tracks across 149 playlists. The
+          digging workflow I use most, which finds curated tracks I have never put in a
+          published set, returns 111 rows in a single pass. A note typed into a blank
+          comparison cell survives a re-import and a full re-run of the pipeline, which
+          is the behavior that makes the comparison worth annotating at all.
+        </p>
+      </div>
+
+      <h3 class="section__sub reveal">Packaging for People Without a Terminal</h3>
+      <div class="prose reveal">
+        <p>
+          Before this existed the launchers assumed a developer checkout, which meant
+          the first public release could not have started on a clean machine.
+        </p>
+        <p>
+          Each release is now a self-contained payload per operating system. Unpack it
+          and double-click a launcher. No Python, no Node, no terminal.
+        </p>
+        <p>
+          The detail I would call out is small and it is the kind of thing that decides
+          whether a release works. A virtual environment is not a portable runtime,
+          because its configuration points at an absolute path to a base Python that
+          will not exist on someone else's machine. So the payload ships a relocatable
+          CPython with the locked dependencies installed into it, and the artifact
+          smoke check fails the build if a developer virtual environment ever appears
+          inside it.
+        </p>
+      </div>
+
+      <!-- Added 2026-08-05, the day v3.0.4 shipped the signed .dmg. It closes the
+           Windows-only defect this section's parent names as the largest single
+           reason to rebuild, so it belongs in the argument rather than in a
+           postscript. -->
+      <h3 class="section__sub reveal">The Mac Installer</h3>
+      <div class="prose reveal">
+        <p>
+          The first version shipped for Windows only, which was the thing the rebuild
+          was supposed to fix and the one thing it had not yet delivered. A month
+          later it has. <strong>SetMaster now ships on macOS as a signed, notarized
+          application inside a drag-to-Applications disk image.</strong> Open it, drag
+          it, and open it from Applications like any other Mac app. There is no
+          right-click-to-open, no trip through Privacy and Security, and no terminal.
+        </p>
+        <p>
+          Getting there was mostly signing. Apple's convenient option, signing the
+          bundle with one recursive command, passes local verification and is then
+          rejected at notarization. The bundled CPython carries dozens of nested
+          binaries, mostly the numerical libraries, and every one has to be signed
+          individually from the inside out before the outer bundle is sealed. The
+          image is then notarized and stapled twice: once as the application, once as
+          the image built from it.
+        </p>
+        <p>
+          Two findings in that round are the more interesting part, because they are
+          the same shape. <strong>Each was a claim that was true of the thing measured
+          and false of the thing shipped.</strong>
+        </p>
+        <p>
+          The first: compiled Python bytecode records the absolute path of the source
+          it came from, and that path is what a user sees in a traceback. Nearly three
+          thousand files in the macOS payload named my home directory, and the
+          previous release had gone out that way. No source scan could have caught it,
+          because those paths exist in no source tree; they are written at build time.
+          The fix was a second gate in a different place, one that scans the finished
+          artifact rather than the tree it came from.
+        </p>
+        <p>
+          The second: the application declared it would run on macOS 11, and the
+          bundled numerical libraries required macOS 14. Someone on an older Mac could
+          have installed it and never started it. The builder now walks every binary
+          inside the image and refuses to build when anything needs more than the
+          application claims. That is why the release says Apple silicon and macOS 14
+          or later, and why it does not say Intel.
+        </p>
+      </div>
+
+      <h3 class="section__sub reveal">Publishing a Private Repository Safely</h3>
+      <div class="prose reveal">
+        <p>
+          The private repository contains my entire real Traktor&reg; library as test
+          data, tracked since the first commit. The public repository had to contain
+          none of it.
+        </p>
+        <p>
+          Rewriting the history to remove it was considered and rejected. A history
+          rewrite is one mistake away from a permanent leak, and a tree with no history
+          has no leak surface at all. So the public repository is a generated mirror,
+          rebuilt from scratch at each release, carrying no history and accepting no
+          code back.
+        </p>
+        <p>
+          It has two defenses that do not share any logic. The first is an allowlist
+          that decides what ships, because a denylist fails open and a file nobody
+          thought about would go out. The second is a scanner that runs against the
+          generated tree rather than the source, on the reasoning that the allowlist is
+          the component most likely to have a bug, so the thing that catches a bad
+          allowlist must not be built on it. It checks file sizes, forbidden paths,
+          content patterns, and SHA-256 hashes against the known collection file.
+        </p>
+        <p>
+          Any finding aborts the build and deletes the output. There is no warn and
+          continue mode. This is not theoretical. The first real run caught a machine
+          path string inside an interface placeholder, which is exactly the class of
+          thing that survives code review.
+        </p>
+      </div>
+
+      <h3 class="section__sub reveal">What Is Not Finished</h3>
+      <div class="prose reveal">
+        <!-- Rewritten 2026-08-05. This list used to open "Windows is verified end
+             to end. macOS is not", with an Unverified chip for a platform that had
+             never been built. Both statements stopped being true when the .dmg
+             shipped, so the list now records the narrower limits that replaced
+             them rather than being quietly deleted. -->
+        <p>Both platforms ship. Neither claim is wider than what was tested.</p>
+      </div>
+      <ul class="status reveal">
+        <li>
+          <span class="chip">Untested</span>
+          <p>
+            The end-to-end suite and the golden-master pipeline tests have never been
+            run on macOS. They pass on Windows. The macOS artifact has its own
+            acceptance check, which it passed on a fresh account on a clean machine,
+            and that is a smaller claim than a green suite.
+          </p>
+        </li>
+        <li>
+          <span class="chip">Unsupported</span>
+          <p>
+            Intel Macs, and macOS 13 or earlier. The bundled numerical libraries ship
+            for Apple silicon on macOS 14, so the application says so and the builder
+            enforces it.
+          </p>
+        </li>
+        <li>
+          <span class="chip">Deferred</span>
+          <p>Perform Mode, and the natural-language filter bar.</p>
+        </li>
+        <li>
+          <span class="chip">Planned</span>
+          <p>Rekordbox&reg; collection import. No date on it.</p>
+        </li>
+      </ul>
+      <div class="prose reveal">
+        <p>I would rather publish that list than have someone find it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section section--line" id="now">
+    <div class="wrap">
+      <h2 class="section__title reveal">What It Does Now</h2>
+      <div class="prose reveal">
+        <p>SetMaster 3 does two jobs.</p>
+        <p>
+          The first is set preparation: a structured editor for writing out a set as
+          transition rows, with track order, hot cue numbers, EQ and level moves,
+          timing, and mix notes.
+        </p>
+        <p>
+          The second is catalog analysis: it reads a Traktor&reg; collection strictly
+          read-only, cross-references it against Spotify&reg; playlists exported
+          through Exportify, and finds the two gaps that matter, which are tracks I own
+          but have not organized and tracks on my playlists that I do not own. It also
+          runs compound filters and sorts across the whole collection that Traktor&reg;
+          itself does not offer.
+        </p>
+        <p>
+          <strong>The first job does not depend on the second.</strong> SetMaster 3 is
+          fully usable with no collection ever loaded, and Traktor&reg; is not a
+          prerequisite for it. Set rows are typed by hand, and the only thing a loaded
+          collection adds to the editor is name suggestions while typing.
+        </p>
+        <p>
+          Inside the editor the useful parts are the ones that came from using it: cell
+          formatting I control, an emoji palette I can edit, validation lists I can
+          rename, export to CSV, XLSX, and Markdown, and a mix timer that tells me how
+          long each section runs and how long the whole mix is.
+        </p>
+        <p>
+          The framing that matters most is that it becomes the source of truth. I am
+          not fighting Traktor&reg; or Rekordbox&reg; filtering to make a set. I am
+          working in the place the set lives.
+        </p>
+      </div>
+
+      <figure class="figure reveal">
+        <img class="shot shot--natural" src="../sm3-assets/img/a02-set-editor.png"
+             alt="The set editor open on a real set, showing paired out-track and in-track rows with BPM and key, tempo adjustments, hotcue and loop markers, color-coded emphasis, and per-transition mix notes"
+             width="1904" height="904" loading="lazy">
+        <figcaption>The SetMaster 3 set editor. One real set, read as paired out-track and in-track rows.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       The flight. The page's only first-person scene, deliberately bounded
+       to one section (outline §7). Structure: scene, thesis, verdict.
+       ================================================================== -->
+  <section class="section section--line" id="flight">
+    <div class="wrap">
+      <h2 class="section__title reveal">The Flight to Los Angeles</h2>
+      <div class="prose reveal">
+        <p>
+          I was on a plane to Los Angeles to play that night, with Traktor&reg; open
+          and SetMaster next to it, digging through the catalog. The set was already
+          prepared.
+        </p>
+        <p>
+          I found transitions I liked well enough to consider putting into a finished
+          set on the day of the gig, which is not a small thing to do. SetMaster let me
+          lock them in: the cue points, the moves, the notes about what to do and when.
+          By the time we landed I was confident enough to play them.
+        </p>
+        <p>
+          That night, during the set, I switched over to SetMaster and read the notes I
+          had written that afternoon on the plane.
+        </p>
+        <p>
+          That was SetMaster 2, and it is the moment I stopped thinking of it as a
+          spreadsheet with color coding. Preparation and performance were the same
+          document, six hours apart, and the notes were the thing that carried across.
+        </p>
+      </div>
+
+      <p class="pull reveal">Connect the idea in your head with the tracks that fit it, faster.</p>
+
+      <div class="prose reveal">
+        <p>
+          The current version does not have the dedicated performance view that the
+          workbook grew. The set editor is there to switch to, and it works, and a
+          proper Perform Mode is specified and waiting rather than built. That flight
+          is the reason it is on the list instead of off it.
+        </p>
+      </div>
+
+      <blockquote class="verdict reveal">
+        In my own words at the time, this is beyond a fancy spreadsheet with color
+        coding. It actually improves the craft.
+        <cite>Ryan Hickey</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section section--line" id="next">
+    <div class="wrap">
+      <h2 class="section__title reveal">Teaching, and What Is Next</h2>
+      <div class="prose reveal">
+        <p>
+          A set page is a legible artifact, and that has always suggested a second use
+          to me. Not for beginners, but for intermediate DJs who already understand
+          transitions and song composition, a written-out transition is a good way to
+          learn how to cue a track and how to line up key, BPM, and cue points. A
+          student can study one complex transition, or a group of them, at their own
+          pace.
+        </p>
+        <p>
+          Rekordbox&reg; collection import is planned. I do not have a date for it, and
+          it is currently listed out of scope rather than in progress, which is what
+          planned with no date honestly looks like.
+        </p>
+        <p>
+          SetMaster 3 was built as a portfolio piece for AI engineering work, and it is
+          actively developed. It is also the tool I use to do my job.
+        </p>
+      </div>
+
+      <aside class="aside reveal">
+        <span class="k aside__label">Sidebar</span>
+        <!-- h3, not h4: this sidebar sits directly under an h2, unlike the two in
+             The Rebuild which sit under h3 subsections. Level follows position in
+             the outline; the visual size is set by .aside__title either way. -->
+        <h3 class="aside__title">Stack</h3>
+        <p>
+          FastAPI and a ported Python pipeline. React 18, Vite, and TypeScript. SQLite.
+          pytest, vitest, and Playwright. A bundled CPython in every release payload.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section class="section section--line" id="find">
+    <div class="wrap">
+      <div class="close reveal">
+        <h2 class="close__title">Where to Find It</h2>
+        <p class="close__lede">
+          SetMaster 3 is free, MIT licensed, and available now for Windows and for
+          Apple silicon Macs on macOS 14 or later. The source is public, and so is
+          every release and every artifact.
+        </p>
+        <!-- RESTORED 2026-08-05 (#144), the same day /setmaster3/ deployed. The
+             download half of this sentence was cut on 2026-08-04 because its
+             button had nothing behind it; the landing page now returns 200, so
+             both halves are back. -->
+        <p class="close__lede">
+          The smallest next step is to download it and open it against your own
+          collection. Or read the code: it is all public, including the matching
+          heuristics and the read-only parser this piece describes.
+        </p>
+        <p class="close__lede">
+          If you are hiring for AI engineering, data platform, or technical operations
+          work, the fastest way to talk about any of this is a call.
+        </p>
+        <!-- The "Download SetMaster 3" ghost button was removed 2026-08-04
+             because it pointed at /setmaster3/, which was returning 404, and a
+             dead button is worse than one fewer button. RESTORED 2026-08-05
+             (#144) in the deploy that shipped /setmaster3/, verified 200 before
+             this went back in. It stays a ghost: "Contact Ryan" remains this
+             page's only solid CTA, because the case study's audience is hiring
+             managers and the download is the secondary path for them. The
+             product page is where the download is the point. -->
+        <div class="close__ctas">
+          <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Ryan</a>
+          <a class="btn btn--ghost" href="../setmaster3/">Download SetMaster 3</a>
+          <a class="btn btn--ghost" href="https://github.com/wolfpackdata/setmaster" target="_blank" rel="noopener">Source on GitHub</a>
+        </div>
+
+        <p class="tm">
+          SetMaster 3 is independent fan software and is not affiliated with, endorsed
+          by, or sponsored by Native Instruments&reg;, Spotify&reg;, or Exportify.
+          Traktor&reg; is a registered trademark of Native Instruments GmbH.
+          Spotify&reg; is a registered trademark of Spotify AB. Rekordbox&reg; is a
+          registered trademark of AlphaTheta Corporation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <span class="foot__wordmark">Ryan Hickey</span>
+    <span class="foot__meta">
+      Case study &middot; 2026 &middot;
+      <a href="https://wolfstrategyllc.com">wolfstrategyllc.com</a>
+    </span>
+  </div>
+</footer>
+
+<script src="../sm3-assets/js/reveal.js"></script>
+</body>
+</html>
