@@ -77,6 +77,26 @@ and a folder mirror would publish it. `git ls-files sm3-specific-pages/…` is t
 Pages can be turned back on if a page ever needs to serve from here — it was
 `source: main /`, `build_type: legacy`, no CNAME, HTTPS enforced.
 
+## Design system — read the site brief before touching CSS
+The design rules for this site live **outside this repo**, in
+[`wolfpackdata/wp-web-sop`](https://github.com/wolfpackdata/wp-web-sop): the
+`web-design-language` skill carries the rules, `docs/rules-ledger.md` carries why each one
+exists and what it cost to learn. The skill deliberately holds **no colours, fonts, measures,
+or URLs** — those all live here, in **[`docs/site-brief.md`](docs/site-brief.md)**.
+
+**Read the brief before any CSS work.** It is the authoritative record of this site's palette,
+per-page accent rations, type, spacing, destination policy, audiences, and what is
+deliberately not specified. The skill is written to **refuse to run without it**.
+
+- **Keep the two in sync in the same PR.** A value changed in a stylesheet and not in the
+  brief — or the reverse — makes the brief worse than useless, because it will still be
+  trusted. Three of its value sets (the master palette across seven sheets, the figure ground
+  across two, the calendar URL across four) are **unguarded until #169 lands**.
+- The per-page coral rations, and the rule that **the count never moves silently**, are
+  recorded in the brief's §2 with the date each count last moved.
+- Ration counts are also enumerated in each stylesheet's own header comment — those comments
+  are the contract, not documentation of one. Keep them true.
+
 ## `rates/` — public rates page
 The **public, indexable, evergreen** rates page — **canonical public URL
 `https://intake.wolfstrategyllc.com/rates_public/`** since 2026-07-28 (#59; deployed copy
