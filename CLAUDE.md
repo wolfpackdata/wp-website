@@ -78,6 +78,14 @@ Pages can be turned back on if a page ever needs to serve from here — it was
 `source: main /`, `build_type: legacy`, no CNAME, HTTPS enforced.
 
 ## Design system — read the site brief before touching CSS
+
+> **Precedence: this `CLAUDE.md` wins over the web skills wherever they conflict.** The skills
+> are generic by design; this file is specific. *"Coral is rationed to six uses, enumerated in
+> `portfolio.css`'s header, and the count only goes down"* beats *"the accent is rationed"*
+> every time. A session that follows the generic skill over the specific file here has been
+> actively degraded. The skills arrive in every session automatically once junctioned, so this
+> line is what makes that safe rather than ambiguous.
+
 The design rules for this site live **outside this repo**, in
 [`wolfpackdata/wp-web-sop`](https://github.com/wolfpackdata/wp-web-sop): the
 `web-design-language` skill carries the rules, `docs/rules-ledger.md` carries why each one
