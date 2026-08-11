@@ -29,12 +29,31 @@
    sidebar label, not a table row. Where coral is a FILL, text on it is navy
    (5.8:1), never white (fails AA).
 
+   Refusals the long-form report added to that list on 2026-08-11 (#172), each
+   a place the amber original used its accent and this sheet does not: not a
+   source-link glyph, not a deal-value step in the transaction map, not a macro
+   band, not a highlighted table row, not a part number, not an era card, not
+   the "open full width" affordance. The count is STILL SIX. Adding the report
+   components below moved it not at all, which is the test those components had
+   to pass.
+
    NO NEW HUES. This sheet introduces zero colors beyond the navy system and
    the neutral figure ground. A table that needs to mark one row as the
    important one does it with weight, a background lift, and a mono chip. If a
    future case study genuinely needs an accent, add it here with a written
    justification, the way sm3-case.css justified its one exception. Do not add
    it inline in a page.
+
+   TWO CONSEQUENCES OF "NO NEW HUES" THE REPORT COMPONENTS HAD TO SOLVE, both
+   worth knowing before reaching for a color:
+     * DIRECTION (a metric up or down) is carried by the glyph — ▲ ▼ ▬ — and by
+       weight, never by a green and a red. See .trend.
+     * MAGNITUDE (the map's five-step deal-value scale) is carried by a
+       sequential ramp built along the figure ground's own neutral axis, dark to
+       light on a dark surface. See --fig-ramp-1..4. That is an ordered scale in
+       one hue, which is what the variable actually is; a categorical palette
+       would make a magnitude unreadable. It is an extension of an existing
+       ramp, not a new hue.
    ========================================================================== */
 
 :root {
@@ -53,13 +72,38 @@
   /* Neutral figure ground. Screenshots of spreadsheets and dashboards are
      mostly light, and a light image on navy fights the page; a near-black mat
      lets the image be the brightest thing in its own frame. Scoped to .shot,
-     .ph, and .dtable only — never page chrome, never page type. */
+     .ph, .dtable, and .figframe — never page chrome, never page type.
+
+     .figframe joined that list on 2026-08-11 (#172), and the reason is the one
+     the ground was created for. A chart drawn in HTML is the alternative to a
+     screenshot OF a chart; putting it anywhere else would make the two read as
+     different kinds of object when they are the same kind of object. The rule
+     the scope actually encodes is "anything standing where a captured image
+     would stand", and a rendered figure stands exactly there. */
   --fig-bg:    #0A0A0A;
   --fig-row:   #1A1A1A;
   --fig-lift:  #23262E;   /* the one emphasized row in a .dtable */
   --fig-line:  #2A2A2A;
   --fig-text:  #E6E6E6;
   --fig-dim:   #9C9C9C;
+
+  /* The sequential ramp, four steps, dark to light. Magnitude only — never a
+     category, never a page element. Measured against --fig-row #1A1A1A, the
+     lighter of the two surfaces a mark can land on, because the darker one is
+     the easy case:
+       --fig-ramp-1  3.6:1     --fig-ramp-3  10.6:1
+       --fig-ramp-2  6.6:1     --fig-ramp-4  16.7:1
+     Step 1 is the binding constraint. It sits at 3.6:1 rather than nearer the
+     3:1 floor deliberately: a 0.66rem dot is a small mark, and the headroom is
+     what survives a lane tint changing later. Do not darken it to widen the
+     ramp — add contrast at the light end instead, which is free.
+     The FIFTH state, "undisclosed", is deliberately NOT a step: it is the
+     absence of a value, drawn as an unfilled ring outside the ramp entirely.
+     Bucketing it as "smallest" would be a claim the sources do not make. */
+  --fig-ramp-1: #6E737E;   /* < $100m       */
+  --fig-ramp-2: #98A0AE;   /* $100 – 499m   */
+  --fig-ramp-3: #C3C9D4;   /* $500 – 999m   */
+  --fig-ramp-4: #FFFFFF;   /* ≥ $1bn        */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -313,6 +357,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
    ========================================================================== */
 
 .dtable {
+  position: relative;                  /* see the trap documented on .rtable */
   background: var(--fig-bg);
   border: 1px solid var(--fig-line);
   border-radius: var(--radius);
@@ -406,12 +451,18 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   align-items: baseline;
   padding: 16px 0; border-top: 1px solid var(--line);
 }
-.status .chip {
+/* Promoted out of .status on 2026-08-11 (#172) so the report tables could use
+   the same object rather than a near-match. The declarations are unchanged;
+   .status only re-states the two that are specific to sitting in a 120px
+   grid column. */
+.chip {
+  display: inline-block;
   font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--faint);
   border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 5px 10px; text-align: center; white-space: nowrap;
+  padding: 5px 10px; white-space: nowrap;
 }
+.status .chip { display: block; text-align: center; }
 .status p { font-size: 0.9375rem; color: var(--muted); }
 
 /* ==========================================================================
@@ -496,6 +547,502 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 }
 
 /* ==========================================================================
+   LONG-FORM REPORT COMPONENTS
+   Added 2026-08-11 (#172) for the "Consolidation Under Pressure" case study,
+   which carries a ~6,000-word market-intelligence report inside the case-study
+   wrapper: eleven numbered parts, seven data tables, four rendered figures, and
+   forty-three cited transactions.
+
+   They live here, in the shared sheet, rather than in that page — the folder
+   rule, and the reason for it is visible in the source this page was rebuilt
+   from. That source shipped its transaction map twice, once embedded and once
+   standalone, as two copies of the same 200 lines. The copies had already
+   drifted: the standalone plotted the 2025 tariff event and the embedded one
+   did not, so the same figure told two different stories depending on which tab
+   you opened it in. Nothing could see it. Everything below is written to be
+   inherited by the next report-shaped case study rather than re-derived, and
+   the map is now ONE script reading ONE dataset.
+
+   WHAT WAS DELIBERATELY NOT INHERITED from that source, since a derived design
+   should say what it refused:
+     * Its amber accent, on all fourteen of its uses. Coral is at six and spent.
+     * Its green/red direction pair and its cyan/red macro bands. Direction is a
+       glyph here (.trend) and the bands are a neutral wash. A semantic color
+       pair is atomic and neither half earned its way in alone.
+     * Its serif body face. This site is Montserrat and already carries it.
+     * Its sticky left margin rail of part numbers. The nav above already does
+       wayfinding on every page in this folder, and a second, parallel
+       navigation device is one more thing to keep in sync for no reader
+       benefit. The part numbers survive as .k kickers, in the flow.
+   ========================================================================== */
+
+/* The currency parenthetical. Every monetary figure in this document appears in
+   its reported currency with the counter-currency beside it, and that is an
+   editorial standard rather than a decoration — so it gets a named treatment
+   and reads as one object with the figure it follows, not as a second figure. */
+.fx {
+  font-family: var(--mono); font-size: 0.86em;
+  color: var(--faint); font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* An ordered list where the number is a marker rather than punctuation. */
+.numlist {
+  display: grid; gap: 18px; list-style: none;
+  max-width: 74ch; counter-reset: numlist;
+}
+.numlist > li {
+  position: relative; padding-left: 34px; counter-increment: numlist;
+  font-size: 0.9375rem; color: var(--muted);
+}
+.numlist > li::before {
+  content: counter(numlist, decimal-leading-zero);
+  position: absolute; left: 0; top: 0.15em;
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+  color: var(--faint); font-variant-numeric: tabular-nums;
+}
+.numlist strong, .plainlist strong { color: var(--white); font-weight: 600; }
+
+/* Callouts. The sheet already had .pull — ONE per page, coral rule, the thesis —
+   and .verdict, the attributed panel. This document needed a third register: a
+   line lifted out of the argument that is neither the page's single thesis nor
+   anybody's quote. So .callout is quieter than .pull by every means except
+   size: navy rule instead of coral, body face instead of Roboto.
+   .callout--big is the same object at the size .pull would be, for the two
+   lines in the report that carry a section on their own.
+   The ordering rule: a page gets one .pull. It may get several callouts. If a
+   callout is tempting to promote to .pull, promote it and demote the old one. */
+.callout {
+  max-width: 66ch; margin: 30px 0;
+  padding: 2px 0 2px 22px;
+  border-left: 2px solid var(--faint);
+  font-size: 1.0625rem; line-height: 1.5; color: var(--white);
+}
+.callout--big {
+  font-size: clamp(1.1875rem, 2.2vw, 1.4375rem);
+  line-height: 1.35; font-weight: 600; letter-spacing: -0.006em;
+}
+
+/* The second note variant. The neutral one is .aside. This one is for a note
+   that qualifies or limits the argument around it rather than extending it —
+   "the honest limit of this argument", "the counter-force, and it is winning".
+   The difference is a brighter left rule and, in the markup, a different label
+   in .aside__label. A red rule would read as an error state; these are
+   caveats, stated plainly, which is the same reasoning .status's gray chips
+   already carry. */
+.aside--warn { border-left-color: var(--muted); }
+
+/* A row of equal cards. Built for the report's three eras, kept generic. */
+.cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 18px; list-style: none; margin: 30px 0;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.card__k { display: block; }
+.card h3 { font-size: 1.0625rem; }
+.card p { font-size: 0.9375rem; color: var(--muted); }
+
+/* .stats extensions. The tiles already carried a value and a label; a report
+   reading also carries the converted figure and a direction. Markup order sets
+   visual order, so nothing here overrides .stats itself. */
+.stats--auto { grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+.stats .stat__k { margin-bottom: 10px; }
+.stats .stat__x { color: var(--faint); font-variant-numeric: tabular-nums; margin-bottom: 8px; }
+.stats .trend  { color: var(--muted); letter-spacing: 0.06em; }
+
+/* Direction, carried by the glyph and by weight — never by a green and a red.
+   ▲ ▼ ▬ survive a grayscale print, a color-vision difference, and this sheet's
+   ban on new hues, all at once, and the arrow was doing the work in every
+   design that also colored it. .trend--flat is the one that needs help: it is
+   the report's own subject (gear, flat and taxed), so it takes the emphasis
+   the other two do not. */
+.trend--flat { color: var(--white); font-weight: 600; }
+
+/* ==========================================================================
+   .rtable — the long-form report table.
+   This is NOT .dtable. .dtable is a FIGURE: a small borderless readout that
+   stands where a screenshot would stand, which is why it sits on the near-black
+   figure ground. These tables are the document's body — forty-three
+   transactions with prose in two of their five columns — and a page whose body
+   is mostly near-black slabs stops looking like this site. So .rtable is built
+   from the navy system and .dtable keeps the figure ground. The split to
+   remember: a figure gets the figure ground, a table the reader reads gets the
+   page.
+   ========================================================================== */
+
+.rtable {
+  position: relative;                  /* load-bearing — see below */
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow-x: auto;                    /* wide content scrolls itself */
+  max-width: 100%; min-width: 0;
+  margin: 20px 0 34px;
+}
+
+/* THE THIRD TRAP, found by measurement on this build and worth the paragraph.
+   `overflow-x: auto` clips a wide table, but it does NOT clip an absolutely
+   positioned descendant whose containing block is somewhere else — and with no
+   positioned ancestor anywhere up the chain, "somewhere else" is the initial
+   containing block, i.e. the page. `.visually-hidden` is `position: absolute`,
+   and this table puts one in every unsourced row's Src cell (the sentence a
+   screen reader gets in place of the dash). Those spans took their static
+   position ~640px into the table, escaped every scroller and every `overflow`
+   above them, and gave the whole document 269px of horizontal scroll at 390px
+   wide — while `.rtable` itself measured a correct 327px and every ancestor
+   measured a correct 375px. Nothing looked wrong anywhere except the page.
+   `position: relative` here makes .rtable the containing block, so the
+   overflow rule that was already in place actually applies to them.
+   The tell, if this ever happens again: putting `overflow: hidden` on an
+   ancestor does not fix it. That means the box is not in that ancestor's
+   clipping chain at all. */
+.rtable table {
+  border-collapse: collapse; width: 100%; min-width: 40rem;
+  font-size: 0.875rem; line-height: 1.5;
+}
+.rtable th {
+  font-family: var(--mono); font-size: 0.625rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+  text-align: left; vertical-align: bottom; white-space: nowrap;
+  padding: 12px 14px; background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+}
+.rtable td {
+  padding: 11px 14px; vertical-align: top; color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.rtable tbody tr:last-child td { border-bottom: 0; }
+.rtable strong { color: var(--white); font-weight: 600; }
+.rtable a { color: var(--muted); }
+
+.rtable .num {
+  text-align: right; font-family: var(--mono);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.rtable th.num { text-align: right; }
+.rtable .num i { font-style: normal; display: block; font-size: 0.9em; color: var(--faint); }
+.rtable .yr {
+  font-family: var(--mono); font-size: 0.78rem;
+  color: var(--faint); white-space: nowrap;
+}
+
+/* The rows the argument rests on, marked with weight and a lift rather than a
+   hue — the same ruling .dtable's .is-lead carries, and the same class name so
+   there is one idea here and not two. */
+.rtable tbody tr.is-lead td { background: var(--surface-2); color: var(--white); }
+.rtable tbody tr.is-lead td.num i { color: var(--muted); }
+
+/* ── The Src gutter ───────────────────────────────────────────────────────
+   One glyph per row, pointing at the press release or filing the row is drawn
+   from. Thirty-one of forty-three rows have one; the other twelve show a dash
+   meaning no primary source was verified, and that row rests on secondary
+   coverage. THAT DISTINCTION IS THE COLUMN'S ENTIRE PURPOSE — a reader
+   deciding how much weight to put on a figure is reading this column, so it is
+   never merged into another, never hidden at a breakpoint, and never dropped
+   because it is narrow.
+   The visible label is an icon, so every link carries a title AND an aria-label
+   naming the publisher, and every dash carries a visually-hidden sentence. An
+   arrow nobody can name is a link a screen reader announces as "link". */
+.rtable th.src, .rtable td.src {
+  width: 1%; white-space: nowrap; text-align: center;
+  padding-left: 6px; padding-right: 12px;
+}
+.srclink {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.65rem; height: 1.65rem;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--muted); text-decoration: none;
+  font-size: 0.8rem; line-height: 1;
+}
+/* The hover is the sheet's one link hover, coral use 5 of 6 — it is inherited
+   from the global `a:hover`, not re-declared, so this adds no accent use. */
+.srclink:hover { border-color: var(--faint); background: var(--surface-2); }
+.nosrc { font-family: var(--mono); color: var(--faint); }
+
+/* ==========================================================================
+   .figframe — the panel a rendered figure sits in.
+   Sibling of .dtable, same figure ground, for charts drawn in HTML rather than
+   captured: the revenue meters, the entry-to-exit dumbbells, the Reverb
+   ownership diagram, and the transaction map.
+   ========================================================================== */
+
+.figframe {
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-line);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+  min-width: 0;                        /* see the note on .rtable's ancestors */
+  display: flex; flex-direction: column; gap: 22px;
+}
+.figframe__head {
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
+  align-items: baseline; justify-content: space-between;
+}
+.figframe__t {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fig-dim);
+}
+.figframe__sub {
+  font-size: 0.875rem; line-height: 1.5; color: var(--fig-dim);
+  margin-top: 6px; max-width: 62ch;
+}
+.figframe__key {
+  display: flex; flex-wrap: wrap; gap: 8px 22px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--fig-dim);
+  border-top: 1px solid var(--fig-line); padding-top: 14px;
+}
+.figframe__key i {
+  display: inline-block; width: 0.66rem; height: 0.66rem; border-radius: 50%;
+  border: 1.5px solid var(--fig-dim); margin-right: 8px; vertical-align: -1px;
+}
+/* The affordance to the full-width map. Navy-ghost, never coral: it is a
+   secondary route to a figure this page already shows, not a call to action. */
+.openfull {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--fig-text);
+  text-decoration: none; white-space: nowrap;
+  border: 1px solid var(--fig-line); border-radius: var(--radius);
+  padding: 8px 14px;
+}
+.openfull:hover { border-color: var(--fig-dim); color: var(--fig-text); }
+
+/* ── Meters ─────────────────────────────────────────────────────────────── */
+.meters { display: flex; flex-direction: column; gap: 16px; }
+.meter { display: grid; grid-template-columns: minmax(8rem, 11rem) 1fr; gap: 6px 18px; align-items: center; }
+.meter__l { font-size: 0.8125rem; font-weight: 600; line-height: 1.3; color: var(--fig-text); }
+.meter__l span {
+  display: block; margin-top: 3px;
+  font-family: var(--mono); font-size: 0.625rem; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--fig-dim);
+}
+.meter__track {
+  position: relative; height: 1.75rem; display: flex; align-items: center;
+  background: var(--fig-row); border-radius: 2px;
+}
+/* One fill for all three bars. They are the same variable measured on three
+   populations, so coloring them differently would encode a category that is
+   not in the data. */
+.meter__fill { height: 100%; background: var(--fig-text); border-radius: 2px; min-width: 2px; }
+.meter__n {
+  font-family: var(--mono); font-size: 0.8125rem; font-weight: 600;
+  font-variant-numeric: tabular-nums; color: var(--fig-text);
+  padding-left: 10px; white-space: nowrap;
+}
+.meter__n i { font-style: normal; font-weight: 400; color: var(--fig-dim); }
+/* The scale has to start where the bars start, and the bars start after a
+   fluid `minmax(8rem, 11rem)` label column. So the scale repeats the meter's
+   own grid and leaves column one empty, rather than guessing the offset with a
+   margin — a margin would be right at exactly one container width. */
+.meter__scale {
+  display: grid; grid-template-columns: minmax(8rem, 11rem) 1fr; gap: 0 18px;
+  border-top: 1px solid var(--fig-line); padding-top: 8px;
+}
+.meter__scale::before { content: ""; }
+.meter__ticks {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 0.625rem; color: var(--fig-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Dumbbells: entry price → exit price ─────────────────────────────────
+   Three marks, distinguished by SHAPE rather than by hue, because the sheet has
+   no hue to spend and because shape survives a grayscale print:
+     ring          entry price
+     filled disc   exit price
+     dashed ring   on the market, unsold
+   Every mark is also labeled with its own figure at its own position, so the
+   shapes are a convenience for scanning and never the only carrier. */
+.dumbs { display: flex; flex-direction: column; gap: 26px; }
+.dumb { display: flex; flex-direction: column; gap: 8px; }
+.dumb__h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 12px; }
+.dumb__h b { font-family: 'Roboto', sans-serif; font-size: 0.9375rem; font-weight: 700; color: var(--fig-text); }
+.dumb__h span {
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--fig-dim);
+}
+.dumb__track { position: relative; height: 2.75rem; }
+.dumb__line { position: absolute; top: 50%; height: 2px; background: var(--fig-line); transform: translateY(-50%); }
+.dumb__line--open { background: none; border-top: 2px dashed var(--fig-line); height: 0; }
+.dot {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 0.8rem; height: 0.8rem; border-radius: 50%; box-sizing: border-box;
+}
+.dot--in   { border: 2px solid var(--fig-text); background: var(--fig-bg); }
+.dot--out  { background: var(--fig-text); }
+.dot--open { border: 2px dashed var(--fig-dim); background: var(--fig-bg); }
+.dlab {
+  position: absolute; white-space: nowrap;
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.dlab i { font-style: normal; font-weight: 400; color: var(--fig-dim); }
+.dlab--in  { top: 0; transform: translateX(-50%); color: var(--fig-dim); }
+.dlab--out { bottom: 0; transform: translateX(-50%); color: var(--fig-text); }
+
+/* ── The ownership diagram ──────────────────────────────────────────────── */
+.story { display: flex; flex-direction: column; }
+.story__row { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.story__yr {
+  font-family: var(--mono); font-size: 0.9375rem; font-weight: 600;
+  color: var(--fig-dim); font-variant-numeric: tabular-nums; padding-top: 20px;
+}
+.story__body { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 14px 0; }
+.node {
+  display: flex; flex-direction: column; gap: 3px; min-width: 8rem;
+  padding: 10px 13px; border: 1px solid var(--fig-line);
+  border-radius: var(--radius); background: var(--fig-row);
+}
+.node b { font-family: 'Roboto', sans-serif; font-size: 0.9375rem; font-weight: 700; color: var(--fig-text); }
+.node span {
+  font-family: var(--mono); font-size: 0.5625rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--fig-dim);
+}
+/* The acquired company, marked with a brighter hairline. Not an accent. */
+.node--tgt { border-color: var(--fig-dim); }
+.node--grp { border-style: dashed; }
+.arrow { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 6rem; flex: 1; }
+.arrow em {
+  font-family: var(--mono); font-style: normal; font-size: 0.8125rem;
+  font-weight: 700; font-variant-numeric: tabular-nums; color: var(--fig-text);
+}
+.arrow i { font-family: var(--mono); font-style: normal; font-size: 0.625rem; color: var(--fig-dim); }
+.arrow__shaft { width: 100%; height: 0; border-top: 2px solid var(--fig-line); position: relative; }
+.arrow__shaft::after {
+  content: ""; position: absolute; right: -1px; top: -4px;
+  border-left: 7px solid var(--fig-line);
+  border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+}
+.story__mid { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: 16px; }
+.story__owns {
+  padding: 0 0 4px 14px; border-left: 2px solid var(--fig-line);
+  font-family: var(--mono); font-size: 0.75rem; line-height: 1.9; color: var(--fig-dim);
+}
+.story__owns b { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.875rem; color: var(--fig-text); }
+.story__out {
+  display: flex; flex-wrap: wrap; gap: 14px 34px; align-items: baseline;
+  border-top: 1px solid var(--fig-line); margin-top: 8px; padding-top: 18px;
+}
+.story__out div { display: flex; flex-direction: column; gap: 2px; }
+.story__out b {
+  font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 700;
+  font-variant-numeric: tabular-nums; color: var(--fig-text);
+}
+.story__out span {
+  font-family: var(--mono); font-size: 0.5625rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--fig-dim);
+}
+
+/* ==========================================================================
+   .map — the transaction map.
+   Time on x, four industry lanes on y, one dot per event, label packed into the
+   lowest free track in its lane. Everything positioned here is written by
+   case-study-assets/js/map.js at render time; nothing is hand-placed, which is
+   what lets the same figure survive a resize, a font change and a repalette.
+
+   THE 1780px TRAP, worth keeping written down. The plot is wider than any
+   viewport by design and lives in .map__scroll. A `grid-template-columns: 1fr`
+   track has an implicit `min-width: auto`, so it will happily grow to 1780px
+   and take the whole page's text columns with it, squeezing them into a strip.
+   Every ancestor between a grid or flex track and .map__scroll needs
+   `min-width: 0` — which is why .figframe and .rtable both declare it.
+   ========================================================================== */
+
+/* Full-bleed band, for content whose whole purpose is to be wider than the
+   1100px reading measure. Exactly one thing uses it — the standalone
+   transaction map — and a case study that reaches for it for a decorative
+   reason is reaching for the wrong thing. */
+.bleed { padding: 0 24px; }
+
+.map__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; min-width: 0; }
+.map { position: relative; padding-top: 6px; }
+/* 0.08, not lower. A band has to be visible over BOTH lane surfaces, and the
+   alternating lane tint is itself a white wash of about this weight — at 0.045
+   the band was indistinguishable from an alt lane on one row and invisible on
+   the other, which is a band that does not exist. */
+.map__band { position: absolute; border-radius: 2px; pointer-events: none; background: rgba(255, 255, 255, 0.08); }
+.map__band span {
+  position: absolute; top: -1.3rem; left: 4px;
+  font-family: var(--mono); font-size: 0.625rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--fig-dim);
+  white-space: nowrap;
+}
+/* The bands are macro shocks, not transactions, and must not read as marks. A
+   flat wash behind the lanes with its label in a reserved strip above them does
+   that with no shape and no hue in common with a dot. */
+.map__band::before {
+  content: ""; position: absolute; inset: 0;
+  border-left: 1px dashed var(--fig-line); border-right: 1px dashed var(--fig-line);
+}
+.map__grid { position: absolute; width: 1px; background: #151515; }
+.map__yr {
+  position: absolute; bottom: 6px; transform: translateX(-50%);
+  font-family: var(--mono); font-size: 0.6875rem; color: var(--fig-dim);
+  font-variant-numeric: tabular-nums;
+}
+.map__lane { position: relative; border-top: 1px solid var(--fig-line); }
+.map__lane--alt { background: var(--fig-row); }
+.map__lname {
+  position: absolute; left: 10px; top: 7px; z-index: 3;
+  font-family: var(--mono); font-size: 0.625rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--fig-dim);
+}
+.map__ev { position: absolute; display: flex; align-items: center; gap: 7px; height: 1.35rem; white-space: nowrap; }
+.map__ev--left { flex-direction: row-reverse; }
+/* Uniform size. Size carries no meaning here — the readability of forty-two
+   labels does, and a varying radius costs label room to say nothing. The ring
+   is what keeps the palest step visible against the lighter lane tint, and it
+   is what makes an unfilled dot read as "no value" rather than as "invisible". */
+.map__dot {
+  width: 0.66rem; height: 0.66rem; border-radius: 50%;
+  border: 1.5px solid var(--fig-dim); flex: none; box-sizing: border-box;
+}
+.map__lab { font-family: var(--mono); font-size: 0.6875rem; color: var(--fig-dim); }
+.map__lab b { font-weight: 600; color: var(--fig-text); }
+.map__note {
+  font-family: var(--mono); font-size: 0.6875rem; line-height: 1.75;
+  color: var(--fig-dim); max-width: 80ch;
+}
+/* What a reader with JavaScript off sees in place of the plot. The document
+   loses nothing: every transaction the map places is also a row in the tables
+   below it, with its own source link.
+   Hidden by a class map.js sets on the SCROLLER once it has actually drawn —
+   deliberately not by reveal.js's `.js` class, which is never added when
+   prefers-reduced-motion is set. Keyed to the `.js` class this fallback would
+   sit under a fully-drawn map for every reader who has asked for less motion. */
+.map__fallback { padding: 26px 0; font-size: 0.9375rem; color: var(--fig-dim); max-width: 66ch; }
+.map__scroll.is-drawn .map__fallback { display: none; }
+
+/* ==========================================================================
+   Source list
+   ========================================================================== */
+
+.srclist { display: grid; gap: 10px; max-width: 88ch; }
+.srclist h3 {
+  font-family: var(--mono); font-size: 0.6875rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint);
+  margin-top: 26px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+.srclist h3:first-child { margin-top: 0; }
+.srclist p { font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
+.srclist cite { font-style: normal; }
+.srclist a { color: var(--muted); font-family: var(--mono); font-size: 0.8125rem; }
+
+/* The document's own masthead facts — period, focus, issue date, basis, FX. */
+.docmeta {
+  display: flex; flex-wrap: wrap; gap: 10px 34px;
+  list-style: none; margin-top: 26px; padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--faint);
+}
+.docmeta b { color: var(--muted); font-weight: 600; }
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 
@@ -516,4 +1063,15 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   .close__ctas .btn { width: 100%; text-align: center; }
   .btn { white-space: normal; padding: 12px 20px; }
   .pull { padding-left: 18px; }
+
+  /* Report components */
+  .figframe { padding: 18px 16px; }
+  .callout { padding-left: 16px; }
+  .meter { grid-template-columns: 1fr; gap: 4px; }
+  .meter__scale { grid-template-columns: 1fr; }
+  .meter__scale::before { display: none; }
+  .story__row, .story__mid { grid-template-columns: 1fr; gap: 0; }
+  .story__yr { padding-top: 14px; }
+  .arrow { min-width: 4.5rem; }
+  .rtable { margin: 16px 0 26px; }
 }

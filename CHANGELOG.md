@@ -6,6 +6,68 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- The second case study, **Consolidation Under Pressure**
+  (`case_studies/consolidation_under_pressure/`) — a ~6,000-word public-source
+  market-intelligence report on M&A in music gear and pro audio, 2016–2026, rebuilt into this
+  site's identity from two finished pages in `wolfpackdata/dj-gear-study`. Eleven numbered
+  parts, ten data tables, four rendered figures, 43 cited transactions with a per-row source
+  gutter, and an interactive transaction map. Public and indexed. Not deployed. (#172)
+- `case_studies/consolidation_under_pressure/transaction-map.html` — the same map full width
+  in its own tab, `noindex`, reached from the report's "Open full width" affordance. **The
+  first case study to ship more than one page.** (#172)
+- `case-study-assets/js/map.js` — the transaction map: four industry lanes, a linear
+  2014–2026 axis, 42 events, two macro bands, and a real collision-free label-packing pass.
+  **One script and one dataset serve both pages**, switched by a `data-fill` flag. The source
+  this was rebuilt from shipped the map twice as two copies, and they had already drifted by
+  one event — the standalone plotted the April 2025 tariffs and the embedded one did not,
+  with nothing able to see it. Label widths are measured with canvas `measureText` rather
+  than estimated from character count, because `--mono` is a *system* stack whose metrics are
+  unknowable from the build machine. (#172)
+- Long-form report components in the shared `case-study.css`, written to be inherited by the
+  next report-shaped case study rather than re-derived: `.rtable` (the report table and its
+  `Src` gutter), `.figframe` (a rendered chart on the figure ground), `.meters`, `.dumbs`,
+  `.story`, `.map`, `.callout`, `.aside--warn`, `.cards`, `.numlist`, `.fx`, `.srclist`,
+  `.docmeta`, `.trend`, and a promoted top-level `.chip`. **No per-page stylesheet and no
+  inline `<style>`** — the folder rule, held. (#172)
+- `--fig-ramp-1`…`-4` — an ordered sequential ramp along the figure ground's own neutral
+  axis, dark to light, for the map's deal-value scale. An extension of an existing ramp, not
+  a new hue, and contrast-measured against the lighter of the two lane surfaces (3.6 / 6.6 /
+  10.6 / 16.7 : 1). "Undisclosed" is drawn as an unfilled ring *outside* the ramp, because an
+  absent value is not a small one. (#172)
+- `planning/verify_copy.py` — a guard for the report's copy, which now lives in two repos.
+  Checks all 186 numeric tokens in the vendored source against the page, the `Src`
+  arithmetic (43 rows = 31 links + 12 dashes), every source link's accessible name, the map
+  dataset, and the external-resource stance. Fails loudly if its own anchors move. This is
+  the fourth duplicated string set on the property and the first of them to be guarded.
+  (#172)
+- `planning/card/capture_map.py`, and a fourth entry in `social-cards/build_cards.py`. The
+  case study's social card insets the transaction map, which exists only as something a
+  browser draws — so the capture is generated from the real page and ships with its
+  generator, per the repo's standing rebuild-rather-than-retouch rule. The three existing
+  cards rebuild byte-identical. (#172)
+- `docs/consolidation-case-study-design-plan.md` — the design plan and its 22-entry decision
+  ledger, including three decisions flagged for Ry rather than settled. (#172)
+
+### Fixed
+
+- `.rtable` and `.dtable` now declare `position: relative`. `overflow-x: auto` clips a wide
+  table but does **not** clip an absolutely positioned descendant whose containing block is
+  elsewhere — and with no positioned ancestor, "elsewhere" is the page. `.visually-hidden` is
+  `position: absolute`, and the report puts one in every unsourced row's source cell; they
+  took their static position ~640px into the table, escaped every scroller above them, and
+  gave the whole document 269px of horizontal scroll at 390px wide while every container
+  still measured correctly. Latent in `.dtable` since it shipped. (#172)
+
+### Changed
+
+- `docs/site-brief.md` — the figure ground's scope now includes `.figframe`; the new
+  sequential ramp is documented with its measured contrast; `case_studies/`'s audience and
+  exclusions updated; the report-copy guard added to the guarded-strings table. The
+  `case_studies/` coral ration is **still six** — the refusal list grew and the count did
+  not. (#172)
+
 ## [1.3.0] - 2026-08-07
 
 Adds the long-form case studies and the SetMaster 3 product page, then makes the

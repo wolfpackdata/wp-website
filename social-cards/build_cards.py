@@ -1,21 +1,27 @@
 """
-Build the three Open Graph / LinkedIn social cards this site needs.
+Build the Open Graph / LinkedIn social cards this site needs.
 
     python social-cards/build_cards.py
 
-Run from the repo root. It rebuilds all three, every time, into the page folders
+Run from the repo root. It rebuilds all of them, every time, into the folders
 that deploy:
 
+    case_studies/case-study-assets/img/og-consolidation-under-pressure.png
     sm3-specific-pages/sm3-assets/img/og-setmaster3-case-study.png
     portfolio/img/og-portfolio.png
     ai-coaching/img/og-ai-coaching.png
+
+One of them has a prerequisite. The music-gear card's inset is the transaction
+map, which exists only as something a browser draws — run
+case_studies/consolidation_under_pressure/planning/card/capture_map.py first if
+that figure has changed.
 
 These images are **generated, and their generator ships with them — rebuild
 rather than retouch**, the same convention `fin-model-beacon-hero.jpg` already
 carries. A card that gets hand-edited in an image editor is a card nobody can
 change again: the next title tweak becomes a design session instead of a string
 edit. Everything here is deterministic — no timestamps, one fixed RNG seed — so
-the same checkout always produces the same three PNGs.
+the same checkout always produces the same set of PNGs.
 
 `social-cards/` never deploys. Like `blog_posts/tools/` and the case study's
 `planning/hero/`, it builds *inputs* to the site rather than any part of it.
@@ -29,7 +35,7 @@ the card is one wordmark line. The case-study convention already names this trap
 from the other direction — *"too small to read" is a bet that nobody zooms* — and
 a social card is the one surface where nobody can zoom.
 
-Composition, one system across all three:
+Composition, one system across all of them:
 
   * A navy field, the page's own `--navy #000B29` with the same three-stop
     vertical gradient `build_hero.py` uses, summed in LINEAR light so a gradient
@@ -406,10 +412,32 @@ def build(card, ttf):
 
 
 # ==========================================================================
-# The three cards
+# The cards
 # ==========================================================================
 
 CARDS = [
+    {
+        # The music-gear M&A case study. Its inset is the transaction map, which
+        # is drawn in a browser rather than stored as an image — so unlike every
+        # other inset here the source is itself generated, by
+        # case_studies/consolidation_under_pressure/planning/card/capture_map.py.
+        # Re-run that first if the map's data or palette has changed; this script
+        # only composes what it is given.
+        #
+        # The map is the right inset for the reason build_cards.py's header
+        # already gives: at a 360px Featured tile the inset is TEXTURE, and forty
+        # two labelled events across four lanes reads unmistakably as a dense
+        # research document. A crop of the report's prose would read as any page
+        # of any website.
+        "out": "case_studies/case-study-assets/img/og-consolidation-under-pressure.png",
+        "logo": "case_studies/case-study-assets/img/wolfpack-logo.png",
+        "title": "Consolidation Under Pressure",
+        "max_lines": 2,
+        # Centre crop: the plot is already trimmed to its own edges by the
+        # capture script, so there is no rail or sidebar to preserve.
+        "insets": [("case_studies/consolidation_under_pressure/planning/card/map-capture.png",
+                    None, 0.5)],
+    },
     {
         # The SetMaster 3 case study. The inset is the track-playlist matrix and
         # deliberately NOT the set editor: the set editor is already the product

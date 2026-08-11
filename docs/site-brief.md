@@ -102,7 +102,42 @@ it. Worth a re-measure if anyone is near it.
 | Border | `#2A2A2A` |
 | Text | `#E6E6E6` |
 | Dim text | `#9C9C9C` |
-| **Scoped to** | `.shot`, `.ph`, `.dtable` (generic) · `.shot`, `.trow` (SM3 case study) — never page chrome, never page type |
+| **Scoped to** | `.shot`, `.ph`, `.dtable`, **`.figframe`** (generic) · `.shot`, `.trow` (SM3 case study) — never page chrome, never page type |
+
+**`.figframe` joined the scope 2026-08-11 (#172)**, for the reason the ground was created.
+A chart drawn in HTML is the alternative to a screenshot *of* a chart, so it stands exactly
+where a captured image would stand; the rule the scope encodes is "anything standing where a
+captured image would". The same PR drew the line on the other side: `.rtable`, the long-form
+report table, is built from the **navy system**, because a table the reader reads is the
+document's body rather than a figure, and a page whose body is mostly near-black slabs stops
+looking like this site.
+
+### 1.5 The sequential ramp *(added 2026-08-11, #172)*
+
+An **extension of the figure ground's neutral axis, not a new hue.** Four ordered steps, dark
+to light on a dark surface, for a single variable that is a *magnitude* — currently the
+transaction map's disclosed deal value. A categorical palette would make a magnitude
+unreadable, and a magnitude is exactly what this site's one chart encodes.
+
+| Token | Value | Contrast vs. `--fig-row #1A1A1A` | Encodes |
+|---|---|---|---|
+| `--fig-ramp-1` | `#6E737E` | **3.6:1** | < $100m |
+| `--fig-ramp-2` | `#98A0AE` | 6.6:1 | $100–499m |
+| `--fig-ramp-3` | `#C3C9D4` | 10.6:1 | $500–999m |
+| `--fig-ramp-4` | `#FFFFFF` | 16.7:1 | ≥ $1bn |
+
+Measured against `--fig-row`, the **lighter** of the two lane surfaces a mark can land on;
+the darker one is the easy case. Step 1 is the binding constraint and sits above the 3:1
+floor for data marks on purpose — a 0.66rem dot is a small mark, and the headroom is what
+survives a lane tint changing later. **Widen the ramp at the light end, never the dark one.**
+
+**The fifth state is not a step.** "Undisclosed" is drawn as an unfilled ring, visually
+outside the ramp, because an absent value is not a small one — bucketing it as the bottom
+step would be a claim the sources do not make.
+
+**Direction is not on this ramp and takes no colour at all.** A metric up or down is carried
+by the glyph (▲ ▼ ▬) and by weight. That is the semantic-pair rule holding: a green and a red
+are atomic, and neither half earns its way in alone.
 
 **Two instantiations, five values shared.** `case-study.css`'s `--fig-*` ramp and
 `sm3-case.css`'s `--app-*` ramp agree byte-for-byte on `#0A0A0A`, `#1A1A1A`, `#2A2A2A`,
@@ -132,7 +167,7 @@ values become unused.
 | `ai-coaching/` | **8** — ruled 2026-08-09 | **2026-07-22** (#3) — never moved since | nav CTA · hero kicker · hero solid CTA · contact solid CTA · 24/7 support bridge band · price-band left border · link hover · focus ring. **See the note below** |
 | `hire/` | 8 | 2026-07-30 (set at build) | nav CTA · hero CTA · hero contact-line rule · availability status dot · IN PREPARATION chip · closing contact CTA · link hover · focus ring |
 | `portfolio/` | 6 | **2026-08-04** | nav CTA · closing intro-call button *(was hero CTA until #130 — moved, not duplicated)* · hero rule · IN PREPARATION chip *(live but unused)* · link hover · focus ring |
-| `case_studies/` | 6 | **2026-08-04** (#92) — set at build, never moved | nav CTA · hero rule · pull-quote rule · closing CTA · link hover · focus ring |
+| `case_studies/` | 6 | **2026-08-04** (#92) — set at build, never moved | nav CTA · hero rule · pull-quote rule · closing CTA · link hover · focus ring. **The refusal list grew 2026-08-11 (#172); the count did not** — a ~6,000-word report brought source-link glyphs, a five-step deal-value scale, two macro bands, highlighted table rows, part numbers, era cards and an "open full width" affordance, and not one of them became coral |
 | `github/` | **3** | **2026-08-07** | button fill · link hover · focus ring. The smallest — *"what a page with one link should cost"*. Was 4 until #158 took the hero rule with the standfirst it underlined |
 
 ⚠️ **`ai-coaching/` could not be counted from its own header — now ruled at 8.**
@@ -303,7 +338,8 @@ decisions**, and this table is incomplete until that pass happens. See the open 
 | `ai-coaching/` | Clients, coaching specifically | Indexed | Intake links (book-first) |
 | `hire/` | Hiring managers | **noindex** | Nothing — carries the full résumé |
 | `portfolio/` | **Both at once** | Indexed | **All résumé apparatus** — timeline, experience bullets, expertise matrix, education, downloads. Work evidence reads the same to both audiences; career narrative does not |
-| `case_studies/` | Founders, SMB directors | Indexed | Client names, invented testimonials |
+| `case_studies/` | Founders, SMB directors, operating executives | Indexed | Client names, invented testimonials, **and any claimed outcome** — the stat tiles carry build, artifact and method facts only |
+| `…/transaction-map.html` | as above, arriving from the report | **noindex** | Everything except one figure and the route back |
 | `github/` | Anyone sent the link | **noindex** | Everything except a heading and a button |
 | `roi-calculator/` | Consideration-stage clients | Indexed | — a tool, not a funnel page |
 | `setmaster3/` | **Product users** — DJs | Indexed | Wolfpack consultancy framing entirely. It is the product's own surface (§11) |
@@ -330,6 +366,7 @@ decisions**, and this table is incomplete until that pass happens. See the open 
 | **The master palette — 11 tokens** | **7 stylesheets**, each re-declaring them | ❌ **NONE** | — |
 | The figure ground — 5 of 6 values | `case-study.css` (`--fig-*`) and `sm3-case.css` (`--app-*`) | ❌ **NONE** | — |
 | Booking calendar URL | `rates/`, `hire/` ×2, `ai-coaching/`, plus the upstream `wp-rates-page` | ❌ **NONE** — governed by a written contract, not a check | — |
+| **The music-gear report's copy** — every figure, caption, footnote and confidence note | `dj-gear-study`'s `docs/strategy/01-ma-landscape-2016-2026.md`, vendored into `case_studies/consolidation_under_pressure/planning/`, and that page's HTML | ✅ **`planning/verify_copy.py`** *(added 2026-08-11, #172)* | **Yes** — every structural check asserts it found its anchor before asserting the anchor is right |
 
 The guard is **directional**: a page may show a subset of the résumé's projects, never a
 string the résumé lacks.
