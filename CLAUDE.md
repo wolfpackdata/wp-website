@@ -62,6 +62,7 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
+| `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — **built 2026-08-11 (#172), not yet deployed**; ships two pages, the report and a `noindex` full-width `transaction-map.html` | — |
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
@@ -208,6 +209,7 @@ Client-facing long-form case studies sharing one stylesheet and one animation sc
 [`case_studies/README.md`](case_studies/README.md), which carries the full convention list.
 The first one is **The Model Is Your Business Beacon** (`ops_fin_model_support/`), an
 argument that an operational financial model belongs ahead of go-to-market product work.
+The second is **Consolidation Under Pressure** (`consolidation_under_pressure/`, see below).
 
 Conventions these pages must keep:
 - **The shared stylesheet is the point.** Every case study loads
@@ -236,6 +238,50 @@ Conventions these pages must keep:
 - **Copy is judged by Ry, against no written spec.** The repo carried a voice guide until
   2026-08-06 (#150); it was removed because it was not good enough to be binding. Match the
   voice of the case studies already here rather than reaching for a rulebook.
+
+## `consolidation_under_pressure/` — the music-gear M&A case study
+A ~6,000-word public-source market-intelligence report on M&A in music gear and pro audio,
+2016–2026, rebuilt into this site's identity from two finished pages in
+`wolfpackdata/dj-gear-study` (`docs/strategy/`). Eleven numbered parts, ten data tables, four
+rendered figures, 43 cited transactions, and an interactive transaction map that ships twice.
+**Built 2026-08-11 (#172); not deployed.** Full design plan and decisions ledger:
+[`docs/consolidation-case-study-design-plan.md`](docs/consolidation-case-study-design-plan.md).
+
+Conventions this case study must keep, on top of the folder's:
+
+- **The copy is frozen, and it is guarded.** Every figure carries both currency
+  parentheticals; every caption, footnote, confidence label and methodology note ships.
+  `planning/verify_copy.py` checks every numeric token in the vendored source `.md` against
+  the page, plus the `Src` arithmetic, the source links' accessible names, the map dataset,
+  and the external-request stance. **Run it before merging any edit to this page.** If the
+  report is revised upstream, re-copy `planning/01-ma-landscape-2016-2026.md` in the same PR.
+- **The `Src` gutter is load-bearing and is never merged, hidden or dropped.** 43 rows: 31
+  link a primary source, 12 show a dash meaning none was verified. That distinction is the
+  page's claim about its own evidence. Every link keeps `title` + `aria-label` because the
+  visible label is an arrow; every dash keeps a visually-hidden sentence.
+- **The map is one script and one dataset** (`case-study-assets/js/map.js`), rendered at a
+  fixed width in the report and full width in `transaction-map.html`, switched by one
+  `data-fill` flag. **Do not fork it.** The source it came from shipped the map twice as two
+  copies and they had already drifted by one event — the standalone plotted the 2025 tariffs
+  and the embedded one did not. Nothing could see it.
+- **Nothing on the map is hand-placed.** Labels are packed into the lowest free track in
+  their lane, measured with canvas `measureText` because `--mono` is a *system* stack whose
+  metrics are unknowable from the build machine. If a label ever collides, fix the packing
+  pass, never the label.
+- **42 events, not 41.** The brief and the source page both said 41; the dataset holds 42.
+  See the design plan D-009 — this is flagged for Ry, not settled.
+- **No invented outcome, and no results section.** There is no instrumented result behind
+  this document. The stat tiles carry artifact and method facts, the same rule the financial
+  model case study set. The client is anonymised by shape — *"a music-technology
+  manufacturer"* — and stays that way.
+- **One destination: the 30-minute intro call.** The 82 source links are citations, not
+  destinations. That reading is a **new ruling Ry has not made yet** (design plan D-006).
+- **`transaction-map.html` is `noindex` and carries no Open Graph block**, and is correctly
+  absent from `check_meta.py`'s page table. It is reached from the report, never from a
+  search result.
+- **The social card's inset is the map itself**, captured by
+  `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
+  rather than retouch, and re-run the capture *before* the card whenever the figure changes.
 
 ## `portfolio/` — portfolio & case study landing page
 One page presenting the case studies written so far and the applications and workflows in
