@@ -646,6 +646,42 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .card h3 { font-size: 1.0625rem; }
 .card p { font-size: 0.9375rem; color: var(--muted); }
 
+/* ==========================================================================
+   .iconchips — placeholder chips for a page that documents an ICON SYSTEM.
+   Added 2026-08-13 (#174) for the Wolfpack AI Command case study, whose
+   workspace-layer passage describes one icon per database with meaning pushed
+   onto a governed color legend. That passage needs something to look at, and
+   the alternative — a screenshot of a real workspace — would carry client and
+   project names into a public page.
+
+   NO NEW HUES, and here that is an OPEN question rather than a settled one:
+   the icon system's meaning *is* four colors, and this sheet allows none
+   beyond the navy system and the neutral figure ground. So the slots ship
+   NEUTRAL — a dashed square in the navy line color — and the page's own HTML
+   comment records the question for Ry. If real marks are ruled in later they
+   drop into the slot as images and nothing in this block changes.
+
+   Generic on purpose: the next case study that documents a visual system
+   inherits it rather than re-deriving it inline.
+   ========================================================================== */
+
+.iconchips {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 14px; list-style: none; margin: 28px 0; max-width: 74ch;
+}
+.iconchip {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.iconchip__slot {
+  width: 2.25rem; height: 2.25rem; flex: none;
+  background: var(--surface-2);
+  border: 1px dashed var(--line); border-radius: var(--radius);
+}
+.iconchip b { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.9375rem; }
+.iconchip p { font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
+
 /* .stats extensions. The tiles already carried a value and a label; a report
    reading also carries the converted figure and a direction. Markup order sets
    visual order, so nothing here overrides .stats itself. */
