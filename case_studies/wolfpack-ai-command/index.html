@@ -1,21 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <!-- Public and indexed, like the other two case studies in this folder and
      unlike the SetMaster 3 one. Same reasoning: this is a client-facing
      argument aimed at company leaders, and being found is the point.
      planning/outline.md D-009 records this as the build assumption rather
      than a confirmed ruling — CONFIRM WITH RY BEFORE DEPLOY. -->
-<meta name="robots" content="index, follow">
-
-<title>The Complaint Was a Specification: Wolfpack AI Command &middot; Case Study</title>
-<meta name="description" content="Project management is two jobs braided into one title: the record-keeping that fills most of the week, and the judgment that decides whether the project finishes. This is the story of a governed AI operating system that unbraids them — built by running it on itself, with every rule earned from a real, dated mistake.">
-<link rel="canonical" href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">
-<link rel="icon" type="image/png" href="../case-study-assets/img/wolfpack-logo.png">
-
+<meta content="index, follow" name="robots"/>
+<title>The Complaint Was a Specification: Wolfpack AI Command · Case Study</title>
+<meta content="Project management has always been two jobs hiding under one title: maintaining the record and exercising judgment. This is how I built a governed AI operating system to separate them — one rule at a time, with every rule earned by a real mistake." name="description"/>
+<link href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/" rel="canonical"/>
+<link href="../case-study-assets/img/wolfpack-logo.png" rel="icon" type="image/png"/>
 <!-- SOCIAL CARD IMAGE DOES NOT EXIST YET. og-wolfpack-ai-command.png is
      scheduled as a follow-up task: composed by social-cards/build_cards.py at
      1200x627 and committed to case-study-assets/img/, the same route
@@ -31,47 +29,42 @@
      Card art brief: the page's own thesis image (F1) as the inset — the split
      between the record-keeping half and the judgment half — over the navy field
      with the title set in Roboto 700. -->
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Wolfpack Data &amp; Strategy">
-<meta property="og:url" content="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">
-<meta property="og:title" content="The Complaint Was a Specification: Wolfpack AI Command">
-<meta property="og:description" content="Project management is two jobs braided into one title: the record-keeping that fills most of the week, and the judgment that decides whether the project finishes. This is the story of a governed AI operating system that unbraids them.">
-<meta property="og:image" content="https://intake.wolfstrategyllc.com/case-study-assets/img/og-wolfpack-ai-command.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="627">
-<meta property="og:image:alt" content="The Complaint Was a Specification, over a diagram splitting a project manager's week into a record-keeping half and a judgment half.">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="stylesheet" href="../case-study-assets/css/fonts.css">
-<link rel="stylesheet" href="../case-study-assets/css/case-study.css">
+<meta content="article" property="og:type"/>
+<meta content="Wolfpack Data &amp; Strategy" property="og:site_name"/>
+<meta content="https://intake.wolfstrategyllc.com/wolfpack-ai-command/" property="og:url"/>
+<meta content="The Complaint Was a Specification: Wolfpack AI Command" property="og:title"/>
+<meta content="Project management has always been two jobs hiding under one title: maintaining the record and exercising judgment. Wolfpack AI Command separates them with governed AI operators and a written, versioned rulebook." property="og:description"/>
+<meta content="https://intake.wolfstrategyllc.com/case-study-assets/img/og-wolfpack-ai-command.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="627" property="og:image:height"/>
+<meta content="The Complaint Was a Specification, over a diagram separating a project manager's record-keeping workload from the judgment the role actually depends on." property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../case-study-assets/css/fonts.css" rel="stylesheet"/>
+<link href="../case-study-assets/css/case-study.css" rel="stylesheet"/>
 </head>
 <body>
-
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="nav">
-  <nav class="nav__inner" aria-label="Sections">
-    <a class="nav__brand" href="https://wolfstrategyllc.com">
-      <img class="nav__logo" src="../case-study-assets/img/wolfpack-logo.png" alt="" width="30" height="30">
-      <span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
-    </a>
-    <ul class="nav__links">
-      <li><a href="#split">Two Jobs</a></li>
-      <li><a href="#idea">The Bet</a></li>
-      <li><a href="#layers">Three Layers</a></li>
-      <li><a href="#supervision">Supervision</a></li>
-      <li><a href="#built">How It Was Built</a></li>
-    </ul>
-    <!-- The nav CTA is site chrome and stays (planning/outline.md D-017). The
+<nav aria-label="Sections" class="nav__inner">
+<a class="nav__brand" href="https://wolfstrategyllc.com">
+<img alt="" class="nav__logo" height="30" src="../case-study-assets/img/wolfpack-logo.png" width="30"/>
+<span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
+</a>
+<ul class="nav__links">
+<li><a href="#split">Two Jobs</a></li>
+<li><a href="#idea">The Bet</a></li>
+<li><a href="#layers">Three Layers</a></li>
+<li><a href="#supervision">Supervision</a></li>
+<li><a href="#built">How It Was Built</a></li>
+</ul>
+<!-- The nav CTA is site chrome and stays (planning/outline.md D-017). The
          BODY carries no CTA, no calendar link and no funnel ask until the close
          — two calendar links on the page in total, like the siblings. -->
-    <a class="nav__cta" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Wolfpack</a>
-  </nav>
+<a class="nav__cta" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" rel="noopener" target="_blank">Contact Wolfpack</a>
+</nav>
 </header>
-
 <main id="main">
-
-  <!-- ==================================================================
+<!-- ==================================================================
        Hero.
 
        THE TITLE REMAINS RY'S PICK. Four candidates were written and are
@@ -111,138 +104,94 @@
        could carry. Every number below was counted in the system's own
        repositories on 13 August 2026 (planning/outline.md, evidence rules).
        ================================================================== -->
-  <section class="hero">
-    <div class="wrap hero__inner">
-      <span class="k hero__kicker">Case Study &middot; 2026 &middot; Ryan Hickey</span>
-      <h1 class="hero__title">The Complaint Was a Specification</h1>
-      <p class="hero__stand">
-        Project management is two jobs braided into one title: the record-keeping
-        that fills most of the week, and the judgment that decides whether the
-        project finishes. <strong>Wolfpack AI Command</strong> unbraids them &mdash;
-        supervised AI operators run the record, inside written rules they are
-        themselves governed by, so the half of the role that always needed a human
-        gets its hours back.
-      </p>
-
-      <ul class="stats">
-        <li class="reveal"><b>8 skills</b><span>Carrying the rules into every AI session</span></li>
-        <li class="reveal"><b>54 rules</b><span>Numbered, in one published rulebook, ten sections</span></li>
-        <li class="reveal"><b>1 AI identity</b><span>Every action the system takes is attributable</span></li>
-        <li class="reveal"><b>0 destructive tools</b><span>Exposed to the agent layer, by design</span></li>
-      </ul>
-
-      <ul class="docmeta">
-        <li><b>In practice since</b> November 2025</li>
-        <li><b>Formalized</b> July 2026, into versioned, released rules</li>
-        <li><b>Layers</b> Workspace &middot; code &middot; agents</li>
-        <li><b>Basis</b> The system's own committed artifacts</li>
-        <li><b>Counted</b> 13 Aug 2026</li>
-        <li><b>Outcome claims</b> None &mdash; see the note at the end</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<section class="hero">
+<div class="wrap hero__inner">
+<span class="k hero__kicker">Case Study · 2026 · Ryan Hickey</span>
+<h1 class="hero__title">The Complaint Was a Specification</h1>
+<p class="hero__stand">
+        Project management has always been two jobs hiding under one title. One is the
+        relentless record-keeping that eats the week. The other is the judgment that
+        determines whether the project actually lands. <strong>Wolfpack AI Command</strong>
+        separates them: supervised AI operators maintain the record inside written rules,
+        while the human keeps the decisions, relationships, and foresight that were the
+        valuable part of the job in the first place.
+</p>
+<ul class="stats">
+<li class="reveal"><b>8 skills</b><span>The rules travel into every AI session</span></li>
+<li class="reveal"><b>54 rules</b><span>Numbered in one published rulebook across ten sections</span></li>
+<li class="reveal"><b>1 AI identity</b><span>Every system action has a distinct author</span></li>
+<li class="reveal"><b>0 destructive tools</b><span>The agent layer cannot delete or overwrite anything</span></li>
+</ul>
+<ul class="docmeta">
+<li><b>In practice since</b> November 2025</li>
+<li><b>Formalized</b> July 2026 into versioned, released rules</li>
+<li><b>Layers</b> Workspace · code · agents</li>
+<li><b>Evidence</b> The system's own committed artifacts</li>
+<li><b>Counted</b> 13 Aug 2026</li>
+<li><b>Outcome claims</b> None — see the note at the end</li>
+</ul>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        01 · THE CONSENSUS
        Part 2 of the outline. The burnout diagnosis is sympathy for the role
        and never an indictment of the people in it (D-013).
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section" id="role">
-    <div class="wrap">
-      <span class="k reveal">01 &middot; The consensus</span>
-      <h2 class="section__title reveal" style="margin-top:14px">Nobody argues about whether the role matters</h2>
-      <div class="prose reveal">
-        <p>
-          Ask anyone who has run a project at any size what decided how it went, and they
-          name a person. Not a methodology, not a tool, not a template. They name the person
-          who knew what was blocked before anybody reported it, who told a client bad news
-          early enough that it was still just news, and who carried the whole shape of the
-          work while everyone else held their own piece of it.
-        </p>
-        <p>
-          The second thing they agree on is that the job is punishing. A project manager owns
-          dates they cannot personally move, made of work they are not personally doing. The
-          interruptions <em>are</em> the job, so there is no version of the week where the
-          deep work happens first. And the output is invisible when it goes well: a project
-          that lands on time looks, from outside, like a project that was always going to.
-        </p>
-        <p>
-          <strong>This is not a complaint about the people who take the role.</strong> It is
-          an observation about a job that was assembled badly, and the people in it have been
-          saying so for years. Burnout here is not a resilience problem. It is what happens
-          when you braid two incompatible kinds of work together and hand them to one person
-          with one calendar.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<section class="section" id="role">
+<div class="wrap">
+<span class="k reveal">01 · The consensus</span>
+<h2 class="section__title reveal" style="margin-top:14px">The role matters. The way we assembled it is the problem.</h2>
+<div class="prose reveal">
+<p>Ask anyone who has run a serious project what made the difference and they usually name a person. Not a framework. Not a board. The person who knew something was blocked before the status meeting, told the client the uncomfortable thing while it was still fixable, and kept the whole project in their head while everyone else held one slice of it.</p>
+<p>The job is punishing in a very specific way. A project manager owns dates they cannot personally move, built from work they are not personally doing. The interruptions <em>are</em> the work, so there is no magical morning where the strategic thinking happens before Slack lights up. And when the job goes well, the result looks almost boring: a project that lands on time appears, from the outside, like it was always going to.</p>
+<p><strong>That is not a criticism of project managers.</strong> It is a criticism of the job design. We braided two incompatible kinds of work into one role, handed both to one person with one calendar, and then acted surprised when the best people in the role burned out doing clerical maintenance around the edges of high-stakes judgment.</p>
+</div>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        02 · THE SPLIT
        Part 3. The load-bearing section: everything after it is either the
        system that acts on the split or the story of how it got built.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="split">
-    <div class="wrap">
-      <span class="k reveal">02 &middot; The split</span>
-      <h2 class="section__title reveal" style="margin-top:14px">Two jobs braided into one title</h2>
-      <div class="prose reveal">
-        <p>
-          Take a week in the role apart and it separates cleanly into two different jobs
-          that happen to share a job title. They need different skills, they run on
-          different clocks, and they fail in different ways.
-        </p>
-      </div>
-
-      <ul class="cards reveal">
-        <li class="card">
-          <span class="k card__k">The record</span>
-          <h3>Most of the hours</h3>
-          <ul class="plainlist">
-            <li>Chasing statuses nobody updated</li>
-            <li>Keeping tickets honest against what is actually true</li>
-            <li>Linking work to the plan it belongs to</li>
-            <li>Writing down what was decided, and where</li>
-            <li>Version bookkeeping and release notes</li>
-            <li>Remembering the thing that was ruled out in March</li>
-          </ul>
-        </li>
-        <li class="card">
-          <span class="k card__k">The judgment</span>
-          <h3>Almost none of them</h3>
-          <ul class="plainlist">
-            <li>Relationships, inside the team and outside it</li>
-            <li>Scheduling clairvoyance &mdash; seeing the slip three weeks early</li>
-            <li>Confident vertical communication, up and down</li>
-            <li>Enough technical breadth to know what is really being said</li>
-            <li>Deciding what gets cut, and defending it</li>
-            <li>Judging when a plan has stopped being true</li>
-          </ul>
-        </li>
-      </ul>
-
-      <p class="pull reveal">The tedium is most of the job. It is none of the reason you hire a great project manager, and none of the reason anybody becomes one.</p>
-
-      <div class="prose reveal">
-        <p>
-          That is the complaint every good project manager I have worked with makes,
-          usually about the fourth hour of a Friday spent reconciling a board against
-          reality. It is worth taking seriously rather than sympathizing with, because it
-          is precisely correct: the left-hand column is not what the role is for, it is
-          what the role is <em>made of</em>.
-        </p>
-        <p>
-          And here is the trap. The left-hand column cannot simply be dropped, because the
-          record is the substrate the judgment runs on. Scheduling clairvoyance is not a
-          psychic gift &mdash; it is what pattern recognition looks like when it is fed an
-          honest, current, complete account of what has been happening. Cut the
-          record-keeping and you do not free the judgment. You blind it. So the record has
-          to be kept, and kept well, by <em>someone</em>. It just never needed to be the
-          same someone whose real value is the other column.
-        </p>
-      </div>
-
-      <!-- FIGURE F1 — the thesis in one image, and the strongest candidate for
+<section class="section section--line" id="split">
+<div class="wrap">
+<span class="k reveal">02 · The split</span>
+<h2 class="section__title reveal" style="margin-top:14px">One title. Two completely different jobs.</h2>
+<div class="prose reveal">
+<p>Pull a project manager's week apart and the split gets obvious fast. The two halves need different skills, run on different clocks, and fail for different reasons.</p>
+</div>
+<ul class="cards reveal">
+<li class="card">
+<span class="k card__k">The record</span>
+<h3>Most of the week</h3>
+<ul class="plainlist">
+<li>Chasing statuses nobody updated</li>
+<li>Keeping tickets aligned with reality</li>
+<li>Linking work back to the plan it belongs to</li>
+<li>Recording decisions so they do not evaporate</li>
+<li>Version bookkeeping and release notes</li>
+<li>Remembering why the team ruled something out three months ago</li>
+</ul>
+</li>
+<li class="card">
+<span class="k card__k">The judgment</span>
+<h3>The part you actually hired for</h3>
+<ul class="plainlist">
+<li>Managing relationships inside and outside the team</li>
+<li>Seeing the schedule slip before it becomes a fire</li>
+<li>Communicating clearly up, down, and sideways</li>
+<li>Understanding enough technically to hear what is really being said</li>
+<li>Deciding what gets cut — and defending the decision</li>
+<li>Knowing when the plan has stopped being true</li>
+</ul>
+</li>
+</ul>
+<p class="pull reveal">The record-keeping consumes most of the hours. It is not why you hire a great project manager, and it is not why anyone becomes one.</p>
+<div class="prose reveal">
+<p>Every good project manager I have worked with eventually makes some version of this complaint, usually while reconciling a board against reality late on a Friday. I started treating that complaint as useful product feedback instead of something to sympathize with. They were right: the left-hand column is not what the role is <em>for</em>. It is simply what the role has become <em>made of</em>.</p>
+<p>There is one catch: you cannot just stop doing it. The record is what judgment runs on. “Scheduling clairvoyance” is not magic; it is pattern recognition fed by an honest, current account of what has actually happened. Let the record rot and you do not free the project manager — you blind them. So somebody has to keep it. My question became: why does it still have to be the same somebody whose real value is the other column?</p>
+</div>
+<!-- FIGURE F1 — the thesis in one image, and the strongest candidate for
            the social card inset.
 
            WHAT TO BUILD: a two-column diagram of one project manager's week.
@@ -263,138 +212,68 @@
 
            This is a designed diagram, not a screenshot, so it ships as a .ph
            at its exact final ratio until the art exists. -->
-      <figure class="figure figure--wide reveal">
-        <div class="ph" aria-hidden="true">
-          <span class="ph__id">F1</span>
-          <span class="ph__what">The split &mdash; one week, two columns: a dense record-keeping half braided into a sparse judgment half</span>
-          <span class="ph__dim">16 : 9</span>
-        </div>
-        <figcaption>The split, drawn. Diagram pending build.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<figure class="figure figure--wide reveal">
+<div aria-hidden="true" class="ph">
+<span class="ph__id">F1</span>
+<span class="ph__what">The split — one week, two columns: a dense record-keeping half braided into a sparse judgment half</span>
+<span class="ph__dim">16 : 9</span>
+</div>
+<figcaption>The split, drawn. Diagram pending build.</figcaption>
+</figure>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        03 · WHAT ORGANIZATIONS DO ABOUT IT
        Part 4. The under-resourcing pattern is drawn at EVERY scale (D-012);
        the <50% figure keeps its startups-only, own-book attribution because
        that is the measured population, and the phrasing has to make the
        provenance self-evident without a footnote.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="cost">
-    <div class="wrap">
-      <span class="k reveal">03 &middot; What it costs</span>
-      <h2 class="section__title reveal" style="margin-top:14px">Under-resourced at every size, for the same reason</h2>
-      <div class="prose reveal">
-        <p>
-          Excellence in the role demands both columns, and the left one looks like overhead
-          on a budget line. So organizations at every scale resolve it the same way: they
-          under-resource the role and hope.
-        </p>
-        <p>
-          A startup omits it outright &mdash; there is no project manager, there is a founder
-          doing it badly at eleven at night. A small or mid-size business hands it to someone
-          as a side-duty, at the ten percent of attention left over, which is exactly enough
-          to keep a board looking plausible and nowhere near enough to keep it true. And the
-          solopreneur developer is their own project manager by definition, for an audience
-          of one, after the real work is finished.
-        </p>
-        <p>
-          What follows is attritional rather than dramatic, and it is the same at all three
-          sizes. Two people build the same thing because nobody linked the tickets. A
-          workstream stalls for three weeks because whoever would have noticed was in a
-          different fire. A decision is made properly, in a thread, then evaporates and gets
-          made again, differently, in April. And &ldquo;done&rdquo; comes to mean five
-          different things depending on who is saying it.
-        </p>
-        <p>
-          <strong>In my own client history with startups, fewer than half the projects I
-          have watched start have finished.</strong> That is my own book, not a study, and
-          the sample is startups because that is the population I have watched closely
-          enough to count. I would not extend the number to an SMB or to a solo developer.
-          I would extend the pattern to both without hesitation, because the mechanism
-          producing it has nothing to do with company size.
-        </p>
-      </div>
-
-      <aside class="aside aside--warn reveal">
-        <span class="k aside__label">The honest limit of that number</span>
-        <h3 class="aside__title">What a completion rate does and does not tell you</h3>
-        <p>
-          Some of those projects deserved to die, and killing one early is a success that
-          looks identical to a failure in a completion count. The figure is not an
-          indictment of the founders involved and it is not a benchmark to plan against.
-        </p>
-        <p>
-          What it is good for is the shape of the thing. Almost none of the projects I
-          watched stall did so because the work was too hard. They stalled because nobody
-          was holding the whole picture.
-        </p>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<section class="section section--line" id="cost">
+<div class="wrap">
+<span class="k reveal">03 · What it costs</span>
+<h2 class="section__title reveal" style="margin-top:14px">Every company under-resources the same part of the job</h2>
+<div class="prose reveal">
+<p>The judgment half is valuable, but the record-keeping half looks like overhead on a budget. So companies of every size tend to solve the problem the same way: under-resource the role and hope the missing work somehow happens anyway.</p>
+<p>A startup skips the role entirely, which usually means a founder is doing project management badly at 11 p.m. A small or mid-size company gives it to somebody as a side job — exactly enough attention to keep a board looking plausible and nowhere near enough to keep it true. A solo developer is their own project manager by definition, usually after the “real work” is done. Different org chart, same missing hours.</p>
+<p>The failure mode is rarely cinematic. It is attrition. Two people build the same thing because nobody linked the work. A workstream sits blocked for three weeks because the one person who would have noticed is dealing with another fire. A good decision gets made in a thread, disappears, and gets made again differently a month later. “Done” becomes a word with five local definitions.</p>
+<p><strong>In my own client history with startups, fewer than half the projects I have watched start have finished.</strong> That is my book, not a study, and I am keeping the boundary exactly there. I would not turn that number into an SMB benchmark or pretend it says anything scientific. I would extend the mechanism: projects drift when nobody is continuously holding the whole picture.</p>
+</div>
+<aside class="aside aside--warn reveal">
+<span class="k aside__label">The honest limit of that number</span>
+<h3 class="aside__title">A completion rate is not the same thing as a failure rate</h3>
+<p>Some projects should die. Killing one early can be excellent management and still look like “non-completion” in a crude count. So this number is not an indictment of founders and it is not a planning benchmark.</p>
+<p>What it captures is the shape of the problem I kept seeing. Very few projects stalled because the underlying work was impossible. They stalled because nobody was maintaining the complete, current picture long enough to act on it.</p>
+</aside>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        04 · THE BET
        Part 5. The name's SECOND rationed use lands here — the christening
        (D-011a). Running copy before and after this point uses common nouns:
        the system, the command center, the operating layer.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="idea">
-    <div class="wrap">
-      <span class="k reveal">04 &middot; The bet</span>
-      <h2 class="section__title reveal" style="margin-top:14px">A command center, not an assistant</h2>
-      <div class="prose reveal">
-        <p>
-          The obvious move in 2026 is to bolt an AI chat onto the chaos and ask it to help.
-          I did not want that &mdash; not because it fails, but because it works well enough
-          to be dangerous. It writes into your system of record with no identity, no rules
-          it answers to, and no trail anyone can audit afterwards. You get a faster mess.
-        </p>
-        <p>
-          Most AI adoption starts from <em>what can the AI do?</em> That is the wrong first
-          question for anything touching the record a business runs on. The questions a
-          company leader actually has are older than AI:
-        </p>
-        <ul class="numlist reveal">
-          <li><strong>What is it allowed to do?</strong> Not what it is capable of &mdash;
-            what the rules permit, and where those rules are written down.</li>
-          <li><strong>Who can tell what it did?</strong> Six weeks later, from the record
-            itself, without asking anyone.</li>
-          <li><strong>How would we know if it went wrong,</strong> and how hard is it to
-            put back?</li>
-        </ul>
-        <p>
-          So the bet was to build the answers first and the automation second, binding three
-          things together: the <strong>system of record</strong> &mdash; Notion, where
-          projects, tasks, products and clients live; the <strong>system of work</strong>
-          &mdash; GitHub, where the code and its history live; and the <strong>AI
-          operators</strong> &mdash; Claude as the working agent, a different vendor's model
-          as an independent reviewer, and plain Python where code is the right tool. What
-          binds them is not a prompt. It is a body of written, versioned rules the AI is
-          itself governed by.
-        </p>
-      </div>
-
-      <p class="callout callout--big reveal">
-        The rules are not a system prompt somebody tuned. They are documents, in version
-        control, reviewed and released like software &mdash; and the thing they govern is
-        the AI.
-      </p>
-
-      <div class="prose reveal">
-        <p>
-          The whole of it &mdash; the workspace governance, the code governance, the
-          agents, and the skills that carry the rules into a live session &mdash; is
-          <strong>Wolfpack AI Command</strong>. One source of truth, a thin pointer on
-          every surface that needs to read it, and nothing that matters existing in two
-          places.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<section class="section section--line" id="idea">
+<div class="wrap">
+<span class="k reveal">04 · The bet</span>
+<h2 class="section__title reveal" style="margin-top:14px">I did not want another chatbot bolted onto the mess</h2>
+<div class="prose reveal">
+<p>The obvious 2026 move is to attach an AI chat window to an already messy operating system and call it progress. I did not want that. Not because AI assistants are useless — the opposite. They work well enough that an ungoverned one can create a faster, more confident mess: writing into the system of record with no durable identity, no enforceable rules, and no audit trail anyone will enjoy reconstructing six weeks later.</p>
+<p>Most AI adoption starts with <em>what can the AI do?</em> For anything touching a business record, I think that is backwards. The boring governance questions matter first — and they are older than AI:</p>
+<ul class="numlist reveal">
+<li><strong>What is it allowed to do?</strong> Not what the model is capable of — what the rules actually permit, and where those rules live.</li>
+<li><strong>Who can tell what it did?</strong> Six weeks later, from the record itself, without relying on somebody's memory.</li>
+<li><strong>How do we know when it went wrong?</strong> And once we know, how painful is it to put the system back?</li>
+</ul>
+<p>So I built the answers before I built the automation. The system binds together three things: the <strong>system of record</strong> — Notion, where projects, tasks, products and clients live; the <strong>system of work</strong> — GitHub, where code and its history live; and the <strong>AI operators</strong> — Claude as the working agent, another vendor's model as an independent reviewer, and plain Python where code is the better tool. What connects them is not a clever mega-prompt. It is a written, versioned body of rules that the AI itself has to follow.</p>
+</div>
+<p class="callout callout--big reveal">The rules are not a tuned system prompt. They are documents in version control, reviewed and released like software — except the thing they govern is the AI.</p>
+<div class="prose reveal">
+<p>The whole thing — workspace governance, code governance, agents, and the skills that load the right rules into a live session — is <strong>Wolfpack AI Command</strong>. One source of truth, thin pointers everywhere else, and nothing important maintained in two places if one will do.</p>
+</div>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        05 · THREE LAYERS
        Part 6. Capability tour. Depth budget: credible, never tutorial.
        EXPOSURE (D-002): capabilities, not internals. No private repo names,
@@ -402,40 +281,20 @@
        exceptions Ry ruled in (D-010) are the AI account's display name, used
        in section 06, and his verbatim color rationales, used below.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="layers">
-    <div class="wrap">
-      <span class="k reveal">05 &middot; The system</span>
-      <h2 class="section__title reveal" style="margin-top:14px">Three layers, one rulebook</h2>
-      <div class="prose reveal">
-        <p>
-          Three layers, none of them planned as a layer. Each exists because the one below
-          it turned out not to be the right place to solve something.
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">The workspace layer &mdash; where the business is</h3>
-      <div class="prose reveal">
-        <p>
-          Four databases carry the business: projects, tasks, products and clients. Every
-          page is created from its database's template, never blank, because a blank page
-          silently loses the information surface the template carries &mdash; a project page
-          that shows its own tasks, a product page that shows both.
-        </p>
-        <p>
-          Nothing exists unlinked either: every task links both a project and a product,
-          resolved by a ladder &mdash; stated, then deduced, then a placeholder created under
-          standing permission, always announced, and marked with a prefix that exists to flag
-          it for my review.
-        </p>
-        <p>
-          Every entry carries its database's icon, so an open browser tab is identifiable by
-          kind at a glance, and the per-type distinction is pushed onto a governed color
-          legend so the two signals never compete. The legend records my reasoning rather
-          than asserting a convention:
-        </p>
-      </div>
-
-      <!-- FIGURE F6 — inline icon chips beside the icon-system copy (D-015).
+<section class="section section--line" id="layers">
+<div class="wrap">
+<span class="k reveal">05 · The system</span>
+<h2 class="section__title reveal" style="margin-top:14px">Three layers, because one layer kept not being enough</h2>
+<div class="prose reveal">
+<p>I did not sit down and design “three layers.” Each one appeared because the layer below it turned out to be the wrong place to solve a real problem.</p>
+</div>
+<h3 class="section__sub reveal">The workspace layer — where the business actually lives</h3>
+<div class="prose reveal">
+<p>Four databases carry the business: projects, tasks, products and clients. Every page starts from its database template, never from blank, because blank pages quietly shed context. A project page should already know how to show its tasks. A product page should already know how to show the projects and tasks that belong to it.</p>
+<p>Nothing gets to float unlinked, either. Every task connects to both a project and a product. The system resolves those links through a ladder: use what was stated, deduce what is safe to deduce, or create a clearly marked placeholder under standing permission — then announce that it did so. Ambiguity should become visible, not silently guessed away.</p>
+<p>Every database type also has its own icon so an open browser tab tells me what kind of thing I am looking at before I read the title. Color carries a second layer of meaning, with the reasoning written down instead of treated like tribal knowledge:</p>
+</div>
+<!-- FIGURE F6 — inline icon chips beside the icon-system copy (D-015).
            NOT a standalone figure; a copy-adjacent visual, which is why it is
            not cuttable the way F1–F5 are.
 
@@ -457,106 +316,56 @@
            WHAT FILLS THE SLOTS: the four database icons at 2x, on their own
            ground, cropped square. They are stock platform glyphs rather than
            client material, so there is nothing to anonymize. -->
-      <ul class="iconchips reveal">
-        <li class="iconchip">
-          <span class="iconchip__slot" aria-hidden="true"></span>
-          <b>Projects</b>
-          <p>&ldquo;Project completion exists in the akashic record, where truth meets experience.&rdquo;</p>
-        </li>
-        <li class="iconchip">
-          <span class="iconchip__slot" aria-hidden="true"></span>
-          <b>Tasks</b>
-          <p>&ldquo;Tasks tap into our creativity, bringing ideas to the material world.&rdquo;</p>
-        </li>
-        <li class="iconchip">
-          <span class="iconchip__slot" aria-hidden="true"></span>
-          <b>Clients</b>
-          <p>&ldquo;Neutral and fair &mdash; brown mixes all the colors of the rainbow.&rdquo;</p>
-        </li>
-        <li class="iconchip">
-          <span class="iconchip__slot" aria-hidden="true"></span>
-          <b>Products</b>
-          <p>&ldquo;Products interact with people, and the point is to forgive some kind of suffering and create customer success &mdash; green is the color of love &amp; forgiveness.&rdquo;</p>
-        </li>
-      </ul>
-
-      <div class="prose reveal">
-        <p>
-          Those four sentences are mine, and a rule with its reasoning attached survives a
-          new person, a new session and a new year.
-        </p>
-        <p>
-          All of it &mdash; identity, icons, template-first creation, interlinking, required
-          properties, the status lifecycle, code linking, comment protocol, the review
-          workflow &mdash; is published as one canonical rulebook: <strong>54 numbered rules
-          across ten lettered sections</strong>, read by every surface and compiled into
-          <strong>eight skills</strong> that carry the relevant part into whichever session
-          needs it. A read-only, offline, credential-free validator then checks that
-          rulebook's duplicated copies against each other across five classes of drift. It
-          was written after drift was found, not speculatively, which is the only reason I
-          trust it.
-        </p>
-        <ul class="readout reveal">
-          <li>4 databases</li>
-          <li>54 rules</li>
-          <li>10 sections</li>
-          <li>5 drift checks</li>
-        </ul>
-      </div>
-
-      <h3 class="section__sub reveal">The code layer &mdash; where the work is</h3>
-      <div class="prose reveal">
-        <p>
-          The second layer's first rule is a scar. An AI session working in one repository
-          with a subfolder selected inferred the repository name from the folder name
-          &mdash; the most salient string in its context &mdash; and filed a well-formed,
-          correctly-labeled issue against a repository that does not exist. Nothing was
-          broken. Nothing was noticed for a while either, which is the more interesting half.
-        </p>
-        <p>
-          <strong>Resolve the repository from git; never guess</strong> became the founding
-          rule, and is now a preflight inside two skills. Everything else accreted around it,
-          with two branching profiles so the ceremony scales to the work and two
-          <em>audited</em> carve-outs so the process does not grow silent workarounds.
-        </p>
-        <p>
-          Two of those rules do more work than the rest. <strong>Merged is not
-          accepted</strong> &mdash; every issue whose fix lands on the integration branch is
-          labeled into a visible human verification queue, and automatic closing keywords are
-          banned, so closing an issue is always a human decision made against real data. And
-          <strong>versioning separates cadence from magnitude</strong>: a round of work
-          triggers a bump, the highest-impact change in it sizes the bump, and no bump
-          happens without my confirmation.
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">The agent layer &mdash; where the primitives were proven</h3>
-      <div class="prose reveal">
-        <p>
-          The third layer is the smallest, and the easiest to oversell. It is a deliberately
-          small Python scaffold, around six hundred lines with roughly two fifths of that
-          being documentation. It exposes five tools to the model &mdash; create a project,
-          create a task, list team members, read a schema, query tasks &mdash; and
-          <strong>none of them is destructive</strong>. There is no delete and no update, and
-          the documented bar for adding one is a confirmation step in code, not in the
-          prompt.
-        </p>
-        <p>
-          <strong>It is frozen, and that is the honest description of it.</strong> Its last
-          behavioral change was ten hours after it was built. It is not the engine the system
-          runs on; it is where the primitives &mdash; the tool boundary, the model routing,
-          the cost visibility, the secret handling &mdash; were worked out in real code
-          before graduating into policy that governs every surface.
-        </p>
-        <ul class="readout reveal">
-          <li>5 tools</li>
-          <li>0 destructive</li>
-          <li>2 models routed</li>
-          <li>3 dependencies</li>
-        </ul>
-      </div>
-
-      <!-- FIGURE F2 — the architecture, and the only diagram on this page that
+<ul class="iconchips reveal">
+<li class="iconchip">
+<span aria-hidden="true" class="iconchip__slot"></span>
+<b>Projects</b>
+<p>“Project completion exists in the akashic record, where truth meets experience.”</p>
+</li>
+<li class="iconchip">
+<span aria-hidden="true" class="iconchip__slot"></span>
+<b>Tasks</b>
+<p>“Tasks tap into our creativity, bringing ideas to the material world.”</p>
+</li>
+<li class="iconchip">
+<span aria-hidden="true" class="iconchip__slot"></span>
+<b>Clients</b>
+<p>“Neutral and fair — brown mixes all the colors of the rainbow.”</p>
+</li>
+<li class="iconchip">
+<span aria-hidden="true" class="iconchip__slot"></span>
+<b>Products</b>
+<p>“Products interact with people, and the point is to forgive some kind of suffering and create customer success — green is the color of love &amp; forgiveness.”</p>
+</li>
+</ul>
+<div class="prose reveal">
+<p>Those four sentences are mine. The important part is not whether anybody else would pick the same colors. It is that a rule with its reasoning attached can survive a new teammate, a new AI session, and my own memory six months from now.</p>
+<p>All of that — identity, icons, template-first creation, interlinking, required properties, status lifecycle, code linking, comment protocol, review workflow — lives in one canonical rulebook: <strong>54 numbered rules across ten lettered sections</strong>. Every surface reads from that source, and <strong>eight skills</strong> load only the slice needed for the current session. A read-only, offline, credential-free validator checks duplicated rule artifacts across five classes of drift. I built that validator after I found drift, not because a diagram told me drift was possible. That distinction matters.</p>
+<ul class="readout reveal">
+<li>4 databases</li>
+<li>54 rules</li>
+<li>10 sections</li>
+<li>5 drift checks</li>
+</ul>
+</div>
+<h3 class="section__sub reveal">The code layer — where the work actually lands</h3>
+<div class="prose reveal">
+<p>The second layer starts with a scar. An AI session was working inside one repository with a subfolder selected, inferred the repository name from the most obvious folder name in context, and filed a perfectly formatted issue against a repository that did not exist. Nothing crashed. That is what made it interesting.</p>
+<p><strong>Resolve the repository from git; never guess</strong> became the founding rule. It is now a preflight in two skills. The rest of the code-governance rules accumulated the same way, including two workflow profiles so a tiny change does not need the same ceremony as a risky one — and <em>two explicit carve-outs</em> so people do not invent invisible shortcuts when the formal process becomes annoying.</p>
+<p>Two rules do disproportionate work. <strong>Merged is not accepted.</strong> When a fix lands on the integration branch, the issue moves into a visible human-verification queue instead of closing itself. Automatic closing keywords are banned; acceptance stays a human decision against real data. And <strong>versioning separates cadence from magnitude</strong>: a round of work triggers the bump, the highest-impact change sizes it, and no bump happens without my confirmation.</p>
+</div>
+<h3 class="section__sub reveal">The agent layer — the small lab where the boundaries got proven</h3>
+<div class="prose reveal">
+<p>The third layer is intentionally small, and I am not going to pretend otherwise. It is a Python scaffold of roughly six hundred lines, with about two fifths of that being documentation. It gives the model five tools — create a project, create a task, list team members, read a schema, query tasks — and <strong>none is destructive</strong>. No delete. No update. Adding one requires a confirmation step in code, not just another sentence in a prompt.</p>
+<p><strong>It is frozen, and that is a feature of the story.</strong> Its last behavioral change came ten hours after it was built. This Python layer is not the production “engine” of the command center. It is the lab where I proved the primitive boundaries — tools, routing, cost visibility, secret handling — before promoting the lessons into governance that applies everywhere else.</p>
+<ul class="readout reveal">
+<li>5 tools</li>
+<li>0 destructive</li>
+<li>2 models routed</li>
+<li>3 dependencies</li>
+</ul>
+</div>
+<!-- FIGURE F2 — the architecture, and the only diagram on this page that
            has to show a mechanism rather than an idea.
 
            WHAT TO BUILD: three stacked bands, top to bottom — RULES (the
@@ -576,184 +385,106 @@
            WHAT IT MUST NOT SHOW: private repository names, database names,
            file paths, or anything identifying a client (D-002). Surfaces are
            labeled by kind — "system of record", "repositories" — not by name. -->
-      <figure class="figure figure--wide reveal">
-        <div class="ph" aria-hidden="true">
-          <span class="ph__id">F2</span>
-          <span class="ph__what">Three layers &mdash; rules to skills to sessions, crossing the record and the repositories, every pointer aimed at one source of truth</span>
-          <span class="ph__dim">16 : 9</span>
-        </div>
-        <figcaption>The architecture. Diagram pending build.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<figure class="figure figure--wide reveal">
+<div aria-hidden="true" class="ph">
+<span class="ph__id">F2</span>
+<span class="ph__what">Three layers — rules to skills to sessions, crossing the record and the repositories, every pointer aimed at one source of truth</span>
+<span class="ph__dim">16 : 9</span>
+</div>
+<figcaption>The architecture. Diagram pending build.</figcaption>
+</figure>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        06 · SUPERVISION AND TRANSPARENCY
        Part 7, and the longest theme treatment because it is the strongest
        material in the system. Carries D-014 in full: two-surface auditability
        and the revert story, both phrased as DESIGN AND METHOD — never as a
        measured error rate, which the evidence rules forbid.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="supervision">
-    <div class="wrap">
-      <span class="k reveal">06 &middot; Supervision</span>
-      <h2 class="section__title reveal" style="margin-top:14px">How do you know what it did?</h2>
-      <div class="prose reveal">
-        <p>
-          For a while, I did not. The connector authenticated as me, so every page the AI
-          created and every edit it made was stamped with my name. Those pages sat in the
-          workspace beside my own work, indistinguishable from it. The platform exposes no
-          per-property edit attribution, so that history cannot be sorted out now and cannot
-          be sorted out later. Whatever was written then is permanently ambiguous.
-        </p>
-        <p>
-          That is the origin of the rule, and I would rather state it that way than present
-          the design as foresight. The AI now has its own account, a member with a name of
-          its own: <strong>Main</strong>. Every page, edit and comment it makes carries that
-          name in the platform's audit fields &mdash; written by the platform rather than
-          claimed by the AI, so it is not a convention that can be forgotten in a session.
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">Three questions, three separate answers</h3>
-      <div class="prose reveal">
-        <p>
-          The obvious simplification, and the one the rulebook explicitly defends against, is
-          to collapse authorship, completion and ownership into a single &ldquo;who touched
-          this&rdquo; field. Each carries information the other two do not.
-        </p>
-      </div>
-
-      <!-- FIGURE F3 — built as a table rather than shipped as a placeholder.
+<section class="section section--line" id="supervision">
+<div class="wrap">
+<span class="k reveal">06 · Supervision</span>
+<h2 class="section__title reveal" style="margin-top:14px">The first question is simple: how do you know what the AI did?</h2>
+<div class="prose reveal">
+<p>For a while, I could not answer that cleanly. The connector authenticated as me, so pages the AI created and edits it made were stamped with my name. Its work sat beside mine with no reliable distinction. The platform does not expose per-property attribution, which means that history cannot be reconstructed after the fact. Anything written during that period is permanently ambiguous.</p>
+<p>That mistake created the rule. I prefer saying it that way because none of this was clairvoyance. The AI now has its own account and its own name: <strong>Main</strong>. Every page, edit and comment it makes carries that identity in platform-managed audit fields. The platform writes the attribution, not the model, so the system does not depend on the AI remembering to self-report.</p>
+</div>
+<h3 class="section__sub reveal">Authorship, completion, and ownership are not the same thing</h3>
+<div class="prose reveal">
+<p>The tempting shortcut is to collapse authorship, completion and ownership into one “who touched this?” field. The rulebook explicitly prevents that, because those are three different facts.</p>
+</div>
+<!-- FIGURE F3 — built as a table rather than shipped as a placeholder.
            The outline listed it as a figure candidate; the shared sheet's own
            ruling decides the form. A table the reader READS sits on the page in
            .rtable; a figure sits on the figure ground. This is four rows of
            prose, so it is a table, and building it now means it is sharp at
            every density, readable by a screen reader, and cannot go stale
            against an image nobody can regenerate. Deviation logged for the CTO. -->
-      <div class="rtable reveal">
-        <table>
-          <caption class="visually-hidden">The three provenance questions, the channel that answers each, who is permitted to write it, and why the three are kept separate.</caption>
-          <thead>
-            <tr>
-              <th scope="col">The question</th>
-              <th scope="col">Where the answer lives</th>
-              <th scope="col">Who may write it</th>
-              <th scope="col">Why it stays separate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Who created this?</strong></td>
-              <td>The platform's system-managed authorship field</td>
-              <td>The platform. Neither the AI nor I may touch it.</td>
-              <td>Authorship is not completion. A task I create and the AI finishes still reads as created by me, and that is correct.</td>
-            </tr>
-            <tr class="is-lead">
-              <td><strong>Who did the work?</strong></td>
-              <td>A status split &mdash; an AI-complete state standing beside my own done state</td>
-              <td>The AI, on work it actually did</td>
-              <td>It is a provenance marker, not a review queue. AI-complete means complete, and a project whose tasks are all AI-complete is a finished project.</td>
-            </tr>
-            <tr>
-              <td><strong>Who owns this?</strong></td>
-              <td>Assignment</td>
-              <td>Me, only. The AI never assigns itself.</td>
-              <td>I use assignment-to-the-AI as my own marker of AI-completed work &mdash; and it carries information only <em>because</em> the AI never sets it. A human-only channel, preserved by prohibition.</td>
-            </tr>
-            <tr>
-              <td><strong>What did it do, and when?</strong></td>
-              <td>A timestamped comment on every status transition</td>
-              <td>The AI, on every transition, without exception</td>
-              <td>The status says <em>that</em> it acted. The comment says <em>what</em> it did. A silent status flip is an incomplete transition.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="prose reveal">
-        <p>
-          The third row is the one people find strange, and it is my favorite rule in the
-          system. The AI is forbidden from assigning work to itself. That prohibition is
-          not modesty, it is signal design: because the AI never sets that field, I can use
-          it as my own private marker and it stays meaningful forever. A channel is only
-          readable if something is reliably not writing to it.
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">Anti-theater</h3>
-      <div class="prose reveal">
-        <p>
-          Two rules exist because the AI did the thing once and I caught it.
-        </p>
-        <p>
-          The first: completion is an objective test, not a feeling. Before anything is
-          marked AI-complete, every checkbox in the task body has to be checked, and the AI
-          may not widen its own scope to clear the gate. Out of scope or blocked means the
-          task stops at in-progress and the exit comment names what is outstanding. A silent
-          stop is exactly the moment I need to be told why.
-        </p>
-        <p>
-          The second: backfilling is forbidden. Creating a task after the work is done and
-          stamping it through the lifecycle in one pass makes the status cosmetic &mdash; the
-          workspace never showed the in-progress state while the work was happening, so
-          nobody could have observed it. The rulebook is blunter than I am: <em>a live status
-          no one could have observed is theater.</em>
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">Audit from either end</h3>
-      <div class="prose reveal">
-        <p>
-          The two surfaces are wired to each other, which makes the system auditable by two
-          very different people without either learning the other's tools.
-        </p>
-        <p>
-          Start from the project record: a task carries its issue, the pull request that
-          closed it out, its status history and the AI's timestamped comments, and you arrive
-          at the diff. Or start from the diff: a branch names its issue, the issue carries its
-          labels and its verification state, and the trail leads back to the task and the
-          project it serves. You arrive at the reason it was done.
-        </p>
-        <p>
-          Nobody has to know which system to ask first. A director audits a <em>project</em>
-          in the workspace as easily as a developer audits <em>code</em> in the repository,
-          and the two end up looking at the same facts &mdash; who did what, when, and why.
-          The trail is built as a console for whoever is running the project, not as a log
-          for management to read over their shoulder.
-        </p>
-      </div>
-
-      <p class="callout reveal">
-        The gates are built to stop the system's own mistakes before they ship. At real
-        volume, some will get through anyway &mdash; so the second design goal is that
-        putting one back is a prompt, not an archaeology project.
-      </p>
-
-      <div class="prose reveal">
-        <p>
-          So the correction is built for as deliberately as the gate.
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">Implementers do not sign off on themselves</h3>
-      <div class="prose reveal">
-        <p>
-          The last piece of supervision is not human. A different vendor's model &mdash;
-          Codex &mdash; reviews the rules and the skills, on the principle that whoever did
-          the work should not verify it. Its raw findings, the reconciliation of each one,
-          and the split between what was executed and what was deferred are all committed
-          rather than summarized.
-        </p>
-        <p>
-          The one release that shipped with its external review gate waived says so in the
-          changelog: by whom, why, and with the gate re-affirmed. A waived gate that is
-          recorded is a governed exception. A waived gate that is not recorded is just a rule
-          people have stopped following.
-        </p>
-      </div>
-
-      <!-- FIGURE F4 — a supervised work session, drawn as a timeline. This one
+<div class="rtable reveal">
+<table>
+<caption class="visually-hidden">The three provenance questions, the channel that answers each, who is permitted to write it, and why the three are kept separate.</caption>
+<thead>
+<tr>
+<th scope="col">The question</th>
+<th scope="col">Where the answer lives</th>
+<th scope="col">Who may write it</th>
+<th scope="col">Why it stays separate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Who created this?</strong></td>
+<td>The platform's system-managed authorship field</td>
+<td>The platform. Neither the AI nor I touch it.</td>
+<td>Creation and completion are different facts. If I create a task and the AI finishes it, the author should still be me.</td>
+</tr>
+<tr class="is-lead">
+<td><strong>Who did the work?</strong></td>
+<td>A separate AI-complete status beside my own done state</td>
+<td>The AI, but only on work it actually completed</td>
+<td>It is provenance, not a review queue. AI-complete means complete, and a project whose tasks are all AI-complete is a finished project.</td>
+</tr>
+<tr>
+<td><strong>Who owns this?</strong></td>
+<td>Assignment</td>
+<td>Me only. The AI never assigns itself.</td>
+<td>That prohibition preserves the field as a human signal. I can use assignment-to-the-AI as my own marker precisely because the AI cannot manufacture it.</td>
+</tr>
+<tr>
+<td><strong>What did it do, and when?</strong></td>
+<td>A timestamped comment on every status transition</td>
+<td>The AI, every time, no exceptions</td>
+<td>Status tells me that it acted. The comment tells me what happened. A silent state change is an incomplete transition.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="prose reveal">
+<p>The third row is the weird one, and probably my favorite. The AI is forbidden from assigning work to itself. That is not performative humility; it preserves a human-only channel. <em>Because</em> the AI never writes that field, I can use assignment-to-the-AI as my own marker and trust that the signal has not been self-generated. A field is only informative when you know who is <em>not</em> allowed to write to it.</p>
+</div>
+<h3 class="section__sub reveal">Anti-theater: make the state observable or do not claim it</h3>
+<div class="prose reveal">
+<p>Two rules exist because the AI did the wrong thing once and I happened to catch it.</p>
+<p>First, completion is an objective gate, not a vibe. Before anything becomes AI-complete, every checkbox in the task body must be checked, and the AI cannot quietly expand its own scope just to satisfy the rule. Blocked or out-of-scope work stays in progress, and the exit comment says what remains. A silent stop is exactly when I most need the explanation.</p>
+<p>Second, backfilling is banned. If the AI creates a task after the work is already finished and races it through the lifecycle in one pass, the status history becomes decorative. Nobody could have observed the “in progress” state while the work was happening. The rulebook says it more sharply than I usually do: <em>a live status no one could have observed is theater.</em></p>
+</div>
+<h3 class="section__sub reveal">Audit from either end</h3>
+<div class="prose reveal">
+<p>The workspace and the repository point back to each other, so the same work can be audited from whichever side a person already understands.</p>
+<p>Start in the project record and a task leads to its issue, the pull request, status history, timestamped AI comments, and eventually the diff. Start in the diff and the branch points to the issue, the issue carries verification state, and the trail walks back to the task and project that justified the change. One direction answers “what changed?” The other answers <em>“why did we change it?”</em></p>
+<p>A director should be able to audit a <em>project</em> without learning Git, and a developer should be able to audit <em>code</em> without becoming a Notion archaeologist. Both should land on the same facts: who did what, when, and why. The trail is a console for the person running the work, not surveillance theater for management.</p>
+</div>
+<p class="callout reveal">The gates are designed to catch the system's own mistakes before they ship. At real volume, some mistakes will still get through. So the second design goal is just as important: putting one back should be a prompt, not an archaeology project.</p>
+<div class="prose reveal">
+<p>So I designed the correction path with the same care as the prevention path.</p>
+</div>
+<h3 class="section__sub reveal">The implementer does not get to grade its own homework</h3>
+<div class="prose reveal">
+<p>The last layer of supervision is not human. A different vendor's model — Codex — reviews the rules and skills on a simple principle: the implementer should not be the only verifier. The raw findings, the disposition of each finding, and the split between executed and deferred work are committed instead of disappearing into a summary.</p>
+<p>One release shipped with that external review gate waived. The changelog says so: who waived it, why, and that the gate still stands. That is the difference between an exception and a rule everybody quietly stopped following.</p>
+</div>
+<!-- FIGURE F4 — a supervised work session, drawn as a timeline. This one
            stays a placeholder deliberately: unlike F3 and F5 it is not a table
            of facts I already hold, it is a designed narrative graphic, and
            building it in HTML would mean inventing specifics that would then
@@ -778,26 +509,25 @@
            PALETTE: navy system only, no coral. Human-gated marks (5 and the
            revert) distinguished by SHAPE, not by hue — the same ruling the
            dumbbell marks in the sibling case study carry. -->
-      <figure class="figure figure--wide reveal">
-        <div class="ph" aria-hidden="true">
-          <span class="ph__id">F4</span>
-          <span class="ph__what">One supervised session, illustrative &mdash; status flip, timestamped comments, PR, verification queue, and a revert traced from either surface</span>
-          <span class="ph__dim">16 : 9</span>
-        </div>
-        <figcaption>A supervised work session. Illustrative diagram pending build.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<figure class="figure figure--wide reveal">
+<div aria-hidden="true" class="ph">
+<span class="ph__id">F4</span>
+<span class="ph__what">One supervised session, illustrative — status flip, timestamped comments, PR, verification queue, and a revert traced from either surface</span>
+<span class="ph__dim">16 : 9</span>
+</div>
+<figcaption>A supervised work session. Illustrative diagram pending build.</figcaption>
+</figure>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        07 · SECURITY AND CONFIDENTIALITY
        Part 8. Theme 1 of the three carried themes.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="security">
-    <div class="wrap">
-      <span class="k reveal">07 &middot; Confidentiality</span>
-      <h2 class="section__title reveal" style="margin-top:14px">Whose data is it?</h2>
-      <!-- Section furniture varies here on purpose. This is the one part of the
+<section class="section section--line" id="security">
+<div class="wrap">
+<span class="k reveal">07 · Confidentiality</span>
+<h2 class="section__title reveal" style="margin-top:14px">Governance gets very real when client data is involved</h2>
+<!-- Section furniture varies here on purpose. This is the one part of the
            argument that is a set of independent controls rather than a
            narrative, so it is set as an enumerated list rather than as prose.
            Same reason the sibling report uses .numlist for its executive
@@ -808,159 +538,62 @@
            Part 8 — what leaves the machine is enumerated, including the honest
            item, stated rather than hidden. It moved here when the five
            controls folded to three; it does not get folded out. -->
-      <div class="prose reveal">
-        <p>
-          The question every leader asks right after supervision, and the one place a
-          promise in a prompt is worth nothing. Three controls carry it.
-        </p>
-      </div>
-
-      <ol class="numlist reveal">
-        <li><strong>The account is the privacy boundary.</strong> The AI sees what its own
-          account has been explicitly given and nothing else &mdash; enforced by the
-          platform's membership model, server-side. A client space that has not been shared
-          is not merely off-limits, it is structurally invisible; and because that failure is
-          quiet, the rule runs both ways: grant access deliberately, and when something seems
-          missing, suspect permissions first. Which account is bound is then verified before
-          the AI's first write of a session, and a mismatch is a hard stop &mdash; filed as a
-          bug rather than a documentation change, because the earlier rule assumed the
-          identity was right and let the write proceed when it could not be confirmed. The
-          hazard is real: re-authorizing the connector while a browser is signed in as me
-          silently rebinds every subsequent AI write to my identity, and reports success
-          while doing it. What leaves that boundary is enumerated, including the item nobody
-          enjoys stating: workspace content the agent queries enters model context.</li>
-        <li><strong>Secrets never touch code.</strong> Credentials live in an environment
-          file version control ignores, read through one documented chokepoint. That matters
-          commercially rather than hygienically: it is what makes the work
-          <em>deliverable</em>. A project you cannot hand to a client without first auditing
-          it for leaked keys is a project you do not really own.</li>
-        <li><strong>The blast radius is bounded structurally, not verbally.</strong> The
-          agent layer exposes no destructive tool, so the model cannot delete or overwrite
-          &mdash; not because it was told not to, but because the capability does not exist
-          in the code. And anything pointed near real client data is sandbox-first: a
-          throwaway workspace, watched, before anything that matters. Protection expressed
-          as ordering beats protection expressed as policy.</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<div class="prose reveal">
+<p>The next executive question is always some version of “whose data is this, and where is it going?” This is also the part where promises inside prompts are worth essentially nothing. Three structural controls carry the answer.</p>
+</div>
+<ol class="numlist reveal">
+<li><strong>The account is the privacy boundary.</strong> The AI can see only what its own account has explicitly been given, enforced by the platform's membership model on the server side. An unshared client space is not “off limits”; it is invisible. That cuts both ways, because missing access can fail quietly, so the rule is deliberate on both sides: grant access intentionally, and when something appears to be missing, check permissions before inventing another explanation. The bound account is verified before the first write of a session, and a mismatch is a hard stop. That rule exists because re-authorizing a connector while the browser is signed in as me can silently rebind later AI writes to my identity while reporting success. And the uncomfortable disclosure is stated plainly: workspace content the agent queries enters model context.</li>
+<li><strong>Secrets never touch code.</strong> Credentials live in an environment file ignored by version control and are read through one documented chokepoint. This is not just neat engineering. It is what makes the work commercially <em>deliverable</em>. If I cannot hand a project to a client without first combing it for leaked keys, the client never really owned the system.</li>
+<li><strong>The blast radius is limited in code, not in prose.</strong> The agent layer has no destructive tool, so the model cannot delete or overwrite because those capabilities literally do not exist. Anything pointed toward real client data is sandbox-first: prove the behavior in a throwaway workspace under observation before it gets near something that matters. I trust protection expressed as ordering and capability more than protection expressed as “please don't.”</li>
+</ol>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        08 · SETUP AND FLEXIBILITY
        Part 9. Theme 3. Answers "could your team run this?" without becoming
        a how-to — the genre line the outline draws.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="setup">
-    <div class="wrap">
-      <span class="k reveal">08 &middot; Setup</span>
-      <h2 class="section__title reveal" style="margin-top:14px">A governance system only its author can operate is a hobby</h2>
-      <div class="prose reveal">
-        <p>
-          Three properties decide whether this one travels. All three assume an operator who
-          is a person &mdash; usually the project manager &mdash; and who defines the shape
-          the system works in rather than receiving it.
-        </p>
-        <p>
-          <strong>The correct shape is the default shape.</strong> Templates carry the
-          structure so nobody has to remember it, the skills make the conventions
-          self-applying, and the rulebook is written to be read two ways at once &mdash; by
-          a person, and loaded by an AI as standing instructions. Setup steps carry their
-          reason rather than just their command, and the one hard failure the agent layer
-          can produce tells you the fix instead of printing a stack trace.
-        </p>
-        <p>
-          <strong>Thin pointers, one source of truth.</strong> The most repeated meta-rule in
-          the system, and the one that took the most damage to learn. Every surface that
-          needs the rules &mdash; coding sessions, desktop, web, mobile, the workspace's own
-          built-in AI &mdash; holds a pointer to the canonical document, never a copy.
-        </p>
-        <p>
-          <strong>Replication is configuration, not code.</strong> Once the pattern works for
-          one client it works for the next with a new config file and new database
-          identifiers. Nothing about a second client requires writing software, which is what
-          turns a personal practice into something transferable.
-        </p>
-      </div>
-
-      <aside class="aside reveal">
-        <span class="k aside__label">Sidebar</span>
-        <h3 class="aside__title">The rule that had to be learned twice</h3>
-        <p>
-          The first set of skills was written outside version control. They were lost
-          &mdash; not recoverable on any machine &mdash; and by the time that was
-          discovered they had already drifted out of step with the documents they rendered.
-        </p>
-        <p>
-          The rebuilt set was copied to a second workstation, which seemed sensible. That
-          copy fell weeks behind and ran an outdated rule for two weeks with no symptom at
-          all. A wrong rule executing silently is worse than a missing one, because a
-          missing one announces itself.
-        </p>
-        <p>
-          Both incidents produced the same rule, which is how I know it is the right one:
-          pointers, not copies, plus a setup verification pass that treats drift as a
-          reportable failure rather than something to fix quietly. I want to see the
-          failure before it is papered over.
-        </p>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<section class="section section--line" id="setup">
+<div class="wrap">
+<span class="k reveal">08 · Setup</span>
+<h2 class="section__title reveal" style="margin-top:14px">If only the author can run it, it is a hobby</h2>
+<div class="prose reveal">
+<p>Three things decide whether this travels beyond my own desk. All three assume there is still a human operator — usually the project manager — defining how the system should work rather than inheriting somebody else's rigid process.</p>
+<p><strong>Make the correct shape the default shape.</strong> Templates carry structure so people do not have to remember it. Skills make conventions apply themselves. The rulebook is deliberately readable by both a human and an AI session. Setup steps explain why they exist instead of merely listing commands, and the one hard failure in the agent layer tells the operator how to fix it instead of dumping a stack trace and wishing them luck.</p>
+<p><strong>Use thin pointers and one source of truth.</strong> This may be the most repeatedly learned rule in the entire system. Coding sessions, desktop, web, mobile, and the workspace's own AI all point to the canonical rules. None gets its own “helpful” copy.</p>
+<p><strong>Make replication configuration, not software development.</strong> Once the pattern works for one client, the next deployment should mean new configuration and new database identifiers — not a fresh application. That is the line between a personal workflow and something another organization can actually operate.</p>
+</div>
+<aside class="aside reveal">
+<span class="k aside__label">Sidebar</span>
+<h3 class="aside__title">The same lesson, learned twice</h3>
+<p>The first skills lived outside version control. They were lost — genuinely unrecoverable on every machine — and by the time I discovered that, they had already drifted away from the documents they were supposed to represent.</p>
+<p>The rebuild was then copied to a second workstation, which sounded reasonable. That copy fell weeks behind and quietly ran an outdated rule for two weeks. Nothing broke loudly. That was worse, because a missing rule announces itself while a stale rule can look perfectly healthy.</p>
+<p>Both incidents earned the same policy: pointers, not copies, plus a setup verification pass that reports drift instead of “helpfully” repairing it in silence. I want the failure visible before anything papers over it.</p>
+</aside>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        09 · HOW IT WAS BUILT
        Part 10, and the narrative heart of the piece. Timeline per D-007:
        the PRACTICE started November 2025; the versioned repositories, whose
        measurable history begins in July 2026, formalized something already
        running. Dated from the practice, on the twenty-year foundation.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="built">
-    <div class="wrap">
-      <span class="k reveal">09 &middot; The build</span>
-      <h2 class="section__title reveal" style="margin-top:14px">The system was built by running it on itself</h2>
-      <div class="prose reveal">
-        <p>
-          I started this in November 2025, and for the first stretch it was a practice rather
-          than a product: I worked with the AI inside the workspace, corrected it when it
-          went wrong, and had it write down the correction. The repositories came later, in
-          July 2026, and what they did was formalize something already running for months.
-          The dates in the commit history are when the rules were <em>written down</em>, not
-          when they started being true.
-        </p>
-        <p>
-          Underneath is twenty years of writing code, running repositories and managing
-          projects, which is what decides whether the rules are the right rules. Anyone can
-          generate a best-practice list. What two decades gives you is the knowledge of which
-          practices quietly stop being followed under deadline pressure &mdash; and those are
-          the ones that need a mechanism rather than a paragraph.
-        </p>
-        <p>
-          The method is a loop. I demonstrate a convention live. The AI records the
-          observation. The observation becomes a numbered rule. The rule is compiled into a
-          skill so it applies itself in every future session, and a validator guards its
-          copies against each other. Over all of it sits one standing instruction:
-          <em>ask before assuming.</em>
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">Every rule has an incident behind it</h3>
-      <div class="prose reveal">
-        <p>
-          Nearly every rule carries the date it was captured and the thing that went wrong to
-          produce it. That is not sentimentality about process; it is what stops a rule being
-          deleted by someone &mdash; including me, later &mdash; who cannot see what it is
-          for. The table below is that history. One row is worth telling properly, because it
-          turns on a single word.
-        </p>
-        <p>
-          <strong>One word.</strong> A draft of the rulebook described AI-completed work as
-          &ldquo;pending review&rdquo;. I corrected it with a single word &mdash;
-          <em>wrong</em> &mdash; and that correction is in the record, because it matters
-          more than it looks. If AI-complete means &ldquo;not really done&rdquo;, every
-          AI-completed task is outstanding work in someone's mental queue, the provenance
-          marker becomes a backlog, and the whole point of the split evaporates.
-        </p>
-      </div>
-
-      <!-- FIGURE F5 — built as a table rather than shipped as a placeholder,
+<section class="section section--line" id="built">
+<div class="wrap">
+<span class="k reveal">09 · The build</span>
+<h2 class="section__title reveal" style="margin-top:14px">I built the system by letting it fail on my own work</h2>
+<div class="prose reveal">
+<p>I started in November 2025. For the first several months this was a practice, not a product: I worked with the AI inside my own workspace, corrected it when it did something dumb, and had it write the correction down. The repositories arrived later, in July 2026, to formalize a system that had already been running in the messy real world for months. The commit dates tell you when the rules became <em>software artifacts</em>, not when the underlying lessons first became true.</p>
+<p>Underneath that is about twenty years of writing code, running repositories, and managing projects. That matters because generating a best-practice checklist is easy now. The useful knowledge is knowing which “best practices” disappear the second a deadline gets ugly. Those are the ones that need a mechanism, not a paragraph in an SOP.</p>
+<p>The method became a loop: I demonstrate a convention live. The AI records what happened. The observation becomes a numbered rule. The rule gets compiled into a skill so future sessions load it automatically. A validator then guards the duplicated artifacts against drift. Over the whole thing sits one standing instruction that has saved me more trouble than any clever prompt: <em>ask before assuming.</em></p>
+</div>
+<h3 class="section__sub reveal">Every rule has a specific afternoon behind it</h3>
+<div class="prose reveal">
+<p>Nearly every rule carries a date and the incident that created it. That is not process nostalgia. It is what keeps a future person — including future me — from deleting a rule that looks fussy because they cannot see the failure it prevents. One row deserves its own story because the whole thing turned on a single word.</p>
+<p><strong>One word.</strong> A draft described AI-completed work as “pending review.” I corrected it with one word — <em>wrong</em>. That distinction is structural. If AI-complete really means “not actually done,” every AI-finished task becomes invisible backlog in somebody's head, the provenance status turns into a review queue, and the entire point of separating the work collapses.</p>
+</div>
+<!-- FIGURE F5 — built as a table rather than shipped as a placeholder,
            on the same reasoning as F3: this is a dated list of text, so it is a
            table. It is also the single most persuasive object on the page for
            the audience this piece leads with, and a dashed box saying "timeline
@@ -972,221 +605,143 @@
            given at month resolution because that is the resolution I can defend
            from the commit history without implying a precision the record does
            not carry. -->
-      <div class="rtable reveal">
-        <table>
-          <caption class="visually-hidden">Incidents in the system's history and the rules each one produced, in date order.</caption>
-          <thead>
-            <tr>
-              <th scope="col">When</th>
-              <th scope="col">What happened</th>
-              <th scope="col">What it became</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="is-lead">
-              <td class="yr">Nov 2025</td>
-              <td>The practice starts: conventions demonstrated live and written down as they are used, months before anything is versioned.</td>
-              <td>The loop the system runs on &mdash; observe, record, compile into a skill, and ask before assuming.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>Ten hours after first use, the agent guesses a priority nobody gave it.</td>
-              <td>Default the due date; never default the priority &mdash; in the schema text the model reads, not in a prompt. Twelve days later it graduated into workspace-wide policy: never infer priority, <em>especially not High</em>.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>A session infers a repository name from a selected folder name and files an issue against a repository that does not exist.</td>
-              <td>Resolve the repository from git; never guess. Now a preflight in two skills.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>The first skills, written outside version control, are lost on every machine &mdash; and were already stale against the documents they rendered.</td>
-              <td>Skills version with the rules they carry; a machine links to the repository instead of holding a copy.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>A second workstation's copied skills fall weeks behind and run an outdated rule with no symptom.</td>
-              <td>Link, never copy &mdash; plus a verification pass that treats drift as a reportable failure.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>The AI creates a task for finished work and stamps it through the lifecycle in one pass. I catch it.</td>
-              <td>Backfilling is forbidden. The task comes first, not last.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>A negative rule generalizes wrongly, and the AI refuses to write a task body I had explicitly asked for.</td>
-              <td>The default is stated positively: the only body it must never write is one nobody asked for.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>A sub-task experiment is built, demonstrated, rejected and reverted the same day.</td>
-              <td>The rejection becomes a standing prohibition, with its cleanup gotchas recorded so the idea cannot quietly return.</td>
-            </tr>
-            <tr>
-              <td class="yr">Jul 2026</td>
-              <td>A cross-model review finds the rules drifting against their own duplicated copies.</td>
-              <td>An automated contract check across five classes of drift &mdash; read-only, offline, credential-free &mdash; whose stated philosophy doubles as the system's: <em>duplication drifts, and a check that cries wolf gets deleted.</em></td>
-            </tr>
-            <tr>
-              <td class="yr">Aug 2026</td>
-              <td>A machine-specific fact &mdash; a clock offset &mdash; is inherited from another machine's notes and nearly skews every timestamp the system writes.</td>
-              <td>Machine-local facts are measured per box and can never be inherited.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="prose reveal">
-        <p>
-          Read down the right-hand column and the pattern repeats. The fix is never
-          &ldquo;be more careful&rdquo; &mdash; it is a mechanism: a preflight, a schema
-          string, a link instead of a copy, a validator, an ordering. Care does not survive
-          a Friday afternoon. A preflight does.
-        </p>
-      </div>
-
-      <blockquote class="verdict reveal">
-        I did not design this on a whiteboard and then build it. I used it, badly, in
-        public, on my own business &mdash; and every rule in it is the scar tissue from a
-        specific afternoon that went wrong.
-        <cite>Ryan Hickey</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<div class="rtable reveal">
+<table>
+<caption class="visually-hidden">Incidents in the system's history and the rules each one produced, in date order.</caption>
+<thead>
+<tr>
+<th scope="col">When</th>
+<th scope="col">What happened</th>
+<th scope="col">What it became</th>
+</tr>
+</thead>
+<tbody>
+<tr class="is-lead">
+<td class="yr">Nov 2025</td>
+<td>The practice begins: conventions are demonstrated live and recorded as they are used, months before version control enters the picture.</td>
+<td>The core loop — observe, record, compile into a skill, and ask before assuming.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>Ten hours after first use, the agent invents a priority nobody supplied.</td>
+<td>Default the due date; never default priority. Twelve days later this becomes workspace-wide policy: never infer priority, <em>especially not High</em>.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>A session guesses a repository name from a selected folder and files an issue against a repository that does not exist.</td>
+<td>Resolve the repository from git; never guess. It now runs as a preflight in two skills.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>The first skills, stored outside version control, are lost on every machine — and turn out to have already drifted from the documents they represented.</td>
+<td>Version skills with the rules they carry; machines link to the repository instead of holding copies.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>A second workstation's copied skills fall weeks behind and quietly execute an outdated rule.</td>
+<td>Link, never copy — plus a verification pass that reports drift instead of hiding it.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>The AI creates a task after the work is finished and stamps it through the full lifecycle in one pass.</td>
+<td>Backfilling is forbidden. The task comes first, not last.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>A negatively written rule over-generalizes, and the AI refuses to write a task body I explicitly requested.</td>
+<td>State the default positively: the only body it must never write is one nobody asked for.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>A sub-task experiment is built, demonstrated, rejected, and reverted the same day.</td>
+<td>The rejection becomes a standing prohibition, with the cleanup details recorded so the idea cannot quietly creep back.</td>
+</tr>
+<tr>
+<td class="yr">Jul 2026</td>
+<td>A cross-model review catches the rules drifting against duplicated copies of themselves.</td>
+<td>An automated contract check across five drift classes — read-only, offline, credential-free — whose stated philosophy doubles as the system's: <em>duplication drifts, and a check that cries wolf gets deleted.</em></td>
+</tr>
+<tr>
+<td class="yr">Aug 2026</td>
+<td>A machine-local fact — a clock offset — is inherited from another machine's notes and nearly contaminates every timestamp.</td>
+<td>Machine-local facts must be measured on each box. They are never inherited.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="prose reveal">
+<p>Read the right-hand column and the pattern is almost comically consistent. The fix is never “be more careful.” It is a preflight, a schema string, a link instead of a copy, a validator, an ordering constraint. Human carefulness gets worse at 4:45 on a Friday. A preflight is just as annoying at 4:45 as it was at 9:00 — which is exactly why I trust it.</p>
+</div>
+<blockquote class="verdict reveal">I did not whiteboard this system and then go build it. I used it, badly, in public, on my own business, and turned each failure into a mechanism. If the rulebook feels oddly specific, that is because almost every rule is scar tissue from a specific afternoon that went wrong.<cite>Ryan Hickey</cite></blockquote>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        10 · WHAT IT CHANGES
        Part 11, minus the close. Both D-013 postures, in order: the PM who
        exists commands the system; the org with no PM can finally carry the
        role. Never a headcount saving, never role elimination.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="change">
-    <div class="wrap">
-      <span class="k reveal">10 &middot; The change</span>
-      <h2 class="section__title reveal" style="margin-top:14px">The role, re-divided</h2>
-      <div class="prose reveal">
-        <p>
-          <strong>If you have a project manager, this is theirs.</strong> Not a tool
-          installed alongside them and not a monitoring layer over them &mdash; a command
-          center they operate. The record-keeping half runs under their supervision, at their
-          instruction, in the shape they define, and every action it takes is attributed and
-          narrated back to them.
-        </p>
-        <p>
-          What returns to them is the week they were spending on the record, and it goes
-          where it always should have gone: relationships, foresight, and the vertical
-          communication that decides whether a project is merely delivered or actually good.
-          The complaint they have been making for years turns out to have been a
-          specification.
-        </p>
-        <p>
-          <strong>In an organization that has never had a project manager, the role becomes
-          carryable.</strong> A CTO, a delivery-minded manager or a solo developer can hold
-          it, because the half that was consuming the hours is no longer theirs to do by
-          hand. And because every action is attributed, timestamped and explained, the role
-          can be <em>shared</em> across the people who each own a piece of the work, instead
-          of living undocumented in one exhausted person's head &mdash; which is the version
-          that fails hardest when that person takes a holiday.
-        </p>
-        <p>
-          Either way, the human keeps the decisions. Every gate that matters here is
-          human-gated on purpose: the round boundary, every version bump, closing any issue,
-          the release sign-off. Nothing important closes without a person deciding it has.
-        </p>
-      </div>
-
-      <h3 class="section__sub reveal">What it does not do</h3>
-      <ul class="status reveal">
-        <li>
-          <span class="chip">Not a replacement</span>
-          <p>
-            It does not replace a project manager and it is not a headcount argument. It
-            takes the half of the role nobody became a project manager to do.
-          </p>
-        </li>
-        <li>
-          <span class="chip">Not an engine</span>
-          <p>
-            The Python layer is a teaching-grade scaffold, deliberately frozen once its
-            ideas graduated into governance. Describing it as a production automation
-            platform would be a claim the artifact cannot support.
-          </p>
-        </li>
-        <li>
-          <span class="chip">Not infallible</span>
-          <p>
-            The gates are built to stop mistakes before they ship. Some will get through
-            anyway. The design goal is not zero errors &mdash; it is that every change is small,
-            attributed, linked across both surfaces and reversible with one instruction.
-          </p>
-        </li>
-        <li>
-          <span class="chip">Not measured</span>
-          <p>
-            There is no instrumented before-and-after study behind this page. Every number
-            on it is an artifact count, and a delivery-outcome claim is one I have not
-            earned the right to make.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════════
+<section class="section section--line" id="change">
+<div class="wrap">
+<span class="k reveal">10 · The change</span>
+<h2 class="section__title reveal" style="margin-top:14px">Give the human back the part of the job that needs a human</h2>
+<div class="prose reveal">
+<p><strong>If you already have a project manager, this is theirs.</strong> Not a sidecar somebody installs around them and definitely not a monitoring layer pointed at them. It is a command center they operate. The record-keeping runs under their supervision, in the shape they define, and every AI action is attributed and narrated back into the record.</p>
+<p>What comes back is the time that was disappearing into maintenance. That time can go where it was always more valuable: relationships, foresight, technical interpretation, and the vertical communication that separates “shipped” from “actually good.” The complaint project managers have been making for years turns out to have been a specification.</p>
+<p><strong>If your organization has never had a project manager, the role becomes more carryable.</strong> A CTO, delivery-minded manager, or solo developer can hold the judgment half without also manually maintaining every connective tissue around it. Because each action is attributed, timestamped, and explained, the role can also be <em>shared</em> instead of living undocumented in one exhausted person's head — the setup that fails hardest the moment that person goes on vacation.</p>
+<p>Either way, the consequential decisions stay human. The round boundary, every version bump, issue closure, release sign-off — the gates that matter are human-gated deliberately. The AI can move the work. It does not get to declare the important parts finished by itself.</p>
+</div>
+<h3 class="section__sub reveal">What I am explicitly not claiming</h3>
+<ul class="status reveal">
+<li>
+<span class="chip">Not a replacement</span>
+<p>It does not replace a project manager and this is not a headcount argument. It takes on the half of the role that consumes the hours without being the reason the role is valuable.</p>
+</li>
+<li>
+<span class="chip">Not an engine</span>
+<p>The Python layer is a teaching-grade scaffold and was deliberately frozen when its lessons graduated into governance. Calling it a production automation platform would oversell what the artifact actually is.</p>
+</li>
+<li>
+<span class="chip">Not infallible</span>
+<p>The gates are designed to catch mistakes before they ship. Some will still get through. The target is not zero errors; it is small, attributable, cross-linked changes that can be reversed with one clear instruction.</p>
+</li>
+<li>
+<span class="chip">Not measured</span>
+<p>There is no instrumented before-and-after study behind this case study. Every number here is an artifact count. I have not earned a delivery-speed or ROI claim from this system yet, so I am not making one.</p>
+</li>
+</ul>
+</div>
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
        Closing. The product plug (D-016), then ONE destination: the intro
        call. This is the name's third and final rationed use (D-011a).
        "Hours, not days" is voiced as THE OFFER'S ESTIMATE and never as a
        measured result — the .tm note below says so explicitly, which is what
        keeps the plug inside the evidence rules.
        ══════════════════════════════════════════════════════════════════ -->
-  <section class="section section--line" id="start">
-    <div class="wrap">
-      <div class="close reveal">
-        <h2 class="close__title">Running this in your organization</h2>
-        <p class="close__lede">
-          Want the <strong>Wolfpack AI Command</strong> system for your organization?
-          Integration takes hours, not days &mdash; mostly installing dependencies,
-          configuring the AI, and adapting the rulebook to how your team already runs
-          projects, which Claude, prompted, does most of the work on. The upgraded workspace
-          can be developed safely in parallel, in isolation from your existing Notion (or
-          other) project-management system, so nothing your team relies on today is touched
-          while it is being built.
-        </p>
-        <p class="close__lede">
-          If that is the shape of the problem in front of you, the fastest way to start is
-          a call.
-        </p>
-        <div class="close__ctas">
-          <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Wolfpack</a>
-        </div>
-
-        <p class="tm">
-          Every count on this page &mdash; skills, rules, sections, drift checks, tools,
-          models, dependencies &mdash; was taken from the system's own repositories on 13
-          August 2026 and describes artifacts, not outcomes. No client is identified, no
-          testimonial is reproduced, and no delivery result is claimed, because none was
-          instrumented. The completion figure in section three is drawn from my own client
-          history with startups and from no other source. &ldquo;Hours, not days&rdquo; is
-          the estimate attached to the offer above, based on what integration has taken so
-          far, and is not a measured result.
-        </p>
-      </div>
-    </div>
-  </section>
-
+<section class="section section--line" id="start">
+<div class="wrap">
+<div class="close reveal">
+<h2 class="close__title">What this looks like inside another organization</h2>
+<p class="close__lede">Want the <strong>Wolfpack AI Command</strong> pattern inside your organization? The integration work is mostly dependencies, AI configuration, and adapting the rulebook to the way your team already runs projects. My estimate is hours, not days, and Claude can do a surprising amount of the mechanical adaptation work when it is given the right structure. The upgraded workspace can also be built in parallel, isolated from the Notion — or other project-management system — your team relies on today, so nobody has to beta-test governance on live operations.</p>
+<p class="close__lede">If this is the shape of the problem in front of you — too much project maintenance, too little project judgment, and AI that needs adult supervision — the fastest way to see whether the pattern fits is a conversation.</p>
+<div class="close__ctas">
+<a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" rel="noopener" target="_blank">Contact Wolfpack</a>
+</div>
+<p class="tm">Every count on this page — skills, rules, sections, drift checks, tools, models, dependencies — comes from the system's own repositories as of 13 August 2026. They are artifact counts, not outcome metrics. No client is identified, no testimonial is reproduced, and no delivery result is claimed because none was instrumented. The completion figure in section three comes only from my own startup client history. “Hours, not days” is the estimate attached to the offer above based on integration work so far, not a measured benchmark.</p>
+</div>
+</div>
+</section>
 </main>
-
 <footer class="foot">
-  <div class="wrap foot__inner">
-    <span class="foot__wordmark">Wolfpack</span>
-    <span class="foot__meta">
-      Case study &middot; 2026 &middot;
+<div class="wrap foot__inner">
+<span class="foot__wordmark">Wolfpack</span>
+<span class="foot__meta">
+      Case study · 2026 ·
       <a href="https://wolfstrategyllc.com">wolfstrategyllc.com</a>
-    </span>
-  </div>
+</span>
+</div>
 </footer>
-
 <script src="../case-study-assets/js/reveal.js"></script>
 </body>
 </html>
