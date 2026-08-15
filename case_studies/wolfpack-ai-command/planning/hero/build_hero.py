@@ -167,8 +167,10 @@ def build_svg() -> str:
     colors = {n: c for n, _, c in ICONS}
     sd = shield_d()
 
-    icon_size = 190
-    qx, qy = 168, 178                     # quadrant offsets from the cross
+    # Icon scale and quadrant offsets leave clear margin between each icon,
+    # the axes, and the rim band (#184 iteration 2: more air inside the plate).
+    icon_size = 160
+    qx, qy = 158, 168                     # quadrant offsets from the cross
     cross_y = 555
     positions = {
         "products": (SX - qx, cross_y - qy),
@@ -226,6 +228,20 @@ def build_svg() -> str:
       <stop offset="45%" stop-color="#8FA6E0" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#8FA6E0" stop-opacity="0"/>
     </radialGradient>
+    <!-- The rim band's brushed-steel read: lit from above, darker toward the
+         tip, with a mid-band sheen. Blue-leaning grays only - no new hue. -->
+    <linearGradient id="rimmetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0F4FF"/>
+      <stop offset="30%" stop-color="#C2CEEC"/>
+      <stop offset="55%" stop-color="#DDE6FA"/>
+      <stop offset="100%" stop-color="#96A6CE"/>
+    </linearGradient>
+    <filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="recess" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
     <filter id="rimglow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="16"/>
     </filter>
@@ -257,18 +273,33 @@ def build_svg() -> str:
   {corners}
   {traces()}
 
-  <!-- Shield: blurred rim underlay for glow, plate fill, bold double border. -->
-  <path d="{sd}" fill="none" stroke="#6E8CFF" stroke-width="14"
-        filter="url(#rimglow)" opacity="0.85"/>
+  <!-- Shield. Iteration 2 (#184): the rim is a forged BAND, not a line -
+       a wide brushed-steel stroke with thin specular edges on both sides,
+       a soft recess shadow where the plate sits behind it, and a grounded
+       drop shadow underneath. The plate fill and its transparency are
+       untouched from iteration 1 (Ry: colors and transparency are right). -->
+  <path d="{sd}" fill="#01040F" opacity="0.55" filter="url(#dropshadow)"
+        transform="translate(14 24)"/>
+  <path d="{sd}" fill="none" stroke="#6E8CFF" stroke-width="30"
+        filter="url(#rimglow)" opacity="0.75"/>
   <path d="{sd}" fill="url(#plate)"/>
   <g clip-path="url(#shieldclip)">
     <rect x="{SX - HALF}" y="{TOP}" width="{HALF * 2}" height="330"
           fill="url(#crownlight)"/>
     {halo_svg}
+    <!-- Recess: the plate reads as set back behind the rim band. -->
+    <path d="{sd}" fill="none" stroke="#010613" stroke-width="12"
+          filter="url(#recess)" opacity="0.55"
+          transform="translate({SX} {cross_y}) scale(0.966) translate({-SX} {-cross_y})"/>
   </g>
-  <path d="{sd}" fill="none" stroke="#DCE6FF" stroke-width="9"/>
-  <path d="{sd}" fill="none" stroke="#5F76B8" stroke-width="2.5"
-        transform="translate({SX} {cross_y}) scale(0.945) translate({-SX} {-cross_y})"
+  <!-- Band: light underlay wider than the metal stroke leaves a specular
+       hairline on both edges of the band. -->
+  <path d="{sd}" fill="none" stroke="#EAF0FF" stroke-width="27" opacity="0.95"/>
+  <path d="{sd}" fill="none" stroke="url(#rimmetal)" stroke-width="21"/>
+  <path d="{sd}" fill="none" stroke="#0A1330" stroke-width="1.5" opacity="0.35"
+        transform="translate({SX} {cross_y}) scale(1.002) translate({-SX} {-cross_y})"/>
+  <path d="{sd}" fill="none" stroke="#5F76B8" stroke-width="3"
+        transform="translate({SX} {cross_y}) scale(0.94) translate({-SX} {-cross_y})"
         opacity="0.75"/>
 
   <!-- X-Y axes, clipped to the plate. -->
