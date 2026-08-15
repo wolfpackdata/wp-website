@@ -381,7 +381,7 @@ historically (a third, wrong link shipped on `wp-rates-page#21`).
 
 | What | Why |
 |---|---|
-| **Copy voice** | The voice guide was **deleted** (#150, 2026-08-06) — *"not good enough to be binding"*. Copy is judged by Ry against no written spec |
+| **Copy voice** | The voice guide was **deleted** (#150, 2026-08-06) — *"not good enough to be binding"*. Copy is judged by Ry against no written spec. Non-binding tone reference points (added 2026-08-15) live in `case_studies/README.md` §Voice |
 | Section rhythm / vertical scale | X-4 |
 | Density quantity | X-1 |
 | Deploy mechanics | X-2 — they live in `wp-website/CLAUDE.md` |
