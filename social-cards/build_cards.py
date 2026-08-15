@@ -439,6 +439,36 @@ CARDS = [
                     None, 0.5)],
     },
     {
+        # The Wolfpack AI Command case study. THE INSET IS NOT WHAT THE PAGE'S
+        # OWN HEAD COMMENT BRIEFED — that brief named F1, the split diagram, and
+        # F1 is still a `.ph` placeholder. Briefing a card against art that does
+        # not exist is how a card never gets built, so it is built from the art
+        # that does: the shield.
+        #
+        # Specifically the TILED PRINT rather than the single shield hero, and
+        # the reason is this file's own 360px constraint. The inset is a wide,
+        # shallow band running off the bottom edge — roughly 4:1. The hero is a
+        # single centred shield on a mostly empty field: crop it to 4:1 and you
+        # get either a sliver of shield or a band of empty navy. The print is an
+        # allover monogram, so a band of it is full of whole shields at any crop,
+        # and at a 360px Featured tile it reads unmistakably as one brand's mark
+        # repeating — which is exactly the "treat the inset as texture" rule.
+        #
+        # The crop takes one full row of shields with the row below entering, in
+        # the print's own pixels (2100x1181). framed() anchors to the top, so the
+        # top row stays whole and the partial row does the bleeding.
+        #
+        # The source lives under planning/ and never deploys, like the map
+        # capture above — social-cards/ builds inputs, and an input is allowed to
+        # come from a folder the site does not publish.
+        "out": "case_studies/case-study-assets/img/og-wolfpack-ai-command.png",
+        "logo": "case_studies/case-study-assets/img/wolfpack-logo.png",
+        "title": "An AI Operating Layer for Streamlining Project Delivery",
+        "max_lines": 3,
+        "insets": [("case_studies/wolfpack-ai-command/planning/hero/"
+                    "wolfpack-ai-command-shield-print.jpg", (0, 236, 2100, 800), 0.5)],
+    },
+    {
         # The SetMaster 3 case study. The inset is the track-playlist matrix and
         # deliberately NOT the set editor: the set editor is already the product
         # page's og:image, and two LinkedIn Featured tiles carrying the identical

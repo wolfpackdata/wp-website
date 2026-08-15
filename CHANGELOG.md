@@ -49,6 +49,27 @@ All notable changes to this project are documented here. The format follows
   cards rebuild byte-identical. (#172)
 - `docs/consolidation-case-study-design-plan.md` — the design plan and its 22-entry decision
   ledger, including three decisions flagged for Ry rather than settled. (#172)
+- The third case study, **An AI Operating Layer for Streamlining Project Delivery**
+  (`case_studies/wolfpack-ai-command/`) — the Wolfpack AI Command system: the project
+  manager's role split into a record-keeping half and a judgment half, the first handed to
+  governed AI operators under a written, versioned rulebook, with every consequential
+  decision left human-gated. Public and indexed. Title and standfirst are Ry's verbatim copy;
+  stat tiles carry artifact and method facts only, and the page states plainly that it has no
+  measured outcomes. (#174, #176, #178, #180, #188)
+- The shield hero (`case-study-assets/img/wolfpack-ai-command-shield-hero.jpg`) and its
+  generator `planning/hero/build_hero.py` — a heater shield holding the four Notion database
+  icons in a 2x2 grid, composed from the same committed icon SVGs the page's F6 chips
+  display, so the emblem cannot drift from the icons the page shows. **The first case study
+  hero here that is a generated emblem rather than a screenshot**, and the first figure to
+  carry the four semantic hues as figure content under the ruling that keeps them out of the
+  stylesheet. It ships as the hero figure between the stat tiles and the `.docmeta` colophon,
+  carries no F number, and its build reproduces byte-identically. (#184, #186, #190)
+- `og-wolfpack-ai-command.png`, the fifth entry in `social-cards/build_cards.py`, and the
+  page's row in `check_meta.py`. The card's brief named the split diagram (F1) as its inset;
+  F1 is still a placeholder, so it was built from the art that exists — the tiled shield
+  print, cropped to one full row. At the 360px Featured tile this file's header names as the
+  hard constraint, an allover monogram is texture in a way one centred shield in a 4:1 band
+  is not. The four existing cards rebuild byte-identical. (#190)
 
 ### Fixed
 

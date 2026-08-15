@@ -7,28 +7,30 @@
 <!-- Public and indexed, like the other two case studies in this folder and
      unlike the SetMaster 3 one. Same reasoning: this is a client-facing
      argument aimed at company leaders, and being found is the point.
-     planning/outline.md D-009 records this as the build assumption rather
-     than a confirmed ruling — CONFIRM WITH RY BEFORE DEPLOY. -->
+     CONFIRMED BY RY 2026-08-15, at the deploy gate this comment used to name:
+     planning/outline.md D-009 is now a ruling rather than a build assumption. -->
 <meta content="index, follow" name="robots"/>
 <title>An AI Operating Layer for Streamlining Project Delivery: Wolfpack AI Command · Case Study</title>
 <meta content="Project delivery has a coordination tax: project managers maintain the record while developers spend hours maintaining context around the work. This is how I built a governed AI operating system to give those hours back without giving the AI the decisions." name="description"/>
 <link href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/" rel="canonical"/>
 <link href="../case-study-assets/img/wolfpack-logo.png" rel="icon" type="image/png"/>
-<!-- SOCIAL CARD IMAGE DOES NOT EXIST YET. og-wolfpack-ai-command.png is
-     scheduled as a follow-up task: composed by social-cards/build_cards.py at
-     1200x627 and committed to case-study-assets/img/, the same route
-     og-consolidation-under-pressure.png took. Two consequences until it lands:
-       1. This page is deliberately NOT registered in social-cards/check_meta.py's
-          PAGES table yet — the guard asserts the og:image file exists on disk
-          and would fail the suite the moment the row was added. Register the
-          page in the same PR that commits the image, not before.
-       2. The URL below is already the final one, so nothing has to be edited
-          when the image arrives. It is absolute, on the deploy host, and points
-          at case-study-assets/ rather than this folder name — the folder is
-          renamed to its slug at deploy and a relative path would not survive it.
-     Card art brief: the page's own thesis image (F1) as the inset — the split
-     between the record-keeping half and the judgment half — over the navy field
-     with the title set in Roboto 700. -->
+<!-- SOCIAL CARD — BUILT 2026-08-15, and the page is now registered in
+     social-cards/check_meta.py's PAGES table (the guard asserts the og:image
+     exists on disk and is correctly sized, so the row and the image land
+     together). Composed by social-cards/build_cards.py at 1200x627 and
+     committed to case-study-assets/img/, the same route
+     og-consolidation-under-pressure.png took. Rebuild rather than retouch.
+     The URL below is unchanged from the day this page was written: absolute, on
+     the deploy host, and pointing at case-study-assets/ rather than this folder
+     name, because the folder is renamed to its slug at deploy and a relative
+     path would not survive it.
+     ITS INSET IS NOT THE ORIGINAL BRIEF. That brief named F1, the split
+     diagram, which is still a placeholder on this page — so the card was built
+     from the art that exists: the tiled shield print, cropped to one full row.
+     The reasoning is written out where the card is defined; the short version is
+     that a 360px LinkedIn tile treats the inset as texture, and an allover
+     monogram is texture in a way a single centred shield in a 4:1 band is not.
+     og:image:alt below describes what the card actually shows. -->
 <meta content="article" property="og:type"/>
 <meta content="Wolfpack Data &amp; Strategy" property="og:site_name"/>
 <meta content="https://intake.wolfstrategyllc.com/wolfpack-ai-command/" property="og:url"/>
@@ -37,7 +39,7 @@
 <meta content="https://intake.wolfstrategyllc.com/case-study-assets/img/og-wolfpack-ai-command.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="627" property="og:image:height"/>
-<meta content="An AI Operating Layer for Streamlining Project Delivery, over a diagram separating a project manager's record-keeping workload from the judgment the role depends on." property="og:image:alt"/>
+<meta content="An AI Operating Layer for Streamlining Project Delivery, set over a repeating pattern of the Wolfpack AI Command shield, each one quartered by the icons of the four databases the system governs." property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="../case-study-assets/css/fonts.css" rel="stylesheet"/>
 <link href="../case-study-assets/css/case-study.css" rel="stylesheet"/>
@@ -100,6 +102,42 @@
 <li class="reveal"><b>1 AI identity</b><span>Every system action has a distinct author</span></li>
 <li class="reveal"><b>0 destructive tools</b><span>The agent layer cannot delete or overwrite anything</span></li>
 </ul>
+<!-- HERO FIGURE — the shield (issues #184, #186; placement ruled by Ry
+           2026-08-15, planning/outline.md D-021). It sits between the stat
+           tiles and the document metadata, the slot the financial model case
+           study's hero figure occupies, so the two heroes read as one pattern:
+           kicker, title, standfirst, tiles, image, colophon.
+
+           NOT one of the F1–F6 figures below, and not a substitute for any of
+           them. Those explain a passage and sit beside it; this one carries the
+           title. It is the system's emblem, which is why it takes no F number
+           and why its caption names the four databases rather than reading as
+           evidence of anything.
+
+           Composed rather than shot, and rebuildable:
+           planning/hero/build_hero.py generates it end to end from the four
+           committed Notion icon SVGs the F6 chips already use, so the emblem
+           can never drift from the icons the page itself shows. Regenerate with
+             python build_hero.py \
+               ../../../case-study-assets/img/wolfpack-ai-command-shield-hero.jpg
+           Rebuild rather than retouch — the build is deterministic and was
+           verified byte-identical on 2026-08-15 before this embed landed.
+
+           The four icon hues are figure CONTENT, under the same ruling that
+           settled F6 (D-015, Ry 2026-08-13): the hues live in the committed
+           SVGs, never in the stylesheet. The sheet still introduces no hue
+           beyond the navy system and the neutral figure ground, and the coral
+           ration in case-study.css is untouched — nothing in this JPEG is drawn
+           by the stylesheet. The image is 2100x1181, exactly the 16:9 .shot
+           frame, so nothing is cropped.
+
+           The tiled print variant beside the generator
+           (planning/hero/build_print.py) is a separate artifact and does not
+           deploy. planning/ never deploys; only the finished image does. -->
+<figure class="figure figure--wide reveal">
+<img alt="The Wolfpack AI Command emblem: a luminous shield on a deep navy field, quartered by fine axis lines, holding the four Notion database icons — a green triangle for products, a blue circular arrow for projects, an orange grid for tasks, and a brown meeting glyph for clients." class="shot" fetchpriority="high" height="1181" loading="eager" src="../case-study-assets/img/wolfpack-ai-command-shield-hero.jpg" width="2100"/>
+<figcaption>Wolfpack AI Command. The four databases the system carries — products, projects, tasks, clients — under one set of rules.</figcaption>
+</figure>
 <ul class="docmeta">
 <li><b>In practice since</b> November 2025</li>
 <li><b>Formalized</b> July 2026 into versioned, released rules</li>
@@ -167,7 +205,7 @@
 <p class="pull reveal">The record-keeping consumes most of the hours. It is not why you hire a great project manager, and it is not why anyone becomes one.</p>
 <div class="prose reveal">
 <p>Every good project manager I have worked with eventually makes some version of this complaint, usually while reconciling a board against reality late on a Friday. They are right.</p>
-<p><strong>Extremely boring.</strong> The documentation requirement of excellent project management makes for a pile of exceptionally boring, tedious, "paperwork" work. To grind through a TPS Report after completing the project is terrible.</p>
+<p><strong>Extremely boring.</strong> The documentation requirement of excellent project management makes for a pile of exceptionally boring, tedious, “paperwork” work. To grind through a TPS Report after completing the project is terrible.</p>
 <p>There is one catch: you cannot just stop doing it. The record is what judgment runs on. “Scheduling clairvoyance” is not magic; it is pattern recognition fed by an honest, current account of what happened. Let the record rot and you do not free the project manager — you blind them. Someone calling an audible when a new blocker surfaces can save days. My question became: how can I empower the human part of the project management role with a team of AI agents to crush through the tedium?</p>
 </div>
 <!-- FIGURE F1 — the thesis in one image, and the strongest candidate for
@@ -217,7 +255,7 @@
 <p>The judgment half is valuable, but the record-keeping half looks like overhead on a budget. Companies of every size solve that the same way: under-resource the role and hope the missing work happens anyway.</p>
 <p><strong>Chaos.</strong> Maybe controlled chaos when it's just you, or the team is all veteran developers, but still, chaos when compared to a team containing even a 1-hour-per-day dedicated PM.</p>
 <p>A startup skips the role entirely, which usually means a founder is doing project management badly at 11 p.m. A small or mid-size company gives it to somebody as a side job — enough attention to keep a board looking plausible, nowhere near enough to keep it true. A solo developer is their own project manager by definition, usually <strong>after</strong> the “real work” is done. Different org chart, same missing hours.</p>
-<p>The symptoms of absent project management boil down to <strong>attrition, burnout, and bugs</strong>. Two people build the same thing because nobody linked the work. A workstream sits blocked for three weeks because the one person who would have noticed is dealing with another fire. “Done” becomes a word with five local definitions. For the shareholders reading, these symptoms are <strong>very expensive.</strong></p>
+<p>The symptoms of absent project management boil down to <strong>attrition, burnout, and bugs</strong>. Two people build the same thing because nobody linked the work. A workstream sits blocked for three weeks because the one person who would have noticed is dealing with another fire. “Done” becomes a word with five local definitions. For the shareholders reading, these symptoms are <strong>very expensive</strong>.</p>
 </div>
 </div>
 </section>
@@ -237,7 +275,7 @@
 <ul class="numlist reveal">
 <li><strong>What is it allowed to do?</strong> Not what the model is capable of — what the rules permit, and where those rules live. What data is confidential?</li>
 <li><strong>Who can tell what it did?</strong> Six weeks later, from the record itself, without relying on somebody's memory.</li>
-<li><strong>How do we know when it went wrong?</strong> And once we know, how painful is it to put the system back? It should be "a few clicks" to revert the AI's mistakes.</li>
+<li><strong>How do we know when it went wrong?</strong> And once we know, how painful is it to put the system back? It should be “a few clicks” to revert the AI's mistakes.</li>
 </ul>
 <p>So I built the answers before I built the automation. The system binds together three things: the <strong>system of record</strong> — Notion, where projects, tasks, products and clients live; the <strong>system of work</strong> — GitHub, where code/documents and their history live; and the <strong>AI operators</strong> — Claude as the working agent, another vendor's model as an independent reviewer, and plain Python where code is the better tool. What connects them is a written, versioned body of rules the AI itself has to follow.</p>
 </div>
@@ -502,7 +540,7 @@
 <p>The next executive question is always some version of “whose data is this, and where is it going?” It is also the part where promises inside prompts are worth nothing. Three structural controls carry the answer.</p>
 </div>
 <ol class="numlist reveal">
-<li><strong>The AI has its own Google Workspace and Notion account, and that account is the wall.</strong> It can see only what has deliberately been shared with it. Anything unshared is not just off limits — as far as the AI is concerned, it does not exist. The platform (Google/Notion in this case) enforces that separation, not a rule written into a prompt, and the system confirms it is signed in as the right account before it writes anything. If you properly restrict the accounts dedicated to AI activity — just as you would an employee's — then the AI agents cannot break what they cannot see. This setup with ironclad permission hierarchy is built into the system's foundation.</li>
+<li><strong>The AI has its own Google Workspace and Notion account, and that account is the wall.</strong> It can see only what has deliberately been shared with it. Anything unshared is not just off limits — as far as the AI is concerned, it does not exist. The platform (Google/Notion in this case) enforces that separation, not a rule written into a prompt, and the system confirms it is signed in as the right account before it writes anything. If you properly restrict the accounts dedicated to AI activity — just as you would an employee's — then the AI agents cannot break what they cannot see. This setup with an ironclad permission hierarchy is built into the system's foundation.</li>
 <li><strong>Secrets never touch code.</strong> Credentials live in an environment file ignored by version control and are read through one documented chokepoint. That is not just neat engineering — it is what makes the work commercially <em>deliverable</em>. If I cannot hand a project to a client without combing it for leaked keys, the client never really owned the system.</li>
 <li><strong>The blast radius is limited in code, not in prose.</strong> The agent layer has no destructive tool, so the model cannot delete or overwrite — those capabilities do not exist in the toolset. Anything pointed toward real client data is sandbox-first: prove the behavior in a throwaway workspace before it gets near anything that matters. I trust protection built as capability and ordering more than protection written as “please don't.”</li>
 </ol>
@@ -648,8 +686,8 @@
 <div class="prose reveal">
 <p><strong>The scarce resource is time.</strong> When several development and research projects are moving at once — across multiple people, multiple teams, and a web of overlapping dependencies — clean delivery stops being about whether any one person is talented enough. It becomes orchestration. My definition of excellent project management is straightforward: deliver the work on time without burning out the people doing it. Timely delivery is where revenue arrives. Well-supported employees keep showing up with attention left to do strong work, and strong work supports retention, compensation, and the next round of delivery. When that loop is healthy, it compounds.</p>
 <p>If you already have a project manager, this is theirs. Not a sidecar installed around them and definitely not a monitoring layer pointed at them. It is a command center they operate. The system maintains the record under their supervision and gives them transparency into the work without asking every developer to become a part-time reporter. The PM gets more time for relationships, foresight, technical interpretation, and the vertical communication that keeps a project from becoming a surprise. Developers get hours back too: status updates, handoffs, integration instructions, blockers, dependencies, priority context, and the hundred small facts that evaporate over a weekend all have to be maintained somewhere. In a conventional workflow, engineers pay that tax by hand or the record degrades. Here, the system carries that context continuously so developers can spend more of their time developing.</p>
-<p><strong>There is another bucket of value hiding in the coordination layer.</strong> Parallel developers, parallel AI sessions, and ordinary human intervention eventually create GitHub conflicts; the system is designed to catch many of those collisions early and, when one happens anyway, surface it quickly with a path to reconcile it. But the upside is not limited to time saved. This is the part of Six Sigma thinking I care about: remove the obvious waste and deeper visibility reveals the next layer of waste and opportunity. Once mechanical coordination is carried reliably, the team can <em>go deeper without drowning in process</em>. Tasks and issues can preserve the ideas, refinements, and edge cases a human team has the intelligence to notice but not the bandwidth to develop — more room for creativity, not less, because focused enhancements survive long enough to be evaluated. The same depth matters most around bugs. In a SaaS company, a bug rarely costs only the fix; it consumes investigation, context reconstruction, handoffs, review, support attention, and sometimes customer trust. The system gives developers a shared record for identifying, explaining, and fixing defects — with humans or with AI — while keeping the reasoning and the fix visible to everyone who needs it.</p>
-<p>If your organization has never had a project manager, the role becomes carryable. A CTO, a delivery-minded manager, or a solo developer can hold the judgment half without hand-maintaining all the connective tissue around it. And because each action is attributed, timestamped, and explained, the role can be shared instead of living undocumented in one exhausted person's head. Either way, the consequential decisions stay human. The round boundary, every version bump, issue closure, release sign-off — the gates that matter are human-gated deliberately. The AI moves the work and maintains the connective tissue. It does not get to declare the important parts finished by itself.</p>
+<p><strong>There is another bucket of value hiding in the coordination layer.</strong> Parallel developers, parallel AI sessions, and ordinary human intervention eventually create GitHub conflicts; the system is designed to catch many of those collisions early and, when one happens anyway, surface it quickly with a path to reconcile it. But the upside is not limited to time saved. This is the part of Six Sigma thinking I care about: remove the obvious waste, and deeper visibility reveals the next layer of waste and opportunity. Once mechanical coordination is carried reliably, the team can <em>go deeper without drowning in process</em>. Tasks and issues can preserve the ideas, refinements, and edge cases a human team has the intelligence to notice but not the bandwidth to develop — more room for creativity, not less, because focused enhancements survive long enough to be evaluated. The same depth matters most around bugs. In a SaaS company, a bug rarely costs only the fix; it consumes investigation, context reconstruction, handoffs, review, support attention, and sometimes customer trust. The system gives developers a shared record for identifying, explaining, and fixing defects — with humans or with AI — while keeping the reasoning and the fix visible to everyone who needs it.</p>
+<p>If your organization has never had a project manager, the role becomes carryable. A CTO, a delivery-minded manager, or a solo developer can hold the judgment half without hand-maintaining all the connective tissue around it. And because each action is attributed, timestamped, and explained, the role can be shared instead of living undocumented in one exhausted person's head. Either way, the consequential decisions stay human. The round boundary, every version bump, every issue closure, every release sign-off — the gates that matter are human-gated deliberately. The AI moves the work and maintains the connective tissue. It does not get to declare the important parts finished by itself.</p>
 </div>
 <h3 class="section__sub reveal">What I am explicitly not claiming</h3>
 <ul class="status reveal">
