@@ -152,3 +152,28 @@ deployed site, so paths are never rewritten.
 **Judged by Ry, against no written spec.** This repo carried a voice guide until 2026-08-06
 (#150), when it was removed for not being good enough to bind anything. The case studies
 already here are the reference: read one before writing the next.
+
+### Tone direction (added 2026-08-15)
+
+Still not a binding spec — but there are now two reference texts that sound like Ry, and
+drafts should be checked against them rather than against a generic "polished essay"
+register: the beginner DJ gear guide in the `rml-dj-beginner` repo (`index.html`), and
+Ry's manual edit pass on the AI Command case study (the working-tree diff folded into the
+2026-08-15 tone iteration — see git history). What they have in common:
+
+- **Blunt verdict sentences, often bolded, opening or closing a paragraph.** *"Extremely
+  boring."* *"Chaos."* *"Below that line, they're trash."* One or two per section, where
+  the argument has actually earned them — not sprinkled as a tic.
+- **Personal experience is the evidence.** Dates, own gear, own clients, own mistakes —
+  "the first piece of pro audio gear I ever bought, back in 2008" — never abstract
+  authority. Hedges are honest and casual: *"my own opinion, from my own experience."*
+- **Everyday metaphors over literary ones.** TPS Reports, calling an audible, side
+  quests, tanks. If a metaphor needs a humanities degree, swap it for one from an office,
+  a stage, or a garage.
+- **Plain statements of consequence beat polished aphorisms.** *"For the shareholders
+  reading, these symptoms are very expensive"* — not an inverted-clause epigram. One
+  clever line per section is plenty; when a draft has two, cut the second.
+- **Direct reader address is welcome.** *"Trust me,"* *"I encourage you"* — the reader is
+  a person Ry is talking to, not an audience being written at.
+- **Enthusiasm is allowed and stated plainly.** Things are perfect, huge, tanks. The
+  voice is confident and warm, not measured-at-all-costs.
