@@ -269,7 +269,13 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
    case. */
 .prose { max-width: 68ch; }
 .prose p { color: var(--muted); font-size: 1.0625rem; }
-.prose p + p { margin-top: 18px; }
+/* Vertical rhythm opened up 2026-08-15 (#182), Ry's ruling: the pages read too
+   crowded at 18px paragraph gaps, and the standalone list components (.numlist,
+   .readout, .rtable) sat against prose with little or no margin — he had begun
+   hand-inserting <br> stopgaps, which is the signal the sheet owes the spacing.
+   Spacing lives here, never as <br> in a page. Section rhythm remains
+   deliberately unspecified in the site brief (X-4); these are element tunings. */
+.prose p + p { margin-top: 26px; }
 .prose strong { color: var(--white); font-weight: 600; }
 .prose a { color: var(--muted); }
 .prose a:hover { color: var(--coral); }   /* coral use 5 of 6 */
@@ -429,7 +435,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 /* A short set of numbers, set as a readout rather than a headline. */
 .readout {
   display: flex; flex-wrap: wrap; gap: 10px;
-  list-style: none; margin-bottom: 18px;
+  list-style: none; margin: 26px 0 20px;
 }
 .readout li {
   font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
@@ -589,6 +595,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 /* An ordered list where the number is a marker rather than punctuation. */
 .numlist {
   display: grid; gap: 18px; list-style: none;
+  margin: 28px 0;
   max-width: 74ch; counter-reset: numlist;
 }
 .numlist > li {
@@ -725,7 +732,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   border-radius: var(--radius);
   overflow-x: auto;                    /* wide content scrolls itself */
   max-width: 100%; min-width: 0;
-  margin: 20px 0 34px;
+  margin: 28px 0 34px;
 }
 
 /* THE THIRD TRAP, found by measurement on this build and worth the paragraph.
