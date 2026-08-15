@@ -88,6 +88,7 @@ PAGES = [
     # to guard. Nothing is being missed — a card exists so a page survives being
     # pasted somewhere, and that page is the report.
     ("case_studies/consolidation_under_pressure/index.html", "/consolidation-under-pressure/"),
+    ("case_studies/wolfpack-ai-command/index.html", "/wolfpack-ai-command/"),
     ("sm3-specific-pages/setmaster3/index.html", "/setmaster3/"),
     ("sm3-specific-pages/setmaster3-case-study/index.html", "/setmaster3-case-study/"),
 ]

@@ -18,12 +18,17 @@ case-study-assets/img/ (notion- prefix) so the hero can never drift from the
 icons the page itself shows. If an icon changes in Notion, re-fetch the SVG
 and re-run this script -- rebuild rather than retouch.
 
-Output stays under planning/hero/ (never deploys) until Ry rules on placement
-(asset-only ruling, 2026-08-15). When the page embed is decided, re-run with
-the final path under case-study-assets/img/.
+PLACEMENT IS RULED (Ry, 2026-08-15, outline D-021): the image is the case
+study's hero figure, between the stat tiles and the document metadata. So the
+default output is now the deployed path, case-study-assets/img/, and the
+planning copy was deleted rather than kept in parallel -- one artifact, one
+home. The build is deterministic: re-running it reproduced the approved JPEG
+byte for byte (sha256 14f494c0...92d65c) before the embed landed, which is what
+makes "rebuild rather than retouch" a safe instruction rather than a risky one.
+planning/ itself still never deploys; only the finished image does.
 
 Usage:
-    python build_hero.py [out.jpg]
+    python build_hero.py [out.jpg]      # default: the deployed asset path
 
 Requires: Pillow, and Microsoft Edge for the headless SVG render at
 2100x1181 (the ops_fin hero's dimensions).
@@ -333,7 +338,8 @@ def find_edge() -> str:
 
 
 def main() -> None:
-    out = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "wolfpack-ai-command-shield-hero.jpg"
+    out = (Path(sys.argv[1]) if len(sys.argv) > 1
+           else IMG / "wolfpack-ai-command-shield-hero.jpg")
     svg = build_svg()
     svg_path = HERE / "hero.svg"
     svg_path.write_text(svg, encoding="utf-8")

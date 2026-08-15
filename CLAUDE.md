@@ -63,6 +63,7 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
 | `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — **built 2026-08-11 (#172), not yet deployed**; ships two pages, the report and a `noindex` full-width `transaction-map.html` | — |
+| `case_studies/wolfpack-ai-command/` | `https://intake.wolfstrategyllc.com/wolfpack-ai-command/` | 2026-08-15 (#190) |
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
@@ -210,6 +211,9 @@ Client-facing long-form case studies sharing one stylesheet and one animation sc
 The first one is **The Model Is Your Business Beacon** (`ops_fin_model_support/`), an
 argument that an operational financial model belongs ahead of go-to-market product work.
 The second is **Consolidation Under Pressure** (`consolidation_under_pressure/`, see below).
+The third is **An AI Operating Layer for Streamlining Project Delivery**
+(`wolfpack-ai-command/`, see below) — the Wolfpack AI Command system, and the first case
+study here to carry a **generated emblem** as its hero rather than a screenshot.
 
 Conventions these pages must keep:
 - **The shared stylesheet is the point.** Every case study loads
@@ -282,6 +286,50 @@ Conventions this case study must keep, on top of the folder's:
 - **The social card's inset is the map itself**, captured by
   `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
   rather than retouch, and re-run the capture *before* the card whenever the figure changes.
+
+## `wolfpack-ai-command/` — the AI operating layer case study
+The third case study: how **Wolfpack AI Command** splits the project manager's role, hands
+the record-keeping half to governed AI operators, and leaves every consequential decision
+human-gated. **Built 2026-08-13 (#174); hero, social card and deploy 2026-08-15 (#190).**
+Full outline and decisions ledger:
+[`planning/outline.md`](case_studies/wolfpack-ai-command/planning/outline.md).
+
+Conventions this case study must keep, on top of the folder's:
+
+- **The hero is a generated emblem, not a screenshot** — the first one here that is.
+  `planning/hero/build_hero.py` composes the shield from the four **committed Notion icon
+  SVGs** in `case-study-assets/img/`, the same files the F6 icon chips display, so the emblem
+  and the chips cannot disagree. **Rebuild rather than retouch**; the build is deterministic
+  and was verified byte-identical on re-run. The generator, the SVG intermediates and the
+  tiled print variant all live under `planning/` and never deploy — the finished JPEG in
+  `case-study-assets/img/` is the only copy, deliberately, so there is no second one to drift.
+- **The hero carries no F number** (outline D-021). F1–F6 explain a passage and sit beside
+  it; the hero carries the title. Do not renumber the figures to absorb it.
+- **The four icon hues are figure content, and that is a made ruling** (D-015, Ry
+  2026-08-13). They live in the committed SVGs and in a JPEG, never in the stylesheet, so the
+  shared sheet still introduces no hue beyond the navy system and the figure ground, and the
+  coral ration is untouched. This is the ruling a future case study cites when it needs a
+  hue: put it in the figure, not in the sheet.
+- **The social card's inset is the tiled print, not the brief's F1.** The original card brief
+  named the split diagram, which is still a placeholder — so the card was built from the art
+  that exists. The reasoning is in `social-cards/build_cards.py` beside the card; the short
+  version is that a 360px LinkedIn tile treats the inset as texture, and an allover monogram
+  is texture in a way one centred shield in a 4:1 band is not.
+- **The name is rationed to ~three uses in the body** (D-011): the hero standfirst, the Part 5
+  introduction, and the closing plug. Running copy uses common nouns — *the system*, *the
+  command center*, *the operating layer*. The full branded name lives in the `<title>`, the
+  card, and off-page sales surfaces. **The h1 and the standfirst are Ry's verbatim copy**
+  (D-019, revised by him 2026-08-15 under D-020) — not drafted copy, and not rewordable
+  without him.
+- **No measured outcome, and the tiles say so.** Every stat tile carries an artifact or
+  method fact counted in the system's own repositories on 13 Aug 2026, and the `.docmeta`
+  states *Measured outcomes: None*. There is no instrumented result behind this system; a
+  tile reading "40% faster delivery" would be the single most damaging thing the page could
+  carry. **Pre-deploy gate that is still live:** the "54 rules" count is the repo mirror's,
+  and the planning notes record that the live rulebook page has drifted ahead of that mirror.
+  Re-count before any re-deploy that touches the number.
+- **It empowers project managers; it never replaces them** (D-013). Copy must not imply the
+  role's elimination or a headcount saving — a working PM should read this and want it.
 
 ## `portfolio/` — portfolio & case study landing page
 One page presenting the case studies written so far and the applications and workflows in

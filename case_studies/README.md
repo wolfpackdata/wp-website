@@ -8,6 +8,7 @@ they read as a set rather than as pages that happen to look similar.
 | **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91), re-deployed same day with its figure placeholders hidden (#99) |
 | **Consolidation Under Pressure** | `consolidation_under_pressure/` | `intake.wolfstrategyllc.com/consolidation-under-pressure/` | Founders, directors, and operating executives | **indexed** | **Built 2026-08-11** (#172). Not deployed |
 | ↳ its transaction map | `consolidation_under_pressure/transaction-map.html` | `…/consolidation-under-pressure/transaction-map.html` | as above | **noindex** | as above |
+| **An AI Operating Layer for Streamlining Project Delivery** | `wolfpack-ai-command/` | `intake.wolfstrategyllc.com/wolfpack-ai-command/` | Hiring companies lead; buyers of the system and project clients read along | **indexed** (ruled by Ry 2026-08-15, outline D-009) | **Built 2026-08-13** (#174). Hero + social card 2026-08-15 (#190). **Deployed 2026-08-15** (#190) |
 
 Linked from the `.cases` grid on both `hire/` pages, where it replaced the
 transaction-tracking placeholder, and from the portfolio page. As of 2026-08-04 it is no longer
@@ -24,12 +25,17 @@ case_studies/                ← NOT a deploy path; a workspace
 │   ├── index.html                                               │
 │   └── planning/            ← outline, decisions, source brief  │ (planning/
 │       └── hero/            ← the hero generator + its source   ├─ never
-└── consolidation_under_pressure/                                │  deploys)
-    ├── index.html                                               │
-    ├── transaction-map.html ← the same figure, full width       ┘
-    └── planning/            ← the source document, the brief,   (not deployed)
-        │                      and the copy guard
-        └── card/            ← the social card's capture generator
+├── consolidation_under_pressure/                                │  deploys)
+│   ├── index.html                                               │
+│   ├── transaction-map.html ← the same figure, full width       ┘
+│   └── planning/            ← the source document, the brief,   (not deployed)
+│       │                      and the copy guard
+│       └── card/            ← the social card's capture generator
+└── wolfpack-ai-command/
+    ├── index.html
+    └── planning/            ← outline + decisions ledger        (not deployed)
+        └── hero/            ← the shield generator, the tiled
+                               print, and the rendered SVGs
 ```
 
 **A case study may ship more than one page.** `consolidation_under_pressure/` is the first
