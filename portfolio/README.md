@@ -88,12 +88,15 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
   through the nav CTA and the hero CTA, so nothing about the one-destination rule changed. Do
   not re-add a closing section, and do not "restore" the `#contact` nav item: there is no
   `#contact` section for it to point at.
-- **Every case card carries a real image.** The financial model card showed a `Figures in
-  preparation` panel until its case study had a figure; it now carries that page's beacon hero
-  (#113), built at card width by
+- **Every case card carries a real image, and none of them is a re-encode.** The financial
+  model card showed a `Figures in preparation` panel until its case study had a figure; it now
+  carries that page's beacon hero (#113), built at card width by
   `case_studies/ops_fin_model_support/planning/hero/build_hero.py` rather than re-encoded from
-  the page-sized file. The `.case__shot--empty` device stays in the stylesheet for the next
-  unpublished study.
+  the page-sized file. The AI Command card (#192) is built the same way, by that case study's
+  own `build_hero.py`, which grew the identical output-width argument for the purpose —
+  **one composition, several sizes, no generational loss.** Rebuild a card image rather than
+  scaling the delivered one. The `.case__shot--empty` device stays in the stylesheet for the
+  next unpublished study.
 - **`reveal.js` is copied, never rewritten** — byte-identical to `hire/assets/js/reveal.js`
   apart from its header comment, so reveal timing and scroll-spy match every other long-form
   page here.
@@ -105,15 +108,16 @@ gets a `.btn--ghost` link; an unpublished one gets the `.case__chip` "In prepara
 the same size, so adding the link later changes one element and not the layout. Case numbers
 come from a CSS counter, so they renumber themselves.
 
-**Both cards are live links as of 2026-08-04.** The SetMaster 3 study deployed that day (#104)
-and its chip became a link, which is what the device was for. No `.case__chip` is in use on the
-page right now; the rule stays in the stylesheet for the next unpublished study.
+**All three cards are live links as of 2026-08-15.** The SetMaster 3 study deployed on
+2026-08-04 (#104) and its chip became a link, which is what the device was for; the AI Command
+study deployed on 2026-08-15 and was added already linked (#192). No `.case__chip` is in use on
+the page right now; the rule stays in the stylesheet for the next unpublished study.
 
 **The no-links rule is about the `hire/` résumés specifically, not about `noindex`.** Design
 plan **D-003** and **D-010** settle it: a case study carries none of the résumé's problems, and
 neither published study links back to `hire/`, so nothing here creates a path to those pages.
-As of 2026-08-04 both linked case studies are **indexed** anyway, so this page links nothing
-`noindex` at all. The rule that still binds: **never link `hire/`.**
+As of 2026-08-15 all three linked case studies are **indexed** anyway, so this page links
+nothing `noindex` at all. The rule that still binds: **never link `hire/`.**
 
 **Use an absolute URL for a case-study link, not a relative one.** In this repo a case study
 lives at `case_studies/<name>/`, but it deploys to its own root-level slug, so the two layouts

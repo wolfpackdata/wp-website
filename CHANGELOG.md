@@ -70,6 +70,15 @@ All notable changes to this project are documented here. The format follows
   print, cropped to one full row. At the 360px Featured tile this file's header names as the
   hard constraint, an allover monogram is texture in a way one centred shield in a 4:1 band
   is not. The four existing cards rebuild byte-identical. (#190)
+- A third card in the portfolio page's `.cases` grid, linking the AI Command case study at its
+  deployed URL, added the day it went live. It went in already linked rather than through the
+  `.case__chip` "In preparation" device, because the study was published before the card
+  existed. Its image is **generated at card width by that case study's own `build_hero.py`**,
+  which grew the output-width argument its financial-model counterpart already had — one
+  composition, several sizes, never a re-encode of the delivered file. The section lede stopped
+  saying "Both are published", a sentence that went wrong the moment a third study existed.
+  The page still has exactly one destination, the 30-minute intro call, and coral is still at
+  six. (#192)
 
 ### Fixed
 
