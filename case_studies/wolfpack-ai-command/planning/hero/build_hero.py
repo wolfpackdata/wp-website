@@ -28,7 +28,8 @@ makes "rebuild rather than retouch" a safe instruction rather than a risky one.
 planning/ itself still never deploys; only the finished image does.
 
 Usage:
-    python build_hero.py [out.jpg]      # default: the deployed asset path
+    python build_hero.py [out.jpg] [out_width]   # defaults: the deployed asset
+                                                 # path, at the full 2100px
 
 Requires: Pillow, and Microsoft Edge for the headless SVG render at
 2100x1181 (the ops_fin hero's dimensions).
@@ -340,6 +341,7 @@ def find_edge() -> str:
 def main() -> None:
     out = (Path(sys.argv[1]) if len(sys.argv) > 1
            else IMG / "wolfpack-ai-command-shield-hero.jpg")
+    out_w = int(sys.argv[2]) if len(sys.argv) > 2 else W
     svg = build_svg()
     svg_path = HERE / "hero.svg"
     svg_path.write_text(svg, encoding="utf-8")
@@ -370,8 +372,22 @@ def main() -> None:
         im = Image.open(png).convert("RGB")
         if im.size != (W, H):
             im = im.crop((0, 0, W, H))
-        im.save(out, "JPEG", quality=92, optimize=True)
-    print(f"wrote {out} ({W}x{H}) and {svg_path}")
+        if out_w != W:
+            # A derivative, composed once at 2100 and delivered smaller — the
+            # route the financial model hero's generator already takes for the
+            # portfolio card and the blog cover. One composition, several sizes,
+            # no generational loss: never re-encode the delivered JPEG.
+            #
+            # 4:4:4 here, unlike the full-size save below. The shield's rim is a
+            # one-pixel white line and the four icons are small saturated shapes;
+            # at card width 4:2:0 smears both, and the file is small enough that
+            # the chroma costs nothing worth having.
+            im = im.resize((out_w, round(out_w * H / W)), Image.LANCZOS)
+            im.save(out, "JPEG", quality=88, subsampling=0,
+                    optimize=True, progressive=True)
+        else:
+            im.save(out, "JPEG", quality=92, optimize=True)
+        print(f"wrote {out} ({im.width}x{im.height}) and {svg_path}")
 
 
 if __name__ == "__main__":

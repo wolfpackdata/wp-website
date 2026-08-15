@@ -368,8 +368,10 @@ Conventions the page must keep:
   still six because the button moved rather than being duplicated. The intro call still
   reaches the reader twice, through the nav CTA and this button, so the one-destination rule
   below is untouched. Don't restore the `#contact` nav item; there is no `#contact` section
-  left for it to point at. Both case cards carry a real image, the financial model one using
-  the case study's beacon hero built at card width.
+  left for it to point at. All three case cards carry a real image — the grid went from two to
+  three on 2026-08-15 (#192), the day the AI Command case study deployed. Two of them are
+  built at card width by their case study's own hero generator rather than re-encoded from
+  the page-sized file; rebuild rather than scale.
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.
