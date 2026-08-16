@@ -125,17 +125,40 @@ deployed site, so paths are never rewritten.
     that nobody will zoom. That column is blurred in the committed source capture *and*
     again at build time, and the figcaption says identifying details are obscured. Check any
     new capture at 5x or 6x before it ships, not at page scale.
-- **A generated figure ships with the thing that generated it.** The financial model hero is
-  composed, not shot: `ops_fin_model_support/planning/hero/build_hero.py` takes the source
-  capture in the same folder and writes
-  `case-study-assets/img/fin-model-beacon-hero.jpg`. The generator and its input live under
-  `planning/`, so neither deploys, and only the finished image does. An asset nobody can
-  rebuild is an asset nobody can correct.
-  - Anything generated still answers to the palette rules above. The hero's light is white
+- **Every image commits its master under `planning/`, and nothing is ever retouched where it
+  sits.** That is the whole rule. **It is deliberately not "images are generated"** — art
+  arrives here by more than one route, and a hero Ry hands over is as legitimate as one a
+  script composes. What is never acceptable is an image on the page that nobody can get back
+  behind.
+
+  Two provenances, both first-class, neither the exception:
+
+  | | The master is | To change it |
+  |---|---|---|
+  | **Generated** | The generator and its input | Re-run the generator. **Rebuild rather than retouch** |
+  | **Supplied** | The original file as delivered | Re-derive from the master. **Never edit in place** |
+
+  - **Generated** — the financial model hero is composed, not shot:
+    `ops_fin_model_support/planning/hero/build_hero.py` takes the source capture in the same
+    folder and writes `case-study-assets/img/fin-model-beacon-hero.jpg`. The AI Command shield
+    works the same way. Determinism is the point: an asset a script can rebuild is an asset
+    anyone can correct without art skills.
+  - **Supplied** — the Consolidation Under Pressure hero is a PNG Ry provided, with no
+    generator and no prospect of one. **The committed original is the master**, so it is the
+    thing that must never be lost, and every derivative records the *derivation* command that
+    produced it. A supplied asset is not a lesser one; it just relocates where "the original"
+    lives. Do not go looking for a `build_hero.py` beside it, and do not write one to
+    retro-fit the other pattern.
+
+  In both cases the master lives under `planning/`, so it never deploys, and only the finished
+  image does.
+
+  - **Both answer to the palette rules above.** The financial model hero's light is white
     carrying a trace of coral, its fringes are a tint of the navy, and its one coral element
     mirrors the coral border on `.hero__stand` immediately above it on the page. Coral drawn
     inside a JPEG does not spend a use from the stylesheet's ration of six, but it does have
-    to look like it belongs to the same system.
+    to look like it belongs to the same system. Supplied art is held to the same standard;
+    the check is the eye, not the build script.
 - **Every case study carries the full Open Graph head block.** A case study is a page people
   paste into LinkedIn, so its link preview is part of the page. The block sits immediately
   after the `canonical`/`icon` links and carries, without omissions:
