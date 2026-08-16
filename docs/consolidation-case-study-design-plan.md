@@ -2,7 +2,8 @@
 
 **Folder:** `case_studies/consolidation_under_pressure/`
 **Public URL:** `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`
-**Built:** 2026-08-11 (#172) · **Deployed:** not yet
+**Built:** 2026-08-11 (#172) · **Deployed:** 2026-08-15 (`ai-coaching-intake#74`), from
+`develop 64fa14d`, both pages
 **Source material:** `wolfpackdata/dj-gear-study`, `docs/strategy/` — the report
 (`ma-landscape-report.html`), the standalone map (`ma-transaction-map.html`), the prose
 source of record (`01-ma-landscape-2016-2026.md`) and the creative brief
