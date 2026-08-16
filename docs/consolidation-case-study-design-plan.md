@@ -207,13 +207,21 @@ touched. The probe's exclusion list knew about `.rtable` and `.dtable` and not a
    "losses", the categorical causal claim and the Native Instruments diagnosis. **The
    corrections in #195 are corrections of fact, not of house style**, so the upstream document
    is now wrong in the same four places this page used to be. Worth porting back.
-6. **Not deployed.** `/consolidation-under-pressure/` 404s until the folder and the updated
-   `case-study-assets/` are copied into `wolfpackdata/ai-coaching-intake`. Two folders, and
-   `planning/` never deploys. **The shared stylesheet changed in this round, so re-deploying
-   this case study means re-deploying `case-study-assets/` — which the other two case studies
-   also read.** Both were swept for overflow and are unaffected.
-4. **The Web Property Map goes stale on deploy** — a new page and a new URL. Update the
-   Notion page in the same round.
-5. **The report is dated 11 August 2026 and says so.** Several Part Nine watch-list items
+6. ~~**Not deployed.**~~ **Deployed 2026-08-15** at `/consolidation-under-pressure/`
+   (`ai-coaching-intake#74`), from `develop 64fa14d`, both pages. `case-study-assets/` needed
+   **no copy** — the intake's own #73 had re-copied it whole an hour after #200 merged, so the
+   lane hues, `map.js` and the social card were already sitting there unreferenced. That is the
+   re-copy-whole rule paying for itself, and it was verified rather than assumed: all 27 tracked
+   asset files were copied over the deployed ones and `git status` came back empty. **The other
+   two case studies are untouched by this deploy**, having already taken the shared-sheet
+   restyle in #73.
+   - **One correction landed with it.** The intake's log entry (10) described the CSS it carried
+     as `#182` and `#195` only; it also carried `#199`/`#200`. Nothing caught it because neither
+     change touches the other two deployed pages. Corrected in the intake's entry (11) rather
+     than by editing the old entry.
+7. ⚠️ **The Web Property Map is now stale** — a new page and a new public URL went live on
+   2026-08-15 and the Notion page has not been updated. `CLAUDE.md`'s standing rule is to tell
+   Ry rather than silently edit it, so this is the telling.
+8. **The report is dated 11 August 2026 and says so.** Several Part Nine watch-list items
    will resolve; the closing fine print already tells the reader to read it as of its issue
    date, which is the brief's own instruction for a later publication.
