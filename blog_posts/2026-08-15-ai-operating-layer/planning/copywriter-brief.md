@@ -148,6 +148,10 @@ No intake-form link, no rates link, no portfolio link, no résumé download.
 
 ## 8. Traps
 
+- **Never hard-wrap a list item.** The converter joins wrapped lines inside a paragraph but
+  not inside a bullet (#208), and it fails silently — a two-line bullet becomes a one-item
+  list plus an orphan paragraph. This post hit it and was caught at the payload stage, not by
+  any check. Wrap prose freely; keep every bullet on one line.
 - **Do not put a number on "days, not months".** The intro's integration claim (#203) is the
   offer's estimate, on the same footing as the case study's *"hours, not days"*. A percentage,
   a week count, or a before-and-after turns it into a measured result the work cannot support.

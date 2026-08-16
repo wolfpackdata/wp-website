@@ -1,6 +1,6 @@
 # Workflow — An AI Operating Layer for Streamlining Project Delivery
 
-Phase: 2 — draft in hand, **push deliberately not made**
+Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ Phase: 2 — draft in hand, **push deliberately not made**
 | Notion content  | https://app.notion.com/p/3bec70e5c7b481dbbe75d5d1bac184f5 (Blog Post 7) |
 | Notion LinkedIn | https://app.notion.com/p/3bec70e5c7b48156ab99f601cbb3aae1 |
 | Notion task     | https://app.notion.com/p/3bec70e5c7b481969071d68ca7b436c8 (8. Launch the … blog post) |
-| Wix draft ID    | **(unset — never pushed)** |
+| Wix draft ID    | **`4c8c192e-cd4a-428b-8e0f-995c4a247909`** — pushed 2026-08-15, `UNPUBLISHED` |
 | Live URL        | (unset) |
 | Slug            | `ai-operating-layer-for-project-delivery` |
 | Cover           | `cover.jpg`, 1200 x 675, 49 KB — the case study's shield hero, downscaled |
@@ -22,35 +22,58 @@ authoring half of Phase 2 both happened on 2026-08-15, and there is **no `raw-bl
 the body went straight into `post.md`. `planning/copywriter-brief.md` was written alongside it
 and is a record of the constraints plus the spec for a redraft, not a handoff anybody acted on.
 
-**Everything from the push onward is untouched.** No payload was built, nothing was uploaded to
-the Wix Media Manager, no tags were created, and no draft exists in the dashboard.
+The push followed on 2026-08-15, on Ry's separate go-ahead, so Phases 1 and 2 both closed the
+same day. **Nothing was published** — the draft sits in the dashboard at `UNPUBLISHED`, and
+`--publish` was never used.
 
-## Before the next session pushes this
+## A re-push is a PATCH, never another POST
 
-- **There is no draft ID.** The next push is `POST /blog/v3/draft-posts`, not a `PATCH`.
-  Record the returned ID in the table above and commit it in the same session — the SetMaster
-  post (#147) is the worked example of what happens when nobody does.
-- **`project management` is a new Wix tag.** `AI engineering` already exists (created by the
-  five-projects post). Creating a tag is a real Wix entity, so it needs Ry's yes.
-- **`featured` is set to `false`** and is a guess. The SetMaster post is the only `true` in
-  this folder.
-- The case study this post links is **live** — `https://intake.wolfstrategyllc.com/wolfpack-ai-command/`
-  was fetched and confirmed 2026-08-15. The root `CLAUDE.md` deployment table does not list it
-  and is stale on this point; do not re-derive the answer from that table.
-- **The push is Ry's call, not a leftover chore.** He asked for the post without publishing it.
+**`PATCH /blog/v3/draft-posts/4c8c192e-cd4a-428b-8e0f-995c4a247909`.** A `POST` creates a
+second post — #147 is the worked example of what happens when the ID lives nowhere. The
+`PATCH` is a partial update, so a retitle or a cover swap is a two-field patch. Send a rebuilt
+body only when the body actually changed, and hash the live body against a fresh build first,
+in case Ry has edited the draft in the dashboard.
 
-## Open questions for Ry — the Phase 2.4 batch, unasked
-
-Collected rather than drip-fed, in the order the push needs them:
-
-| | |
+| Resolved at push time | |
 |---|---|
-| Tags | `AI engineering` (exists) + `project management` (**new — needs approval**). Or drop the second |
-| `featured` | Currently `false` |
-| Slug | `ai-operating-layer-for-project-delivery`. It is the URL and the Wix draft preview will show a title-derived path instead, so confirm it in the dashboard |
-| Excerpt | **Ry's copy** (2026-08-15, #201), and the case study's `og:description` is the same sentence. Nothing guards that pair — change both or neither |
-| `date` | `2026-08-15` |
-| LinkedIn | `raw-linkedin-post.md` is written and is Ry's to post. It points at the profile link rather than pasting a URL, matching the five-projects draft |
+| Cover media | `e00ee6_a2fce010a5b344f5b1c10981d43c913b~mv2.jpg` — Wix reports 1200 x 675, which is what was sent |
+| `AI engineering` | `1e614466-776a-4b7e-9fa8-5da9e3eee0f3` — existing, created by the five-projects post |
+| `project management` | `1e4b5fb4-5cd1-48f7-a802-e8f092631aaa` — **created by this push** |
+| `featured` | `false` |
+| Excerpt | **Ry's copy** (#201), and the case study's `og:description` is the same sentence. Nothing guards that pair — change both or neither |
+| Author | `e00ee638-af7f-4aac-aa2b-c99d795ecf78`, the converter default, matching the other posts |
+
+## Three things this push learned
+
+1. **`blog_posts/README.md` was wrong about tags.** It said creating one that already exists
+   returns the existing one. It does not — `POST /blog/v3/tags` returns **`409 ALREADY_EXISTS`**,
+   and existing tags have to be resolved with `GET /blog/v3/tags`. Corrected in the README in
+   the same PR.
+2. **The converter silently mangles hard-wrapped list items** (#208). This post had three
+   ordered items and seven bullets wrapped across source lines, and every one converted to a
+   single-item list plus an orphan paragraph — three lists all numbered `1.`. Caught by reading
+   the payload before sending, not by any check. Every list item here is now on one line and
+   must stay that way.
+3. **The cover uploaded from its raw GitHub URL**, not from base64, after confirming
+   byte-for-byte that the URL serves exactly the committed file. `wp-website` is public, so
+   `raw.githubusercontent.com/wolfpackdata/wp-website/develop/<path>` is a legitimate route for
+   any future asset here, and it sidesteps the Wix media importer a previous push found blocked
+   by policy.
+
+## Outstanding — all Ry's
+
+- **Proofread and publish** from the Wix dashboard. Nothing is public until he does;
+  `--publish` was never used. **Confirm the slug there** — the draft preview path is
+  title-derived (`/post/an-ai-operating-layer-for-streamlining-project-delivery`), which is the
+  README's third fidelity limit rather than a mistake. `seoSlug` is stored correctly.
+- **Post the LinkedIn subpost** (`raw-linkedin-post.md`), then boost.
+- Then Phase 3 bookkeeping: the Content DB row to `Published` with its URL and date, the
+  remaining task to-dos, and the **Web Property Map**, which a published post linking
+  `intake.wolfstrategyllc.com` makes stale.
+
+Two calls were made on his behalf rather than blocking the push, both cheap to reverse:
+`featured` is `false`, and the new `project management` tag was created. Featuring or retagging
+is a two-field `PATCH`; the tag is deletable.
 
 ## Rulings applied
 
@@ -82,6 +105,18 @@ src.resize((1200, 675), Image.LANCZOS).save(
   Notion trail created (Blog Post 7, the LinkedIn row, task 8 under the case study project),
   brief and source notes written, cover built, `post.md` and `raw-linkedin-post.md` written.
   Converter dry-run clean. **No Wix push**, per Ry.
+- 2026-08-15 — **Pushed to Wix as an unpublished draft** (#209).
+  `POST /blog/v3/draft-posts` returned `4c8c192e-cd4a-428b-8e0f-995c4a247909`, status
+  `UNPUBLISHED`, 65 rich-content nodes, 5 minutes to read. Cover uploaded as
+  `e00ee6_a2fce010a5b344f5b1c10981d43c913b~mv2.jpg` (1200 x 675). One tag was new
+  (`project management`), one existing (`AI engineering`). The draft was read back and matches
+  what was sent field by field: title, excerpt, both tag IDs, `seoSlug`, cover dimensions,
+  `featured: false`, `memberId`, both outbound links, all three lists at 3/3/4 items, and every
+  em dash intact.
+  **Blocked and fixed before sending:** the payload's first build had every hard-wrapped list
+  item split into a one-item list plus an orphan paragraph (#208). The post's list items were
+  unwrapped onto single lines — prose verified character-identical afterwards — and the payload
+  rebuilt from 99 nodes to a correct 65.
 - 2026-08-15 — Intro gained two framing paragraphs on Ry's instruction (#203): the post is an
   abbreviated summary of the case study, and the system is ready to integrate now, adding value
   in **days, not months**. They sit after the verbatim opener, not above it, and they are the
