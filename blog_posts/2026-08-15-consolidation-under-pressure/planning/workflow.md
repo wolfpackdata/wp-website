@@ -1,0 +1,94 @@
+# Workflow — Consolidation Under Pressure
+
+Phase: 2 — draft in hand, pushing
+
+| | |
+|---|---|
+| Folder          | `blog_posts/2026-08-15-consolidation-under-pressure/` |
+| GitHub issue    | wolfpackdata/wp-website#211 |
+| Notion content  | https://app.notion.com/3bec70e5c7b481d6a989d58078f983b3 (Blog Post 8) |
+| Notion LinkedIn | https://app.notion.com/3bec70e5c7b481f88a39f5d371af4db5 |
+| Notion task     | https://app.notion.com/3bec70e5c7b4811089f1ee8b102919c3 |
+| Notion LinkedIn task | https://app.notion.com/3bec70e5c7b4818c93fac31fb42dd836 |
+| Wix draft ID    | **(unset — push pending this session.** When it lands it goes here, and a re-push is then a `PATCH`, **never another `POST`** — #147 is the worked example of what happens when the ID lives nowhere.) |
+| Live URL        | (unset) |
+| Slug            | `consolidation-under-pressure-music-gear` |
+| Cover           | `cover.jpg`, 1200 x 675, 226 KB — Ry's supplied hero art, downscaled |
+
+## The cover is supplied art — there is no generator
+
+The master is
+`case_studies/consolidation_under_pressure/planning/consolidation-under-pressure-hero.png`
+— 1337 x 752 RGBA, 2,202,468 bytes — **supplied by Ry on 2026-08-15** and committed
+with this round. The filename as supplied was `consolidation under pressure hero.png`,
+with spaces; it was **renamed on commit** to match this repo's asset naming, and the
+original is left untracked in the main checkout for Ry to delete.
+
+**Unlike the other two case-study covers, there is no `build_hero.py`.** The
+financial model and AI Command heroes are both composed by a committed generator and
+the standing instruction there is *rebuild rather than retouch*. Here the committed
+PNG **is** the master, and the art appears nowhere else in the repo — this case
+study's own hero is a text hero with stat tiles and no image. **Retouching means
+asking Ry for new art.** There is nothing to re-run.
+
+`cover.jpg` was derived from that master with:
+
+```python
+from PIL import Image
+src = Image.open(r'case_studies/consolidation_under_pressure/planning/consolidation-under-pressure-hero.png')
+img = src.convert('RGB').resize((1200, 675), Image.LANCZOS)
+img.save(r'blog_posts/2026-08-15-consolidation-under-pressure/cover.jpg', 'JPEG', quality=88, optimize=True, progressive=True)
+```
+
+## Rulings applied
+
+| | |
+|---|---|
+| Title | The case study's `h1`, **verbatim** — the #119 rule. No colon, so unquoted |
+| Slug | Confirmed by Ry 2026-08-15. Deliberately does not follow the title |
+| Body | Lifted verbatim from **the PAGE**, never the vendored `.md` — that file has been stale since #197. Passage map, every cut and every punctuation deviation in `planning/source-notes.md` |
+| Numbers | Only the page's vetted meta-description set: **2016–2026 as digits**, and **forty-three / thirty-one as the page's own words** inside a verbatim lift. **The map's event count appears nowhere** — design plan **D-009** is open with Ry (brief says 41, dataset holds 42) |
+| Tags | `music technology` + `case study` + `financial modeling`, all existing, Ry's pick 2026-08-15 |
+| `featured` | `false`, Ry's call |
+| Excerpt | The page's `og:description`, **verbatim** — and deliberately not the same wording as the hero standfirst the post opens on. The page carries both |
+| Destinations | Two: the case study, then the intro call. The report's 82 source links are citations, and `transaction-map.html` is `noindex` and reached from the report only |
+
+## Open flags for Ry
+
+- **The verbatim `#about` lift carries two spelled-out structural counts** — *"the
+  other twelve"* rows without a primary source, and *"the seven places the record is
+  thin."* They are counts of the report's **evidence structure**, not market figures,
+  and they sit inside Ry's own sentence. If that reads as one count too many, **drop
+  the whole paragraph rather than edit it** — editing it forks his copy, which is the
+  one thing this post is built to avoid.
+- **The root `CLAUDE.md` says the case study has "Eleven numbered parts."** The page
+  labels its sections **Part zero … Part nine** plus two appendices, so that line
+  does not describe the page. An earlier draft of *The Full Version* inherited the
+  count and it was removed on verification. **Flagged, not fixed here** — correcting
+  `CLAUDE.md` is a separate change.
+
+## Log
+
+- 2026-08-15 — Phases 1–2 authoring in one session (#211), the same shape as the AI
+  Command post (#196/#210). Issue filed; the Notion trail already existed, created by
+  an earlier session, and was flipped to **AI Processing / Drafting** at the start of
+  work. `post.md` and `raw-linkedin-post.md` lifted verbatim from the page,
+  `copywriter-brief.md` and `source-notes.md` written alongside, cover derived from
+  Ry's supplied art. Converter dry-run clean — one bulleted list, two items, no #208
+  orphans. An **independent verification pass caught a derived part count** ("eleven
+  parts") sourced from the stale root `CLAUDE.md` rather than the page; it was removed
+  from the post and the brief, and the enumeration that survives is verifiable line by
+  line against the page. Same pass tightened the deviation record: the two Pattern
+  headings take a terminal full stop as bullet leads, the colon closure recurs in the
+  LinkedIn draft, and the `#about` lift's *"reproduced here in full"* was cut because
+  "here" changes referent once the copy leaves the page. **Push pending.**
+
+<!--
+Phase values, in order:
+  1 — intake
+  2 — awaiting copywriter draft
+  2 — draft in hand, pushing
+  3 — draft in Wix, awaiting Ry's proofread and publish
+  4 — published, link placement outstanding
+  done
+-->
