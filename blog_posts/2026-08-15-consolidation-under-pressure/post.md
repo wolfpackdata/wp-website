@@ -104,9 +104,11 @@ of you, start with a call.
 **[Work With Wolfpack](https://calendar.app.google/zHNd1NA9wzb4VRLw5)**
 
 <!--
-NOT PUSHED TO WIX, and not published. There is no Wix draft ID for this post,
-which means the next push is a POST, not a PATCH. Record the returned ID before
-anyone edits this file again — the SetMaster post is the cautionary tale.
+PUSHED TO WIX 2026-08-15 as an UNPUBLISHED draft — ID
+ad404772-7e42-4108-a157-60efe0267d67, recorded in planning/workflow.md. NOT
+PUBLISHED: Ry proofreads and publishes from the Wix dashboard. Any future push is
+a PATCH to that ID, never another POST — the SetMaster post is the cautionary
+tale.
 
 COPY PROVENANCE. Almost every sentence in this body is verbatim from
 case_studies/consolidation_under_pressure/index.html as it stood at commit

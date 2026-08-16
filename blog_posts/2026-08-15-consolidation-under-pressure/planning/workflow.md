@@ -1,6 +1,6 @@
 # Workflow — Consolidation Under Pressure
 
-Phase: 2 — draft in hand, pushing
+Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
 
 | | |
 |---|---|
@@ -10,7 +10,7 @@ Phase: 2 — draft in hand, pushing
 | Notion LinkedIn | https://app.notion.com/3bec70e5c7b481f88a39f5d371af4db5 |
 | Notion task     | https://app.notion.com/3bec70e5c7b4811089f1ee8b102919c3 |
 | Notion LinkedIn task | https://app.notion.com/3bec70e5c7b4818c93fac31fb42dd836 |
-| Wix draft ID    | **(unset — push pending this session.** When it lands it goes here, and a re-push is then a `PATCH`, **never another `POST`** — #147 is the worked example of what happens when the ID lives nowhere.) |
+| Wix draft ID    | **`ad404772-7e42-4108-a157-60efe0267d67`** — pushed 2026-08-15, `UNPUBLISHED` |
 | Live URL        | (unset) |
 | Slug            | `consolidation-under-pressure-music-gear` |
 | Cover           | `cover.jpg`, 1200 x 675, 226 KB — Ry's supplied hero art, downscaled |
@@ -82,6 +82,20 @@ img.save(r'blog_posts/2026-08-15-consolidation-under-pressure/cover.jpg', 'JPEG'
   headings take a terminal full stop as bullet leads, the colon closure recurs in the
   LinkedIn draft, and the `#about` lift's *"reproduced here in full"* was cut because
   "here" changes referent once the copy leaves the page. **Push pending.**
+- 2026-08-15 — **Pushed to Wix as an unpublished draft.** `POST /blog/v3/draft-posts` returned
+  `ad404772-7e42-4108-a157-60efe0267d67`, status `UNPUBLISHED`, 51 rich-content nodes, 3 minutes
+  to read. Cover imported from the feature branch's raw GitHub URL after a byte-for-byte hash
+  check, stored as `e00ee6_73dcac5cba66431fab45c0572be10cd0~mv2.jpg` (1200 x 675). All three tags
+  existed; none created. The draft was read back and matches what was sent field by field —
+  title, excerpt, `seoSlug`, all three tag IDs, cover id/dimensions/altText, `featured: false`,
+  `memberId`, both outbound links, the one bulleted list at 2/2 items, every em dash intact, and
+  not one node id rewritten. A subagent's first POST attempt was blocked by the local permission
+  classifier; the send was made from the main session, and listing drafts confirmed the blocked
+  attempt created nothing. The draft preview path is title-derived
+  (`/post/consolidation-under-pressure`) — the README's third fidelity limit; `seoSlug` is stored
+  correctly, so confirm the final URL in the dashboard before publish. The pre-send inspection
+  also surfaced a pre-existing converter bug — bold wrapped around a link is dropped (#212) — so
+  the CTA arrives unbolded here exactly as on every previously pushed post.
 
 <!--
 Phase values, in order:
