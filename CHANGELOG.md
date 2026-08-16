@@ -13,7 +13,9 @@ All notable changes to this project are documented here. The format follows
   market-intelligence report on M&A in music gear and pro audio, 2016–2026, rebuilt into this
   site's identity from two finished pages in `wolfpackdata/dj-gear-study`. Eleven numbered
   parts, ten data tables, four rendered figures, 43 cited transactions with a per-row source
-  gutter, and an interactive transaction map. Public and indexed. Not deployed. (#172)
+  gutter, and an interactive transaction map. Public and indexed. **Deployed 2026-08-15**
+  at `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`
+  (`ai-coaching-intake#74`), from `develop 64fa14d`. (#172)
 - `case_studies/consolidation_under_pressure/transaction-map.html` — the same map full width
   in its own tab, `noindex`, reached from the report's "Open full width" affordance. **The
   first case study to ship more than one page.** (#172)
@@ -99,6 +101,17 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- **Consolidation Under Pressure is live** at
+  `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`, deployed 2026-08-15 from
+  `develop 64fa14d` (`ai-coaching-intake#74`). **The first page in this repo to deploy as two
+  pages** — the report and the `noindex` full-width `transaction-map.html`; copy both or
+  neither. `case-study-assets/` needed **no copy**: the intake's own re-copy an hour after #200
+  merged had already carried the lane hues, `map.js` and the social card, unreferenced, exactly
+  as its re-copy-whole rule intends — verified by copying all 27 tracked asset files over the
+  deployed ones and getting an empty `git status`. The other two deployed case studies are
+  untouched by this deploy. ⚠️ **The Notion Web Property Map is now stale** — a new page and a
+  new public URL — and per this file's standing rule it has been flagged rather than silently
+  edited.
 - **Consolidation Under Pressure — two overclaimed theses narrowed, and a quarter of the
   defensive language cut.** The hero said *"two economic shocks, **not a product problem**,
   explain the wreckage"* while Part Two and Part Four both said a transaction timeline

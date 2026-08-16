@@ -62,7 +62,7 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
-| `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — **built 2026-08-11 (#172), not yet deployed**; ships two pages, the report and a `noindex` full-width `transaction-map.html` | — |
+| `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — ships **two pages**, the report and a `noindex` full-width `transaction-map.html`; copy both or neither | 2026-08-15 (`ai-coaching-intake#74`) |
 | `case_studies/wolfpack-ai-command/` | `https://intake.wolfstrategyllc.com/wolfpack-ai-command/` | 2026-08-15 (#190) |
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
@@ -254,8 +254,8 @@ A ~6,000-word public-source market-intelligence report on M&A in music gear and 
 2016–2026, rebuilt into this site's identity from two finished pages in
 `wolfpackdata/dj-gear-study` (`docs/strategy/`). Eleven numbered parts, eight data tables, four
 rendered figures, 43 cited transactions, and an interactive transaction map that ships twice.
-**Built 2026-08-11 (#172); revised twice on Ry's review, 2026-08-15 (#197, #199); not
-deployed.** Full design plan and decisions ledger:
+**Built 2026-08-11 (#172); revised three times on Ry's review, 2026-08-15 (#197, #200, #206);
+deployed 2026-08-15 (`ai-coaching-intake#74`).** Full design plan and decisions ledger:
 [`docs/consolidation-case-study-design-plan.md`](docs/consolidation-case-study-design-plan.md).
 
 Conventions this case study must keep, on top of the folder's:

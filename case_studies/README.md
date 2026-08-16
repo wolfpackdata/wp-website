@@ -6,7 +6,7 @@ they read as a set rather than as pages that happen to look similar.
 | Case study | Folder | Planned public URL | Audience | Robots | Status |
 |---|---|---|---|---|---|
 | **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91), re-deployed same day with its figure placeholders hidden (#99) |
-| **Consolidation Under Pressure** | `consolidation_under_pressure/` | `intake.wolfstrategyllc.com/consolidation-under-pressure/` | Founders, directors, and operating executives | **indexed** | **Built 2026-08-11** (#172). Not deployed |
+| **Consolidation Under Pressure** | `consolidation_under_pressure/` | `intake.wolfstrategyllc.com/consolidation-under-pressure/` | Founders, directors, and operating executives | **indexed** | **Built 2026-08-11** (#172). Three review rounds 2026-08-15 (#197, #200, #206). **Deployed 2026-08-15** (`ai-coaching-intake#74`) |
 | ↳ its transaction map | `consolidation_under_pressure/transaction-map.html` | `…/consolidation-under-pressure/transaction-map.html` | as above | **noindex** | as above |
 | **An AI Operating Layer for Streamlining Project Delivery** | `wolfpack-ai-command/` | `intake.wolfstrategyllc.com/wolfpack-ai-command/` | Hiring companies lead; buyers of the system and project clients read along | **indexed** (ruled by Ry 2026-08-15, outline D-009) | **Built 2026-08-13** (#174). Hero + social card 2026-08-15 (#190). **Deployed 2026-08-15** (#190) |
 
