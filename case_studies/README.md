@@ -68,10 +68,18 @@ deployed site, so paths are never rewritten.
   *refusals* grew on 2026-08-11 (#172) and the count did not: a report full of source-link
   glyphs, deal-value steps, macro bands and highlighted rows added six new temptations and
   spent nothing.
-- **No new hues.** The shared sheet introduces nothing beyond the navy system and a neutral
-  figure ground. A table that needs to mark one row important does it with weight and a
-  background lift. See the header comment for the reasoning and for how to add an accent
-  properly if one is ever genuinely needed.
+- **No new hues in page chrome.** The shared sheet introduces nothing beyond the navy system
+  and a neutral figure ground anywhere a reader meets the page itself — headings, rules,
+  tables, chips, buttons, links. A table that needs to mark one row important does it with
+  weight and a background lift. See the header comment for the reasoning.
+  - **One exception, added 2026-08-15 (#199): hue may encode a category *inside a figure*.**
+    The transaction map's four lanes carry `--map-l0`…`l3`, because a lane is a name rather
+    than a quantity and the ramp below is built for quantities. Three conditions: the variable
+    is genuinely categorical; the hue is **redundant** with something already in the figure
+    (position, and a lane name printed inside it), so nothing is the sole carrier of a fact;
+    and it touches neither the coral ration nor the navy chrome nor a magnitude scale. Declare
+    it in the sheet with a measured contrast ratio — never inline in a page. Full ruling:
+    [`docs/site-brief.md`](../docs/site-brief.md) §1.6.
   - **Two consequences worth knowing before you reach for a colour**, both solved in the
     sheet and both re-usable. **Direction** — a metric up or down — is carried by the glyph
     (▲ ▼ ▬) and by weight, never by a green and a red; a semantic colour pair is atomic and
@@ -79,6 +87,8 @@ deployed site, so paths are never rewritten.
     deal-value scale — is carried by an ordered ramp built along the figure ground's own
     neutral axis, dark to light on a dark surface. That is a sequential scale in one hue,
     which is what a magnitude actually is; a categorical palette would make it unreadable.
+    **It stays neutral now that the lanes are coloured** — that is the whole design of the
+    map: hue = which lane, lightness = how big, on the same dot.
 - **A rendered chart sits on the figure ground, a table the reader reads sits on the page.**
   `.figframe` joined `.shot`, `.ph` and `.dtable` in the `--fig-*` scope on 2026-08-11, for
   the reason the ground exists: a chart drawn in HTML is the alternative to a screenshot *of*

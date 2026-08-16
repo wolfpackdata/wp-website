@@ -77,6 +77,28 @@ carry**, and every fix is a step down in strength rather than a new claim.
 | **D-031** ⚠️ | **The trim came to 6.8% net, not 10%** — a ~13% cut of the original prose, against roughly 500 words added by D-024 through D-028 | The two instructions in this round pull opposite ways: correcting an overclaim costs words, because saying what you cannot support takes longer than asserting it. Everything cut was restatement — a duplicated Src explainer, a callout restating the pull quote three lines above it, the "money in gear" table whose four figures were all already on the page, the "money in music" table folded to a sentence, the source list's redundant trailing domains. **What was not cut: any figure, any source, any caveat, any of the eleven implications.** Reaching 10% net from here means cutting evidence or recommendations, which is Ry's call, not mine |
 | **D-032** | **`verify_copy.py`'s premise is updated, its numeric check is not** | The prose is no longer frozen, so a guard that implied it was would send the next session to "restore" copy Ry deliberately cut. The figure check is the half that still holds, and it passed unchanged through the whole round — every numeric token in the source is still on the page after a 13% prose cut |
 
+### Round three — the map's palette and three cuts, 2026-08-15 (#199)
+
+Four changes. One is a design ruling with consequences past this page; three are cuts.
+
+| # | Decision | Why |
+|---|---|---|
+| **D-033** | **Hue may encode a category inside a figure.** Three conditions, all required: the variable is genuinely categorical, the hue is **redundant** with something already in the figure, and it touches neither the coral ration nor the navy chrome nor a magnitude scale. Declared in `case-study.css` with a measured contrast ratio, never inline in a page. Recorded in `docs/site-brief.md` §1.6 | Ry asked for the map to be "more colorful and interesting, within the page styling", and the sheet's own escape hatch says an accent may be added *here, with a written justification*. So it is written down as a rule rather than taken as a licence. **This extends `wolfpack-ai-command`'s D-015 rather than breaking it** — that one put hue in a committed image so the sheet stayed hue-free, which a chart drawn in HTML cannot do. Both say hue is figure content; only the storage differs |
+| **D-034** | **The lane is the hue; the deal value stays neutral.** Ring = which lane (`--map-l0`…`l3`), fill = how big (`--fig-ramp-1`…`4`), on the same dot | The map has exactly two variables and only one of them can take hue. Lane is a *name*; value is a *magnitude*. Colouring the value as well would leave the figure with two categorical-looking scales and no readable magnitude — which is the failure the ramp was built to avoid in the first place (`docs/site-brief.md` §1.5). **The redundancy condition is satisfied by construction:** a lane is already identified by vertical position and by a name printed inside it, so a reader who cannot separate the teal from the amber reads the figure exactly as well as before |
+| **D-035** | **Bands and gridlines were painting *under* the lanes, and now do not** | Not asked for, and found while tinting the lanes. Everything in the figure is absolutely positioned in one stacking context, so paint order was document order and an opaque lane surface hid whatever crossed it — a band spanning all four lanes was being drawn as stripes through the two lanes that had no background. Survivable while half the lanes were transparent; not once all four carry a tint. The layers are now named in the sheet (0 lanes, 1 bands and gridlines, 2 events, 3 labels) |
+| **D-036** | **The year axis runs along the top as well as the bottom** | Ry. The plot is 1600px at its narrowest and four lanes deep, so dating an event in the first lane meant tracking to the far edge of the figure and then all the way down |
+| **D-037** | **Three cuts: the 145% figure out of "Cut the tail" (now "High tariffs"), the "Rebuild deal capability" implication, the "Tariff schedule changes" watch row** | Ry, no reason given and none needed. Both figures survive elsewhere on the page, so `verify_copy.py` check 1 is untouched; the watch row carries no `Src` cell, so the 43 / 31 / 12 arithmetic is untouched. The watch table's accessible caption moved from "Eight open questions" to "Seven" in the same edit — **a count stated in a `visually-hidden` caption is exactly the kind of fact that goes stale silently**, because nothing on screen contradicts it. The implications list is now ten and renumbers itself |
+
+**D-010's "ten tables" is now eight**, and has been since #195 folded two of them away
+(D-031). `CLAUDE.md` was still saying ten and now says eight. Recorded here rather than
+edited into D-010, because the ledger is a record of what was decided when.
+
+**The rose is not a coral drift.** `--map-l3 #E08BB4` is a desaturated rose on a near-black
+figure ground; `#F95954` is the accent. The two render together in the same viewport — nav CTA
+above, map below — and do not read as the same colour. **The ration is still six**, and the
+sheet, the brief and this ledger all say so, because "there is pink in the map now" is the
+shape of a future session concluding otherwise.
+
 ## 3. What was deliberately not carried over
 
 Recorded because a derived design should say what it refused, not only what it took.
@@ -126,6 +148,25 @@ about 492px and then crops, which fakes overflow on any direct "mobile" capture.
 **Headless Edge produced no output at all on this machine during this round** — the binary
 returns nothing, `--version` included. Chrome's headless mode works and the sweep was run
 there. Worth knowing before assuming a verification script is broken: check the browser.
+
+## 4b. Verification re-run, 2026-08-15 (#199)
+
+Chrome again, for the reason above.
+
+| Check | Result |
+|---|---|
+| Horizontal overflow, **all pages on the shared sheet**, at 320 / 390 / 768 / 1024 / 1440 | `scrollWidth − clientWidth = 0`, `scrollX = 0`, no element extending past the viewport outside a declared scroller |
+| Map label collisions | **0**, on both pages, at 390 / 1440 / 1600 / 2200 |
+| Lane encoding, read back from **computed style** | 4 distinct ring hues, 4 distinct label inks, 4 distinct lane names, 4 distinct tints; every lane and all 42 events carry `data-lane`; 0 events missing it |
+| Deal value still neutral | the only five dot fills are `transparent`, `#FFFFFF`, `#C3C9D4`, `#98A0AE`, `#6E737E` — the ramp, unchanged, no hue |
+| Layer order | `band: 1  grid: 1  lane: 0  event: 2` — bands and gridlines above the lane surfaces (D-035) |
+| Year axis | 13 labels top and 13 bottom, 2014–2026, top strip entirely above lane 1, bottom strip entirely below lane 4 |
+| `verify_copy.py` · `check_meta.py` | clean; 186 numeric tokens, 43 Src cells (31 + 12), 42 map events, 12 pages PASS |
+
+**The `.rtable`-adjacent sweep flagged `setmaster3-case-study` at 320 and 390** and it is not a
+regression: `scrollWidth − clientWidth = 0` on the document, the flagged table sits inside that
+page's own `.trow` scroller, and that page loads `sm3-case.css`, which this round never
+touched. The probe's exclusion list knew about `.rtable` and `.dtable` and not about `.trow`.
 
 ## 5. Open items
 
