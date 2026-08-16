@@ -48,7 +48,7 @@ Collected rather than drip-fed, in the order the push needs them:
 | Tags | `AI engineering` (exists) + `project management` (**new — needs approval**). Or drop the second |
 | `featured` | Currently `false` |
 | Slug | `ai-operating-layer-for-project-delivery`. It is the URL and the Wix draft preview will show a title-derived path instead, so confirm it in the dashboard |
-| Excerpt | Currently the case study's own `og:description`, verbatim |
+| Excerpt | **Ry's copy** (2026-08-15, #201), and the case study's `og:description` is the same sentence. Nothing guards that pair — change both or neither |
 | `date` | `2026-08-15` |
 | LinkedIn | `raw-linkedin-post.md` is written and is Ry's to post. It points at the profile link rather than pasting a URL, matching the five-projects draft |
 
@@ -59,7 +59,7 @@ Collected rather than drip-fed, in the order the push needs them:
 | Title | The case study's `h1`, **verbatim** — the #119 rule. No colon, so unquoted |
 | Slug | Deliberately shorter than the title, and it does not follow it |
 | Body | Mostly verbatim case study copy, per Ry. Passage map in `planning/source-notes.md` |
-| Numbers | **None.** Every count on the case study is dated on that page; an undated copy here would drift |
+| Numbers | **None.** Every count on the case study is dated on that page; an undated copy here would drift. The excerpt's *"blistering speed"* is qualitative and voiced as what the system enables — it must never acquire a number |
 | Cover | The case study's hero, downscaled — the route the financial model post's cover took |
 | Destinations | Two, both already on the case study: the case study itself, and the intro call |
 
@@ -82,6 +82,12 @@ src.resize((1200, 675), Image.LANCZOS).save(
   Notion trail created (Blog Post 7, the LinkedIn row, task 8 under the case study project),
   brief and source notes written, cover built, `post.md` and `raw-linkedin-post.md` written.
   Converter dry-run clean. **No Wix push**, per Ry.
+- 2026-08-15 — Excerpt replaced with Ry's speed-first sentence (#201), and the case study's
+  `og:description` changed to the same string in the same PR so the pair stays identical. The
+  case study's `<meta name="description">` is a different sentence and was left alone.
+  **Consequence:** the deployed case study now carries the old `og:description` until the
+  folder is re-copied into `wolfpackdata/ai-coaching-intake`. That is a deploy item on the case
+  study, not a gate on this post.
 - 2026-08-15 — Corrected mid-session: the issue was filed claiming the case study was not yet
   deployed, sourced from the root `CLAUDE.md` deployment table. Fetching the URL showed the
   page live. The issue carries a correcting comment; the brief, source notes and `post.md`

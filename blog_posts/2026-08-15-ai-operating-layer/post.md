@@ -1,7 +1,7 @@
 ---
 title: An AI Operating Layer for Streamlining Project Delivery
 slug: ai-operating-layer-for-project-delivery
-excerpt: Project delivery has a coordination tax. Wolfpack AI Command uses governed AI operators to maintain the record, preserve developer context, and give human teams more time for judgment, engineering, and delivery.
+excerpt: AI-accelerated development moves at blistering speed. The project record does not — unless something maintains it. Wolfpack AI Command uses governed AI operators to keep that record honest and preserve developer context, so human teams spend their hours on judgment, engineering, and delivery.
 cover: cover.jpg
 cover_alt: The Wolfpack AI Command emblem — a luminous shield on a deep navy field, quartered by fine axis lines, holding the four Notion database icons for products, projects, tasks, and clients.
 date: 2026-08-15
