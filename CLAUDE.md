@@ -307,6 +307,19 @@ Conventions this case study must keep, on top of the folder's:
 - **The social card's inset is the map itself**, captured by
   `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
   rather than retouch, and re-run the capture *before* the card whenever the figure changes.
+- **Its hero art is SUPPLIED, not generated — the one exception to this folder's rule, and
+  the absence of a generator is a fact rather than an omission.** Both other case studies
+  ship a `build_hero.py` beside their hero and carry an explicit *rebuild rather than
+  retouch* rule, so a reader who finds a lone PNG here will otherwise go looking for a build
+  script that has never existed. `planning/consolidation-under-pressure-hero.png` (1337×752,
+  RGBA, added by Ry 2026-08-15) **is the master.** Nothing can regenerate it, so it is
+  committed rather than reproducible, and anything derived from it — starting with the blog
+  post's `cover.jpg` — records its derivation command instead of a rebuild command. `planning/`
+  never deploys, which is the right home for it.
+- **Nothing on the case study page references that hero.** The page ships no hero figure and
+  did not gain one; the art currently reaches the public only through the blog post's cover.
+  Placing it on the page is a page edit plus a re-copy into `ai-coaching-intake`, and it is
+  Ry's call, not a tidy-up.
 
 ## `wolfpack-ai-command/` — the AI operating layer case study
 The third case study: how **Wolfpack AI Command** splits the project manager's role, hands
