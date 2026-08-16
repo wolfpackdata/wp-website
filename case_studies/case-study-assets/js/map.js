@@ -43,7 +43,12 @@
      Lane assignment reflects where in the industry a transaction LANDED, not
      the acquirer's home category. Boris FX is a visual-effects company and its
      iZotope purchase sits in "software & platform", because that is the market
-     it changed. */
+     it changed.
+
+     A lane's INDEX is its identity here and in the stylesheet: this file stamps
+     data-lane on the lane surface and on every event in it, and case-study.css
+     turns that one attribute into the lane's hue, ink, tint and hairline. No
+     color is named in this file except through the tokens below. */
   var LANES = [
     'Macro & regulatory',
     'Software & platform',
@@ -52,8 +57,10 @@
   ];
 
   /* ---- The deal-value scale ----------------------------------------------
-     Ordered and sequential: one neutral ramp, dark to light on a dark ground,
-     because the variable is a magnitude. Index 0 is NOT the bottom of the ramp
+     Ordered and sequential: one NEUTRAL ramp, dark to light on a dark ground,
+     because the variable is a magnitude. It stays neutral while the lanes carry
+     hue, which is the two-variable scheme the figure runs on: the ring says
+     which lane, the fill says how big. Index 0 is NOT the bottom of the ramp
      — it is "undisclosed", drawn as an unfilled ring, because an absent value
      is not a small one. The tokens are declared and contrast-measured in
      case-study.css. */
@@ -143,6 +150,7 @@
   var ROW = 24;                   // one label track
   var LANE_PAD = 34;              // room for the lane name above its first track
   var AXIS = 32;                  // the year labels below the last lane
+  var AXIS_T = 26;                // and the same years again above the first
   var HEAD = 26;                  // the reserved strip the band labels sit in
   var GUTTER = 8;                 // clear space demanded between two label spans
   var MAX_TRACKS = 16;            // a backstop; no lane comes close
@@ -243,33 +251,46 @@
         laneTracks[lane] = tracks.length;
       });
 
-      /* ---- Lay the lanes out vertically --------------------------------- */
-      var html = '', top = HEAD, laneTops = [];
+      /* ---- Lay the lanes out vertically ---------------------------------
+         AXIS_T reserves the top year axis, then HEAD reserves the strip the
+         band labels sit in, and the lanes start below both. */
+      var plotTop = AXIS_T + HEAD;
+      var html = '', top = plotTop, laneTops = [];
       for (var L = 0; L < LANES.length; L++) {
         var n = laneTracks[L] || 1;
         laneTops.push({ top: top, h: n * ROW + LANE_PAD + 8 });
         top += n * ROW + LANE_PAD + 8;
       }
       var totalH = top + AXIS;
-      var plotH = top - HEAD;
+      var plotH = top - plotTop;
 
-      /* ---- Bands and gridlines, behind everything ----------------------- */
+      /* ---- Bands, gridlines, and the year axis twice ---------------------
+         These are emitted before the lanes but painted OVER them, by the
+         z-indexes in case-study.css. Document order alone put the opaque lane
+         surfaces on top and cut the bands into stripes. */
       BANDS.forEach(function (b) {
         var l = px(b[0]), r = px(b[1]);
         html += '<div class="map__band" style="left:' + l + 'px; width:' + (r - l) +
-                'px; top:' + HEAD + 'px; height:' + plotH + 'px">' +
+                'px; top:' + plotTop + 'px; height:' + plotH + 'px">' +
                 '<span>' + esc(b[2]) + '</span></div>';
       });
       for (var y = 2014; y <= 2026; y++) {
-        html += '<div class="map__grid" style="left:' + px(y) + 'px; top:' + HEAD +
+        html += '<div class="map__grid" style="left:' + px(y) + 'px; top:' + plotTop +
                 'px; height:' + plotH + 'px"></div>';
-        html += '<div class="map__yr" style="left:' + px(y) + 'px">' + y + '</div>';
+        // Both ends of every gridline are labelled. Four lanes deep, an event
+        // in the first one is a long way from the bottom axis.
+        html += '<div class="map__yr map__yr--top" style="left:' + px(y) + 'px">' + y + '</div>';
+        html += '<div class="map__yr map__yr--btm" style="left:' + px(y) + 'px">' + y + '</div>';
       }
 
-      /* ---- Lanes and events --------------------------------------------- */
+      /* ---- Lanes and events ---------------------------------------------
+         data-lane goes on the lane surface AND on each of its events. They are
+         siblings, not parent and child — every position in this figure is
+         absolute — so the attribute is what lets one rule in the stylesheet
+         color both. */
       for (var L2 = 0; L2 < LANES.length; L2++) {
         var lt = laneTops[L2];
-        html += '<div class="map__lane' + (L2 % 2 ? ' map__lane--alt' : '') +
+        html += '<div class="map__lane" data-lane="' + L2 +
                 '" style="position:absolute; left:0; right:0; top:' + lt.top +
                 'px; height:' + lt.h + 'px">' +
                 '<div class="map__lname">' + esc(LANES[L2]) + '</div></div>';
@@ -280,7 +301,7 @@
             ? 'left:' + d.x + 'px; transform:translateX(-5px)'
             : 'left:' + d.x + 'px; transform:translateX(-100%) translateX(5px)';
           html += '<div class="map__ev' + (d.side === 'left' ? ' map__ev--left' : '') +
-                  '" style="' + pos + '; top:' + yTop + 'px">' +
+                  '" data-lane="' + L2 + '" style="' + pos + '; top:' + yTop + 'px">' +
                   '<span class="map__dot" style="background:' + FILL[d.bucket] + '"></span>' +
                   '<span class="map__lab">' + markup(d.label) + '</span></div>';
         });

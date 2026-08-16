@@ -37,12 +37,27 @@
    components below moved it not at all, which is the test those components had
    to pass.
 
-   NO NEW HUES. This sheet introduces zero colors beyond the navy system and
-   the neutral figure ground. A table that needs to mark one row as the
-   important one does it with weight, a background lift, and a mono chip. If a
-   future case study genuinely needs an accent, add it here with a written
-   justification, the way sm3-case.css justified its one exception. Do not add
-   it inline in a page.
+   NO NEW HUES IN PAGE CHROME. This sheet introduces zero colors beyond the navy
+   system and the neutral figure ground anywhere a reader meets the page itself
+   — headings, rules, tables, chips, buttons, links. A table that needs to mark
+   one row as the important one does it with weight, a background lift, and a
+   mono chip. Do not add an accent inline in a page.
+
+   ONE EXCEPTION, EARNED AND SCOPED: HUE MAY ENCODE A CATEGORY INSIDE A FIGURE.
+   Added 2026-08-15 (#199) for the transaction map's four lanes, and written
+   here because sm3-case.css's one exception was written down the same way.
+   The rule the exception encodes:
+
+     * a figure whose data has a genuinely CATEGORICAL variable may spend hue on
+       it, in tokens declared here and contrast-measured here — never inline in
+       a page, and never on anything that is not a figure;
+     * the hue must be REDUNDANT with something already in the figure (the map's
+       lane hue repeats what vertical position already says), so a reader who
+       cannot separate two of the hues loses nothing;
+     * it may not touch the coral ration, the navy chrome, or a magnitude scale.
+
+   That last clause is the load-bearing one, and the map is why. See
+   --map-l0..l3 below.
 
    TWO CONSEQUENCES OF "NO NEW HUES" THE REPORT COMPONENTS HAD TO SOLVE, both
    worth knowing before reaching for a color:
@@ -54,6 +69,11 @@
        one hue, which is what the variable actually is; a categorical palette
        would make a magnitude unreadable. It is an extension of an existing
        ramp, not a new hue.
+       IT STAYS NEUTRAL NOW THAT THE LANES ARE COLORED, and that is the whole
+       design of the figure: HUE = which lane (category), LIGHTNESS = how big
+       (magnitude), on the same dot, and the two never swap. Putting the value
+       scale into hue as well would leave the map with two categorical-looking
+       encodings and no readable magnitude.
    ========================================================================== */
 
 :root {
@@ -104,6 +124,62 @@
   --fig-ramp-2: #98A0AE;   /* $100 – 499m   */
   --fig-ramp-3: #C3C9D4;   /* $500 – 999m   */
   --fig-ramp-4: #FFFFFF;   /* ≥ $1bn        */
+
+  /* ── The transaction map's four lane hues ───────────────────────────────
+     Categorical, not ordered: which lane a transaction landed in is a name, not
+     a quantity, and there is no sense in which retail is "more" than software.
+     So these are four separated hues of deliberately similar lightness — the
+     opposite construction to the ramp above, and the reason the two can share a
+     dot without fighting.
+
+     THE HUE IS REDUNDANT, WHICH IS WHAT MAKES IT SAFE. A lane is already
+     identified by vertical position and by a name printed inside it. The hue
+     adds a fourth cue for tracking a lane across a plot that is 1600px wide at
+     its narrowest; a reader who cannot tell the teal from the amber reads the
+     figure exactly as well as before. Nothing here is the sole carrier of any
+     fact — deliberately, and that is the bar a future figure has to clear
+     before it spends hue.
+
+     Four values per lane. Every ratio is measured against #1A1A1A, which is
+     LIGHTER than any lane surface these actually land on, so each is a floor:
+
+       hue   the lane name and the dot's ring        7.1 – 8.7 : 1
+       ink   the 42 event labels, paler so a wall     10.9 – 11.2 : 1
+             of them does not shout
+       tint  the lane's own surface wash
+       line  the hairline between two lanes
+
+     .map__lab b — the dollar figure inside a label — stays --fig-text #E6E6E6
+     at 16.7:1, brighter than every ink, so the money still reads first.
+
+     NOT USED BY THE MACRO BANDS, which stay a neutral white wash. A band is a
+     shock, not a lane, and giving it a hue would enroll it in a scale it is not
+     part of.
+
+     THE ROSE IS NOT CORAL, AND IT IS NOT AN ACCENT. #E08BB4 is a desaturated
+     rose on a near-black figure ground; #F95954 is the brand accent and appears
+     on this page exactly six times, none of them inside a figure. Said here
+     because "there is pink in the map now" is the shape of a future session
+     deciding the ration has moved. It has not. The ration is still SIX. */
+  --map-l0:      #E2B04A;                    /* macro & regulatory      8.7:1 */
+  --map-l0-ink:  #E3CDA3;                    /*                        11.2:1 */
+  --map-l0-tint: rgba(226, 176, 74, 0.07);
+  --map-l0-line: rgba(226, 176, 74, 0.32);
+
+  --map-l1:      #7EA6F6;                    /* software & platform     7.2:1 */
+  --map-l1-ink:  #BCCDF2;                    /*                        10.9:1 */
+  --map-l1-tint: rgba(126, 166, 246, 0.08);
+  --map-l1-line: rgba(126, 166, 246, 0.32);
+
+  --map-l2:      #5FC2A6;                    /* hardware manufacturing  8.1:1 */
+  --map-l2-ink:  #ABD9CA;                    /*                        11.2:1 */
+  --map-l2-tint: rgba(95, 194, 166, 0.07);
+  --map-l2-line: rgba(95, 194, 166, 0.32);
+
+  --map-l3:      #E08BB4;                    /* retail & marketplace    7.1:1 */
+  --map-l3-ink:  #EFC0D6;                    /*                        10.9:1 */
+  --map-l3-tint: rgba(224, 139, 180, 0.07);
+  --map-l3-line: rgba(224, 139, 180, 0.32);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1063,11 +1139,37 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 
 .map__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; min-width: 0; }
 .map { position: relative; padding-top: 6px; }
-/* 0.08, not lower. A band has to be visible over BOTH lane surfaces, and the
-   alternating lane tint is itself a white wash of about this weight — at 0.045
-   the band was indistinguishable from an alt lane on one row and invisible on
-   the other, which is a band that does not exist. */
-.map__band { position: absolute; border-radius: 2px; pointer-events: none; background: rgba(255, 255, 255, 0.08); }
+
+/* ── Lane identity ────────────────────────────────────────────────────────
+   One rule per lane, and it sets custom properties rather than colors. map.js
+   stamps data-lane on BOTH the lane surface and every event that belongs to it
+   — two elements that are siblings in the DOM, not parent and child, because
+   every position here is absolute — so a shared attribute is what keeps their
+   colors from being set in two places and drifting.
+   The map is the only figure that carries these; see the exception in the
+   header before adding a second one. */
+[data-lane="0"] { --lane: var(--map-l0); --lane-ink: var(--map-l0-ink); --lane-tint: var(--map-l0-tint); --lane-line: var(--map-l0-line); }
+[data-lane="1"] { --lane: var(--map-l1); --lane-ink: var(--map-l1-ink); --lane-tint: var(--map-l1-tint); --lane-line: var(--map-l1-line); }
+[data-lane="2"] { --lane: var(--map-l2); --lane-ink: var(--map-l2-ink); --lane-tint: var(--map-l2-tint); --lane-line: var(--map-l2-line); }
+[data-lane="3"] { --lane: var(--map-l3); --lane-ink: var(--map-l3-ink); --lane-tint: var(--map-l3-tint); --lane-line: var(--map-l3-line); }
+
+/* ── Layering, and why it is explicit ─────────────────────────────────────
+   Everything in this figure is absolutely positioned inside one stacking
+   context, so before these z-indexes paint order was document order — bands,
+   then gridlines, then lanes on top of both. That was survivable only while
+   half the lanes had no background: a band or a gridline crossing an opaque
+   lane surface was hidden, so a band that spans all four lanes was drawn as
+   stripes. Now that every lane carries a tint, the layers are named:
+     0  lane surfaces      2  events
+     1  bands, gridlines   3  lane names, year labels */
+.map__lane  { position: relative; z-index: 0; background: var(--lane-tint); border-top: 1px solid var(--lane-line); }
+.map__band  { position: absolute; z-index: 1; border-radius: 2px; pointer-events: none; background: rgba(255, 255, 255, 0.08); }
+.map__grid  { position: absolute; z-index: 1; width: 1px; background: rgba(255, 255, 255, 0.06); }
+.map__ev    { position: absolute; z-index: 2; display: flex; align-items: center; gap: 7px; height: 1.35rem; white-space: nowrap; }
+
+/* 0.08, not lower. The band has to stay legible over four different lane
+   tints, and it is the same weight range as the tints themselves — below about
+   this the band stops existing on the lighter lanes. */
 .map__band span {
   position: absolute; top: -1.3rem; left: 4px;
   font-family: var(--mono); font-size: 0.625rem; font-weight: 600;
@@ -1075,36 +1177,44 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   white-space: nowrap;
 }
 /* The bands are macro shocks, not transactions, and must not read as marks. A
-   flat wash behind the lanes with its label in a reserved strip above them does
-   that with no shape and no hue in common with a dot. */
+   flat NEUTRAL wash across the lanes with its label in a reserved strip above
+   them does that with no shape and no hue in common with a dot — and neutrality
+   is doing more work now that the lanes are colored, because a fifth hue here
+   would read as a fifth category. */
 .map__band::before {
   content: ""; position: absolute; inset: 0;
-  border-left: 1px dashed var(--fig-line); border-right: 1px dashed var(--fig-line);
+  border-left: 1px dashed rgba(255, 255, 255, 0.22);
+  border-right: 1px dashed rgba(255, 255, 255, 0.22);
 }
-.map__grid { position: absolute; width: 1px; background: #151515; }
+/* The time axis is shared by every lane, so it stays neutral. It runs along the
+   TOP as well as the bottom (#199): the plot is 1600px wide at its narrowest
+   and taller than a phone, so dating an event in the first lane meant tracking
+   to the far edge of the figure and then all the way down. */
 .map__yr {
-  position: absolute; bottom: 6px; transform: translateX(-50%);
+  position: absolute; z-index: 3; transform: translateX(-50%);
   font-family: var(--mono); font-size: 0.6875rem; color: var(--fig-dim);
   font-variant-numeric: tabular-nums;
 }
-.map__lane { position: relative; border-top: 1px solid var(--fig-line); }
-.map__lane--alt { background: var(--fig-row); }
+.map__yr--top { top: 5px; }
+.map__yr--btm { bottom: 6px; }
+
 .map__lname {
   position: absolute; left: 10px; top: 7px; z-index: 3;
   font-family: var(--mono); font-size: 0.625rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--fig-dim);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--lane);
 }
-.map__ev { position: absolute; display: flex; align-items: center; gap: 7px; height: 1.35rem; white-space: nowrap; }
 .map__ev--left { flex-direction: row-reverse; }
 /* Uniform size. Size carries no meaning here — the readability of forty-two
    labels does, and a varying radius costs label room to say nothing. The ring
-   is what keeps the palest step visible against the lighter lane tint, and it
-   is what makes an unfilled dot read as "no value" rather than as "invisible". */
+   carries the LANE hue and the fill carries the VALUE step, which is the whole
+   two-variable scheme on one mark; it is also what keeps the palest fill
+   visible against the lane tint, and what makes an unfilled dot read as "no
+   value" rather than as "invisible". */
 .map__dot {
   width: 0.66rem; height: 0.66rem; border-radius: 50%;
-  border: 1.5px solid var(--fig-dim); flex: none; box-sizing: border-box;
+  border: 1.5px solid var(--lane, var(--fig-dim)); flex: none; box-sizing: border-box;
 }
-.map__lab { font-family: var(--mono); font-size: 0.6875rem; color: var(--fig-dim); }
+.map__lab { font-family: var(--mono); font-size: 0.6875rem; color: var(--lane-ink, var(--fig-dim)); }
 .map__lab b { font-weight: 600; color: var(--fig-text); }
 .map__note {
   font-family: var(--mono); font-size: 0.6875rem; line-height: 1.75;

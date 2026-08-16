@@ -238,7 +238,13 @@ Conventions these pages must keep:
   Generator and input sit under `planning/`, so neither deploys; only the finished image
   does. Rebuild rather than retouch.
 - **Coral is rationed to six uses**, listed in the header comment of `case-study.css`, and
-  the sheet introduces **no hues** beyond the navy system and a neutral figure ground.
+  the sheet introduces **no hues in page chrome** beyond the navy system and a neutral figure
+  ground. **One scoped exception, made 2026-08-15 (#199): hue may encode a category inside a
+  figure** — the transaction map's four lanes carry `--map-l0`…`l3`. Three conditions, all
+  required: the variable is genuinely categorical, the hue is **redundant** with something
+  already in the figure so nothing is the sole carrier of a fact, and it touches neither the
+  coral ration nor the navy chrome nor a magnitude scale. Declared in the sheet with a
+  measured contrast ratio, never inline in a page. Full ruling: `docs/site-brief.md` §1.6.
 - **Copy is judged by Ry, against no written spec.** The repo carried a voice guide until
   2026-08-06 (#150); it was removed because it was not good enough to be binding. Match the
   voice of the case studies already here rather than reaching for a rulebook.
@@ -246,19 +252,25 @@ Conventions these pages must keep:
 ## `consolidation_under_pressure/` — the music-gear M&A case study
 A ~6,000-word public-source market-intelligence report on M&A in music gear and pro audio,
 2016–2026, rebuilt into this site's identity from two finished pages in
-`wolfpackdata/dj-gear-study` (`docs/strategy/`). Eleven numbered parts, ten data tables, four
+`wolfpackdata/dj-gear-study` (`docs/strategy/`). Eleven numbered parts, eight data tables, four
 rendered figures, 43 cited transactions, and an interactive transaction map that ships twice.
-**Built 2026-08-11 (#172); not deployed.** Full design plan and decisions ledger:
+**Built 2026-08-11 (#172); revised twice on Ry's review, 2026-08-15 (#197, #199); not
+deployed.** Full design plan and decisions ledger:
 [`docs/consolidation-case-study-design-plan.md`](docs/consolidation-case-study-design-plan.md).
 
 Conventions this case study must keep, on top of the folder's:
 
-- **The copy is frozen, and it is guarded.** Every figure carries both currency
-  parentheticals; every caption, footnote, confidence label and methodology note ships.
+- **The FIGURES are frozen and guarded; the prose is not, and has not been since #197.**
+  Ry's reviews rewrote sentences for evidentiary correctness and cut restatement, so passages
+  that exist in the vendored `.md` and not on the page are **expected — do not "restore" them**,
+  and the upstream `dj-gear-study` `.md` is now wrong in the places #197 corrected. What did
+  not change is the numeric surface: every figure carries both currency parentheticals, and
+  every caption, footnote, confidence label and methodology note ships.
   `planning/verify_copy.py` checks every numeric token in the vendored source `.md` against
   the page, plus the `Src` arithmetic, the source links' accessible names, the map dataset,
-  and the external-request stance. **Run it before merging any edit to this page.** If the
-  report is revised upstream, re-copy `planning/01-ma-landscape-2016-2026.md` in the same PR.
+  and the external-request stance. **Run it before merging any edit to this page.** A figure
+  may be legitimately retired — delete it from the vendored `.md` in the same commit and say
+  why in the design plan; never weaken the check.
 - **The `Src` gutter is load-bearing and is never merged, hidden or dropped.** 43 rows: 31
   link a primary source, 12 show a dash meaning none was verified. That distinction is the
   page's claim about its own evidence. Every link keeps `title` + `aria-label` because the
@@ -272,6 +284,15 @@ Conventions this case study must keep, on top of the folder's:
   their lane, measured with canvas `measureText` because `--mono` is a *system* stack whose
   metrics are unknowable from the build machine. If a label ever collides, fix the packing
   pass, never the label.
+- **The map runs two encodings on one dot, and they never swap** (#199): the ring is its
+  **lane** (a category, so it takes hue — `--map-l0`…`l3`, the exception above), the fill is
+  its **deal value** (a magnitude, so it stays on the neutral `--fig-ramp-1`…`4`). Colouring
+  the value as well would leave the figure with two categorical-looking scales and no readable
+  magnitude. The macro bands and the year axis stay neutral because neither is a lane. `map.js`
+  names **no colour** — it stamps `data-lane` and the stylesheet does the rest.
+- **The year axis runs along the top as well as the bottom** (#199, Ry). The plot is 1600px
+  wide at its narrowest and four lanes deep, so dating an event in the first lane meant
+  tracking to the far edge and then all the way down.
 - **42 events, not 41.** The brief and the source page both said 41; the dataset holds 42.
   See the design plan D-009 — this is flagged for Ry, not settled.
 - **No invented outcome, and no results section.** There is no instrumented result behind
@@ -306,10 +327,12 @@ Conventions this case study must keep, on top of the folder's:
 - **The hero carries no F number** (outline D-021). F1–F6 explain a passage and sit beside
   it; the hero carries the title. Do not renumber the figures to absorb it.
 - **The four icon hues are figure content, and that is a made ruling** (D-015, Ry
-  2026-08-13). They live in the committed SVGs and in a JPEG, never in the stylesheet, so the
-  shared sheet still introduces no hue beyond the navy system and the figure ground, and the
+  2026-08-13). They live in the committed SVGs and in a JPEG, never in the stylesheet, and the
   coral ration is untouched. This is the ruling a future case study cites when it needs a
-  hue: put it in the figure, not in the sheet.
+  hue: put it in the figure, not in the chrome. **#199 extended it rather than breaking it** —
+  a chart drawn in HTML has no image to put its hue in, so the map's lane hues are declared in
+  the sheet under three written conditions (`docs/site-brief.md` §1.6). Both rulings say the
+  same thing: hue is figure content. Only the storage differs.
 - **The social card's inset is the tiled print, not the brief's F1.** The original card brief
   named the split diagram, which is still a placeholder — so the card was built from the art
   that exists. The reasoning is in `social-cards/build_cards.py` beside the card; the short

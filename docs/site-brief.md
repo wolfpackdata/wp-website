@@ -152,6 +152,45 @@ guarding them — see §9.
 **Sanity check passes:** delete every screenshot and data table from this site and all eight
 values become unused.
 
+### 1.6 The four lane hues *(added 2026-08-15, #199)*
+
+**The one place this site spends hue on data.** The transaction map's lane — macro, software,
+hardware, retail — is a *category*, and §1.5's ramp is the wrong tool for a category the way a
+categorical palette is the wrong tool for a magnitude. So the map now runs both encodings on
+the same mark: **the dot's ring is its lane, the dot's fill is its value**, and they never swap.
+
+| Lane | Hue | vs. `#1A1A1A` | Ink (42 event labels) | vs. `#1A1A1A` |
+|---|---|---|---|---|
+| Macro & regulatory | `--map-l0` `#E2B04A` | 8.7:1 | `--map-l0-ink` `#E3CDA3` | 11.2:1 |
+| Software & platform | `--map-l1` `#7EA6F6` | 7.2:1 | `--map-l1-ink` `#BCCDF2` | 10.9:1 |
+| Hardware manufacturing | `--map-l2` `#5FC2A6` | 8.1:1 | `--map-l2-ink` `#ABD9CA` | 11.2:1 |
+| Retail & marketplace | `--map-l3` `#E08BB4` | 7.1:1 | `--map-l3-ink` `#EFC0D6` | 10.9:1 |
+
+Each lane also carries a `-tint` (its surface wash, 0.07–0.08 alpha) and a `-line` (the
+hairline to the next lane, 0.32 alpha). Ratios are measured against `#1A1A1A`, which is
+lighter than any surface these actually land on, so every number is a floor.
+
+**Three conditions, and they are the ruling, not the palette.** A figure may spend hue when:
+
+1. the variable is **genuinely categorical** — a name, not a quantity;
+2. the hue is **redundant** with something already in the figure (a lane is identified by
+   vertical position *and* by a name printed inside it), so a reader who cannot separate two
+   of the hues loses nothing — nothing here is the sole carrier of any fact;
+3. it touches **neither the coral ration nor the navy chrome nor a magnitude scale**.
+
+**This is not the [`wolfpack-ai-command`] D-015 ruling, and the two do not conflict.** That one
+put hue in a *committed image* so the sheet stayed hue-free. This one puts hue in the *sheet*,
+because a chart drawn in HTML has nowhere else to put it — which is why the conditions above
+are narrow and written down. Both say the same thing: **hue is figure content, never chrome.**
+
+**The rose is not coral.** `#E08BB4` is a desaturated rose on a near-black figure ground;
+`#F95954` is the accent, and the two appear on screen together (nav CTA above, map below)
+without reading as the same colour. **The coral ration is still six.** "There is pink in the
+map now" is the shape of a future session concluding otherwise.
+
+**The macro bands stay neutral.** A band is a shock, not a lane; a fifth hue there would read
+as a fifth category. Same for the time axis, which every lane shares.
+
 ## 2. The accent ration
 
 ⚠️ **There is no site-level ration count.** See §11, F-1.

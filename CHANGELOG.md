@@ -89,9 +89,40 @@ All notable changes to this project are documented here. The format follows
   took their static position ~640px into the table, escaped every scroller above them, and
   gave the whole document 269px of horizontal scroll at 390px wide while every container
   still measured correctly. Latent in `.dtable` since it shipped. (#172)
+- **The transaction map's macro bands and gridlines were painting *under* the lane surfaces.**
+  Every element in the figure is absolutely positioned inside one stacking context, so paint
+  order was document order and an opaque lane hid whatever crossed it — a band spanning all
+  four lanes was being drawn as stripes through the two lanes that happened to have no
+  background. Survivable while half the lanes were transparent, fatal once all four carry a
+  tint. The layers are now explicit and named in the sheet: lanes 0, bands and gridlines 1,
+  events 2, lane names and year labels 3. Found while colouring the lanes, not reported. (#199)
 
 ### Changed
 
+- **The transaction map is coloured by lane, and the shared sheet gained its first data
+  hue.** The map has two variables on every dot and only one of them can take hue: a lane
+  (macro / software / hardware / retail) is a **category**, so it takes the new
+  `--map-l0`…`l3` on the dot's ring, the lane name, the lane's surface wash and its hairline;
+  the deal value is a **magnitude** and stays on the neutral `--fig-ramp-1`…`4` fill, which is
+  the whole reason that ramp exists. **The two never swap.** `case-study.css`'s "no new hues"
+  rule is now "no new hues **in page chrome**" plus one scoped exception written into the
+  header, `docs/site-brief.md` §1.6 and `case_studies/README.md`: a figure may spend hue when
+  the variable is genuinely categorical, the hue is **redundant** with something already in
+  the figure so nothing is its sole carrier, and it touches neither the coral ration nor the
+  navy chrome nor a magnitude scale. This **extends** `wolfpack-ai-command`'s D-015 rather
+  than breaking it — that ruling put hue in a committed image so the sheet stayed hue-free,
+  which a chart drawn in HTML cannot do. **The coral ration is still six.** Every hue and ink
+  carries its measured contrast ratio, floors of 7.1:1 and 10.9:1. (#199)
+- **The map's year axis now runs along the top as well as the bottom.** The plot is 1600px
+  wide at its narrowest and four lanes deep, so dating an event in the first lane meant
+  tracking to the far edge of the figure and then all the way down. (#199)
+- **Consolidation Under Pressure — three cuts from Ry's second pass.** The 145% China figure
+  is out of the "Cut the tail" implication (now "High tariffs"), the "Rebuild deal capability"
+  implication is gone, and the "Tariff schedule changes" row is out of the Part Nine watch
+  table — with its accessible caption moved from "Eight open questions" to "Seven", a count
+  that would otherwise have gone stale silently because nothing on screen contradicts it. Both
+  figures survive elsewhere on the page and the cut row carried no `Src` cell, so
+  `verify_copy.py`'s numeric check and the 43 / 31 / 12 gutter arithmetic are untouched. (#199)
 - **Consolidation Under Pressure — evidentiary corrections from Ry's review.** Four passages
   claimed more than the sources carry, and all four are now stepped down rather than
   restated. **Purchase price minus sale price is a "headline purchase-to-sale consideration
