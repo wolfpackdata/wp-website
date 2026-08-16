@@ -1,6 +1,6 @@
 # Workflow — Consolidation Under Pressure
 
-Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
+Phase: 4 — published, link placement outstanding
 
 | | |
 |---|---|
@@ -10,8 +10,8 @@ Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
 | Notion LinkedIn | https://app.notion.com/3bec70e5c7b481f88a39f5d371af4db5 |
 | Notion task     | https://app.notion.com/3bec70e5c7b4811089f1ee8b102919c3 |
 | Notion LinkedIn task | https://app.notion.com/3bec70e5c7b4818c93fac31fb42dd836 |
-| Wix draft ID    | **`ad404772-7e42-4108-a157-60efe0267d67`** — pushed 2026-08-15, `UNPUBLISHED` |
-| Live URL        | (unset) |
+| Wix draft ID    | **`ad404772-7e42-4108-a157-60efe0267d67`** — pushed 2026-08-15, published 2026-08-15 10:24 PM PT |
+| Live URL        | **<https://www.wolfstrategyllc.com/post/consolidation-under-pressure-music-gear>** |
 | Slug            | `consolidation-under-pressure-music-gear` |
 | Cover           | `cover.jpg`, 1200 x 675, 226 KB — Ry's supplied hero art, downscaled |
 
@@ -114,6 +114,18 @@ img.save(r'blog_posts/2026-08-15-consolidation-under-pressure/cover.jpg', 'JPEG'
   per the standing rule. Phase stays 3 until the publish is confirmed, and the Phase 3
   bookkeeping (content row → `Published`, post URL, Web Property Map edge) waits with
   it.
+- 2026-08-16 — **Published, and the previous entry resolves as a race.** The live page
+  stamps `datePublished` 2026-08-16T05:24:02Z — **2026-08-15 10:24 PM PT**, two minutes
+  after the probes that read `UNPUBLISHED`. Ry clicked publish on seeing the flag and
+  confirmed the fix the next morning with the live URL. Verified live: HTTP 200, the
+  retitled `<title>`, and the `seoSlug`-derived path
+  `/post/consolidation-under-pressure-music-gear` (the title-derived preview path never
+  became the URL — the README's fidelity limit behaved as documented). Body links on
+  the live page: the case study and the intro calendar, exactly the two destinations.
+  Phase 3 bookkeeping run the same morning: content row → `Published` with URL and
+  date, the blog task's last two to-dos checked and the task closed `AI Done`, and the
+  Web Property Map given the new Wix → intake edge. The LinkedIn task stays
+  `In progress` — the draft is written; posting, visual, and sequencing are Ry's.
 
 <!--
 Phase values, in order:

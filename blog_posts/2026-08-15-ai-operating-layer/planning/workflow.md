@@ -1,6 +1,6 @@
 # Workflow — An AI Operating Layer for Streamlining Project Delivery
 
-Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
+Phase: 4 — published, link placement outstanding
 
 | | |
 |---|---|
@@ -9,8 +9,8 @@ Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
 | Notion content  | https://app.notion.com/p/3bec70e5c7b481dbbe75d5d1bac184f5 (Blog Post 7) |
 | Notion LinkedIn | https://app.notion.com/p/3bec70e5c7b48156ab99f601cbb3aae1 |
 | Notion task     | https://app.notion.com/p/3bec70e5c7b481969071d68ca7b436c8 (8. Launch the … blog post) |
-| Wix draft ID    | **`4c8c192e-cd4a-428b-8e0f-995c4a247909`** — pushed 2026-08-15, `UNPUBLISHED` |
-| Live URL        | (unset) |
+| Wix draft ID    | **`4c8c192e-cd4a-428b-8e0f-995c4a247909`** — pushed 2026-08-15, published 2026-08-15 9:01 PM PT |
+| Live URL        | **<https://www.wolfstrategyllc.com/post/ai-operating-layer-for-project-delivery>** |
 | Slug            | `ai-operating-layer-for-project-delivery` |
 | Cover           | `cover.jpg`, 1200 x 675, 49 KB — the case study's shield hero, downscaled |
 
@@ -62,14 +62,13 @@ in case Ry has edited the draft in the dashboard.
 
 ## Outstanding — all Ry's
 
-- **Proofread and publish** from the Wix dashboard. Nothing is public until he does;
-  `--publish` was never used. **Confirm the slug there** — the draft preview path is
-  title-derived (`/post/an-ai-operating-layer-for-streamlining-project-delivery`), which is the
-  README's third fidelity limit rather than a mistake. `seoSlug` is stored correctly.
-- **Post the LinkedIn subpost** (`raw-linkedin-post.md`), then boost.
-- Then Phase 3 bookkeeping: the Content DB row to `Published` with its URL and date, the
-  remaining task to-dos, and the **Web Property Map**, which a published post linking
-  `intake.wolfstrategyllc.com` makes stale.
+- ~~Proofread and publish~~ **Done — published 2026-08-15 9:01 PM PT.** The live path is the
+  `seoSlug`, `/post/ai-operating-layer-for-project-delivery` — the title-derived preview path
+  never became the URL, so the README's third fidelity limit behaved as documented.
+- **Post the LinkedIn subpost** (`raw-linkedin-post.md`), then boost. Still open.
+- ~~Then Phase 3 bookkeeping~~ **Done 2026-08-16** — Content DB row `Published` with URL and
+  date, Proofread/Publish checked on the task (which stays `In progress` for the LinkedIn
+  subpost and boost), and the Web Property Map given the new Wix → intake edge.
 
 Two calls were made on his behalf rather than blocking the push, both cheap to reverse:
 `featured` is `false`, and the new `project management` tag was created. Featuring or retagging
@@ -136,6 +135,14 @@ src.resize((1200, 675), Image.LANCZOS).save(
   deployed, sourced from the root `CLAUDE.md` deployment table. Fetching the URL showed the
   page live. The issue carries a correcting comment; the brief, source notes and `post.md`
   were fixed before the branch was committed.
+- 2026-08-16 — **Published by Ry 2026-08-15 9:01 PM PT** (live page `datePublished`
+  2026-08-16T04:01:56Z), at the `seoSlug` path
+  <https://www.wolfstrategyllc.com/post/ai-operating-layer-for-project-delivery> — confirmed
+  live with HTTP 200. Phase 3 bookkeeping run 2026-08-16: Content DB row → `Published` with
+  URL and date, `Proofread` and `Publish` checked on task 8 (which stays `In progress` for
+  the LinkedIn subpost and the boost), and the Web Property Map given the new
+  Wix → `intake.wolfstrategyllc.com/wolfpack-ai-command/` edge. Body links verified on the
+  live page: the case study and the intro calendar, exactly the two destinations.
 
 <!--
 Phase values, in order:
