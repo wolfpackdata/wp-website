@@ -75,12 +75,9 @@ Most AI adoption starts with *what can the AI do?* For anything touching a
 business record, I think that is backwards. The boring governance questions
 matter first, and they are older than AI:
 
-1. **What is it allowed to do?** Not what the model is capable of — what the
-   rules permit, and where those rules live. What data is confidential?
-2. **Who can tell what it did?** Six weeks later, from the record itself,
-   without relying on somebody's memory.
-3. **How do we know when it went wrong?** And once we know, how painful is it to
-   put the system back? It should be "a few clicks" to revert the AI's mistakes.
+1. **What is it allowed to do?** Not what the model is capable of — what the rules permit, and where those rules live. What data is confidential?
+2. **Who can tell what it did?** Six weeks later, from the record itself, without relying on somebody's memory.
+3. **How do we know when it went wrong?** And once we know, how painful is it to put the system back? It should be "a few clicks" to revert the AI's mistakes.
 
 So I built the answers before I built the automation. The system binds together
 three things: the **system of record** — Notion, where projects, tasks, products
@@ -115,15 +112,9 @@ self-report.
 
 Three more rules do most of the remaining work:
 
-- **A silent state change is an incomplete transition.** Every status change the
-  AI makes carries a timestamped comment. Status tells me that it acted. The
-  comment tells me what happened.
-- **A live status no one could have observed is theater.** Backfilling is
-  banned. Creating a task after the work is finished and racing it through the
-  lifecycle in one pass makes the history decorative.
-- **Merged is not accepted.** When a fix lands on the integration branch, the
-  issue moves into a visible human-verification queue instead of closing itself.
-  Acceptance stays a human decision against real data.
+- **A silent state change is an incomplete transition.** Every status change the AI makes carries a timestamped comment. Status tells me that it acted. The comment tells me what happened.
+- **A live status no one could have observed is theater.** Backfilling is banned. Creating a task after the work is finished and racing it through the lifecycle in one pass makes the history decorative.
+- **Merged is not accepted.** When a fix lands on the integration branch, the issue moves into a visible human-verification queue instead of closing itself. Acceptance stays a human decision against real data.
 
 And the AI is forbidden from assigning work to itself — not as performative
 humility, but to preserve a human-only channel. A field is only informative when
@@ -131,20 +122,10 @@ you know who is *not* allowed to write to it.
 
 ## What I Am Explicitly Not Claiming
 
-- **Not a replacement.** It does not replace a project manager and this is not a
-  headcount argument. It takes on the half of the role that consumes the hours
-  without being the reason the role is valuable.
-- **Not an engine.** The Python layer is a teaching-grade scaffold, deliberately
-  frozen when its lessons graduated into governance. Calling it a production
-  automation platform would oversell it.
-- **Not infallible.** The gates are designed to catch mistakes before they ship.
-  Some will still get through. The target is not zero errors; it is small,
-  attributable, cross-linked changes that can be reversed with one clear
-  instruction.
-- **Not measured.** There is no instrumented before-and-after study behind this.
-  I can show where coordination work is removed, where context is preserved, and
-  where conflict handling gets tighter. I cannot responsibly say "X% faster" or
-  "$Y saved" until that has been measured, so I do not.
+- **Not a replacement.** It does not replace a project manager and this is not a headcount argument. It takes on the half of the role that consumes the hours without being the reason the role is valuable.
+- **Not an engine.** The Python layer is a teaching-grade scaffold, deliberately frozen when its lessons graduated into governance. Calling it a production automation platform would oversell it.
+- **Not infallible.** The gates are designed to catch mistakes before they ship. Some will still get through. The target is not zero errors; it is small, attributable, cross-linked changes that can be reversed with one clear instruction.
+- **Not measured.** There is no instrumented before-and-after study behind this. I can show where coordination work is removed, where context is preserved, and where conflict handling gets tighter. I cannot responsibly say "X% faster" or "$Y saved" until that has been measured, so I do not.
 
 ## The Full Version
 
@@ -173,6 +154,13 @@ CLAUDE.md deployment table does not list this case study and reads as though it
 were still undeployed; the Notion task "5. Deploy the case study to the intake
 repo" is AI Done and the URL resolves. Re-check before publishing anyway: it is
 this post's one real destination.
+
+EVERY LIST ITEM HERE IS ON ONE LINE, AND MUST STAY THAT WAY. The converter joins
+wrapped lines inside a paragraph but NOT inside a list item (#208): a bullet
+split across two source lines becomes a one-item list plus an orphan paragraph,
+silently, with no warning and a plausible node count. This post was caught at the
+payload stage with three ordered items rendered as three separate lists each
+numbered 1. Hard-wrap the prose freely; never hard-wrap a bullet.
 
 Copy provenance: most of this body is verbatim or near-verbatim from
 case_studies/wolfpack-ai-command/index.html, per Ry's instruction not to reinvent
