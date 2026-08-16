@@ -1,5 +1,5 @@
 ---
-title: Consolidation Under Pressure
+title: "New Case Study: Consolidation Under Pressure"
 slug: consolidation-under-pressure-music-gear
 excerpt: Music has never generated more money. The people who build the instruments have never captured less of it. Ten years of transactions explain how the industry got here, and two economic shocks sit underneath the distress.
 cover: cover.jpg
@@ -109,6 +109,13 @@ ad404772-7e42-4108-a157-60efe0267d67, recorded in planning/workflow.md. NOT
 PUBLISHED: Ry proofreads and publishes from the Wix dashboard. Any future push is
 a PATCH to that ID, never another POST — the SetMaster post is the cautionary
 tale.
+
+THE TITLE IS RY'S RETITLE (2026-08-15, made directly in the Wix dashboard and
+mirrored back here): "New Case Study:" prefixed to the case study's h1. It
+deliberately departs from the #119 h1-verbatim rule — his call, as that rule's
+owner. Do not "fix" it back to the bare h1, and do not touch the slug, which is
+unchanged. Because the dashboard was edited directly, hash the live body against
+a fresh build before any body re-push (README, "Re-pushing an edited post").
 
 COPY PROVENANCE. Almost every sentence in this body is verbatim from
 case_studies/consolidation_under_pressure/index.html as it stood at commit

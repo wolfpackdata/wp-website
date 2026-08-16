@@ -96,6 +96,24 @@ img.save(r'blog_posts/2026-08-15-consolidation-under-pressure/cover.jpg', 'JPEG'
   correctly, so confirm the final URL in the dashboard before publish. The pre-send inspection
   also surfaced a pre-existing converter bug — bold wrapped around a link is dropped (#212) — so
   the CTA arrives unbolded here exactly as on every previously pushed post.
+- 2026-08-15 — **Ry retitled the draft in the Wix dashboard** to *"New Case Study:
+  Consolidation Under Pressure"* (draft `editedDate` 10:22 PM PT) and the retitle was
+  mirrored back into `post.md` in the same evening's sync commit, so the pair cannot
+  drift and a future re-push cannot revert it. **This deliberately departs from the
+  #119 h1-verbatim rule — Ry's call, as that rule's owner**; the title is now quoted
+  in the front matter because it carries a colon. The slug is untouched. Because the
+  dashboard was edited directly, **hash the live body against a fresh build before any
+  body re-push** (README, "Re-pushing an edited post").
+- 2026-08-15 — **Ry reported publishing the post, but the publish did not register.**
+  At sync time (~10:35 PM PT) the draft still reads `status: UNPUBLISHED` with
+  `hasUnpublishedChanges: true`, `GET /blog/v3/posts/{id}` returns `POST_NOT_FOUND`,
+  and the published-posts list holds 7 posts, this one absent — four consistent
+  signals. The retitle *did* save (`changeOrigin: MANUAL_SAVE`), which reads like a
+  save that was mistaken for a publish, or a publish flow that did not complete.
+  **Flagged to Ry to re-publish from the dashboard; nothing was published from here**
+  per the standing rule. Phase stays 3 until the publish is confirmed, and the Phase 3
+  bookkeeping (content row → `Published`, post URL, Web Property Map edge) waits with
+  it.
 
 <!--
 Phase values, in order:
