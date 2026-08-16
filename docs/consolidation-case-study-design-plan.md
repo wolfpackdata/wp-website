@@ -99,6 +99,29 @@ above, map below — and do not read as the same colour. **The ration is still s
 sheet, the brief and this ledger all say so, because "there is pink in the map now" is the
 shape of a future session concluding otherwise.
 
+### Round four — editorial restraint, 2026-08-15 (#205)
+
+Two thesis corrections and a defensive-language trim. **The round after #195 is the mirror of
+#195**, and the pair is the actual lesson: that round fixed a page claiming more than its sources
+carry, and the fix left the page *announcing* its own carefulness. Correcting an overclaim and
+performing rigour are two different things, and the second one costs credibility too — it reads
+as a writer expecting to be cross-examined rather than one making an argument.
+
+| # | Decision | Why |
+|---|---|---|
+| **D-038** | **The hero no longer excludes what the body says is not excluded.** *"two economic shocks, not a product problem, explain the wreckage"* → *"two economic shocks sit underneath much of the distress"* | Ry. The hero was the one place on the page still asserting the claim #195 removed everywhere else: Part Two says a timeline cannot rule out product or competitive factors, and Part Four says the same about Native Instruments. **A page whose hero contradicts its own Part Two is worse than either version alone** — a reader who notices stops trusting both. Not replaced with "may have contributed to"; the thesis is still stated as a thesis. `og:description` and the meta description carried the same claim and moved with it |
+| **D-039** | **"Scale is a liability, expect conglomerates to break up" → "what has failed is unrelated ownership, not breadth"** | Ry, and the report's own Pattern 5 was the counter-evidence: Audiotonix and Focusrite have assembled broad audio portfolios over the same decade and are still buying. The old claim — *"every large diversified owner in this report that assembled breadth has since sold it"* — was **false against the page's own signal-chain table**. The corrected version keeps every strategic implication and gains one: **operating adjacency is the variable**, not size. Bose dropped out of the example list, because an audio company divesting a division is not an outsider exiting and lumping the two was part of the original error |
+| **D-040** | **"The endpoint is four to six vertically integrated groups" → "One plausible endpoint is…"**, and *"There is no stable middle"* stays | Ry. Framing the destination as conditional is enough; once the sentence opens as a plausible endpoint the closing line reads inside that frame. Softening the punch line as well would have cost the voice for no gain in accuracy |
+| **D-041** | **~127 words of cautionary prose removed**, against ~480 words of in-body hedging — about a quarter. **No limitation, confidence level, source distinction or known gap was removed** | Ry's test, adopted verbatim as the rule: *does this sentence stop a reasonable executive reader from making a materially incorrect inference?* Keep if yes; cut if it mainly signals that the author is rigorous. What went: the label *"correctly stated"*; *"Read those three figures as reported, not as measured"* (the substance stays, one sentence shorter); the label *"The honest limit of this argument"*; *"It is evidence about demand for the assets, and about nothing else"*; *"survey data, not panel data"* where the confidence note four sections earlier already says it; *"not yet evidence for it"* after *"being tested in public"* already implies it; and *"Both figures are press-reported, not company-confirmed"* on two figures **already prefixed "reported" and already listed in the Confidence levels appendix** — triple-marked |
+| **D-042** | **The two consecutive Native Instruments epistemic paragraphs are merged into one**, 126 words to 92 | *"What this report can and cannot say about why"* followed by *"Two things this report explicitly does not claim"* made the same move twice in a row. All four substantive points survive: the chronology is documented, no source states a cause, product/customer/competitive factors are not excluded, and no category-level adoption or share series exists. **One paragraph of restraint reads as discipline; two consecutive ones read as anxiety** |
+| **D-043** | **The consideration-gap note is kept, and kept prominent** — trimmed by twelve words, not compressed | Ry, explicitly. It is the one caution on the page that is load-bearing *financially*: without it a reader takes $170m and $680m for losses. The only clause cut was *"so for Sonova no gap and no loss exist yet"*, which the table now states in its own cell (*"None established — no exit price"*) |
+| **D-044** ⚠️ | **One cut went a step past what was strictly required:** *"and no comparable series for software sales exists in these sources at all"*, from the pandemic-figures paragraph | It guarded an inference about a claim that no longer exists — #195's D-028 already cut the software "step-change". The nearest live claim is the sponsor-pricing aside, which rests on insolvency reporting rather than on a software volume series. Flagged rather than assumed: it is one sentence, and putting it back is one edit |
+
+**Net word count moved almost not at all** — 7,331 to 7,239, 1.3%. That is the honest shape of the
+round: ~127 words of hedging out, ~64 words back in for D-039, which needed *more* words to say the
+narrower and more defensible thing. **A restraint pass is not a length pass**, and #195's D-031
+already showed the same arithmetic running the other way.
+
 ## 3. What was deliberately not carried over
 
 Recorded because a derived design should say what it refused, not only what it took.
