@@ -99,6 +99,27 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- **Consolidation Under Pressure — two overclaimed theses narrowed, and a quarter of the
+  defensive language cut.** The hero said *"two economic shocks, **not a product problem**,
+  explain the wreckage"* while Part Two and Part Four both said a transaction timeline
+  **cannot rule out** product or competitive factors — the hero was contradicting its own
+  body. It now reads *"two economic shocks sit underneath much of the distress"*, and the
+  meta and `og:description` moved with it. Part Eight's *"scale has become a liability, expect
+  conglomerates to break up"* was **false against the page's own Pattern 5 table**, which
+  documents Audiotonix and Focusrite assembling broad audio portfolios over the same decade
+  and still buying; the implication is now **"what has failed is unrelated ownership, not
+  breadth"**, with operating adjacency as the variable that separates the two groups. The
+  *"four to six vertically integrated groups"* endpoint is now *"one plausible endpoint"*.
+  About **127 words of cautionary prose** came out against roughly 480 words of in-body
+  hedging — the labels *"correctly stated"* and *"the honest limit of this argument"*, the two
+  consecutive Native Instruments epistemic paragraphs merged into one, *"and about nothing
+  else"*, *"survey data, not panel data"* where the confidence note four sections earlier
+  already said it, and a *"press-reported, not company-confirmed"* on two figures already
+  prefixed "reported" and already listed in the Confidence levels appendix. **No limitation,
+  confidence level, source distinction or known gap was removed**, and the consideration-gap
+  warning is kept prominent — it is the one caution that stops a reader taking $170m and $680m
+  for losses. The test applied to every cautionary sentence: *does it stop a reasonable
+  executive reader from making a materially incorrect inference?* (#205)
 - **The transaction map is coloured by lane, and the shared sheet gained its first data
   hue.** The map has two variables on every dot and only one of them can take hue: a lane
   (macro / software / hardware / retail) is a **category**, so it takes the new
