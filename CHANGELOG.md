@@ -92,6 +92,41 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- **Consolidation Under Pressure — evidentiary corrections from Ry's review.** Four passages
+  claimed more than the sources carry, and all four are now stepped down rather than
+  restated. **Purchase price minus sale price is a "headline purchase-to-sale consideration
+  gap", not a loss** — the difference is $170m against the **$5.1m loss on sale** Etsy's
+  FY2025 10-Q actually records, and Sonova, having no exit price, has neither a gap nor a
+  loss; a note bolted to the Pattern 1 table now says so. **A transaction timeline
+  establishes sequence, not cause** — Part Two no longer claims nearly every failure traces
+  to the two macro shocks, and no longer rules out product or competitive factors. **The
+  Native Instruments "balance-sheet failure" diagnosis is withdrawn**, along with the
+  assertions about Kontakt's and Traktor's market position, because no administrator's
+  report, filing or management statement in the sources identifies a cause and no adoption
+  series exists — the page had been contradicting its own methodology appendix. **The
+  pandemic-spike figures are marked press-reported at the point of use**, with the survey,
+  sample and scope named as unknown, and the unquantified software "step-change" is cut. The
+  same fault was corrected where it recurred outside the named sections. (#195)
+- **`.rtable` is legible as a table.** Cell padding is now larger than the text's own
+  leading, and a column hairline in `--line` gives the eye an edge to track along — the two
+  faults behind "difficult to read and not recognizable as tables". Both came from a
+  component that borrowed `.dtable`'s no-gridlines density without noticing `.dtable` is a
+  *figure* of four numbers where this is a 43-row register with prose in two of five
+  columns. `.dtable` is deliberately unchanged. New: `.rtable__note` and `.rtable--noted`,
+  a note that attaches to a table and, being a sibling rather than a child of the scroller,
+  does not slide out of view when the reader scrolls to the column it explains. (#195)
+- **The vertical-rhythm ruling (#182) applied to this page.** Twenty inline `margin-top`
+  declarations came out; `.k + .section__title` and `.plainlist`'s margins moved into the
+  shared sheet, where spacing belongs. The geometry and swatch styles on the figures stay
+  inline — those are data, not spacing. (#195)
+- **The case study is ~13% shorter in prose** (6.8% net, against roughly 500 words the
+  corrections above added). Everything cut was restatement: a duplicated Src explainer, a
+  callout restating the pull quote three lines above it, the "money in gear" table whose
+  four figures were all already on the page, the "money in music" table folded to a
+  sentence, and the source list's trailing domains — 48 sources now hang their link on the
+  title instead of a bare hostname, which also gives 48 links a real accessible name. No
+  figure, source, caveat or recommendation was cut, and `verify_copy.py` proves it: all 186
+  numeric tokens survive. (#195)
 - `docs/site-brief.md` — the figure ground's scope now includes `.figframe`; the new
   sequential ramp is documented with its measured contrast; `case_studies/`'s audience and
   exclusions updated; the report-copy guard added to the guarded-strings table. The

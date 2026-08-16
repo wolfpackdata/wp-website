@@ -13,14 +13,27 @@ will diverge, and the three largest duplications on this property are unguarded
 precisely because nobody wrote one. This is the fourth duplication, and it is
 guarded.
 
-The `.md` is the SOURCE OF RECORD for the prose, named as such in the creative
-brief. It was copied in here from `wolfpackdata/dj-gear-study`
-(`docs/strategy/`) at build time, 2026-08-11. It is vendored rather than
-referenced because a check that reaches into a sibling clone passes or fails
-depending on whether somebody happens to have that clone — which is a check that
-reports nothing on most machines. If the report is ever revised upstream, re-copy
-the `.md` here in the same PR that edits the page, and this script is what proves
-the two agree afterwards.
+The `.md` was copied in here from `wolfpackdata/dj-gear-study` (`docs/strategy/`)
+at build time, 2026-08-11. It is vendored rather than referenced because a check
+that reaches into a sibling clone passes or fails depending on whether somebody
+happens to have that clone — which is a check that reports nothing on most
+machines.
+
+⚠️ **THE PROSE IS NO LONGER FROZEN, AND THIS SCRIPT NO LONGER PRETENDS IT IS.**
+The creative brief called the copy final, and until 2026-08-15 the `.md` was the
+source of record for every word. Ry's review (#195) ended that: sentences were
+rewritten for evidentiary correctness — headline consideration gaps are not
+losses, a transaction timeline does not establish cause, an absence of public
+evidence is not evidence of absence — and roughly a tenth of the prose was cut as
+restatement. **Passages that exist in the `.md` and not on the page are now
+expected.** Do not "restore" them.
+
+What did NOT change is the rule about figures, which is why check 1 below still
+guards the whole numeric surface: a report may be edited, but it may not quietly
+lose a number. Every figure in the source is still on the page, and that is
+asserted on every run. If a future edit legitimately retires a figure, delete it
+from the vendored `.md` in the same commit and say why in the design plan — do
+not weaken the check.
 
 WHAT IT CHECKS, and why each one is the check worth having
 ----------------------------------------------------------
@@ -28,8 +41,9 @@ WHAT IT CHECKS, and why each one is the check worth having
    percentages, thousands-separated counts. This is the check that matters: the
    currency parentheticals are a stated editorial standard, and a report whose
    figures drift is worse than no report because it is still believed. Prose
-   gets edited legitimately between a draft and a finished page; a number does
-   not.
+   gets edited legitimately — see the warning above — and a number does not.
+   It survived a ~13% prose cut in #195 without a single figure going missing,
+   which is exactly the property it exists to hold.
 2. The Src gutter's arithmetic. 43 rows, 31 with a primary source, 12 with a
    dash. The link-versus-dash distinction is the page's load-bearing claim about
    its own evidence, and it is exactly the kind of thing a well-meaning edit

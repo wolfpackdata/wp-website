@@ -58,6 +58,25 @@ read first.
 | **D-021** | The social card's inset is **the transaction map**, captured by a generator that ships with it | A card needs a raster and the map exists only as something a browser draws. Redrawing an approximation in Pillow is how a card and the thing it advertises stop being the same picture. `planning/card/capture_map.py` renders the real page and crops the plot out of it; `social-cards/build_cards.py` composes. Both under the repo's standing rule: **rebuild rather than retouch**. At the 360px a LinkedIn Featured tile renders, the inset is texture — and 42 labelled events across four lanes reads unmistakably as a dense research document, where a crop of prose would read as any page of any website |
 | **D-022** | The closing block has **one CTA and no second destination**, and its copy describes the shape of the work rather than a result | The book-first rule. It also cannot claim an engagement outcome, per D-011, so what it offers is the method: a dated record with a link on every row, checkable figures separated from unverifiable ones, and the gaps stated |
 
+### Round two — Ry's review, 2026-08-15 (#195)
+
+Nine changes. Four of them are evidentiary and are the reason the round exists; the rest are
+presentation. The through-line of the four: **the page was claiming more than its sources
+carry**, and every fix is a step down in strength rather than a new claim.
+
+| # | Decision | Why |
+|---|---|---|
+| **D-023** | ~~D-011's "the tiles carry no invented outcome" was thought to cover the evidentiary surface~~ **It did not.** The tiles were clean; the *prose* was not | Ruled by Ry. The build round policed the one place a case study usually overclaims — the stat tiles — and never audited the argument for the same fault. Four separate passages asserted causation, market position or accounting facts the sources do not support. **The lesson generalises: an outcome ration on the tiles is not an evidence policy for the document** |
+| **D-024** | **Purchase price minus sale price is a "headline purchase-to-sale consideration gap", never a loss.** The Pattern 1 table's column is renamed, and an `.rtable__note` states what the number is not | Ry. The gap and the loss differ by orders of magnitude in the one case where both are public: Etsy's $170m gap against the **$5.1m loss on sale** its FY2025 10-Q records. Masimo's ~$680m is the same kind of number, and **Sonova has no exit price, so it has neither a gap nor a loss** — the old table asserted one anyway. The three-loss conclusion is gone from the exec summary, Pattern 1, the dumbbell figcaption and the Era 3 card |
+| **D-025** | **A transaction timeline establishes sequence, not cause.** Part Two no longer says "nearly every failure traces to one of two macro events", and no longer rules out product or competitive factors | Ry. The claim was doing two illegitimate things at once: inferring causation from a chronology, and treating the absence of a competing explanation in the sources as the absence of the factor. Part Two now says what the record shows and, explicitly, how far it does not reach |
+| **D-026** | **The Native Instruments diagnosis is withdrawn**, and so are the product-status assertions | Ry. "A balance-sheet failure" was a finding the sources do not contain: no administrator's report, filing or management statement in them identifies a cause, and NI is a private German company with no published accounts. "Kontakt remains the industry-standard sampler and Traktor a top-tier DJ platform" needed adoption or market-share data that does not exist in these sources either — the methodology already says no such series exists, so the page was contradicting its own appendix. The section is now *"an insolvency, and an estate broken up three ways"*, and it names what it cannot say |
+| **D-027** | The same correction was applied **where the identical fault recurred outside the named sections** — Part Seven's "the industry's leading AI-audio asset", the exec summary's "balance-sheet failure", the implications' "the arithmetic that ended Soundwide", the aside titled "The strongest evidence that the products were fine" | Not asked for line by line, and done anyway: a page that fixes an unsupported superlative in Part Four and leaves the same superlative standing in Part Seven has not been corrected, it has been patched. Flagged to Ry rather than assumed |
+| **D-028** | **The pandemic-spike figures are marked press-reported at the point of use**, and the unquantified software "step-change" is gone | Ry. The guitar percentages and the 16m first-time-buyer estimate were flagged only in the appendix, four sections later. The page now says at the figures that the coverage does not name the survey, its sample, whether the count is US or global, or whether it covers guitars or all instruments. The software claim had no series at all and could not be repaired, so it was cut |
+| **D-029** | **`.rtable` gets real cell padding and a column hairline**; `.dtable` deliberately does not | Ry: the tables were "difficult to read and not recognizable as tables". Two faults with one cause — a component that borrowed `.dtable`'s habits without noticing `.dtable` is a *figure* of four numbers, where this is a 43-row register with prose in two of five columns. At 11px padding a two-line cell spaced its own lines further apart than it sat from the row above, and with no column edge the rows read as indented paragraphs. Padding is now larger than the text's leading, and the hairline is the one the sheet already uses. No new hue, no new weight |
+| **D-030** | **The page's inline spacing styles are gone**; `.k + .section__title` and `.plainlist`'s margins moved into the shared sheet | The vertical-rhythm ruling (#182, 2026-08-15) landed after this page was built, and the page had been carrying twenty inline `margin-top` declarations — the same failure mode as the hand-authored `<br>`s that prompted #182, in another costume. The geometry and swatch styles on the figures stay inline: those are **data**, not spacing decisions |
+| **D-031** ⚠️ | **The trim came to 6.8% net, not 10%** — a ~13% cut of the original prose, against roughly 500 words added by D-024 through D-028 | The two instructions in this round pull opposite ways: correcting an overclaim costs words, because saying what you cannot support takes longer than asserting it. Everything cut was restatement — a duplicated Src explainer, a callout restating the pull quote three lines above it, the "money in gear" table whose four figures were all already on the page, the "money in music" table folded to a sentence, the source list's redundant trailing domains. **What was not cut: any figure, any source, any caveat, any of the eleven implications.** Reaching 10% net from here means cutting evidence or recommendations, which is Ry's call, not mine |
+| **D-032** | **`verify_copy.py`'s premise is updated, its numeric check is not** | The prose is no longer frozen, so a guard that implied it was would send the next session to "restore" copy Ry deliberately cut. The figure check is the half that still holds, and it passed unchanged through the whole round — every numeric token in the source is still on the page after a 13% prose cut |
+
 ## 3. What was deliberately not carried over
 
 Recorded because a derived design should say what it refused, not only what it took.
@@ -94,6 +113,20 @@ about 492px and then crops, which fakes overflow on any direct "mobile" capture.
 | `social-cards/check_meta.py` | 11 pages PASS, including this one |
 | `planning/verify_copy.py` | clean |
 
+## 4a. Verification re-run, 2026-08-15 (#195)
+
+| Check | Result |
+|---|---|
+| Horizontal overflow, **all four case studies**, at 320 / 390 / 768 / 1024 / 1440 | `scrollWidth − clientWidth = 0`, and `scrollTo(99999,0)` leaves `scrollX = 0`, everywhere. The AI Command page is in the sweep because it also uses `.rtable` |
+| Map label collisions | **0**, at every width, on both pages; still 42 events across 19 tracks |
+| `Src` gutter | 43 cells, 31 links + 12 dashes, unchanged through the rewrite |
+| Copy vs. the source `.md` | all 186 numeric tokens still present after a ~13% prose cut |
+| `verify_copy.py` · `check_meta.py` | clean |
+
+**Headless Edge produced no output at all on this machine during this round** — the binary
+returns nothing, `--version` included. Chrome's headless mode works and the sweep was run
+there. Worth knowing before assuming a verification script is broken: check the browser.
+
 ## 5. Open items
 
 1. **D-006 needs Ry's ruling** — whether a citation counts against the destination policy.
@@ -101,9 +134,20 @@ about 492px and then crops, which fakes overflow on any direct "mobile" capture.
 2. **D-008 and D-009 are flagged word/number changes.** The brief says to come back before
    changing a word, and there was no way to ask mid-build. Both are one line each and both
    are reversible.
-3. **Not deployed.** `/consolidation-under-pressure/` 404s until the folder and the updated
+3. **D-031: the trim landed at 6.8% net against a 10% aim.** Going further means cutting
+   evidence, the eleven implications, or the watch list. Ry's call.
+4. **D-027 went slightly beyond the named sections** to fix the same fault where it recurred.
+   If that was unwanted, the three extra edits are individually revertible.
+5. **The upstream source has now diverged.** `wolfpackdata/dj-gear-study`'s
+   `01-ma-landscape-2016-2026.md` still carries the pre-review prose, including the three
+   "losses", the categorical causal claim and the Native Instruments diagnosis. **The
+   corrections in #195 are corrections of fact, not of house style**, so the upstream document
+   is now wrong in the same four places this page used to be. Worth porting back.
+6. **Not deployed.** `/consolidation-under-pressure/` 404s until the folder and the updated
    `case-study-assets/` are copied into `wolfpackdata/ai-coaching-intake`. Two folders, and
-   `planning/` never deploys.
+   `planning/` never deploys. **The shared stylesheet changed in this round, so re-deploying
+   this case study means re-deploying `case-study-assets/` — which the other two case studies
+   also read.** Both were swept for overflow and are unaffected.
 4. **The Web Property Map goes stale on deploy** — a new page and a new URL. Update the
    Notion page in the same round.
 5. **The report is dated 11 August 2026 and says so.** Several Part Nine watch-list items
