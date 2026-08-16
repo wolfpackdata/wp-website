@@ -6,6 +6,9 @@ they read as a set rather than as pages that happen to look similar.
 | Case study | Folder | Planned public URL | Audience | Robots | Status |
 |---|---|---|---|---|---|
 | **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91), re-deployed same day with its figure placeholders hidden (#99) |
+| **Consolidation Under Pressure** | `consolidation_under_pressure/` | `intake.wolfstrategyllc.com/consolidation-under-pressure/` | Founders, directors, and operating executives | **indexed** | **Built 2026-08-11** (#172). Not deployed |
+| ↳ its transaction map | `consolidation_under_pressure/transaction-map.html` | `…/consolidation-under-pressure/transaction-map.html` | as above | **noindex** | as above |
+| **An AI Operating Layer for Streamlining Project Delivery** | `wolfpack-ai-command/` | `intake.wolfstrategyllc.com/wolfpack-ai-command/` | Hiring companies lead; buyers of the system and project clients read along | **indexed** (ruled by Ry 2026-08-15, outline D-009) | **Built 2026-08-13** (#174). Hero + social card 2026-08-15 (#190). **Deployed 2026-08-15** (#190) |
 
 Linked from the `.cases` grid on both `hire/` pages, where it replaced the
 transaction-tracking placeholder, and from the portfolio page. As of 2026-08-04 it is no longer
@@ -18,11 +21,29 @@ link too, leaving one `In preparation` card of three on the `hire/` pages.
 case_studies/                ← NOT a deploy path; a workspace
 ├── README.md                ← this file                        (not deployed)
 ├── case-study-assets/       ← shared css, js, fonts, img        ┐
-└── ops_fin_model_support/                                       ├─ deployed
-    ├── index.html                                               ┘
-    └── planning/            ← outline, decisions, source brief  (not deployed)
-        └── hero/            ← the hero image generator + its source capture
+├── ops_fin_model_support/                                       │
+│   ├── index.html                                               │
+│   └── planning/            ← outline, decisions, source brief  │ (planning/
+│       └── hero/            ← the hero generator + its source   ├─ never
+├── consolidation_under_pressure/                                │  deploys)
+│   ├── index.html                                               │
+│   ├── transaction-map.html ← the same figure, full width       ┘
+│   └── planning/            ← the source document, the brief,   (not deployed)
+│       │                      and the copy guard
+│       └── card/            ← the social card's capture generator
+└── wolfpack-ai-command/
+    ├── index.html
+    └── planning/            ← outline + decisions ledger        (not deployed)
+        └── hero/            ← the shield generator, the tiled
+                               print, and the rendered SVGs
 ```
+
+**A case study may ship more than one page.** `consolidation_under_pressure/` is the first
+that does: the report, and the standalone full-width transaction map it links out to. The
+second page is `noindex` and carries no Open Graph block — it is reached from the report,
+not from a search result or a paste, so there is no card to guard and nothing for
+`check_meta.py`'s table to hold. Both pages load the shared stylesheet; neither has any CSS
+of its own.
 
 Like `sm3-specific-pages/`, **this folder's name is not the URL path.** Deploying is a copy
 of `case-study-assets/` and the case study's own folder into the `ai-coaching-intake` repo
@@ -43,11 +64,32 @@ deployed site, so paths are never rewritten.
   reveal timing and scroll-spy behavior are supposed to match every other long-form page in
   this repo, and a rewrite is how two pages quietly stop matching.
 - **Coral is rationed to six uses**, listed in the header comment of `case-study.css`. Keep
-  that comment true. Where coral is a fill, text on it is navy, never white (AA).
+  that comment true. Where coral is a fill, text on it is navy, never white (AA). The list of
+  *refusals* grew on 2026-08-11 (#172) and the count did not: a report full of source-link
+  glyphs, deal-value steps, macro bands and highlighted rows added six new temptations and
+  spent nothing.
 - **No new hues.** The shared sheet introduces nothing beyond the navy system and a neutral
   figure ground. A table that needs to mark one row important does it with weight and a
   background lift. See the header comment for the reasoning and for how to add an accent
   properly if one is ever genuinely needed.
+  - **Two consequences worth knowing before you reach for a colour**, both solved in the
+    sheet and both re-usable. **Direction** — a metric up or down — is carried by the glyph
+    (▲ ▼ ▬) and by weight, never by a green and a red; a semantic colour pair is atomic and
+    neither half earns its way in alone. **Magnitude** — the transaction map's five-step
+    deal-value scale — is carried by an ordered ramp built along the figure ground's own
+    neutral axis, dark to light on a dark surface. That is a sequential scale in one hue,
+    which is what a magnitude actually is; a categorical palette would make it unreadable.
+- **A rendered chart sits on the figure ground, a table the reader reads sits on the page.**
+  `.figframe` joined `.shot`, `.ph` and `.dtable` in the `--fig-*` scope on 2026-08-11, for
+  the reason the ground exists: a chart drawn in HTML is the alternative to a screenshot *of*
+  a chart, so it stands exactly where a captured image would. `.rtable` — the long-form
+  report table — deliberately does not, because a page whose body is mostly near-black slabs
+  stops looking like this site.
+- **`overflow-x: auto` does not clip an absolutely positioned descendant.** Both table
+  components declare `position: relative` and the reason is written out in the stylesheet. A
+  `.visually-hidden` span inside a wide scrolling table escapes to the initial containing
+  block and gives the whole document horizontal scroll, while every container still measures
+  correctly. The tell is that putting `overflow: hidden` on an ancestor does not fix it.
 - **No external requests.** Fonts and images are self-hosted in `case-study-assets/`, the
   same rule every other page folder in this repo keeps.
 - **Placeholders ship, gray boxes do not.** Unshot assets use the `.ph` device, sized at the
@@ -116,3 +158,28 @@ deployed site, so paths are never rewritten.
 **Judged by Ry, against no written spec.** This repo carried a voice guide until 2026-08-06
 (#150), when it was removed for not being good enough to bind anything. The case studies
 already here are the reference: read one before writing the next.
+
+### Tone direction (added 2026-08-15)
+
+Still not a binding spec — but there are now two reference texts that sound like Ry, and
+drafts should be checked against them rather than against a generic "polished essay"
+register: the beginner DJ gear guide in the `rml-dj-beginner` repo (`index.html`), and
+Ry's manual edit pass on the AI Command case study (the working-tree diff folded into the
+2026-08-15 tone iteration — see git history). What they have in common:
+
+- **Blunt verdict sentences, often bolded, opening or closing a paragraph.** *"Extremely
+  boring."* *"Chaos."* *"Below that line, they're trash."* One or two per section, where
+  the argument has actually earned them — not sprinkled as a tic.
+- **Personal experience is the evidence.** Dates, own gear, own clients, own mistakes —
+  "the first piece of pro audio gear I ever bought, back in 2008" — never abstract
+  authority. Hedges are honest and casual: *"my own opinion, from my own experience."*
+- **Everyday metaphors over literary ones.** TPS Reports, calling an audible, side
+  quests, tanks. If a metaphor needs a humanities degree, swap it for one from an office,
+  a stage, or a garage.
+- **Plain statements of consequence beat polished aphorisms.** *"For the shareholders
+  reading, these symptoms are very expensive"* — not an inverted-clause epigram. One
+  clever line per section is plenty; when a draft has two, cut the second.
+- **Direct reader address is welcome.** *"Trust me,"* *"I encourage you"* — the reader is
+  a person Ry is talking to, not an audience being written at.
+- **Enthusiasm is allowed and stated plainly.** Things are perfect, huge, tanks. The
+  voice is confident and warm, not measured-at-all-costs.

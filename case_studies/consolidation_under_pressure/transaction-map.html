@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- noindex, follow. This is one figure with no prose around it — thin content
+     under a brand whose other indexed pages are substantial, and it would
+     compete with the case study itself for the same queries. The case study
+     should win those, because it is the thing that explains the figure. Reached
+     from the report's "Open full width" affordance, never from a search result.
+     Same reasoning github/ carries, for the same shape of page.
+     `follow` rather than `nofollow`: the link back to the report is the one
+     thing here worth crawling. -->
+<meta name="robots" content="noindex, follow">
+
+<title>Transaction Map: Music Gear &amp; Pro Audio M&amp;A, 2014&ndash;2026 &middot; Wolfpack</title>
+<meta name="description" content="Forty-two transactions and macro events in music gear and pro audio, 2014 to 2026, placed by announcement date across four industry lanes.">
+<link rel="canonical" href="https://intake.wolfstrategyllc.com/consolidation-under-pressure/transaction-map.html">
+<link rel="icon" type="image/png" href="../case-study-assets/img/wolfpack-logo.png">
+
+<!-- No Open Graph block, deliberately. A card exists so a page survives being
+     pasted into LinkedIn; this page is noindex and is reached only from the
+     report, which carries the card for both of them. social-cards/check_meta.py
+     guards the pages in its PAGES table and this one is correctly absent from
+     it — see case_studies/README.md. -->
+
+<link rel="stylesheet" href="../case-study-assets/css/fonts.css">
+<link rel="stylesheet" href="../case-study-assets/css/case-study.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the map</a>
+
+<header class="nav">
+  <nav class="nav__inner" aria-label="Sections">
+    <a class="nav__brand" href="https://wolfstrategyllc.com">
+      <img class="nav__logo" src="../case-study-assets/img/wolfpack-logo.png" alt="" width="30" height="30">
+      <span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">&larr; Back to the full report</a></li>
+    </ul>
+    <a class="nav__cta" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Contact Wolfpack</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="section bleed">
+
+    <span class="k">Consolidation Under Pressure &middot; Figure</span>
+    <h1 class="section__title" style="margin-top:14px">Transaction map &mdash; music gear &amp; pro audio</h1>
+    <p class="prose" style="margin-bottom:26px">
+      <span style="color:var(--muted)">2014 &ndash; 2026 &middot; 42 transactions and macro events.
+      <a href="index.html">Back to the full report</a>.</span>
+    </p>
+
+    <figure class="figure">
+      <div class="figframe">
+        <div class="figframe__head">
+          <div>
+            <span class="figframe__t">Transaction map &middot; 2014 &ndash; 2026</span>
+            <p class="figframe__sub">The plot spreads to fill this window, so on a wide screen the
+              events separate and need fewer stacked rows than the copy embedded in the report. It
+              never compresses below a readable minimum &mdash; below that width it scrolls.</p>
+          </div>
+        </div>
+
+        <!-- data-fill="true" is what makes this copy measure the window and
+             spread. The embedded copy in the report sets it to false and stays
+             at the readable floor. Same script, same dataset, one flag. -->
+        <div class="map__scroll">
+          <div class="map" data-fill="true"></div>
+          <p class="map__fallback">
+            This map is drawn in the browser and needs JavaScript. Every transaction it plots is
+            also a row in the three era tables of
+            <a href="index.html">the full report</a>, with its date, its value and its source.
+          </p>
+        </div>
+
+        <div class="figframe__key">
+          <span>Deal value</span>
+          <span><i style="background:var(--fig-ramp-4)"></i>&ge; $1bn</span>
+          <span><i style="background:var(--fig-ramp-3)"></i>$500&ndash;999m</span>
+          <span><i style="background:var(--fig-ramp-2)"></i>$100&ndash;499m</span>
+          <span><i style="background:var(--fig-ramp-1)"></i>&lt; $100m</span>
+          <span><i style="background:transparent"></i>Undisclosed / no value</span>
+        </div>
+
+        <p class="map__note">
+          Placed by announcement date. Lane assignment reflects where in the industry the transaction
+          landed, not the acquirer's home category. Dot fill encodes disclosed or reported headline
+          consideration in USD; Sonova/Sennheiser (&euro;200m &asymp; $236m) is bucketed on its converted value.
+          Shaded bands mark the pandemic demand surge and the 2025 tariff regime &mdash; both macro shocks,
+          not transactions. Compiled 11 August 2026 from public sources.
+        </p>
+      </div>
+    </figure>
+
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <span class="foot__wordmark">Wolfpack</span>
+    <span class="foot__meta">
+      Case study &middot; 2026 &middot;
+      <a href="https://wolfstrategyllc.com">wolfstrategyllc.com</a>
+    </span>
+  </div>
+</footer>
+
+<script src="../case-study-assets/js/map.js"></script>
+</body>
+</html>

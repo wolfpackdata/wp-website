@@ -62,6 +62,8 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
+| `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — **built 2026-08-11 (#172), not yet deployed**; ships two pages, the report and a `noindex` full-width `transaction-map.html` | — |
+| `case_studies/wolfpack-ai-command/` | `https://intake.wolfstrategyllc.com/wolfpack-ai-command/` | 2026-08-15 (#190) |
 | `sm3-specific-pages/setmaster3-case-study/` | `https://intake.wolfstrategyllc.com/setmaster3-case-study/` — **indexed** (flipped from `noindex` 2026-08-04) | 2026-08-04 (#104) |
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
@@ -76,6 +78,34 @@ and a folder mirror would publish it. `git ls-files sm3-specific-pages/…` is t
 
 Pages can be turned back on if a page ever needs to serve from here — it was
 `source: main /`, `build_type: legacy`, no CNAME, HTTPS enforced.
+
+## Design system — read the site brief before touching CSS
+
+> **Precedence: this `CLAUDE.md` wins over the web skills wherever they conflict.** The skills
+> are generic by design; this file is specific. *"Coral is rationed to six uses, enumerated in
+> `portfolio.css`'s header, and the count only goes down"* beats *"the accent is rationed"*
+> every time. A session that follows the generic skill over the specific file here has been
+> actively degraded. The skills arrive in every session automatically once junctioned, so this
+> line is what makes that safe rather than ambiguous.
+
+The design rules for this site live **outside this repo**, in
+[`wolfpackdata/wp-web-sop`](https://github.com/wolfpackdata/wp-web-sop): the
+`web-design-language` skill carries the rules, `docs/rules-ledger.md` carries why each one
+exists and what it cost to learn. The skill deliberately holds **no colours, fonts, measures,
+or URLs** — those all live here, in **[`docs/site-brief.md`](docs/site-brief.md)**.
+
+**Read the brief before any CSS work.** It is the authoritative record of this site's palette,
+per-page accent rations, type, spacing, destination policy, audiences, and what is
+deliberately not specified. The skill is written to **refuse to run without it**.
+
+- **Keep the two in sync in the same PR.** A value changed in a stylesheet and not in the
+  brief — or the reverse — makes the brief worse than useless, because it will still be
+  trusted. Three of its value sets (the master palette across seven sheets, the figure ground
+  across two, the calendar URL across four) are **unguarded until #169 lands**.
+- The per-page coral rations, and the rule that **the count never moves silently**, are
+  recorded in the brief's §2 with the date each count last moved.
+- Ration counts are also enumerated in each stylesheet's own header comment — those comments
+  are the contract, not documentation of one. Keep them true.
 
 ## `rates/` — public rates page
 The **public, indexable, evergreen** rates page — **canonical public URL
@@ -180,6 +210,10 @@ Client-facing long-form case studies sharing one stylesheet and one animation sc
 [`case_studies/README.md`](case_studies/README.md), which carries the full convention list.
 The first one is **The Model Is Your Business Beacon** (`ops_fin_model_support/`), an
 argument that an operational financial model belongs ahead of go-to-market product work.
+The second is **Consolidation Under Pressure** (`consolidation_under_pressure/`, see below).
+The third is **An AI Operating Layer for Streamlining Project Delivery**
+(`wolfpack-ai-command/`, see below) — the Wolfpack AI Command system, and the first case
+study here to carry a **generated emblem** as its hero rather than a screenshot.
 
 Conventions these pages must keep:
 - **The shared stylesheet is the point.** Every case study loads
@@ -208,6 +242,94 @@ Conventions these pages must keep:
 - **Copy is judged by Ry, against no written spec.** The repo carried a voice guide until
   2026-08-06 (#150); it was removed because it was not good enough to be binding. Match the
   voice of the case studies already here rather than reaching for a rulebook.
+
+## `consolidation_under_pressure/` — the music-gear M&A case study
+A ~6,000-word public-source market-intelligence report on M&A in music gear and pro audio,
+2016–2026, rebuilt into this site's identity from two finished pages in
+`wolfpackdata/dj-gear-study` (`docs/strategy/`). Eleven numbered parts, ten data tables, four
+rendered figures, 43 cited transactions, and an interactive transaction map that ships twice.
+**Built 2026-08-11 (#172); not deployed.** Full design plan and decisions ledger:
+[`docs/consolidation-case-study-design-plan.md`](docs/consolidation-case-study-design-plan.md).
+
+Conventions this case study must keep, on top of the folder's:
+
+- **The copy is frozen, and it is guarded.** Every figure carries both currency
+  parentheticals; every caption, footnote, confidence label and methodology note ships.
+  `planning/verify_copy.py` checks every numeric token in the vendored source `.md` against
+  the page, plus the `Src` arithmetic, the source links' accessible names, the map dataset,
+  and the external-request stance. **Run it before merging any edit to this page.** If the
+  report is revised upstream, re-copy `planning/01-ma-landscape-2016-2026.md` in the same PR.
+- **The `Src` gutter is load-bearing and is never merged, hidden or dropped.** 43 rows: 31
+  link a primary source, 12 show a dash meaning none was verified. That distinction is the
+  page's claim about its own evidence. Every link keeps `title` + `aria-label` because the
+  visible label is an arrow; every dash keeps a visually-hidden sentence.
+- **The map is one script and one dataset** (`case-study-assets/js/map.js`), rendered at a
+  fixed width in the report and full width in `transaction-map.html`, switched by one
+  `data-fill` flag. **Do not fork it.** The source it came from shipped the map twice as two
+  copies and they had already drifted by one event — the standalone plotted the 2025 tariffs
+  and the embedded one did not. Nothing could see it.
+- **Nothing on the map is hand-placed.** Labels are packed into the lowest free track in
+  their lane, measured with canvas `measureText` because `--mono` is a *system* stack whose
+  metrics are unknowable from the build machine. If a label ever collides, fix the packing
+  pass, never the label.
+- **42 events, not 41.** The brief and the source page both said 41; the dataset holds 42.
+  See the design plan D-009 — this is flagged for Ry, not settled.
+- **No invented outcome, and no results section.** There is no instrumented result behind
+  this document. The stat tiles carry artifact and method facts, the same rule the financial
+  model case study set. The client is anonymised by shape — *"a music-technology
+  manufacturer"* — and stays that way.
+- **One destination: the 30-minute intro call.** The 82 source links are citations, not
+  destinations. That reading is a **new ruling Ry has not made yet** (design plan D-006).
+- **`transaction-map.html` is `noindex` and carries no Open Graph block**, and is correctly
+  absent from `check_meta.py`'s page table. It is reached from the report, never from a
+  search result.
+- **The social card's inset is the map itself**, captured by
+  `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
+  rather than retouch, and re-run the capture *before* the card whenever the figure changes.
+
+## `wolfpack-ai-command/` — the AI operating layer case study
+The third case study: how **Wolfpack AI Command** splits the project manager's role, hands
+the record-keeping half to governed AI operators, and leaves every consequential decision
+human-gated. **Built 2026-08-13 (#174); hero, social card and deploy 2026-08-15 (#190).**
+Full outline and decisions ledger:
+[`planning/outline.md`](case_studies/wolfpack-ai-command/planning/outline.md).
+
+Conventions this case study must keep, on top of the folder's:
+
+- **The hero is a generated emblem, not a screenshot** — the first one here that is.
+  `planning/hero/build_hero.py` composes the shield from the four **committed Notion icon
+  SVGs** in `case-study-assets/img/`, the same files the F6 icon chips display, so the emblem
+  and the chips cannot disagree. **Rebuild rather than retouch**; the build is deterministic
+  and was verified byte-identical on re-run. The generator, the SVG intermediates and the
+  tiled print variant all live under `planning/` and never deploy — the finished JPEG in
+  `case-study-assets/img/` is the only copy, deliberately, so there is no second one to drift.
+- **The hero carries no F number** (outline D-021). F1–F6 explain a passage and sit beside
+  it; the hero carries the title. Do not renumber the figures to absorb it.
+- **The four icon hues are figure content, and that is a made ruling** (D-015, Ry
+  2026-08-13). They live in the committed SVGs and in a JPEG, never in the stylesheet, so the
+  shared sheet still introduces no hue beyond the navy system and the figure ground, and the
+  coral ration is untouched. This is the ruling a future case study cites when it needs a
+  hue: put it in the figure, not in the sheet.
+- **The social card's inset is the tiled print, not the brief's F1.** The original card brief
+  named the split diagram, which is still a placeholder — so the card was built from the art
+  that exists. The reasoning is in `social-cards/build_cards.py` beside the card; the short
+  version is that a 360px LinkedIn tile treats the inset as texture, and an allover monogram
+  is texture in a way one centred shield in a 4:1 band is not.
+- **The name is rationed to ~three uses in the body** (D-011): the hero standfirst, the Part 5
+  introduction, and the closing plug. Running copy uses common nouns — *the system*, *the
+  command center*, *the operating layer*. The full branded name lives in the `<title>`, the
+  card, and off-page sales surfaces. **The h1 and the standfirst are Ry's verbatim copy**
+  (D-019, revised by him 2026-08-15 under D-020) — not drafted copy, and not rewordable
+  without him.
+- **No measured outcome, and the tiles say so.** Every stat tile carries an artifact or
+  method fact counted in the system's own repositories on 13 Aug 2026, and the `.docmeta`
+  states *Measured outcomes: None*. There is no instrumented result behind this system; a
+  tile reading "40% faster delivery" would be the single most damaging thing the page could
+  carry. **Pre-deploy gate that is still live:** the "54 rules" count is the repo mirror's,
+  and the planning notes record that the live rulebook page has drifted ahead of that mirror.
+  Re-count before any re-deploy that touches the number.
+- **It empowers project managers; it never replaces them** (D-013). Copy must not imply the
+  role's elimination or a headcount saving — a working PM should read this and want it.
 
 ## `portfolio/` — portfolio & case study landing page
 One page presenting the case studies written so far and the applications and workflows in
@@ -246,8 +368,10 @@ Conventions the page must keep:
   still six because the button moved rather than being duplicated. The intro call still
   reaches the reader twice, through the nav CTA and this button, so the one-destination rule
   below is untouched. Don't restore the `#contact` nav item; there is no `#contact` section
-  left for it to point at. Both case cards carry a real image, the financial model one using
-  the case study's beacon hero built at card width.
+  left for it to point at. All three case cards carry a real image — the grid went from two to
+  three on 2026-08-15 (#192), the day the AI Command case study deployed. Two of them are
+  built at card width by their case study's own hero generator rather than re-encoded from
+  the page-sized file; rebuild rather than scale.
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.

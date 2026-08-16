@@ -82,6 +82,13 @@ PAGES = [
     ("portfolio/index.html", "/portfolio/"),
     ("github/index.html", "/github/"),
     ("case_studies/ops_fin_model_support/index.html", "/ops-fin-model-case-study/"),
+    # The music-gear M&A case study. Its folder also ships transaction-map.html,
+    # which is deliberately NOT a row here: it is `noindex`, it is reached only
+    # from the report's "Open full width" affordance, and it carries no og: block
+    # to guard. Nothing is being missed — a card exists so a page survives being
+    # pasted somewhere, and that page is the report.
+    ("case_studies/consolidation_under_pressure/index.html", "/consolidation-under-pressure/"),
+    ("case_studies/wolfpack-ai-command/index.html", "/wolfpack-ai-command/"),
     ("sm3-specific-pages/setmaster3/index.html", "/setmaster3/"),
     ("sm3-specific-pages/setmaster3-case-study/index.html", "/setmaster3-case-study/"),
 ]
