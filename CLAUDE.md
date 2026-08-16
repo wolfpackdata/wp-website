@@ -232,11 +232,17 @@ Conventions these pages must keep:
   lists team members by first name, and that column is blurred in the committed source *and*
   again at build time. "Too small to read" is a bet that nobody zooms; check new captures at
   5x or 6x.
-- **The financial model hero is generated, and its generator ships with it.**
-  `ops_fin_model_support/planning/hero/build_hero.py` composes
-  `case-study-assets/img/fin-model-beacon-hero.jpg` from the source capture beside it.
-  Generator and input sit under `planning/`, so neither deploys; only the finished image
-  does. Rebuild rather than retouch.
+- **Every hero commits its master under `planning/`, and no image is retouched where it
+  sits.** **The rule is provenance, not generation** — art reaches these pages by more than
+  one route and always will, so a hero Ry supplies is as legitimate as one a script composes.
+  Two first-class classes, neither an exception: **generated**, where the generator and its
+  input are the master and you *rebuild rather than retouch*
+  (`ops_fin_model_support/planning/hero/build_hero.py` → `fin-model-beacon-hero.jpg`; the AI
+  Command shield likewise); and **supplied**, where the delivered original is the master, it
+  must never be lost, and derivatives record the *derivation* command that produced them
+  (Consolidation Under Pressure). Full statement in
+  [`case_studies/README.md`](case_studies/README.md). Don't write a generator to retro-fit
+  supplied art into the other pattern, and don't read a missing `build_hero.py` as an omission.
 - **Coral is rationed to six uses**, listed in the header comment of `case-study.css`, and
   the sheet introduces **no hues in page chrome** beyond the navy system and a neutral figure
   ground. **One scoped exception, made 2026-08-15 (#199): hue may encode a category inside a
@@ -307,19 +313,17 @@ Conventions this case study must keep, on top of the folder's:
 - **The social card's inset is the map itself**, captured by
   `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
   rather than retouch, and re-run the capture *before* the card whenever the figure changes.
-- **Its hero art is SUPPLIED, not generated — the one exception to this folder's rule, and
-  the absence of a generator is a fact rather than an omission.** Both other case studies
-  ship a `build_hero.py` beside their hero and carry an explicit *rebuild rather than
-  retouch* rule, so a reader who finds a lone PNG here will otherwise go looking for a build
-  script that has never existed. `planning/consolidation-under-pressure-hero.png` (1337×752,
-  RGBA, added by Ry 2026-08-15) **is the master.** Nothing can regenerate it, so it is
-  committed rather than reproducible, and anything derived from it — starting with the blog
-  post's `cover.jpg` — records its derivation command instead of a rebuild command. `planning/`
-  never deploys, which is the right home for it.
-- **Nothing on the case study page references that hero.** The page ships no hero figure and
-  did not gain one; the art currently reaches the public only through the blog post's cover.
-  Placing it on the page is a page edit plus a re-copy into `ai-coaching-intake`, and it is
-  Ry's call, not a tidy-up.
+- **Its hero art is supplied rather than generated — one of the two normal provenances, not
+  an exception.** `planning/consolidation-under-pressure-hero.png` (1337×752, RGBA, provided
+  by Ry 2026-08-15) **is the master**, so it is the file that must never be lost, and anything
+  derived from it records its *derivation* command. There is no `build_hero.py` beside it and
+  there should not be; don't read the absence as an omission and don't write one to make this
+  hero match the other two.
+- **It is deliberately not on the case study page. Ry's ruling, 2026-08-16.** The page ships
+  no hero figure and is not getting one — the art is **blog eye candy**, and the blog post's
+  cover is its only public surface. This is a made decision, so **adding it to the page is a
+  reversal to take to Ry, never a tidy-up**, and the gap between *this case study has hero
+  art* and *this case study page shows hero art* is the intended state.
 
 ## `wolfpack-ai-command/` — the AI operating layer case study
 The third case study: how **Wolfpack AI Command** splits the project manager's role, hands
@@ -330,7 +334,8 @@ Full outline and decisions ledger:
 
 Conventions this case study must keep, on top of the folder's:
 
-- **The hero is a generated emblem, not a screenshot** — the first one here that is.
+- **The hero is a generated emblem, not a screenshot** — the first one here that is, and an
+  instance of the folder's generated provenance rather than a rule of its own.
   `planning/hero/build_hero.py` composes the shield from the four **committed Notion icon
   SVGs** in `case-study-assets/img/`, the same files the F6 icon chips display, so the emblem
   and the chips cannot disagree. **Rebuild rather than retouch**; the build is deterministic
