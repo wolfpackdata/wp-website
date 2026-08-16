@@ -119,7 +119,7 @@ sounding like a tooling suggestion.
 
 | § | Section | Words | Must contain |
 |---|---|---:|---|
-| 1 | Open on the person, not the problem | 180 | The three §01 paragraphs verbatim, ending on "criticism of the job design" |
+| 1 | Open on the person, not the problem | 230 | The three §01 paragraphs verbatim, ending on "criticism of the job design" — then, **after** them, the two framing paragraphs added in #203: this is an abbreviated summary of the case study, and the system is ready to integrate now, adding value in days not months. Do not enumerate what the case study contains; §6 already does |
 | 2 | One role, two completely different jobs | 330 | Both lists verbatim; the pull quote; "Extremely boring."; the hinge; Ry's closing question |
 | 3 | Not another chatbot bolted on | 300 | The ungoverned-mess paragraph; the three governance questions verbatim; the three bound systems; the version-control callout; the name's single use |
 | 4 | How do you know what the AI did? | 260 | The attribution scar and **Main**; then the three rules as bullets; the self-assignment prohibition |
@@ -148,6 +148,12 @@ No intake-form link, no rates link, no portfolio link, no résumé download.
 
 ## 8. Traps
 
+- **Do not put a number on "days, not months".** The intro's integration claim (#203) is the
+  offer's estimate, on the same footing as the case study's *"hours, not days"*. A percentage,
+  a week count, or a before-and-after turns it into a measured result the work cannot support.
+  It is also not an outcome claim — it says how fast the system installs, not what it produces
+  once installed, which is why it coexists with the *Not measured* bullet rather than
+  contradicting it.
 - **Do not repeat an artifact count.** Every number on the case study is dated on that page.
   A number in a post is an undated copy that goes stale silently. This is the exact failure
   the system in the post exists to prevent, so getting it wrong here is expensive in a way it

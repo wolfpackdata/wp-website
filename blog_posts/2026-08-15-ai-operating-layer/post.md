@@ -25,6 +25,13 @@ design. We braided two incompatible kinds of work into one role, handed both to
 one person with one calendar, and then acted surprised when the best people
 burned out doing clerical maintenance around the edges of high-stakes judgment.
 
+What follows is the short version. This post is an abbreviated summary of a much
+longer case study, linked at the end.
+
+The system it describes is not a prototype waiting on a roadmap. It runs my own
+business today, it is ready to integrate now, and it starts adding value in days,
+not months.
+
 ## One Role, Two Completely Different Jobs
 
 Pull a project manager's week apart and the split gets obvious fast.
@@ -181,4 +188,17 @@ Evidence rules carry over from the case study: no results claim, no client named
 no invented outcome, and no artifact counts in this post at all — the counts on
 the case study page were taken 13 Aug 2026, and repeating a number here creates a
 second copy that can go stale on its own. The post cites none deliberately.
+
+THE INTRO'S "days, not months" IS RY'S COPY (2026-08-15, #203) AND IT IS THE
+OFFER'S ESTIMATE, NOT A MEASURED RESULT. It stays inside the rules above on the
+same reasoning the case study's own "hours, not days" line does: no percentage,
+no instrumented before-and-after, and it describes how fast the system installs
+rather than what it produces once installed. Those are different claims, which is
+why it does not contradict the "Not measured" bullet further up — that bullet
+disclaims productivity outcomes and stays exactly as written.
+
+It must not acquire a number, and it must not drift into an outcome claim. The
+case study estimates hours, not days, for the integration work itself; hours to
+integrate and days to value are consistent, and this post is deliberately the
+coarser of the two. If one of them ever moves, move both.
 -->

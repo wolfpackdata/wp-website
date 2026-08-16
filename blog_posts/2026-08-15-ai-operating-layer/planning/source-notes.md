@@ -29,6 +29,7 @@ first, then re-lift — never the other way around.
 | Post section | Case study source | Treatment |
 |---|---|---|
 | Opening three paragraphs | §01 · The consensus | Verbatim, all three paragraphs |
+| The two framing paragraphs after them | — | **Original copy, not lifted** (#203) — see below |
 | "One Role, Two Completely Different Jobs" — the two lists | §02 · The split, the two `.card` lists | Verbatim bullet text, reflowed from two cards into two bolded paragraphs (Ricos has no card) |
 | The pull quote | §02 `.pull` | Verbatim |
 | "Extremely boring." paragraph | §02 prose | Verbatim |
@@ -46,6 +47,28 @@ first, then re-lift — never the other way around.
 | "forbidden from assigning work to itself" | §06 prose after F3 | Verbatim, minus the middle sentence |
 | "What I Am Explicitly Not Claiming" — four bullets | §10 `.status` chips | Verbatim, all four |
 | Closing CTA paragraph | §10 close `.close__lede`, second paragraph | Paraphrased down to one sentence |
+
+## The one passage that is not lifted
+
+Two short paragraphs sit between the verbatim opener and the first section heading, added
+2026-08-15 on Ry's instruction (#203). They are **the only original prose in the body** and
+they exist because the post needed to say two things the case study has no reason to say
+about itself:
+
+1. That this is an **abbreviated summary** of a longer case study.
+2. That the system is **ready to integrate now** and starts adding value in **days, not
+   months**.
+
+The second is a claim, and it is the offer's estimate rather than a measured result — the
+same footing as the case study's *"hours, not days"* line, which its `.tm` note explicitly
+labels as the offer's estimate. It carries no number and must not gain one. The post's
+*Not measured* bullet is untouched and does not conflict: it disclaims productivity
+outcomes, which is a different claim from how fast the thing installs.
+
+They sit **after** the three-paragraph opener rather than above it, so the hook lands before
+the framing, and they deliberately **do not enumerate what the case study contains** — the
+closing *The Full Version* section already does that, and saying it twice would make the
+post read like it is apologising for being short.
 
 ## Deliberately left out
 

@@ -82,6 +82,15 @@ src.resize((1200, 675), Image.LANCZOS).save(
   Notion trail created (Blog Post 7, the LinkedIn row, task 8 under the case study project),
   brief and source notes written, cover built, `post.md` and `raw-linkedin-post.md` written.
   Converter dry-run clean. **No Wix push**, per Ry.
+- 2026-08-15 — Intro gained two framing paragraphs on Ry's instruction (#203): the post is an
+  abbreviated summary of the case study, and the system is ready to integrate now, adding value
+  in **days, not months**. They sit after the verbatim opener, not above it, and they are the
+  **only original prose in the body**. The claim is the offer's estimate, not a measured
+  result — guarded in three places now (the HTML comment in `post.md`, the brief's traps, and
+  `source-notes.md`).
+- 2026-08-15 — Case study **re-deployed** (`ai-coaching-intake#73`), so the live page carries the
+  new `og:description`. That deploy also carried the shared `case-study-assets/` forward, which
+  restyled the financial model case study too — expected, and recorded in that repo's `CLAUDE.md`.
 - 2026-08-15 — Excerpt replaced with Ry's speed-first sentence (#201), and the case study's
   `og:description` changed to the same string in the same PR so the pair stays identical. The
   case study's `<meta name="description">` is a different sentence and was left alone.
