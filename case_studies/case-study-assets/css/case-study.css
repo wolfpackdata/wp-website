@@ -259,8 +259,12 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .section { padding: 72px 0; scroll-margin-top: 70px; }
 .section--line { border-top: 1px solid var(--line); }
 .section__title { font-size: clamp(1.5rem, 3vw, 2.05rem); margin-bottom: 28px; }
+/* A part number above a section title. The gap belongs to the pair, so it lives
+   here rather than as an inline style repeated at every one of a dozen section
+   heads — which is what the consolidation case study was doing until #195. */
+.k + .section__title { margin-top: 14px; }
 .section__sub {
-  font-size: 1.125rem; margin: 40px 0 16px;
+  font-size: 1.125rem; margin: 44px 0 18px;
   font-family: 'Roboto', sans-serif; font-weight: 700;
 }
 
@@ -475,7 +479,12 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
    Plain lists
    ========================================================================== */
 
-.plainlist { display: grid; gap: 10px; list-style: none; max-width: 74ch; }
+/* Standalone lists carry their own margins, the same ruling .numlist and
+   .readout took on 2026-08-15 (#182) and .plainlist was missed by — the
+   consolidation case study had been patching the seam with an inline
+   `style="margin-top:18px"` on every occurrence, which is the <br> stopgap in
+   another costume. Spacing lives in the sheet (#195). */
+.plainlist { display: grid; gap: 12px; list-style: none; max-width: 74ch; margin: 28px 0; }
 .plainlist li {
   position: relative; padding-left: 22px;
   font-size: 0.9375rem; color: var(--muted);
@@ -751,21 +760,44 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
    The tell, if this ever happens again: putting `overflow: hidden` on an
    ancestor does not fix it. That means the box is not in that ancestor's
    clipping chain at all. */
+/* CELL PADDING AND COLUMN RULES, retuned 2026-08-15 (#195), Ry's ruling: these
+   tables were "difficult to read and not recognizable as tables". Two separate
+   faults, and both had the same cause — a component borrowed from .dtable's
+   habits without noticing that .dtable is a different object.
+
+   1. AIR. 11px of vertical padding is right for .dtable, which is four numbers
+      in a frame. It is wrong for a forty-three row register whose cells hold
+      sentences: at 1.5 line-height a two-line cell put its own lines further
+      apart than it sat from the row above, so the eye stopped grouping by row.
+      Rows now get more padding than the text inside them has leading.
+   2. STRUCTURE. .dtable earns its no-gridlines rule honestly — short numeric
+      columns, hard right alignment, and a caption saying it is a figure. This
+      table has prose in two of five columns, so alignment alone gives the eye
+      no column edge to track along, and it read as indented paragraphs. It now
+      carries a hairline between columns, in --line, the same weight as the row
+      rules it already had.
+
+   This is still NO NEW HUES and no new weight: the rule is the hairline the
+   sheet already uses everywhere. .dtable is deliberately NOT changed — it is a
+   figure and its borderless density is the point. */
 .rtable table {
-  border-collapse: collapse; width: 100%; min-width: 40rem;
+  border-collapse: collapse; width: 100%; min-width: 44rem;
   font-size: 0.875rem; line-height: 1.5;
 }
 .rtable th {
-  font-family: var(--mono); font-size: 0.625rem; font-weight: 400;
+  font-family: var(--mono); font-size: 0.6875rem; font-weight: 400;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
   text-align: left; vertical-align: bottom; white-space: nowrap;
-  padding: 12px 14px; background: var(--surface-2);
+  padding: 16px 20px; background: var(--surface-2);
   border-bottom: 1px solid var(--line);
 }
 .rtable td {
-  padding: 11px 14px; vertical-align: top; color: var(--muted);
+  padding: 18px 20px; vertical-align: top; color: var(--muted);
   border-bottom: 1px solid var(--line);
 }
+/* The column edge. `+` rather than a border on every cell, so the table has no
+   outer rule fighting the panel border that is already around it. */
+.rtable th + th, .rtable td + td { border-left: 1px solid var(--line); }
 .rtable tbody tr:last-child td { border-bottom: 0; }
 .rtable strong { color: var(--white); font-weight: 600; }
 .rtable a { color: var(--muted); }
@@ -800,7 +832,7 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
    arrow nobody can name is a link a screen reader announces as "link". */
 .rtable th.src, .rtable td.src {
   width: 1%; white-space: nowrap; text-align: center;
-  padding-left: 6px; padding-right: 12px;
+  padding-left: 12px; padding-right: 16px;
 }
 .srclink {
   display: inline-flex; align-items: center; justify-content: center;
@@ -813,6 +845,26 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
    from the global `a:hover`, not re-declared, so this adds no accent use. */
 .srclink:hover { border-color: var(--faint); background: var(--surface-2); }
 .nosrc { font-family: var(--mono); color: var(--faint); }
+
+/* A note that belongs to the table above it rather than to the prose after it —
+   the counterpart of .dtable__note, which .rtable had no equivalent of until a
+   table needed to say what its own numbers are NOT (#195).
+   It is a SIBLING of .rtable, not a child, and that is deliberate: .rtable is
+   the horizontal scroller, so a note inside it would slide out of view exactly
+   when a reader scrolled to the column the note was explaining. Pairing it with
+   .rtable--noted, which drops the table panel's bottom corners, makes the two
+   read as one object while leaving the note pinned to the page. */
+.rtable--noted { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.rtable__note {
+  margin: 0 0 34px;
+  background: var(--surface);
+  border: 1px solid var(--line); border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 16px 20px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.04em;
+  line-height: 1.7; color: var(--faint);
+}
+.rtable__note strong { color: var(--muted); font-weight: 600; }
 
 /* ==========================================================================
    .figframe — the panel a rendered figure sits in.
