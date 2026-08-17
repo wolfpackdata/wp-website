@@ -510,11 +510,149 @@ CARDS = [
 ]
 
 
+# ==========================================================================
+# The emblem card — a different composition, for a card with no screenshot
+# ==========================================================================
+
+# Geometry for the emblem layout. The emblem is right-aligned and the text
+# block is centred against it, rather than the text-then-inset stack the
+# screenshot cards use.
+EMBLEM = 400
+EMBLEM_GAP = 48                      # clear space between text column and emblem
+
+
+def build_emblem(card, ttf):
+    """A card whose subject is a brand mark rather than a screenshot.
+
+    WHY THIS IS NOT `build()`. Every card above ends in a framed screenshot
+    bleeding off the bottom edge, and `framed()` puts the pages' figure-ground
+    frame around it — a #0A0A0A mat and a 1px hairline. That frame is right for
+    a screenshot, which is a picture *of* something and reads as a window. It is
+    wrong for the constellation, which is a mark on a navy plate: framing it
+    would draw a box around the one element whose whole behaviour is to float on
+    the field. `logo_alpha()` already keys this exact mark off its own plate for
+    the 44px wordmark — this is that, at 400px.
+
+    Everything else is deliberately shared with `build()`: the same navy field,
+    the same wordmark row, the same auto-fitted Roboto 700 title, exactly one
+    coral rule, the same grain and the same fixed seed. A reader seeing this
+    card beside the other seven should not be able to say which generator drew
+    which.
+
+    The text block is centred vertically instead of hanging from TITLE_TOP.
+    With no inset to sit above, a top-anchored title leaves a third of the card
+    as empty navy under the rule, which reads as a card that failed to finish
+    loading rather than as a composition.
+    """
+    out_path = ROOT / card["out"]
+    canvas = navy_field()
+
+    scratch = Image.new("RGB", (W, H))
+    draw = ImageDraw.Draw(scratch)
+
+    col_w = W - MARGIN - EMBLEM - EMBLEM_GAP - MARGIN
+    title_font, lines = fit_title(draw, card["title"], ttf, col_w, card["max_lines"])
+    lead = round(title_font.size * TITLE_LEAD)
+    title_h = lead * len(lines)
+
+    # Centre title + rule in the band below the wordmark, above the bottom margin.
+    block_h = title_h + RULE_GAP_ABOVE + RULE_H
+    band_top, band_bot = WORDMARK_TOP + LOGO + 40, H - MARGIN
+    title_top = band_top + ((band_bot - band_top) - block_h) // 2
+    rule_y = title_top + title_h + RULE_GAP_ABOVE
+
+    # --- the emblem, keyed onto the field ----------------------------------
+    ex, ey = W - MARGIN - EMBLEM, (H - EMBLEM) // 2
+    ea = logo_alpha(ROOT / card["emblem"], EMBLEM)
+
+    # A wide, faint wash behind it, so the mark sits in the field rather than on
+    # it. Same reason build() rims its frames: a near-black subject on a
+    # near-black ground otherwise reads as a hole rather than as an object.
+    halo = np.zeros((H, W), dtype=np.float32)
+    halo[ey:ey + EMBLEM, ex:ex + EMBLEM] = ea
+    canvas += (blur(halo, 34.0) * 0.20)[:, :, None] * lin(LIGHT_EDGE)
+
+    region = canvas[ey:ey + EMBLEM, ex:ex + EMBLEM]
+    canvas[ey:ey + EMBLEM, ex:ex + EMBLEM] = (
+        region * (1.0 - ea[:, :, None]) + lin(WHITE) * ea[:, :, None])
+
+    # --- the coral rule and its glow. One coral use. ------------------------
+    rule = np.zeros((H, W), dtype=np.float32)
+    rule[rule_y:rule_y + RULE_H, MARGIN:MARGIN + RULE_W] = 1.0
+    canvas += (blur(rule, 40) * 0.55 + blur(rule, 12) * 0.45)[:, :, None] * lin(CORAL) * 0.60
+
+    # --- the wordmark wolf --------------------------------------------------
+    la = logo_alpha(ROOT / card["logo"], LOGO)
+    ly, lx = WORDMARK_TOP, MARGIN
+    region = canvas[ly:ly + LOGO, lx:lx + LOGO]
+    canvas[ly:ly + LOGO, lx:lx + LOGO] = (
+        region * (1.0 - la[:, :, None]) + lin(WHITE) * la[:, :, None])
+
+    # --- linear light is done; flat paint from here -------------------------
+    out = Image.fromarray((np.clip(linear_to_srgb(canvas), 0, 1) * 255 + 0.5).astype(np.uint8))
+    draw = ImageDraw.Draw(out)
+
+    draw.rectangle([MARGIN, rule_y, MARGIN + RULE_W - 1, rule_y + RULE_H - 1], fill=CORAL)
+
+    wm_font = ImageFont.truetype(ttf, WORDMARK_SIZE)
+    tracked(draw, (MARGIN + LOGO + 18, WORDMARK_TOP + (LOGO - WORDMARK_SIZE) // 2 - 3),
+            "WOLFPACK DATA & STRATEGY", wm_font, MUTED, WORDMARK_TRACK)
+
+    for i, line in enumerate(lines):
+        draw.text((MARGIN, title_top + i * lead), line, font=title_font, fill=WHITE)
+
+    rng = np.random.default_rng(11)
+    final = np.asarray(out, dtype=np.float32) / 255.0
+    final += rng.normal(0.0, 0.45 / 255.0, final.shape).astype(np.float32)
+    out = Image.fromarray((np.clip(final, 0, 1) * 255 + 0.5).astype(np.uint8))
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out.save(out_path, optimize=True)
+    kb = out_path.stat().st_size / 1024
+    print(f"wrote {card['out']}  {out.size[0]}x{out.size[1]}  {kb:.0f} KB  "
+          f"title {title_font.size}px x{len(lines)}")
+
+
+EMBLEM_CARDS = [
+    {
+        # The wolfstrategyllc.com HOMEPAGE card — and the only card here whose
+        # destination is not this repo. The homepage is a Wix page, so this file
+        # does not deploy through ai-coaching-intake like the other seven; it is
+        # uploaded to the Wix Media Manager and set as the site's default social
+        # share image. That is why it lives under social-cards/, which never
+        # deploys, rather than in a page folder: there is no page folder.
+        #
+        # It exists because the Wix homepage declared `summary_large_image` and
+        # supplied no `og:image` at all, so every share of the site's front door
+        # rendered a broken-image placeholder (found 2026-08-17 on a LinkedIn
+        # profile Featured tile).
+        #
+        # THE SOURCE IS SUPPLIED ART, NOT GENERATED. Ry provided
+        # wolfpack-constellation-3d-square.png (661x661) on 2026-08-17. It is the
+        # master and must not be lost or retouched in place — the same provenance
+        # rule the case studies carry, where a supplied hero is as legitimate as
+        # a composed one and the delivered original is the thing that is kept.
+        #
+        # The title is the homepage's own <h1>, verbatim, not copy written here.
+        # The same rule the other cards follow — the page's own title — which is
+        # also why it is not "Home | WolfStrategyLLC", the Wix <title> written
+        # for a browser tab.
+        "out": "social-cards/wix/og-wolfstrategyllc-home.png",
+        "logo": "portfolio/img/wolfpack-logo.png",
+        "emblem": "social-cards/wix/wolfpack-constellation-3d-square.png",
+        "title": "Transform Your Data Into Decisions",
+        "max_lines": 3,
+    },
+]
+
+
 def main():
     with tempfile.TemporaryDirectory() as tmp:
         ttf = unwoff(ROBOTO_700_LATIN, Path(tmp) / "roboto-700-latin.ttf")
         for card in CARDS:
             build(card, ttf)
+        for card in EMBLEM_CARDS:
+            build_emblem(card, ttf)
 
 
 if __name__ == "__main__":
