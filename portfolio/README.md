@@ -100,7 +100,11 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
   own `build_hero.py`, which grew the identical output-width argument for the purpose —
   **one composition, several sizes, no generational loss.** Rebuild a card image rather than
   scaling the delivered one. The `.case__shot--empty` device stays in the stylesheet for the
-  next unpublished study.
+  next unpublished study. **The Consolidation card is the one exception to "the card image is
+  the case study's hero"** — that page ships no hero (Ry, 2026-08-16), so its card carries the
+  transaction map instead, written here and into `hire/assets/img/` by one run of
+  `case_studies/consolidation_under_pressure/planning/card/build_card_image.py`. The two files
+  are byte-identical by construction; **don't replace either with a copy of the other.**
 - **`reveal.js` is copied, never rewritten** — byte-identical to `hire/assets/js/reveal.js`
   apart from its header comment, so reveal timing and scroll-spy match every other long-form
   page here.
@@ -112,10 +116,17 @@ gets a `.btn--ghost` link; an unpublished one gets the `.case__chip` "In prepara
 the same size, so adding the link later changes one element and not the layout. Case numbers
 come from a CSS counter, so they renumber themselves.
 
-**All three cards are live links as of 2026-08-15.** The SetMaster 3 study deployed on
+**All four cards are live links as of 2026-08-17.** The SetMaster 3 study deployed on
 2026-08-04 (#104) and its chip became a link, which is what the device was for; the AI Command
-study deployed on 2026-08-15 and was added already linked (#192). No `.case__chip` is in use on
-the page right now; the rule stays in the stylesheet for the next unpublished study.
+study was added already linked on 2026-08-15 (#192); Consolidation Under Pressure was added on
+2026-08-17 (**D-016**, #222). No `.case__chip` is in use on the page right now; the rule stays
+in the stylesheet for the next unpublished study.
+
+**New cards are appended, and the section head states no count.** Both matter. The old lede
+said *"All three are published and all three are a click away"*, which went stale the moment a
+fourth shipped — D-014 flagged that failure mode when it changed the number from two to three,
+and #222 is the addition that proved it. **The hire pages' card order is Ry's and is specific to
+those pages; it is not a site-wide order to mirror here.**
 
 **Two tiles in the applications gallery carry the same link as a case card** (#218): `SetMaster
 3` and `Notion–GitHub AI Dev Command Center`, the two whose system has a published write-up. That
