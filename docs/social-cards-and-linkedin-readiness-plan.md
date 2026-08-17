@@ -374,7 +374,11 @@ The reverse direction — a path from the SetMaster pages back to `www` — is *
    `/setmaster3-case-study/`, `case_studies/case-study-assets/` → intake `/case-study-assets/`.
    A relative-path habit is the easy way to get this wrong; `og:image` must be absolute.
 4. `og:url` on each page equals that page's `<link rel="canonical">`.
-5. Run the guard script if built.
+5. **Run the guard — it is built, so this is no longer conditional:**
+   `python social-cards/check_meta.py` from the repo root (exit 0 = clean, 1 = drift). It
+   covers checks 3 and 4 above mechanically, plus canonical correctness, tag uniqueness, and
+   declared-vs-actual image dimensions. **A new page folder adds its row to `PAGES` in the
+   same PR** — a page missing from that table is guarded by nothing.
 
 ### After the deploy
 
@@ -390,6 +394,25 @@ The reverse direction — a path from the SetMaster pages back to `www` — is *
    be driven from here. The work order is right that it is not optional: LinkedIn caches
    previews for roughly a week, so if it scrapes before the tags land, the bad card sticks and
    re-sharing will not clear it. Run it **after** the tags are live, **before** posting.
+
+   **Widened 2026-08-17 (#220): run it on *every* deployed URL, not just these four**, and run
+   it *before* the URL is used anywhere — see step 8 for why.
+
+8. **Prime the scrape before using a URL as a profile Featured link.** Adding `/portfolio/`
+   to the Featured section failed with a bare **"invalid URL"** while the page was provably
+   healthy: 200 to the `LinkedInBot` UA, valid Let's Encrypt cert, correct `CNAME`,
+   self-referential canonical, complete OG block, `og:image` 200 at 1200×627, and the whole
+   `<head>` closing at byte 2,009. **The cause was simply that LinkedIn held no cached scrape
+   for the URL** — its Featured-link validator reports a cache miss as "invalid URL". Post
+   Inspector, then retry, and it is accepted immediately.
+
+   Two things in that output that look like faults and are not:
+
+   - **"206 Success"** in the redirect trail. LinkedInBot sends `Range: bytes=0-16383` and
+     GitHub Pages honors it with a 206 Partial Content. Benign, and the OG block is inside the
+     first chunk on every page here.
+   - **"No author found" / "No publication date found"**, in red. Both are optional and
+     neither renders on a card. Chasing them means editing a deployed page for no benefit.
 
 ---
 
