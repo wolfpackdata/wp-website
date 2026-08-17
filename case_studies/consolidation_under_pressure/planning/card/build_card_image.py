@@ -3,10 +3,21 @@
 
     python case_studies/consolidation_under_pressure/planning/card/build_card_image.py
 
-Writes `hire/assets/img/case-consolidation.jpg` — the 16:9 image the two hire/
-pages' case card shows (wp-website#218). It is a sibling of `capture_map.py`,
-which produces the `map-capture.png` this reads, and it deliberately does not
-touch that file.
+Writes the 16:9 image this case study's card shows, to BOTH page folders that
+carry one (wp-website#218, #222):
+
+    hire/assets/img/case-consolidation.jpg      the two hire/ pages
+    portfolio/img/case-consolidation.jpg        the portfolio page
+
+Two files rather than one shared path because `portfolio/` is a self-contained
+folder and `hire/` ships as its own unit — a relative path from one into the
+other resolves in this repo and breaks on deploy, where both land side by side
+at the intake repo's root (portfolio design plan D-009). They are byte-identical
+and always will be: one composition written twice, never a re-encode of one into
+the other.
+
+This is a sibling of `capture_map.py`, which produces the `map-capture.png` this
+reads, and it deliberately does not touch that file.
 
 WHY THIS EXISTS AT ALL
 ----------------------
@@ -60,7 +71,10 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 
 SRC = HERE / "map-capture.png"
-OUT = REPO / "hire" / "assets" / "img" / "case-consolidation.jpg"
+OUTS = (
+    REPO / "hire" / "assets" / "img" / "case-consolidation.jpg",
+    REPO / "portfolio" / "img" / "case-consolidation.jpg",
+)
 
 # Card width and 16:9, matching portfolio/img/case-fin-model.jpg (1400x788) and
 # case-ai-command.jpg (1400x787) — the two images this one sits beside.
@@ -88,9 +102,10 @@ def main() -> int:
     card = Image.new("RGB", (CARD_W, CARD_H), src.getpixel((5, 5)))
     card.paste(scaled, (0, (CARD_H - scaled.height) // 2))
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    card.save(OUT, "JPEG", quality=QUALITY, optimize=True)
-    print(f"wrote {OUT.relative_to(REPO)}  {CARD_W}x{CARD_H}")
+    for out in OUTS:
+        out.parent.mkdir(parents=True, exist_ok=True)
+        card.save(out, "JPEG", quality=QUALITY, optimize=True)
+        print(f"wrote {out.relative_to(REPO)}  {CARD_W}x{CARD_H}")
     return 0
 
 

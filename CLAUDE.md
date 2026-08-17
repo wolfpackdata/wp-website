@@ -399,8 +399,11 @@ Conventions this case study must keep, on top of the folder's:
   `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
   rather than retouch, and re-run the capture *before* the card whenever the figure changes.
 - **The map is also this study's CARD image**, for the same reason and by a second generator
-  beside the first: `planning/card/build_card_image.py` writes
-  `hire/assets/img/case-consolidation.jpg` (2026-08-17, #218). The other three case cards take
+  beside the first: `planning/card/build_card_image.py` writes **both**
+  `hire/assets/img/case-consolidation.jpg` and `portfolio/img/case-consolidation.jpg`
+  (2026-08-17, #218 then #222) from one composition — byte-identical by construction, because
+  those two folders deploy side by side at the intake root and neither may reference the
+  other's assets. **Don't replace either with a copy of the other.** The other case cards take
   their image from their case study's hero; **this one has no hero to take**, so the signature
   figure stands in. Both generators read the one `map-capture.png`, so re-run `capture_map.py`
   first and then both consumers whenever the figure changes. The card crop is **not** the social
@@ -502,10 +505,17 @@ Conventions the page must keep:
   still six because the button moved rather than being duplicated. The intro call still
   reaches the reader twice, through the nav CTA and this button, so the one-destination rule
   below is untouched. Don't restore the `#contact` nav item; there is no `#contact` section
-  left for it to point at. All three case cards carry a real image — the grid went from two to
-  three on 2026-08-15 (#192), the day the AI Command case study deployed. Two of them are
-  built at card width by their case study's own hero generator rather than re-encoded from
-  the page-sized file; rebuild rather than scale.
+  left for it to point at. All four case cards carry a real image — the grid went from two to
+  three on 2026-08-15 (#192), the day the AI Command case study deployed, and to four on
+  2026-08-17 (#222, plan D-016), when Ry reversed his own two-day-old call and added
+  Consolidation Under Pressure. **New cards are appended and the section head states no
+  count** — the lede used to say *"all three"* and went stale exactly as D-014 predicted.
+  **The hire pages' card order is Ry's and specific to those pages; it is not a site-wide
+  order to mirror here.** Three of the four images are built at card width by their case
+  study's own hero generator rather than re-encoded from the page-sized file; the fourth,
+  Consolidation, has no hero to build from and carries the transaction map instead, written
+  into this folder and `hire/assets/img/` by one run of `build_card_image.py` — byte-identical
+  by construction, so don't replace either with a copy of the other. Rebuild rather than scale.
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.
