@@ -11,10 +11,14 @@ that deploy:
     portfolio/img/og-portfolio.png
     ai-coaching/img/og-ai-coaching.png
 
-One of them has a prerequisite. The music-gear card's inset is the transaction
-map, which exists only as something a browser draws — run
-case_studies/consolidation_under_pressure/planning/card/capture_map.py first if
-that figure has changed.
+Every inset is now a file that already exists — a screenshot, a supplied hero, or
+a generated emblem — so there is no capture step to run first. That was not true
+until 2026-08-17 (#226): the music-gear card's inset was the transaction map,
+which exists only as something a browser draws, and it had to be photographed by
+case_studies/consolidation_under_pressure/planning/card/capture_map.py before
+this script could compose it. That case study now has its own hero and the card
+uses it. `capture_map.py` still exists for the map's own sake; nothing here reads
+it any more.
 
 These images are **generated, and their generator ships with them — rebuild
 rather than retouch**, the same convention `fin-model-beacon-hero.jpg` already
@@ -267,7 +271,7 @@ def navy_field():
     return canvas
 
 
-def framed(src, frame_w, inner_h, focus=0.5):
+def framed(src, frame_w, inner_h, focus=0.5, vfocus=0.0):
     """A source image in the pages' figure-ground frame, at a given size.
 
     Mat, 1px hairline, 8px radius — the same three tokens `.shot` uses, so the
@@ -287,13 +291,24 @@ def framed(src, frame_w, inner_h, focus=0.5):
     down its left side has to keep that rail: cropping the SetMaster shot from
     the centre sliced the sidebar through the middle of a word, which reads as a
     broken image rather than as a crop.
+
+    `vfocus` is the same thing vertically, and it DEFAULTS TO 0.0 — the top
+    anchor every screenshot inset here has always used, and wants, because the
+    top of an application window is what identifies it. It exists for the one
+    case that is not a screenshot: a 16:9 piece of art fitted into this wide
+    shallow band, where cover-scaling to the width and then taking the top
+    strip returns the empty sky above the subject. That trap is real and
+    already cost this file once — the AI Command card sidesteps it by feeding a
+    4:1 tiled print instead of its 16:9 hero. Setting `vfocus=0.5` centres the
+    band on the subject instead, and leaves every existing card untouched.
     """
     inner_w = frame_w - 2 * MAT_PAD
     scale = max(inner_w / src.width, inner_h / src.height)
     big = src.resize((max(inner_w, round(src.width * scale)),
                       max(inner_h, round(src.height * scale))), Image.LANCZOS)
     left = round((big.width - inner_w) * focus)
-    shot = big.crop((left, 0, left + inner_w, inner_h))
+    top = round((big.height - inner_h) * vfocus)
+    shot = big.crop((left, top, left + inner_w, top + inner_h))
 
     mat = Image.new("RGB", (frame_w, inner_h + 2 * MAT_PAD), FIG_BG)
     mat.paste(shot, (MAT_PAD, MAT_PAD))
@@ -344,11 +359,16 @@ def build(card, ttf):
     frame_w = (COL_W - PANEL_GAP * (n - 1)) // n
     inner_h = (H - inset_y) + BLEED - MAT_PAD
     frames = []
-    for i, (rel, crop, focus) in enumerate(card["insets"]):
+    # A spec is (path, crop, focus) or (path, crop, focus, vfocus). The fourth
+    # element is optional so that every card written before vfocus existed keeps
+    # its top-anchored crop without being touched.
+    for i, spec in enumerate(card["insets"]):
+        rel, crop, focus = spec[:3]
+        vfocus = spec[3] if len(spec) > 3 else 0.0
         src = Image.open(ROOT / rel).convert("RGB")
         if crop:
             src = src.crop(crop)
-        mat, mask = framed(src, frame_w, inner_h, focus)
+        mat, mask = framed(src, frame_w, inner_h, focus, vfocus)
         frames.append((mat, mask, MARGIN + i * (frame_w + PANEL_GAP)))
 
     # A rim of light along each frame's top edge and upper sides. The screenshots
@@ -417,26 +437,44 @@ def build(card, ttf):
 
 CARDS = [
     {
-        # The music-gear M&A case study. Its inset is the transaction map, which
-        # is drawn in a browser rather than stored as an image — so unlike every
-        # other inset here the source is itself generated, by
-        # case_studies/consolidation_under_pressure/planning/card/capture_map.py.
-        # Re-run that first if the map's data or palette has changed; this script
-        # only composes what it is given.
+        # The music-gear M&A case study. THE INSET CHANGED ON 2026-08-17 (#226),
+        # from the transaction map to the page's new hero art, and the old
+        # reasoning is worth keeping because it was right at the time.
         #
-        # The map is the right inset for the reason build_cards.py's header
-        # already gives: at a 360px Featured tile the inset is TEXTURE, and forty
-        # two labelled events across four lanes reads unmistakably as a dense
-        # research document. A crop of the report's prose would read as any page
-        # of any website.
+        # It ran on the map because the map was the best art this case study
+        # owned: at a 360px Featured tile the inset is TEXTURE, and forty-two
+        # labelled events across four lanes reads unmistakably as a dense
+        # research document, where a crop of the report's prose would read as any
+        # page of any website. That argument was never about the map — it was
+        # about density. The hero wins on the same test and then some: twelve
+        # lit brand tiles converging on a core is legible as a SUBJECT at 360px,
+        # which the map's four-lane scatter is not.
+        #
+        # The map has not been demoted anywhere else. It is still the figure the
+        # report is built around, still rendered live by map.js, and
+        # planning/card/capture_map.py still exists to photograph it — nothing
+        # here reads that capture any more, so re-run it only for the map's own
+        # sake.
+        #
+        # ONE THING NOT TO DO WITH THIS CARD: the hero contains a rendered
+        # market-share panel whose percentages are invented art. They must never
+        # be quoted in the title, in a post that shares this card, or anywhere
+        # else. The case study labels the figure an illustration inside the
+        # figure itself for exactly this reason.
         "out": "case_studies/case-study-assets/img/og-consolidation-under-pressure.png",
         "logo": "case_studies/case-study-assets/img/wolfpack-logo.png",
         "title": "Consolidation Under Pressure",
         "max_lines": 2,
-        # Centre crop: the plot is already trimmed to its own edges by the
-        # capture script, so there is no rail or sidebar to preserve.
-        "insets": [("case_studies/consolidation_under_pressure/planning/card/map-capture.png",
-                    None, 0.5)],
+        # Centred BOTH ways, and the vertical half is the load-bearing one. The
+        # composition reads left-to-right — brands, core, chart — so a
+        # horizontal focus off 0.5 would drop either the inputs or the outcome.
+        # The 0.5 VERTICAL focus is what puts the core in the band at all: this
+        # is 16:9 art in a roughly 4:1 slot, so the default top anchor returned
+        # the empty upper third with the octagon cropped away entirely, and the
+        # one thing it did show large was the render's invented -23.6%. Centring
+        # fixes both — see framed()'s docstring.
+        "insets": [("case_studies/consolidation_under_pressure/planning/hero/"
+                    "consolidation-under-pressure-hero-blue-neon.png", None, 0.5, 0.5)],
     },
     {
         # The Wolfpack AI Command case study. THE INSET IS NOT WHAT THE PAGE'S
