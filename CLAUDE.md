@@ -79,6 +79,75 @@ and a folder mirror would publish it. `git ls-files sm3-specific-pages/…` is t
 Pages can be turned back on if a page ever needs to serve from here — it was
 `source: main /`, `build_type: legacy`, no CNAME, HTTPS enforced.
 
+## Social readiness — verify it, never assume it
+
+**Every published page must be ready to be pasted into LinkedIn, and a session confirms that
+rather than trusting it.** The guard exists, so running it is cheap; the failure mode is a
+session reading *"guarded by `check_meta.py`"* above and concluding the check has already
+happened. It has not. Run it:
+
+```
+python social-cards/check_meta.py     # from the repo root; exit 0 = clean, 1 = drift
+```
+
+**Run it before any PR that touches a page `<head>`, before generating or replacing a card
+image, and again before a deploy copy into the intake repo.** The full verification sequence
+is `docs/social-cards-and-linkedin-readiness-plan.md` §9.
+
+- **A new page folder ships → add its row to `PAGES` in `check_meta.py`, in the same PR.**
+  A page missing from that table is a page nothing is guarding, and it will pass silently
+  forever. The row is `(repo path, deployed URL path)` — and for four pages those two differ,
+  which is half of what the script is for.
+- **`git ls-files`, not the folder.** The guard tests *tracked*-ness deliberately, because
+  the deploy copies the tracked file list; an untracked image passes a local eyeball and 404s
+  on the live card.
+
+### Three things the guard cannot see — check these by hand
+
+1. **The deployed copy.** `check_meta.py` reads *this repo*; a card is scraped from
+   `ai-coaching-intake`. A page can pass here and be stale live. **After every deploy, fetch
+   the live page and compare its OG block to this repo's** — passing locally is not evidence
+   the card is right.
+2. **Card quality, as against card presence.** Check 5 only fires for
+   `twitter:card: summary_large_image`, so the 1200×627 floor is never applied to a `summary`
+   page. That is correct under **D-004** (below), but it means the guard is deliberately
+   silent about five pages — don't read their PASS as "the card looks good."
+3. **Whether LinkedIn has ever scraped the URL.** Nothing in this repo can know that, and it
+   is the one that bites (below).
+
+### After a deploy, prime the scrape — the Featured-link trap (2026-08-17)
+
+**Run every newly deployed or newly card-bearing URL through the
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) before sharing it.** It
+both forces a re-scrape and prints the real reason on failure.
+
+This is not tidiness. Adding `/portfolio/` as a **Featured link on a personal profile** failed
+with a bare **"invalid URL"** while the page was provably healthy — 200 to the `LinkedInBot`
+UA, valid cert, correct DNS, self-referential canonical, complete OG block, `og:image` 200 at
+1200×627. **The cause was that LinkedIn had no cached scrape for the URL**, which its
+Featured-link validator reports as "invalid URL" rather than as a cache miss. Post Inspector,
+then retry, and it is accepted. LinkedIn also caches a *failure* for about a week, so a URL
+scraped while it was briefly wrong stays wrong past the moment it mattered.
+
+**Two red herrings in that output, recorded so they are not re-investigated:**
+
+- **"206 Success"** in the redirect trail is benign and expected. LinkedInBot sends
+  `Range: bytes=0-16383`; GitHub Pages honors it with a 206. Every page here closes `</head>`
+  inside the first ~2KB, so the OG block is always in the first chunk.
+- **"No author found" / "No publication date found"**, shown in red, are **optional**. Neither
+  appears on a rendered card. Adding `article:published_time` or an author tag to clear them
+  means editing a deployed page for zero benefit — don't.
+
+### The small-card pages are a ruling, not a defect
+
+**D-004** (Ry, 2026-08-07, in the plan's ledger) keeps `rates/`, both `hire/` pages,
+`github/`, and `roi-calculator/` on the 200×200 logo with `twitter:card: summary`, on the
+reasoning that they "are not primarily share targets." **A session that finds these and
+"upgrades" them has reversed a decision.** If featuring them on LinkedIn has changed that
+premise, that is a question for Ry, not a fix. Same for **D-003** (the ops-fin case study
+reuses its 2100×1181 beacon hero at ratio 1.78 rather than getting a built card) and **D-013**
+(`og:site_name` is not retro-added to pages a PR does not otherwise touch).
+
 ## Design system — read the site brief before touching CSS
 
 > **Precedence: this `CLAUDE.md` wins over the web skills wherever they conflict.** The skills
