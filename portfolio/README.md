@@ -100,11 +100,12 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
   own `build_hero.py`, which grew the identical output-width argument for the purpose —
   **one composition, several sizes, no generational loss.** Rebuild a card image rather than
   scaling the delivered one. The `.case__shot--empty` device stays in the stylesheet for the
-  next unpublished study. **The Consolidation card is the one exception to "the card image is
-  the case study's hero"** — that page ships no hero (Ry, 2026-08-16), so its card carries the
-  transaction map instead, written here and into `hire/assets/img/` by one run of
-  `case_studies/consolidation_under_pressure/planning/card/build_card_image.py`. The two files
-  are byte-identical by construction; **don't replace either with a copy of the other.**
+  next unpublished study. **All four card images are their case study's own hero**, and
+  Consolidation stopped being the exception on 2026-08-17 (#226): it carried the transaction map
+  while that page shipped no hero, and now carries the hero art Ry supplied. Its
+  `planning/hero/build_hero.py` writes this file and `hire/assets/img/`'s copy in one run — the
+  two are byte-identical by construction, so **don't replace either with a copy of the other**,
+  and nothing is upscaled (the generator refuses).
 - **`reveal.js` is copied, never rewritten** — byte-identical to `hire/assets/js/reveal.js`
   apart from its header comment, so reveal timing and scroll-spy match every other long-form
   page here.

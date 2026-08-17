@@ -278,10 +278,10 @@ Conventions the pages must keep:
   publication date — so don't sort it, and the four cards are byte-identical across the two
   files: **change both or neither.** No placeholders remain; the `$30M` card was removed
   because its study is unwritten, and it returns as a normal card when it exists. The section
-  head deliberately **states no count**. Consolidation's card image is the only one that is not
-  a case study hero — that page ships none — so it is the transaction map, composed at card
-  width by `consolidation_under_pressure/planning/card/build_card_image.py`. Rebuild rather
-  than retouch.
+  head deliberately **states no count**. All four card images are now their case study's own
+  hero, derived at card width by that study's generator — Consolidation was the exception until
+  2026-08-17 (#226), when it got a hero and its card stopped being the transaction map.
+  Rebuild rather than retouch.
 - **Two application tiles carry an in-tile case-study CTA**, the only two whose system has a
   published write-up: SetMaster 3 (which also links the `/setmaster3/` product page) and the
   Notion–GitHub AI Dev Command Center → `/wolfpack-ai-command/`. **They go after
@@ -395,31 +395,49 @@ Conventions this case study must keep, on top of the folder's:
 - **`transaction-map.html` is `noindex` and carries no Open Graph block**, and is correctly
   absent from `check_meta.py`'s page table. It is reached from the report, never from a
   search result.
-- **The social card's inset is the map itself**, captured by
-  `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
-  rather than retouch, and re-run the capture *before* the card whenever the figure changes.
-- **The map is also this study's CARD image**, for the same reason and by a second generator
-  beside the first: `planning/card/build_card_image.py` writes **both**
-  `hire/assets/img/case-consolidation.jpg` and `portfolio/img/case-consolidation.jpg`
-  (2026-08-17, #218 then #222) from one composition — byte-identical by construction, because
-  those two folders deploy side by side at the intake root and neither may reference the
-  other's assets. **Don't replace either with a copy of the other.** The other case cards take
-  their image from their case study's hero; **this one has no hero to take**, so the signature
-  figure stands in. Both generators read the one `map-capture.png`, so re-run `capture_map.py`
-  first and then both consumers whenever the figure changes. The card crop is **not** the social
-  card's crop — that one takes the dense 2020–2026 half, which here would slice the lane labels
-  off the category axis. The reasoning for both is written in the scripts.
-- **Its hero art is supplied rather than generated — one of the two normal provenances, not
-  an exception.** `planning/consolidation-under-pressure-hero.png` (1337×752, RGBA, provided
-  by Ry 2026-08-15) **is the master**, so it is the file that must never be lost, and anything
-  derived from it records its *derivation* command. There is no `build_hero.py` beside it and
-  there should not be; don't read the absence as an omission and don't write one to make this
-  hero match the other two.
-- **It is deliberately not on the case study page. Ry's ruling, 2026-08-16.** The page ships
-  no hero figure and is not getting one — the art is **blog eye candy**, and the blog post's
-  cover is its only public surface. This is a made decision, so **adding it to the page is a
-  reversal to take to Ry, never a tidy-up**, and the gap between *this case study has hero
-  art* and *this case study page shows hero art* is the intended state.
+- **The social card and both case cards all come from the hero master** since 2026-08-17
+  (#226). The card's inset was the transaction map from #172 until then, and the swap was not a
+  demotion of the map: that choice was always about *density at 360px*, and the hero wins the
+  same test by being legible as a **subject** where a four-lane scatter is only texture.
+  `planning/hero/build_hero.py` writes the page hero plus `portfolio/img/case-consolidation.jpg`
+  and `hire/assets/img/case-consolidation.jpg` — two card files rather than a shared path,
+  because those folders deploy side by side at the intake root and neither may reference the
+  other's assets, byte-identical by construction. **Don't replace either with a copy of the
+  other.**
+- **`planning/card/capture_map.py` still exists and nothing consumes it any more.** It
+  photographs the live map, which is still the report's central figure — it is simply no longer
+  feeding a card. Keep it for the map's own sake; don't "tidy" it away, and don't wire it back
+  into a card without a reason.
+- **`framed()` in `build_cards.py` grew a `vfocus` argument for this card** (#226), defaulting
+  to the top anchor every other inset uses. 16:9 art in that card's ~4:1 slot was returning the
+  empty sky above the subject. If a future card feeds art rather than a screenshot, set
+  `vfocus=0.5` rather than pre-cropping the master.
+- **This case study has TWO supplied masters, and confusing them is the easy mistake.** Both
+  are Ry's art, both live under `planning/`, neither is generated, and each has exactly one
+  job:
+
+  | Master | Job |
+  |---|---|
+  | `planning/consolidation-under-pressure-hero.png` (1337×752, 2026-08-15) | The **blog post's cover**. Blue-tree art, decorative |
+  | `planning/hero/consolidation-under-pressure-hero-blue-neon.png` (1672×941, 2026-08-17) | The **page hero**, and every card size |
+
+  Neither replaces the other, and the older one keeps its now-misleading name because the blog
+  workflow's committed notes point at that path. `planning/hero/build_hero.py` derives the page
+  hero and both card JPEGs from the newer master — **nothing is upscaled**, and it refuses to.
+- **The page hero ruling was REVERSED on 2026-08-17 (#226), and that reversal is specific.**
+  From 2026-08-16 the page deliberately shipped **no** hero figure (Ry: the tree was *"blog eye
+  candy"*). He then commissioned different art and put it on the page himself, so the ruling
+  died with its own reason rather than being overridden: the new image is **not decorative** —
+  twelve of the companies in the deal record being drawn into one core beside a falling share
+  panel, which is the report's argument in one frame. **The old ruling still governs the tree**;
+  don't put that one on the page.
+- **The hero contains invented numbers, and the page says so inside the figure.** The render's
+  market-share panel — the percentages and the −23.6% — is **art, not data from this analysis**.
+  On a page whose entire discipline is that every figure is sourced, that is the one thing that
+  could discredit it, so the figcaption labels the image an illustration (this folder's standing
+  rule: illustrative figures are labeled *inside the figure*, never in a footnote). **Never quote
+  those percentages** in the prose, the alt text, a social card, a blog post, or a LinkedIn
+  caption.
 
 ## `wolfpack-ai-command/` — the AI operating layer case study
 The third case study: how **Wolfpack AI Command** splits the project manager's role, hands
@@ -511,11 +529,12 @@ Conventions the page must keep:
   Consolidation Under Pressure. **New cards are appended and the section head states no
   count** — the lede used to say *"all three"* and went stale exactly as D-014 predicted.
   **The hire pages' card order is Ry's and specific to those pages; it is not a site-wide
-  order to mirror here.** Three of the four images are built at card width by their case
-  study's own hero generator rather than re-encoded from the page-sized file; the fourth,
-  Consolidation, has no hero to build from and carries the transaction map instead, written
-  into this folder and `hire/assets/img/` by one run of `build_card_image.py` — byte-identical
-  by construction, so don't replace either with a copy of the other. Rebuild rather than scale.
+  order to mirror here.** **All four** images are built at card width by their case study's own
+  hero generator rather than re-encoded from the page-sized file — Consolidation was the
+  exception, carrying the transaction map because it had no hero, until Ry supplied one on
+  2026-08-17 (#226). Its generator writes this folder's copy and `hire/assets/img/`'s in one
+  run, byte-identical by construction, so don't replace either with a copy of the other.
+  Rebuild rather than scale.
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.
