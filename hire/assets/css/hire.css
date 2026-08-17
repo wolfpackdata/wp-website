@@ -17,8 +17,14 @@
      3. the hero contact-line rule        7. link hover
      4. the availability status dot       8. the focus ring
    Nothing else. Not a section heading, not a job title, not a date, not a
-   skill chip, not a timeline band. Where coral is a FILL, text on it is navy
-   (5.8:1), never white (fails AA).
+   skill chip, not a timeline band, and NOT the in-tile case-study CTAs added
+   in #218 — those are navy-ghost, which is what keeps this list at eight.
+   Where coral is a FILL, text on it is navy (5.8:1), never white (fails AA).
+
+   Use 5 is live but UNUSED since 2026-08-17 (#218): every case card is now a
+   published link, so no IN PREPARATION chip is rendered on either page. The
+   allowance stays for the next unpublished study — the same state portfolio.css
+   has carried since #113. As everywhere on this site, the count only goes down.
 
    The RML mark (music page, one placement) is the sole exception to the
    two-color palette — see resume_design/header-footer-spec.md §5.
@@ -413,10 +419,28 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--faint); margin: -8px 0 12px;
 }
+/* In-tile CTAs (#218). Only the tiles whose system has a published case study
+   carry these, so their PRESENCE is information — it marks which entries have
+   been written up, and decorating every tile with a button would destroy that
+   signal. Wrapping, not nowrap: two buttons and a narrow tile are the normal
+   case at one column.
+
+   They sit after .app__blurb by requirement, not by taste — verify_facts.py
+   check 6 matches .app__name and .app__blurb as adjacent siblings, so anything
+   between them silently unguards a résumé string. */
+.app__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+/* One step down from a section-level button: a secondary route inside a card,
+   never a peer of the page's Contact CTA. Navy-ghost only — a coral fill here
+   would spend a ration use and outrank the primary ask. */
+.btn--sm { padding: 9px 18px; font-size: 0.875rem; }
 
 /* ==========================================================================
-   Case studies — designed placeholders, sized as though written.
-   Not "coming soon" apology copy: a table of contents for work in progress.
+   Case studies. Built as designed placeholders — sized as though written, a
+   table of contents rather than "coming soon" apology copy — and as of #218
+   every card on both pages is a published write-up with a real image and a
+   real link. The two placeholder devices below survived that and are kept
+   deliberately: the geometry is what made swapping a chip for a button a
+   one-element change, and the next unpublished study will want them back.
    ========================================================================== */
 
 .cases { display: grid; gap: 18px; counter-reset: cs; }
@@ -431,8 +455,10 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   background: var(--surface-2); border: 1px solid var(--line);
   border-radius: var(--radius);
 }
-/* Case 02 has no screenshot in the inventory yet. Its frame is a live panel,
-   not a broken image — drop a file in later and it becomes a normal card. */
+/* A live panel, not a broken image — drop a file in later and it becomes a
+   normal card with no layout change. Written for the financial model card,
+   which no longer needs it: that study has had a real hero since #113 and the
+   card took it in #218. Unused on both pages now, kept for the next one. */
 .case__shot--empty {
   display: grid; place-items: center;
   font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.14em;
@@ -447,6 +473,9 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
 .case__num::before { content: "Case " counter(cs, decimal-leading-zero); }
 .case__title { font-size: 1.0625rem; margin-bottom: 10px; }
 .case__blurb { font-size: 0.9375rem; color: var(--muted); margin-bottom: 16px; }
+/* Coral use 5, and unused since #218 removed the last unpublished card. Kept:
+   swapping this for a .btn--ghost is a one-element change that moves no
+   layout, which is the property that made adding published studies cheap. */
 .case__chip {
   display: inline-block;
   font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.14em;
@@ -642,6 +671,10 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
      have. Here vertical space is the cheap axis, so the meta drops to its own
      line and the button is allowed to wrap rather than overflow. */
   .btn { white-space: normal; padding: 12px 20px; }
+  /* Re-stated after .btn, which resets padding for every button at this width.
+     Without this line the in-tile buttons grow back to full size on phones,
+     which is exactly where the tile has least room for them. */
+  .btn--sm { padding: 10px 16px; }
   .btn__meta { display: block; margin-top: 4px; }
   .btn__meta::before { content: none; }
   .tl__stack li { flex-direction: column; gap: 4px; }

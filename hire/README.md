@@ -72,8 +72,29 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
 - **The two YAMLs file music differently on purpose** — `eng_only` puts RML and
   Niceman *inside* Professional Experience so they read as businesses he runs;
   `eng_music` gives music its own section. Don't flatten that into one template.
+- **The case studies section carries the published set, in Ry's order, on both
+  pages** (#218, design plan **D-011**): AI Command → SetMaster 3 → Consolidation
+  Under Pressure → financial model. **That order is Ry's and re-derives from
+  nothing** — not alphabetical, chronological, or by publication date. Don't sort
+  it. The four cards are byte-identical across the two pages: unlike the
+  applications gallery, this section has no music-vs-engineering framing to keep
+  apart, so **change both files or neither**. Nothing here is a placeholder any
+  more — the `$30M software spine` card was removed because its study is still
+  unwritten, and an `IN PREPARATION` chip on a résumé page reads as an IOU. It
+  comes back as a normal card when the study exists. **Neither string in the
+  section head counts the cards**, deliberately: the old *"Three builds"* /
+  *"Two are published"* pair went stale silently every time a study shipped.
+- **Two application tiles link their case study**, the only two whose system has a
+  published one: `SetMaster 3` / `RML SetMaster 3` and `Notion–GitHub AI Dev
+  Command Center`. The SetMaster tile also links the `/setmaster3/` product page.
+  Put these **after `.app__blurb`, never between the name and the blurb** —
+  check 6 matches those two as adjacent siblings, so anything between them
+  unguards a résumé string *without failing the check*.
 - **The coral ration is enumerated in the header comment of `assets/css/hire.css`.**
   Keep that comment true. Where coral is a fill, text on it is navy, never white.
+  **Use 5, the `IN PREPARATION` chip, is live but unused since #218** — the
+  allowance stays for the next unpublished study, and as everywhere on this site
+  the count only ever goes down.
 - **The RML mark appears in exactly one place** — the music page's Music &
   Creative Technology section, at ~44px. It's a recovered raster and is not clean
   at larger sizes.

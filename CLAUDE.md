@@ -203,6 +203,22 @@ Conventions the pages must keep:
 - **The four downloads in `assets/dl/` are owned by `export_pdf.py`** — never rename or
   replace them by hand. Rebuild with
   `python build.py ; python verify_facts.py ; python export_pdf.py`.
+- **The case studies section is the published set in Ry's order, identical on both pages**
+  (2026-08-17, #218): AI Command → SetMaster 3 → Consolidation Under Pressure → financial
+  model. **The order re-derives from nothing** — not alphabetical, chronological, or by
+  publication date — so don't sort it, and the four cards are byte-identical across the two
+  files: **change both or neither.** No placeholders remain; the `$30M` card was removed
+  because its study is unwritten, and it returns as a normal card when it exists. The section
+  head deliberately **states no count**. Consolidation's card image is the only one that is not
+  a case study hero — that page ships none — so it is the transaction map, composed at card
+  width by `consolidation_under_pressure/planning/card/build_card_image.py`. Rebuild rather
+  than retouch.
+- **Two application tiles carry an in-tile case-study CTA**, the only two whose system has a
+  published write-up: SetMaster 3 (which also links the `/setmaster3/` product page) and the
+  Notion–GitHub AI Dev Command Center → `/wolfpack-ai-command/`. **They go after
+  `.app__blurb`, never between the name and the blurb** — `verify_facts.py` check 6 matches
+  those two as adjacent siblings, so anything between them unguards a résumé string *without
+  failing the check*. Same pair on `portfolio/`.
 
 ## `case_studies/` — long-form case studies
 Client-facing long-form case studies sharing one stylesheet and one animation script.
@@ -313,6 +329,14 @@ Conventions this case study must keep, on top of the folder's:
 - **The social card's inset is the map itself**, captured by
   `planning/card/capture_map.py` and composed by `social-cards/build_cards.py`. Rebuild
   rather than retouch, and re-run the capture *before* the card whenever the figure changes.
+- **The map is also this study's CARD image**, for the same reason and by a second generator
+  beside the first: `planning/card/build_card_image.py` writes
+  `hire/assets/img/case-consolidation.jpg` (2026-08-17, #218). The other three case cards take
+  their image from their case study's hero; **this one has no hero to take**, so the signature
+  figure stands in. Both generators read the one `map-capture.png`, so re-run `capture_map.py`
+  first and then both consumers whenever the figure changes. The card crop is **not** the social
+  card's crop — that one takes the dense 2020–2026 half, which here would slice the lane labels
+  off the category axis. The reasoning for both is written in the scripts.
 - **Its hero art is supplied rather than generated — one of the two normal provenances, not
   an exception.** `planning/consolidation-under-pressure-hero.png` (1337×752, RGBA, provided
   by Ry 2026-08-15) **is the master**, so it is the file that must never be lost, and anything
@@ -416,10 +440,12 @@ Conventions the page must keep:
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, `js/`, like `rates/` and
   `ai-coaching/` and unlike `hire/`. `reveal.js` is copied byte-identical from
   `hire/assets/js/reveal.js` apart from its header comment.
-- **One CTA and exactly one destination on the entire page: the 30-minute intro call.** No
-  intake-form link, no résumé download, no rates link. A quiet `/rates_public/` coda band
-  briefly existed and **Ry cut it** (2026-08-04, plan D-011), so this page is the book-first
-  rule at its strictest. Don't re-add a second destination without asking. The header
+- **One accented CTA — the 30-minute intro call — and exactly one subordinate destination,
+  the `/setmaster3/` product page** (2026-08-17, plan D-015, #218), navy-ghost and one size
+  down in the SetMaster tile. Case-study links don't count against this; D-014 settled that
+  they are navigation within the work. Still no intake-form link, no résumé download, no rates
+  link: a quiet `/rates_public/` coda band briefly existed and **Ry cut it** (2026-08-04, plan
+  D-011). Don't add a third destination without asking. The header
   wordmark's link to `wolfstrategyllc.com` (#126) is **not** a second destination — it is
   site chrome, matching every other page here; it replaced a `#top` anchor that made sense
   only while the page was unpublished. Note the rates page now links *here* (spec R14), so

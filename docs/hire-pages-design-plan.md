@@ -34,6 +34,7 @@ Locked with Ry, 2026-07-30. These are settled inputs, not proposals.
 | D-007 | **URLs are `/hire/ryan-hickey/` and `/hire/ryan-hickey-music/`.** | The repo folder `hire/` mirrors the deploy path exactly, so shipping is one folder copy. |
 | D-008 | **`wolfstrategyllc.com` appears at the top as a link and at the bottom as a secondary CTA** (Ry, feedback round 1) — as trust, not as funnel. **Revised round 2:** the bottom CTA moved *out* of the closing block into its own coda band below it. | In the hero contact line, in the closing contact grid, on the eng-only footer wordmark, and — since round 2 — as a single ghost link in the `.softcta` coda section (§4.12). Inside the closing block it had been a fourth button beside two résumé downloads, which read as a peer of the primary CTA rather than below it. It is never coral: the primary CTA stays unambiguously *Contact Ryan*. |
 | D-009 | **Music tenure is four spans, not one number** (Ry, feedback round 2). Piano: 36 years of playing and study. Paid performance: since **2003** → 23 years. Studio production/engineering: 20+ years. **Professional DJ: since 2009** → 17 years. | The pages say "36 years at the piano · 23 years paid to perform". The phrase *"a 36-year music career"* is retired — it conflated study with career — as is *"20+ years of DJ performance"*, which predated 2009 by four years. `eng_music.yaml` still carries both and is now the **stale** copy: the résumé needs the same correction on its next build round (§6c). |
+| D-011 | **The case studies section carries the published set, in Ry's order, and the `$30M` placeholder is removed.** Order: AI Command → SetMaster 3 → Consolidation Under Pressure → financial model. Both pages, identical markup. Two in-tile CTAs are added to the applications gallery at the same time. Ruling: Ry, 2026-08-17 (#218). | The section had drifted behind reality in two directions at once: it advertised *three* studies while four were published, and it still showed a `Figures in preparation` panel for a study that has had a real hero since #113. **On the removal:** an `IN PREPARATION` chip is a promise, and on a résumé page a reader cannot tell an unwritten case study from an abandoned one — so every card is now something they can open. The `$30M` study is not cancelled; it re-enters as a normal card when it is written. **On the order:** it is Ry's and encodes nothing a script could re-derive, which is why the markup says so in a comment. **On the count strings:** both were removed from the section head — a heading that counts its own children is a fact with no guard on it, and this one had already gone wrong. **On the fourth card's image:** Consolidation Under Pressure is the one case study that ships no hero figure (Ry's ruling, 2026-08-16 — its supplied art is the blog cover), so the card shows the transaction map, the document's signature figure, composed at card width by a generator recorded beside the capture it reads. **On the tile CTAs:** only the two tiles whose system has a published write-up carry one, so their presence is information rather than decoration; they sit *after* `.app__blurb` because `verify_facts.py` check 6 matches name-and-blurb as adjacent siblings and anything between them would unguard a résumé string without failing anything. Coral ration untouched at eight — every new control is navy-ghost — and use 5 is now live-but-unused, the state `portfolio.css` has carried since #113. |
 | D-010 | **The music training was taught, and both pages say so** (Ry, feedback round 3). **Ten years of classical piano study with a university professor**; sound engineering learned **from working mentors and paid online programs**. The `.edu-aside` panel — previously eng-only, and previously labeled *"self-taught"* — now runs on **both** pages under **"A second discipline, formally trained."** | *Self-taught* was factually wrong and it undersold the box: it read as a hobby that got serious, when both halves were instructed. Neither fact is anywhere in either YAML, so this is a **second** divergence for the résumé round to absorb (§6c) — and `10 years` is a new figure needing a `FIGURES` entry. |
 
 ---
@@ -259,12 +260,12 @@ full-width 16:9 cover frame it will go visibly soft. It gets a **half-width card
 with a 4:3 frame** instead, which keeps it sharp and reads as an intentional
 rhythm break rather than a defect.
 
-### 4.7 Case studies — designed placeholders
+### 4.7 Case studies
 
-Three frames, numbered, each sized as though the content were already there. A
-mono `IN PREPARATION` chip (coral 1px border, no fill) sits where the read-more
-link will go. **Not** "coming soon" apology copy — this reads as a table of
-contents for work in progress.
+**As built (2026-07-31): three designed placeholders.** Frames numbered and sized
+as though the content were already there, with a mono `IN PREPARATION` chip (coral
+1px border, no fill) where the read-more link would go. **Not** "coming soon"
+apology copy — a table of contents for work in progress.
 
 | # | Title (Ry's words) | Frame image |
 |---|---|---|
@@ -272,11 +273,30 @@ contents for work in progress.
 | 02 | How AI-powered transaction-level tracking equates to $M annual ROI | *empty frame* |
 | 03 | SetMaster 3 — from problem, to prototype, to a shipped web app | `app-setmaster.png` |
 
-Each frame carries a stable `id` (`#case-30m`, `#case-tracking`, `#case-setmaster`)
-so the future case-study pages can be linked in without re-cutting the section.
-Case 02 has no matching screenshot in the inventory; its frame is a `--surface-2`
-panel with the mono chip centered. Ry can drop a sanitized image in later and it
-becomes a normal card with no code change.
+Each frame carried a stable `id` so a future case study could be linked in without
+re-cutting the section — and that is exactly what happened, twice: case 02 was
+replaced by the published financial model study on 2026-08-04, and the whole
+section was rebuilt on 2026-08-17.
+
+**As it stands now (D-011, 2026-08-17, #218): four published studies, no
+placeholders.** The design intent above is *spent*, not abandoned — the geometry
+it produced is what let every swap since be a one-element change.
+
+| # | Title | Frame image | Links to |
+|---|---|---|---|
+| 01 | An AI Operating Layer for Streamlining Project Delivery | `case-ai-command.jpg` | `/wolfpack-ai-command/` |
+| 02 | SetMaster 3 — from problem, to prototype, to a shipped web app | `app-setmaster.png` | `/setmaster3-case-study/` |
+| 03 | Consolidation Under Pressure: M&A in music gear and pro audio, 2016–2026 | `case-consolidation.jpg` | `/consolidation-under-pressure/` |
+| 04 | The Model Is Your Business Beacon: a financial model as an operating tool | `case-fin-model.jpg` | `/ops-fin-model-case-study/` |
+
+**The order is Ry's** and follows nothing derivable — not alphabetical, not
+chronological, not by publication date. Do not re-sort it.
+
+The `.case__chip` and `.case__shot--empty` devices both survive in `hire.css`,
+unused, for the next unpublished study. The section head carries **no count** in
+either string, which is what the old *"Three builds"* / *"Two are published; ask
+about the third"* pair got wrong: it went stale silently every time a case study
+shipped, and by 2026-08-17 it had.
 
 ### 4.8 Music & Creative Technology — music page only
 

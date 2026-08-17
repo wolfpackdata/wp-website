@@ -336,7 +336,7 @@ excluded by design (two strings on the page, #158).
 
 | Page | Count | Prohibitions, and the harm each prevents |
 |---|---|---|
-| `portfolio/` | 1 | **Never link `hire/`** — those carry a time-sensitive "actively seeking a role" claim; linking from a client-facing page tells every prospect he is job-hunting. **The harm is the résumés, not `noindex`** (D-003, scope-corrected same day) |
+| `portfolio/` | 1 + 1 subordinate | SetMaster 3 product page (D-015, Ry 2026-08-17) — navy-ghost, one size down, in the tile whose product it is. **Never link `hire/`** — those carry a time-sensitive "actively seeking a role" claim; linking from a client-facing page tells every prospect he is job-hunting. **The harm is the résumés, not `noindex`** (D-003, scope-corrected same day) |
 | `github/` | 1 | Stricter: **no `mailto:` in the footer**, uniquely in the repo — *"that is precisely how a not-a-contact-page becomes a contact page"* |
 | `rates/` | 1 + 2 subordinate | ROI calculator (R11) and portfolio (R14), both navy-ghost, both individually ruled |
 
@@ -348,9 +348,11 @@ Link graph read from every `index.html` on 2026-08-09 (self-canonicals, assets, 
 
 | Pair | Direction | Reason on record? | Verdict |
 |---|---|---|---|
-| `rates/` → `portfolio/` | One-way | **Yes** — spec R14 / contract D15. A link back would be `portfolio/`'s second destination, and it is the book-first rule at its strictest | ✅ **Legitimate exception** |
+| `rates/` → `portfolio/` | One-way | **Yes** — spec R14 / contract D15. *Amended 2026-08-17:* the original reason was that a link back would be `portfolio/`'s second destination, and that specific argument is now spent — D-015 gave it one. The pair stays one-way on the **other** ground, which was always the stronger one: `portfolio/` cut its rates coda by Ry's explicit decision (portfolio D-011), so a rates link there is a reversal, not a gap | ✅ **Legitimate exception, on a re-stated reason** |
 | `setmaster3/` ↔ `setmaster3-case-study/` | **Bidirectional** | — | ✅ **Not a gap** — they link both ways already |
-| `portfolio/` → both case studies | One-way | **Yes, deferred rather than rejected.** `portfolio-page-design-plan.md` §7 proposed the return link and **deliberately did not build it**: editing the case study means re-deploying `case_studies/` alongside `portfolio/`, *"doubling the round's deploy surface, which is a cost Ry should choose rather than absorb"* | ⚠️ **A deferral on cost grounds, not a design decision.** Still open |
+| `portfolio/` → all three case studies | One-way | **Yes, deferred rather than rejected.** `portfolio-page-design-plan.md` §7 proposed the return link and **deliberately did not build it**: editing the case study means re-deploying `case_studies/` alongside `portfolio/`, *"doubling the round's deploy surface, which is a cost Ry should choose rather than absorb"* | ⚠️ **A deferral on cost grounds, not a design decision.** Still open |
+| `portfolio/` → `setmaster3/` | One-way | **Yes** — D-015, Ry 2026-08-17. `setmaster3/` is a product surface for DJs and carries no consultancy framing at all (§11), so a link back would drag the wrong audience into the wrong page | ✅ **Legitimate exception** |
+| `hire/` → 4 case studies + `setmaster3/` | One-way, outbound-only | **Yes** — D-003 in reverse. Nothing may link *to* `hire/`, and `hire/` linking *out* to indexed pages is the harmless direction | ✅ **Legitimate exception** |
 | `hire/` ← nothing | One-way, inbound-only | **Yes** — D-003. The résumés are deliberately linked from nothing | ✅ **Legitimate exception** |
 | **`roi-calculator/` ← 3 pages, → nothing** | **Dead end** | **No** | ⚠️ **The clearest gap on the property.** `rates/`, `ai-coaching/`, and the ops-fin-model case study all link *into* it; it links back to **nothing at all** — no nav, no return path, no onward step. A reader who follows it is stranded |
 

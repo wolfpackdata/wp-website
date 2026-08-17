@@ -29,6 +29,11 @@
    coral fills here (.nav__cta, .btn--solid) set navy text; the other four uses
    are coral ON navy, which is the safe direction.
 
+   Still six after #218 (2026-08-17), which added three in-tile CTAs and a
+   second destination to this page: every one of them is navy-ghost, so none
+   touches this list. A secondary route never gets the accent — that is the
+   subordination rule in site-brief.md §6, and it is why the count held.
+
    Six, down from seven on 2026-08-04, and the count has only ever gone down.
    An eighth, temporary use carried the hero placeholder's warning label and went
    away with the placeholder when Ry wrote the real copy (D-004); the closing
@@ -259,6 +264,21 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
   font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--faint); margin: -8px 0 12px;
 }
+/* In-tile CTAs (#218). Only the two tiles whose system has a published case
+   study carry these, so their PRESENCE is information — it marks which of the
+   eight have been written up, and decorating every tile with a button would
+   destroy that signal. Wrapping, not nowrap: two buttons and a narrow tile are
+   the normal case at one column.
+
+   They sit after .app__blurb by requirement, not by taste — verify_facts.py
+   check 6 matches .app__name and .app__blurb as adjacent siblings, so anything
+   between them silently unguards a résumé string. */
+.app__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+/* One step down from a section-level button. The size IS the subordination the
+   destination policy asks for (site-brief §6): these are secondary routes
+   inside a card, never peers of the intro-call CTA. Navy-ghost only — a coral
+   fill here would spend a ration use and outrank the page's one real ask. */
+.btn--sm { padding: 9px 18px; font-size: 0.875rem; }
 
 /* ==========================================================================
    Case studies — the deeper read. Same geometry as the hire pages' .cases
@@ -376,6 +396,10 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
      have. Here vertical space is the cheap axis, so the meta drops to its own
      line and the button is allowed to wrap rather than overflow. */
   .btn { white-space: normal; padding: 12px 20px; }
+  /* Re-stated after .btn, which resets padding for every button at this width.
+     Without this line the in-tile buttons grow back to full size on phones,
+     which is exactly where the tile has least room for them. */
+  .btn--sm { padding: 10px 16px; }
   .btn__meta { display: block; margin-top: 4px; }
   .btn__meta::before { content: none; }
 }

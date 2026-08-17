@@ -88,7 +88,18 @@
        (design plan D-006). Card order follows the YAML.
 
        SetMaster 3 uses the eng_only framing, not eng_music's "RML SetMaster 3"
-       (D-005) — one source YAML for all eight cards. -->
+       (D-005) — one source YAML for all eight cards.
+
+       IN-TILE CTAs (#218, Ry 2026-08-17). Two of the eight tiles name a system
+       that has a published case study, and those two carry a link to it. The
+       buttons go AFTER .app__blurb and never between the name and the blurb —
+       check 6 matches those two as adjacent siblings, so splitting them turns a
+       guarded string into an unguarded one without failing anything.
+
+       The SetMaster tile carries a second button, to the /setmaster3/ product
+       page. That is this page's SECOND destination, which D-007 allowed exactly
+       one of — Ry ruled it in on 2026-08-17 and D-015 records it. It is
+       navy-ghost and one size down, per the brief's subordination rule. -->
   <section class="section" id="applications" aria-labelledby="applications-title">
     <div class="wrap">
       <div class="section__head reveal">
@@ -114,12 +125,22 @@
           <img class="app__shot" src="img/app-notion-system.png" alt="Screenshot of the Notion–GitHub AI Dev Command Center" width="543" height="506" loading="lazy">
           <h3 class="app__name">Notion–GitHub AI Dev Command Center</h3>
           <p class="app__blurb">A bespoke command center for AI-accelerated development: a skills-based planning, project-management, and AI-supervision suite built on a Python engine that wires Claude Code, OpenAI Codex, GitHub, Notion, and BigQuery into a single pipeline. Every agent action is planned against a tracked task, logged, and reviewable — transparent human + agent software development at blistering speed, with an audit trail rather than a black box.</p>
+          <!-- The case study calls this system Wolfpack AI Command; the tile
+               uses the résumé's name for it, which is YAML-verbatim and not
+               ours to edit. Same system — confirmed with Ry, 2026-08-17. -->
+          <div class="app__ctas">
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">Read the case study</a>
+          </div>
         </article>
 
         <article class="app reveal">
           <img class="app__shot" src="img/app-setmaster.png" alt="Screenshot of SetMaster 3" width="1494" height="848" loading="lazy">
           <h3 class="app__name">SetMaster 3</h3>
           <p class="app__blurb">An offline, cross-platform desktop-class web application — TypeScript and React over a Python analysis engine, shipping double-clickable installers for Windows and macOS with no terminal required. Parses a proprietary XML catalog format strictly read-only and reconciles it against third-party API exports through years of accumulated name-normalization and fuzzy-matching heuristics, with compound filtering and a structured editor over the result. Now at v3.0.3 after three issue-driven fix rounds; it replaces a Python/Excel-VBA prototype used professionally for years.</p>
+          <div class="app__ctas">
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/setmaster3/">Visit the product page</a>
+          </div>
         </article>
 
         <article class="app reveal">
