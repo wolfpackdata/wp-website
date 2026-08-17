@@ -434,10 +434,12 @@ Conventions this case study must keep, on top of the folder's:
 - **The hero contains invented numbers, and the page says so inside the figure.** The render's
   market-share panel — the percentages and the −23.6% — is **art, not data from this analysis**.
   On a page whose entire discipline is that every figure is sourced, that is the one thing that
-  could discredit it, so the figcaption labels the image an illustration (this folder's standing
-  rule: illustrative figures are labeled *inside the figure*, never in a footnote). **Never quote
-  those percentages** in the prose, the alt text, a social card, a blog post, or a LinkedIn
-  caption.
+  could discredit it. It shipped with a figcaption saying so and **Ry removed that caption the
+  same day (#228)** — the disclosure now lives in the **alt text**, which opens on
+  *"Illustration."* and states the panel carries no data. **The hero is deliberately the one
+  figure on that page with no caption; don't restore one.** It is also the only one that is art
+  rather than evidence, which is the distinction being drawn. **Never quote those percentages**
+  in the prose, the alt text, a social card, a blog post, or a LinkedIn caption.
 
 ## `wolfpack-ai-command/` — the AI operating layer case study
 The third case study: how **Wolfpack AI Command** splits the project manager's role, hands
