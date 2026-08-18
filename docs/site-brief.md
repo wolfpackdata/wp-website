@@ -152,6 +152,45 @@ guarding them — see §9.
 **Sanity check passes:** delete every screenshot and data table from this site and all eight
 values become unused.
 
+### 1.6 The four lane hues *(added 2026-08-15, #199)*
+
+**The one place this site spends hue on data.** The transaction map's lane — macro, software,
+hardware, retail — is a *category*, and §1.5's ramp is the wrong tool for a category the way a
+categorical palette is the wrong tool for a magnitude. So the map now runs both encodings on
+the same mark: **the dot's ring is its lane, the dot's fill is its value**, and they never swap.
+
+| Lane | Hue | vs. `#1A1A1A` | Ink (42 event labels) | vs. `#1A1A1A` |
+|---|---|---|---|---|
+| Macro & regulatory | `--map-l0` `#E2B04A` | 8.7:1 | `--map-l0-ink` `#E3CDA3` | 11.2:1 |
+| Software & platform | `--map-l1` `#7EA6F6` | 7.2:1 | `--map-l1-ink` `#BCCDF2` | 10.9:1 |
+| Hardware manufacturing | `--map-l2` `#5FC2A6` | 8.1:1 | `--map-l2-ink` `#ABD9CA` | 11.2:1 |
+| Retail & marketplace | `--map-l3` `#E08BB4` | 7.1:1 | `--map-l3-ink` `#EFC0D6` | 10.9:1 |
+
+Each lane also carries a `-tint` (its surface wash, 0.07–0.08 alpha) and a `-line` (the
+hairline to the next lane, 0.32 alpha). Ratios are measured against `#1A1A1A`, which is
+lighter than any surface these actually land on, so every number is a floor.
+
+**Three conditions, and they are the ruling, not the palette.** A figure may spend hue when:
+
+1. the variable is **genuinely categorical** — a name, not a quantity;
+2. the hue is **redundant** with something already in the figure (a lane is identified by
+   vertical position *and* by a name printed inside it), so a reader who cannot separate two
+   of the hues loses nothing — nothing here is the sole carrier of any fact;
+3. it touches **neither the coral ration nor the navy chrome nor a magnitude scale**.
+
+**This is not the [`wolfpack-ai-command`] D-015 ruling, and the two do not conflict.** That one
+put hue in a *committed image* so the sheet stayed hue-free. This one puts hue in the *sheet*,
+because a chart drawn in HTML has nowhere else to put it — which is why the conditions above
+are narrow and written down. Both say the same thing: **hue is figure content, never chrome.**
+
+**The rose is not coral.** `#E08BB4` is a desaturated rose on a near-black figure ground;
+`#F95954` is the accent, and the two appear on screen together (nav CTA above, map below)
+without reading as the same colour. **The coral ration is still six.** "There is pink in the
+map now" is the shape of a future session concluding otherwise.
+
+**The macro bands stay neutral.** A band is a shock, not a lane; a fifth hue there would read
+as a fifth category. Same for the time axis, which every lane shares.
+
 ## 2. The accent ration
 
 ⚠️ **There is no site-level ration count.** See §11, F-1.
@@ -169,6 +208,7 @@ values become unused.
 | `portfolio/` | 6 | **2026-08-04** | nav CTA · closing intro-call button *(was hero CTA until #130 — moved, not duplicated)* · hero rule · IN PREPARATION chip *(live but unused)* · link hover · focus ring |
 | `case_studies/` | 6 | **2026-08-04** (#92) — set at build, never moved | nav CTA · hero rule · pull-quote rule · closing CTA · link hover · focus ring. **The refusal list grew 2026-08-11 (#172); the count did not** — a ~6,000-word report brought source-link glyphs, a five-step deal-value scale, two macro bands, highlighted table rows, part numbers, era cards and an "open full width" affordance, and not one of them became coral |
 | `github/` | **3** | **2026-08-07** | button fill · link hover · focus ring. The smallest — *"what a page with one link should cost"*. Was 4 until #158 took the hero rule with the standfirst it underlined |
+| `pilot-project/` | **5** | **2026-08-18** (#236) — set at build | nav CTA · hero CTA · closing CTA · link hover · focus ring. **Not the price** — the biggest number on the page is carried by type size, which is the ration's own refusal of stat values applied to the one page where a number is the offer |
 
 ⚠️ **`ai-coaching/` could not be counted from its own header — now ruled at 8.**
 It states the ration in prose rather than as a numbered list, and the prose was genuinely
@@ -297,9 +337,10 @@ excluded by design (two strings on the page, #158).
 
 | Page | Count | Prohibitions, and the harm each prevents |
 |---|---|---|
-| `portfolio/` | 1 | **Never link `hire/`** — those carry a time-sensitive "actively seeking a role" claim; linking from a client-facing page tells every prospect he is job-hunting. **The harm is the résumés, not `noindex`** (D-003, scope-corrected same day) |
+| `portfolio/` | 1 + 1 subordinate | SetMaster 3 product page (D-015, Ry 2026-08-17) — navy-ghost, one size down, in the tile whose product it is. **Never link `hire/`** — those carry a time-sensitive "actively seeking a role" claim; linking from a client-facing page tells every prospect he is job-hunting. **The harm is the résumés, not `noindex`** (D-003, scope-corrected same day) |
 | `github/` | 1 | Stricter: **no `mailto:` in the footer**, uniquely in the repo — *"that is precisely how a not-a-contact-page becomes a contact page"* |
-| `rates/` | 1 + 2 subordinate | ROI calculator (R11) and portfolio (R14), both navy-ghost, both individually ruled |
+| `rates/` | 1 + 3 subordinate | ROI calculator (R11), portfolio (R14), and the pilot project (R15, 2026-08-18 #238), all navy-ghost, all individually ruled. R15 differs in kind from the other two: it is a **mirror-set** item under the consistency contract rather than a public-page-only delta, because the pilot landed on the Q3 direct-link page first (`wp-rates-page#42`) |
+| `pilot-project/` | 1 + 3 subordinate | The rate card and the AI Coaching page, both navy-ghost buttons, plus an **inline text** link to `/wolfpack-ai-command/` on the blurb of one of the two included systems (S-12). The case-study link is navigation within the work, the reading portfolio D-014 settled — but it is written down here because it is the count's third, and three is one more than any other page carries. **Linked from both rates pages since 2026-08-18** (#238 / `wp-rates-page#42`), which resolved the open question; nothing else links it |
 
 **Navigation strategy (X-8): user-first and intuitive is the default; one-way is an
 exception that must name its reason.**
@@ -309,9 +350,11 @@ Link graph read from every `index.html` on 2026-08-09 (self-canonicals, assets, 
 
 | Pair | Direction | Reason on record? | Verdict |
 |---|---|---|---|
-| `rates/` → `portfolio/` | One-way | **Yes** — spec R14 / contract D15. A link back would be `portfolio/`'s second destination, and it is the book-first rule at its strictest | ✅ **Legitimate exception** |
+| `rates/` → `portfolio/` | One-way | **Yes** — spec R14 / contract D15. *Amended 2026-08-17:* the original reason was that a link back would be `portfolio/`'s second destination, and that specific argument is now spent — D-015 gave it one. The pair stays one-way on the **other** ground, which was always the stronger one: `portfolio/` cut its rates coda by Ry's explicit decision (portfolio D-011), so a rates link there is a reversal, not a gap | ✅ **Legitimate exception, on a re-stated reason** |
 | `setmaster3/` ↔ `setmaster3-case-study/` | **Bidirectional** | — | ✅ **Not a gap** — they link both ways already |
-| `portfolio/` → both case studies | One-way | **Yes, deferred rather than rejected.** `portfolio-page-design-plan.md` §7 proposed the return link and **deliberately did not build it**: editing the case study means re-deploying `case_studies/` alongside `portfolio/`, *"doubling the round's deploy surface, which is a cost Ry should choose rather than absorb"* | ⚠️ **A deferral on cost grounds, not a design decision.** Still open |
+| `portfolio/` → all three case studies | One-way | **Yes, deferred rather than rejected.** `portfolio-page-design-plan.md` §7 proposed the return link and **deliberately did not build it**: editing the case study means re-deploying `case_studies/` alongside `portfolio/`, *"doubling the round's deploy surface, which is a cost Ry should choose rather than absorb"* | ⚠️ **A deferral on cost grounds, not a design decision.** Still open |
+| `portfolio/` → `setmaster3/` | One-way | **Yes** — D-015, Ry 2026-08-17. `setmaster3/` is a product surface for DJs and carries no consultancy framing at all (§11), so a link back would drag the wrong audience into the wrong page | ✅ **Legitimate exception** |
+| `hire/` → 4 case studies + `setmaster3/` | One-way, outbound-only | **Yes** — D-003 in reverse. Nothing may link *to* `hire/`, and `hire/` linking *out* to indexed pages is the harmless direction | ✅ **Legitimate exception** |
 | `hire/` ← nothing | One-way, inbound-only | **Yes** — D-003. The résumés are deliberately linked from nothing | ✅ **Legitimate exception** |
 | **`roi-calculator/` ← 3 pages, → nothing** | **Dead end** | **No** | ⚠️ **The clearest gap on the property.** `rates/`, `ai-coaching/`, and the ops-fin-model case study all link *into* it; it links back to **nothing at all** — no nav, no return path, no onward step. A reader who follows it is stranded |
 
@@ -341,6 +384,7 @@ decisions**, and this table is incomplete until that pass happens. See the open 
 | `case_studies/` | Founders, SMB directors, operating executives | Indexed | Client names, invented testimonials, **and any claimed outcome** — the stat tiles carry build, artifact and method facts only |
 | `…/transaction-map.html` | as above, arriving from the report | **noindex** | Everything except one figure and the route back |
 | `github/` | Anyone sent the link | **noindex** | Everything except a heading and a button |
+| `pilot-project/` | A prospect who balked at the monthly tiers | **noindex** | **Hours, weekly commitment, and any effective hourly rate** — the fee prices a scoped outcome and the rate curve prices reserved time, so publishing hours here would contradict `/rates_public/` arithmetically. Also: the once-per-client limit (enforced on the call), and any measured outcome |
 | `roi-calculator/` | Consideration-stage clients | Indexed | — a tool, not a funnel page |
 | `setmaster3/` | **Product users** — DJs | Indexed | Wolfpack consultancy framing entirely. It is the product's own surface (§11) |
 | `setmaster3-case-study/` | Clients / hiring managers | Indexed *(flipped from `noindex` 2026-08-04)* | The product-user framing — it is a portfolio document about the product |

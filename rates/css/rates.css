@@ -244,6 +244,45 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .tiers__caption { margin-top: 18px; font-size: 0.875rem; color: var(--muted); }
 
 /* ==========================================================================
+   The pilot band — spec R15
+
+   `.bridge` ported from the pattern library (wp-rates-page/css/rates.css),
+   where it is the coupon bridge. ONE DECLARATION DIFFERS, deliberately: the
+   left edge is `--faint` here, not `--coral`. Upstream that coral edge marks
+   the coupon perk; this page does not carry the coupon bridge (contract D8),
+   so there is no perk for it to mark — and the coral ration enumerated in this
+   sheet's header is fully spent. Porting a coral declaration that never paints
+   would falsify that header, which is the one thing it must never do.
+
+   Upstream the pilot band therefore carries a `bridge--pilot` modifier to
+   neutralise the edge. There is nothing here for that modifier to override, so
+   it is not ported and the markup omits it. If the coupon bridge is ever
+   ported down (reversing D8), bring the modifier with it.
+
+   `.bridge__fig` matches the upstream second selector: the slot holds a dollar
+   figure here rather than a percentage, and `__pct` would be a lie.
+   ========================================================================== */
+
+.bridge {
+  background: var(--surface-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--faint);
+  border-radius: var(--radius); padding: 30px 34px;
+  display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center;
+  margin-top: 32px;
+}
+/* The `.bridge ` prefix is load-bearing: the figure is a `<p>` inside
+   `.bridge`, so a bare `.bridge__fig` (0,1,0) would lose to `.bridge p`
+   (0,1,1) two lines down and the price would render at body size. That is
+   exactly what happened upstream to the coupon bridge's "25%" from v1.0.0
+   until 2026-08-18 (wp-rates-page#42), where it is now fixed the same way. */
+.bridge .bridge__fig { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 2.6rem; line-height: 1; }
+.bridge .bridge__fig span { display: block; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-top: 6px; }
+.bridge h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.bridge p { font-size: 0.9375rem; color: var(--muted); max-width: 68ch; }
+.bridge p strong { color: var(--white); font-weight: 600; }
+.bridge__cta { margin-top: 16px; }
+
+/* ==========================================================================
    The Wolfpack Advantage
    ========================================================================== */
 
@@ -374,6 +413,7 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
   .section { padding: 56px 0; }
   .tiers, .steps, .packs, .terms-grid { grid-template-columns: 1fr; }
   .tier--featured { order: -1; }
+  .bridge { grid-template-columns: 1fr; gap: 14px; }
   .about { grid-template-columns: 1fr; }
   .about__photo { width: 170px; }
 }

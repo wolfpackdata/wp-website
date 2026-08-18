@@ -107,17 +107,19 @@ repo and are handed back as a Wix work order — see §8.
 | D-001 | **Full OG sweep**, not the single page the work order asked for. Sequenced so the SM3 case study can ship alone if LinkedIn timing demands it. | Ry, 2026-08-07. The identical defect exists on the other case study; fixing one leaves the other to be found again. |
 | D-002 | **SM3 case study gets a purpose-built 1200×627 card**, not the product page's screenshot. | Ry, 2026-08-07. Two Featured tiles carrying the identical set-editor screenshot reads as a duplicate. |
 | D-003 | **Ops-fin case study reuses its existing beacon hero** (`fin-model-beacon-hero.jpg`, 2100×1181) rather than getting its own built card. | Ry, 2026-08-07. Already a purpose-built image, already distinctive, ratio 1.78 vs LinkedIn's 1.91 → light side crop only. Zero build cost. |
-| D-004 | **`portfolio/` and `ai-coaching/` upgrade to large image cards.** `rates/`, both `hire/` pages, `github/`, and `roi-calculator/` stay on the 200×200 logo with `twitter:card summary`. | Ry, 2026-08-07. Portfolio is a likely LinkedIn landing page; ai-coaching currently renders text-only. The rest are not primarily share targets. |
+| D-004 | **`portfolio/` and `ai-coaching/` upgrade to large image cards.** `rates/`, both `hire/` pages, `github/`, and `roi-calculator/` stay on the 200×200 logo with `twitter:card summary`. | Ry, 2026-08-07. Portfolio is a likely LinkedIn landing page; ai-coaching currently renders text-only. The rest are not primarily share targets. **PARTLY REVERSED 2026-08-18 by D-015 — the two `hire/` pages now carry built 1200×627 cards.** `rates/`, `github/`, and `roi-calculator/` are untouched and this decision still governs them. |
 | D-005 | **No back-link from the SM3 case study to `/portfolio/`.** | Ry, 2026-08-07. `portfolio → case study` stays deliberately one-way, matching the `rates → portfolio` precedent (portfolio conventions, #127). The case study already has four outbound destinations. |
 | D-006 | **Analytics parked to its own issue**, not scoped here. | Ry, 2026-08-07. It is a real architecture decision against a documented no-external-requests rule; it should not ride along on a blocking tag fix. |
 | D-007 | **No move to `www`.** Items 2.1/2.2 become a Wix work order. | Ry, 2026-08-07, on the hosting facts in §1. |
 | D-008 | **Work order item 2.3 closed as already satisfied** — no code change. | Verified 2026-08-07; the links it asks for are already on both pages. |
-| D-009 | **The card generator is a committed script**, not hand-made images, living in a folder that does not deploy. | Matches the standing convention for `fin-model-beacon-hero.jpg`: *"The financial model hero is generated, and its generator ships with it… Rebuild rather than retouch."* One more card later should be a script invocation, not a design session. |
+| D-009 | **The card generator is a committed script**, not hand-made images, living in a folder that does not deploy. | Matches the standing convention for `fin-model-beacon-hero.jpg`: *"The financial model hero is generated, and its generator ships with it… Rebuild rather than retouch."* One more card later should be a script invocation, not a design session. **Note, 2026-08-16 (#216):** the hero convention quoted here has since been generalized — a hero may be *generated* or *supplied*, and provenance rather than generation is the rule. **This decision is unaffected: social cards are still always generated**, because a card is composed from page material rather than delivered as art. Read the quote as history, and `case_studies/README.md` as current. |
 | D-010 | **`og:description` is the page's `<meta name="description">` verbatim on the SM3 case study**, including the "Data engineering meets DJ engineering." opener — a deviation from the work order's suggested text, which drops it. | The opener is the strongest hook in the string and sits inside LinkedIn's visible truncation window. The work order's own stated principle is "lifted verbatim so the card matches the page"; this applies that principle more faithfully than its own snippet does. |
 | D-011 | **`og:description` on the ops-fin case study is trimmed** to its first two sentences rather than used verbatim. | Its `<meta name="description">` is 359 characters — a paragraph written for the SERP. LinkedIn truncates around 200 and would cut mid-clause. Single deliberate exception to D-010's verbatim rule, flagged here so it is a choice rather than a drift. |
 | D-012 | **`og:title` drops the `· Case Study` / tab suffix** on both case studies. | Same reasoning the blog convention already carries: the `<title>` suffix is written for the browser tab and the SERP, not for a card headline. |
 | D-013 | **`og:site_name` and `og:image:alt` are added to every page this plan touches**, and not retro-added to pages it does not touch. | Cheap on a page already being edited; widening to untouched pages would be scope creep. Listed as an optional extra in §6 if Ry wants uniformity. |
 | D-014 | **A generated card image does not count against a folder's coral ration.** | The rations are documented in CSS header comments and govern the stylesheet. The beacon hero already contains one coral use without being counted. Flagged rather than assumed — overturnable. |
+| D-015 | **Both `hire/` pages upgrade to built 1200×627 cards, reversing D-004 for those two pages only** — and **neither card carries Ryan's portrait**. `rates/`, `github/`, and `roi-calculator/` stay exactly as D-004 left them. Ruling: Ry, 2026-08-18 (#230). | **On the reversal:** D-004's premise was that these "are not primarily share targets", which had it backwards. Every other page here is *found* — indexed, linked, arrived at. The `hire/` pages are `noindex` and direct-link only, which means the **only** way anyone reaches one is Ry pasting the URL into a LinkedIn message, an email, or an application form — so the preview is not incidental to the visit, it *is* the first impression, on the two pages where a first impression is the entire product. A 200×200 logo tile was the weakest card on the most-pasted URLs. **On the portrait:** Ry's instruction, and it turned out to be the design constraint that made the cards good — with no face to lead on, each card argues from the work. **On the two insets:** neither uses either of the portfolio card's panels, so the two never read as one duplicated post (D-002's rule, applied outward); the engineering card pairs a render with a shipped-application screenshot because that pairing *is* the page's claim; the music card runs a single full-width SetMaster panel, because two cards for two framings of one person must be separable at 360px by structure and not only by a role line. **On the subtitle:** see D-016. |
+| D-016 | **`build_cards.py` grows an optional `subtitle` line**, set in `--muted` under the title and above the coral rule. Cards that do not ask for one render byte-identical. | These two are the only cards here whose subject is a **person**. A thing needs one string; a person needs two — the name, which is the identity, and the role line, which is the only thing telling two framings of one résumé apart. Folding both into one auto-fitted title sets them at the same size, which buries the name and leaves the two cards differing only in the tail of a wrapped line. Verified by rebuild: all five pre-existing cards came back byte-identical, the same discipline `framed()`'s `vfocus` argument was added under. The subtitle wraps on **phrases**, not words, so the `·` separator can never end a line and a job title is never split across two. |
 
 ---
 
@@ -374,7 +376,11 @@ The reverse direction — a path from the SetMaster pages back to `www` — is *
    `/setmaster3-case-study/`, `case_studies/case-study-assets/` → intake `/case-study-assets/`.
    A relative-path habit is the easy way to get this wrong; `og:image` must be absolute.
 4. `og:url` on each page equals that page's `<link rel="canonical">`.
-5. Run the guard script if built.
+5. **Run the guard — it is built, so this is no longer conditional:**
+   `python social-cards/check_meta.py` from the repo root (exit 0 = clean, 1 = drift). It
+   covers checks 3 and 4 above mechanically, plus canonical correctness, tag uniqueness, and
+   declared-vs-actual image dimensions. **A new page folder adds its row to `PAGES` in the
+   same PR** — a page missing from that table is guarded by nothing.
 
 ### After the deploy
 
@@ -390,6 +396,25 @@ The reverse direction — a path from the SetMaster pages back to `www` — is *
    be driven from here. The work order is right that it is not optional: LinkedIn caches
    previews for roughly a week, so if it scrapes before the tags land, the bad card sticks and
    re-sharing will not clear it. Run it **after** the tags are live, **before** posting.
+
+   **Widened 2026-08-17 (#220): run it on *every* deployed URL, not just these four**, and run
+   it *before* the URL is used anywhere — see step 8 for why.
+
+8. **Prime the scrape before using a URL as a profile Featured link.** Adding `/portfolio/`
+   to the Featured section failed with a bare **"invalid URL"** while the page was provably
+   healthy: 200 to the `LinkedInBot` UA, valid Let's Encrypt cert, correct `CNAME`,
+   self-referential canonical, complete OG block, `og:image` 200 at 1200×627, and the whole
+   `<head>` closing at byte 2,009. **The cause was simply that LinkedIn held no cached scrape
+   for the URL** — its Featured-link validator reports a cache miss as "invalid URL". Post
+   Inspector, then retry, and it is accepted immediately.
+
+   Two things in that output that look like faults and are not:
+
+   - **"206 Success"** in the redirect trail. LinkedInBot sends `Range: bytes=0-16383` and
+     GitHub Pages honors it with a 206 Partial Content. Benign, and the OG block is inside the
+     first chunk on every page here.
+   - **"No author found" / "No publication date found"**, in red. Both are optional and
+     neither renders on a card. Chasing them means editing a deployed page for no benefit.
 
 ---
 
@@ -439,7 +464,8 @@ promote.
 - **No move to `www`** — a re-platform, not a copy, §1.
 - **No back-link** from the SM3 case study to `/portfolio/` — D-005.
 - **No purpose-built card for the ops-fin case study** — D-003, it reuses its beacon hero.
-- **No card upgrade** for `rates/`, `hire/`, `github/`, `roi-calculator/` — D-004.
+- **No card upgrade** for `rates/`, `github/`, `roi-calculator/` — D-004. The two `hire/`
+  pages were carved out of this on 2026-08-18 and now carry built cards — D-015.
 - **No Notion work** — explicitly out of scope for this pass.
 
 ## 13. Note on the Web Property Map
@@ -497,3 +523,74 @@ Montserrat "to match the site's heading face," but in this design system Roboto 
 heading and wordmark face (`portfolio.css`, `case-study.css`); Montserrat is the body. The
 generator follows the stated intent over the stated name, and the repo's Montserrat is a
 variable font defaulting to Thin, which Pillow could not have used without instancing.
+
+---
+
+## 15. Execution note (2026-08-18) — the two `hire/` cards, #230
+
+Ry asked for social cards on both `hire/` pages, with one constraint: **no headshot.**
+Rulings D-015 and D-016 above; what actually shipped:
+
+| Page | Card | Inset(s) |
+|---|---|---|
+| `hire/ryan-hickey/` | `hire/assets/img/og-ryan-hickey.png` | `app-data-backbone.jpg` + `app-pdpd.png` |
+| `hire/ryan-hickey-music/` | `hire/assets/img/og-ryan-hickey-music.png` | `app-setmaster.png`, full width |
+
+Both live in `hire/assets/img/`, which makes them the only two cards here sharing a folder —
+`hire/` is the one page folder that deploys as a single unit with one shared `assets/`.
+
+**Things a later session should not re-derive:**
+
+- **`og:site_name` is still not on these pages.** §14's decline of D-013's optional extra
+  stands; this PR touched their heads for the card and deliberately did not widen past it.
+  `check_meta.py` does not check `og:site_name` for exactly this reason.
+- **The engineering card's left panel contains the Shopify mark**, dead centre in the
+  `$30M` backbone render. It is the only non-navy hue on either card and it is *subject*,
+  not chrome — the generator's stated rule — and the same render is already on the page. At
+  360px it is a green dot reading as "e-commerce at scale", which is the claim that panel is
+  there to make. Flagged so it reads as considered rather than missed.
+- **Rejected: pairing the two dark renders.** `app-ecommerce-intelligence.jpg` is so close
+  in composition to `app-data-backbone.jpg` — inputs left, lit core centre, chart panel
+  right — that side by side they read as one image printed twice. It is also the portfolio
+  card's right panel.
+- **These pages are `noindex`, and that is untouched.** A card is not indexing; it is what
+  a scraper renders when the URL is pasted. D-002 of the hire design plan is unaffected.
+- **LinkedIn has never scraped either URL.** Run both through the Post Inspector after the
+  intake deploy, or the Featured-link validator will report "invalid URL" for what is
+  really a cache miss — the trap `CLAUDE.md` records from 2026-08-17.
+
+**Deployed 2026-08-18**, `ai-coaching-intake` **#81 / PR #82**, moving that repo's `hire/`
+pin from upstream `414b0b7` to `4419fd5`. Re-copied whole from the upstream
+`git ls-files hire/` list — a folder mirror cannot see a *new* upstream file, and two of the
+five changes were new files — then all 40 tracked files verified byte-identical with `cmp`.
+Nothing else had drifted since that folder's last re-copy, checked rather than assumed.
+
+**Live verification, run after the Pages build completed** — this is the check §9 exists for
+and `check_meta.py` structurally cannot make, because it reads *this* repo and a card is
+scraped from the deployed one:
+
+| Checked | Result |
+|---|---|
+| Both pages fetched as `LinkedInBot` with `Range: bytes=0-16383` | `206`, and the whole OG block inside the first chunk |
+| Live OG blocks vs. this repo's | identical, tag for tag |
+| `og:image` URLs | `200 image/png`, and **byte-identical** to the committed PNGs |
+| Declared `1200×627` vs. the actual PNG IHDR | matches on both |
+| `robots` on both pages | still `noindex, nofollow` — a card did not make them findable |
+
+The `206` is the expected, documented-benign response, not a defect.
+
+**Post Inspector: run and clean on both URLs, Ry, 2026-08-18** — same day as the deploy, so
+neither URL ever sat in the no-cached-scrape state. This was the one step no session could
+do (it needs a signed-in LinkedIn account) and the one nothing in either repo can observe
+afterwards, which is why it is written down here rather than left to memory. **Both cards
+render.**
+
+The step itself is not retired — it is owed again by **any future change to either page's
+`<head>` or card image**, and by any *new* card-bearing URL. LinkedIn caches a preview for
+roughly a week, a failure included, so a card corrected after a bad scrape stays wrong past
+the moment it mattered. Treat a card edit as unfinished until the URL has been re-inspected.
+
+The state this replaced, kept because it is the failure mode: until a URL has been scraped
+once, LinkedIn's Featured-link validator reports it as **"invalid URL"** rather than as a
+cache miss — a healthy page failing for a reason that names nothing true about it. That is
+what cost the `/portfolio/` investigation on 2026-08-17.

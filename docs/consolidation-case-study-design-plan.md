@@ -2,7 +2,8 @@
 
 **Folder:** `case_studies/consolidation_under_pressure/`
 **Public URL:** `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`
-**Built:** 2026-08-11 (#172) · **Deployed:** not yet
+**Built:** 2026-08-11 (#172) · **Deployed:** 2026-08-15 (`ai-coaching-intake#74`), from
+`develop 64fa14d`, both pages
 **Source material:** `wolfpackdata/dj-gear-study`, `docs/strategy/` — the report
 (`ma-landscape-report.html`), the standalone map (`ma-transaction-map.html`), the prose
 source of record (`01-ma-landscape-2016-2026.md`) and the creative brief
@@ -58,6 +59,76 @@ read first.
 | **D-021** | The social card's inset is **the transaction map**, captured by a generator that ships with it | A card needs a raster and the map exists only as something a browser draws. Redrawing an approximation in Pillow is how a card and the thing it advertises stop being the same picture. `planning/card/capture_map.py` renders the real page and crops the plot out of it; `social-cards/build_cards.py` composes. Both under the repo's standing rule: **rebuild rather than retouch**. At the 360px a LinkedIn Featured tile renders, the inset is texture — and 42 labelled events across four lanes reads unmistakably as a dense research document, where a crop of prose would read as any page of any website |
 | **D-022** | The closing block has **one CTA and no second destination**, and its copy describes the shape of the work rather than a result | The book-first rule. It also cannot claim an engagement outcome, per D-011, so what it offers is the method: a dated record with a link on every row, checkable figures separated from unverifiable ones, and the gaps stated |
 
+### Round two — Ry's review, 2026-08-15 (#195)
+
+Nine changes. Four of them are evidentiary and are the reason the round exists; the rest are
+presentation. The through-line of the four: **the page was claiming more than its sources
+carry**, and every fix is a step down in strength rather than a new claim.
+
+| # | Decision | Why |
+|---|---|---|
+| **D-023** | ~~D-011's "the tiles carry no invented outcome" was thought to cover the evidentiary surface~~ **It did not.** The tiles were clean; the *prose* was not | Ruled by Ry. The build round policed the one place a case study usually overclaims — the stat tiles — and never audited the argument for the same fault. Four separate passages asserted causation, market position or accounting facts the sources do not support. **The lesson generalises: an outcome ration on the tiles is not an evidence policy for the document** |
+| **D-024** | **Purchase price minus sale price is a "headline purchase-to-sale consideration gap", never a loss.** The Pattern 1 table's column is renamed, and an `.rtable__note` states what the number is not | Ry. The gap and the loss differ by orders of magnitude in the one case where both are public: Etsy's $170m gap against the **$5.1m loss on sale** its FY2025 10-Q records. Masimo's ~$680m is the same kind of number, and **Sonova has no exit price, so it has neither a gap nor a loss** — the old table asserted one anyway. The three-loss conclusion is gone from the exec summary, Pattern 1, the dumbbell figcaption and the Era 3 card |
+| **D-025** | **A transaction timeline establishes sequence, not cause.** Part Two no longer says "nearly every failure traces to one of two macro events", and no longer rules out product or competitive factors | Ry. The claim was doing two illegitimate things at once: inferring causation from a chronology, and treating the absence of a competing explanation in the sources as the absence of the factor. Part Two now says what the record shows and, explicitly, how far it does not reach |
+| **D-026** | **The Native Instruments diagnosis is withdrawn**, and so are the product-status assertions | Ry. "A balance-sheet failure" was a finding the sources do not contain: no administrator's report, filing or management statement in them identifies a cause, and NI is a private German company with no published accounts. "Kontakt remains the industry-standard sampler and Traktor a top-tier DJ platform" needed adoption or market-share data that does not exist in these sources either — the methodology already says no such series exists, so the page was contradicting its own appendix. The section is now *"an insolvency, and an estate broken up three ways"*, and it names what it cannot say |
+| **D-027** | The same correction was applied **where the identical fault recurred outside the named sections** — Part Seven's "the industry's leading AI-audio asset", the exec summary's "balance-sheet failure", the implications' "the arithmetic that ended Soundwide", the aside titled "The strongest evidence that the products were fine" | Not asked for line by line, and done anyway: a page that fixes an unsupported superlative in Part Four and leaves the same superlative standing in Part Seven has not been corrected, it has been patched. Flagged to Ry rather than assumed |
+| **D-028** | **The pandemic-spike figures are marked press-reported at the point of use**, and the unquantified software "step-change" is gone | Ry. The guitar percentages and the 16m first-time-buyer estimate were flagged only in the appendix, four sections later. The page now says at the figures that the coverage does not name the survey, its sample, whether the count is US or global, or whether it covers guitars or all instruments. The software claim had no series at all and could not be repaired, so it was cut |
+| **D-029** | **`.rtable` gets real cell padding and a column hairline**; `.dtable` deliberately does not | Ry: the tables were "difficult to read and not recognizable as tables". Two faults with one cause — a component that borrowed `.dtable`'s habits without noticing `.dtable` is a *figure* of four numbers, where this is a 43-row register with prose in two of five columns. At 11px padding a two-line cell spaced its own lines further apart than it sat from the row above, and with no column edge the rows read as indented paragraphs. Padding is now larger than the text's leading, and the hairline is the one the sheet already uses. No new hue, no new weight |
+| **D-030** | **The page's inline spacing styles are gone**; `.k + .section__title` and `.plainlist`'s margins moved into the shared sheet | The vertical-rhythm ruling (#182, 2026-08-15) landed after this page was built, and the page had been carrying twenty inline `margin-top` declarations — the same failure mode as the hand-authored `<br>`s that prompted #182, in another costume. The geometry and swatch styles on the figures stay inline: those are **data**, not spacing decisions |
+| **D-031** ⚠️ | **The trim came to 6.8% net, not 10%** — a ~13% cut of the original prose, against roughly 500 words added by D-024 through D-028 | The two instructions in this round pull opposite ways: correcting an overclaim costs words, because saying what you cannot support takes longer than asserting it. Everything cut was restatement — a duplicated Src explainer, a callout restating the pull quote three lines above it, the "money in gear" table whose four figures were all already on the page, the "money in music" table folded to a sentence, the source list's redundant trailing domains. **What was not cut: any figure, any source, any caveat, any of the eleven implications.** Reaching 10% net from here means cutting evidence or recommendations, which is Ry's call, not mine |
+| **D-032** | **`verify_copy.py`'s premise is updated, its numeric check is not** | The prose is no longer frozen, so a guard that implied it was would send the next session to "restore" copy Ry deliberately cut. The figure check is the half that still holds, and it passed unchanged through the whole round — every numeric token in the source is still on the page after a 13% prose cut |
+
+### Round three — the map's palette and three cuts, 2026-08-15 (#199)
+
+Four changes. One is a design ruling with consequences past this page; three are cuts.
+
+| # | Decision | Why |
+|---|---|---|
+| **D-033** | **Hue may encode a category inside a figure.** Three conditions, all required: the variable is genuinely categorical, the hue is **redundant** with something already in the figure, and it touches neither the coral ration nor the navy chrome nor a magnitude scale. Declared in `case-study.css` with a measured contrast ratio, never inline in a page. Recorded in `docs/site-brief.md` §1.6 | Ry asked for the map to be "more colorful and interesting, within the page styling", and the sheet's own escape hatch says an accent may be added *here, with a written justification*. So it is written down as a rule rather than taken as a licence. **This extends `wolfpack-ai-command`'s D-015 rather than breaking it** — that one put hue in a committed image so the sheet stayed hue-free, which a chart drawn in HTML cannot do. Both say hue is figure content; only the storage differs |
+| **D-034** | **The lane is the hue; the deal value stays neutral.** Ring = which lane (`--map-l0`…`l3`), fill = how big (`--fig-ramp-1`…`4`), on the same dot | The map has exactly two variables and only one of them can take hue. Lane is a *name*; value is a *magnitude*. Colouring the value as well would leave the figure with two categorical-looking scales and no readable magnitude — which is the failure the ramp was built to avoid in the first place (`docs/site-brief.md` §1.5). **The redundancy condition is satisfied by construction:** a lane is already identified by vertical position and by a name printed inside it, so a reader who cannot separate the teal from the amber reads the figure exactly as well as before |
+| **D-035** | **Bands and gridlines were painting *under* the lanes, and now do not** | Not asked for, and found while tinting the lanes. Everything in the figure is absolutely positioned in one stacking context, so paint order was document order and an opaque lane surface hid whatever crossed it — a band spanning all four lanes was being drawn as stripes through the two lanes that had no background. Survivable while half the lanes were transparent; not once all four carry a tint. The layers are now named in the sheet (0 lanes, 1 bands and gridlines, 2 events, 3 labels) |
+| **D-036** | **The year axis runs along the top as well as the bottom** | Ry. The plot is 1600px at its narrowest and four lanes deep, so dating an event in the first lane meant tracking to the far edge of the figure and then all the way down |
+| **D-037** | **Three cuts: the 145% figure out of "Cut the tail" (now "High tariffs"), the "Rebuild deal capability" implication, the "Tariff schedule changes" watch row** | Ry, no reason given and none needed. Both figures survive elsewhere on the page, so `verify_copy.py` check 1 is untouched; the watch row carries no `Src` cell, so the 43 / 31 / 12 arithmetic is untouched. The watch table's accessible caption moved from "Eight open questions" to "Seven" in the same edit — **a count stated in a `visually-hidden` caption is exactly the kind of fact that goes stale silently**, because nothing on screen contradicts it. The implications list is now ten and renumbers itself |
+
+**D-010's "ten tables" is now eight**, and has been since #195 folded two of them away
+(D-031). `CLAUDE.md` was still saying ten and now says eight. Recorded here rather than
+edited into D-010, because the ledger is a record of what was decided when.
+
+**The rose is not a coral drift.** `--map-l3 #E08BB4` is a desaturated rose on a near-black
+figure ground; `#F95954` is the accent. The two render together in the same viewport — nav CTA
+above, map below — and do not read as the same colour. **The ration is still six**, and the
+sheet, the brief and this ledger all say so, because "there is pink in the map now" is the
+shape of a future session concluding otherwise.
+
+### Round four — editorial restraint, 2026-08-15 (#205)
+
+Two thesis corrections and a defensive-language trim. **The round after #195 is the mirror of
+#195**, and the pair is the actual lesson: that round fixed a page claiming more than its sources
+carry, and the fix left the page *announcing* its own carefulness. Correcting an overclaim and
+performing rigour are two different things, and the second one costs credibility too — it reads
+as a writer expecting to be cross-examined rather than one making an argument.
+
+| # | Decision | Why |
+|---|---|---|
+| **D-038** | **The hero no longer excludes what the body says is not excluded.** *"two economic shocks, not a product problem, explain the wreckage"* → *"two economic shocks sit underneath much of the distress"* | Ry. The hero was the one place on the page still asserting the claim #195 removed everywhere else: Part Two says a timeline cannot rule out product or competitive factors, and Part Four says the same about Native Instruments. **A page whose hero contradicts its own Part Two is worse than either version alone** — a reader who notices stops trusting both. Not replaced with "may have contributed to"; the thesis is still stated as a thesis. `og:description` and the meta description carried the same claim and moved with it |
+| **D-039** | **"Scale is a liability, expect conglomerates to break up" → "what has failed is unrelated ownership, not breadth"** | Ry, and the report's own Pattern 5 was the counter-evidence: Audiotonix and Focusrite have assembled broad audio portfolios over the same decade and are still buying. The old claim — *"every large diversified owner in this report that assembled breadth has since sold it"* — was **false against the page's own signal-chain table**. The corrected version keeps every strategic implication and gains one: **operating adjacency is the variable**, not size. Bose dropped out of the example list, because an audio company divesting a division is not an outsider exiting and lumping the two was part of the original error |
+| **D-040** | **"The endpoint is four to six vertically integrated groups" → "One plausible endpoint is…"**, and *"There is no stable middle"* stays | Ry. Framing the destination as conditional is enough; once the sentence opens as a plausible endpoint the closing line reads inside that frame. Softening the punch line as well would have cost the voice for no gain in accuracy |
+| **D-041** | **~127 words of cautionary prose removed**, against ~480 words of in-body hedging — about a quarter. **No limitation, confidence level, source distinction or known gap was removed** | Ry's test, adopted verbatim as the rule: *does this sentence stop a reasonable executive reader from making a materially incorrect inference?* Keep if yes; cut if it mainly signals that the author is rigorous. What went: the label *"correctly stated"*; *"Read those three figures as reported, not as measured"* (the substance stays, one sentence shorter); the label *"The honest limit of this argument"*; *"It is evidence about demand for the assets, and about nothing else"*; *"survey data, not panel data"* where the confidence note four sections earlier already says it; *"not yet evidence for it"* after *"being tested in public"* already implies it; and *"Both figures are press-reported, not company-confirmed"* on two figures **already prefixed "reported" and already listed in the Confidence levels appendix** — triple-marked |
+| **D-042** | **The two consecutive Native Instruments epistemic paragraphs are merged into one**, 126 words to 92 | *"What this report can and cannot say about why"* followed by *"Two things this report explicitly does not claim"* made the same move twice in a row. All four substantive points survive: the chronology is documented, no source states a cause, product/customer/competitive factors are not excluded, and no category-level adoption or share series exists. **One paragraph of restraint reads as discipline; two consecutive ones read as anxiety** |
+| **D-043** | **The consideration-gap note is kept, and kept prominent** — trimmed by twelve words, not compressed | Ry, explicitly. It is the one caution on the page that is load-bearing *financially*: without it a reader takes $170m and $680m for losses. The only clause cut was *"so for Sonova no gap and no loss exist yet"*, which the table now states in its own cell (*"None established — no exit price"*) |
+| **D-044** ⚠️ | **One cut went a step past what was strictly required:** *"and no comparable series for software sales exists in these sources at all"*, from the pandemic-figures paragraph | It guarded an inference about a claim that no longer exists — #195's D-028 already cut the software "step-change". The nearest live claim is the sponsor-pricing aside, which rests on insolvency reporting rather than on a software volume series. Flagged rather than assumed: it is one sentence, and putting it back is one edit |
+| **D-045** | **The hero art is supplied, not generated, and the committed PNG is the master.** `planning/consolidation-under-pressure-hero.png` — 1337×752, RGBA, added by Ry 2026-08-15, tracked from #213 and renamed out of its spaces in #214 | **The file is the artifact of record and must never be lost or "regenerated"**, and everything derived from it records a *derivation* command rather than a rebuild command. Its aspect is 1.7779, so a 16:9 derivative crops nothing; it is RGBA, so any JPEG derivative must flatten first. **Superseded in framing by D-047:** this entry first called the missing generator an inversion of the folder rule. It is not — supplied art is one of two normal provenances, and the rule was rewritten to say so |
+| **D-046** ⚠️ *superseded by D-048* | **The hero stays off the case study page. Ry's ruling, 2026-08-16:** *"I'm going to leave the consolidation-under-pressure hero off the full case study page and keep it only for the blog eye candy."* | The page ships no hero figure and is not getting one. The art's only public surface is the blog post's `cover.jpg`. Filed 2026-08-15 as an open question and **closed the next day by Ry** — so adding it to the page is now a **reversal to take to him, not a tidy-up**, and the gap between *this case study has hero art* and *this case study page shows hero art* is the intended state rather than an oversight |
+| **D-047** | **The repo's hero rule was rewritten: provenance, not generation.** Ry, 2026-08-16 — *"a hero image is not ALWAYS generated, I may provide it by some other means"* | The rule said a hero **is generated**, in three places, and closed on *"an asset nobody can rebuild is an asset nobody can correct."* True when both heroes were composed by a script, and wrong as a rule — it made supplied art read as a defect, which is exactly how D-045 came to call this hero an exception. The invariant was never *generated*: it is **a committed master and no retouching in place**. Now two first-class classes — *generated* (the generator and its input are the master; rebuild rather than retouch) and *supplied* (the delivered original is the master; re-derive, never edit in place) — in `case_studies/README.md`, with the root `CLAUDE.md` statements demoted from rules to instances |
+| **D-048** | **A second hero was commissioned, and this one goes ON the page — D-046 is reversed.** Ry supplied `planning/hero/consolidation-under-pressure-hero-blue-neon.png` (1672×941) on 2026-08-17 and instructed *"put it everywhere it's needed"*, confirming the page placement explicitly when asked. | **D-046 was not overridden; its reason expired.** That ruling refused the tree *because it was decoration* — *"blog eye candy"* in Ry's words — and nothing about it claimed the page should never carry a figure. This art is the opposite of decoration: twelve of the companies in the deal record drawn into a single core beside a falling share panel, which is this report's whole argument rendered once. **The tree ruling still stands for the tree.** Placement copies the two sibling case studies exactly — a `.figure--wide` between the stat tiles and the `.docmeta` — so all four case studies now open the same way, which is also what fixed the weakest card in the portfolio grid. |
+| **D-049** ⚠️ *caption removed by D-050; the warning stands* | **The hero contains invented numbers, and the figure says so in its own caption.** The render's market-share panel — the ranked percentages and the −23.6% — is art. It is not data from this analysis and corresponds to nothing in the deal record. | **This is the single highest-risk thing on the page** and it is why D-048 did not ship silently. Every number on this page is sourced, footnoted, and machine-checked by `planning/verify_copy.py`; a reader who zooms the hero, reads a precise-looking share table, and later discovers it is decorative has grounds to distrust the 43 rows that *are* real. So the caption labels it an **Illustration** and states plainly that the panel carries no data from the analysis — this folder's standing rule that illustrative figures are labeled *inside the figure*, never in a footnote. **Never quote those percentages** in prose, alt text, a social card, a blog post, or a LinkedIn caption. `verify_copy.py` cannot catch this: it checks that the source's numbers reach the page, not that the page invents none. |
+| **D-050** | **The hero's figcaption is removed; the disclosure moves to the alt text.** Ry, 2026-08-17 (#228): *"that should be alt text or omitted."* | He named two options and this takes the first, because it is the one that keeps the disclosure: the alt text now opens on *"Illustration."* and still states the share panel carries no data from the analysis. **What this costs, stated plainly:** the disclosure is no longer visible to a sighted reader, so D-049's protection now runs through a screen reader only. The judgment behind accepting that is Ry's and it is defensible — the image is an obviously stylised 3D render of glowing glass tiles, the panel is small and behind the subject, and every figure the page actually argues from sits in a labelled table with a source gutter. A caption explaining that a marketing render is a render was doing less work than its prominence implied. **The hero is now the only figure on the page with no caption, and that is the point** — it is also the only one that is art rather than evidence. Do not restore a caption, and do not add captions to it by symmetry with the other figures. **D-049's prohibition is untouched:** those percentages are never quoted anywhere. |
+
+**Net word count moved almost not at all** — 7,331 to 7,239, 1.3%. That is the honest shape of the
+round: ~127 words of hedging out, ~64 words back in for D-039, which needed *more* words to say the
+narrower and more defensible thing. **A restraint pass is not a length pass**, and #195's D-031
+already showed the same arithmetic running the other way.
+
 ## 3. What was deliberately not carried over
 
 Recorded because a derived design should say what it refused, not only what it took.
@@ -94,6 +165,39 @@ about 492px and then crops, which fakes overflow on any direct "mobile" capture.
 | `social-cards/check_meta.py` | 11 pages PASS, including this one |
 | `planning/verify_copy.py` | clean |
 
+## 4a. Verification re-run, 2026-08-15 (#195)
+
+| Check | Result |
+|---|---|
+| Horizontal overflow, **all four case studies**, at 320 / 390 / 768 / 1024 / 1440 | `scrollWidth − clientWidth = 0`, and `scrollTo(99999,0)` leaves `scrollX = 0`, everywhere. The AI Command page is in the sweep because it also uses `.rtable` |
+| Map label collisions | **0**, at every width, on both pages; still 42 events across 19 tracks |
+| `Src` gutter | 43 cells, 31 links + 12 dashes, unchanged through the rewrite |
+| Copy vs. the source `.md` | all 186 numeric tokens still present after a ~13% prose cut |
+| `verify_copy.py` · `check_meta.py` | clean |
+
+**Headless Edge produced no output at all on this machine during this round** — the binary
+returns nothing, `--version` included. Chrome's headless mode works and the sweep was run
+there. Worth knowing before assuming a verification script is broken: check the browser.
+
+## 4b. Verification re-run, 2026-08-15 (#199)
+
+Chrome again, for the reason above.
+
+| Check | Result |
+|---|---|
+| Horizontal overflow, **all pages on the shared sheet**, at 320 / 390 / 768 / 1024 / 1440 | `scrollWidth − clientWidth = 0`, `scrollX = 0`, no element extending past the viewport outside a declared scroller |
+| Map label collisions | **0**, on both pages, at 390 / 1440 / 1600 / 2200 |
+| Lane encoding, read back from **computed style** | 4 distinct ring hues, 4 distinct label inks, 4 distinct lane names, 4 distinct tints; every lane and all 42 events carry `data-lane`; 0 events missing it |
+| Deal value still neutral | the only five dot fills are `transparent`, `#FFFFFF`, `#C3C9D4`, `#98A0AE`, `#6E737E` — the ramp, unchanged, no hue |
+| Layer order | `band: 1  grid: 1  lane: 0  event: 2` — bands and gridlines above the lane surfaces (D-035) |
+| Year axis | 13 labels top and 13 bottom, 2014–2026, top strip entirely above lane 1, bottom strip entirely below lane 4 |
+| `verify_copy.py` · `check_meta.py` | clean; 186 numeric tokens, 43 Src cells (31 + 12), 42 map events, 12 pages PASS |
+
+**The `.rtable`-adjacent sweep flagged `setmaster3-case-study` at 320 and 390** and it is not a
+regression: `scrollWidth − clientWidth = 0` on the document, the flagged table sits inside that
+page's own `.trow` scroller, and that page loads `sm3-case.css`, which this round never
+touched. The probe's exclusion list knew about `.rtable` and `.dtable` and not about `.trow`.
+
 ## 5. Open items
 
 1. **D-006 needs Ry's ruling** — whether a citation counts against the destination policy.
@@ -101,11 +205,30 @@ about 492px and then crops, which fakes overflow on any direct "mobile" capture.
 2. **D-008 and D-009 are flagged word/number changes.** The brief says to come back before
    changing a word, and there was no way to ask mid-build. Both are one line each and both
    are reversible.
-3. **Not deployed.** `/consolidation-under-pressure/` 404s until the folder and the updated
-   `case-study-assets/` are copied into `wolfpackdata/ai-coaching-intake`. Two folders, and
-   `planning/` never deploys.
-4. **The Web Property Map goes stale on deploy** — a new page and a new URL. Update the
-   Notion page in the same round.
-5. **The report is dated 11 August 2026 and says so.** Several Part Nine watch-list items
+3. **D-031: the trim landed at 6.8% net against a 10% aim.** Going further means cutting
+   evidence, the eleven implications, or the watch list. Ry's call.
+4. **D-027 went slightly beyond the named sections** to fix the same fault where it recurred.
+   If that was unwanted, the three extra edits are individually revertible.
+5. **The upstream source has now diverged.** `wolfpackdata/dj-gear-study`'s
+   `01-ma-landscape-2016-2026.md` still carries the pre-review prose, including the three
+   "losses", the categorical causal claim and the Native Instruments diagnosis. **The
+   corrections in #195 are corrections of fact, not of house style**, so the upstream document
+   is now wrong in the same four places this page used to be. Worth porting back.
+6. ~~**Not deployed.**~~ **Deployed 2026-08-15** at `/consolidation-under-pressure/`
+   (`ai-coaching-intake#74`), from `develop 64fa14d`, both pages. `case-study-assets/` needed
+   **no copy** — the intake's own #73 had re-copied it whole an hour after #200 merged, so the
+   lane hues, `map.js` and the social card were already sitting there unreferenced. That is the
+   re-copy-whole rule paying for itself, and it was verified rather than assumed: all 27 tracked
+   asset files were copied over the deployed ones and `git status` came back empty. **The other
+   two case studies are untouched by this deploy**, having already taken the shared-sheet
+   restyle in #73.
+   - **One correction landed with it.** The intake's log entry (10) described the CSS it carried
+     as `#182` and `#195` only; it also carried `#199`/`#200`. Nothing caught it because neither
+     change touches the other two deployed pages. Corrected in the intake's entry (11) rather
+     than by editing the old entry.
+7. ⚠️ **The Web Property Map is now stale** — a new page and a new public URL went live on
+   2026-08-15 and the Notion page has not been updated. `CLAUDE.md`'s standing rule is to tell
+   Ry rather than silently edit it, so this is the telling.
+8. **The report is dated 11 August 2026 and says so.** Several Part Nine watch-list items
    will resolve; the closing fine print already tells the reader to read it as of its issue
    date, which is the brief's own instruction for a later publication.

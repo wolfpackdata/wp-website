@@ -78,10 +78,14 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
   comment true. **Six uses**, and the count has only ever gone down: a temporary eighth carried
   the hero placeholder's label and left with it, and the closing CTA left with its block
   (D-013).
-- **One CTA and exactly one destination on the whole page: the 30-minute intro call.** No
-  intake-form link, no résumé download, no rates link. A `/rates_public/` coda band briefly
-  existed and **Ry cut it** on 2026-08-04 (**D-011**), so this is now the book-first rule at its
-  strictest. Do not re-add a second destination without a ruling.
+- **One accented CTA — the 30-minute intro call — plus exactly one subordinate destination,
+  the SetMaster 3 product page.** Still no intake-form link, no résumé download, no rates link:
+  a `/rates_public/` coda band briefly existed and **Ry cut it** on 2026-08-04 (**D-011**).
+  The subordinate link was ruled in on 2026-08-17 (**D-015**, #218) and sits in the SetMaster
+  tile, navy-ghost and one size down — the site brief's §6 subordination rule, which is what
+  keeps the intro call the only accented ask on the page. **Case-study links do not count
+  against this**: D-014 settled that they are navigation within the work. Do not add a third
+  destination without a ruling of its own.
 - **The page ends on the case studies, and that is deliberate.** The closing "Start with a
   call" section was cut on 2026-08-04 (**D-013**), the day after its copy was rewritten — the
   rewrite was fine, the block was not wanted. The intro call still reaches the reader twice,
@@ -96,7 +100,12 @@ pages ship as one folder; this is one page, and nothing in it reaches outside it
   own `build_hero.py`, which grew the identical output-width argument for the purpose —
   **one composition, several sizes, no generational loss.** Rebuild a card image rather than
   scaling the delivered one. The `.case__shot--empty` device stays in the stylesheet for the
-  next unpublished study.
+  next unpublished study. **All four card images are their case study's own hero**, and
+  Consolidation stopped being the exception on 2026-08-17 (#226): it carried the transaction map
+  while that page shipped no hero, and now carries the hero art Ry supplied. Its
+  `planning/hero/build_hero.py` writes this file and `hire/assets/img/`'s copy in one run — the
+  two are byte-identical by construction, so **don't replace either with a copy of the other**,
+  and nothing is upscaled (the generator refuses).
 - **`reveal.js` is copied, never rewritten** — byte-identical to `hire/assets/js/reveal.js`
   apart from its header comment, so reveal timing and scroll-spy match every other long-form
   page here.
@@ -108,10 +117,24 @@ gets a `.btn--ghost` link; an unpublished one gets the `.case__chip` "In prepara
 the same size, so adding the link later changes one element and not the layout. Case numbers
 come from a CSS counter, so they renumber themselves.
 
-**All three cards are live links as of 2026-08-15.** The SetMaster 3 study deployed on
+**All four cards are live links as of 2026-08-17.** The SetMaster 3 study deployed on
 2026-08-04 (#104) and its chip became a link, which is what the device was for; the AI Command
-study deployed on 2026-08-15 and was added already linked (#192). No `.case__chip` is in use on
-the page right now; the rule stays in the stylesheet for the next unpublished study.
+study was added already linked on 2026-08-15 (#192); Consolidation Under Pressure was added on
+2026-08-17 (**D-016**, #222). No `.case__chip` is in use on the page right now; the rule stays
+in the stylesheet for the next unpublished study.
+
+**New cards are appended, and the section head states no count.** Both matter. The old lede
+said *"All three are published and all three are a click away"*, which went stale the moment a
+fourth shipped — D-014 flagged that failure mode when it changed the number from two to three,
+and #222 is the addition that proved it. **The hire pages' card order is Ry's and is specific to
+those pages; it is not a site-wide order to mirror here.**
+
+**Two tiles in the applications gallery carry the same link as a case card** (#218): `SetMaster
+3` and `Notion–GitHub AI Dev Command Center`, the two whose system has a published write-up. That
+is the whole selection rule — a button on every tile would say nothing. Put them **after
+`.app__blurb`**, never between the name and the blurb: `verify_facts.py` check 6 matches those
+two as adjacent siblings, so anything wedged between them unguards a résumé string *without
+failing the check*.
 
 **The no-links rule is about the `hire/` résumés specifically, not about `noindex`.** Design
 plan **D-003** and **D-010** settle it: a case study carries none of the résumé's problems, and

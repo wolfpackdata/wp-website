@@ -11,12 +11,25 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://intake.wolfstrategyllc.com/hire/ryan-hickey/">
 
+<!-- Social card. These two pages ran the 200x200 logo on `twitter:card summary`
+     until 2026-08-18 (#230), under D-004 of
+     docs/social-cards-and-linkedin-readiness-plan.md — "not primarily share
+     targets". Ry reversed that FOR THESE TWO PAGES ONLY: they are the pages he
+     sends, so the preview is the first thing a hiring manager sees. `rates/`,
+     `github/` and `roi-calculator/` still stand under D-004 — do not "upgrade"
+     them here.
+     The card carries NO PORTRAIT, on Ry's instruction. The image is built by
+     social-cards/build_cards.py; rebuild rather than retouch, and keep the
+     declared dimensions true — check_meta.py reads them out of the PNG. -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Ryan Hickey — AI Engineer · Data &amp; AI Systems Architect · COO">
 <meta property="og:description" content="20+ years coding, 17 years leading technology and analytics. COO and partner of an e-commerce brand through $300K to $30M; built a $20k-MRR quantitative platform.">
 <meta property="og:url" content="https://intake.wolfstrategyllc.com/hire/ryan-hickey/">
-<meta property="og:image" content="https://intake.wolfstrategyllc.com/hire/assets/img/wolfpack-logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://intake.wolfstrategyllc.com/hire/assets/img/og-ryan-hickey.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="A data-pipeline render and the pdpd bulk-edit console on a navy field, titled Ryan Hickey — AI Engineer &middot; Data &amp; AI Systems Architect &middot; COO.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="../assets/img/wolfpack-logo.png">
 
 <link rel="stylesheet" href="../assets/css/fonts.css">
@@ -349,7 +362,15 @@
   </section>
 
   <!-- ========== Applications & systems ==========
-       Blurbs verbatim from eng_only.yaml. Screenshots from wp-rates-page/img/. -->
+       Blurbs verbatim from eng_only.yaml. Screenshots from wp-rates-page/img/.
+
+       IN-TILE CTAs (#218, Ry 2026-08-17). Two of the eight tiles name a system
+       with a published case study, and those two link to it. The buttons go
+       AFTER .app__blurb and never between the name and the blurb —
+       verify_facts.py check 6 matches those two as adjacent siblings, so
+       splitting them would turn a guarded string into an unguarded one without
+       failing anything. Kept identical on the music page apart from the
+       SetMaster tile's name. -->
   <section class="section section--line" id="applications" aria-labelledby="applications-title">
     <div class="wrap">
       <div class="section__head reveal">
@@ -375,11 +396,21 @@
           <img class="app__shot" src="../assets/img/app-notion-system.png" alt="Screenshot of the Notion–GitHub AI Dev Command Center" width="543" height="506" loading="lazy">
           <h3 class="app__name">Notion–GitHub AI Dev Command Center</h3>
           <p class="app__blurb">A bespoke command center for AI-accelerated development: a skills-based planning, project-management, and AI-supervision suite built on a Python engine that wires Claude Code, OpenAI Codex, GitHub, Notion, and BigQuery into a single pipeline. Every agent action is planned against a tracked task, logged, and reviewable — transparent human + agent software development at blistering speed, with an audit trail rather than a black box.</p>
+          <!-- The case study calls this system Wolfpack AI Command; the tile
+               uses the résumé's name for it, which is YAML-verbatim and not
+               ours to edit. Same system — confirmed with Ry, 2026-08-17. -->
+          <div class="app__ctas">
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">Read the case study</a>
+          </div>
         </article>
         <article class="app reveal">
           <img class="app__shot" src="../assets/img/app-setmaster.png" alt="Screenshot of SetMaster 3" width="1494" height="848" loading="lazy">
           <h3 class="app__name">SetMaster 3</h3>
-          <p class="app__blurb">An offline, cross-platform desktop-class web application — TypeScript and React over a Python analysis engine, shipping double-clickable installers for Windows and macOS with no terminal required. Parses a proprietary XML catalog format strictly read-only and reconciles it against third-party API exports through years of accumulated name-normalization and fuzzy-matching heuristics, with compound filtering and a structured editor over the result. Now at v3.0.3 after three issue-driven fix rounds; it replaces a Python/Excel-VBA prototype used professionally for years.</p>
+          <p class="app__blurb">An offline, cross-platform desktop-class web application — TypeScript and React over a Python analysis engine, shipping double-clickable installers for Windows and macOS with no terminal required. Parses a proprietary XML catalog format strictly read-only and reconciles it against third-party API exports through years of accumulated name-normalization and fuzzy-matching heuristics, with compound filtering and a structured editor over the result. Now at v3.0.4 after four issue-driven fix rounds; it replaces a Python/Excel-VBA prototype used professionally for years.</p>
+          <div class="app__ctas">
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/setmaster3/">Visit the product page</a>
+          </div>
         </article>
 
         <article class="app reveal">
@@ -411,45 +442,44 @@
     </div>
   </section>
 
-  <!-- ========== Case studies (placeholders) ==========
-       Deliberate placeholders, sized as though written. The ids are stable so
-       the real pages can be linked in without re-cutting the section. -->
+  <!-- ========== Case studies ==========
+       Rebuilt 2026-08-17 (#218) to carry the published set, in the order Ry
+       named: AI Command, SetMaster 3, Consolidation Under Pressure, financial
+       model. Four real links; nothing on this page is a placeholder any more.
+
+       What went: the "$30M software spine" card, whose case study is still
+       unwritten. Ry's call — every card here is now a write-up a reader can
+       actually open, and an In preparation chip on a résumé page reads as an
+       IOU. The .case__chip device stays in the stylesheet for the next
+       unpublished study; so does .case__shot--empty, which the financial model
+       card no longer needs because that study has had a real hero since #113.
+
+       The ORDER IS RY'S and is not alphabetical, chronological, or by
+       publication date — do not "tidy" it. Kept identical on the music page.
+
+       Absolute URLs, not relative: in this repo these live under
+       case_studies/ and sm3-specific-pages/, and they deploy to slugs that
+       share no relative path with /hire/. This page is noindex and every one of
+       them is indexed, which is the harmless direction. -->
   <section class="section section--line" id="cases" aria-labelledby="cases-title">
     <div class="wrap">
       <div class="section__head reveal">
         <span class="k section__kicker">Case studies</span>
-        <h2 class="section__title" id="cases-title">Three builds, written up in full</h2>
-        <p class="section__lede">Long-form write-ups of how each system was scoped, built, and measured. Two are published; ask about the third on a call in the meantime.</p>
+        <!-- No count in either string. The old pair said "Three builds" over
+             "Two are published; ask about the third", which is a sentence that
+             goes quietly wrong every time a case study ships — and it had. -->
+        <h2 class="section__title" id="cases-title">Written up in full</h2>
+        <p class="section__lede">Long-form write-ups of how the work was scoped, carried out, and evidenced. All of them are published and a click away.</p>
       </div>
 
       <div class="cases">
-        <article class="case reveal" id="case-30m">
-          <img class="case__shot" src="../assets/img/app-data-backbone.jpg" alt="" aria-hidden="true" width="1672" height="941" loading="lazy">
+        <article class="case reveal" id="case-ai-command">
+          <img class="case__shot" src="../assets/img/case-ai-command.jpg" alt="" aria-hidden="true" width="1400" height="787" loading="lazy">
           <div>
             <span class="case__num"></span>
-            <h3 class="case__title">Developing a proprietary software spine to grow a startup to $30M</h3>
-            <p class="case__blurb">The pricing, inventory, and forecasting systems behind an eight-figure e-commerce brand — what got built, in what order, and which decisions carried the revenue.</p>
-            <span class="case__chip">In preparation</span>
-          </div>
-        </article>
-
-        <!-- Case 02 is written and published, so it replaces the
-             transaction-tracking placeholder that stood here (Ry, 2026-08-04).
-             It is the only card of the three that is a real link, which is why
-             it carries a button instead of an "In preparation" chip. The case
-             study is public and indexed; this page is noindex, and a noindex
-             page linking out to an indexed one is fine. Absolute URL rather
-             than relative: in this repo the case study lives under
-             case_studies/ops_fin_model_support/, but it deploys to
-             /ops-fin-model-case-study/, so the two layouts do not share a
-             relative path. -->
-        <article class="case reveal" id="case-fin-model">
-          <div class="case__shot case__shot--empty" aria-hidden="true">Figures in preparation</div>
-          <div>
-            <span class="case__num"></span>
-            <h3 class="case__title">The Model Is Your Business Beacon: a financial model as an operating tool</h3>
-            <p class="case__blurb">Why an operational financial model belongs in front of the product: the three-statement package, the weekly cadence that keeps it useful, and how it settles which work actually gets done.</p>
-            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/ops-fin-model-case-study/">Read the case study</a>
+            <h3 class="case__title">An AI Operating Layer for Streamlining Project Delivery</h3>
+            <p class="case__blurb">The project manager's week pulled apart into record-keeping and judgment, and a governed system of AI operators handed the first half: written versioned rules, one attributable AI identity, and no destructive tools anywhere in the agent layer.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">Read the case study</a>
           </div>
         </article>
 
@@ -458,8 +488,40 @@
           <div>
             <span class="case__num"></span>
             <h3 class="case__title">SetMaster 3 — from problem, to prototype, to a shipped web app</h3>
-            <p class="case__blurb">A years-old spreadsheet workaround rebuilt as a cross-platform application: the matching heuristics, the offline-first architecture, and three issue-driven fix rounds to v3.0.3.</p>
+            <p class="case__blurb">A years-old spreadsheet workaround rebuilt as a cross-platform application: the matching heuristics, the offline-first architecture, and four issue-driven fix rounds to v3.0.4.</p>
             <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
+          </div>
+        </article>
+
+        <!-- This card carried the transaction map until 2026-08-17, because
+             that case study shipped no hero figure and the map was the best
+             art it owned. Ry supplied a hero on 2026-08-17 (#226) and it now
+             carries that, like the other three — composed at card width by
+             consolidation_under_pressure/planning/hero/build_hero.py, which
+             writes this file and portfolio/'s copy from one master.
+             Rebuild rather than retouch.
+
+             The blurb counts artifacts, not outcomes, which is the rule that
+             case study sets for itself: 43 transactions, 31 carrying a linked
+             primary source, 42 events mapped. The client is anonymised by
+             shape on the page itself and stays unnamed here. -->
+        <article class="case reveal" id="case-consolidation">
+          <img class="case__shot" src="../assets/img/case-consolidation.jpg" alt="" aria-hidden="true" width="1400" height="788" loading="lazy">
+          <div>
+            <span class="case__num"></span>
+            <h3 class="case__title">Consolidation Under Pressure: M&amp;A in music gear and pro audio, 2016&ndash;2026</h3>
+            <p class="case__blurb">Ten years of transactions read as one record: 43 deals, 31 of them carrying a linked primary source, and an interactive map of 42 events across four lanes. Public sources only, with the known gaps stated rather than smoothed over.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/consolidation-under-pressure/">Read the case study</a>
+          </div>
+        </article>
+
+        <article class="case reveal" id="case-fin-model">
+          <img class="case__shot" src="../assets/img/case-fin-model.jpg" alt="" aria-hidden="true" width="1400" height="788" loading="lazy">
+          <div>
+            <span class="case__num"></span>
+            <h3 class="case__title">The Model Is Your Business Beacon: a financial model as an operating tool</h3>
+            <p class="case__blurb">Why an operational financial model belongs in front of the product: the three-statement package, the weekly cadence that keeps it useful, and how it settles which work actually gets done.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/ops-fin-model-case-study/">Read the case study</a>
           </div>
         </article>
       </div>

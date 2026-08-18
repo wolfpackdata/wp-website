@@ -13,7 +13,9 @@ All notable changes to this project are documented here. The format follows
   market-intelligence report on M&A in music gear and pro audio, 2016–2026, rebuilt into this
   site's identity from two finished pages in `wolfpackdata/dj-gear-study`. Eleven numbered
   parts, ten data tables, four rendered figures, 43 cited transactions with a per-row source
-  gutter, and an interactive transaction map. Public and indexed. Not deployed. (#172)
+  gutter, and an interactive transaction map. Public and indexed. **Deployed 2026-08-15**
+  at `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`
+  (`ai-coaching-intake#74`), from `develop 64fa14d`. (#172)
 - `case_studies/consolidation_under_pressure/transaction-map.html` — the same map full width
   in its own tab, `noindex`, reached from the report's "Open full width" affordance. **The
   first case study to ship more than one page.** (#172)
@@ -89,9 +91,107 @@ All notable changes to this project are documented here. The format follows
   took their static position ~640px into the table, escaped every scroller above them, and
   gave the whole document 269px of horizontal scroll at 390px wide while every container
   still measured correctly. Latent in `.dtable` since it shipped. (#172)
+- **The transaction map's macro bands and gridlines were painting *under* the lane surfaces.**
+  Every element in the figure is absolutely positioned inside one stacking context, so paint
+  order was document order and an opaque lane hid whatever crossed it — a band spanning all
+  four lanes was being drawn as stripes through the two lanes that happened to have no
+  background. Survivable while half the lanes were transparent, fatal once all four carry a
+  tint. The layers are now explicit and named in the sheet: lanes 0, bands and gridlines 1,
+  events 2, lane names and year labels 3. Found while colouring the lanes, not reported. (#199)
 
 ### Changed
 
+- **Consolidation Under Pressure is live** at
+  `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`, deployed 2026-08-15 from
+  `develop 64fa14d` (`ai-coaching-intake#74`). **The first page in this repo to deploy as two
+  pages** — the report and the `noindex` full-width `transaction-map.html`; copy both or
+  neither. `case-study-assets/` needed **no copy**: the intake's own re-copy an hour after #200
+  merged had already carried the lane hues, `map.js` and the social card, unreferenced, exactly
+  as its re-copy-whole rule intends — verified by copying all 27 tracked asset files over the
+  deployed ones and getting an empty `git status`. The other two deployed case studies are
+  untouched by this deploy. ⚠️ **The Notion Web Property Map is now stale** — a new page and a
+  new public URL — and per this file's standing rule it has been flagged rather than silently
+  edited.
+- **Consolidation Under Pressure — two overclaimed theses narrowed, and a quarter of the
+  defensive language cut.** The hero said *"two economic shocks, **not a product problem**,
+  explain the wreckage"* while Part Two and Part Four both said a transaction timeline
+  **cannot rule out** product or competitive factors — the hero was contradicting its own
+  body. It now reads *"two economic shocks sit underneath much of the distress"*, and the
+  meta and `og:description` moved with it. Part Eight's *"scale has become a liability, expect
+  conglomerates to break up"* was **false against the page's own Pattern 5 table**, which
+  documents Audiotonix and Focusrite assembling broad audio portfolios over the same decade
+  and still buying; the implication is now **"what has failed is unrelated ownership, not
+  breadth"**, with operating adjacency as the variable that separates the two groups. The
+  *"four to six vertically integrated groups"* endpoint is now *"one plausible endpoint"*.
+  About **127 words of cautionary prose** came out against roughly 480 words of in-body
+  hedging — the labels *"correctly stated"* and *"the honest limit of this argument"*, the two
+  consecutive Native Instruments epistemic paragraphs merged into one, *"and about nothing
+  else"*, *"survey data, not panel data"* where the confidence note four sections earlier
+  already said it, and a *"press-reported, not company-confirmed"* on two figures already
+  prefixed "reported" and already listed in the Confidence levels appendix. **No limitation,
+  confidence level, source distinction or known gap was removed**, and the consideration-gap
+  warning is kept prominent — it is the one caution that stops a reader taking $170m and $680m
+  for losses. The test applied to every cautionary sentence: *does it stop a reasonable
+  executive reader from making a materially incorrect inference?* (#205)
+- **The transaction map is coloured by lane, and the shared sheet gained its first data
+  hue.** The map has two variables on every dot and only one of them can take hue: a lane
+  (macro / software / hardware / retail) is a **category**, so it takes the new
+  `--map-l0`…`l3` on the dot's ring, the lane name, the lane's surface wash and its hairline;
+  the deal value is a **magnitude** and stays on the neutral `--fig-ramp-1`…`4` fill, which is
+  the whole reason that ramp exists. **The two never swap.** `case-study.css`'s "no new hues"
+  rule is now "no new hues **in page chrome**" plus one scoped exception written into the
+  header, `docs/site-brief.md` §1.6 and `case_studies/README.md`: a figure may spend hue when
+  the variable is genuinely categorical, the hue is **redundant** with something already in
+  the figure so nothing is its sole carrier, and it touches neither the coral ration nor the
+  navy chrome nor a magnitude scale. This **extends** `wolfpack-ai-command`'s D-015 rather
+  than breaking it — that ruling put hue in a committed image so the sheet stayed hue-free,
+  which a chart drawn in HTML cannot do. **The coral ration is still six.** Every hue and ink
+  carries its measured contrast ratio, floors of 7.1:1 and 10.9:1. (#199)
+- **The map's year axis now runs along the top as well as the bottom.** The plot is 1600px
+  wide at its narrowest and four lanes deep, so dating an event in the first lane meant
+  tracking to the far edge of the figure and then all the way down. (#199)
+- **Consolidation Under Pressure — three cuts from Ry's second pass.** The 145% China figure
+  is out of the "Cut the tail" implication (now "High tariffs"), the "Rebuild deal capability"
+  implication is gone, and the "Tariff schedule changes" row is out of the Part Nine watch
+  table — with its accessible caption moved from "Eight open questions" to "Seven", a count
+  that would otherwise have gone stale silently because nothing on screen contradicts it. Both
+  figures survive elsewhere on the page and the cut row carried no `Src` cell, so
+  `verify_copy.py`'s numeric check and the 43 / 31 / 12 gutter arithmetic are untouched. (#199)
+- **Consolidation Under Pressure — evidentiary corrections from Ry's review.** Four passages
+  claimed more than the sources carry, and all four are now stepped down rather than
+  restated. **Purchase price minus sale price is a "headline purchase-to-sale consideration
+  gap", not a loss** — the difference is $170m against the **$5.1m loss on sale** Etsy's
+  FY2025 10-Q actually records, and Sonova, having no exit price, has neither a gap nor a
+  loss; a note bolted to the Pattern 1 table now says so. **A transaction timeline
+  establishes sequence, not cause** — Part Two no longer claims nearly every failure traces
+  to the two macro shocks, and no longer rules out product or competitive factors. **The
+  Native Instruments "balance-sheet failure" diagnosis is withdrawn**, along with the
+  assertions about Kontakt's and Traktor's market position, because no administrator's
+  report, filing or management statement in the sources identifies a cause and no adoption
+  series exists — the page had been contradicting its own methodology appendix. **The
+  pandemic-spike figures are marked press-reported at the point of use**, with the survey,
+  sample and scope named as unknown, and the unquantified software "step-change" is cut. The
+  same fault was corrected where it recurred outside the named sections. (#195)
+- **`.rtable` is legible as a table.** Cell padding is now larger than the text's own
+  leading, and a column hairline in `--line` gives the eye an edge to track along — the two
+  faults behind "difficult to read and not recognizable as tables". Both came from a
+  component that borrowed `.dtable`'s no-gridlines density without noticing `.dtable` is a
+  *figure* of four numbers where this is a 43-row register with prose in two of five
+  columns. `.dtable` is deliberately unchanged. New: `.rtable__note` and `.rtable--noted`,
+  a note that attaches to a table and, being a sibling rather than a child of the scroller,
+  does not slide out of view when the reader scrolls to the column it explains. (#195)
+- **The vertical-rhythm ruling (#182) applied to this page.** Twenty inline `margin-top`
+  declarations came out; `.k + .section__title` and `.plainlist`'s margins moved into the
+  shared sheet, where spacing belongs. The geometry and swatch styles on the figures stay
+  inline — those are data, not spacing. (#195)
+- **The case study is ~13% shorter in prose** (6.8% net, against roughly 500 words the
+  corrections above added). Everything cut was restatement: a duplicated Src explainer, a
+  callout restating the pull quote three lines above it, the "money in gear" table whose
+  four figures were all already on the page, the "money in music" table folded to a
+  sentence, and the source list's trailing domains — 48 sources now hang their link on the
+  title instead of a bare hostname, which also gives 48 links a real accessible name. No
+  figure, source, caveat or recommendation was cut, and `verify_copy.py` proves it: all 186
+  numeric tokens survive. (#195)
 - `docs/site-brief.md` — the figure ground's scope now includes `.figframe`; the new
   sequential ramp is documented with its measured contrast; `case_studies/`'s audience and
   exclusions updated; the report-copy guard added to the guarded-strings table. The

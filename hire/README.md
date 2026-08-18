@@ -20,7 +20,8 @@ the source of truth — never edit the deployed copy; re-copy the whole `hire/` 
 change.
 
 - [x] `assets/fonts/` — 14 woff2 (Roboto + Montserrat)
-- [x] `assets/img/` — 8 app screenshots, wolf mark, RML mark, 2 portraits
+- [x] `assets/img/` — 8 app screenshots, 3 case-study cards, wolf mark, RML mark,
+      portrait, and the 2 built social cards (`og-*.png`, added 2026-08-18, #230)
 - [x] `assets/dl/` — both `.docx` and both `.pdf`
 - [x] `assets/css/hire.css`
 - [x] `assets/js/reveal.js`
@@ -72,18 +73,75 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
 - **The two YAMLs file music differently on purpose** — `eng_only` puts RML and
   Niceman *inside* Professional Experience so they read as businesses he runs;
   `eng_music` gives music its own section. Don't flatten that into one template.
+- **The case studies section carries the published set, in Ry's order, on both
+  pages** (#218, design plan **D-011**): AI Command → SetMaster 3 → Consolidation
+  Under Pressure → financial model. **That order is Ry's and re-derives from
+  nothing** — not alphabetical, chronological, or by publication date. Don't sort
+  it. The four cards are byte-identical across the two pages: unlike the
+  applications gallery, this section has no music-vs-engineering framing to keep
+  apart, so **change both files or neither**. Nothing here is a placeholder any
+  more — the `$30M software spine` card was removed because its study is still
+  unwritten, and an `IN PREPARATION` chip on a résumé page reads as an IOU. It
+  comes back as a normal card when the study exists. **Neither string in the
+  section head counts the cards**, deliberately: the old *"Three builds"* /
+  *"Two are published"* pair went stale silently every time a study shipped.
+- **Two application tiles link their case study**, the only two whose system has a
+  published one: `SetMaster 3` / `RML SetMaster 3` and `Notion–GitHub AI Dev
+  Command Center`. The SetMaster tile also links the `/setmaster3/` product page.
+  Put these **after `.app__blurb`, never between the name and the blurb** —
+  check 6 matches those two as adjacent siblings, so anything between them
+  unguards a résumé string *without failing the check*.
 - **The coral ration is enumerated in the header comment of `assets/css/hire.css`.**
   Keep that comment true. Where coral is a fill, text on it is navy, never white.
+  **Use 5, the `IN PREPARATION` chip, is live but unused since #218** — the
+  allowance stays for the next unpublished study, and as everywhere on this site
+  the count only ever goes down.
 - **The RML mark appears in exactly one place** — the music page's Music &
   Creative Technology section, at ~44px. It's a recovered raster and is not clean
   at larger sizes.
 - **Image format is chosen by content, not by habit.** Photographic and rendered
   illustrations are **JPEG** (`app-bql`, `app-data-backbone`,
   `app-ecommerce-intelligence`, the portrait); UI screenshots stay **PNG**,
-  because JPEG smears small text. The originals in `wp-rates-page/img/` are all
+  because JPEG smears small text. **The two `og-*.png` social cards are PNG
+  regardless** — they are mostly a flat navy gradient with large type over it,
+  which is what JPEG is worst at, and the generator writes PNG for every card
+  on the site. The originals in `wp-rates-page/img/` are all
   PNG — converting the four photographic ones took this folder from 11 MB to
   1.4 MB with no visible difference. If you re-copy an image from that repo,
   re-apply the split.
+
+## Social cards — and why neither one shows Ryan's face
+
+**Added 2026-08-18 (#230).** Each page carries a built 1200×627 card in `assets/img/`:
+
+| Page | Card | What's in it |
+|---|---|---|
+| `ryan-hickey/` | `og-ryan-hickey.png` | Two panels — the `$30M` backbone render and the pdpd console |
+| `ryan-hickey-music/` | `og-ryan-hickey-music.png` | One full-width panel — RML SetMaster 3's Playlist Compare Tool |
+
+- **No portrait, on Ry's instruction**, and `ryan-hickey-portrait.jpg` stays off both. It
+  turned out to be the constraint that made them good: with no face to lead on, each card
+  argues from the work.
+- **They reverse D-004** of `../docs/social-cards-and-linkedin-readiness-plan.md`, which had
+  kept both pages on the 200×200 logo because they "are not primarily share targets." That
+  had it backwards. These pages are `noindex` — the **only** way anyone reaches one is Ry
+  pasting the URL into a message, an email, or an application form, so the preview isn't
+  incidental to the visit, it's the first impression. Rulings **D-015** and **D-016** in that
+  plan. The carve-out is these two pages; `rates/`, `github/`, and `roi-calculator/` are
+  still D-004's.
+- **Built by `../social-cards/build_cards.py` — rebuild rather than retouch.** A hand-edited
+  card is a card nobody can change again. Re-run it and `python ../social-cards/check_meta.py`
+  after any change to a title, a role line, or an inset.
+- **These two are the only cards on the site that share a folder**, because `hire/` is the
+  only page folder that deploys as a single unit.
+- **Neither reuses a `portfolio/` card panel**, so the three never read as one duplicated
+  post — D-002's rule, applied outward.
+- **A card is not indexing.** `noindex, nofollow` above is untouched; adding a card did not
+  make these pages findable, it only changed what a scraper renders when Ry pastes the link.
+- **After the intake deploy, run both URLs through the
+  [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/)** before sharing
+  either. LinkedIn reports a URL it has never scraped as "invalid URL" rather than as a
+  cache miss — the trap `CLAUDE.md` records from 2026-08-17.
 
 ## Deploying
 

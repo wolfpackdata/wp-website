@@ -74,6 +74,13 @@ Not supported, by choice: tables, footnotes, nested lists, raw HTML. If a post
 needs one, add it to the converter rather than hand-editing in Wix — the point
 of the pipeline is that `post.md` fully determines the post.
 
+> ⚠️ **Keep every list item on one line.** Wrapped lines join inside a
+> *paragraph*, but **not inside a list item** — a bullet split across two source
+> lines becomes a one-item list plus an orphan paragraph, and three wrapped items
+> become three separate lists each numbered `1.`. It fails **silently**: no
+> warning, no error, and a plausible node count. Tracked as #208; until that
+> lands, hard-wrap prose freely and never a bullet.
+
 Decorations nest (`**bold *both* bold**`), inline code is literal inside, and
 `snake_case` underscores do not open emphasis.
 
@@ -130,10 +137,18 @@ Ask Claude to "push `blog_posts/<folder>` to Wix as a draft". It runs:
    ```
 2. **Upload each image to the Wix Media Manager**, collecting the returned
    media IDs into a `media.json` of `{"cover.png": "<media id>", …}`.
-3. **Create each tag** via `POST /blog/v3/tags` with `{"label": …,
-   "language": "en"}`, collecting the IDs into a `tags.json` of
-   `{"ai": "<tag id>", …}`. Creating a tag that already exists returns the
-   existing one, so this is safe to repeat.
+3. **Resolve each tag to an ID**, collecting them into a `tags.json` of
+   `{"ai": "<tag id>", …}`. **Read the existing tags first** with
+   `GET /blog/v3/tags?paging.limit=100`, then `POST /blog/v3/tags` with
+   `{"label": …, "language": "en"}` for the ones that are genuinely new. The
+   body is flat — a `{"tag": {…}}` wrapper is rejected as an empty label.
+
+   > **This step is not idempotent, contrary to what this README said until
+   > 2026-08-15.** Creating a tag that already exists returns
+   > **`409 ALREADY_EXISTS`**, not the existing tag, so a blind re-POST fails the
+   > push rather than passing through. Measured against the live API, not assumed.
+   > Creating a tag is also a real entity in the blog's taxonomy — check with Ry
+   > before inventing one.
 4. **Build the payload.**
    ```
    python blog_posts/tools/md_to_ricos.py blog_posts/<folder> \

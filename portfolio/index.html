@@ -88,7 +88,18 @@
        (design plan D-006). Card order follows the YAML.
 
        SetMaster 3 uses the eng_only framing, not eng_music's "RML SetMaster 3"
-       (D-005) — one source YAML for all eight cards. -->
+       (D-005) — one source YAML for all eight cards.
+
+       IN-TILE CTAs (#218, Ry 2026-08-17). Two of the eight tiles name a system
+       that has a published case study, and those two carry a link to it. The
+       buttons go AFTER .app__blurb and never between the name and the blurb —
+       check 6 matches those two as adjacent siblings, so splitting them turns a
+       guarded string into an unguarded one without failing anything.
+
+       The SetMaster tile carries a second button, to the /setmaster3/ product
+       page. That is this page's SECOND destination, which D-007 allowed exactly
+       one of — Ry ruled it in on 2026-08-17 and D-015 records it. It is
+       navy-ghost and one size down, per the brief's subordination rule. -->
   <section class="section" id="applications" aria-labelledby="applications-title">
     <div class="wrap">
       <div class="section__head reveal">
@@ -114,12 +125,22 @@
           <img class="app__shot" src="img/app-notion-system.png" alt="Screenshot of the Notion–GitHub AI Dev Command Center" width="543" height="506" loading="lazy">
           <h3 class="app__name">Notion–GitHub AI Dev Command Center</h3>
           <p class="app__blurb">A bespoke command center for AI-accelerated development: a skills-based planning, project-management, and AI-supervision suite built on a Python engine that wires Claude Code, OpenAI Codex, GitHub, Notion, and BigQuery into a single pipeline. Every agent action is planned against a tracked task, logged, and reviewable — transparent human + agent software development at blistering speed, with an audit trail rather than a black box.</p>
+          <!-- The case study calls this system Wolfpack AI Command; the tile
+               uses the résumé's name for it, which is YAML-verbatim and not
+               ours to edit. Same system — confirmed with Ry, 2026-08-17. -->
+          <div class="app__ctas">
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">Read the case study</a>
+          </div>
         </article>
 
         <article class="app reveal">
           <img class="app__shot" src="img/app-setmaster.png" alt="Screenshot of SetMaster 3" width="1494" height="848" loading="lazy">
           <h3 class="app__name">SetMaster 3</h3>
-          <p class="app__blurb">An offline, cross-platform desktop-class web application — TypeScript and React over a Python analysis engine, shipping double-clickable installers for Windows and macOS with no terminal required. Parses a proprietary XML catalog format strictly read-only and reconciles it against third-party API exports through years of accumulated name-normalization and fuzzy-matching heuristics, with compound filtering and a structured editor over the result. Now at v3.0.3 after three issue-driven fix rounds; it replaces a Python/Excel-VBA prototype used professionally for years.</p>
+          <p class="app__blurb">An offline, cross-platform desktop-class web application — TypeScript and React over a Python analysis engine, shipping double-clickable installers for Windows and macOS with no terminal required. Parses a proprietary XML catalog format strictly read-only and reconciles it against third-party API exports through years of accumulated name-normalization and fuzzy-matching heuristics, with compound filtering and a structured editor over the result. Now at v3.0.4 after four issue-driven fix rounds; it replaces a Python/Excel-VBA prototype used professionally for years.</p>
+          <div class="app__ctas">
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
+            <a class="btn btn--ghost btn--sm" href="https://intake.wolfstrategyllc.com/setmaster3/">Visit the product page</a>
+          </div>
         </article>
 
         <article class="app reveal">
@@ -151,11 +172,11 @@
   </section>
 
   <!-- ========== Case studies ==========
-       Two cards at launch, three since 2026-08-15 (#192). The ops financial
-       model study is published and indexed, so it carries a real button;
-       SetMaster 3 uses the same .case__chip "in preparation" device the hire/
-       pages use, so adding its link later changes one element and not the
-       layout (design plan D-008).
+       Two cards at launch, three since 2026-08-15 (#192), four since
+       2026-08-17 (#222). Every one is published, indexed, and carries a real
+       button; no .case__chip "in preparation" device is in use on this page,
+       though the rule stays in the stylesheet for the next unpublished study
+       (design plan D-008).
 
        Absolute URL on the published one, not relative: in this repo that case
        study lives at case_studies/ops_fin_model_support/, but it deploys to
@@ -168,7 +189,12 @@
       <div class="section__head reveal">
         <span class="k section__kicker">Case studies</span>
         <h2 class="section__title" id="cases-title">Written up in full</h2>
-        <p class="section__lede">Long-form write-ups of how a system was scoped, built, and measured. All three are published and all three are a click away.</p>
+        <!-- No count in this sentence any more (#222). It read "All three are
+             published and all three are a click away", which is a string that
+             goes quietly wrong every time a case study ships — D-014 flagged
+             exactly that when it changed the number from two to three, and the
+             fourth card is what proves the point rather than the exception. -->
+        <p class="section__lede">Long-form write-ups of how the work was scoped, carried out, and evidenced. All of them are published and a click away.</p>
       </div>
 
       <div class="cases">
@@ -177,7 +203,7 @@
           <div>
             <span class="case__num"></span>
             <h3 class="case__title">SetMaster 3: from problem, to prototype, to a shipped web app</h3>
-            <p class="case__blurb">A years-old spreadsheet workaround rebuilt as a cross-platform application: the matching heuristics, the offline-first architecture, and three issue-driven fix rounds to v3.0.3.</p>
+            <p class="case__blurb">A years-old spreadsheet workaround rebuilt as a cross-platform application: the matching heuristics, the offline-first architecture, and four issue-driven fix rounds to v3.0.4.</p>
             <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/setmaster3-case-study/">Read the case study</a>
           </div>
         </article>
@@ -213,6 +239,38 @@
             <h3 class="case__title">An AI Operating Layer for Streamlining Project Delivery</h3>
             <p class="case__blurb">The project manager's week pulled apart into record-keeping and judgment, and a governed system of AI operators handed the first half: written versioned rules, one attributable AI identity, and no destructive tools anywhere in the agent layer.</p>
             <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/wolfpack-ai-command/">Read the case study</a>
+          </div>
+        </article>
+
+        <!-- Added 2026-08-17 (#222). It was deliberately left off in #218 — Ry's
+             call that day — and he reversed that specific choice the same week,
+             so this card is a decision revisited rather than a gap closed.
+
+             APPENDED, not inserted. New cards have joined this grid at the end
+             since #192, and the hire pages' order is Ry's own and applies to
+             those pages; re-sorting here would silently re-open a choice he
+             made rather than implement one.
+
+             This card carried the transaction map until 2026-08-17, because
+             that case study shipped no hero figure and the map was the best art
+             it owned. Ry supplied a hero on 2026-08-17 (#226), so every card in
+             this grid is now its case study's own hero. Composed at card width
+             by
+             case_studies/consolidation_under_pressure/planning/hero/build_hero.py,
+             which writes this file and the hire/ copy from one master.
+             Byte-identical by construction, and neither is a re-encode of the
+             other. Rebuild rather than retouch.
+
+             The blurb counts artifacts, not outcomes — the rule that case study
+             sets for itself. The client is anonymised by shape on the page
+             itself and stays unnamed here. -->
+        <article class="case reveal" id="case-consolidation">
+          <img class="case__shot" src="img/case-consolidation.jpg" alt="" aria-hidden="true" width="1400" height="788" loading="lazy">
+          <div>
+            <span class="case__num"></span>
+            <h3 class="case__title">Consolidation Under Pressure: M&amp;A in music gear and pro audio, 2016&ndash;2026</h3>
+            <p class="case__blurb">Ten years of transactions read as one record: 43 deals, 31 of them carrying a linked primary source, and an interactive map of 42 events across four lanes. Public sources only, with the known gaps stated rather than smoothed over.</p>
+            <a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/consolidation-under-pressure/">Read the case study</a>
           </div>
         </article>
       </div>

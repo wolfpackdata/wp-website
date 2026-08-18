@@ -54,6 +54,24 @@ sync is a prompted, manual port (see §3).
   "Terms" nav link on 2026-07-28 (ruled by Ry; the terms sections themselves stay) and
   renamed "Coaching" → "AI Coaching". Nav items for Q3-only sections (Portfolio — D9) are
   omitted here; the public-only "Engagements" item stays.
+- **The pilot project band** (added upstream 2026-08-18, `wp-rates-page#42`; ported here
+  the same day, #238). Both pages carry a full-width band offering the **$5,000 fixed-fee
+  pilot project**, placed **after the tier grid's caption and before the next section**,
+  with a **navy-ghost** button linking `https://intake.wolfstrategyllc.com/pilot-project/`.
+  This is a **mirror-set item, not a delta** — Ry's sequencing ruling was that the pilot
+  goes on the Q3 page first and the public page mirrors it, so the facts must match: the
+  **$5,000 fixed fee**, the **two-to-three-week calendar window**, and the two included
+  systems (**Wolfpack AI Command** and the **BQL Analytics Provisioner**, installed in the
+  client's own accounts). ⚠️ **Neither page states hours, a weekly commitment, or an
+  effective hourly rate for the pilot**, and that is a *fact about the offer*, not a depth
+  choice — $5,000 across two to three weeks divides out beneath the `$140/hr` printed
+  directly above it on both pages. Both bands say out loud that a pilot prices a scoped
+  outcome while the curve prices reserved time. If an hours figure is ever added to one
+  page it must not be ported; it must be removed from the other. Public-page depth notes:
+  spec R15. Two things differ by each page's own convention and are **not** facts — the
+  upstream band carries a `bridge--pilot` modifier (it has a second, coral-barred coupon
+  bridge to distinguish itself from; this page does not), and the upstream link opens in a
+  new tab while this one does not (matching R11/R14 here).
 - Contact email `main@wolfstrategyllc.com`, LinkedIn URL.
 - Wolfpack Advantage list content; About-Ryan facts (titles, track-record numbers,
   credentials); credential stats strip.

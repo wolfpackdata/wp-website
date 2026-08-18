@@ -263,8 +263,8 @@ sections:
           proprietary XML catalog format strictly read-only and reconciles it
           against third-party API exports through years of accumulated
           name-normalization and fuzzy-matching heuristics, with compound
-          filtering and a structured editor over the result. Now at v3.0.3 after
-          three issue-driven fix rounds; it replaces a Python/Excel-VBA prototype
+          filtering and a structured editor over the result. Now at v3.0.4 after
+          four issue-driven fix rounds; it replaces a Python/Excel-VBA prototype
           used professionally for years.
       - name: pdpd
         body: >-

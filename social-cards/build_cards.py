@@ -7,14 +7,22 @@ Run from the repo root. It rebuilds all of them, every time, into the folders
 that deploy:
 
     case_studies/case-study-assets/img/og-consolidation-under-pressure.png
+    case_studies/case-study-assets/img/og-wolfpack-ai-command.png
     sm3-specific-pages/sm3-assets/img/og-setmaster3-case-study.png
     portfolio/img/og-portfolio.png
     ai-coaching/img/og-ai-coaching.png
+    hire/assets/img/og-ryan-hickey.png
+    hire/assets/img/og-ryan-hickey-music.png
+    social-cards/wix/og-wolfstrategyllc-home.png        (the Wix homepage, not this repo)
 
-One of them has a prerequisite. The music-gear card's inset is the transaction
-map, which exists only as something a browser draws — run
-case_studies/consolidation_under_pressure/planning/card/capture_map.py first if
-that figure has changed.
+Every inset is now a file that already exists — a screenshot, a supplied hero, or
+a generated emblem — so there is no capture step to run first. That was not true
+until 2026-08-17 (#226): the music-gear card's inset was the transaction map,
+which exists only as something a browser draws, and it had to be photographed by
+case_studies/consolidation_under_pressure/planning/card/capture_map.py before
+this script could compose it. That case study now has its own hero and the card
+uses it. `capture_map.py` still exists for the map's own sake; nothing here reads
+it any more.
 
 These images are **generated, and their generator ships with them — rebuild
 rather than retouch**, the same convention `fin-model-beacon-hero.jpg` already
@@ -101,6 +109,15 @@ TITLE_LEAD = 1.14                    # .15 in CSS; tightened, because these are
                                      # display sizes rather than page headings
 MAX_TITLE_H = 250                    # see fit_title — the inset's floor, really
 RULE_W, RULE_H = 132, 4              # one coral use, per .hero__stand
+# The optional subtitle line. See build()'s `subtitle` handling for why it
+# exists; these are its whole geometry.
+SUB_HI, SUB_LO = 48, 28              # 48px is 14px at a 360px Featured tile
+SUB_MAX_LINES = 2
+SUB_LEAD = 1.30                      # looser than the title's, because this is
+                                     # a reading line rather than a display one
+SUB_GAP_ABOVE = 18
+SUB_SEP = " · "                      # the role-line separator, as .hero__role
+                                     # sets it (a <span class="sep">)
 RULE_GAP_ABOVE = 34
 RULE_GAP_BELOW = 44
 MAT_PAD = 10
@@ -225,6 +242,57 @@ def fit_title(draw, text, ttf, max_w, max_lines, hi=96, lo=56):
     return font, wrap(draw, text, font, max_w)
 
 
+def wrap_parts(draw, parts, font, max_w):
+    """Greedy-wrap whole phrases, re-joining each line's phrases with SUB_SEP.
+
+    Word-wrapping a role line — `A · B · C` — lets a line end on the separator:
+    the music card's first pass read "AI Engineer · Data & AI Systems Architect ·"
+    and then dropped "Professional Musician" onto the next line, which looks
+    like a typo rather than like a list. Wrapping the PHRASES and re-adding the
+    separator per line means it can only ever appear BETWEEN two phrases that
+    share a line, never at a line's start or end.
+
+    It also keeps a phrase whole, which is the more important half: "Data & AI
+    Systems Architect" is one job title and splitting it across two lines reads
+    as two.
+
+    Returns None when a single phrase cannot fit on a line by itself — the
+    caller steps the size down instead of shipping an overflowing line.
+    """
+    lines, cur = [], []
+    for part in parts:
+        if draw.textlength(part, font=font) > max_w:
+            return None
+        if cur and draw.textlength(SUB_SEP.join(cur + [part]), font=font) > max_w:
+            lines.append(SUB_SEP.join(cur))
+            cur = [part]
+        else:
+            cur.append(part)
+    if cur:
+        lines.append(SUB_SEP.join(cur))
+    return lines
+
+
+def fit_subtitle(draw, text, ttf, max_w, max_lines):
+    """fit_title's logic for the subtitle, over phrases rather than words.
+
+    Steps down from SUB_HI so both hire cards land on the same size whatever
+    their role lines cost — a pair of cards for one person that set their role
+    lines at two different sizes reads as two unrelated templates.
+    """
+    parts = [p.strip() for p in text.split("·") if p.strip()] or [text]
+    for size in range(SUB_HI, SUB_LO - 1, -2):
+        font = ImageFont.truetype(ttf, size)
+        lines = wrap_parts(draw, parts, font, max_w)
+        if lines is not None and len(lines) <= max_lines:
+            return font, lines
+    # Nothing fit the budget. Fall back to a plain word wrap at the floor size
+    # rather than returning None — a card with a cramped subtitle is still a
+    # card; a traceback is not.
+    font = ImageFont.truetype(ttf, SUB_LO)
+    return font, wrap_parts(draw, parts, font, max_w) or wrap(draw, text, font, max_w)
+
+
 def tracked(draw, xy, text, font, fill, track):
     """Draw text with letter-spacing, which Pillow has no concept of.
 
@@ -267,7 +335,7 @@ def navy_field():
     return canvas
 
 
-def framed(src, frame_w, inner_h, focus=0.5):
+def framed(src, frame_w, inner_h, focus=0.5, vfocus=0.0):
     """A source image in the pages' figure-ground frame, at a given size.
 
     Mat, 1px hairline, 8px radius — the same three tokens `.shot` uses, so the
@@ -287,13 +355,24 @@ def framed(src, frame_w, inner_h, focus=0.5):
     down its left side has to keep that rail: cropping the SetMaster shot from
     the centre sliced the sidebar through the middle of a word, which reads as a
     broken image rather than as a crop.
+
+    `vfocus` is the same thing vertically, and it DEFAULTS TO 0.0 — the top
+    anchor every screenshot inset here has always used, and wants, because the
+    top of an application window is what identifies it. It exists for the one
+    case that is not a screenshot: a 16:9 piece of art fitted into this wide
+    shallow band, where cover-scaling to the width and then taking the top
+    strip returns the empty sky above the subject. That trap is real and
+    already cost this file once — the AI Command card sidesteps it by feeding a
+    4:1 tiled print instead of its 16:9 hero. Setting `vfocus=0.5` centres the
+    band on the subject instead, and leaves every existing card untouched.
     """
     inner_w = frame_w - 2 * MAT_PAD
     scale = max(inner_w / src.width, inner_h / src.height)
     big = src.resize((max(inner_w, round(src.width * scale)),
                       max(inner_h, round(src.height * scale))), Image.LANCZOS)
     left = round((big.width - inner_w) * focus)
-    shot = big.crop((left, 0, left + inner_w, inner_h))
+    top = round((big.height - inner_h) * vfocus)
+    shot = big.crop((left, top, left + inner_w, top + inner_h))
 
     mat = Image.new("RGB", (frame_w, inner_h + 2 * MAT_PAD), FIG_BG)
     mat.paste(shot, (MAT_PAD, MAT_PAD))
@@ -336,7 +415,31 @@ def build(card, ttf):
     lead = round(title_font.size * TITLE_LEAD)
     title_h = lead * len(lines)
 
-    rule_y = TITLE_TOP + title_h + RULE_GAP_ABOVE
+    # An OPTIONAL second line under the title, in --muted, above the coral rule.
+    #
+    # WHY THIS EXISTS, and why it is optional rather than standard. Every card
+    # above this one has a subject that is a thing — a document, a product, a
+    # program — and one string names it. The two hire/ cards are the only ones
+    # whose subject is a PERSON, and a person needs two strings: the name, which
+    # is the identity, and the role line, which is the only thing distinguishing
+    # two cards for two framings of the same résumé. Folding both into one
+    # auto-fitted title sets them at the same size, which buries the name; and
+    # at a 360px tile the two hire cards would then differ only in the tail of a
+    # wrapped line. So the name gets the display size and the roles get a
+    # reading line, exactly the way .hero__name over .hero__role sets them on
+    # the page this card is quoting.
+    #
+    # A card that does not ask for one is untouched — the five above still
+    # render byte-identical, the same discipline framed()'s `vfocus` argument
+    # was added under.
+    sub_font, sub_lines, sub_lead, sub_h = None, [], 0, 0
+    if card.get("subtitle"):
+        sub_font, sub_lines = fit_subtitle(
+            draw, card["subtitle"], ttf, COL_W, SUB_MAX_LINES)
+        sub_lead = round(sub_font.size * SUB_LEAD)
+        sub_h = SUB_GAP_ABOVE + sub_lead * len(sub_lines)
+
+    rule_y = TITLE_TOP + title_h + sub_h + RULE_GAP_ABOVE
     inset_y = rule_y + RULE_H + RULE_GAP_BELOW
 
     # --- the insets, laid out across the same column the text uses ----------
@@ -344,11 +447,16 @@ def build(card, ttf):
     frame_w = (COL_W - PANEL_GAP * (n - 1)) // n
     inner_h = (H - inset_y) + BLEED - MAT_PAD
     frames = []
-    for i, (rel, crop, focus) in enumerate(card["insets"]):
+    # A spec is (path, crop, focus) or (path, crop, focus, vfocus). The fourth
+    # element is optional so that every card written before vfocus existed keeps
+    # its top-anchored crop without being touched.
+    for i, spec in enumerate(card["insets"]):
+        rel, crop, focus = spec[:3]
+        vfocus = spec[3] if len(spec) > 3 else 0.0
         src = Image.open(ROOT / rel).convert("RGB")
         if crop:
             src = src.crop(crop)
-        mat, mask = framed(src, frame_w, inner_h, focus)
+        mat, mask = framed(src, frame_w, inner_h, focus, vfocus)
         frames.append((mat, mask, MARGIN + i * (frame_w + PANEL_GAP)))
 
     # A rim of light along each frame's top edge and upper sides. The screenshots
@@ -392,6 +500,13 @@ def build(card, ttf):
     for i, line in enumerate(lines):
         draw.text((MARGIN, TITLE_TOP + i * lead), line, font=title_font, fill=WHITE)
 
+    # --muted on the navy field, the same pairing .hero__role uses, and the same
+    # colour the wordmark row above already carries — so the card gains a line
+    # of text without gaining a value.
+    sub_top = TITLE_TOP + title_h + SUB_GAP_ABOVE
+    for i, line in enumerate(sub_lines):
+        draw.text((MARGIN, sub_top + i * sub_lead), line, font=sub_font, fill=MUTED)
+
     for mat, mask, fx in frames:
         out.paste(mat, (fx, inset_y), mask)
 
@@ -407,8 +522,9 @@ def build(card, ttf):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out.save(out_path, optimize=True)
     kb = out_path.stat().st_size / 1024
+    sub = f"  sub {sub_font.size}px x{len(sub_lines)}" if sub_lines else ""
     print(f"wrote {card['out']}  {out.size[0]}x{out.size[1]}  {kb:.0f} KB  "
-          f"title {title_font.size}px x{len(lines)}")
+          f"title {title_font.size}px x{len(lines)}{sub}")
 
 
 # ==========================================================================
@@ -417,26 +533,44 @@ def build(card, ttf):
 
 CARDS = [
     {
-        # The music-gear M&A case study. Its inset is the transaction map, which
-        # is drawn in a browser rather than stored as an image — so unlike every
-        # other inset here the source is itself generated, by
-        # case_studies/consolidation_under_pressure/planning/card/capture_map.py.
-        # Re-run that first if the map's data or palette has changed; this script
-        # only composes what it is given.
+        # The music-gear M&A case study. THE INSET CHANGED ON 2026-08-17 (#226),
+        # from the transaction map to the page's new hero art, and the old
+        # reasoning is worth keeping because it was right at the time.
         #
-        # The map is the right inset for the reason build_cards.py's header
-        # already gives: at a 360px Featured tile the inset is TEXTURE, and forty
-        # two labelled events across four lanes reads unmistakably as a dense
-        # research document. A crop of the report's prose would read as any page
-        # of any website.
+        # It ran on the map because the map was the best art this case study
+        # owned: at a 360px Featured tile the inset is TEXTURE, and forty-two
+        # labelled events across four lanes reads unmistakably as a dense
+        # research document, where a crop of the report's prose would read as any
+        # page of any website. That argument was never about the map — it was
+        # about density. The hero wins on the same test and then some: twelve
+        # lit brand tiles converging on a core is legible as a SUBJECT at 360px,
+        # which the map's four-lane scatter is not.
+        #
+        # The map has not been demoted anywhere else. It is still the figure the
+        # report is built around, still rendered live by map.js, and
+        # planning/card/capture_map.py still exists to photograph it — nothing
+        # here reads that capture any more, so re-run it only for the map's own
+        # sake.
+        #
+        # ONE THING NOT TO DO WITH THIS CARD: the hero contains a rendered
+        # market-share panel whose percentages are invented art. They must never
+        # be quoted in the title, in a post that shares this card, or anywhere
+        # else. The case study labels the figure an illustration inside the
+        # figure itself for exactly this reason.
         "out": "case_studies/case-study-assets/img/og-consolidation-under-pressure.png",
         "logo": "case_studies/case-study-assets/img/wolfpack-logo.png",
         "title": "Consolidation Under Pressure",
         "max_lines": 2,
-        # Centre crop: the plot is already trimmed to its own edges by the
-        # capture script, so there is no rail or sidebar to preserve.
-        "insets": [("case_studies/consolidation_under_pressure/planning/card/map-capture.png",
-                    None, 0.5)],
+        # Centred BOTH ways, and the vertical half is the load-bearing one. The
+        # composition reads left-to-right — brands, core, chart — so a
+        # horizontal focus off 0.5 would drop either the inputs or the outcome.
+        # The 0.5 VERTICAL focus is what puts the core in the band at all: this
+        # is 16:9 art in a roughly 4:1 slot, so the default top anchor returned
+        # the empty upper third with the octagon cropped away entirely, and the
+        # one thing it did show large was the render's invented -23.6%. Centring
+        # fixes both — see framed()'s docstring.
+        "insets": [("case_studies/consolidation_under_pressure/planning/hero/"
+                    "consolidation-under-pressure-hero-blue-neon.png", None, 0.5, 0.5)],
     },
     {
         # The Wolfpack AI Command case study. THE INSET IS NOT WHAT THE PAGE'S
@@ -507,6 +641,257 @@ CARDS = [
         "insets": [("ai-coaching/img/claude-memory-by-surface.png",
                     (44, 186, 1650, 815), 0.5)],
     },
+
+    # ----------------------------------------------------------------------
+    # The two hire/ résumé pages (#230). THESE TWO REVERSE D-004 of
+    # docs/social-cards-and-linkedin-readiness-plan.md, which kept them on the
+    # 200x200 logo and `twitter:card: summary` because they "are not primarily
+    # share targets". Ry reversed that on 2026-08-18 for these two pages ONLY —
+    # `rates/`, `github/` and `roi-calculator/` still stand under D-004, and a
+    # session that finds those and "upgrades" them has reversed a decision
+    # nobody made. The reasoning for the reversal is that these are the pages Ry
+    # SENDS: pasted into a LinkedIn message, an email, or an application form,
+    # the preview is the first thing a hiring manager sees, which makes them the
+    # most share-targeted pages here rather than the least.
+    #
+    # RY'S CONSTRAINT, and it is the design constraint on both: NO HEADSHOT.
+    # hire/assets/img/ryan-hickey-portrait.jpg is on both pages and is not on
+    # either card. So the cards argue from the work instead of from the face —
+    # which is also why they carry a subtitle: with no portrait, the role line
+    # is the only thing telling a reader which of the two résumés this is.
+    #
+    # They are the only cards here that share a folder, because hire/ is the one
+    # page folder that deploys as a single unit with one shared assets/. The
+    # other cards each sit in their own page folder or in a shared asset folder
+    # that deploys beside it.
+    {
+        # The engineering framing. Two panels, the same "body of work rather
+        # than a single product" reasoning the portfolio card carries — and
+        # deliberately NEITHER of the portfolio card's two panels, so the two
+        # never read as one duplicated post if both are ever shared.
+        #
+        # The pairing is doing work: the $30M backbone render is architecture
+        # and the pdpd screenshot is shipped software, which is the claim this
+        # page makes about him. A second dark render instead of the screenshot
+        # was tried on paper and rejected — app-ecommerce-intelligence.jpg is
+        # so close in composition to app-data-backbone.jpg (inputs left, lit
+        # core centre, chart panel right) that side by side they read as one
+        # image printed twice.
+        "out": "hire/assets/img/og-ryan-hickey.png",
+        "logo": "hire/assets/img/wolfpack-logo.png",
+        "title": "Ryan Hickey",
+        "subtitle": "AI Engineer · Data & AI Systems Architect · COO",
+        "max_lines": 1,
+        # The backbone render is 16:9 art, not a screenshot, so it takes
+        # vfocus=0.5 for the reason framed()'s docstring gives: top-anchoring a
+        # wide shallow crop of 16:9 art returns the empty sky above the subject.
+        # pdpd is a screenshot and keeps the top anchor, cropped from its LEFT
+        # edge so the "pdpd." wordmark and the nav survive — the same reason the
+        # portfolio card left-crops SetMaster for its rail.
+        "insets": [("hire/assets/img/app-data-backbone.jpg", None, 0.5, 0.5),
+                   ("hire/assets/img/app-pdpd.png", None, 0.0)],
+    },
+    {
+        # The music framing. ONE full-width panel against its sibling's two, and
+        # the difference in structure is deliberate: these are two cards for two
+        # framings of one person, so they have to be told apart at a glance and
+        # a subtitle alone does not do that at 360px.
+        #
+        # SetMaster is the whole reason this framing exists — it is the music
+        # page's first application and the only one of the eight that is music
+        # technology. There is no other music asset in hire/assets/img/ that
+        # can carry a wide shallow band: the RML mark is 298x115 and is a
+        # lockup, not a subject.
+        #
+        # The top-anchored crop lands on the Playlist Compare Tool header, which
+        # is the most legible-as-music band in the shot: the RML SetMaster title
+        # bar, DJ set names down the rail, and TRAKTOR / SPOTIFY column heads.
+        # It is a third distinct SetMaster screen — the product page's card uses
+        # the set editor and the case study's uses the track-playlist matrix —
+        # so nothing here duplicates a card that already exists.
+        "out": "hire/assets/img/og-ryan-hickey-music.png",
+        "logo": "hire/assets/img/wolfpack-logo.png",
+        "title": "Ryan Hickey",
+        "subtitle": "AI Engineer · Data & AI Systems Architect · Professional Musician",
+        "max_lines": 1,
+        "insets": [("hire/assets/img/app-setmaster.png", None, 0.0)],
+    },
+
+    {
+        # The pilot project offer page (#236). Two panels, the portfolio card's
+        # "a body of work rather than a single product" reasoning applied to a
+        # different claim: these are the TWO SYSTEMS THE PILOT INCLUDES, so the
+        # card shows what the fee buys beyond the weeks rather than illustrating
+        # the consultancy in general.
+        #
+        # NEITHER PANEL APPEARS ON ANY OTHER CARD, and that is checked rather
+        # than assumed — the portfolio card runs SetMaster + e-commerce, the two
+        # hire/ cards run the backbone, pdpd and SetMaster, and the three case
+        # studies run their own heroes. Two Featured tiles carrying the same
+        # screenshot read as one duplicated post (plan D-002), and this page is
+        # one Ry will paste beside the others.
+        #
+        # The AI Command panel is app-notion-system.png rather than the shield
+        # print, DESPITE the print being the better-behaved 4:1 band: the print
+        # is already the AI Command case study's inset, and that case study is
+        # linked from this very page. Two tiles, one monogram, one post — the
+        # exact failure the paragraph above exists to prevent. The screenshot is
+        # 543x506, the smallest source any card here uses, and it fits the 502px
+        # inner width with 8% to spare; it does NOT upscale, but it has no room
+        # to lose either, so re-check the scale before changing panel geometry.
+        #
+        # NO PRICE IN THE IMAGE (plan A-5, Ry 2026-08-18). The subtitle says
+        # "fixed fee" and the page says $5,000, so a fee change is a one-line
+        # HTML edit and never a card rebuild.
+        "out": "pilot-project/img/og-pilot-project.png",
+        "logo": "pilot-project/img/wolfpack-logo.png",
+        "title": "Let’s talk pilot project.",
+        "subtitle": "Fixed fee · Two to three weeks · Two systems you keep",
+        "max_lines": 2,
+        # Both are screenshots and keep framed()'s top anchor — the top of an
+        # application window is what identifies it. BQL crops centrally (its
+        # console is symmetrical); the Notion board crops from its LEFT edge so
+        # the board's first column and its titles survive, the same reason the
+        # portfolio card left-crops SetMaster for its rail.
+        "insets": [("portfolio/img/app-bql.jpg", None, 0.5),
+                   ("portfolio/img/app-notion-system.png", None, 0.0)],
+    },
+]
+
+
+# ==========================================================================
+# The emblem card — a different composition, for a card with no screenshot
+# ==========================================================================
+
+# Geometry for the emblem layout. The emblem is right-aligned and the text
+# block is centred against it, rather than the text-then-inset stack the
+# screenshot cards use.
+EMBLEM = 400
+EMBLEM_GAP = 48                      # clear space between text column and emblem
+
+
+def build_emblem(card, ttf):
+    """A card whose subject is a brand mark rather than a screenshot.
+
+    WHY THIS IS NOT `build()`. Every card above ends in a framed screenshot
+    bleeding off the bottom edge, and `framed()` puts the pages' figure-ground
+    frame around it — a #0A0A0A mat and a 1px hairline. That frame is right for
+    a screenshot, which is a picture *of* something and reads as a window. It is
+    wrong for the constellation, which is a mark on a navy plate: framing it
+    would draw a box around the one element whose whole behaviour is to float on
+    the field. `logo_alpha()` already keys this exact mark off its own plate for
+    the 44px wordmark — this is that, at 400px.
+
+    Everything else is deliberately shared with `build()`: the same navy field,
+    the same wordmark row, the same auto-fitted Roboto 700 title, exactly one
+    coral rule, the same grain and the same fixed seed. A reader seeing this
+    card beside the other seven should not be able to say which generator drew
+    which.
+
+    The text block is centred vertically instead of hanging from TITLE_TOP.
+    With no inset to sit above, a top-anchored title leaves a third of the card
+    as empty navy under the rule, which reads as a card that failed to finish
+    loading rather than as a composition.
+    """
+    out_path = ROOT / card["out"]
+    canvas = navy_field()
+
+    scratch = Image.new("RGB", (W, H))
+    draw = ImageDraw.Draw(scratch)
+
+    col_w = W - MARGIN - EMBLEM - EMBLEM_GAP - MARGIN
+    title_font, lines = fit_title(draw, card["title"], ttf, col_w, card["max_lines"])
+    lead = round(title_font.size * TITLE_LEAD)
+    title_h = lead * len(lines)
+
+    # Centre title + rule in the band below the wordmark, above the bottom margin.
+    block_h = title_h + RULE_GAP_ABOVE + RULE_H
+    band_top, band_bot = WORDMARK_TOP + LOGO + 40, H - MARGIN
+    title_top = band_top + ((band_bot - band_top) - block_h) // 2
+    rule_y = title_top + title_h + RULE_GAP_ABOVE
+
+    # --- the emblem, keyed onto the field ----------------------------------
+    ex, ey = W - MARGIN - EMBLEM, (H - EMBLEM) // 2
+    ea = logo_alpha(ROOT / card["emblem"], EMBLEM)
+
+    # A wide, faint wash behind it, so the mark sits in the field rather than on
+    # it. Same reason build() rims its frames: a near-black subject on a
+    # near-black ground otherwise reads as a hole rather than as an object.
+    halo = np.zeros((H, W), dtype=np.float32)
+    halo[ey:ey + EMBLEM, ex:ex + EMBLEM] = ea
+    canvas += (blur(halo, 34.0) * 0.20)[:, :, None] * lin(LIGHT_EDGE)
+
+    region = canvas[ey:ey + EMBLEM, ex:ex + EMBLEM]
+    canvas[ey:ey + EMBLEM, ex:ex + EMBLEM] = (
+        region * (1.0 - ea[:, :, None]) + lin(WHITE) * ea[:, :, None])
+
+    # --- the coral rule and its glow. One coral use. ------------------------
+    rule = np.zeros((H, W), dtype=np.float32)
+    rule[rule_y:rule_y + RULE_H, MARGIN:MARGIN + RULE_W] = 1.0
+    canvas += (blur(rule, 40) * 0.55 + blur(rule, 12) * 0.45)[:, :, None] * lin(CORAL) * 0.60
+
+    # --- the wordmark wolf --------------------------------------------------
+    la = logo_alpha(ROOT / card["logo"], LOGO)
+    ly, lx = WORDMARK_TOP, MARGIN
+    region = canvas[ly:ly + LOGO, lx:lx + LOGO]
+    canvas[ly:ly + LOGO, lx:lx + LOGO] = (
+        region * (1.0 - la[:, :, None]) + lin(WHITE) * la[:, :, None])
+
+    # --- linear light is done; flat paint from here -------------------------
+    out = Image.fromarray((np.clip(linear_to_srgb(canvas), 0, 1) * 255 + 0.5).astype(np.uint8))
+    draw = ImageDraw.Draw(out)
+
+    draw.rectangle([MARGIN, rule_y, MARGIN + RULE_W - 1, rule_y + RULE_H - 1], fill=CORAL)
+
+    wm_font = ImageFont.truetype(ttf, WORDMARK_SIZE)
+    tracked(draw, (MARGIN + LOGO + 18, WORDMARK_TOP + (LOGO - WORDMARK_SIZE) // 2 - 3),
+            "WOLFPACK DATA & STRATEGY", wm_font, MUTED, WORDMARK_TRACK)
+
+    for i, line in enumerate(lines):
+        draw.text((MARGIN, title_top + i * lead), line, font=title_font, fill=WHITE)
+
+    rng = np.random.default_rng(11)
+    final = np.asarray(out, dtype=np.float32) / 255.0
+    final += rng.normal(0.0, 0.45 / 255.0, final.shape).astype(np.float32)
+    out = Image.fromarray((np.clip(final, 0, 1) * 255 + 0.5).astype(np.uint8))
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out.save(out_path, optimize=True)
+    kb = out_path.stat().st_size / 1024
+    print(f"wrote {card['out']}  {out.size[0]}x{out.size[1]}  {kb:.0f} KB  "
+          f"title {title_font.size}px x{len(lines)}")
+
+
+EMBLEM_CARDS = [
+    {
+        # The wolfstrategyllc.com HOMEPAGE card — and the only card here whose
+        # destination is not this repo. The homepage is a Wix page, so this file
+        # does not deploy through ai-coaching-intake like the other seven; it is
+        # uploaded to the Wix Media Manager and set as the site's default social
+        # share image. That is why it lives under social-cards/, which never
+        # deploys, rather than in a page folder: there is no page folder.
+        #
+        # It exists because the Wix homepage declared `summary_large_image` and
+        # supplied no `og:image` at all, so every share of the site's front door
+        # rendered a broken-image placeholder (found 2026-08-17 on a LinkedIn
+        # profile Featured tile).
+        #
+        # THE SOURCE IS SUPPLIED ART, NOT GENERATED. Ry provided
+        # wolfpack-constellation-3d-square.png (661x661) on 2026-08-17. It is the
+        # master and must not be lost or retouched in place — the same provenance
+        # rule the case studies carry, where a supplied hero is as legitimate as
+        # a composed one and the delivered original is the thing that is kept.
+        #
+        # The title is the homepage's own <h1>, verbatim, not copy written here.
+        # The same rule the other cards follow — the page's own title — which is
+        # also why it is not "Home | WolfStrategyLLC", the Wix <title> written
+        # for a browser tab.
+        "out": "social-cards/wix/og-wolfstrategyllc-home.png",
+        "logo": "portfolio/img/wolfpack-logo.png",
+        "emblem": "social-cards/wix/wolfpack-constellation-3d-square.png",
+        "title": "Transform Your Data Into Decisions",
+        "max_lines": 3,
+    },
 ]
 
 
@@ -515,6 +900,8 @@ def main():
         ttf = unwoff(ROBOTO_700_LATIN, Path(tmp) / "roboto-700-latin.ttf")
         for card in CARDS:
             build(card, ttf)
+        for card in EMBLEM_CARDS:
+            build_emblem(card, ttf)
 
 
 if __name__ == "__main__":

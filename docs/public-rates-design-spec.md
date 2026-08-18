@@ -35,6 +35,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R12 | Public home → intake subdomain (added 2026-07-28) | **Canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** — a deployed copy in `ai-coaching-intake/rates_public/` (`ai-coaching-intake#34` / #59 here), same copy-on-change policy as the ROI calculator: this repo stays the source of truth, never edit the deployed copy, re-copy on change. The page's canonical/`og:url`/`og:image` tags point at the intake URL; the github.io path still serves. Supersedes R3. |
 | R13 | Path cards are navigation (added 2026-07-28) | The two §3.3 path cards **jump to their sections**: the **heading and the image** of each card link to `#engagements` (AI Engineering & Applications) and `#coaching` (AI Coaching for Professionals) — Ry, 2026-07-28 (#62). **Relative fragments, never absolute intake URLs** — the page serves from two origins (intake `…/rates_public/` and github.io `…/rates/`), and an absolute href would send a github.io reader cross-origin instead of scrolling; the fragment resolves to `https://intake.wolfstrategyllc.com/rates_public/#coaching` at the canonical home. The image link is `aria-hidden` + `tabindex="-1"` so the heading link is the card's single tab stop and single announced link. Rest-state cue is a muted `↓` (`↗` stays reserved for off-site links); hover coral is the existing allowed "link hover" use, so the coral ration is unchanged. Public-page-only — contract D14. |
 | R14 | Portfolio cross-link (added 2026-08-05) | A closing `#work` section below `#contact` with a single **navy-ghost** button, *"See recent projects"*, linking the portfolio at its canonical public URL `https://intake.wolfstrategyllc.com/portfolio/` (source in this repo's `portfolio/`) — Ry, 2026-08-05 (#127). **This closes D9**, which dropped the Q3 page's application-screenshot grid on the note that *"proof lives on the upcoming Applications page"* — that page now exists, so this is the link to it rather than a grid rebuilt here. A consideration-stage **link, not a funnel fork**, exactly as R11: the calendar CTA stays primary and R9's book-first / no-intake-links rule is untouched. **Ghost, never coral** — the ration in `rates/css/rates.css` is fully spent and a coral button here would compete with the booking CTA directly above it. **Absolute URL is correct here** (unlike R13's fragments): the portfolio is a different page, not a section of this one. Public-page-only — the Q3 page has no counterpart — contract D15. |
+| R15 | Pilot project band (added 2026-08-18) | A full-width band inside `#engagements`, **after `.tiers__caption` and before `#process`**, offering the **$5,000 fixed-fee pilot project** with a single **navy-ghost** button, *"See the pilot project"*, linking `https://intake.wolfstrategyllc.com/pilot-project/` (source in this repo's `pilot-project/`) — Ry, 2026-08-18 (#238). **Unlike R11/R13/R14 this is a MIRROR-SET item, not a delta**: the pilot landed on the Q3 page first by Ry's sequencing ruling (`wp-rates-page#42`) and this page derives from it, so both pages carry the band and its facts must match exactly. **Placed after the curve, never before it** — ahead of the tiers it would anchor every reader at the cheapest number on the page. **States no hours, no weekly commitment, and no effective hourly rate**: $5,000 across two to three weeks divides out beneath the `$140/hr` this page calls *"the deepest rate on the curve"* three lines above, so the band says out loud that a pilot prices a scoped outcome while the curve prices reserved time, rather than leaving a reader to do the division. *"Two to three weeks"* is a **calendar window** — copy says *delivered in*, never *of work*. **Ghost, never coral** (ration spent, as R14), **no new nav item**, and no `target="_blank"` (same-property link, as R11/R14). `/pilot-project/` is `noindex`; linking it from this indexed page does not make it indexable, so the reason it is unlisted is untouched. |
 
 ## 3. Page architecture (in order)
 
@@ -140,6 +141,28 @@ button *"See recent projects"* → `https://intake.wolfstrategyllc.com/portfolio
 Sits last at Ry's instruction (2026-08-05), so the final section is a consideration-stage
 offramp rather than the booking ask. **No coral** (ration spent — see R14), and no second
 destination beyond the portfolio.
+
+### 3.11a Pilot project band (inside `#engagements`) — R15
+A full-width `.bridge` sitting **after the tier caption and before `#process`**: the figure
+slot carries **$5,000 / FIXED FEE**, then *"Start with a pilot project"*, three sentences,
+and one **navy-ghost** button *"See the pilot project"* →
+`https://intake.wolfstrategyllc.com/pilot-project/`.
+
+It is numbered out of sequence deliberately — it lives inside §3.5's section rather than
+between §3.11 and §3.12, and renumbering the whole list to absorb it would break every
+inbound reference to R14/§3.11.
+
+**The third sentence is the load-bearing one.** *"A pilot buys a scoped outcome rather than
+reserved time, so it sits off the rate curve above"* is what stops the arithmetic: the band
+publishes a price and a calendar window and no hours at all, because $5,000 over two to
+three weeks divides out beneath the `$140/hr` named three lines up. Never add an hours
+figure, a weekly commitment, or an effective rate to this band.
+
+**Singular throughout** — *one problem*, *a pilot*. One per client is enforced on the call
+and stated nowhere, so nothing here may imply repeatability.
+
+**Not coral** (ration spent) and **no new nav item**. Mirror-set, not a delta — the Q3 page
+carries the same band (`wp-rates-page#42`), and the facts must match.
 
 ### 3.12 Footer
 Wordmark · *rates last reviewed \<Month YYYY\>* · link to wolfstrategyllc.com.

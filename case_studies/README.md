@@ -6,7 +6,7 @@ they read as a set rather than as pages that happen to look similar.
 | Case study | Folder | Planned public URL | Audience | Robots | Status |
 |---|---|---|---|---|---|
 | **The Model Is Your Business Beacon** | `ops_fin_model_support/` | `intake.wolfstrategyllc.com/ops-fin-model-case-study/` | Founders, directors, and management at startups and SMBs | **indexed** | **Deployed 2026-08-04** (#91), re-deployed same day with its figure placeholders hidden (#99) |
-| **Consolidation Under Pressure** | `consolidation_under_pressure/` | `intake.wolfstrategyllc.com/consolidation-under-pressure/` | Founders, directors, and operating executives | **indexed** | **Built 2026-08-11** (#172). Not deployed |
+| **Consolidation Under Pressure** | `consolidation_under_pressure/` | `intake.wolfstrategyllc.com/consolidation-under-pressure/` | Founders, directors, and operating executives | **indexed** | **Built 2026-08-11** (#172). Three review rounds 2026-08-15 (#197, #200, #206). **Deployed 2026-08-15** (`ai-coaching-intake#74`) |
 | ↳ its transaction map | `consolidation_under_pressure/transaction-map.html` | `…/consolidation-under-pressure/transaction-map.html` | as above | **noindex** | as above |
 | **An AI Operating Layer for Streamlining Project Delivery** | `wolfpack-ai-command/` | `intake.wolfstrategyllc.com/wolfpack-ai-command/` | Hiring companies lead; buyers of the system and project clients read along | **indexed** (ruled by Ry 2026-08-15, outline D-009) | **Built 2026-08-13** (#174). Hero + social card 2026-08-15 (#190). **Deployed 2026-08-15** (#190) |
 
@@ -68,10 +68,18 @@ deployed site, so paths are never rewritten.
   *refusals* grew on 2026-08-11 (#172) and the count did not: a report full of source-link
   glyphs, deal-value steps, macro bands and highlighted rows added six new temptations and
   spent nothing.
-- **No new hues.** The shared sheet introduces nothing beyond the navy system and a neutral
-  figure ground. A table that needs to mark one row important does it with weight and a
-  background lift. See the header comment for the reasoning and for how to add an accent
-  properly if one is ever genuinely needed.
+- **No new hues in page chrome.** The shared sheet introduces nothing beyond the navy system
+  and a neutral figure ground anywhere a reader meets the page itself — headings, rules,
+  tables, chips, buttons, links. A table that needs to mark one row important does it with
+  weight and a background lift. See the header comment for the reasoning.
+  - **One exception, added 2026-08-15 (#199): hue may encode a category *inside a figure*.**
+    The transaction map's four lanes carry `--map-l0`…`l3`, because a lane is a name rather
+    than a quantity and the ramp below is built for quantities. Three conditions: the variable
+    is genuinely categorical; the hue is **redundant** with something already in the figure
+    (position, and a lane name printed inside it), so nothing is the sole carrier of a fact;
+    and it touches neither the coral ration nor the navy chrome nor a magnitude scale. Declare
+    it in the sheet with a measured contrast ratio — never inline in a page. Full ruling:
+    [`docs/site-brief.md`](../docs/site-brief.md) §1.6.
   - **Two consequences worth knowing before you reach for a colour**, both solved in the
     sheet and both re-usable. **Direction** — a metric up or down — is carried by the glyph
     (▲ ▼ ▬) and by weight, never by a green and a red; a semantic colour pair is atomic and
@@ -79,6 +87,8 @@ deployed site, so paths are never rewritten.
     deal-value scale — is carried by an ordered ramp built along the figure ground's own
     neutral axis, dark to light on a dark surface. That is a sequential scale in one hue,
     which is what a magnitude actually is; a categorical palette would make it unreadable.
+    **It stays neutral now that the lanes are coloured** — that is the whole design of the
+    map: hue = which lane, lightness = how big, on the same dot.
 - **A rendered chart sits on the figure ground, a table the reader reads sits on the page.**
   `.figframe` joined `.shot`, `.ph` and `.dtable` in the `--fig-*` scope on 2026-08-11, for
   the reason the ground exists: a chart drawn in HTML is the alternative to a screenshot *of*
@@ -115,17 +125,40 @@ deployed site, so paths are never rewritten.
     that nobody will zoom. That column is blurred in the committed source capture *and*
     again at build time, and the figcaption says identifying details are obscured. Check any
     new capture at 5x or 6x before it ships, not at page scale.
-- **A generated figure ships with the thing that generated it.** The financial model hero is
-  composed, not shot: `ops_fin_model_support/planning/hero/build_hero.py` takes the source
-  capture in the same folder and writes
-  `case-study-assets/img/fin-model-beacon-hero.jpg`. The generator and its input live under
-  `planning/`, so neither deploys, and only the finished image does. An asset nobody can
-  rebuild is an asset nobody can correct.
-  - Anything generated still answers to the palette rules above. The hero's light is white
+- **Every image commits its master under `planning/`, and nothing is ever retouched where it
+  sits.** That is the whole rule. **It is deliberately not "images are generated"** — art
+  arrives here by more than one route, and a hero Ry hands over is as legitimate as one a
+  script composes. What is never acceptable is an image on the page that nobody can get back
+  behind.
+
+  Two provenances, both first-class, neither the exception:
+
+  | | The master is | To change it |
+  |---|---|---|
+  | **Generated** | The generator and its input | Re-run the generator. **Rebuild rather than retouch** |
+  | **Supplied** | The original file as delivered | Re-derive from the master. **Never edit in place** |
+
+  - **Generated** — the financial model hero is composed, not shot:
+    `ops_fin_model_support/planning/hero/build_hero.py` takes the source capture in the same
+    folder and writes `case-study-assets/img/fin-model-beacon-hero.jpg`. The AI Command shield
+    works the same way. Determinism is the point: an asset a script can rebuild is an asset
+    anyone can correct without art skills.
+  - **Supplied** — the Consolidation Under Pressure hero is a PNG Ry provided, with no
+    generator and no prospect of one. **The committed original is the master**, so it is the
+    thing that must never be lost, and every derivative records the *derivation* command that
+    produced it. A supplied asset is not a lesser one; it just relocates where "the original"
+    lives. Do not go looking for a `build_hero.py` beside it, and do not write one to
+    retro-fit the other pattern.
+
+  In both cases the master lives under `planning/`, so it never deploys, and only the finished
+  image does.
+
+  - **Both answer to the palette rules above.** The financial model hero's light is white
     carrying a trace of coral, its fringes are a tint of the navy, and its one coral element
     mirrors the coral border on `.hero__stand` immediately above it on the page. Coral drawn
     inside a JPEG does not spend a use from the stylesheet's ration of six, but it does have
-    to look like it belongs to the same system.
+    to look like it belongs to the same system. Supplied art is held to the same standard;
+    the check is the eye, not the build script.
 - **Every case study carries the full Open Graph head block.** A case study is a page people
   paste into LinkedIn, so its link preview is part of the page. The block sits immediately
   after the `canonical`/`icon` links and carries, without omissions:
