@@ -579,6 +579,18 @@ scraped from the deployed one:
 
 The `206` is the expected, documented-benign response, not a defect.
 
-**Still owed by a human: the Post Inspector pass on both URLs.** It cannot be done from a
-session — it needs a signed-in LinkedIn account — and until it happens neither URL has a
-cached scrape, which is the exact state that makes a Featured link fail with "invalid URL".
+**Post Inspector: run and clean on both URLs, Ry, 2026-08-18** — same day as the deploy, so
+neither URL ever sat in the no-cached-scrape state. This was the one step no session could
+do (it needs a signed-in LinkedIn account) and the one nothing in either repo can observe
+afterwards, which is why it is written down here rather than left to memory. **Both cards
+render.**
+
+The step itself is not retired — it is owed again by **any future change to either page's
+`<head>` or card image**, and by any *new* card-bearing URL. LinkedIn caches a preview for
+roughly a week, a failure included, so a card corrected after a bad scrape stays wrong past
+the moment it mattered. Treat a card edit as unfinished until the URL has been re-inspected.
+
+The state this replaced, kept because it is the failure mode: until a URL has been scraped
+once, LinkedIn's Featured-link validator reports it as **"invalid URL"** rather than as a
+cache miss — a healthy page failing for a reason that names nothing true about it. That is
+what cost the `/portfolio/` investigation on 2026-08-17.
