@@ -558,3 +558,27 @@ Both live in `hire/assets/img/`, which makes them the only two cards here sharin
 - **LinkedIn has never scraped either URL.** Run both through the Post Inspector after the
   intake deploy, or the Featured-link validator will report "invalid URL" for what is
   really a cache miss — the trap `CLAUDE.md` records from 2026-08-17.
+
+**Deployed 2026-08-18**, `ai-coaching-intake` **#81 / PR #82**, moving that repo's `hire/`
+pin from upstream `414b0b7` to `4419fd5`. Re-copied whole from the upstream
+`git ls-files hire/` list — a folder mirror cannot see a *new* upstream file, and two of the
+five changes were new files — then all 40 tracked files verified byte-identical with `cmp`.
+Nothing else had drifted since that folder's last re-copy, checked rather than assumed.
+
+**Live verification, run after the Pages build completed** — this is the check §9 exists for
+and `check_meta.py` structurally cannot make, because it reads *this* repo and a card is
+scraped from the deployed one:
+
+| Checked | Result |
+|---|---|
+| Both pages fetched as `LinkedInBot` with `Range: bytes=0-16383` | `206`, and the whole OG block inside the first chunk |
+| Live OG blocks vs. this repo's | identical, tag for tag |
+| `og:image` URLs | `200 image/png`, and **byte-identical** to the committed PNGs |
+| Declared `1200×627` vs. the actual PNG IHDR | matches on both |
+| `robots` on both pages | still `noindex, nofollow` — a card did not make them findable |
+
+The `206` is the expected, documented-benign response, not a defect.
+
+**Still owed by a human: the Post Inspector pass on both URLs.** It cannot be done from a
+session — it needs a signed-in LinkedIn account — and until it happens neither URL has a
+cached scrape, which is the exact state that makes a Featured link fail with "invalid URL".
