@@ -716,6 +716,46 @@ CARDS = [
         "max_lines": 1,
         "insets": [("hire/assets/img/app-setmaster.png", None, 0.0)],
     },
+
+    {
+        # The pilot project offer page (#236). Two panels, the portfolio card's
+        # "a body of work rather than a single product" reasoning applied to a
+        # different claim: these are the TWO SYSTEMS THE PILOT INCLUDES, so the
+        # card shows what the fee buys beyond the weeks rather than illustrating
+        # the consultancy in general.
+        #
+        # NEITHER PANEL APPEARS ON ANY OTHER CARD, and that is checked rather
+        # than assumed — the portfolio card runs SetMaster + e-commerce, the two
+        # hire/ cards run the backbone, pdpd and SetMaster, and the three case
+        # studies run their own heroes. Two Featured tiles carrying the same
+        # screenshot read as one duplicated post (plan D-002), and this page is
+        # one Ry will paste beside the others.
+        #
+        # The AI Command panel is app-notion-system.png rather than the shield
+        # print, DESPITE the print being the better-behaved 4:1 band: the print
+        # is already the AI Command case study's inset, and that case study is
+        # linked from this very page. Two tiles, one monogram, one post — the
+        # exact failure the paragraph above exists to prevent. The screenshot is
+        # 543x506, the smallest source any card here uses, and it fits the 502px
+        # inner width with 8% to spare; it does NOT upscale, but it has no room
+        # to lose either, so re-check the scale before changing panel geometry.
+        #
+        # NO PRICE IN THE IMAGE (plan A-5, Ry 2026-08-18). The subtitle says
+        # "fixed fee" and the page says $5,000, so a fee change is a one-line
+        # HTML edit and never a card rebuild.
+        "out": "pilot-project/img/og-pilot-project.png",
+        "logo": "pilot-project/img/wolfpack-logo.png",
+        "title": "Let’s talk pilot project.",
+        "subtitle": "Fixed fee · Two to three weeks · Two systems you keep",
+        "max_lines": 2,
+        # Both are screenshots and keep framed()'s top anchor — the top of an
+        # application window is what identifies it. BQL crops centrally (its
+        # console is symmetrical); the Notion board crops from its LEFT edge so
+        # the board's first column and its titles survive, the same reason the
+        # portfolio card left-crops SetMaster for its rail.
+        "insets": [("portfolio/img/app-bql.jpg", None, 0.5),
+                   ("portfolio/img/app-notion-system.png", None, 0.0)],
+    },
 ]
 
 

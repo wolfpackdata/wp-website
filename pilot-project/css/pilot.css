@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Wolfpack Pilot Project — wolfstrategyllc.com brand
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+
+   DERIVED FROM rates/css/rates.css BY DELETION, NOT BY AUTHORING.
+   Every declaration below is byte-identical to its counterpart there; this sheet
+   is that one with the components this page does not use removed. Nothing was
+   invented, and nothing was "improved" in passing — the two pages have to read
+   as the same hand, and the rates page is the pattern library.
+
+   The four deliberate departures, so a diff against rates.css is legible:
+
+     1. `.nav__links` is gone, with its 640px hide rule. This page has no in-page
+        navigation to offer — it is one screen and a bit.
+     2. `.section__ctas` is added as a SECOND SELECTOR on `.hero__ctas`, not as a
+        new rule. rates.css already reuses that same declaration under a third
+        name (`.coaching__ctas`); this page needs a button row outside the hero
+        and takes the honest name rather than a fourth copy of the declaration.
+     3. `.rail__facts li strong` is added — one line, matching `.fit__note strong`
+        and `.tier__eff strong` in rates.css exactly. The example list labels need
+        to lift off the muted body colour and there was no existing rule for it.
+     4. `.rail__price span` goes `display: block` under 640px. rates.css needs no
+        such rule because its sub-line is "/ hour"; this page's is "fixed fee,
+        delivered in 2-3 weeks", which wrapped mid-phrase at 390px and left one
+        orphaned word sitting in a 2.1rem line box. Measured, not guessed — and
+        it is why the sub-line opens on a space rather than a separator glyph,
+        which would strand a leading middot once the line stacks.
+
+   `.rail__price` and `.rail__facts` are used WITHOUT their `.rail` parent, which
+   is not an oversight. `.rail__price` is the property's entry-price typography
+   and this page's price is an entry price; `.rail__facts` is its neutral
+   enumeration marker. Re-declaring either under a new name would fork the
+   pattern library to avoid a naming quibble.
+
+   CORAL DISCIPLINE — the ration is FIVE, enumerated here so it cannot drift, and
+   every use site below carries a "coral use N of 5" comment, so the count is
+   greppable rather than merely asserted (the practice `sm3-case.css` set):
+
+     1. nav CTA fill
+     2. hero CTA fill
+     3. closing CTA fill
+     4. link hover
+     5. focus ring
+
+   Nothing else. NOT the price — every ration on this property already refuses
+   stat values, and the price is the biggest number on the page precisely because
+   type size is carrying it, not colour. Where coral is a FILL, text on it is
+   navy (5.8:1), never white (fails AA).
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono: ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }                                  /* coral use 4 of 5 */
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }  /* coral use 5 of 5 */
+
+h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Sticky nav
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(0, 11, 41, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 28px; height: 58px;
+}
+.nav__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-right: auto;
+}
+.nav__brand:hover { color: var(--white); }
+.nav__logo { width: 30px; height: 30px; }
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.nav__cta {                                                       /* coral use 1 of 5 */
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--coral); color: var(--navy) !important;
+  padding: 8px 16px; border-radius: var(--radius);
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; }
+.hero__watermark {
+  position: absolute; right: 0; top: 24px;
+  width: 380px; height: 380px; opacity: 0.14; pointer-events: none;
+  user-select: none;
+}
+.hero__inner { position: relative; padding: 96px 0 72px; max-width: 720px; }
+.hero__kicker { font-size: 0.9375rem; letter-spacing: 0.18em; margin-bottom: 20px; }
+.hero__title { font-size: clamp(2.3rem, 5.4vw, 3.5rem); margin-bottom: 22px; }
+.hero__lede { font-size: 1.0625rem; color: var(--muted); max-width: 58ch; }
+
+/* Second selector, not a second rule — see the header note. */
+.hero__ctas,
+.section__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 38px; }
+
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; padding: 13px 26px; border-radius: var(--radius);
+}
+.btn--solid { background: var(--coral); color: var(--navy); }     /* coral uses 2 and 3 of 5 */
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+.btn--ghost { border: 1px solid var(--line); color: var(--white); }
+.btn--ghost:hover { border-color: var(--coral); color: var(--coral); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section { padding: 76px 0; scroll-margin-top: 70px; }
+.section--line { border-top: 1px solid var(--line); }
+.section__head { max-width: 680px; margin-bottom: 44px; }
+.section__kicker { display: block; margin-bottom: 12px; }
+.section__title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
+.section__lede { color: var(--muted); }
+
+/* ==========================================================================
+   Neutral enumeration — the pilot examples
+
+   Deliberately the SMALLER, unticked list. The check-list below is the page's
+   promise; this one is illustration, and the two must not look alike or the
+   examples start reading as three products at one price.
+   ========================================================================== */
+
+.rail__facts { list-style: none; font-size: 0.875rem; color: var(--muted); }
+.rail__facts li { padding: 5px 0 5px 20px; position: relative; }
+.rail__facts li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+.rail__facts li strong { color: var(--white); font-weight: 600; }
+
+.fit__note { margin-top: 26px; font-size: 0.9375rem; color: var(--muted); max-width: 72ch; }
+.fit__note strong { color: var(--white); font-weight: 600; }
+
+/* ==========================================================================
+   The entry price
+   ========================================================================== */
+
+.rail__price { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 2.1rem; margin: 6px 0 4px; }
+.rail__price span { font-size: 1rem; font-weight: 400; color: var(--muted); font-family: 'Montserrat', sans-serif; }
+
+/* ==========================================================================
+   Two-up cards — the systems that stay
+   ========================================================================== */
+
+.paths { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.path {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 30px;
+}
+.path h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.path p { font-size: 0.9375rem; color: var(--muted); }
+
+/* ==========================================================================
+   The promise list
+   ========================================================================== */
+
+.check-list { list-style: none; }
+.check-list li { padding: 7px 0 7px 26px; position: relative; color: var(--muted); }
+.check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--white); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 36px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--faint); }
+.foot__meta a { color: var(--muted); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .paths { grid-template-columns: 1fr; }
+  .hero__watermark { width: 300px; height: 300px; right: -90px; }
+}
+
+@media (max-width: 640px) {
+  .hero__inner { padding: 64px 0 52px; }
+  .section { padding: 56px 0; }
+  /* Its own line rather than a mid-phrase wrap inside a 2.1rem line box. */
+  .rail__price span { display: block; }
+}
