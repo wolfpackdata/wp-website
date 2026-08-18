@@ -80,6 +80,7 @@ PAGES = [
     ("hire/ryan-hickey/index.html", "/hire/ryan-hickey/"),
     ("hire/ryan-hickey-music/index.html", "/hire/ryan-hickey-music/"),
     ("portfolio/index.html", "/portfolio/"),
+    ("pilot-project/index.html", "/pilot-project/"),
     ("github/index.html", "/github/"),
     ("case_studies/ops_fin_model_support/index.html", "/ops-fin-model-case-study/"),
     # The music-gear M&A case study. Its folder also ships transaction-map.html,
