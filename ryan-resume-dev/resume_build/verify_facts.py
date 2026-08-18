@@ -113,7 +113,7 @@ SHARED = {
     "the $300K → $30M growth run": r"\$300K to \$30M",
     "the Tromml MRR figure": r"\$20k",
     "the Auto SOSS algorithms were Python and SQL": r"pricing and inventory algorithms in\s+Python and SQL",
-    "SetMaster is at v3.0.3, not the prototype": r"v3\.0\.3",
+    "SetMaster is at v3.0.4, not the prototype": r"v3\.0\.4",
     "the AI dev command center": r"command center",
     # v2.1: RML is named on both, so a reader who searches it finds the same
     # entity from either résumé. Dropping it from one would break that.
