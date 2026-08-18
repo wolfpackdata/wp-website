@@ -111,7 +111,8 @@ is `docs/social-cards-and-linkedin-readiness-plan.md` §9.
 2. **Card quality, as against card presence.** Check 5 only fires for
    `twitter:card: summary_large_image`, so the 1200×627 floor is never applied to a `summary`
    page. That is correct under **D-004** (below), but it means the guard is deliberately
-   silent about five pages — don't read their PASS as "the card looks good."
+   silent about three pages — don't read their PASS as "the card looks good." It was five
+   until 2026-08-18, when the two `hire/` pages took built cards (#230).
 3. **Whether LinkedIn has ever scraped the URL.** Nothing in this repo can know that, and it
    is the one that bites (below).
 
@@ -140,13 +141,21 @@ scraped while it was briefly wrong stays wrong past the moment it mattered.
 
 ### The small-card pages are a ruling, not a defect
 
-**D-004** (Ry, 2026-08-07, in the plan's ledger) keeps `rates/`, both `hire/` pages,
-`github/`, and `roi-calculator/` on the 200×200 logo with `twitter:card: summary`, on the
-reasoning that they "are not primarily share targets." **A session that finds these and
-"upgrades" them has reversed a decision.** If featuring them on LinkedIn has changed that
-premise, that is a question for Ry, not a fix. Same for **D-003** (the ops-fin case study
-reuses its 2100×1181 beacon hero at ratio 1.78 rather than getting a built card) and **D-013**
+**D-004** (Ry, 2026-08-07, in the plan's ledger) keeps `rates/`, `github/`, and
+`roi-calculator/` on the 200×200 logo with `twitter:card: summary`, on the reasoning that
+they "are not primarily share targets." **A session that finds these three and "upgrades"
+them has reversed a decision.** If featuring them on LinkedIn has changed that premise, that
+is a question for Ry, not a fix. Same for **D-003** (the ops-fin case study reuses its
+2100×1181 beacon hero at ratio 1.78 rather than getting a built card) and **D-013**
 (`og:site_name` is not retro-added to pages a PR does not otherwise touch).
+
+**The two `hire/` pages were carved out of D-004 on 2026-08-18** (#230, plan **D-015**) and
+now carry built 1200×627 cards. That is not a precedent for the other three, and the reason
+it is not is specific: D-004's premise had these backwards. Every other page here is *found*
+— indexed, linked, arrived at — so its card is incidental to the visit. The `hire/` pages are
+`noindex`, so the **only** way anyone reaches one is Ry pasting the URL somewhere, which makes
+the preview the first impression rather than a decoration on it. That argument applies to
+`github/` and not to `rates/` or `roi-calculator/`, and Ry has not made it — so don't.
 
 ## Design system — read the site brief before touching CSS
 
@@ -264,6 +273,18 @@ Conventions the pages must keep:
   quietly age into being harmless.
 - **One shared `assets/` folder**, unlike the other page folders, which each carry their
   own font copies. `hire/` deploys as a single unit; the pages reference `../assets/…`.
+- **Each page carries a built 1200×627 card, and NEITHER SHOWS RYAN'S FACE** (2026-08-18,
+  #230, plan D-015/D-016). Ry's instruction, and it is the constraint that makes the cards
+  work: with no portrait to lead on, each argues from the work.
+  `hire/assets/img/og-ryan-hickey.png` runs the `$30M` backbone render beside the pdpd
+  console — architecture and shipped software, which is the page's claim;
+  `og-ryan-hickey-music.png` runs one full-width SetMaster panel, because two cards for two
+  framings of one person have to be separable at 360px by **structure**, not just by a role
+  line. Both are built by `social-cards/build_cards.py` — **rebuild rather than retouch** —
+  and they are the only two cards here sharing a folder, because `hire/` is the only page
+  folder that deploys as a single unit. Neither reuses a `portfolio/` card panel, so the
+  three never read as one duplicated post. **A card is not indexing**: `noindex` above is
+  untouched by this, and adding one did not make these pages findable.
 - **Content comes from the résumé YAML, verbatim.** Experience bullets and project blurbs
   are guarded by `ryan-resume-dev/resume_build/verify_facts.py`; retyping them into the
   HTML creates a second, unguarded copy that will drift. Copy, don't paraphrase — and
