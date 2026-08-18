@@ -240,7 +240,7 @@ sections:
           Traktor’s collection.nml XML strictly read-only, reconciles it against
           exported Spotify playlists through years of accumulated name-normalization
           and matching heuristics, and adds key/BPM analysis, compound catalog
-          filtering, and a structured set editor. Now at v3.0.3 after three
+          filtering, and a structured set editor. Now at v3.0.4 after four
           issue-driven fix rounds; it replaces an Excel/VBA prototype used
           professionally for years.
       - name: pdpd
