@@ -210,20 +210,31 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
    differ: rates' version is wrapped in a link and carries hover transitions,
    because a rates path card is a jump to a section. These tiles are not links,
    so the portfolio version — a bare img with its own bottom margin and a top
-   object-position — is the one that actually fits. Values are byte-identical
-   to portfolio.css. */
+   object-position — is the one that actually fits.
+
+   ONE VALUE DIVERGES FROM portfolio.css, DELIBERATELY: the ratio is 4:3 here
+   for BOTH tiles, where portfolio runs 16:9 by default and drops to 4:3 only
+   for `.app--narrow`. Portfolio can afford the mixed ratio because eight tiles
+   in a grid absorb it as rhythm. THIS PAGE HAS EXACTLY TWO TILES SIDE BY SIDE,
+   and two different frame heights put the two headings at two different
+   baselines, which reads as a mistake rather than as rhythm (Ry, 2026-08-18).
+
+   4:3 rather than 16:9 is the right direction to converge, not a coin toss:
+   app-notion-system.png is 543×506 and near-square, so 16:9 would crop it hard
+   AND soften it at 2x, while app-bql.jpg is 1536×1024 — a 3:2 source that 4:3
+   trims only slightly. Matching on 16:9 would have cost the weaker image; this
+   way neither is hurt. If a third tile ever lands here with a wide source, that
+   is the moment to revisit — not before. */
 .path__shot {
-  display: block; width: 100%; aspect-ratio: 16 / 9;
+  display: block; width: 100%; aspect-ratio: 4 / 3;
   object-fit: cover; object-position: 50% 0;
   background: var(--surface-2); border: 1px solid var(--line);
   border-radius: var(--radius); margin-bottom: 16px;
 }
-/* app-notion-system.png is 543×506 — near-square and low-res. A full-width
-   16:9 cover frame would visibly soften it, so it gets a 4:3 frame instead.
-   Reads as an intentional rhythm break rather than a defect. Carried over
-   from portfolio.css with its reasoning, because the same file is on both
-   pages and would otherwise be framed two different ways for no reason. */
-.path--narrow .path__shot { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+/* The near-square Notion shot centres in its frame instead of top-anchoring —
+   portfolio.css pairs the same object-position with the same file, so the one
+   image that appears on both pages is framed the same way on both. */
+.path--narrow .path__shot { object-position: 50% 50%; }
 
 /* ==========================================================================
    The promise list
