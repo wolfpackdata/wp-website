@@ -204,6 +204,27 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .path h3 { font-size: 1.05rem; margin-bottom: 10px; }
 .path p { font-size: 0.9375rem; color: var(--muted); }
 
+/* The tile shot, taken from portfolio.css's `.app__shot` RATHER THAN from
+   rates.css's `.path__shot`, which is the sheet everything else here comes
+   from. Ry asked for "same as the portfolio page tiles" and the two really do
+   differ: rates' version is wrapped in a link and carries hover transitions,
+   because a rates path card is a jump to a section. These tiles are not links,
+   so the portfolio version — a bare img with its own bottom margin and a top
+   object-position — is the one that actually fits. Values are byte-identical
+   to portfolio.css. */
+.path__shot {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  object-fit: cover; object-position: 50% 0;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); margin-bottom: 16px;
+}
+/* app-notion-system.png is 543×506 — near-square and low-res. A full-width
+   16:9 cover frame would visibly soften it, so it gets a 4:3 frame instead.
+   Reads as an intentional rhythm break rather than a defect. Carried over
+   from portfolio.css with its reasoning, because the same file is on both
+   pages and would otherwise be framed two different ways for no reason. */
+.path--narrow .path__shot { aspect-ratio: 4 / 3; object-position: 50% 50%; }
+
 /* ==========================================================================
    The promise list
    ========================================================================== */
