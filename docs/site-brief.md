@@ -208,6 +208,7 @@ as a fifth category. Same for the time axis, which every lane shares.
 | `portfolio/` | 6 | **2026-08-04** | nav CTA · closing intro-call button *(was hero CTA until #130 — moved, not duplicated)* · hero rule · IN PREPARATION chip *(live but unused)* · link hover · focus ring |
 | `case_studies/` | 6 | **2026-08-04** (#92) — set at build, never moved | nav CTA · hero rule · pull-quote rule · closing CTA · link hover · focus ring. **The refusal list grew 2026-08-11 (#172); the count did not** — a ~6,000-word report brought source-link glyphs, a five-step deal-value scale, two macro bands, highlighted table rows, part numbers, era cards and an "open full width" affordance, and not one of them became coral |
 | `github/` | **3** | **2026-08-07** | button fill · link hover · focus ring. The smallest — *"what a page with one link should cost"*. Was 4 until #158 took the hero rule with the standfirst it underlined |
+| `pilot-project/` | **5** | **2026-08-18** (#236) — set at build | nav CTA · hero CTA · closing CTA · link hover · focus ring. **Not the price** — the biggest number on the page is carried by type size, which is the ration's own refusal of stat values applied to the one page where a number is the offer |
 
 ⚠️ **`ai-coaching/` could not be counted from its own header — now ruled at 8.**
 It states the ration in prose rather than as a numbered list, and the prose was genuinely
@@ -339,6 +340,7 @@ excluded by design (two strings on the page, #158).
 | `portfolio/` | 1 + 1 subordinate | SetMaster 3 product page (D-015, Ry 2026-08-17) — navy-ghost, one size down, in the tile whose product it is. **Never link `hire/`** — those carry a time-sensitive "actively seeking a role" claim; linking from a client-facing page tells every prospect he is job-hunting. **The harm is the résumés, not `noindex`** (D-003, scope-corrected same day) |
 | `github/` | 1 | Stricter: **no `mailto:` in the footer**, uniquely in the repo — *"that is precisely how a not-a-contact-page becomes a contact page"* |
 | `rates/` | 1 + 2 subordinate | ROI calculator (R11) and portfolio (R14), both navy-ghost, both individually ruled |
+| `pilot-project/` | 1 + 3 subordinate | The rate card and the AI Coaching page, both navy-ghost buttons, plus an **inline text** link to `/wolfpack-ai-command/` on the blurb of one of the two included systems (S-12). The case-study link is navigation within the work, the reading portfolio D-014 settled — but it is written down here because it is the count's third, and three is one more than any other page carries. **Deliberately linked FROM nothing** until Ry rules on the rates-page band |
 
 **Navigation strategy (X-8): user-first and intuitive is the default; one-way is an
 exception that must name its reason.**
@@ -382,6 +384,7 @@ decisions**, and this table is incomplete until that pass happens. See the open 
 | `case_studies/` | Founders, SMB directors, operating executives | Indexed | Client names, invented testimonials, **and any claimed outcome** — the stat tiles carry build, artifact and method facts only |
 | `…/transaction-map.html` | as above, arriving from the report | **noindex** | Everything except one figure and the route back |
 | `github/` | Anyone sent the link | **noindex** | Everything except a heading and a button |
+| `pilot-project/` | A prospect who balked at the monthly tiers | **noindex** | **Hours, weekly commitment, and any effective hourly rate** — the fee prices a scoped outcome and the rate curve prices reserved time, so publishing hours here would contradict `/rates_public/` arithmetically. Also: the once-per-client limit (enforced on the call), and any measured outcome |
 | `roi-calculator/` | Consideration-stage clients | Indexed | — a tool, not a funnel page |
 | `setmaster3/` | **Product users** — DJs | Indexed | Wolfpack consultancy framing entirely. It is the product's own surface (§11) |
 | `setmaster3-case-study/` | Clients / hiring managers | Indexed *(flipped from `noindex` 2026-08-04)* | The product-user framing — it is a portfolio document about the product |

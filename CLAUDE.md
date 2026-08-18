@@ -27,8 +27,9 @@ The **wolfstrategyllc.com website repo** — static HTML/CSS/JS, no build step. 
 holds the ROI calculator (`roi-calculator/`), the AI Coaching landing page
 (`ai-coaching/`, see below), the public rates page (`rates/`, see below), the two
 résumé landing pages (`hire/`, see below), the long-form case studies (`case_studies/`,
-see below), the portfolio landing page (`portfolio/`, see below), and the GitHub link page
-(`github/`, see below); more site pieces land here as they're built. Verify by opening the
+see below), the portfolio landing page (`portfolio/`, see below), the GitHub link page
+(`github/`, see below), and the pilot-project offer page (`pilot-project/`, see
+below); more site pieces land here as they're built. Verify by opening the
 page in a browser.
 
 Four exceptions to "no build step", all Python that builds *inputs* rather than the site
@@ -68,6 +69,7 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
 | `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | 2026-08-07 (#155) |
+| `pilot-project/` | `https://intake.wolfstrategyllc.com/pilot-project/` — **`noindex`**, direct-link only; the $5,000 fixed-fee pilot offer | 2026-08-18 (#236) |
 
 `sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
 `sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
@@ -630,6 +632,80 @@ Conventions the page must keep:
   at 480px and 360px now step padding and type down; worst case is 375px at 16% headroom.
   **Re-measure after any change to that label, its padding, or its font — a screenshot cannot
   show you the remaining slack.**
+
+## `pilot-project/` — the $5,000 pilot project offer page
+One short page offering a **fixed-fee pilot engagement** — a lower-priced first
+project for a prospect not ready for a monthly tier. Six blocks, one screen and a bit,
+at `https://intake.wolfstrategyllc.com/pilot-project/`. **Built and deployed 2026-08-18
+(#236).** Full design plan and 17-ruling ledger: `docs/pilot-project-design-plan.md`.
+
+Conventions the page must keep:
+- **The fee buys a scoped outcome, not hours — so the page states no hours, no weekly
+  commitment, and no effective hourly rate.** $5,000 across two to three weeks divides
+  out beneath **$140/hr**, which `/rates_public/` calls *"the deepest rate on the
+  curve."* The pilot prices a result; the rate curve prices reserved time. Publishing an
+  hours figure anywhere on this page invites an arithmetic that contradicts the rate
+  card, and there is no version of that which ends well.
+- **"Two to three weeks" is a calendar window**, not an effort estimate. Copy says
+  *delivered in*, never *of work* — same reason.
+- **`noindex, nofollow`, direct-link only**, like `hire/` and `github/`. Ry sends this
+  URL to a prospect who has balked at the monthly tiers. An indexed $5,000 offer would
+  compete with `/rates_public/` for pricing queries and anchor every reader at the
+  cheapest number Wolfpack sells. Don't add it to a sitemap and **don't link it from
+  `rates/`, `portfolio/`, or Wix** until Ry rules on the rates-page band (below).
+  **It still carries a built 1200×627 card** — `noindex` and a large card are not in
+  tension, and `hire/` set that precedent on 2026-08-18 (#230): a page that is *pasted*
+  needs its preview more than a page that is found.
+- **The three pilot shapes are EXAMPLES and stay a plain list — never a card grid.**
+  As cards they read as three products at one price, which obliges three scope sheets,
+  implies three unequal jobs cost the same, and invites *"none of these is us, so I'm
+  not a fit."* Three is the count: two reads as a choice, four as a catalogue. **At
+  least one example must map to neither included system** — currently operations
+  automation — or the pilot reads as buying a BQL install.
+- **One per client, and the page deliberately does not say so** (Ry, 2026-08-18).
+  Enforced on the call. Nothing in the copy may imply repeatability: no *"each
+  project"*, no *"your next pilot"*, nothing plural.
+- **ROI confidence is about method, never results.** The page may say the work is
+  instrumented and that the client will see what it returned — the *"live dashboards
+  that show what's working—and prove the ROI"* line is lifted verbatim from the
+  Wolfpack Advantage list already public on `/rates_public/`, so no new claim is
+  opened. It may **never** state a measured outcome, a percentage, a multiple, or a
+  past client result. Nothing on this property claims a measured outcome; one invented
+  number on a page that is selling would discredit all four case studies at once.
+- **Both included systems install into the client's own accounts** — Wolfpack AI
+  Command into their Notion and GitHub, the BQL Analytics Provisioner into their own
+  Google Cloud project with consultant access revocable. This is the only reason the
+  *"keeps working after it ends"* framing is true; if the delivery model changes, that
+  copy changes with it.
+- **Both product blurbs are written fresh, NOT copied from the résumé YAML.**
+  `ryan-resume-dev/resume_build/verify_facts.py` check 6 guards those strings across
+  `portfolio/` and both `hire/` pages; pasting one here would create a fourth copy that
+  no check covers. `HTML_PAGES` is deliberately not extended.
+- **`css/pilot.css` is `rates/css/rates.css` by deletion, not by authoring.** Every
+  surviving declaration is byte-identical; the four deliberate departures are
+  enumerated in the sheet's header comment. Coral is rationed to **five**, enumerated
+  there, with a greppable `coral use N of 5` marker at each use site. The price is
+  **not** coral — type size carries it.
+- **The tile shots are 4:3 on BOTH cards**, which diverges from `portfolio.css`'s 16:9
+  default on purpose (Ry, 2026-08-18). Portfolio can afford a mixed ratio across eight
+  tiles; two tiles side by side with different frame heights put the two headings on
+  different baselines and read as a mistake. 4:3 is the direction that costs nothing —
+  the near-square Notion shot would crop hard and soften at 16:9, while BQL's 3:2
+  source trims only slightly at 4:3.
+- **Self-contained folder** with its own `css/`, `fonts/`, `img/`, like `portfolio/`
+  and `github/`. Folder name is already the URL slug, so it copies to the intake root
+  unchanged.
+- **The social card carries no price** (Ry, 2026-08-18), so a fee change is a one-line
+  HTML edit and never a card rebuild. Both inset panels are un-carded elsewhere, so no
+  two Featured tiles read as one duplicated post.
+
+**Still open — the rates-page band.** The page is deliberately linked from nothing yet.
+Ry ruled that the pilot goes on the **Q3 direct-link page first** and `/rates_public/`
+mirrors it, so the starter joins the consistency contract's **mirror set** rather than
+its delta list. When that lands: a second full-width band inside `#engagements`, after
+`.tiers__caption` and before `#process`, navy-ghost link, no new nav item — plus spec
+**R15** for the third subordinate destination, and the *"rates last reviewed"* line
+moved in both the hero kicker and the footer.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
