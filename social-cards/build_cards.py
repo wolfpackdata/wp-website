@@ -7,9 +7,13 @@ Run from the repo root. It rebuilds all of them, every time, into the folders
 that deploy:
 
     case_studies/case-study-assets/img/og-consolidation-under-pressure.png
+    case_studies/case-study-assets/img/og-wolfpack-ai-command.png
     sm3-specific-pages/sm3-assets/img/og-setmaster3-case-study.png
     portfolio/img/og-portfolio.png
     ai-coaching/img/og-ai-coaching.png
+    hire/assets/img/og-ryan-hickey.png
+    hire/assets/img/og-ryan-hickey-music.png
+    social-cards/wix/og-wolfstrategyllc-home.png        (the Wix homepage, not this repo)
 
 Every inset is now a file that already exists — a screenshot, a supplied hero, or
 a generated emblem — so there is no capture step to run first. That was not true
@@ -105,6 +109,15 @@ TITLE_LEAD = 1.14                    # .15 in CSS; tightened, because these are
                                      # display sizes rather than page headings
 MAX_TITLE_H = 250                    # see fit_title — the inset's floor, really
 RULE_W, RULE_H = 132, 4              # one coral use, per .hero__stand
+# The optional subtitle line. See build()'s `subtitle` handling for why it
+# exists; these are its whole geometry.
+SUB_HI, SUB_LO = 48, 28              # 48px is 14px at a 360px Featured tile
+SUB_MAX_LINES = 2
+SUB_LEAD = 1.30                      # looser than the title's, because this is
+                                     # a reading line rather than a display one
+SUB_GAP_ABOVE = 18
+SUB_SEP = " · "                      # the role-line separator, as .hero__role
+                                     # sets it (a <span class="sep">)
 RULE_GAP_ABOVE = 34
 RULE_GAP_BELOW = 44
 MAT_PAD = 10
@@ -229,6 +242,57 @@ def fit_title(draw, text, ttf, max_w, max_lines, hi=96, lo=56):
     return font, wrap(draw, text, font, max_w)
 
 
+def wrap_parts(draw, parts, font, max_w):
+    """Greedy-wrap whole phrases, re-joining each line's phrases with SUB_SEP.
+
+    Word-wrapping a role line — `A · B · C` — lets a line end on the separator:
+    the music card's first pass read "AI Engineer · Data & AI Systems Architect ·"
+    and then dropped "Professional Musician" onto the next line, which looks
+    like a typo rather than like a list. Wrapping the PHRASES and re-adding the
+    separator per line means it can only ever appear BETWEEN two phrases that
+    share a line, never at a line's start or end.
+
+    It also keeps a phrase whole, which is the more important half: "Data & AI
+    Systems Architect" is one job title and splitting it across two lines reads
+    as two.
+
+    Returns None when a single phrase cannot fit on a line by itself — the
+    caller steps the size down instead of shipping an overflowing line.
+    """
+    lines, cur = [], []
+    for part in parts:
+        if draw.textlength(part, font=font) > max_w:
+            return None
+        if cur and draw.textlength(SUB_SEP.join(cur + [part]), font=font) > max_w:
+            lines.append(SUB_SEP.join(cur))
+            cur = [part]
+        else:
+            cur.append(part)
+    if cur:
+        lines.append(SUB_SEP.join(cur))
+    return lines
+
+
+def fit_subtitle(draw, text, ttf, max_w, max_lines):
+    """fit_title's logic for the subtitle, over phrases rather than words.
+
+    Steps down from SUB_HI so both hire cards land on the same size whatever
+    their role lines cost — a pair of cards for one person that set their role
+    lines at two different sizes reads as two unrelated templates.
+    """
+    parts = [p.strip() for p in text.split("·") if p.strip()] or [text]
+    for size in range(SUB_HI, SUB_LO - 1, -2):
+        font = ImageFont.truetype(ttf, size)
+        lines = wrap_parts(draw, parts, font, max_w)
+        if lines is not None and len(lines) <= max_lines:
+            return font, lines
+    # Nothing fit the budget. Fall back to a plain word wrap at the floor size
+    # rather than returning None — a card with a cramped subtitle is still a
+    # card; a traceback is not.
+    font = ImageFont.truetype(ttf, SUB_LO)
+    return font, wrap_parts(draw, parts, font, max_w) or wrap(draw, text, font, max_w)
+
+
 def tracked(draw, xy, text, font, fill, track):
     """Draw text with letter-spacing, which Pillow has no concept of.
 
@@ -351,7 +415,31 @@ def build(card, ttf):
     lead = round(title_font.size * TITLE_LEAD)
     title_h = lead * len(lines)
 
-    rule_y = TITLE_TOP + title_h + RULE_GAP_ABOVE
+    # An OPTIONAL second line under the title, in --muted, above the coral rule.
+    #
+    # WHY THIS EXISTS, and why it is optional rather than standard. Every card
+    # above this one has a subject that is a thing — a document, a product, a
+    # program — and one string names it. The two hire/ cards are the only ones
+    # whose subject is a PERSON, and a person needs two strings: the name, which
+    # is the identity, and the role line, which is the only thing distinguishing
+    # two cards for two framings of the same résumé. Folding both into one
+    # auto-fitted title sets them at the same size, which buries the name; and
+    # at a 360px tile the two hire cards would then differ only in the tail of a
+    # wrapped line. So the name gets the display size and the roles get a
+    # reading line, exactly the way .hero__name over .hero__role sets them on
+    # the page this card is quoting.
+    #
+    # A card that does not ask for one is untouched — the five above still
+    # render byte-identical, the same discipline framed()'s `vfocus` argument
+    # was added under.
+    sub_font, sub_lines, sub_lead, sub_h = None, [], 0, 0
+    if card.get("subtitle"):
+        sub_font, sub_lines = fit_subtitle(
+            draw, card["subtitle"], ttf, COL_W, SUB_MAX_LINES)
+        sub_lead = round(sub_font.size * SUB_LEAD)
+        sub_h = SUB_GAP_ABOVE + sub_lead * len(sub_lines)
+
+    rule_y = TITLE_TOP + title_h + sub_h + RULE_GAP_ABOVE
     inset_y = rule_y + RULE_H + RULE_GAP_BELOW
 
     # --- the insets, laid out across the same column the text uses ----------
@@ -412,6 +500,13 @@ def build(card, ttf):
     for i, line in enumerate(lines):
         draw.text((MARGIN, TITLE_TOP + i * lead), line, font=title_font, fill=WHITE)
 
+    # --muted on the navy field, the same pairing .hero__role uses, and the same
+    # colour the wordmark row above already carries — so the card gains a line
+    # of text without gaining a value.
+    sub_top = TITLE_TOP + title_h + SUB_GAP_ABOVE
+    for i, line in enumerate(sub_lines):
+        draw.text((MARGIN, sub_top + i * sub_lead), line, font=sub_font, fill=MUTED)
+
     for mat, mask, fx in frames:
         out.paste(mat, (fx, inset_y), mask)
 
@@ -427,8 +522,9 @@ def build(card, ttf):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out.save(out_path, optimize=True)
     kb = out_path.stat().st_size / 1024
+    sub = f"  sub {sub_font.size}px x{len(sub_lines)}" if sub_lines else ""
     print(f"wrote {card['out']}  {out.size[0]}x{out.size[1]}  {kb:.0f} KB  "
-          f"title {title_font.size}px x{len(lines)}")
+          f"title {title_font.size}px x{len(lines)}{sub}")
 
 
 # ==========================================================================
@@ -544,6 +640,81 @@ CARDS = [
         "max_lines": 2,
         "insets": [("ai-coaching/img/claude-memory-by-surface.png",
                     (44, 186, 1650, 815), 0.5)],
+    },
+
+    # ----------------------------------------------------------------------
+    # The two hire/ résumé pages (#230). THESE TWO REVERSE D-004 of
+    # docs/social-cards-and-linkedin-readiness-plan.md, which kept them on the
+    # 200x200 logo and `twitter:card: summary` because they "are not primarily
+    # share targets". Ry reversed that on 2026-08-18 for these two pages ONLY —
+    # `rates/`, `github/` and `roi-calculator/` still stand under D-004, and a
+    # session that finds those and "upgrades" them has reversed a decision
+    # nobody made. The reasoning for the reversal is that these are the pages Ry
+    # SENDS: pasted into a LinkedIn message, an email, or an application form,
+    # the preview is the first thing a hiring manager sees, which makes them the
+    # most share-targeted pages here rather than the least.
+    #
+    # RY'S CONSTRAINT, and it is the design constraint on both: NO HEADSHOT.
+    # hire/assets/img/ryan-hickey-portrait.jpg is on both pages and is not on
+    # either card. So the cards argue from the work instead of from the face —
+    # which is also why they carry a subtitle: with no portrait, the role line
+    # is the only thing telling a reader which of the two résumés this is.
+    #
+    # They are the only cards here that share a folder, because hire/ is the one
+    # page folder that deploys as a single unit with one shared assets/. The
+    # other cards each sit in their own page folder or in a shared asset folder
+    # that deploys beside it.
+    {
+        # The engineering framing. Two panels, the same "body of work rather
+        # than a single product" reasoning the portfolio card carries — and
+        # deliberately NEITHER of the portfolio card's two panels, so the two
+        # never read as one duplicated post if both are ever shared.
+        #
+        # The pairing is doing work: the $30M backbone render is architecture
+        # and the pdpd screenshot is shipped software, which is the claim this
+        # page makes about him. A second dark render instead of the screenshot
+        # was tried on paper and rejected — app-ecommerce-intelligence.jpg is
+        # so close in composition to app-data-backbone.jpg (inputs left, lit
+        # core centre, chart panel right) that side by side they read as one
+        # image printed twice.
+        "out": "hire/assets/img/og-ryan-hickey.png",
+        "logo": "hire/assets/img/wolfpack-logo.png",
+        "title": "Ryan Hickey",
+        "subtitle": "AI Engineer · Data & AI Systems Architect · COO",
+        "max_lines": 1,
+        # The backbone render is 16:9 art, not a screenshot, so it takes
+        # vfocus=0.5 for the reason framed()'s docstring gives: top-anchoring a
+        # wide shallow crop of 16:9 art returns the empty sky above the subject.
+        # pdpd is a screenshot and keeps the top anchor, cropped from its LEFT
+        # edge so the "pdpd." wordmark and the nav survive — the same reason the
+        # portfolio card left-crops SetMaster for its rail.
+        "insets": [("hire/assets/img/app-data-backbone.jpg", None, 0.5, 0.5),
+                   ("hire/assets/img/app-pdpd.png", None, 0.0)],
+    },
+    {
+        # The music framing. ONE full-width panel against its sibling's two, and
+        # the difference in structure is deliberate: these are two cards for two
+        # framings of one person, so they have to be told apart at a glance and
+        # a subtitle alone does not do that at 360px.
+        #
+        # SetMaster is the whole reason this framing exists — it is the music
+        # page's first application and the only one of the eight that is music
+        # technology. There is no other music asset in hire/assets/img/ that
+        # can carry a wide shallow band: the RML mark is 298x115 and is a
+        # lockup, not a subject.
+        #
+        # The top-anchored crop lands on the Playlist Compare Tool header, which
+        # is the most legible-as-music band in the shot: the RML SetMaster title
+        # bar, DJ set names down the rail, and TRAKTOR / SPOTIFY column heads.
+        # It is a third distinct SetMaster screen — the product page's card uses
+        # the set editor and the case study's uses the track-playlist matrix —
+        # so nothing here duplicates a card that already exists.
+        "out": "hire/assets/img/og-ryan-hickey-music.png",
+        "logo": "hire/assets/img/wolfpack-logo.png",
+        "title": "Ryan Hickey",
+        "subtitle": "AI Engineer · Data & AI Systems Architect · Professional Musician",
+        "max_lines": 1,
+        "insets": [("hire/assets/img/app-setmaster.png", None, 0.0)],
     },
 ]
 

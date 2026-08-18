@@ -107,7 +107,7 @@ repo and are handed back as a Wix work order — see §8.
 | D-001 | **Full OG sweep**, not the single page the work order asked for. Sequenced so the SM3 case study can ship alone if LinkedIn timing demands it. | Ry, 2026-08-07. The identical defect exists on the other case study; fixing one leaves the other to be found again. |
 | D-002 | **SM3 case study gets a purpose-built 1200×627 card**, not the product page's screenshot. | Ry, 2026-08-07. Two Featured tiles carrying the identical set-editor screenshot reads as a duplicate. |
 | D-003 | **Ops-fin case study reuses its existing beacon hero** (`fin-model-beacon-hero.jpg`, 2100×1181) rather than getting its own built card. | Ry, 2026-08-07. Already a purpose-built image, already distinctive, ratio 1.78 vs LinkedIn's 1.91 → light side crop only. Zero build cost. |
-| D-004 | **`portfolio/` and `ai-coaching/` upgrade to large image cards.** `rates/`, both `hire/` pages, `github/`, and `roi-calculator/` stay on the 200×200 logo with `twitter:card summary`. | Ry, 2026-08-07. Portfolio is a likely LinkedIn landing page; ai-coaching currently renders text-only. The rest are not primarily share targets. |
+| D-004 | **`portfolio/` and `ai-coaching/` upgrade to large image cards.** `rates/`, both `hire/` pages, `github/`, and `roi-calculator/` stay on the 200×200 logo with `twitter:card summary`. | Ry, 2026-08-07. Portfolio is a likely LinkedIn landing page; ai-coaching currently renders text-only. The rest are not primarily share targets. **PARTLY REVERSED 2026-08-18 by D-015 — the two `hire/` pages now carry built 1200×627 cards.** `rates/`, `github/`, and `roi-calculator/` are untouched and this decision still governs them. |
 | D-005 | **No back-link from the SM3 case study to `/portfolio/`.** | Ry, 2026-08-07. `portfolio → case study` stays deliberately one-way, matching the `rates → portfolio` precedent (portfolio conventions, #127). The case study already has four outbound destinations. |
 | D-006 | **Analytics parked to its own issue**, not scoped here. | Ry, 2026-08-07. It is a real architecture decision against a documented no-external-requests rule; it should not ride along on a blocking tag fix. |
 | D-007 | **No move to `www`.** Items 2.1/2.2 become a Wix work order. | Ry, 2026-08-07, on the hosting facts in §1. |
@@ -118,6 +118,8 @@ repo and are handed back as a Wix work order — see §8.
 | D-012 | **`og:title` drops the `· Case Study` / tab suffix** on both case studies. | Same reasoning the blog convention already carries: the `<title>` suffix is written for the browser tab and the SERP, not for a card headline. |
 | D-013 | **`og:site_name` and `og:image:alt` are added to every page this plan touches**, and not retro-added to pages it does not touch. | Cheap on a page already being edited; widening to untouched pages would be scope creep. Listed as an optional extra in §6 if Ry wants uniformity. |
 | D-014 | **A generated card image does not count against a folder's coral ration.** | The rations are documented in CSS header comments and govern the stylesheet. The beacon hero already contains one coral use without being counted. Flagged rather than assumed — overturnable. |
+| D-015 | **Both `hire/` pages upgrade to built 1200×627 cards, reversing D-004 for those two pages only** — and **neither card carries Ryan's portrait**. `rates/`, `github/`, and `roi-calculator/` stay exactly as D-004 left them. Ruling: Ry, 2026-08-18 (#230). | **On the reversal:** D-004's premise was that these "are not primarily share targets", which had it backwards. Every other page here is *found* — indexed, linked, arrived at. The `hire/` pages are `noindex` and direct-link only, which means the **only** way anyone reaches one is Ry pasting the URL into a LinkedIn message, an email, or an application form — so the preview is not incidental to the visit, it *is* the first impression, on the two pages where a first impression is the entire product. A 200×200 logo tile was the weakest card on the most-pasted URLs. **On the portrait:** Ry's instruction, and it turned out to be the design constraint that made the cards good — with no face to lead on, each card argues from the work. **On the two insets:** neither uses either of the portfolio card's panels, so the two never read as one duplicated post (D-002's rule, applied outward); the engineering card pairs a render with a shipped-application screenshot because that pairing *is* the page's claim; the music card runs a single full-width SetMaster panel, because two cards for two framings of one person must be separable at 360px by structure and not only by a role line. **On the subtitle:** see D-016. |
+| D-016 | **`build_cards.py` grows an optional `subtitle` line**, set in `--muted` under the title and above the coral rule. Cards that do not ask for one render byte-identical. | These two are the only cards here whose subject is a **person**. A thing needs one string; a person needs two — the name, which is the identity, and the role line, which is the only thing telling two framings of one résumé apart. Folding both into one auto-fitted title sets them at the same size, which buries the name and leaves the two cards differing only in the tail of a wrapped line. Verified by rebuild: all five pre-existing cards came back byte-identical, the same discipline `framed()`'s `vfocus` argument was added under. The subtitle wraps on **phrases**, not words, so the `·` separator can never end a line and a job title is never split across two. |
 
 ---
 
@@ -462,7 +464,8 @@ promote.
 - **No move to `www`** — a re-platform, not a copy, §1.
 - **No back-link** from the SM3 case study to `/portfolio/` — D-005.
 - **No purpose-built card for the ops-fin case study** — D-003, it reuses its beacon hero.
-- **No card upgrade** for `rates/`, `hire/`, `github/`, `roi-calculator/` — D-004.
+- **No card upgrade** for `rates/`, `github/`, `roi-calculator/` — D-004. The two `hire/`
+  pages were carved out of this on 2026-08-18 and now carry built cards — D-015.
 - **No Notion work** — explicitly out of scope for this pass.
 
 ## 13. Note on the Web Property Map
@@ -520,3 +523,38 @@ Montserrat "to match the site's heading face," but in this design system Roboto 
 heading and wordmark face (`portfolio.css`, `case-study.css`); Montserrat is the body. The
 generator follows the stated intent over the stated name, and the repo's Montserrat is a
 variable font defaulting to Thin, which Pillow could not have used without instancing.
+
+---
+
+## 15. Execution note (2026-08-18) — the two `hire/` cards, #230
+
+Ry asked for social cards on both `hire/` pages, with one constraint: **no headshot.**
+Rulings D-015 and D-016 above; what actually shipped:
+
+| Page | Card | Inset(s) |
+|---|---|---|
+| `hire/ryan-hickey/` | `hire/assets/img/og-ryan-hickey.png` | `app-data-backbone.jpg` + `app-pdpd.png` |
+| `hire/ryan-hickey-music/` | `hire/assets/img/og-ryan-hickey-music.png` | `app-setmaster.png`, full width |
+
+Both live in `hire/assets/img/`, which makes them the only two cards here sharing a folder —
+`hire/` is the one page folder that deploys as a single unit with one shared `assets/`.
+
+**Things a later session should not re-derive:**
+
+- **`og:site_name` is still not on these pages.** §14's decline of D-013's optional extra
+  stands; this PR touched their heads for the card and deliberately did not widen past it.
+  `check_meta.py` does not check `og:site_name` for exactly this reason.
+- **The engineering card's left panel contains the Shopify mark**, dead centre in the
+  `$30M` backbone render. It is the only non-navy hue on either card and it is *subject*,
+  not chrome — the generator's stated rule — and the same render is already on the page. At
+  360px it is a green dot reading as "e-commerce at scale", which is the claim that panel is
+  there to make. Flagged so it reads as considered rather than missed.
+- **Rejected: pairing the two dark renders.** `app-ecommerce-intelligence.jpg` is so close
+  in composition to `app-data-backbone.jpg` — inputs left, lit core centre, chart panel
+  right — that side by side they read as one image printed twice. It is also the portfolio
+  card's right panel.
+- **These pages are `noindex`, and that is untouched.** A card is not indexing; it is what
+  a scraper renders when the URL is pasted. D-002 of the hire design plan is unaffected.
+- **LinkedIn has never scraped either URL.** Run both through the Post Inspector after the
+  intake deploy, or the Featured-link validator will report "invalid URL" for what is
+  really a cache miss — the trap `CLAUDE.md` records from 2026-08-17.

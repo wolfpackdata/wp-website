@@ -20,7 +20,8 @@ the source of truth — never edit the deployed copy; re-copy the whole `hire/` 
 change.
 
 - [x] `assets/fonts/` — 14 woff2 (Roboto + Montserrat)
-- [x] `assets/img/` — 8 app screenshots, wolf mark, RML mark, 2 portraits
+- [x] `assets/img/` — 8 app screenshots, 3 case-study cards, wolf mark, RML mark,
+      portrait, and the 2 built social cards (`og-*.png`, added 2026-08-18, #230)
 - [x] `assets/dl/` — both `.docx` and both `.pdf`
 - [x] `assets/css/hire.css`
 - [x] `assets/js/reveal.js`
@@ -101,10 +102,46 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
 - **Image format is chosen by content, not by habit.** Photographic and rendered
   illustrations are **JPEG** (`app-bql`, `app-data-backbone`,
   `app-ecommerce-intelligence`, the portrait); UI screenshots stay **PNG**,
-  because JPEG smears small text. The originals in `wp-rates-page/img/` are all
+  because JPEG smears small text. **The two `og-*.png` social cards are PNG
+  regardless** — they are mostly a flat navy gradient with large type over it,
+  which is what JPEG is worst at, and the generator writes PNG for every card
+  on the site. The originals in `wp-rates-page/img/` are all
   PNG — converting the four photographic ones took this folder from 11 MB to
   1.4 MB with no visible difference. If you re-copy an image from that repo,
   re-apply the split.
+
+## Social cards — and why neither one shows Ryan's face
+
+**Added 2026-08-18 (#230).** Each page carries a built 1200×627 card in `assets/img/`:
+
+| Page | Card | What's in it |
+|---|---|---|
+| `ryan-hickey/` | `og-ryan-hickey.png` | Two panels — the `$30M` backbone render and the pdpd console |
+| `ryan-hickey-music/` | `og-ryan-hickey-music.png` | One full-width panel — RML SetMaster 3's Playlist Compare Tool |
+
+- **No portrait, on Ry's instruction**, and `ryan-hickey-portrait.jpg` stays off both. It
+  turned out to be the constraint that made them good: with no face to lead on, each card
+  argues from the work.
+- **They reverse D-004** of `../docs/social-cards-and-linkedin-readiness-plan.md`, which had
+  kept both pages on the 200×200 logo because they "are not primarily share targets." That
+  had it backwards. These pages are `noindex` — the **only** way anyone reaches one is Ry
+  pasting the URL into a message, an email, or an application form, so the preview isn't
+  incidental to the visit, it's the first impression. Rulings **D-015** and **D-016** in that
+  plan. The carve-out is these two pages; `rates/`, `github/`, and `roi-calculator/` are
+  still D-004's.
+- **Built by `../social-cards/build_cards.py` — rebuild rather than retouch.** A hand-edited
+  card is a card nobody can change again. Re-run it and `python ../social-cards/check_meta.py`
+  after any change to a title, a role line, or an inset.
+- **These two are the only cards on the site that share a folder**, because `hire/` is the
+  only page folder that deploys as a single unit.
+- **Neither reuses a `portfolio/` card panel**, so the three never read as one duplicated
+  post — D-002's rule, applied outward.
+- **A card is not indexing.** `noindex, nofollow` above is untouched; adding a card did not
+  make these pages findable, it only changed what a scraper renders when Ry pastes the link.
+- **After the intake deploy, run both URLs through the
+  [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/)** before sharing
+  either. LinkedIn reports a URL it has never scraped as "invalid URL" rather than as a
+  cache miss — the trap `CLAUDE.md` records from 2026-08-17.
 
 ## Deploying
 
