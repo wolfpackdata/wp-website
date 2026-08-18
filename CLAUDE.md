@@ -209,12 +209,23 @@ Conventions the page must keep:
 - **Evergreen:** no version stamp or quarter in the URL, headline, or framing.
 - **Book-first, one CTA:** every CTA is the 30-minute-call calendar link (#8; current
   URL per #32 — see the booking-link note in the `ai-coaching/` section) — no
-  intake-form links. **Two exceptions that aren't one**, both navy-ghost, both
-  consideration-stage links rather than funnel forks, and neither displacing the calendar
+  intake-form links. **Three exceptions that aren't one**, all navy-ghost, all
+  consideration-stage links rather than funnel forks, and none displacing the calendar
   CTA as primary: the coaching section's link to the ROI calculator (spec R11, mirrors
-  `wp-rates-page#39`), and the closing `#work` section's *"See recent projects"* link to
-  the portfolio (spec R14 / contract D15, #127 — this is how contract D9 resolves).
-  **Neither may become coral**; the ration in `rates/css/rates.css` is fully spent.
+  `wp-rates-page#39`), the closing `#work` section's *"See recent projects"* link to
+  the portfolio (spec R14 / contract D15, #127 — this is how contract D9 resolves), and
+  the `#engagements` pilot band's *"See the pilot project"* link (spec R15, #238).
+  **None may become coral**; the ration in `rates/css/rates.css` is fully spent.
+- **The pilot band is a MIRROR-SET item, not a delta** (2026-08-18, #238) — unlike R11,
+  R13 and R14, which are public-page-only. Ry ruled that the pilot goes on the Q3
+  direct-link page first (`wp-rates-page#42`) and this page derives from it, so both
+  pages carry the band and **its facts must match**: the $5,000 fixed fee, the
+  two-to-three-week calendar window, and the two included systems. ⚠️ **Neither page
+  states hours, a weekly commitment, or an effective hourly rate for the pilot, and that
+  is a fact about the offer rather than a depth choice** — $5,000 across two to three
+  weeks divides out beneath the `$140/hr` printed directly above it. Both bands say so
+  out loud rather than leaving the reader to divide. If an hours figure ever lands on one
+  page, remove it; never port it.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
 - The two "Two ways to work with Wolfpack" tiles carry Ry's images
@@ -699,13 +710,23 @@ Conventions the page must keep:
   HTML edit and never a card rebuild. Both inset panels are un-carded elsewhere, so no
   two Featured tiles read as one duplicated post.
 
-**Still open — the rates-page band.** The page is deliberately linked from nothing yet.
-Ry ruled that the pilot goes on the **Q3 direct-link page first** and `/rates_public/`
-mirrors it, so the starter joins the consistency contract's **mirror set** rather than
-its delta list. When that lands: a second full-width band inside `#engagements`, after
-`.tiers__caption` and before `#process`, navy-ghost link, no new nav item — plus spec
-**R15** for the third subordinate destination, and the *"rates last reviewed"* line
-moved in both the hero kicker and the footer.
+**The rates-page band landed 2026-08-18 (#238 here, `wp-rates-page#42` upstream).**
+Both rates pages now carry a full-width band offering the pilot — inside `#engagements`
+after `.tiers__caption` on the public page, inside `#projects` after `.ladder__caption`
+on the Q3 page — navy-ghost link, no new nav item. It went on the **Q3 page first** by
+Ry's sequencing ruling, so it is a **mirror-set** item in the consistency contract, not
+a delta: the fee, the calendar window, and the two included systems must match on both.
+Recorded as spec **R15** (the third subordinate destination) and §3.11a, and the
+*"rates last reviewed"* line moved to August 2026 in the hero kicker and the footer.
+
+⚠️ **The no-hours rule is now load-bearing in two more places.** On the rates pages the
+band sits three lines under `$140/hr`, so the arithmetic is one glance away. Both bands
+close on *"a pilot buys a scoped outcome rather than reserved time, so it sits off the
+rate curve above"* — that sentence is the disarm, and it is not decoration.
+
+**Still open — the deploy.** Neither rates page has been re-copied into
+`ai-coaching-intake` since the band landed, so the live `/rates_public/` and
+`/rates_2026Q3/` do not yet show it.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
