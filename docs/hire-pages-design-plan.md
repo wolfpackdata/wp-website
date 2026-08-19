@@ -459,7 +459,7 @@ here so the two artifacts can't drift silently.
 | Email | `ryan@wolfstrategyllc.com` | ✓ |
 | Phone | `415-371-9613` | ✗ — **page only** (D-005) |
 | Website | `wolfstrategyllc.com` | ✗ — **page only** (D-008) |
-| LinkedIn | `linkedin.com/in/ryan-hickey-626b2798` | ✓ |
+| LinkedIn | `linkedin.com/in/workwithryan` | ✓ |
 | GitHub | `github.com/wolfpackdata` | ✓ |
 | Location | `San Francisco Bay Area` | ✓ |
 | Booking | `https://calendar.app.google/zHNd1NA9wzb4VRLw5` | ✗ — page only |
