@@ -176,7 +176,7 @@ def apply_density(name: str) -> None:
 CONTACT = {
     "name": "Ryan Hickey",
     "email": "ryan@wolfstrategyllc.com",
-    "linkedin": "linkedin.com/in/ryan-hickey-626b2798",
+    "linkedin": "linkedin.com/in/workwithryan",
     "github": "github.com/wolfpackdata",       # added v2.0
     "location": "San Francisco Bay Area",
     "org": "Wolfpack Data & Strategy",

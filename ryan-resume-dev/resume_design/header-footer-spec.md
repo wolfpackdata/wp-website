@@ -155,7 +155,7 @@ AI Engineer · Data & AI Systems Architect · COO · Technical Operator
 **Contact line (both variants)**
 
 ```
-ryan@wolfstrategyllc.com · linkedin.com/in/ryan-hickey-626b2798 · github.com/wolfpackdata · San Francisco Bay Area
+ryan@wolfstrategyllc.com · linkedin.com/in/workwithryan · github.com/wolfpackdata · San Francisco Bay Area
 ```
 
 > **v2 added the GitHub URL** and dropped the contact line from 6.5pt to **6pt**
