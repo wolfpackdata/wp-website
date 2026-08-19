@@ -130,3 +130,44 @@ def build_styles(doc, fonts: dict) -> None:
     _add(doc, "WP ATS Contact", font=mono, size=M.ats_contact_pt,
          color=brand.INK_45, tracking=M.ats_contact_tracking_pt,
          space_after=M.header_space_after_pt)
+
+
+def build_letter_styles(doc, fonts: dict) -> None:
+    """The cover-letter additions, on top of the résumé styles.
+
+    letter.py calls build_styles() first (the header and footer reuse the
+    résumé styles verbatim — that shared surface is what makes the letter
+    match), then this for the correspondence-scale body. Metrics are the
+    letter_* fields in brand.Metrics.
+    """
+    display, body, mono = fonts["display"], fonts["body"], fonts["mono"]
+
+    _add(doc, "WP Letter Date", font=mono, size=M.meta_pt, color=brand.INK_45,
+         caps=True, tracking=M.meta_tracking_pt,
+         space_before=M.letter_date_space_before_pt,
+         space_after=M.letter_block_space_before_pt)
+
+    _add(doc, "WP Letter Body", font=body, size=M.letter_body_pt,
+         color=brand.INK_70, space_after=M.letter_body_space_after_pt,
+         line_spacing=M.letter_body_line_spacing)
+
+    # Recipient lines butt together (space_after 0); the block as a whole gets
+    # its air from WP Letter Salutation's space_before.
+    _add(doc, "WP Letter Recipient", font=body, size=M.letter_body_pt,
+         color=brand.INK_70, space_after=0.0,
+         line_spacing=M.letter_body_line_spacing)
+
+    _add(doc, "WP Letter Salutation", font=body, size=M.letter_body_pt,
+         color=brand.INK_70, space_before=M.letter_block_space_before_pt,
+         space_after=M.letter_body_space_after_pt,
+         line_spacing=M.letter_body_line_spacing)
+
+    _add(doc, "WP Letter Closing", font=body, size=M.letter_body_pt,
+         color=brand.INK_70, space_before=M.letter_block_space_before_pt,
+         space_after=2.0, line_spacing=M.letter_body_line_spacing)
+
+    # The signature name: display face, navy, bold — the header name's voice at
+    # body scale. Not caps; a shouted first name under "Warmly," reads wrong.
+    _add(doc, "WP Letter Signature", font=display,
+         size=M.letter_signature_pt, color=brand.NAVY, bold=True,
+         space_after=0.0)
