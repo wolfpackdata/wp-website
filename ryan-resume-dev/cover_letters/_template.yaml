@@ -1,0 +1,51 @@
+# =============================================================================
+# Cover-letter template — copy this file per letter, never edit it in place.
+#
+#   1. Copy to YYYY-MM-DD-company.yaml in this folder.
+#   2. Fill meta and letter with the real content (Ry supplies the letter text;
+#      it goes into `paragraphs` verbatim — one YAML item per paragraph).
+#   3. cd ../resume_build ; python cover_letter.py ../cover_letters/<file>.yaml
+#      (add --pdf for the Word-exported PDF alongside).
+#
+# The build writes Ryan_Hickey_Cover_Letter_<Company>.docx next to the YAML,
+# on the résumé's stationery: same header, footer, fonts, and palette. The
+# sign-off defaults to "Warmly," / Ryan — leave `closing`/`signature` out.
+#
+# The committed Ryan_Hickey_Cover_Letter_Template.docx is this file, built
+# (python cover_letter.py --template) — rebuild it if the design changes.
+# =============================================================================
+
+meta:
+  variant: eng                # eng | music — picks the header role line, same
+                              # switch as the two résumés; match the résumé
+                              # this letter travels with
+  company: Template           # goes in the filename and the docx properties
+  role: ""                    # the role applied for (docx subject; optional)
+  date: 2026-08-18            # ISO or prose; omit the key to stamp today
+  # footer_org: Wolfpack Data & Strategy   # the default; rarely overridden
+
+letter:
+  recipient:                  # optional block above the salutation; omit
+    - Hiring Team             # entirely for portals that strip addresses
+    - Example Company
+
+  salutation: "Dear Hiring Team,"
+
+  # One item per paragraph. Ry's text lands here verbatim — the builder does
+  # not reword, trim, or reflow it.
+  paragraphs:
+    - >-
+      First paragraph — replace with the letter's opening. This template
+      carries placeholder prose only so the built DOCX shows the real layout:
+      type scale, spacing, and where each block lands on the page.
+    - >-
+      Middle paragraph(s) — the letter body. Add or remove items freely; each
+      YAML item becomes one paragraph with the letter's standard spacing after
+      it.
+    - >-
+      Closing paragraph — the ask and the thank-you. The sign-off below is not
+      part of this list; the builder adds "Warmly," and the signature line
+      itself.
+
+  # closing: "Warmly,"        # the standing defaults — do not state them
+  # signature: Ryan

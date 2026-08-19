@@ -114,6 +114,26 @@ make a red build green.
 exactly what v0 said" — was a valid question exactly once, for a round that was a
 restyling and nothing else.)*
 
+## Cover letters
+
+`cover_letter.py` builds an application-ready cover letter on the résumé's
+stationery — same text header, footer, fonts, and palette, reusing the résumé
+builder's own functions so the two cannot drift. Letter content lives in a YAML
+under `../cover_letters/` (copy `_template.yaml`; that folder's README has the
+full workflow); the sign-off is always **"Warmly," / Ryan**, the builder's
+default.
+
+```powershell
+python cover_letter.py ..\cover_letters\<letter>.yaml         # .docx
+python cover_letter.py ..\cover_letters\<letter>.yaml --pdf   # + Word-exported PDF
+python cover_letter.py --template                             # rebuild the design proof
+```
+
+Letters are one-offs: no version in the filename (the YAML is the record), and
+`verify_facts.py` does not read them — a letter carries no résumé facts, only
+the shared header block, which is generated from `brand.CONTACT` like
+everything else.
+
 ## Layout
 
 ```
@@ -121,6 +141,7 @@ resume_build/
 ├── VERSION                  the round version, one line
 ├── CHANGELOG.md             what changed in each version, newest first
 ├── build.py                 CLI: parse args, load YAML, call the builder
+├── cover_letter.py          CLI: build one cover letter from a letter YAML
 ├── verify_facts.py          the fact table and the four checks
 ├── docs/
 │   └── v2-plan.md           the round plan the current content was built from
@@ -132,7 +153,8 @@ resume_build/
     ├── styles.py            builds the named Word styles from those tokens
     ├── blocks.py            one renderer per section type
     ├── docx_helpers.py      raw-XML bits python-docx doesn't expose
-    └── builder.py           page setup, header, sections, footer, save
+    ├── builder.py           page setup, header, sections, footer, save
+    └── letter.py            cover letters on the same stationery
 ```
 
 **Content is data, design is code.** Editing wording means editing YAML and
