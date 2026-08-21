@@ -79,6 +79,11 @@ PAGES = [
     ("ai-coaching/index.html", "/ai-coaching/"),
     ("hire/ryan-hickey/index.html", "/hire/ryan-hickey/"),
     ("hire/ryan-hickey-music/index.html", "/hire/ryan-hickey-music/"),
+    # The two recruiter briefs (#246). Small `summary` cards on the logo by
+    # ruling (hire plan D-013), so check 5 does not apply to them — their PASS
+    # says the card is consistent, not that it is large.
+    ("hire/recruiter-brief/index.html", "/hire/recruiter-brief/"),
+    ("hire/recruiter-brief-music/index.html", "/hire/recruiter-brief-music/"),
     ("portfolio/index.html", "/portfolio/"),
     ("pilot-project/index.html", "/pilot-project/"),
     ("github/index.html", "/github/"),
