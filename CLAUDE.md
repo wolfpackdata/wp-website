@@ -62,6 +62,8 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `ai-coaching/` | `https://intake.wolfstrategyllc.com/ai-coaching/` | 2026-07-28 |
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
+| `hire/recruiter-brief/` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief/` — **`noindex`**; the engineering recruiter brief | **built 2026-08-20 (#246), not yet deployed** |
+| `hire/recruiter-brief-music/` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief-music/` — **`noindex`**; the music / audio / creator-tools recruiter brief | **built 2026-08-20 (#246), not yet deployed** |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
 | `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — ships **two pages**, the report and a `noindex` full-width `transaction-map.html`; copy both or neither | 2026-08-15 (`ai-coaching-intake#74`) |
 | `case_studies/wolfpack-ai-command/` | `https://intake.wolfstrategyllc.com/wolfpack-ai-command/` | 2026-08-15 (#190) |
@@ -275,6 +277,18 @@ Long-scroll landing pages carrying the full content of Ryan's two résumés, aim
 of truth, never edit the deployed copy, re-copy on change. Folder README:
 [`hire/README.md`](hire/README.md); full design plan and decisions ledger:
 [`docs/hire-pages-design-plan.md`](docs/hire-pages-design-plan.md).
+
+**Since 2026-08-20 (#246) the folder also holds the two recruiter-brief pages**,
+`recruiter-brief/` and `recruiter-brief-music/` — web renderings of the markdown briefs in
+`ryan-resume-dev/for_recruiters/`, aimed at **agency recruiters**, not hiring managers.
+Same `noindex`, same shared `assets/` and `hire.css`, same chrome. **The markdown is the
+source and `for_recruiters/verify_brief.py` guards the two copies** (pitch verbatim; every
+figure, title, and exclusion present) — run it with `check_meta.py` before any PR touching
+either side. They are deliberately **not** in `verify_facts.py`'s `HTML_PAGES` and use no
+`.app__*` classes: their proof points are the brief's own wording. Small `summary` card on
+the logo by ruling (plan **D-013**, flagged for Ry). **Built and verified locally; not yet
+copied into the intake repo** — `hire/` still deploys as one folder, so the next copy takes
+all four pages. Full convention list in `hire/README.md`; rulings D-012–D-015 in the plan.
 
 Conventions the pages must keep:
 - **`noindex, nofollow`, direct-link only.** Ry sends the URL. Two differently-framed
