@@ -45,7 +45,7 @@ Based in **San Francisco**. **Remote anywhere in the US**, or **Bay Area** (hybr
 ## Proof points
 
 - **RML SetMaster 3** — offline, cross-platform DJ analytics and set-preparation app: TypeScript/React over a Python engine, Windows and macOS installers. Reads Traktor's `collection.nml` strictly read-only, reconciles it against exported Spotify playlists, adds key/BPM analysis and a structured set editor. v3.0.4; replaced an Excel/VBA tool used professionally for years.
-- **COO & Partner, Auto SOSS Inc. / Shock Surplus (2015–2025)** — primary systems architect through $300K → $30M in annual revenue; wrote the pricing and inventory algorithms; led teams and vendors of up to 20.
+- **COO & Partner, Auto SOSS Inc. / Shock Surplus (2015–2025)** — primary systems architect through $300K → $30M in annual revenue; wrote the pricing and inventory algorithms; ran the Shopify Plus storefront for 10+ years; led teams and vendors of up to 20.
 - **Head of Insights & Analytics, Tromml Inc. (2023–2026)** — built the first quantitative insights platform; it reached $20K MRR as a subscription product.
 - **Founder & Producer, RML Creative LLC (2023–present)** — production, composition, performance, sound design, and the studio automation built around SetMaster. **Founder & Owner, Niceman Music Studio LLC (2009–2016)** — built a flat-response recording environment to commercial spec and ran it with paying clients; catalog published and licensed.
 - **23 years paid to perform · professional DJ since 2009 · 20+ years studio production** · Cornell University (2007), B.S. Operations Research & Industrial Engineering · 20+ years coding.
