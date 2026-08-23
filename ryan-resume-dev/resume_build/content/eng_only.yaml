@@ -106,6 +106,7 @@ sections:
           - Vendor & Partner Management
           - Strategic Planning
           - Operational Scaling
+          - Shopify Plus
 
   - type: experience
     title: Professional Experience
@@ -172,6 +173,10 @@ sections:
             Wrote the company’s proprietary pricing and inventory algorithms in
             Python and SQL — the systems behind how the catalog was priced and how
             inventory was bought and held.
+          - >-
+            Ran the company’s Shopify Plus storefront for 10+ years: commerce
+            platform, dynamic pricing, automated inventory, and fulfillment systems
+            on a custom tech stack (Matrixify, Rithum, GCP, SendGrid).
           - >-
             Built the financial planning, forecasting, and operational automation
             systems the business ran on.

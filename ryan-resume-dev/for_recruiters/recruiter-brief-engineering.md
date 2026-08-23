@@ -40,7 +40,7 @@ Based in **San Francisco**. **Remote anywhere in the US**, or **Bay Area** (hybr
 
 ## Proof points
 
-- **COO & Partner, Auto SOSS Inc. / Shock Surplus (2015–2025)** — primary systems architect through $300K → $30M in annual revenue; wrote the pricing and inventory algorithms in Python and SQL; led internal teams and vendor partners of up to 20.
+- **COO & Partner, Auto SOSS Inc. / Shock Surplus (2015–2025)** — primary systems architect through $300K → $30M in annual revenue; wrote the pricing and inventory algorithms in Python and SQL; ran the Shopify Plus storefront for 10+ years; led internal teams and vendor partners of up to 20.
 - **Head of Insights & Analytics, Tromml Inc. (2023–2026)** — built the company's first quantitative insights platform; it reached $20K MRR as a subscription product. dbt, BigQuery, Looker, Dagster.
 - **Founder, Wolfpack Data & Strategy (2023–present)** — runs a supervised AI development pipeline wiring Claude Code, OpenAI Codex, GitHub, Notion and BigQuery; every agent action planned against a task, logged, reviewable.
 - **Shipped public software** — SetMaster 3 (TypeScript/React over Python, v3.0.4, Windows + macOS installers); BQL Analytics Provisioner. **In progress:** pdpd, an AI architecture and natural-language modeling project for e-commerce catalogs running to millions of pages, built from a full written specification as the vehicle for pushing my AI engineering further.
