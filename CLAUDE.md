@@ -62,8 +62,8 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `ai-coaching/` | `https://intake.wolfstrategyllc.com/ai-coaching/` | 2026-07-28 |
 | `hire/ryan-hickey/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` | 2026-07-31 (#76) |
 | `hire/ryan-hickey-music/` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` | 2026-07-31 (#76) |
-| `hire/recruiter-brief/` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief/` — **`noindex`**; the engineering recruiter brief | **built 2026-08-20 (#246), not yet deployed** |
-| `hire/recruiter-brief-music/` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief-music/` — **`noindex`**; the music / audio / creator-tools recruiter brief | **built 2026-08-20 (#246), not yet deployed** |
+| `hire/recruiter-brief/` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief/` — **`noindex`**; the engineering recruiter brief | 2026-08-24 (#250) |
+| `hire/recruiter-brief-music/` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief-music/` — **`noindex`**; the music / audio / creator-tools recruiter brief | 2026-08-24 (#250) |
 | `case_studies/ops_fin_model_support/` | `https://intake.wolfstrategyllc.com/ops-fin-model-case-study/` | 2026-08-04 (#91) |
 | `case_studies/consolidation_under_pressure/` | `https://intake.wolfstrategyllc.com/consolidation-under-pressure/` — ships **two pages**, the report and a `noindex` full-width `transaction-map.html`; copy both or neither | 2026-08-15 (`ai-coaching-intake#74`) |
 | `case_studies/wolfpack-ai-command/` | `https://intake.wolfstrategyllc.com/wolfpack-ai-command/` | 2026-08-15 (#190) |
@@ -286,8 +286,8 @@ source and `for_recruiters/verify_brief.py` guards the two copies** (pitch verba
 figure, title, and exclusion present) — run it with `check_meta.py` before any PR touching
 either side. They are deliberately **not** in `verify_facts.py`'s `HTML_PAGES` and use no
 `.app__*` classes: their proof points are the brief's own wording. Small `summary` card on
-the logo by ruling (plan **D-013**, flagged for Ry). **Built and verified locally; not yet
-copied into the intake repo** — `hire/` still deploys as one folder, so the next copy takes
+the logo by ruling (plan **D-013**, flagged for Ry). **Deployed 2026-08-24** with the Shopify Plus
+addition (#250, `ai-coaching-intake#88`) — `hire/` deploys as one folder, so that copy took
 all four pages. Full convention list in `hire/README.md`; rulings D-012–D-015 in the plan.
 
 Conventions the pages must keep:
