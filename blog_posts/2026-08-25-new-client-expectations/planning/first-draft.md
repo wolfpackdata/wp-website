@@ -112,29 +112,32 @@ There is no $100 storage floor: BigQuery on-demand queries are $6.25/TiB after a
 lands in the tens of dollars, so $50-$100 is a conservative ceiling. Details and sources
 in planning/source-notes.md. -->
 
-On top of that, the client is going to want at least a Claude Pro subscription for the
+On top of that, the client is going to want at least a Claude Max 5x subscription for the
 highly subsidized processing rates, so they can use the skills and AI products that I send
-them and get a good deal on the usage. I think just one of those Pro accounts should
-suffice, unless they're a development-heavy firm, in which case they're going to use Max,
-and they probably already have it. My system also uses Codex as an independent code
-reviewer, but a Max subscription over there is not required, because the code reviews
-don't generally take anywhere near the amount of usage you'd need to justify another Pro
-account there.
+them and get a good deal on the usage. I recommend the Max 20x for maximum cost
+efficiency. I think just one of those accounts should suffice, unless they're a
+development-heavy firm, in which case they probably already have it. My system also uses
+Codex as an independent code reviewer, but a top-tier subscription over there is not
+required, because the code reviews don't generally take anywhere near the amount of usage
+you'd need to justify another subscription there.
 
 ## ROI is part of every statement of work
 
 An ROI calculator is part of every statement of work as well, where together with the
-client, I figure out how ROI is going to be measured on my project, in dollars. I need to
+client, I figure out how ROI is going to be measured on the project, in dollars. I need to
 measure that monthly and always have that in mind, that the work I'm doing informs the ROI
 on that exact path.
 
-Examples of ROI can be followers gained, but then we want to monetize, you know, dollars
-per follower, so I can justify my fee and show ROI on it. A lot of times conversion is a
-goal of a project, and so we would calculate, for every basis point of a conversion
-increase company-wide, what is the dollar amount outcome, by using AOV to dollarize it:
-every 0.1 of a percent increase in conversion is equal to X number of dollars in revenue.
+Examples of ROI:
 
-And ideally, I like to look at two numbers for my ROI. One is revenue-based ROI, and the
+- Followers gained, but then we want to monetize, you know, dollars per follower, so I can
+  justify my fee and show ROI on it.
+- Conversion, which a lot of times is a goal of a project. We would calculate, for every
+  basis point of a conversion increase company-wide, what is the dollar amount outcome, by
+  using AOV to dollarize it: every 0.1 of a percent increase in conversion is equal to X
+  number of dollars in revenue.
+
+And ideally, I like to look at two numbers for the ROI. One is revenue-based ROI, and the
 other is profit-based ROI. I don't like to look at one or the other because generally, the
 profit ROI is very non-linear and difficult to nail down. After direct and indirect
 expenses are backed out of the revenue number, you can come to 10 different conclusions

@@ -23,7 +23,7 @@ edits of Ry's wording:
 | Transcript says | Draft says | Why |
 |---|---|---|
 | "HBCU" | HBO | Confirmed by Ry, 2026-08-25 |
-| "pro-Cloud subscription" / "pro accounts" | Claude Pro subscription | Context: "highly subsidized processing rates," "skills and AI products that I send them" |
+| "pro-Cloud subscription" / "pro accounts" | Claude Pro subscription — **superseded**: Ry revised the recommendation to Claude Max 5x (Max 20x for heavy use) in his own edit, 2026-08-25 | Context: "highly subsidized processing rates," "skills and AI products that I send them" |
 | "Macs" / "a Macs subscription" | Max (Claude Max) | Context: development-heavy firms, subscription tiers |
 | "they probably already haven't" | "they probably already have it" | The sentence's own logic; flagged for Ry to confirm |
 | "customer incoming" | "incoming customer email" | Sentence fragment repair |
