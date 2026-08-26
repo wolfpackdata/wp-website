@@ -1,11 +1,11 @@
 ---
-title: "Same Fish, Better Title: Apparently I Am an Applied AI Engineer"
-slug: same-fish-better-title
-excerpt: Patagonian toothfish sells as Chilean sea bass. After a few months in the technology job market, I have reached an uncomfortable conclusion — apparently, I am Chilean sea bass. On job titles, the work underneath them, and why the boundaries are gone.
+title: A Fish Called Engineer
+slug: a-fish-called-engineer
+excerpt: "Have you ever eaten the delicious Patagonian toothfish at a gourmet restaurant? Likely it was called something else on the menu. It was probably Chilean sea bass. Patagonian toothfish sounds like something that washes up on the beach after a chemical spill. Chilean sea bass sounds excellent with some lemon and a Sancerre. Same fish, better title."
 cover: cover.jpg
 cover_alt: PLACEHOLDER — replace when the hero lands.
 date: 2026-08-26
-tags: [AI engineering, engineering leadership]
+tags: [AI engineering, engineering leadership, snarky, editorial, HR, job hunting]
 featured: false
 ---
 
@@ -51,9 +51,9 @@ When I did it independently, I was a **consultant**.
 
 When there was enough Python involved, I became a **software engineer**.
 
-When SQL was particularly visible, I became a **data engineer**.
+SQL and ETL pipelines are always involved, so I’m a **data engineer** the whole time, too.
 
-Then large language models arrived, became part of my daily development environment, started participating directly in the systems I was building, and apparently the fish got renamed again.
+LLM arrived in ’22, immediately became part of my daily development environment, started participating directly in the systems I was building, and apparently the fish got renamed again.
 
 Welcome, Applied AI Engineer Ryan.
 
@@ -61,7 +61,9 @@ Nice to meet me.
 
 ## Tools change, skill sets evolve, titles are just words.
 
-To be fair, titles have always been shortcuts. How about this one: “Manager.”
+Really, really important words.
+
+How about this one: “Manager.”
 
 I understand you cannot read the life story of every person who applies. A company needs some compact way to describe what it needs, and a candidate needs some compact way to describe what they do.
 
@@ -69,7 +71,7 @@ Granted.
 
 The problem is that somewhere along the way, tech started treating the shortcut like the specification, which really only applies to monolithic enterprises with extremely defined roles.
 
-In an industry obsessed with abstraction, HR and recruiters are strangely literal about job titles.
+In an industry obsessed with abstraction, HR and recruiters are strangely literal about job titles. “Change the résumé and re-apply.”
 
 A person can have spent years designing data systems, writing production software, building analytical products, automating workflows, managing engineering projects, integrating APIs, deploying cloud infrastructure, supervising AI agents, and owning the business outcome.
 
@@ -95,9 +97,9 @@ I use AI to **build automation and ops solutions**.
 
 That includes applications, agents, workflow systems, data products, automation, development tooling, model integrations, structured human-review systems, and the connective tissue required to make AI useful inside a real organization.
 
-My AI stack is Claude Code, OpenAI Codex, GitHub, Notion, Python, databases, APIs, written rules, automated checks, and human gates. I built an AI development command center — AKA “cognitive infrastructure” (another title) — because once you have several agents and projects moving simultaneously, “just use Claude” is not sustainable.
+My AI stack is Claude Code, Codex, GitHub, Notion, Python, hosted databases, plus lots of MCP connections, written rules, automated checks, and human gates. I built an AI development command center — AKA “cognitive infrastructure” (another title) — because once you have several agents and projects moving simultaneously, “just use Claude” is not sustainable.
 
-I have built an e-commerce intelligence platform, a cross-platform DJ analytics application, AI-assisted content systems, BigQuery provisioning tools, business automation, and supervised AI workflows.
+An e-commerce intelligence platform, a cross-platform DJ analytics application, AI-assisted content systems, BigQuery provisioning tools, business automation, and supervised AI workflows.
 
 That sounds reasonably applied.
 
@@ -105,29 +107,29 @@ That sounds reasonably applied.
 
 ## This Is Not Really About Me
 
-My situation is funny because the mismatch is so visible, but this problem is everywhere in technology.
+The best technical people I know do not fit into one box at all. Like great songs are rarely within one genre definition.
 
-The best technical people I know do not fit into one box at all.
+Is it “jazzy rock,” or “yacht rock,” or can’t we just say Steely Dan?
 
 A great data engineer understands software engineering.
 
-A great software engineer eventually touches infrastructure.
+A great software engineer touches AI infrastructure constantly.
 
-A strong analytics engineer needs to understand the business side.
+A strong analytics engineer needs to fluently speak to the business side.
 
 An AI engineer in 2026 might spend the morning writing Python, the afternoon designing an agent workflow, and the last hour explaining to a team of executives why well-founded, robust guardrails amplify the AI’s value rather than diminish it.
 
 The boundaries aren’t fuzzy — **the boundaries are gone**.
 
-Real problems arrive as problems.
+Real problems arrive as cross-platform, inter-genre problems requiring multi-phased solutions: sounds like something that needs engineering. I’ll keep “engineer” in my title, for now.
 
-They do not walk into the office wearing little badges that say:
+The problems rarely come labeled:
 
 > PLEASE ROUTE TO SENIOR APPLIED AI ENGINEER II
 
 A customer has bad data.
 
-A team is wasting 30 hours a week on things like accounting or social media.
+A team is wasting 30 hours a week on things like accounting or social media management.
 
 A product cannot answer an obvious question.
 
