@@ -17,7 +17,7 @@ I am a paying expert user of the tools these companies make — Native Instrumen
 
 | Track | Titles |
 |---|---|
-| Primary | Founding AI Engineer · Applied AI Engineer · AI Engineer · ML Engineer |
+| Primary | Founding AI Engineer · Applied AI Engineer · Data Engineer · Data Product Builder |
 | Broadest fit | Senior / Staff Data Engineer · Analytics Engineer · Data Platform Engineer |
 | Leadership | Head of Data & AI · Director of Data · Director of Analytics |
 
