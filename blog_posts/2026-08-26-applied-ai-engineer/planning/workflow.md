@@ -1,6 +1,7 @@
 # Workflow — A Fish Called Engineer
 
-Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
+Phase: 3 — **parked.** Draft is finished and sitting in Wix; Ry is holding it until the
+timing is right to post. Nothing is blocked and nothing is late — do not chase it.
 
 | | |
 |---|---|
@@ -146,6 +147,12 @@ explicit staleness trigger. Record the edge after publication, verified against 
 page rather than against `post.md`.
 
 ## Log
+
+- 2026-08-26 — **Parked at Ry's call.** The draft is complete and correct in Wix; he is
+  holding publication for timing. **A future session should not read the unset Live URL as
+  a stalled workflow** — the post is done, the trigger is Ry deciding to ship it. When he
+  does, Phase 3 resumes from the Outstanding list above, and the Web Property Map edge is
+  the item most easily forgotten.
 
 - 2026-08-26 — **Reframe: the speaker is a consultant, not an applicant** (#271). Ry will
   not publish a post announcing that he is personally job hunting; he runs a consulting
