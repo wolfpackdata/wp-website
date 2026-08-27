@@ -246,8 +246,9 @@ def docx_text(path: Path) -> str:
     with zipfile.ZipFile(path) as z:
         xml = z.read("word/document.xml").decode("utf-8")
     runs = re.findall(r"<w:t[^>]*>(.*?)</w:t>", xml, re.S)
-    # Word escapes & < > in run text, so "Data & AI Systems Architect" is stored
-    # as "Data &amp; AI …". Unescape or every check on an ampersand fails.
+    # Word escapes & < > in run text, so "Software Engineering & Architecture"
+    # is stored as "Software Engineering &amp; …". Unescape or every check on
+    # an ampersand fails.
     return re.sub(r"\s+", " ", html.unescape(" ".join(runs)))
 
 
