@@ -1,6 +1,6 @@
 # Workflow — A Fish Called Engineer
 
-Phase: 2 — draft in hand and assembled locally, **not yet pushed to Wix** (Ry's instruction)
+Phase: 3 — draft in Wix, awaiting Ry's proofread and publish
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ Phase: 2 — draft in hand and assembled locally, **not yet pushed to Wix** (Ry'
 | Notion content  | https://app.notion.com/p/3c8c70e5c7b481528c74fe8fdb577007 (Blog Post 11) |
 | Notion LinkedIn | https://app.notion.com/p/3c8c70e5c7b481078997c3c1abce7807 |
 | Notion task     | https://app.notion.com/p/3c8c70e5c7b481f3b294f2a1dc54f012 |
-| Wix draft ID    | **(unset — nothing has been pushed)** |
+| Wix draft ID    | **`c896b105-e86a-4526-83c2-cdaf4427ce3a`** — pushed 2026-08-26 5:42 PM PT, `UNPUBLISHED` |
 | Live URL        | (unset) |
 | Slug            | `a-fish-called-engineer` — **Ry, 2026-08-26** |
 | Cover           | `cover.jpg`, 1200 x 675, 184 KB — supplied by Ry 2026-08-26; master `planning/fish called engineer image 2.png` (1672 x 941) |
@@ -103,25 +103,54 @@ Deliberately **not** changed, so a later session does not "fix" them:
 - **Notion `Platform`** is `Website`, not the skill's `WP Blog` — the live schema has no
   such option. Same finding as Blog Post 9; the skill is still stale on this point.
 
+## A re-push is a PATCH, never another POST
+
+**`PATCH /blog/v3/draft-posts/c896b105-e86a-4526-83c2-cdaf4427ce3a`.** A `POST` creates a
+second post. The PATCH is partial, so a retitle, excerpt change or cover swap is a two-field
+patch; send a rebuilt body only when the body changed, and hash the live body against a
+fresh build first in case Ry has edited the draft in the dashboard.
+
+| Resolved at push time | |
+|---|---|
+| Cover media | `e00ee6_0b19933917a9420992f073615b508e06~mv2.jpg` — uploaded from the develop raw GitHub URL after a sha256 check against the local file; Wix reports 1200 x 675 |
+| `AI engineering` | `1e614466-776a-4b7e-9fa8-5da9e3eee0f3` — existing |
+| `engineering leadership` | `cc7c1304-6a3f-4aa3-b6f6-4518ee1ef4ed` — existing |
+| `snarky` | `5660cc31-982b-46e5-8aad-e6fe424f9bb7` — **created by this push** |
+| `editorial` | `b03581ab-7d16-46bb-b492-11de1546c7c0` — **created by this push** |
+| `HR` | `1f3f8482-4dad-4983-ac8e-88a1fc9fc0dd` — **created by this push** |
+| `job hunting` | `3e792d68-9a62-4e78-aace-68da5446e285` — **created by this push** |
+| Author | `e00ee638-af7f-4aac-aa2b-c99d795ecf78`, the converter default |
+| Destinations | Two, both Ry's call: the AI Command case study (`/wolfpack-ai-command/`) and the portfolio (`/portfolio/`). **No intro-call CTA** — this is the only post here without one, and it is deliberate |
+
+**The body was read back and verified after the push**, not assumed: `GET
+…?fieldsets=RICH_CONTENT` was compared paragraph by paragraph against the built payload —
+171 nodes, six headings, the nine-item list, the blockquote, both links, the NOAA link, the
+italic *toothfish*, every em dash, curly quote and `résumé`. Nothing was dropped or mangled.
+
 ## Outstanding
 
-Claude's, once Ry answers:
+All Ry's:
 
-- Whether the post wants a CTA at all. Everything else from the batched Phase 2 question
-  is answered; `featured` stays `false`.
-- The Wix push, and **recording the returned draft ID in the table above.**
+- **Proofread and publish** in the Wix dashboard. The draft's preview path already reads
+  `/post/a-fish-called-engineer`, which happens to match the `seoSlug` here only because the
+  title derives to the same string — README fidelity limit 3 still applies in general.
+- **LinkedIn subpost** — no `raw-linkedin-post.md` exists; the LinkedIn Content row is at
+  `Idea`.
+- **Share / boost.**
 
-Ry's:
-
-- **The cover.** `post.md` names `cover.jpg` and the converter hard-errors until it lands,
-  which is the intended loud failure — `--list-images` will not run before then.
-- Proofread and publish, the LinkedIn subpost, share / boost.
-- Then Phase 3 bookkeeping: Content row → `Published` + URL + date, task to-dos, and the
-  Web Property Map only if the published post ends up linking an `intake.` page. **As
-  written it links none** — its one outbound link is the NOAA citation — so there is no new
-  Wix → GitHub edge to record unless a CTA is added.
+Then Phase 3 bookkeeping here: Content row → `Published` + URL + date, task to-dos, and
+**the Web Property Map — this one now needs it.** The post carries two `intake.` links
+(`/wolfpack-ai-command/` and `/portfolio/`), which is a new Wix → GitHub link path and an
+explicit staleness trigger. Record the edge after publication, verified against the live
+page rather than against `post.md`.
 
 ## Log
+
+- 2026-08-26 — **Phase 2 complete: pushed to Wix as an unpublished draft.** Cover, both
+  CTAs and the `LLMs` fix landed first (#261). `POST /blog/v3/draft-posts` returned
+  `c896b105-e86a-4526-83c2-cdaf4427ce3a`, `UNPUBLISHED`, 171 nodes, 5 minutes to read,
+  cover 1200 x 675, six tags of which four were created by this push. Body verified by
+  reading the draft back. **Nothing published.**
 
 - 2026-08-26 — **Cover and CTAs.** Ry supplied the hero (a police lineup of five faceless
   men in five different work outfits — the same person, five job titles) and asked for two
