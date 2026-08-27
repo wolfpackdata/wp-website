@@ -252,9 +252,9 @@ def wrap_parts(draw, parts, font, max_w):
     separator per line means it can only ever appear BETWEEN two phrases that
     share a line, never at a line's start or end.
 
-    It also keeps a phrase whole, which is the more important half: "Data & AI
-    Systems Architect" is one job title and splitting it across two lines reads
-    as two.
+    It also keeps a phrase whole, which is the more important half: "Applied
+    AI Engineer" is one job title and splitting it across two lines reads as
+    two.
 
     Returns None when a single phrase cannot fit on a line by itself — the
     caller steps the size down instead of shipping an overflowing line.
@@ -680,7 +680,7 @@ CARDS = [
         "out": "hire/assets/img/og-ryan-hickey.png",
         "logo": "hire/assets/img/wolfpack-logo.png",
         "title": "Ryan Hickey",
-        "subtitle": "AI Engineer · Data & AI Systems Architect · COO",
+        "subtitle": "Applied AI Engineer · Data Engineer · COO",
         "max_lines": 1,
         # The backbone render is 16:9 art, not a screenshot, so it takes
         # vfocus=0.5 for the reason framed()'s docstring gives: top-anchoring a
@@ -712,7 +712,7 @@ CARDS = [
         "out": "hire/assets/img/og-ryan-hickey-music.png",
         "logo": "hire/assets/img/wolfpack-logo.png",
         "title": "Ryan Hickey",
-        "subtitle": "AI Engineer · Data & AI Systems Architect · Professional Musician",
+        "subtitle": "Applied AI Engineer · Data Engineer · Professional Musician",
         "max_lines": 1,
         "insets": [("hire/assets/img/app-setmaster.png", None, 0.0)],
     },
