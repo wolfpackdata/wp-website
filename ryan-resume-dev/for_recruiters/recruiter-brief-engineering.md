@@ -13,7 +13,7 @@ He's a senior data-and-AI engineer who has also been the COO: he architected the
 
 | Track | Titles |
 |---|---|
-| Primary | Applied AI Engineer · AI Engineer · ML Engineer |
+| Primary | Applied AI Engineer · Data Engineer · Data Product Builder |
 | Broadest fit | Senior / Staff Data Engineer · Analytics Engineer · Data Platform Engineer |
 | Leadership | Head of Data & AI · Director of Data · Director of Analytics |
 
