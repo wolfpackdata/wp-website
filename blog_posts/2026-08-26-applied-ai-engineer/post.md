@@ -5,7 +5,7 @@ excerpt: "Have you ever eaten the delicious Patagonian toothfish at a gourmet re
 cover: cover.jpg
 cover_alt: A police lineup against a height chart, holding five faceless men in different work outfits — a shirt-sleeved figure carrying a laptop, one in a plain t-shirt, one in field coveralls with a two-way radio, one in a business suit, and one in shirt and tie holding a checklist on a tablet. The same person, five job titles.
 date: 2026-08-26
-tags: [AI engineering, engineering leadership, snarky, editorial, HR, job hunting]
+tags: [AI engineering, engineering leadership, snarky, editorial, HR, positioning]
 featured: false
 ---
 
@@ -17,7 +17,7 @@ Patagonian toothfish sounds like something that washes up on the beach after a c
 
 Same fish, better title.
 
-And after spending a few months navigating the technology job market, I have come to an uncomfortable conclusion:
+And after spending a few months watching how the technology market files what I sell, I have come to an uncomfortable conclusion:
 
 Apparently, I am Chilean sea bass.
 
@@ -71,13 +71,13 @@ Granted.
 
 The problem is that somewhere along the way, tech started treating the shortcut like the specification, which really only applies to monolithic enterprises with extremely defined roles.
 
-In an industry obsessed with abstraction, HR and recruiters are strangely literal about job titles. “Change the résumé and re-apply.”
+In an industry obsessed with abstraction, HR and recruiter software platforms are strangely literal about job titles. Leads to the advice “change the résumé and re-apply.”
 
 A person can have spent years designing data systems, writing production software, building analytical products, automating workflows, managing engineering projects, integrating APIs, deploying cloud infrastructure, supervising AI agents, and owning the business outcome.
 
 But if the open role says **Applied AI Engineer** and the top of the résumé says **Data & AI Systems Architect**, the latter is now considered an antique title, a remnant of the forgotten 2022s.
 
-“Interesting background. But have you ever held the title Applied AI Engineer?”
+The stock question follows: “Interesting background. But have you ever held the title Applied AI Engineer?”
 
 Well, no.
 
@@ -137,7 +137,7 @@ A product cannot answer an obvious question.
 
 Internal systems don’t talk to each other.
 
-Leaky or undirected AI use (cough, vibe coding, cough, not developers, cough).
+Leaky or undirected AI use (cough, vibe coding, cough).
 
 Consumer AI products being used for business.
 
@@ -161,7 +161,7 @@ It’s an inescapable truth that we need to reverse-engineer ourselves into what
 
 I take issue with excluding candidates entirely because of title semantics, or worse, excluding them due to a previously held title.
 
-I’m sorry, recruiter — even if I change “COO” to “Co-Founder,” I am still unfortunately the same person. Plus, I don’t think the founder would appreciate that. [That was an actual recruiter suggestion.]
+I’m sorry, recruiters — even if I change “COO” to “Co-Founder,” I am still unfortunately the same person. Plus, I don’t think the founder would appreciate that. [That was an actual recruiter suggestion.]
 
 `Head of Insights & Analytics` becomes `Data Engineering Leader`.
 
@@ -187,4 +187,4 @@ The toothfish has been renamed.
 
 My name is Ryan, Applied AI Engineer.
 
-If you would rather judge the work than the title, [it is all here](https://intake.wolfstrategyllc.com/portfolio/).
+[Recent Work](https://intake.wolfstrategyllc.com/portfolio/).
