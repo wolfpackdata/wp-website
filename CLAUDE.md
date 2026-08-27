@@ -284,7 +284,16 @@ of truth, never edit the deployed copy, re-copy on change. Folder README:
 Same `noindex`, same shared `assets/` and `hire.css`, same chrome. **The markdown is the
 source and `for_recruiters/verify_brief.py` guards the two copies** (pitch verbatim; every
 figure, title, and exclusion present) — run it with `check_meta.py` before any PR touching
-either side. They are deliberately **not** in `verify_facts.py`'s `HTML_PAGES` and use no
+either side. ⚠️ **Check 3 is one-directional**: it asserts every title in the markdown
+table appears on the page, **not** that the page carries no extras — so a stale `<li>` left
+behind in the HTML passes silently. Read both lists when you change titles.
+**The briefs' target-title tables are NOT the résumé role line.** They are the titles Ry
+searches against, they are his editorial call, and they move independently: on 2026-08-26
+(#265) the Primary track dropped `AI Engineer` and `ML Engineer` and gained `Data Engineer`
+and `Data Product Builder`, on the same day the role line itself changed for unrelated
+reasons. `Applied AI Engineer` stayed on both and `Founding AI Engineer` on the music brief
+only — *"remove AI Engineer"* meant the standalone entry, not every title containing the
+phrase. Don't reconcile the two tables with the role line in either direction. They are deliberately **not** in `verify_facts.py`'s `HTML_PAGES` and use no
 `.app__*` classes: their proof points are the brief's own wording. Small `summary` card on
 the logo by ruling (plan **D-013**, flagged for Ry). **Deployed 2026-08-24** with the Shopify Plus
 addition (#250, `ai-coaching-intake#88`) — `hire/` deploys as one folder, so that copy took
@@ -312,6 +321,14 @@ Conventions the pages must keep:
   folder that deploys as a single unit. Neither reuses a `portfolio/` card panel, so the
   three never read as one duplicated post. **A card is not indexing**: `noindex` above is
   untouched by this, and adding one did not make these pages findable.
+- **Each card carries the role line as a subtitle, and it mirrors the page `<title>`** —
+  three parts, not the résumé's four. That makes the cards a **twelfth destination for the
+  role line** (see the bullet below), and the one furthest from `brand.py`. **`og:image:alt`
+  describes the card's PIXELS, not the page**, so when the role line moves the alt text must
+  *not* move until the art is rebuilt — editing it first makes it false. That is why the
+  cards sat two title changes behind their pages between #263 and #267, deliberately, and
+  why both moved together in #267. If you change a subtitle, rebuild and re-copy; if you
+  cannot rebuild, leave the alt text alone.
 - **Content comes from the résumé YAML, verbatim.** Experience bullets and project blurbs
   are guarded by `ryan-resume-dev/resume_build/verify_facts.py`; retyping them into the
   HTML creates a second, unguarded copy that will drift. Copy, don't paraphrase — and
@@ -320,6 +337,30 @@ Conventions the pages must keep:
 - **The four downloads in `assets/dl/` are owned by `export_pdf.py`** — never rename or
   replace them by hand. Rebuild with
   `python build.py ; python verify_facts.py ; python export_pdf.py`.
+- **The résumé ROLE LINE has one source and eleven destinations.** The source is
+  `ROLE_LINES` in `ryan-resume-dev/resume_build/resumekit/brand.py`; `verify_facts.py`
+  reads it, so changing it there and nowhere else fails the guard loudly — which is the
+  good case. It reaches: the two YAML `meta.subject` values, the eight
+  `resume_design/templates/export/*.html` artboards, `resume_design/header-footer-spec.md`
+  (two verbatim strings **and** an ASCII box mock whose borders must stay aligned), the
+  row-1 mock in `templates/css/resume-brand.css`, line 3 of both `for_recruiters/*.md`
+  briefs, the `<title>` / `og:title` / `.hero__role` of the two résumé pages, the
+  `.hero__role` of the two brief pages, the two social-card subtitles, and — **guarded by
+  nothing** — the committed **cover-letter template**. Changed twice in one day on
+  2026-08-26: `AI Engineer` → `Applied AI Engineer` (#259/#260) and
+  `Data & AI Systems Architect` → `Data Engineer` (#263).
+  ⚠️ **Two destinations are guarded by nothing and both had silently drifted.**
+  `verify_facts.py` reads only the two résumé builds, so
+  `cover_letters/Ryan_Hickey_Cover_Letter_Template.docx` — generated off the same
+  `brand.py` stationery — went two changes stale *and* kept a retired LinkedIn URL until
+  #263 rebuilt it with `python cover_letter.py --template`. **Rebuild it whenever
+  `brand.py` changes.** The social cards are the other, and they are stale *by design*
+  between a title change and a card rebuild (see the card bullet above).
+  **A role line is a title, not a job description.** “Primary systems architect through
+  $300K → $30M” in the experience prose describes the Shock Surplus role and does **not**
+  move with the role line; neither do the `AI Engineering & Agent Development` skill-group
+  labels, nor `senior AI Engineer/CTO` in the pdpd blurb, which is a different person and
+  a check-6 guarded string.
 - **The case studies section is the published set in Ry's order, identical on both pages**
   (2026-08-17, #218): AI Command → SetMaster 3 → Consolidation Under Pressure → financial
   model. **The order re-derives from nothing** — not alphabetical, chronological, or by
@@ -738,9 +779,13 @@ band sits three lines under `$140/hr`, so the arithmetic is one glance away. Bot
 close on *"a pilot buys a scoped outcome rather than reserved time, so it sits off the
 rate curve above"* — that sentence is the disarm, and it is not decoration.
 
-**Still open — the deploy.** Neither rates page has been re-copied into
-`ai-coaching-intake` since the band landed, so the live `/rates_public/` and
-`/rates_2026Q3/` do not yet show it.
+**The band is deployed on both pages.** Confirmed live on `/rates_public/` and
+`/rates_2026Q3/` on 2026-08-26. It was already live *before* that day's
+`ai-coaching-intake#90`, which changed only the `.about__roles` line — so the note that
+stood here, saying the deploy was still owed, had been wrong for some time and nothing
+caught it. **A status line in this file is not evidence that something is or isn't live.**
+Fetch the page. That is the whole reason the deployment table above carries URLs rather
+than states.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
