@@ -23,7 +23,7 @@ meta:
   variant: eng                   # picks the role line; header is text since v2.2
   footer_org: Wolfpack Data & Strategy
   title: Ryan Hickey — Résumé (engineering)
-  subject: AI Engineer · Data & AI Systems Architect · COO · Technical Operator
+  subject: Applied AI Engineer · Data & AI Systems Architect · COO · Technical Operator
   source: v2 round plan (docs/v2-plan.md)
 
 sections:
@@ -32,8 +32,8 @@ sections:
     title: Professional Summary
     paragraphs:
       - >-
-        AI engineer, data scientist, software developer, and technology operator
-        with 20+ years of coding experience and 17 years leading technology,
+        Applied AI engineer, data scientist, software developer, and technology
+        operator with 20+ years of coding experience and 17 years leading technology,
         analytics, and operational initiatives. Combines deep expertise in software
         architecture, Python development, SQL, cloud analytics, financial modeling,
         automation, and systems design with modern AI development workflows using

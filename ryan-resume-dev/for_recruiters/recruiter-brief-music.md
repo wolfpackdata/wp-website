@@ -1,6 +1,6 @@
 # Ryan Hickey — Recruiter Brief (Music, Audio & Creator Tools)
 
-**AI Engineer · Data & AI Systems Architect · former COO · working musician** · Bay Area / Remote (US)
+**Applied AI Engineer · Data & AI Systems Architect · former COO · working musician** · Bay Area / Remote (US)
 ryan@wolfstrategyllc.com · 415-371-9613 · [linkedin.com/in/workwithryan](https://www.linkedin.com/in/workwithryan) · [wolfstrategyllc.com](https://wolfstrategyllc.com)
 
 ## In three sentences
