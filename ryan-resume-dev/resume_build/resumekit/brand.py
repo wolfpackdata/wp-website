@@ -184,6 +184,6 @@ CONTACT = {
 
 # `COO` added v2.0. Four titles fit because COO is short; a fifth would not.
 ROLE_LINES = {
-    "music": "Applied AI Engineer · Data & AI Systems Architect · COO · Professional Musician",
-    "eng": "Applied AI Engineer · Data & AI Systems Architect · COO · Technical Operator",
+    "music": "Applied AI Engineer · Data Engineer · COO · Professional Musician",
+    "eng": "Applied AI Engineer · Data Engineer · COO · Technical Operator",
 }

@@ -23,7 +23,7 @@ meta:
   variant: eng                   # picks the role line; header is text since v2.2
   footer_org: Wolfpack Data & Strategy
   title: Ryan Hickey — Résumé (engineering)
-  subject: Applied AI Engineer · Data & AI Systems Architect · COO · Technical Operator
+  subject: Applied AI Engineer · Data Engineer · COO · Technical Operator
   source: v2 round plan (docs/v2-plan.md)
 
 sections:
