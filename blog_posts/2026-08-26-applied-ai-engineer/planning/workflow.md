@@ -118,7 +118,8 @@ fresh build first in case Ry has edited the draft in the dashboard.
 | `snarky` | `5660cc31-982b-46e5-8aad-e6fe424f9bb7` — **created by this push** |
 | `editorial` | `b03581ab-7d16-46bb-b492-11de1546c7c0` — **created by this push** |
 | `HR` | `1f3f8482-4dad-4983-ac8e-88a1fc9fc0dd` — **created by this push** |
-| `job hunting` | `3e792d68-9a62-4e78-aace-68da5446e285` — **created by this push** |
+| `positioning` | `b0bfa4ca-032e-4c7d-914f-2c0fb6127216` — created by the reframe patch |
+| ~~`job hunting`~~ | `3e792d68-9a62-4e78-aace-68da5446e285` — created by the first push, then **orphaned by the reframe.** Still exists in the blog's taxonomy at `postCount: 0`. Left in place deliberately; deleting a tag is a taxonomy action for Ry, not a tidy-up |
 | Author | `e00ee638-af7f-4aac-aa2b-c99d795ecf78`, the converter default |
 | Destinations | Two, both Ry's call: the AI Command case study (`/wolfpack-ai-command/`) and the portfolio (`/portfolio/`). **No intro-call CTA** — this is the only post here without one, and it is deliberate |
 
@@ -145,6 +146,30 @@ explicit staleness trigger. Record the edge after publication, verified against 
 page rather than against `post.md`.
 
 ## Log
+
+- 2026-08-26 — **Reframe: the speaker is a consultant, not an applicant** (#271). Ry will
+  not publish a post announcing that he is personally job hunting; he runs a consulting
+  practice and the same observations hold for a business positioning what it sells. **The
+  industry critique is untouched** — title literalism, ATS matching, the toothfish conceit,
+  every joke. Four edits, and that is the whole list:
+
+  | Line | Change |
+  |---|---|
+  | 20 | `navigating the technology job market` → `watching how the technology market files what I sell`. *Files* now hands straight off to *"Apparently, I am Chilean sea bass."* |
+  | 80 | prefixed `The stock question follows:` — the dialogue survives verbatim but belongs to the market, not to an interviewer in a room |
+  | 164 | `recruiter` → `recruiters`. Addressing the profession is commentary; addressing *your* recruiter is a pipeline |
+  | 8 | tag `job hunting` → `positioning` |
+
+  **The third person was deliberately left alone** — *"every person who applies"*, *"a person
+  can have spent years…"*, *"excluding candidates"*. The critique being about the hiring
+  market is the point; only the first person moved. Ry's own edits at L74, L140 and L190
+  reached git for the first time in the same commit, preserved exactly.
+
+  **Draft patched, not re-posted:** `PATCH /blog/v3/draft-posts/c896b105-…` with
+  `richContent` + `tagIds` only. Title, excerpt, cover, `seoSlug` and `memberId` all
+  survived the partial update, as the README says they do. Still `UNPUBLISHED`. The draft
+  had been carrying both the old framing *and* three of Ry's edits that were made after the
+  first push, so this patch closes both gaps at once.
 
 - 2026-08-26 — **Phase 2 complete: pushed to Wix as an unpublished draft.** Cover, both
   CTAs and the `LLMs` fix landed first (#261). `POST /blog/v3/draft-posts` returned
