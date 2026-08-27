@@ -22,7 +22,7 @@ meta:
   variant: music                 # picks the role line; header is text since v2.2
   footer_org: Wolfpack Data & Strategy
   title: Ryan Hickey — Résumé (engineering + music)
-  subject: AI Engineer · Data & AI Systems Architect · COO · Professional Musician
+  subject: Applied AI Engineer · Data & AI Systems Architect · COO · Professional Musician
   source: v2 round plan (docs/v2-plan.md)
 
 sections:
@@ -31,8 +31,8 @@ sections:
     title: Professional Summary
     paragraphs:
       - >-
-        AI engineer, data scientist, software developer, technology operator, and
-        professional musician with 20+ years of coding experience and 17 years
+        Applied AI engineer, data scientist, software developer, technology operator,
+        and professional musician with 20+ years of coding experience and 17 years
         leading technology, analytics, and operational initiatives. Combines deep
         expertise in software architecture, Python development, SQL, cloud
         analytics, financial modeling, automation, and systems design with modern

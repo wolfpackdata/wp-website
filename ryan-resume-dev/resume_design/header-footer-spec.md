@@ -47,7 +47,7 @@ readable size:
 ```
  ┌─────────────────────────────────────────────────────────────────┐
  │  ┌────┐ │  RYAN HICKEY                              ┌────────┐  │
- │  │wolf│ │  AI Engineer · Data & AI Systems Arch…    │  RML   │  │   row 1
+ │  │wolf│ │  Applied AI Engineer · Data & AI Syst…    │  RML   │  │   row 1
  │  └────┘ │                                           └────────┘  │
  │         ────────────────────────────────────────────────────    │   hairline
  │           ryan@… · linkedin.com/in/… · github.com/… · SF Bay   │   row 2
@@ -136,13 +136,13 @@ RYAN HICKEY
 **Role line — music**
 
 ```
-AI Engineer · Data & AI Systems Architect · COO · Professional Musician
+Applied AI Engineer · Data & AI Systems Architect · COO · Professional Musician
 ```
 
 **Role line — engineering**
 
 ```
-AI Engineer · Data & AI Systems Architect · COO · Technical Operator
+Applied AI Engineer · Data & AI Systems Architect · COO · Technical Operator
 ```
 
 > **v2 added `COO`** (Ry, 2026-07-30), matching how the public rates page
