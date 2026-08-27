@@ -3,7 +3,7 @@ title: A Fish Called Engineer
 slug: a-fish-called-engineer
 excerpt: "Have you ever eaten the delicious Patagonian toothfish at a gourmet restaurant? Likely it was called something else on the menu. It was probably Chilean sea bass. Patagonian toothfish sounds like something that washes up on the beach after a chemical spill. Chilean sea bass sounds excellent with some lemon and a Sancerre. Same fish, better title."
 cover: cover.jpg
-cover_alt: PLACEHOLDER — replace when the hero lands.
+cover_alt: A police lineup against a height chart, holding five faceless men in different work outfits — a shirt-sleeved figure carrying a laptop, one in a plain t-shirt, one in field coveralls with a two-way radio, one in a business suit, and one in shirt and tie holding a checklist on a tablet. The same person, five job titles.
 date: 2026-08-26
 tags: [AI engineering, engineering leadership, snarky, editorial, HR, job hunting]
 featured: false
@@ -53,7 +53,7 @@ When there was enough Python involved, I became a **software engineer**.
 
 SQL and ETL pipelines are always involved, so I’m a **data engineer** the whole time, too.
 
-LLM arrived in ’22, immediately became part of my daily development environment, started participating directly in the systems I was building, and apparently the fish got renamed again.
+LLMs arrived in ’22, immediately became part of my daily development environment, started participating directly in the systems I was building, and apparently the fish got renamed again.
 
 Welcome, Applied AI Engineer Ryan.
 
@@ -98,6 +98,8 @@ I use AI to **build automation and ops solutions**.
 That includes applications, agents, workflow systems, data products, automation, development tooling, model integrations, structured human-review systems, and the connective tissue required to make AI useful inside a real organization.
 
 My AI stack is Claude Code, Codex, GitHub, Notion, Python, hosted databases, plus lots of MCP connections, written rules, automated checks, and human gates. I built an AI development command center — AKA “cognitive infrastructure” (another title) — because once you have several agents and projects moving simultaneously, “just use Claude” is not sustainable.
+
+If you want the long version of how that works, [I wrote it up as a case study](https://intake.wolfstrategyllc.com/wolfpack-ai-command/).
 
 An e-commerce intelligence platform, a cross-platform DJ analytics application, AI-assisted content systems, BigQuery provisioning tools, business automation, and supervised AI workflows.
 
@@ -183,4 +185,6 @@ I am simply using the title that most efficiently describes what I am doing **no
 
 The toothfish has been renamed.
 
-My name is Ryan, Applied AI Engineer, apparently.
+My name is Ryan, Applied AI Engineer.
+
+If you would rather judge the work than the title, [it is all here](https://intake.wolfstrategyllc.com/portfolio/).
