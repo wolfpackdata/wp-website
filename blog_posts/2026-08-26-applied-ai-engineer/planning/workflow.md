@@ -12,7 +12,7 @@ Phase: 2 — draft in hand and assembled locally, **not yet pushed to Wix** (Ry'
 | Wix draft ID    | **(unset — nothing has been pushed)** |
 | Live URL        | (unset) |
 | Slug            | `a-fish-called-engineer` — **Ry, 2026-08-26** |
-| Cover           | **missing.** `post.md` names `cover.jpg`; Ry is building the hero in parallel |
+| Cover           | `cover.jpg`, 1200 x 675, 184 KB — supplied by Ry 2026-08-26; master `planning/fish called engineer image 2.png` (1672 x 941) |
 
 ## How this one differs from the standard Phase 1
 
@@ -96,8 +96,8 @@ Deliberately **not** changed, so a later session does not "fix" them:
   `engineering leadership` exist. Creating a tag is a real entity in the blog's taxonomy
   and **`POST /blog/v3/tags` returns `409 ALREADY_EXISTS` rather than the existing tag**,
   so read the tag list first and only create the four.
-- **`LLM arrived in '22`** — reads like a typo for *LLMs*. Ry's own sentence, flagged rather
-  than changed.
+- **`LLM arrived in '22`** — Ry made this correction in the ledger rather than in `post.md`,
+  so Claude applied it to the post on 2026-08-26. It now reads *LLMs arrived*.
 - **Blog Post 11, not 10.** `Blog Post 10: Analyzing the Cost of Claude for Organizations`
   already exists in the Content DB at `Idea`.
 - **Notion `Platform`** is `Website`, not the skill's `WP Blog` — the live schema has no
@@ -122,6 +122,15 @@ Ry's:
   Wix → GitHub edge to record unless a CTA is added.
 
 ## Log
+
+- 2026-08-26 — **Cover and CTAs.** Ry supplied the hero (a police lineup of five faceless
+  men in five different work outfits — the same person, five job titles) and asked for two
+  subtle CTAs. `cover.jpg` derived at 1200 x 675 from the 1672 x 941 master, which is
+  exactly 16:9 so nothing was cropped; **rebuild from the master rather than re-encoding
+  `cover.jpg`.** Real `cover_alt` written from the image. CTA 1 lands after the
+  *cognitive infrastructure* sentence → `/wolfpack-ai-command/`; CTA 2 closes the post →
+  `/portfolio/`. Ry's `LLMs` correction was applied here — he had made it in this ledger
+  rather than in `post.md`.
 
 - 2026-08-26 — **Ry's revision pass.** He edited `post.md` in place — eleven prose changes
   of his own, including the Steely Dan genre analogy, the *"Change the résumé and re-apply"*
