@@ -11,6 +11,9 @@ skills + the [`wolfpackdata/wp-github-sop`](https://github.com/wolfpackdata/wp-g
 repo). Nothing here overrides it — see those for branching, commits, PRs, labels,
 versioning, and releases. Sessions that can't load the skills (e.g. the mobile app) read
 the SOP from that repo's `docs/sop/`.
+Risk-tiered changes — auth, data migration, security, release tooling, CI/rulesets, or
+the SOP and skills other agents obey — and every release PR take the **AI-review stage**
+(Codex as the AI Reviewer) before merge; see `docs/sop/10-ai-review.md` in that repo.
 
 ## Notion workspace
 Work that touches my Notion team space follows the Wolfpack Notion SOP (the
