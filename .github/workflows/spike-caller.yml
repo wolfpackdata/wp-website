@@ -1,0 +1,17 @@
+# THROWAWAY — spike caller stub for runbook step 6.1 (Teams task 1). Deleted with its branch.
+name: Spike caller
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  gate:
+    uses: wolfpackdata/wp-github-sop/.github/workflows/spike-echo.yml@57a32581cf7bc7847d1209106717c2abfc307f90
+    with:
+      marker: SPIKE-6-1-PINNED-SHA
