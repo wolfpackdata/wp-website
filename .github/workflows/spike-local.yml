@@ -1,0 +1,14 @@
+# THROWAWAY — 6.1 spike control caller (local source, same public repo).
+name: Spike local caller
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  gate:
+    uses: ./.github/workflows/spike-local-echo.yml
+    with:
+      marker: SPIKE-6-1-LOCAL-CONTROL

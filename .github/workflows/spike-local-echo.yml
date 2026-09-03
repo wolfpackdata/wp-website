@@ -1,0 +1,19 @@
+# THROWAWAY — 6.1 spike control: a LOCAL reusable workflow in this same public repo.
+name: Spike local echo (reusable)
+on:
+  workflow_call:
+    inputs:
+      marker:
+        required: true
+        type: string
+jobs:
+  gate:
+    name: needs-ai-review must be clear
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          echo "SPIKE-MARKER: ${{ inputs.marker }}"
+          echo "github.repository = ${{ github.repository }}"
+          echo "github.event_name = ${{ github.event_name }}"
+          echo "caller head.sha   = ${{ github.event.pull_request.head.sha }}"

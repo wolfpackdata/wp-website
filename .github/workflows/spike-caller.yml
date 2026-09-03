@@ -12,6 +12,6 @@ permissions:
 
 jobs:
   gate:
-    uses: wolfpackdata/wp-github-sop/.github/workflows/spike-echo.yml@57a32581cf7bc7847d1209106717c2abfc307f90
+    uses: wolfpackdata/wp-github-sop/.github/workflows/spike-echo.yml@spike-v0
     with:
-      marker: SPIKE-6-1-PINNED-SHA
+      marker: SPIKE-6-1-PINNED-TAG
