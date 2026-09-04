@@ -24,7 +24,9 @@ release tooling, CI/rulesets, or the SOP and skills other agents obey — and **
 PR take the **AI-review stage** before merge, with Codex as the AI Reviewer: see
 `docs/sop/10-ai-review.md` and `docs/sop/runbooks/ai-review.md` in that repo, and
 `docs/sop/09-roles-and-permissions.md` for what the AI Reviewer may and may not do (it
-reviews; its approval never satisfies the `main` gate).
+reviews; its approval never satisfies the `main` gate). Under `-p review` Codex is the AI
+Reviewer (`main-wolfpack`); in every other profile it acts under the human's identity as an
+AI Implementer.
 
 ## Notion workspace
 Work that touches the Notion team space follows the Wolfpack Notion SOP —

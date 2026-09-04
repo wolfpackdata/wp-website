@@ -101,6 +101,12 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- **`CLAUDE.md` and `AGENTS.md` name the reviewer's identity.** Both AI-review blocks now close
+  with the sentence the canonical bootstrap templates carry: under `-p review` Codex is the AI
+  Reviewer (`main-wolfpack`), and in every other profile it acts under the human's identity as an
+  AI Implementer. This repo is public and runs standalone copies of the workflows, so its agent
+  contracts are the only place a contributor or an agent reads that from. Two sentences; no other
+  line of either file changed. (#279)
 - **Consolidation Under Pressure is live** at
   `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`, deployed 2026-08-15 from
   `develop 64fa14d` (`ai-coaching-intake#74`). **The first page in this repo to deploy as two
