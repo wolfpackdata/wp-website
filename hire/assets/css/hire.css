@@ -2,7 +2,11 @@
    Wolfpack Hire Pages — résumé landing pages (eng-only + eng-music)
    Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
 
-   One stylesheet, both pages. Derived from rates/css/rates.css and
+   One stylesheet, four pages: the two résumé pages and, since #246, the two
+   recruiter briefs (recruiter-brief/, recruiter-brief-music/). The briefs use
+   seven of the eight coral allowances below — everything but the chip — and
+   add none; their three structural additions are the last block in this file.
+   Derived from rates/css/rates.css and
    ai-coaching/css/coaching.css — the pattern library — and from
    ryan-resume-dev/resume_design/ for the header slab, which is a screen-scale
    port of the shipped résumé header (header-footer-spec.md §9).
@@ -682,4 +686,43 @@ h1, h2, h3, h4 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700;
      sits on its own row, a trailing "·" is just a dangling mark. */
   .hero__contact { flex-direction: column; gap: 6px; }
   .hero__contact li:not(:last-child)::after { content: none; }
+}
+
+/* ==========================================================================
+   Recruiter briefs (#246) — hire/recruiter-brief/ and recruiter-brief-music/.
+   Same sheet, same chrome, same coral enumeration (seven of the eight uses;
+   no IN PREPARATION chip). The three blocks below are the whole delta, and
+   each reuses an existing device rather than introducing one.
+   ========================================================================== */
+
+/* The three title tracks side by side. Two columns would put the third track
+   on its own row and read it as a lesser tier, which it is not. Nested inside
+   a .role card the groups take the deeper surface, or they vanish into it. */
+.matrix--3 { grid-template-columns: repeat(3, 1fr); }
+.role .matrix { margin-top: 18px; margin-bottom: 18px; }
+.role .mgroup { background: var(--surface-2); }
+
+/* Terms — the four facts a recruiter scans for before replying: comp,
+   geography, availability, industries. One panel per fact: a value line in
+   heading type, then the note that qualifies it. The comp figures are set
+   tabular so the dash and the dollar signs align. */
+.terms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.term {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px 26px;
+}
+.term .k { display: block; margin-bottom: 12px; font-size: 0.75rem; }
+.term__value { font-size: 1.0625rem; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.term__note { font-size: 0.9375rem; color: var(--muted); }
+.term .mgroup__skills + .k { margin-top: 20px; }
+
+/* The links panel: the closing block's label-over-link grid, minus the rule
+   that separates it from the buttons above it there — here nothing is above. */
+.linkgrid { padding-top: 0; margin-top: 0; border-top: 0; }
+
+@media (max-width: 900px) {
+  .matrix--3, .terms { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .term { padding: 22px 20px; }
 }

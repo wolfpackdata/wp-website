@@ -108,6 +108,19 @@ class Metrics:
     ats_contact_tracking_pt: float = 0.2
     ats_rule_eighths: int = 18                # 2.25pt
 
+    # Cover letter (resumekit/letter.py). Same fonts, palette, header and
+    # footer as the résumés; only the body scale differs. A résumé is dense by
+    # design — 8.5pt body earns its keep across three packed pages — but a
+    # one-page letter at that size reads as small type floating in white space,
+    # so the letter body sits at conventional correspondence scale. These are
+    # not density levers; apply_density() never touches them.
+    letter_body_pt: float = 10.0
+    letter_body_line_spacing: float = 1.35
+    letter_body_space_after_pt: float = 10.0
+    letter_date_space_before_pt: float = 22.0  # air between header rule and date
+    letter_block_space_before_pt: float = 14.0 # recipient block / salutation / closing
+    letter_signature_pt: float = 10.5
+
 
 METRICS = Metrics()
 
@@ -163,7 +176,7 @@ def apply_density(name: str) -> None:
 CONTACT = {
     "name": "Ryan Hickey",
     "email": "ryan@wolfstrategyllc.com",
-    "linkedin": "linkedin.com/in/ryan-hickey-626b2798",
+    "linkedin": "linkedin.com/in/workwithryan",
     "github": "github.com/wolfpackdata",       # added v2.0
     "location": "San Francisco Bay Area",
     "org": "Wolfpack Data & Strategy",
@@ -171,6 +184,6 @@ CONTACT = {
 
 # `COO` added v2.0. Four titles fit because COO is short; a fifth would not.
 ROLE_LINES = {
-    "music": "AI Engineer · Data & AI Systems Architect · COO · Professional Musician",
-    "eng": "AI Engineer · Data & AI Systems Architect · COO · Technical Operator",
+    "music": "Applied AI Engineer · Data Engineer · COO · Professional Musician",
+    "eng": "Applied AI Engineer · Data Engineer · COO · Technical Operator",
 }

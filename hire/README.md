@@ -8,6 +8,8 @@ résumés, aimed at **hiring managers** (not clients — that's `rates/` and
 |---|---|---|
 | `ryan-hickey/` | `../ryan-resume-dev/resume_build/content/eng_only.yaml` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey/` |
 | `ryan-hickey-music/` | `…/eng_music.yaml` | `https://intake.wolfstrategyllc.com/hire/ryan-hickey-music/` |
+| `recruiter-brief/` | `../ryan-resume-dev/for_recruiters/recruiter-brief-engineering.md` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief/` — **built 2026-08-20 (#246), not yet deployed** |
+| `recruiter-brief-music/` | `…/for_recruiters/recruiter-brief-music.md` | `https://intake.wolfstrategyllc.com/hire/recruiter-brief-music/` — **built 2026-08-20 (#246), not yet deployed** |
 
 The full design plan — concept, IA, decisions ledger, acceptance criteria —
 is [`docs/hire-pages-design-plan.md`](../docs/hire-pages-design-plan.md).
@@ -27,6 +29,7 @@ change.
 - [x] `assets/js/reveal.js`
 - [x] `ryan-hickey/index.html`
 - [x] `ryan-hickey-music/index.html`
+- [x] `recruiter-brief/index.html` · `recruiter-brief-music/index.html` (#246 — see below)
 
 Verified: zero external requests, zero horizontal overflow at 320/390/768/1024/
 1440px, complete render with JS disabled, `verify_facts.py` passing. Full
@@ -142,6 +145,46 @@ ship as one `hire/` folder, so they share `assets/` and reference it as
   [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/)** before sharing
   either. LinkedIn reports a URL it has never scraped as "invalid URL" rather than as a
   cache miss — the trap `CLAUDE.md` records from 2026-08-17.
+
+## The recruiter briefs (#246)
+
+**Added 2026-08-20, not yet deployed.** Two more pages in this folder, `recruiter-brief/`
+and `recruiter-brief-music/`, render the two one-page recruiter briefs that live as
+markdown in `../ryan-resume-dev/for_recruiters/`. Audience: **agency recruiters and
+staffing desks**, not hiring managers — the page Ry links in a first email, carrying the
+three-sentence pitch, titles wanted in priority order, comp band, geography, industries in
+and out, availability, proof points, and links. Design plan rulings D-012 through D-015.
+
+- **The markdown is the source; the page is a rendering of it.**
+  `../ryan-resume-dev/for_recruiters/verify_brief.py` fails if the page's pitch is not the
+  markdown's verbatim, or if any dollar figure, title, or excluded industry in the markdown
+  is missing from the page. Run it alongside `check_meta.py` before any PR that touches
+  either side. Edit the markdown first, then the page — never the page alone.
+- **They are NOT in `verify_facts.py`'s `HTML_PAGES`, and must not use `.app__name` /
+  `.app__blurb`.** Proof points are the brief's own wording, not YAML strings, so check 6
+  has nothing to guard there — and it fails loudly on zero matches by design. A brief is a
+  fresh artifact, the same status `pilot-project/`'s blurbs have.
+- **Same sheet, three additions.** `hire.css` gained `.matrix--3`, the `.terms` / `.term`
+  panels, and `.linkgrid`, all at the end of the file and all reusing existing devices.
+  The coral enumeration is unchanged at eight; the briefs use seven (no chip).
+- **Small `summary` card on the logo, deliberately (D-013).** The résumé pages took built
+  cards because a pasted résumé URL *is* the first impression; a brief is linked from inside
+  an email that already carries the résumé. Flagged for Ry, not settled — upgrade is one
+  `build_cards.py` run, never a hand-made image.
+- **`noindex, nofollow`, like everything else here.** A comp band and an availability claim
+  are for the recruiter Ry emailed. The briefs link the résumé pages (`../ryan-hickey/`,
+  `../ryan-hickey-music/`) — that is inside the one deploy unit and is fine; nothing
+  outside `hire/` may link any of the four.
+- **Two inline links the résumé pages don't carry:** the public rate card and the pilot
+  page, inside the secondary-ask card (D-015). Plain inline text, never buttons, so the
+  Contact CTA stays primary.
+- **Three content rulings from Ry (2026-08-20) live in the briefs and not in the YAML:**
+  no founding-engineer roles unless the product is music-adjacent (so `Founding AI
+  Engineer` is in the music brief's primary track and not the engineering one); not
+  relocating (SF) but monthly travel to an HQ is fine; pdpd is *in progress*, never
+  "shipped". The music brief also lists automotive, restaurant tech, and ticketing/venue
+  ops as **in** — deliberately broader than the Notion project page's exclusion list, by
+  Ry's call; don't reconcile them.
 
 ## Deploying
 

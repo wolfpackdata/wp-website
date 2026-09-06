@@ -1,0 +1,1211 @@
+1
+00:00:01,440 --> 00:00:05,360
+Okay, we're going to talk about a new blog post.
+
+2
+00:00:06,240 --> 00:00:11,280
+And this blog is going to talk about
+
+3
+00:00:11,281 --> 00:00:18,123
+what any client receives
+
+4
+00:00:18,124 --> 00:00:20,283
+when working with Wolfpack.
+
+5
+00:00:22,203 --> 00:00:27,323
+And it's not only about technical
+
+6
+00:00:27,324 --> 00:00:30,843
+tools and processes that I bring in.
+
+7
+00:00:32,325 --> 00:00:38,085
+But also about a data quality and AI
+
+8
+00:00:38,245 --> 00:00:43,845
+safety mentality and
+
+9
+00:00:46,085 --> 00:00:50,208
+the knowledge about what AI. AI is capable of,
+
+10
+00:00:50,368 --> 00:00:55,168
+is not capable of, what AI can do and cannot
+
+11
+00:00:55,169 --> 00:01:00,528
+do, and how to dive
+
+12
+00:01:00,529 --> 00:01:05,851
+deeply into how the Technical
+
+13
+00:01:06,491 --> 00:01:12,571
+aspects of any organization work to first find
+
+14
+00:01:12,731 --> 00:01:17,291
+all the places where you want to restrict AI,
+
+15
+00:01:17,611 --> 00:01:22,133
+just as you would a new employee. And that whole
+
+16
+00:01:22,134 --> 00:01:27,253
+discovery process happens without an
+
+17
+00:01:27,254 --> 00:01:30,933
+AI model talking to the system,
+
+18
+00:01:32,373 --> 00:01:34,933
+and we, for example,
+
+19
+00:01:35,093 --> 00:01:38,336
+map out all the services. Connections and the ports,
+
+20
+00:01:38,656 --> 00:01:43,216
+and make sure that we design AI guardrails that only allow
+
+21
+00:01:43,217 --> 00:01:46,816
+AI visibility to certain ports,
+
+22
+00:01:47,136 --> 00:01:51,776
+and explicit guardrails that both restrict
+
+23
+00:01:51,777 --> 00:01:56,299
+and Audit those other ports to make sure that
+
+24
+00:01:56,300 --> 00:02:00,059
+the AI never infers access to those.
+
+25
+00:02:01,659 --> 00:02:06,859
+Another example would be how AI chatbots
+
+26
+00:02:06,860 --> 00:02:12,422
+are allowed to respond to customer incoming.
+
+27
+00:02:13,942 --> 00:02:18,502
+My SOP for that is that they
+
+28
+00:02:18,503 --> 00:02:22,582
+are not allowed to send messages,
+
+29
+00:02:22,902 --> 00:02:26,784
+period. At the inception of the system,
+
+30
+00:02:27,424 --> 00:02:32,464
+the agents are only allowed to draft responses that a human must
+
+31
+00:02:32,465 --> 00:02:37,184
+ultimately send. And so the guardrail we would set up there is
+
+32
+00:02:37,185 --> 00:02:42,107
+to create an agent. Layer on
+
+33
+00:02:42,347 --> 00:02:44,507
+the AI chatbot,
+
+34
+00:02:44,827 --> 00:02:49,467
+so it doesn't have the tool to send a message in its
+
+35
+00:02:49,468 --> 00:02:54,027
+arsenal, and it cannot access that tool in the MCP
+
+36
+00:02:54,028 --> 00:02:59,430
+of the email provider. For an
+
+37
+00:02:59,431 --> 00:03:04,710
+AI chatbot to get around that restriction would require a
+
+38
+00:03:04,711 --> 00:03:08,150
+lot of human prompting and human interference.
+
+39
+00:03:09,350 --> 00:03:12,230
+Other guardrails could be set up in the form of.
+
+40
+00:03:12,512 --> 00:03:17,552
+Of auditing agents, which need to be seen
+
+41
+00:03:17,792 --> 00:03:22,112
+as anonymous check bots,
+
+42
+00:03:22,432 --> 00:03:25,392
+not finger-pointing blame machines,
+
+43
+00:03:26,032 --> 00:03:28,352
+because those auditing bots will be.
+
+44
+00:03:28,715 --> 00:03:34,475
+Looking at communication across the whole company and can find vulnerabilities
+
+45
+00:03:34,795 --> 00:03:39,835
+and can also find opportunities for things like great customer
+
+46
+00:03:39,836 --> 00:03:43,995
+service in a follow-up or an upsell or.
+
+47
+00:03:45,478 --> 00:03:51,638
+drawing connections between different vendors
+
+48
+00:03:51,639 --> 00:03:56,358
+or customers that a human being wouldn't have the
+
+49
+00:03:56,918 --> 00:03:59,718
+bandwidth to ever make.
+
+50
+00:04:03,040 --> 00:04:07,680
+And so let's talk about the technology that I bring into a
+
+51
+00:04:07,681 --> 00:04:10,880
+client right away. First,
+
+52
+00:04:11,120 --> 00:04:13,360
+on the internal Wolfpack side,
+
+53
+00:04:13,680 --> 00:04:16,480
+the client is given their own security.
+
+54
+00:04:17,563 --> 00:04:22,203
+Processing environment with their own client
+
+55
+00:04:22,204 --> 00:04:26,523
+ID, which anonymizes their name in the Wolfpack system.
+
+56
+00:04:27,483 --> 00:04:32,123
+This is my own system that has been in place for
+
+57
+00:04:32,124 --> 00:04:36,806
+15 years. Years and keeps all client work in
+
+58
+00:04:37,126 --> 00:04:39,286
+their own gated community.
+
+59
+00:04:40,166 --> 00:04:45,046
+The AI that I use internally for my clients is also gated
+
+60
+00:04:45,047 --> 00:04:48,486
+in a similar way, where AI sessions in one client.
+
+61
+00:04:49,008 --> 00:04:53,648
+Folder have absolutely no visibility into any other client
+
+62
+00:04:53,649 --> 00:04:58,288
+data. And this is a similar approach
+
+63
+00:04:58,608 --> 00:05:03,568
+to having a client ID in
+
+64
+00:05:03,569 --> 00:05:08,091
+a data warehouse. Where client data is
+
+65
+00:05:08,092 --> 00:05:10,331
+never allowed to commingle.
+
+66
+00:05:11,531 --> 00:05:13,931
+This is set up from the beginning for all clients,
+
+67
+00:05:14,011 --> 00:05:20,651
+and this is a fully tested system for the last year.
+
+68
+00:05:31,254 --> 00:05:35,974
+Um the other thing that this client will get is their own.
+
+69
+00:05:38,736 --> 00:05:44,416
+Secure subdomain of the of the Wolfpack web
+
+70
+00:05:46,016 --> 00:05:51,216
+where we can host deliverables in a password-protected
+
+71
+00:05:51,776 --> 00:05:56,859
+hosted environment. This makes for amazingly easy collaboration
+
+72
+00:05:56,860 --> 00:05:59,899
+on proposals, SOWs,
+
+73
+00:06:01,019 --> 00:06:06,059
+SOPs, and
+
+74
+00:06:06,219 --> 00:06:10,742
+delivering links and Sharing research all
+
+75
+00:06:10,743 --> 00:06:15,382
+can be done in a convenient
+
+76
+00:06:15,542 --> 00:06:20,662
+hosted way. Another thing the client
+
+77
+00:06:20,663 --> 00:06:28,385
+gets is the BQL
+
+78
+00:06:28,705 --> 00:06:34,465
+command line product, which creates their
+
+79
+00:06:34,785 --> 00:06:40,145
+own BigQuery analytics environment for them.
+
+80
+00:06:41,067 --> 00:06:46,107
+They own all the data on their
+
+81
+00:06:46,108 --> 00:06:49,787
+side with Google's protection.
+
+82
+00:06:50,427 --> 00:06:55,387
+And that's how they
+
+83
+00:06:55,547 --> 00:07:00,230
+retain, the client retains. All ownership of raw data and has a full
+
+84
+00:07:00,231 --> 00:07:04,870
+audit trail. And setting that up is
+
+85
+00:07:05,190 --> 00:07:09,830
+a simple five to ten minute process that can be
+
+86
+00:07:09,831 --> 00:07:15,073
+done from the command line. And
+
+87
+00:07:15,393 --> 00:07:20,273
+that also gives them a looker environment where
+
+88
+00:07:20,274 --> 00:07:24,833
+I can immediately start prototyping tables
+
+89
+00:07:24,834 --> 00:07:28,593
+and charts and workflows and dashboards.
+
+90
+00:07:29,835 --> 00:07:34,555
+All within, and the only requirement is that the client have or set
+
+91
+00:07:34,556 --> 00:07:39,195
+up a Google workspace with at least
+
+92
+00:07:39,196 --> 00:07:42,315
+one or two, ideally, two users.
+
+93
+00:07:44,475 --> 00:07:48,198
+And the reason. For two Google Workspace users,
+
+94
+00:07:48,438 --> 00:07:54,678
+is one is going to become your AI agent's own identity.
+
+95
+00:07:55,558 --> 00:08:00,358
+That's about $8 a month as of today for that user.
+
+96
+00:08:01,281 --> 00:08:06,081
+And a big part of my approach is with
+
+97
+00:08:06,241 --> 00:08:08,481
+the Google's built-in permissions,
+
+98
+00:08:08,641 --> 00:08:13,201
+you can lean on them and trust those permissions from restricting AI's
+
+99
+00:08:13,521 --> 00:08:18,283
+access to to certain
+
+100
+00:08:18,284 --> 00:08:21,323
+things across your Google workspace, such as Google Drive,
+
+101
+00:08:21,403 --> 00:08:23,803
+Google Docs, certain shared drives,
+
+102
+00:08:23,883 --> 00:08:28,443
+shared folders. If you create pipelines
+
+103
+00:08:28,763 --> 00:08:35,926
+where that AI user Is
+
+104
+00:08:35,927 --> 00:08:39,606
+restricted from those things, then you can sleep easy that they're not reading them.
+
+105
+00:08:40,486 --> 00:08:45,126
+And this goes also for platforms like Notion or Trello or
+
+106
+00:08:45,127 --> 00:08:50,449
+your Salesforce or whatever. If you create Accounts
+
+107
+00:08:50,450 --> 00:08:55,329
+using that AI account and restrict them just as you would a low-level
+
+108
+00:08:55,330 --> 00:08:59,969
+employee to read-only access and only on certain roles where
+
+109
+00:08:59,970 --> 00:09:03,409
+they can see certain data or interact with certain teams,
+
+110
+00:09:03,729 --> 00:09:08,171
+then you're not relying on. Instructions and prompts that you've set up internally,
+
+111
+00:09:08,411 --> 00:09:13,291
+but on the platform's own ironclad permission
+
+112
+00:09:13,292 --> 00:09:17,931
+structure to safeguard your AI's interference with things that you
+
+113
+00:09:17,932 --> 00:09:20,891
+have not given it permission to interfere with.
+
+114
+00:09:22,614 --> 00:09:26,134
+And then, with that big query environment,
+
+115
+00:09:26,454 --> 00:09:31,174
+the expected cost for a client with for a small or medium-sized
+
+116
+00:09:31,175 --> 00:09:36,294
+business client is going to be about $100 a month because
+
+117
+00:09:36,295 --> 00:09:41,377
+that is basically The lowest level
+
+118
+00:09:41,378 --> 00:09:45,937
+of storage you can buy for Google
+
+119
+00:09:46,257 --> 00:09:48,577
+Cloud storage. Cloud,
+
+120
+00:09:48,737 --> 00:09:51,857
+you need to fact-check that because it might be even lower,
+
+121
+00:09:52,177 --> 00:09:56,539
+but I don't want to understate. Costs for new clients,
+
+122
+00:09:58,059 --> 00:10:02,779
+but you know that I can set up the client
+
+123
+00:10:02,780 --> 00:10:06,539
+for almost the cost of that workspace user,
+
+124
+00:10:06,699 --> 00:10:08,859
+$8 a month, they can get set up,
+
+125
+00:10:09,099 --> 00:10:13,622
+but really. Realistically, they're going to incur some compute charges and some storage
+
+126
+00:10:13,623 --> 00:10:18,182
+charges. And I put that in the $50 to $100
+
+127
+00:10:18,822 --> 00:10:22,102
+range from what the research is showing me now.
+
+128
+00:10:23,302 --> 00:10:27,105
+On top of that, the client is going to want. At least a pro-Cloud
+
+129
+00:10:27,265 --> 00:10:30,785
+subscription for the highly subsidized processing rates.
+
+130
+00:10:31,105 --> 00:10:34,225
+So they can use the skills and products that I,
+
+131
+00:10:34,385 --> 00:10:38,625
+AI products that I send them and get a good deal on the usage.
+
+132
+00:10:38,945 --> 00:10:41,425
+I think just one of those pro accounts should.
+
+133
+00:10:41,948 --> 00:10:46,508
+Suffice unless they're a development-heavy firm in which
+
+134
+00:10:46,509 --> 00:10:49,548
+they're going to use Macs, and they probably already haven't.
+
+135
+00:10:50,188 --> 00:10:54,908
+My system also uses Codex as an independent code reviewer,
+
+136
+00:10:55,788 --> 00:11:00,630
+but a Macs subscription. Over there is not required because
+
+137
+00:11:00,631 --> 00:11:05,590
+the code reviews don't generally take anywhere near the amount of usage
+
+138
+00:11:05,910 --> 00:11:08,550
+you'd need to justify another pro account there.
+
+139
+00:11:10,790 --> 00:11:13,270
+And then the other thing that the client gets installed.
+
+140
+00:11:14,113 --> 00:11:18,913
+um is the the uh Wolfpack AI Command
+
+141
+00:11:19,873 --> 00:11:24,753
+product, which is the tying together of Notion with GitHub
+
+142
+00:11:25,073 --> 00:11:27,553
+on a a Python agent layer,
+
+143
+00:11:27,873 --> 00:11:32,556
+um, that ties the business together and gives AI
+
+144
+00:11:32,557 --> 00:11:35,676
+visibility into all silos,
+
+145
+00:11:35,996 --> 00:11:40,796
+and can the AI can become a bespoke project manager
+
+146
+00:11:41,756 --> 00:11:44,956
+and development developer's best friend.
+
+147
+00:11:47,638 --> 00:11:52,758
+Let's see, I think that
+
+148
+00:11:52,998 --> 00:11:57,878
+about covers what the new client gets.
+
+149
+00:11:59,158 --> 00:12:04,641
+I also want to mention A
+
+150
+00:12:04,642 --> 00:12:09,041
+section at the end of the blog which is kind of what to expect
+
+151
+00:12:09,042 --> 00:12:11,841
+when working with Ryan.
+
+152
+00:12:14,321 --> 00:12:19,644
+And one of the things is Transparent
+
+153
+00:12:19,645 --> 00:12:27,564
+communication using Notion and
+
+154
+00:12:28,204 --> 00:12:32,524
+project management of our statement of work,
+
+155
+00:12:33,164 --> 00:12:36,406
+completely. Transparently with the client,
+
+156
+00:12:36,726 --> 00:12:41,606
+weekly meetings that are 30
+
+157
+00:12:41,607 --> 00:12:46,246
+minutes or sometimes a little longer if discussing deliverables or
+
+158
+00:12:46,247 --> 00:12:51,329
+new statements of work. The
+
+159
+00:12:51,649 --> 00:12:56,369
+statements of work will also be hosted on the Wolfpack web in
+
+160
+00:12:56,370 --> 00:12:58,449
+the client's own sub-domain,
+
+161
+00:12:58,769 --> 00:13:03,409
+where we can always go back to that or make amendments that are visible
+
+162
+00:13:03,410 --> 00:13:08,332
+to both teams. You'll
+
+163
+00:13:08,333 --> 00:13:13,052
+get secure file sharing link that's run
+
+164
+00:13:13,053 --> 00:13:16,412
+through Google Cloud Storage.
+
+165
+00:13:20,492 --> 00:13:25,094
+And I'll also I'm fine to work
+
+166
+00:13:25,095 --> 00:13:27,654
+with client-provided FTP.
+
+167
+00:13:33,014 --> 00:13:35,654
+I'm very delivery-focused,
+
+168
+00:13:36,294 --> 00:13:40,897
+and I am not afraid to. To come to the client with questions
+
+169
+00:13:41,457 --> 00:13:43,937
+to refine deliverables along the way.
+
+170
+00:13:44,257 --> 00:13:48,977
+It is my style to work very autonomously,
+
+171
+00:13:49,137 --> 00:13:53,697
+but I'm very detail-oriented, so I will always ask.
+
+172
+00:13:54,620 --> 00:13:59,340
+Questions before making assumptions in order to improve the quality of the deliverable.
+
+173
+00:14:01,340 --> 00:14:06,780
+The other thing they can expect with me are Loom videos explaining
+
+174
+00:14:06,781 --> 00:14:11,382
+questions, debugging, or Giving a tour
+
+175
+00:14:11,383 --> 00:14:15,302
+of a deliverable. I love using Loom.
+
+176
+00:14:19,702 --> 00:14:23,302
+They also get access to me as an AI coach if they want me
+
+177
+00:14:23,303 --> 00:14:25,942
+to bring AI tools, advice,
+
+178
+00:14:26,022 --> 00:14:30,705
+and And best practices to other members of their team in
+
+179
+00:14:30,706 --> 00:14:32,705
+parallel to the statement of work.
+
+180
+00:14:38,785 --> 00:14:43,628
+They also get self-tested and Self-audited
+
+181
+00:14:43,629 --> 00:14:48,588
+deliverables where I have
+
+182
+00:14:48,589 --> 00:14:54,108
+adversarial agents judge and test the work in order
+
+183
+00:14:54,109 --> 00:14:57,948
+to make it of a higher quality and make sure I've thought of.
+
+184
+00:14:59,991 --> 00:15:04,471
+Different scenarios and weaknesses
+
+185
+00:15:11,831 --> 00:15:16,353
+The client will also get One
+
+186
+00:15:16,354 --> 00:15:20,513
+or several repositories based on the structure of the work.
+
+187
+00:15:21,393 --> 00:15:27,073
+These will be either yeah,
+
+188
+00:15:27,233 --> 00:15:30,273
+these will be just private repositories.
+
+189
+00:15:30,636 --> 00:15:36,236
+That are shared with the clients so their development side can audit
+
+190
+00:15:36,237 --> 00:15:37,436
+as they want to.
+
+191
+00:15:47,079 --> 00:15:51,719
+Oh, yeah, an ROI calculator is part of every statement
+
+192
+00:15:51,720 --> 00:15:54,519
+of work as well. That I,
+
+193
+00:15:55,639 --> 00:16:00,599
+together with the client, figure out how ROI
+
+194
+00:16:00,600 --> 00:16:04,801
+is going to be measured on my project. In dollars,
+
+195
+00:16:05,121 --> 00:16:10,321
+you know, and I need to measure that monthly
+
+196
+00:16:10,881 --> 00:16:15,601
+and always have that in mind that the work I'm doing informs the
+
+197
+00:16:15,602 --> 00:16:18,481
+ROI on that exact path. Examples of ROI.
+
+198
+00:16:18,604 --> 00:16:22,764
+ROI can be followers gained,
+
+199
+00:16:24,124 --> 00:16:26,604
+but then we want to monetize, you know,
+
+200
+00:16:26,764 --> 00:16:31,324
+dollars per follower so I can justify my fee
+
+201
+00:16:31,325 --> 00:16:36,727
+and show ROI on it. A lot of times conversion
+
+202
+00:16:36,728 --> 00:16:42,167
+is a goal of a project. And so we would calculate for
+
+203
+00:16:42,407 --> 00:16:47,847
+every basis point of a conversion
+
+204
+00:16:47,848 --> 00:16:50,087
+increased company wide,
+
+205
+00:16:51,009 --> 00:16:55,649
+what is the dollar amount outcome multiplied
+
+206
+00:16:55,650 --> 00:17:00,209
+against A O V by using A O V to dollarize every
+
+207
+00:17:00,210 --> 00:17:04,929
+zero point one of a percent increase in conversion is equal to X number
+
+208
+00:17:04,930 --> 00:17:07,852
+of dollars in Revenue.
+
+209
+00:17:09,052 --> 00:17:13,932
+And ideally, I like to look at two numbers for my ROI.
+
+210
+00:17:14,092 --> 00:17:17,932
+One is revenue-based ROI, and the other is profit-based ROI.
+
+211
+00:17:18,252 --> 00:17:22,332
+I don't like to look at one or the other because generally,
+
+212
+00:17:22,412 --> 00:17:27,495
+the The profit ROI is very non-linear and difficult
+
+213
+00:17:27,496 --> 00:17:29,575
+to nail down.
+
+214
+00:17:30,775 --> 00:17:35,655
+After direct and indirect expenses are backed out of the revenue
+
+215
+00:17:35,656 --> 00:17:38,695
+number, you can come to 10 different conclusions.
+
+216
+00:17:38,897 --> 00:17:41,457
+Conclusions about a profit ROI. So,
+
+217
+00:17:41,537 --> 00:17:46,177
+I like to look at a profit ROI constrained within
+
+218
+00:17:46,178 --> 00:17:48,977
+some assumptions,
+
+219
+00:17:49,297 --> 00:17:54,017
+and then also a gross revenue ROI that we'll just track over time.
+
+220
+00:17:54,337 --> 00:17:58,140
+And then The client can look at both and compare against what they're paying
+
+221
+00:17:58,141 --> 00:18:02,780
+Wolfpack and see that it's had a return for their company.
+
+222
+00:18:03,100 --> 00:18:07,740
+In general, if I can't figure out how to compute ROI with the work
+
+223
+00:18:07,741 --> 00:18:10,620
+I'll be doing, I am hesitant to take.
+
+224
+00:18:11,063 --> 00:18:15,863
+The project until there's a more direct link between
+
+225
+00:18:18,263 --> 00:18:20,903
+my fee and the client's return.
+
+226
+00:18:21,063 --> 00:18:23,303
+Otherwise, it's not a win-win.
+
+227
+00:18:27,825 --> 00:18:32,545
+I should talk about what's in my wheelhouse and what's not.
+
+228
+00:18:32,865 --> 00:18:39,265
+What is in my wheelhouse is analytics
+
+229
+00:18:39,345 --> 00:18:42,065
+heavy work and insights heavy work,
+
+230
+00:18:42,385 --> 00:18:47,308
+where I I'm working with normalizing
+
+231
+00:18:47,309 --> 00:18:50,748
+raw data into an analytics,
+
+232
+00:18:51,388 --> 00:18:53,708
+a queryable analytics layer,
+
+233
+00:18:54,028 --> 00:18:58,508
+and then running statistics on that and producing data visualizations.
+
+234
+00:18:59,511 --> 00:19:05,111
+and doing ad hoc projects to connect
+
+235
+00:19:05,431 --> 00:19:09,111
+past data points with marketing initiatives,
+
+236
+00:19:09,271 --> 00:19:12,951
+pricing initiatives, content initiatives,
+
+237
+00:19:13,271 --> 00:19:17,794
+and also on the operations side. with going to vendors
+
+238
+00:19:18,114 --> 00:19:22,914
+and asking about cost reduction based on trending SKUs in the
+
+239
+00:19:22,915 --> 00:19:27,474
+data or trending categories in order to direct
+
+240
+00:19:27,475 --> 00:19:32,476
+our internal sales team or purchasing team To
+
+241
+00:19:32,477 --> 00:19:37,276
+focus their time, prioritize their time on the brands and parts
+
+242
+00:19:37,277 --> 00:19:42,236
+of the supply chain that have the most return or the most volume.
+
+243
+00:19:43,196 --> 00:19:46,796
+I'm great in a situation where we're tying together many data sources.
+
+244
+00:19:47,159 --> 00:19:50,519
+That don't speak the same language or look the same,
+
+245
+00:19:50,759 --> 00:19:55,559
+such as marketing impressions and clicks and cost
+
+246
+00:19:55,879 --> 00:20:02,039
+with e-commerce data, which is fulfillment and pricing
+
+247
+00:20:02,119 --> 00:20:06,642
+and taxes. as well as customer service data
+
+248
+00:20:06,722 --> 00:20:11,842
+like returns and time per ticket closed,
+
+249
+00:20:12,162 --> 00:20:17,122
+things like that. Since I've been an operator for most of my career
+
+250
+00:20:17,362 --> 00:20:21,884
+in leadership, I Can't help but think how all of that
+
+251
+00:20:21,885 --> 00:20:26,604
+works together. And so I find myself at a place in my career
+
+252
+00:20:26,605 --> 00:20:30,124
+where my best place is not in any of those verticals,
+
+253
+00:20:30,284 --> 00:20:34,924
+it's in all of them. And so I think what I'm
+
+254
+00:20:34,925 --> 00:20:39,127
+not. Great at, I don't have any enterprise experience.
+
+255
+00:20:39,287 --> 00:20:44,327
+I've had enterprise clients, but I've never been in an internal enterprise
+
+256
+00:20:44,328 --> 00:20:49,127
+as an employee. So I don't pretend to know how projects
+
+257
+00:20:49,128 --> 00:20:53,650
+are bought and how I. Data and insights are disseminated
+
+258
+00:20:53,651 --> 00:20:57,890
+across those organizations. I've only been adjacent to them.
+
+259
+00:20:58,210 --> 00:21:03,170
+I'm also not in advertising and I'm not in
+
+260
+00:21:03,171 --> 00:21:07,250
+the CMO's group. I just tend away from marketing.
+
+261
+00:21:07,772 --> 00:21:10,012
+The beginning of my career was all marketing,
+
+262
+00:21:10,332 --> 00:21:12,572
+and it wasn't for me.
+
+263
+00:21:12,892 --> 00:21:15,212
+I prefer the product side a lot,
+
+264
+00:21:15,852 --> 00:21:20,012
+and it's more natural to me, and my work is more absorbed on the
+
+265
+00:21:20,013 --> 00:21:24,695
+product side. Other
+
+266
+00:21:25,335 --> 00:21:29,895
+place of weakness is I haven't worked in
+
+267
+00:21:30,535 --> 00:21:32,775
+clean energy or the energy sector.
+
+268
+00:21:33,015 --> 00:21:38,535
+I haven't worked in education.
+
+269
+00:21:41,218 --> 00:21:43,858
+You know, so I just don't know those industries.
+
+270
+00:21:44,178 --> 00:21:48,978
+I have worked in consumer packaged goods and in
+
+271
+00:21:48,979 --> 00:21:51,618
+subscription-based software as a service.
+
+272
+00:21:51,938 --> 00:21:55,378
+I've worked in entertainment a little. I've had clients like HBCU.
+
+273
+00:21:56,060 --> 00:22:00,860
+And Time Warner when working in my early career,
+
+274
+00:22:01,180 --> 00:22:06,380
+so we're exposed to the mechanics of those communication
+
+275
+00:22:06,381 --> 00:22:09,660
+verticals. Okay,
+
+276
+00:22:09,820 --> 00:22:14,343
+I think that's plenty of a transcript. For Claude to give an
+
+277
+00:22:14,344 --> 00:22:18,823
+outline for this blog. And Claude,
+
+278
+00:22:18,903 --> 00:22:24,023
+I want you to make an outline and
+
+279
+00:22:24,024 --> 00:22:27,303
+break it up into sections in the order that you think it would be.
+
+280
+00:22:27,746 --> 00:22:29,986
+Best digested in this blog post.
+
+281
+00:22:30,306 --> 00:22:35,186
+And then I want you to write the blog post
+
+282
+00:22:35,187 --> 00:22:40,626
+according to that outline, but use as much original
+
+283
+00:22:40,627 --> 00:22:43,426
+copy from this transcript as you can.
+
+284
+00:22:44,748 --> 00:22:49,388
+While just removing ums and erms and pauses and noises
+
+285
+00:22:49,389 --> 00:22:54,428
+I make, but keep as much of the actual copy
+
+286
+00:22:55,068 --> 00:22:59,991
+in my voice and If
+
+287
+00:22:59,992 --> 00:23:03,271
+it's grammatically incorrect for this first version you're making,
+
+288
+00:23:03,431 --> 00:23:08,391
+I don't care. I want you to keep full sentences
+
+289
+00:23:08,392 --> 00:23:13,191
+and phrasing from this transcript as much as you
+
+290
+00:23:13,192 --> 00:23:15,511
+can for the first version.
+
+291
+00:23:16,834 --> 00:23:21,554
+So, what I'm expecting is the outcome is a lot of this transcript
+
+292
+00:23:21,874 --> 00:23:25,074
+verbatim, but in a different order.
+
+293
+00:23:25,954 --> 00:23:30,914
+Okay? And then the third thing you're going to do is judge
+
+294
+00:23:30,915 --> 00:23:36,237
+that draft. As a
+
+295
+00:23:36,238 --> 00:23:39,357
+potential client hiring Wolfpack,
+
+296
+00:23:40,637 --> 00:23:45,357
+and show me where I
+
+297
+00:23:45,358 --> 00:23:50,359
+should put more support. What I should consider
+
+298
+00:23:50,360 --> 00:23:56,919
+cutting, and where I should change
+
+299
+00:23:56,920 --> 00:24:00,919
+my wording according to your advice.
+
+300
+00:24:01,559 --> 00:24:06,002
+But I don't want you to then rewrite it. Want the three things: the
+
+301
+00:24:06,003 --> 00:24:09,042
+outline in the order you think should work.
+
+302
+00:24:09,362 --> 00:24:13,762
+Number two, written draft,
+
+303
+00:24:14,722 --> 00:24:18,962
+number three, feedback on that draft.

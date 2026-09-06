@@ -27,6 +27,7 @@
       <span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
     </a>
     <ul class="nav__links">
+      <li><a href="#pilot">Pilot project</a></li>
       <li><a href="#engagements">Engagements</a></li>
       <li><a href="#process">How it works</a></li>
       <li><a href="#coaching">AI Coaching</a></li>
@@ -40,7 +41,7 @@
   <div class="wrap">
     <img class="hero__watermark" src="img/wolfpack-logo.png" alt="" aria-hidden="true">
     <div class="hero__inner">
-      <p class="k hero__kicker">Rates &amp; engagement guide · last reviewed August 2026</p>
+      <p class="k hero__kicker">Rates &amp; engagement guide · last reviewed September 2026</p>
       <h1 class="hero__title">Know the rate before the call.</h1>
       <p class="hero__lede">Pricing shouldn&rsquo;t require a discovery process. Review everything here, then let&rsquo;s have an exploratory call to see if the fit is real.</p>
       <div class="hero__ctas">
@@ -94,6 +95,66 @@
     </div>
   </section>
 
+  <!-- ========== The pilot project — the FIRST pricing on the page ==========
+       PLACEMENT REVERSED 2026-09-06 (#283), Ry's call, mirroring the Q3 page
+       (wp-rates-page#48). The pilot used to sit after the rate curve as the
+       answer for a reader who had balked at it; it now opens the pricing. Ry:
+       "I realize this is a big change that offers a big discount, that is why
+       I'm making it and putting it up top."
+
+       MIRROR-SET ITEM under docs/public-rates-consistency-contract.md, not a
+       delta: every fact here — the $500 kickoff, the 6 covered hours, $85/hr,
+       the 30 calendar days, the 10–20 hrs/week recommendation and the ~$2,900
+       example — must match the Q3 page exactly.
+
+       THE NO-HOURS RULE IS RETIRED, NOT WEAKENED (same date, same call). The
+       $85/hr pilot rate, the 6 covered hours and the 10-20 hrs/week
+       recommendation all publish. The old disarm sentence that used to close
+       the pilot band — the one arguing a pilot priced an outcome and so stood
+       apart from the rate curve — is retired with the rule it defended and
+       carries over nowhere, on this page or any other.
+
+       Derivation behind the one example figure:
+         4 weeks x 10 hrs = 40 hrs · 6 covered by the kickoff ·
+         34 x $85 = $2,890 ≈ $2,900 billed after 30 days.
+       The all-in total for that example is NEVER printed — not on the page,
+       not in this comment, not on the pilot page. $2,900 is the billed-after
+       figure and the only number of that shape allowed anywhere.
+
+       Guardrails (Ry, 2026-09-06):
+       · Do not list what is included. No product inventory, no deliverable list.
+       · Do not state a total pilot price. ~$2,900 is the only figure of that
+         shape and it is explicitly an example.
+       · Do not name a post-pilot rate or any fence. Day 31 stays open and is
+         negotiated on the call.
+       · CTA is navy-ghost. Never coral — the ration in css/rates.css is
+         enumerated and fully spent. No target="_blank": same-property link,
+         matching R11 and R14. Only the off-site calendar opens a new tab here. -->
+  <section class="section section--line" id="pilot" aria-labelledby="pilot-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Pilot project · 30-day engagement</span>
+        <h2 class="section__title" id="pilot-title">What does a pilot project look like?</h2>
+        <p class="section__lede">A pilot is a 30-day working engagement. You pay $500 to start, and nothing else until the 30 days are up.</p>
+      </div>
+
+      <article class="pilot">
+        <p class="rail__price pilot__price">$500<span>kickoff fee</span></p>
+        <div>
+          <ul class="pilot__points">
+            <li><strong>$500 to get started.</strong> The kickoff fee covers your first 6 hours.</li>
+            <li><strong>$85 / hour after that</strong> — the pilot rate, billed once at the end of the 30 calendar days.</li>
+            <li><strong>You set the ceiling.</strong> Cap the hours, name a deliverable, or both. Past the 6 hours the kickoff covers, there is no minimum.</li>
+            <li><strong>10–20 hours per week is the recommendation</strong> — the range where a significant deliverable or a working system actually gets built inside the window.</li>
+            <li><strong>What that looks like:</strong> 10 hours per week for 30 days works out to about <strong>$2,900</strong> billed at the end.</li>
+            <li><strong>Day 31 is an open door.</strong> Roll into a project tier, keep going hourly as needed, or stop — no obligation.</li>
+          </ul>
+          <p class="pilot__cta"><a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/pilot-project/">See the pilot project</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- ========== Standard engagements — projects ========== -->
   <section class="section section--line" id="engagements" aria-labelledby="engagements-title">
     <div class="wrap">
@@ -103,12 +164,57 @@
         <p class="section__lede">One rate curve governs everything: the more time you block off, the less each hour costs. The discount from the hourly rate is already built into every project tier — no bundles, no feature gates.</p>
       </div>
 
-      <!-- Hourly — the entry rail -->
+      <!-- Project tiers -->
+      <div class="tiers">
+        <article class="tier" aria-labelledby="tier-base">
+          <h3 class="tier__name" id="tier-base">Project · Base <span>— the proving ground</span></h3>
+          <p class="tier__price">$10,800<span> / month</span></p>
+          <p class="tier__eff">effective <strong>$125/hr</strong> · save 10% vs hourly</p>
+          <dl class="tier__meta">
+            <div><dt>Reserved time</dt><dd>20 hrs / week</dd></div>
+            <div><dt>Contract</dt><dd>1 month</dd></div>
+          </dl>
+          <p class="tier__foot">One focused month — a natural first project, and weeks here count toward a longer tier.</p>
+        </article>
+
+        <!-- Coral: the featured tier -->
+        <article class="tier tier--featured" aria-labelledby="tier-focus">
+          <p class="tier__badge">Most popular</p>
+          <h3 class="tier__name" id="tier-focus">Project · Focus <span>— the sweet spot</span></h3>
+          <p class="tier__price">$12,400<span> / month</span></p>
+          <p class="tier__eff">effective <strong>$115/hr</strong> · save 15% vs hourly</p>
+          <dl class="tier__meta">
+            <div><dt>Reserved time</dt><dd>25 hrs / week</dd></div>
+            <div><dt>Contract</dt><dd>2 months</dd></div>
+          </dl>
+          <p class="tier__foot">Two guaranteed months — enough runway to build something real and measure its ROI.</p>
+        </article>
+
+        <article class="tier" aria-labelledby="tier-solo">
+          <p class="tier__badge">Best rate</p>
+          <h3 class="tier__name" id="tier-solo">Project · Solo <span>— full throttle</span></h3>
+          <p class="tier__price">$13,500<span> / month</span></p>
+          <p class="tier__eff">effective <strong>$105/hr</strong> · save 20% vs hourly</p>
+          <dl class="tier__meta">
+            <div><dt>Reserved time</dt><dd>30+ hrs / week</dd></div>
+            <div><dt>Contract</dt><dd>3 months</dd></div>
+          </dl>
+          <p class="tier__foot">Three months of near-full-time focus — the deepest rate on the curve.</p>
+        </article>
+      </div>
+      <p class="tiers__caption">A project tier buys two things: a lower rate, and a guarantee that the time is blocked off for your project.</p>
+
+      <!-- The hourly rail — the section FLOOR since 2026-09-06 (#283). It was
+           the section's entry until the pilot section took that job; a reader
+           meets the pilot, then the tiers, then the base rate everything is
+           discounted from. Its column label reads BASE RATE W/O CONTRACT for
+           the same reason the old entry-point label no longer would. Mirror of
+           the Q3 page's move (wp-rates-page#48). -->
       <article class="rail" aria-labelledby="rail-title">
         <div>
-          <span class="k rail__col-label">Start here</span>
+          <span class="k rail__col-label">Base rate w/o contract</span>
           <h3 id="rail-title">Hourly</h3>
-          <p class="rail__price">$175<span> / hour</span></p>
+          <p class="rail__price">$135<span> / hour</span></p>
           <p class="rail__tag">The smallest possible commitment — and a built-in ramp to a project tier.</p>
         </div>
         <div>
@@ -128,89 +234,12 @@
         </div>
       </article>
 
-      <!-- Project tiers -->
-      <div class="tiers">
-        <article class="tier" aria-labelledby="tier-base">
-          <h3 class="tier__name" id="tier-base">Project · Base <span>— the proving ground</span></h3>
-          <p class="tier__price">$13,400<span> / month</span></p>
-          <p class="tier__eff">effective <strong>$155/hr</strong> · save 10% vs hourly</p>
-          <dl class="tier__meta">
-            <div><dt>Reserved time</dt><dd>20 hrs / week</dd></div>
-            <div><dt>Contract</dt><dd>1 month</dd></div>
-          </dl>
-          <p class="tier__foot">One focused month — a natural first project, and weeks here count toward a longer tier.</p>
-        </article>
-
-        <!-- Coral: the featured tier -->
-        <article class="tier tier--featured" aria-labelledby="tier-focus">
-          <p class="tier__badge">Most popular</p>
-          <h3 class="tier__name" id="tier-focus">Project · Focus <span>— the sweet spot</span></h3>
-          <p class="tier__price">$16,200<span> / month</span></p>
-          <p class="tier__eff">effective <strong>$150/hr</strong> · save 15% vs hourly</p>
-          <dl class="tier__meta">
-            <div><dt>Reserved time</dt><dd>25 hrs / week</dd></div>
-            <div><dt>Contract</dt><dd>2 months</dd></div>
-          </dl>
-          <p class="tier__foot">Two guaranteed months — enough runway to build something real and measure its ROI.</p>
-        </article>
-
-        <article class="tier" aria-labelledby="tier-solo">
-          <p class="tier__badge">Best rate</p>
-          <h3 class="tier__name" id="tier-solo">Project · Solo <span>— full throttle</span></h3>
-          <p class="tier__price">$18,100<span> / month</span></p>
-          <p class="tier__eff">effective <strong>$140/hr</strong> · save 20% vs hourly</p>
-          <dl class="tier__meta">
-            <div><dt>Reserved time</dt><dd>30+ hrs / week</dd></div>
-            <div><dt>Contract</dt><dd>3 months</dd></div>
-          </dl>
-          <p class="tier__foot">Three months of near-full-time focus — the deepest rate on the curve.</p>
-        </article>
-      </div>
-      <p class="tiers__caption">A project tier buys two things: a lower rate, and a guarantee that the time is blocked off for your project.</p>
-
-      <!-- ========== The pilot project — the entry band ==========
-           Spec R15 / contract mirror-set. Ported from the Q3 direct-link page
-           (wp-rates-page#42), which is where the pilot landed first by Ry's
-           sequencing ruling — so this band is a MIRROR-SET item, not a delta:
-           the two pages both carry it and its facts must match exactly.
-
-           Placed AFTER the curve, not before it. Ahead of the tiers it would
-           anchor every reader at the cheapest number on the page; here it
-           catches the reader who has just read $13,400–$18,100 and balked.
-
-           NO HOURS, NO WEEKLY COMMITMENT, NO EFFECTIVE RATE — here or on the
-           landing page. $5,000 across two to three weeks divides out beneath
-           the $140/hr this page calls "the deepest rate on the curve" three
-           lines above, so an hours figure would invite an arithmetic that
-           contradicts the rate card. The third sentence disarms it out loud
-           rather than hoping nobody divides: a pilot prices a scoped outcome,
-           the curve prices reserved time.
-
-           "Two to three weeks" is a CALENDAR WINDOW, not an effort estimate —
-           "delivered in", never "of work", for the same reason.
-
-           Singular throughout ("one problem", "a pilot"). One per client is
-           enforced on the call and stated nowhere, so nothing here may imply
-           repeatability.
-
-           NAVY-GHOST, NEVER CORAL. The ration in css/rates.css is fully spent,
-           and a coral button here would compete with the booking CTA. Same
-           standing as R11 and R14: a consideration-stage link for a reader who
-           is not ready to book, not a second funnel CTA. No new nav item.
-
-           /pilot-project/ is noindex; linking it from this indexed page does
-           not make it indexable, so the reason it is unlisted is untouched.
-
-           No target="_blank" — same-property link, matching R11 and R14. Only
-           the off-site calendar opens a new tab on this page. -->
-      <div class="bridge">
-        <p class="bridge__fig">$5,000<span>fixed fee</span></p>
-        <div>
-          <h3>Start with a pilot project</h3>
-          <p>Not ready to reserve months of time? One problem, scoped together and delivered in two to three weeks &mdash; with <strong>Wolfpack AI Command</strong> and the <strong>BQL Analytics Provisioner</strong> installed in your own accounts to keep. A pilot buys a scoped outcome rather than reserved time, so it sits off the rate curve above.</p>
-          <p class="bridge__cta"><a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/pilot-project/">See the pilot project</a></p>
-        </div>
-      </div>
+      <!-- The old fixed-price pilot band lived here 2026-08-18 (#238) to
+           2026-09-06 (#283). It was replaced by the `#pilot` section above the
+           tiers on Ry's 2026-09-06 ruling — the pilot is now the FIRST pricing
+           on the page, and the no-hours rule the old band's comment defended
+           retired with it. Project:
+           https://app.notion.com/p/3d3c70e5c7b481a39804fac63e17c53c -->
     </div>
   </section>
 
@@ -279,26 +308,26 @@
       <div class="packs">
         <article class="pack" aria-labelledby="pack-single">
           <h3 class="pack__name" id="pack-single">Single Session</h3>
-          <p class="pack__price">$135</p>
+          <p class="pack__price">$99</p>
           <p class="pack__per">45-min 1:1 video session</p>
           <p class="pack__note">Every 6th session is free.</p>
         </article>
         <article class="pack" aria-labelledby="pack-3">
           <h3 class="pack__name" id="pack-3">3-Pack</h3>
-          <p class="pack__price">$365</p>
-          <p class="pack__per">&approx; $122 / session · save 10%</p>
+          <p class="pack__price">$269</p>
+          <p class="pack__per">&approx; $90 / session · save 10%</p>
           <p class="pack__note">Use anytime — never expires.</p>
         </article>
         <article class="pack" aria-labelledby="pack-6">
           <h3 class="pack__name" id="pack-6">6-Pack</h3>
-          <p class="pack__price">$690</p>
-          <p class="pack__per">$115 / session · save 15%</p>
+          <p class="pack__price">$499</p>
+          <p class="pack__per">&approx; $83 / session · save 15%</p>
           <p class="pack__note">Use anytime — never expires.</p>
         </article>
         <article class="pack" aria-labelledby="pack-10">
-          <h3 class="pack__name" id="pack-10">9-Pack + 1 bonus</h3>
-          <p class="pack__price">$1,080</p>
-          <p class="pack__per">10 sessions · $108 each · save 20%</p>
+          <h3 class="pack__name" id="pack-10">10-Pack</h3>
+          <p class="pack__price">$799</p>
+          <p class="pack__per">10 sessions · &approx; $80 each · save 20%</p>
           <p class="pack__note">The deepest per-session rate.</p>
         </article>
       </div>
@@ -319,10 +348,10 @@
         <img class="about__photo" src="img/ryan-hickey.jpg" alt="Portrait of Ryan Hickey" width="640" height="640">
         <div>
           <h3 id="about-title">Ryan Hickey</h3>
-          <p class="about__roles">AI Engineer · Data Scientist · Software Developer · COO · Quantitative Analyst</p>
+          <p class="about__roles">Applied AI Engineer · Data Engineer &amp; Analyst · Software Developer · COO · Quantitative Analyst</p>
           <p>Hybrid analytics, AI builder, and technology leader — 20+ years of coding, 14+ years leading technology, analytics, and operational initiatives. COO and partner of an 8-figure e-commerce brand through its climb from $300K to $30M; head of insights &amp; analytics at an AI SaaS company, where his quantitative platform became a $20k-MRR product. Operator mentality with an engineering skillset means solutions are designed with the P&amp;L in mind.</p>
           <p>Deep expertise in Python, SQL, dbt, BigQuery, Looker, and cloud analytics, combined with modern AI development workflows. B.S. in Operations Research &amp; Industrial Engineering, Cornell University.</p>
-          <a class="about__link" href="https://www.linkedin.com/in/ryan-hickey-626b2798/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="about__link" href="https://www.linkedin.com/in/workwithryan/" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
     </div>
@@ -375,7 +404,7 @@
       <a class="btn btn--solid" href="https://calendar.app.google/zHNd1NA9wzb4VRLw5" target="_blank" rel="noopener">Book a 30-minute intro call</a>
       <ul class="contact-list">
         <li><a href="mailto:main@wolfstrategyllc.com">main@wolfstrategyllc.com</a></li>
-        <li><a href="https://www.linkedin.com/in/ryan-hickey-626b2798/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/workwithryan/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </div>
   </section>
@@ -407,7 +436,7 @@
 <footer class="foot">
   <div class="wrap foot__inner">
     <p class="foot__wordmark">Wolfpack Data &amp; Strategy</p>
-    <p class="foot__meta">Rates last reviewed August 2026 · <a href="https://wolfstrategyllc.com">wolfstrategyLLC.com</a></p>
+    <p class="foot__meta">Rates last reviewed September 2026 · <a href="https://wolfstrategyllc.com">wolfstrategyLLC.com</a></p>
   </div>
 </footer>
 

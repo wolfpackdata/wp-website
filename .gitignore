@@ -13,3 +13,6 @@ sm3-specific-pages/sm3-assets/img/sm2 launchpad screenshot.png
 # produce it and none of it belongs in a static site's history.
 __pycache__/
 *.pyc
+
+# Codex review evidence packs (wp-github-sop topic 08) - never committed
+.code-review-runs/

@@ -147,7 +147,7 @@ fill — only alongside the coral hairline rules.
 - Email on the site and in the current résumé footer: **main@wolfstrategyllc.com**
   (company) / **ryan@wolfstrategyllc.com** (personal — what the résumé uses)
 - Phone on the coaching page: **415-371-9613**
-- LinkedIn: **linkedin.com/in/ryan-hickey-626b2798**
+- LinkedIn: **linkedin.com/in/workwithryan**
 - Site: **wolfstrategyllc.com**
 - Business address: 333 Gellert Blvd, STE 210B, Daly City, CA 94015 — *on the
   Wix site; deliberately not on the résumé, where "San Francisco Bay Area" is
