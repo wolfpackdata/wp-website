@@ -76,7 +76,7 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
 | `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | 2026-08-07 (#155) |
-| `pilot-project/` | `https://intake.wolfstrategyllc.com/pilot-project/` — **`noindex`**, direct-link only; the $5,000 fixed-fee pilot offer | 2026-08-18 (#236) |
+| `pilot-project/` | `https://intake.wolfstrategyllc.com/pilot-project/` — **`noindex`**, direct-link only; the $500-kickoff pilot offer | 2026-08-18 (#236) |
 
 `sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
 `sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
@@ -221,18 +221,34 @@ Conventions the page must keep:
   CTA as primary: the coaching section's link to the ROI calculator (spec R11, mirrors
   `wp-rates-page#39`), the closing `#work` section's *"See recent projects"* link to
   the portfolio (spec R14 / contract D15, #127 — this is how contract D9 resolves), and
-  the `#engagements` pilot band's *"See the pilot project"* link (spec R15, #238).
-  **None may become coral**; the ration in `rates/css/rates.css` is fully spent.
-- **The pilot band is a MIRROR-SET item, not a delta** (2026-08-18, #238) — unlike R11,
-  R13 and R14, which are public-page-only. Ry ruled that the pilot goes on the Q3
-  direct-link page first (`wp-rates-page#42`) and this page derives from it, so both
-  pages carry the band and **its facts must match**: the $5,000 fixed fee, the
-  two-to-three-week calendar window, and the two included systems. ⚠️ **Neither page
-  states hours, a weekly commitment, or an effective hourly rate for the pilot, and that
-  is a fact about the offer rather than a depth choice** — $5,000 across two to three
-  weeks divides out beneath the `$140/hr` printed directly above it. Both bands say so
-  out loud rather than leaving the reader to divide. If an hours figure ever lands on one
-  page, remove it; never port it.
+  the `#pilot` section's *"See the pilot project"* link (spec R15, #238; the section
+  replaced the band 2026-09-06, #283). **None may become coral**; the ration in
+  `rates/css/rates.css` is fully spent.
+- **The pilot is a MIRROR-SET item, not a delta** — unlike R11, R13 and R14, which are
+  public-page-only. Ry's sequencing ruling is that the pilot lands on the Q3 direct-link
+  page first and this page derives from it: it did on 2026-08-18 (`wp-rates-page#42`,
+  PR `#43`) as a band below the tiers, ported here the same day (#238), and the
+  **2026-09-06 restructure went Q3-first again** (`wp-rates-page#50` → #283 here). Since
+  that date it is a **`#pilot` SECTION above the tiers** — the first pricing on the page,
+  with `Pilot project` as the **first nav item** (spec R16) — and **six facts must match
+  on both pages**: the **$500 kickoff fee**, that it **covers the first 6 hours**,
+  **$85/hour after that** billed once at the end, **30 calendar days**, **10–20 hours a
+  week as the recommendation**, and the **≈ $2,900** worked example. The section **lists
+  no inclusions**, states **no total pilot price**, and names **no post-pilot rate or
+  fence**.
+- ⚠️ **THE NO-HOURS RULE IS RETIRED — 2026-09-06, Ry's call. Do not reinstate it.** A
+  block stood here requiring that neither page state hours, a weekly commitment, or an
+  effective hourly rate for the pilot, and ending *"If an hours figure ever lands on one
+  page, remove it; never port it."* Its companion disarm sentence — *"a pilot buys a
+  scoped outcome rather than reserved time, so it sits off the rate curve above"* —
+  retired with it. **Both are dead: retired, not weakened**, and not to be re-derived from
+  the new numbers and restated as a live rule. The $85/hr, the 6 covered hours and the
+  10–20 hrs/week recommendation publish deliberately, above a $135/hr base rate, and Ry
+  made the call knowing exactly how that arithmetic reads. His reason, verbatim: *"I
+  realize this is a big change that offers a big discount, that is why I'm making it and
+  putting it up top."* The old fixed-fee facts — the **$5,000 fee**, the
+  **two-to-three-week window** and the **two included systems** — left the mirror set on
+  the same date and are history, not copy.
 - **No external requests**; fonts/images self-hosted in the subfolder. Coral is rationed —
   the allowed uses are listed in the header comment of `rates/css/rates.css`; keep it true.
 - The two "Two ways to work with Wolfpack" tiles carry Ry's images
@@ -704,26 +720,45 @@ Conventions the page must keep:
   **Re-measure after any change to that label, its padding, or its font — a screenshot cannot
   show you the remaining slack.**
 
-## `pilot-project/` — the $5,000 pilot project offer page
-One short page offering a **fixed-fee pilot engagement** — a lower-priced first
+## `pilot-project/` — the $500-kickoff pilot project offer page
+One short page offering a **30-day pilot engagement** — a lower-commitment first
 project for a prospect not ready for a monthly tier. Six blocks, one screen and a bit,
 at `https://intake.wolfstrategyllc.com/pilot-project/`. **Built and deployed 2026-08-18
-(#236).** Full design plan and 17-ruling ledger: `docs/pilot-project-design-plan.md`.
+(#236)** as a **$5,000 fixed-fee** offer; **rewritten to the kickoff-plus-hourly model on
+2026-09-06** (#283). Design plan and rulings ledger:
+[`docs/pilot-project-design-plan.md`](docs/pilot-project-design-plan.md) — ⚠️ **that file
+was created on 2026-09-06 and its ledger starts at `P-001`.** This section described it as
+the page's *"full design plan and 17-ruling ledger"* from the day the page shipped, but no
+such file was ever checked in; the original rulings survive only as prose comments in
+`pilot-project/index.html` and `pilot-project/css/pilot.css`, and the only A-series id anywhere
+is `social-cards/build_cards.py`'s *"plan A-5"* — grep the other two for `A-` and you find none. The new file does **not** reconstruct them — a rebuilt
+ledger would be a guess wearing the authority of a record. Flagged for Ry.
+
+**The model, as it now publishes:** **$500 kickoff fee** covering the client's **first 6
+hours** · **$85 / hour after that**, billed once at the end · **30 calendar days**, and
+nothing else billed until they are up · **the client sets the ceiling** (cap the hours, name
+a deliverable, or both; no minimum past the 6 covered hours) · **10–20 hours a week is the
+recommendation**, never a commitment · **≈ $2,900** for 10 hrs/week is the **only**
+total-shaped figure allowed anywhere, and it is explicitly an example · **day 31 is an open
+door** — a project tier, continued hourly, or stop, with **no post-pilot rate and no fence
+named** anywhere.
 
 Conventions the page must keep:
-- **The fee buys a scoped outcome, not hours — so the page states no hours, no weekly
-  commitment, and no effective hourly rate.** $5,000 across two to three weeks divides
-  out beneath **$140/hr**, which `/rates_public/` calls *"the deepest rate on the
-  curve."* The pilot prices a result; the rate curve prices reserved time. Publishing an
-  hours figure anywhere on this page invites an arithmetic that contradicts the rate
-  card, and there is no version of that which ends well.
-- **"Two to three weeks" is a calendar window**, not an effort estimate. Copy says
-  *delivered in*, never *of work* — same reason.
+- ⚠️ **THE NO-HOURS RULE IS RETIRED — 2026-09-06, Ry's call. Do not reinstate it, and do
+  not restate it as a live rule.** Until that date this section required the page to state
+  **no hours, no weekly commitment and no effective hourly rate**, plus the companion rule
+  that *"two to three weeks is a calendar window, not an effort estimate."* **Both are dead:
+  retired, not weakened**, and not re-derivable from the new numbers — the $85/hr, the 6
+  covered hours and the 10–20 hrs/week recommendation publish deliberately. Ry's reason and
+  the retired rates-page disarm sentence are recorded verbatim in the `rates/` section above.
+  Say **"30 calendar days"** everywhere; *"two to three weeks"* is retired copy, not a
+  synonym.
 - **`noindex, nofollow`, direct-link only**, like `hire/` and `github/`. Ry sends this
-  URL to a prospect who has balked at the monthly tiers. An indexed $5,000 offer would
-  compete with `/rates_public/` for pricing queries and anchor every reader at the
-  cheapest number Wolfpack sells. Don't add it to a sitemap and **don't link it from
-  `rates/`, `portfolio/`, or Wix** until Ry rules on the rates-page band (below).
+  URL to a prospect who has balked at the monthly tiers. Indexed, this page would open on
+  the **cheapest number Wolfpack sells**, compete with `/rates_public/` for pricing
+  queries, and anchor every reader there. Don't add it to a sitemap. **It is now linked
+  from both rates pages** (below), which does not change any of that — `noindex` is not
+  access control, and a link from an indexed page does not make this one indexable.
   **It still carries a built 1200×627 card** — `noindex` and a large card are not in
   tension, and `hire/` set that precedent on 2026-08-18 (#230): a page that is *pasted*
   needs its preview more than a page that is found.
@@ -743,6 +778,13 @@ Conventions the page must keep:
   opened. It may **never** state a measured outcome, a percentage, a multiple, or a
   past client result. Nothing on this property claims a measured outcome; one invented
   number on a page that is selling would discredit all four case studies at once.
+- **The "Inside the 30 days" section describes how the engagement RUNS — it is not an
+  inclusions list** (2026-09-06). It was *"Every pilot includes"* under the fixed fee; with
+  no fixed fee left to justify, a fixed inventory reads as a bundle priced against it. It
+  now covers scope agreed in writing, the ceiling the client sets, the two systems installed
+  in their own accounts, instrumented work, and shared plans — and **promises no fixed
+  duration of build**. ⚠️ The **rates-page pilot section lists no inclusions at all**; that
+  is a stricter rule for those pages, not a contradiction of this one.
 - **Both included systems install into the client's own accounts** — Wolfpack AI
   Command into their Notion and GitHub, the BQL Analytics Provisioner into their own
   Google Cloud project with consultant access revocable. This is the only reason the
@@ -753,10 +795,11 @@ Conventions the page must keep:
   `portfolio/` and both `hire/` pages; pasting one here would create a fourth copy that
   no check covers. `HTML_PAGES` is deliberately not extended.
 - **`css/pilot.css` is `rates/css/rates.css` by deletion, not by authoring.** Every
-  surviving declaration is byte-identical; the four deliberate departures are
-  enumerated in the sheet's header comment. Coral is rationed to **five**, enumerated
-  there, with a greppable `coral use N of 5` marker at each use site. The price is
-  **not** coral — type size carries it.
+  surviving declaration is byte-identical; the four deliberate departures are enumerated in
+  the sheet's header comment. Coral is rationed to **five**, enumerated there, with a
+  greppable `coral use N of 5` marker at each use site. The price is **not** coral —
+  type size carries it, and the 2026-09-06 rewrite added no use: **the count only ever
+  goes down.**
 - **The tile shots are 4:3 on BOTH cards**, which diverges from `portfolio.css`'s 16:9
   default on purpose (Ry, 2026-08-18). Portfolio can afford a mixed ratio across eight
   tiles; two tiles side by side with different frame heights put the two headings on
@@ -766,31 +809,40 @@ Conventions the page must keep:
 - **Self-contained folder** with its own `css/`, `fonts/`, `img/`, like `portfolio/`
   and `github/`. Folder name is already the URL slug, so it copies to the intake root
   unchanged.
-- **The social card carries no price** (Ry, 2026-08-18), so a fee change is a one-line
-  HTML edit and never a card rebuild. Both inset panels are un-carded elsewhere, so no
-  two Featured tiles read as one duplicated post.
+- **The social card carries no price** (Ry, 2026-08-18 — the A-series ruling
+  `build_cards.py` cites as A-5), so a fee change is a one-line HTML edit and never a card
+  rebuild. Both inset panels are un-carded elsewhere, so no two Featured tiles read as one
+  duplicated post. ⚠️ **The card is nonetheless STALE as of 2026-09-06, and knowingly so**
+  (design plan **P-001**, decision **D-011**): its subtitle *"Fixed fee · Two to three weeks
+  · Two systems you keep"* is baked into the pixels and two of those three are now false.
+  A-5 was a ruling about a **fee change**, not a **model change**, so it does not cover this
+  — the card was left alone deliberately, awaiting **Ry's call on a new subtitle**, and a
+  rebuild is then one `build_cards.py` run. Until then, **do not edit `og:image:alt`**: it
+  describes the card's *pixels*, and moving it first would make it false (the `hire/`
+  standing since #230). This is the last place on the property still advertising the old
+  model — flagged for Ry.
 
-**The rates-page band landed 2026-08-18 (#238 here, `wp-rates-page#42` upstream).**
-Both rates pages now carry a full-width band offering the pilot — inside `#engagements`
-after `.tiers__caption` on the public page, inside `#projects` after `.ladder__caption`
-on the Q3 page — navy-ghost link, no new nav item. It went on the **Q3 page first** by
-Ry's sequencing ruling, so it is a **mirror-set** item in the consistency contract, not
-a delta: the fee, the calendar window, and the two included systems must match on both.
-Recorded as spec **R15** (the third subordinate destination) and §3.11a, and the
-*"rates last reviewed"* line moved to August 2026 in the hero kicker and the footer.
+**The pilot section on the rates pages (restructured 2026-09-06, #283 here,
+`wp-rates-page#50` upstream).** Both rates pages carried a full-width **band** offering the
+pilot from 2026-08-18 (#238 here; upstream issue `wp-rates-page#42`, PR `#43`) — below the
+tiers, navy-ghost link, no nav item. On 2026-09-06 that band was **replaced on both pages**
+by a **`#pilot` section placed above the tiers**, the first pricing a reader meets, with
+`Pilot project` as the **first nav item**. It went to the **Q3 page first** by Ry's
+sequencing ruling, both in 2026-08 and again this round, so it remains a **mirror-set**
+item in the consistency contract, not a delta: the **$500 kickoff**, the **6 covered
+hours**, the **$85/hr**, the **30 calendar days**, the **10–20 hrs/week recommendation** and
+the **≈ $2,900 example** must match on both. Recorded as spec **R15** (placement reversal),
+**R16** (the nav item) and §3.11a, and the public page's *"rates last reviewed"* line moved
+to **September 2026** in the hero kicker and the footer. The old band sat **after** the curve
+precisely so it would not anchor a reader at the cheapest number on the page; Ry overruled
+that with his eyes open (his reason is quoted verbatim in the `rates/` section above), so
+don't restore the old placement reasoning as if it still governed.
 
-⚠️ **The no-hours rule is now load-bearing in two more places.** On the rates pages the
-band sits three lines under `$140/hr`, so the arithmetic is one glance away. Both bands
-close on *"a pilot buys a scoped outcome rather than reserved time, so it sits off the
-rate curve above"* — that sentence is the disarm, and it is not decoration.
-
-**The band is deployed on both pages.** Confirmed live on `/rates_public/` and
-`/rates_2026Q3/` on 2026-08-26. It was already live *before* that day's
-`ai-coaching-intake#90`, which changed only the `.about__roles` line — so the note that
-stood here, saying the deploy was still owed, had been wrong for some time and nothing
-caught it. **A status line in this file is not evidence that something is or isn't live.**
-Fetch the page. That is the whole reason the deployment table above carries URLs rather
-than states.
+**Verify deployment by fetching the page, never by reading this file.** The 2026-08-18 band
+was live on `/rates_public/` and `/rates_2026Q3/` well before 2026-08-26, while a note here
+still said the deploy was owed — wrong for some time, and nothing caught it. **A status
+line in this file is not evidence that something is or isn't live.** That is the whole
+reason the deployment table above carries URLs rather than states.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
