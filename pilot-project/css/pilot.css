@@ -20,13 +20,11 @@
         and `.tier__eff strong` in rates.css exactly. The example list labels need
         to lift off the muted body colour and there was no existing rule for it.
      4. `.rail__price span` goes `display: block` under 640px. rates.css needs no
-        such rule because its sub-line is "/ hour"; this page's is "kickoff fee,
-        covering the first 6 hours", which inline wraps mid-phrase and leaves an
-        orphaned word sitting in a 2.1rem line box. Re-measured at 390px and
-        360px after the 2026-09-06 model change: stacked, the sub-line sets on
-        one line at both widths. It is also why it opens on a space rather than
-        a separator glyph, which would strand a leading middot once the line
-        stacks.
+        such rule because its sub-line is "/ hour"; this page's is "fixed fee,
+        delivered in 2-3 weeks", which wrapped mid-phrase at 390px and left one
+        orphaned word sitting in a 2.1rem line box. Measured, not guessed — and
+        it is why the sub-line opens on a space rather than a separator glyph,
+        which would strand a leading middot once the line stacks.
 
    `.rail__price` and `.rail__facts` are used WITHOUT their `.rail` parent, which
    is not an oversight. `.rail__price` is the property's entry-price typography
@@ -172,13 +170,11 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .section__lede { color: var(--muted); }
 
 /* ==========================================================================
-   Neutral enumeration — the model facts and the pilot examples
+   Neutral enumeration — the pilot examples
 
-   Deliberately the SMALLER, unticked list, and since 2026-09-06 it carries two
-   lists rather than one: the six facts of the model, and the three example
-   shapes. The check-list below is how the engagement runs; this one is plain
-   statement and illustration, and the two must not look alike or the examples
-   start reading as three products on a shelf.
+   Deliberately the SMALLER, unticked list. The check-list below is the page's
+   promise; this one is illustration, and the two must not look alike or the
+   examples start reading as three products at one price.
    ========================================================================== */
 
 .rail__facts { list-style: none; font-size: 0.875rem; color: var(--muted); }
@@ -241,7 +237,7 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 .path--narrow .path__shot { object-position: 50% 50%; }
 
 /* ==========================================================================
-   How the engagement runs
+   The promise list
    ========================================================================== */
 
 .check-list { list-style: none; }

@@ -6,25 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
-## [1.4.0] - 2026-09-06
-
-Two more case studies, the pilot offer page, the two recruiter briefs, and a
-2026 reprice that resets every number on the rate card. The pilot stops being a
-$5,000 fixed fee and becomes a $500 kickoff on a 30-day clock, moved above the
-project tiers as the first pricing anyone sees — which retires the no-hours rule
-that governed both rates pages. This repo still serves nothing: everything here
-reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
-
 ### Added
 
-- `docs/site-brief.md` — the authoritative record of this site's palette, per-page accent
-  rations with the date each count last moved, type, spacing, destination policy, audiences,
-  guarded strings, and what is deliberately not specified. The design *rules* moved out to
-  `wolfpackdata/wp-web-sop`'s `web-design-language` skill, which deliberately carries no
-  colours, fonts, measures or URLs — those live here, and the skill is written to **refuse to
-  run without this file**. Filled from source rather than from memory; the two contrast ratios
-  it states are computed rather than read, with the method validated by reproducing a ratio the
-  stylesheets already carry. (#170)
 - The second case study, **Consolidation Under Pressure**
   (`case_studies/consolidation_under_pressure/`) — a ~6,000-word public-source
   market-intelligence report on M&A in music gear and pro audio, 2016–2026, rebuilt into this
@@ -98,133 +81,26 @@ reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
   saying "Both are published", a sentence that went wrong the moment a third study existed.
   The page still has exactly one destination, the 30-minute intro call, and coral is still at
   six. (#192)
-- **Both `hire/` pages carry the published case studies** — AI Command, SetMaster 3,
-  Consolidation Under Pressure, financial model — in Ry's order, byte-identical across the two
-  files, and the section head states no count. The order re-derives from nothing: not
-  alphabetical, chronological, or by publication date, so it is never sorted. The SetMaster 3
-  and AI Command application tiles gained an in-tile case-study link, placed **after**
-  `.app__blurb` because `verify_facts.py` check 6 matches the name and the blurb as adjacent
-  siblings — anything between them unguards a résumé string *without* failing the check.
-  (#218, #219)
-- **A fourth card in `portfolio/`'s case grid**, Consolidation Under Pressure, added the day
-  Ry reversed his own two-day-old call. Cards are appended and the section head states no
-  count, so a new study costs one card and no copy — the lede that used to say "all three" is
-  exactly the failure that ruling was written against. (#222, #223)
-- A social card for the site's homepage, built from the constellation art Ry supplied. (#225)
-- **Built 1200×627 cards for the two `hire/` pages**, carved out of D-004's small-card ruling
-  rather than overturning it: every other page here is *found*, so its card decorates the
-  visit, while a `noindex` page reached only by Ry pasting the URL meets its reader as a
-  preview first. **Neither card shows Ryan's face** — with no portrait to lead on, each argues
-  from the work, and two framings of one person are separable at 360px by structure rather
-  than by a role line. A card is not indexing; `noindex` is untouched. (#230, #231)
-- `pilot-project/` — the pilot offer page, six blocks and one screen, `noindex` and
-  direct-link only, with `css/pilot.css` derived from `rates/css/rates.css` by deletion rather
-  than by authoring and a coral ration of five marked at each use site. It shipped as a
-  **$5,000 fixed-fee, two-to-three-week** offer; the reprice below replaced that model
-  outright. (#236, #237)
-- A cover-letter generator on the résumé stationery (`cover_letter.py --template`), writing
-  `cover_letters/Ryan_Hickey_Cover_Letter_Template.docx` from the same `brand.py` source the
-  résumés use. **It is guarded by nothing** — rebuild it whenever `brand.py` changes. (#241,
-  #242)
-- **The two recruiter-brief pages**, `hire/recruiter-brief/` and
-  `hire/recruiter-brief-music/` — web renderings of the markdown briefs in
-  `ryan-resume-dev/for_recruiters/`, aimed at agency recruiters rather than hiring managers,
-  sharing `hire/`'s `assets/`, `hire.css` and chrome, and `noindex` like the pages beside them.
-  The markdown is the source and `for_recruiters/verify_brief.py` guards the two copies: the
-  pitch verbatim, every figure, title and exclusion present. ⚠️ Its check 3 is
-  **one-directional** — a stale `<li>` left behind in the HTML passes silently. (#246, #247)
-- `for_recruiters/linkedin-about.md` and `for_recruiters/three-sentence-pitches.md` — the
-  collateral written alongside the briefs and left untracked since. Reference only: neither
-  deploys, renders, nor feeds a page, and `verify_brief.py` is untouched. (#249)
-- **The GitHub SOP's team scaffolding, retrofitted onto this repo over four rounds** —
-  `AGENTS.md`, `.github/CODEOWNERS`, three issue-form templates (bug, enhancement,
-  documentation), a rewritten pull-request template, and two workflows: `ai-review-gate.yml`
-  and `fixed-on-develop.yml`. (#274, #275, #276, #278)
-- **Five blog posts authored in-repo and pushed to Wix through the workflow skill**: the AI
-  Command case study announcement (#198, #204, #210), the Consolidation Under Pressure post
-  (#211, #213), the new-client expectations post (#253, #254, #255), *A Fish Called Engineer*
-  (#256, #257, #258, #261, #262, #271, #272, #273 — reframed from applicant to consultant, then
-  parked pending timing), and Phase 1 plus two drafts of the GitHub SOP program overview (#281,
-  #282). Each carries its own committed ledger at `planning/workflow.md`; `planning/` is
-  world-readable, so nothing lands in it Ry would not publish.
-- `docs/pilot-project-design-plan.md` — the pilot page's design plan and ruling ledger. The
-  page shipped in August referencing a plan file that did not exist in the repo; this round
-  writes it, against the new model. (#284, #291)
+
+### Fixed
+
+- `.rtable` and `.dtable` now declare `position: relative`. `overflow-x: auto` clips a wide
+  table but does **not** clip an absolutely positioned descendant whose containing block is
+  elsewhere — and with no positioned ancestor, "elsewhere" is the page. `.visually-hidden` is
+  `position: absolute`, and the report puts one in every unsourced row's source cell; they
+  took their static position ~640px into the table, escaped every scroller above them, and
+  gave the whole document 269px of horizontal scroll at 390px wide while every container
+  still measured correctly. Latent in `.dtable` since it shipped. (#172)
+- **The transaction map's macro bands and gridlines were painting *under* the lane surfaces.**
+  Every element in the figure is absolutely positioned inside one stacking context, so paint
+  order was document order and an opaque lane hid whatever crossed it — a band spanning all
+  four lanes was being drawn as stripes through the two lanes that happened to have no
+  background. Survivable while half the lanes were transparent, fatal once all four carry a
+  tint. The layers are now explicit and named in the sheet: lanes 0, bands and gridlines 1,
+  events 2, lane names and year labels 3. Found while colouring the lanes, not reported. (#199)
 
 ### Changed
 
-- **The pilot social card is rebuilt** with Ry's new subtitle — *"Small kickoff price, no
-  contract, invoiced on delivery."* — replacing the fixed-fee, two-to-three-week line that the
-  model change had made false. Still no price in the image; `og:image:alt` unchanged because the
-  insets and title did not move. (#297)
-- **Pilot copy says "hours per week", not "hours a week"**, on both rates pages and the pilot
-  page (Ry, 2026-09-06). The worked example stays *"about $2,900"* by ruling — Ry wants it under
-  $3,000 — rather than being recomputed to 30 calendar days. (#296)
-- **The 2026 reprice lands on the public rates page.** Hourly goes **$175 → $135**, and the
-  three project tiers go **$13,400 / $16,200 / $18,100 → $10,800 / $12,400 / $13,500** at
-  effective rates of **$125 / $115 / $105** an hour. Reserved time and contract lengths are
-  unchanged, and the 10 / 15 / 20% savings labels stay as they are — round numbers by Ry's
-  call, not recomputed against the new hourly. The Q3 direct-link page moved first and this
-  page derives from it under `docs/public-rates-consistency-contract.md`; the Q3 page's
-  kickoff-retainer rows stay Q3-only depth and are **not** ported. (#283, PR #292; mirrors
-  `wolfpackdata/wp-rates-page` v2.0.0, #50)
-- **The pilot stops being a fixed fee and becomes a kickoff.** The **$5,000 fixed fee
-  delivered in two to three weeks** is replaced by **$500 to start, covering the first six
-  hours**, then **$85 an hour** billed once at the end of **30 calendar days**, with **the
-  client setting the ceiling** — cap the hours, name a deliverable, or both, and no minimum
-  past the six the kickoff covers. The pilot also **moves above the project tiers** as the
-  first pricing on the page and the **first nav item**. ⚠️ **The no-hours rule is retired,
-  not weakened** — Ry's ruling, **2026-09-06**: *"I realize this is a big change that offers a
-  big discount, that is why I'm making it and putting it up top."* The rule that no rates page
-  may state hours, a weekly commitment, or an effective hourly rate for the pilot, and the
-  disarm sentence that carried it — *"a pilot buys a scoped outcome rather than reserved time,
-  so it sits off the rate curve above"* — both go with it. The **~$2,900** worked example (10
-  hours per week for 30 days) is the only figure of that shape on either page; there is still no
-  total pilot price. (#283, #284 / PRs #292, #291)
-- **`pilot-project/` rewritten to the $500 kickoff model.** Every load-bearing fact on that
-  page — fixed fee, no hours, two to three weeks — was false under the new model, so the
-  headline figure, the hero kicker, the spine (*the client caps the hours and/or names a
-  deliverable*), and both the meta and `og:description` were rewritten, and the no-hours
-  rationale comment was deleted rather than softened. What is unchanged: `noindex`, one per
-  client and still unstated, no measured outcome, the three pilot shapes as a plain list
-  rather than a card grid, blurbs written fresh instead of pasted from the résumé YAML, and a
-  social card that carries no price and therefore needed no rebuild. (#284 / PR #291)
-- **AI coaching repriced.** A single 45-minute session goes **$135 → $99**, and the packs go
-  to **$269 / $499 / $799**, with the fourth card renamed from *"9-Pack + 1 bonus"* to
-  **"10-Pack"**. The 10 / 15 / 20% savings labels stay, as on the tiers. On `ai-coaching/` the
-  old price appeared in **five** places, both meta tags included, and all five moved together;
-  *"save up to 20%"* still holds. (#283, #285 / PRs #292, #289)
-- **The hourly rail moves below the project tiers and is relabelled `BASE RATE W/O
-  CONTRACT`.** It was the section's visual entry point and is now its floor — the tiers lead,
-  the un-contracted rate closes. The new label is roughly three times the length of *"Start
-  here"* in the `.k` kicker style, so it was re-checked at 360px rather than assumed to fit.
-  (#283 / PR #292)
-- **The roles line reads `Data Engineer & Analyst`**, replacing `Data Scientist`, in the
-  public rates page's `.about__roles`. **This is not the résumé role line** — `ROLE_LINES` in
-  `ryan-resume-dev/resume_build/resumekit/brand.py` is a separate string with its own guard and
-  its own destinations, and it says `Data Engineer`. The two are deliberately not reconciled in
-  either direction. (#283 / PR #292)
-- **Both recruiter briefs carry the new rate card.** `$175/hr → $135/hr`, `$13,400/mo →
-  $10,800/mo`, `$18,100/mo → $13,500/mo`, and the *"$5,000 fixed-fee pilot delivered in two to
-  three weeks"* clause replaced by the $500-kickoff shape on a 30-day clock — kept to one
-  clause, because that line is a summary and not the pilot page. The **markdown is the source
-  and moved first**, then the two pages; `verify_brief.py` asserts every dollar figure in the
-  markdown appears on the page, and its check 3 cannot see a stale figure left behind in the
-  HTML, so both sides were read. (#286 / PR #290)
-- **`CLAUDE.md`, `AGENTS.md` and the rates docs corrected for the new pilot model.** The
-  deployment table's *"$5,000 fixed-fee pilot offer"*, the `pilot-project/` section's
-  scoped-outcome and two-to-three-week rules, the ⚠️ block asserting neither rates page states
-  hours or an effective rate, the closing *"load-bearing in two more places"* warning, the
-  consistency contract's mirror set, the design spec's R15 and §3.11a, and a `$5,000` code
-  comment in `social-cards/build_cards.py` all move to the new model. **The reversal is written
-  down rather than deleted**, with its date, that it was Ry's call, and his reason. Risk-tiered
-  — this is the SOP other agents obey — so it takes the AI-review stage before merge. (#287 / PR #293)
-- **`CLAUDE.md` and `AGENTS.md` name the reviewer's identity.** Both AI-review blocks now close
-  with the sentence the canonical bootstrap templates carry: under `-p review` Codex is the AI
-  Reviewer (`main-wolfpack`), and in every other profile it acts under the human's identity as an
-  AI Implementer. This repo is public and runs standalone copies of the workflows, so its agent
-  contracts are the only place a contributor or an agent reads that from. Two sentences; no other
-  line of either file changed. (#279)
 - **Consolidation Under Pressure is live** at
   `https://intake.wolfstrategyllc.com/consolidation-under-pressure/`, deployed 2026-08-15 from
   `develop 64fa14d` (`ai-coaching-intake#74`). **The first page in this repo to deploy as two
@@ -235,7 +111,7 @@ reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
   deployed ones and getting an empty `git status`. The other two deployed case studies are
   untouched by this deploy. ⚠️ **The Notion Web Property Map is now stale** — a new page and a
   new public URL — and per this file's standing rule it has been flagged rather than silently
-  edited. (#207)
+  edited.
 - **Consolidation Under Pressure — two overclaimed theses narrowed, and a quarter of the
   defensive language cut.** The hero said *"two economic shocks, **not a product problem**,
   explain the wreckage"* while Part Two and Part Four both said a transaction timeline
@@ -321,112 +197,6 @@ reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
   exclusions updated; the report-copy guard added to the guarded-strings table. The
   `case_studies/` coral ration is **still six** — the refusal list grew and the count did
   not. (#172)
-- **The `hire/` cards' deploy and their LinkedIn verification are recorded.** The pages were
-  re-copied from the upstream `git ls-files hire/` list rather than by mirroring the folder — a
-  folder mirror cannot see a new upstream file, and two of the five changes *were* new files —
-  then all 40 tracked files were verified byte-identical with `cmp`. Ry ran both URLs through
-  the Post Inspector the same day, so neither ever sat in the no-cached-scrape state that
-  reports itself as *"invalid URL"*. It is the one step no session can take and the one nothing
-  in either repo can observe afterwards, which is why it is written down. (#232, #233)
-- **The résumé role line changed twice in one day, and its destinations moved with it.**
-  `AI Engineer` → `Applied AI Engineer` (#260), then `Data & AI Systems Architect` →
-  `Data Engineer` (#263, #264), across `brand.py`, both YAML subjects, the export artboards,
-  the header-footer spec, the brand CSS mock, both recruiter briefs, and the `<title>`,
-  `og:title` and `.hero__role` of all four `hire/` pages. The two social cards were rebuilt
-  separately (#267, #268) because `og:image:alt` describes the card's **pixels**, not the page —
-  editing the alt text before the art exists makes it false, so the cards sat two title changes
-  behind their pages deliberately. Independently, the briefs' Primary target-title table dropped
-  `AI Engineer` and `ML Engineer` and gained `Data Engineer` and `Data Product Builder` (#265,
-  #266) — that table is Ry's editorial call and moves on its own; it is not reconciled with the
-  role line in either direction. (#260, #263–#268)
-- **Ten years of Shopify Plus ownership stated on both résumés**, on the Auto SOSS role: the
-  storefront, dynamic pricing, automated inventory and fulfillment on a custom stack. The
-  vendor tools live in the bullet rather than in the Core Expertise grid, where the decade
-  beside them is the evidence; the grid takes a single Shopify Plus chip. Both recruiter briefs
-  take the compressed clause. (#251)
-- **The $5,000 pilot band mirrored onto the public rates page** as a mirror-set item rather
-  than a public-page delta, the Q3 page having taken it first. Superseded eleven days later by
-  the reprice above, which replaced the band with a full section above the tiers. (#238, #239)
-- **Consolidation Under Pressure got a hero, and it reaches every size from one master.**
-  `planning/hero/build_hero.py` derives the page hero plus `portfolio/img/case-consolidation.jpg`
-  and `hire/assets/img/case-consolidation.jpg` — two card files rather than one shared path,
-  because those folders deploy side by side at the intake root and neither may reference the
-  other's assets; byte-identical by construction, so neither is ever replaced with a copy of the
-  other. The social card's inset stopped being the transaction map, which was never a demotion:
-  that choice was always about density at 360px, and a hero is legible as a *subject* where a
-  four-lane scatter is only texture. `framed()` grew a `vfocus` argument so 16:9 art in a ~4:1
-  slot stops returning the empty sky above the subject. `planning/card/capture_map.py` survives
-  with nothing consuming it, for the map's own sake. (#226, #227)
-- **The hero's disclosure moved from a figcaption into its alt text**, on Ry's call the same
-  day. The render's market-share panel is **art, not data from this analysis**, and on a page
-  whose whole discipline is that every figure is sourced, that is the one thing that could
-  discredit it — so the alt text opens on *"Illustration."* and says the panel carries no data.
-  The hero is now deliberately the only figure on that page with no caption, and it is also the
-  only one that is art rather than evidence. Those percentages are never quoted anywhere.
-  (#228, #229)
-- **Social-readiness verification is a standing rule, not an assumption.** `check_meta.py`
-  exists, so running it is cheap; the failure mode is a session reading that a page is
-  *"guarded by check_meta.py"* and concluding the check already happened. It runs before any PR
-  touching a page `<head>`, before a card is generated or replaced, and again before a deploy
-  copy — and the three things it cannot see (the deployed copy, card *quality* as against card
-  presence, and whether LinkedIn has ever scraped the URL) are checked by hand. (#221)
-- **The case-study hero rule is provenance, not generation** — Ry: *"a hero image is not
-  ALWAYS generated, I may provide it by some other means."* The repo asserted in three places
-  that a hero **is** generated, which was true while both heroes happened to be composed by a
-  script and wrong as a rule: written that way, supplied art reads as a defect. There are now
-  two first-class classes, neither an exception — **generated**, where the generator and its
-  input are the master and you rebuild rather than retouch, and **supplied**, where the
-  delivered original is the master and derivatives record the command that produced them. A
-  missing `build_hero.py` is not an omission. (#215, #217)
-- **Ry's speed-first description adopted in both places it lives** — the AI Command case
-  study's `og:description` and the blog post's excerpt front matter, which were already
-  identical and stay identical, verified byte-for-byte, em dash included. (#202)
-- **The shared case-study sheet's vertical rhythm opened up, and the AI Command icon chips
-  became a fixed 2x2 grid.** Spacing belongs in the shared sheet rather than in per-page inline
-  `margin-top` declarations, which is what let the same ruling be applied to Consolidation Under
-  Pressure wholesale a fortnight later. (#181, #183)
-- **`CLAUDE.md` states that it wins over the web skills wherever they conflict.** The skills
-  reach every session in this repo automatically once junctioned and are generic by design;
-  this file is specific. *"Coral is rationed to six uses, enumerated in `portfolio.css`'s
-  header, and the count only goes down"* beats *"the accent is rationed"* every time, and a
-  session that follows the generic rule over the specific file has been actively degraded. One
-  written line prevents it. (#171)
-
-### Fixed
-
-- `.rtable` and `.dtable` now declare `position: relative`. `overflow-x: auto` clips a wide
-  table but does **not** clip an absolutely positioned descendant whose containing block is
-  elsewhere — and with no positioned ancestor, "elsewhere" is the page. `.visually-hidden` is
-  `position: absolute`, and the report puts one in every unsourced row's source cell; they
-  took their static position ~640px into the table, escaped every scroller above them, and
-  gave the whole document 269px of horizontal scroll at 390px wide while every container
-  still measured correctly. Latent in `.dtable` since it shipped. (#172)
-- **The transaction map's macro bands and gridlines were painting *under* the lane surfaces.**
-  Every element in the figure is absolutely positioned inside one stacking context, so paint
-  order was document order and an opaque lane hid whatever crossed it — a band spanning all
-  four lanes was being drawn as stripes through the two lanes that happened to have no
-  background. Survivable while half the lanes were transparent, fatal once all four carry a
-  tint. The layers are now explicit and named in the sheet: lanes 0, bands and gridlines 1,
-  events 2, lane names and year labels 3. Found while colouring the lanes, not reported. (#199)
-- **Ry's LinkedIn vanity URL changed and the old handle was still everywhere** — `rates/`,
-  `ai-coaching/`, both `hire/` pages, the résumé build source, and its design templates and
-  spec docs. Swept, and the four staged `hire/assets/dl/` downloads and both versioned résumé
-  outputs rebuilt so the documents match the pages offering them. (#244)
-- **Stale SetMaster 3 version references bumped v3.0.3 → v3.0.4.** The product page and the
-  case study had advertised v3.0.4 since 2026-08-05 while the résumé YAML, `verify_facts.py`'s
-  fact-table regex, and the `hire/` and `portfolio/` blurb copies still said v3.0.3 — the
-  résumé downloads were contradicting the pages linking them. The fix-round count went three to
-  four alongside it, per `sm3-specific-pages/planning/04-claims-ledger.md` C-10. (#235)
-- **Two false statements in `CLAUDE.md`, both the same shape: a status line standing in for
-  evidence.** It said the two recruiter-brief pages had not been copied into the intake repo,
-  which would have told the next session those URLs 404 — they went live 2026-08-24 in
-  `ai-coaching-intake#88` (#252). It said neither rates page had been re-copied since the pilot
-  band landed, so neither showed it live; both did, and both did *before* the deploy being
-  credited, which changed only the `.about__roles` line — the note had been wrong for some time
-  and nothing caught it (#269, #270). **A status line in this file is not evidence that
-  something is or isn't live** — fetch the page. That is why the deployment table carries URLs
-  rather than states. The same pass recorded the role line's full destination list, which had
-  grown two surfaces nothing guards. (#252, #269, #270)
 
 ## [1.3.0] - 2026-08-07
 
@@ -632,8 +402,7 @@ that landed each change in
 - The ROI calculator header uses the Wolfpack logo (#45).
 - The 30-minute-call CTAs pointed at the wrong booking calendar (#13).
 
-[Unreleased]: https://github.com/wolfpackdata/wp-website/compare/v1.4.0...develop
-[1.4.0]: https://github.com/wolfpackdata/wp-website/compare/v1.3.0...v1.4.0
+[Unreleased]: https://github.com/wolfpackdata/wp-website/compare/v1.3.0...develop
 [1.3.0]: https://github.com/wolfpackdata/wp-website/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/wolfpackdata/wp-website/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/wolfpackdata/wp-website/releases/tag/v1.1.0

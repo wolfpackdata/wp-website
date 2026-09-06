@@ -47,7 +47,7 @@ readable size:
 ```
  ┌─────────────────────────────────────────────────────────────────┐
  │  ┌────┐ │  RYAN HICKEY                              ┌────────┐  │
- │  │wolf│ │  Applied AI Engineer · Data Engineer · …  │  RML   │  │   row 1
+ │  │wolf│ │  AI Engineer · Data & AI Systems Arch…    │  RML   │  │   row 1
  │  └────┘ │                                           └────────┘  │
  │         ────────────────────────────────────────────────────    │   hairline
  │           ryan@… · linkedin.com/in/… · github.com/… · SF Bay   │   row 2
@@ -136,13 +136,13 @@ RYAN HICKEY
 **Role line — music**
 
 ```
-Applied AI Engineer · Data Engineer · COO · Professional Musician
+AI Engineer · Data & AI Systems Architect · COO · Professional Musician
 ```
 
 **Role line — engineering**
 
 ```
-Applied AI Engineer · Data Engineer · COO · Technical Operator
+AI Engineer · Data & AI Systems Architect · COO · Technical Operator
 ```
 
 > **v2 added `COO`** (Ry, 2026-07-30), matching how the public rates page
@@ -155,7 +155,7 @@ Applied AI Engineer · Data Engineer · COO · Technical Operator
 **Contact line (both variants)**
 
 ```
-ryan@wolfstrategyllc.com · linkedin.com/in/workwithryan · github.com/wolfpackdata · San Francisco Bay Area
+ryan@wolfstrategyllc.com · linkedin.com/in/ryan-hickey-626b2798 · github.com/wolfpackdata · San Francisco Bay Area
 ```
 
 > **v2 added the GitHub URL** and dropped the contact line from 6.5pt to **6pt**

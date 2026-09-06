@@ -35,10 +35,7 @@ informed; a bad-fit visitor self-selects out before taking a calendar slot.
 | R12 | Public home → intake subdomain (added 2026-07-28) | **Canonical public URL is `https://intake.wolfstrategyllc.com/rates_public/`** — a deployed copy in `ai-coaching-intake/rates_public/` (`ai-coaching-intake#34` / #59 here), same copy-on-change policy as the ROI calculator: this repo stays the source of truth, never edit the deployed copy, re-copy on change. The page's canonical/`og:url`/`og:image` tags point at the intake URL; the github.io path still serves. Supersedes R3. |
 | R13 | Path cards are navigation (added 2026-07-28) | The two §3.3 path cards **jump to their sections**: the **heading and the image** of each card link to `#engagements` (AI Engineering & Applications) and `#coaching` (AI Coaching for Professionals) — Ry, 2026-07-28 (#62). **Relative fragments, never absolute intake URLs** — the page serves from two origins (intake `…/rates_public/` and github.io `…/rates/`), and an absolute href would send a github.io reader cross-origin instead of scrolling; the fragment resolves to `https://intake.wolfstrategyllc.com/rates_public/#coaching` at the canonical home. The image link is `aria-hidden` + `tabindex="-1"` so the heading link is the card's single tab stop and single announced link. Rest-state cue is a muted `↓` (`↗` stays reserved for off-site links); hover coral is the existing allowed "link hover" use, so the coral ration is unchanged. Public-page-only — contract D14. |
 | R14 | Portfolio cross-link (added 2026-08-05) | A closing `#work` section below `#contact` with a single **navy-ghost** button, *"See recent projects"*, linking the portfolio at its canonical public URL `https://intake.wolfstrategyllc.com/portfolio/` (source in this repo's `portfolio/`) — Ry, 2026-08-05 (#127). **This closes D9**, which dropped the Q3 page's application-screenshot grid on the note that *"proof lives on the upcoming Applications page"* — that page now exists, so this is the link to it rather than a grid rebuilt here. A consideration-stage **link, not a funnel fork**, exactly as R11: the calendar CTA stays primary and R9's book-first / no-intake-links rule is untouched. **Ghost, never coral** — the ration in `rates/css/rates.css` is fully spent and a coral button here would compete with the booking CTA directly above it. **Absolute URL is correct here** (unlike R13's fragments): the portfolio is a different page, not a section of this one. Public-page-only — the Q3 page has no counterpart — contract D15. |
-| R15 | Pilot project section (added 2026-08-18 as a band; **restructured 2026-09-06**) | A full-width **`<section id="pilot">` placed immediately BEFORE `#engagements`** — the **first pricing a reader meets** — offering the **$500-kickoff pilot** with a single **navy-ghost** button, *"See the pilot project"*, linking `https://intake.wolfstrategyllc.com/pilot-project/` (source in this repo's `pilot-project/`). **Unlike R11/R13/R14 this is a MIRROR-SET item, not a delta**: the pilot landed on the Q3 page first by Ry's sequencing ruling (`wp-rates-page#42`/PR `#43`, merged 2026-08-18) and this page derives from it; the 2026-09-06 restructure went Q3-first again (`wp-rates-page#50` → #283 here). **The six facts must match the Q3 page exactly:** $500 kickoff · covers the first 6 hours · $85/hour after that, billed once at the end · 30 calendar days · 10–20 hrs/week is the recommendation · ≈ $2,900 billed at the end in the 10-hrs/week example. **List no inclusions** (no named systems, no deliverable inventory), **state no total pilot price** (≈ $2,900 is the only figure of that shape and it is explicitly an example), and **name no post-pilot rate and no fence** — day 31 is negotiated on the call. **Ghost, never coral** (the ration in `rates/css/rates.css` is a closed enumerated list and it is full), and no `target="_blank"` (same-property link, as R11/R14). `/pilot-project/` is `noindex`; linking it from this indexed page does not make it indexable, so the reason it is unlisted is untouched. ⬅️ **PLACEMENT REVERSED, 2026-09-06.** The original ruling put the band *after* the curve, on the reasoning that ahead of the tiers it "would anchor every reader at the cheapest number on the page." Ry reversed it deliberately, knowing that. His reason, verbatim: *"I realize this is a big change that offers a big discount, that is why I'm making it and putting it up top."* ⚠️ **The no-hours rule is RETIRED, not weakened** — see the retirement note under §3.11a. It is not a live rule and must not be restated as one, or re-derived from the arithmetic. |
-| R16 | Pilot nav item (added 2026-09-06) | **`Pilot project` is the FIRST item in the sticky nav**, ahead of Engagements, mirroring the Q3 nav (`wp-rates-page#50`) — contract §1. R15's original ruling said *"no new nav item"*; that fell with the placement reversal, because a section that is the page's opening pricing and is *not* in the nav reads as an ad above the content rather than as part of it. **Relative fragment `#pilot`, never an absolute intake URL** — R13's reasoning applies unchanged: the page serves from two origins, and an absolute href would send a github.io reader cross-origin instead of scrolling. Nav items stay **not coral**; the coral nav CTA is still the *"Book an intro"* button, and the ration is unchanged. |
-| R17 | Hourly rail moves below the tiers (added 2026-09-06) | The hourly rail is now the `#engagements` **floor, not its entry**: section order is **tier cards → `.tiers__caption` → rail**, and the rail's column label reads **BASE RATE W/O CONTRACT**. Mirrors the Q3 page (`wp-rates-page#48`/`#50`) — contract §1. The reason is compositional, not commercial: with the pilot taking the page's opening-price slot (R15), a reader meets the pilot, then the tiers, then the base rate **everything above it is discounted from** — which is what the rail actually is, and what its old entry-point label no longer said. R5 is untouched: the rail still shows no kickoff-retainer amounts (contract D5). |
-| R18 | Q3 portfolio + case-study buttons (added 2026-09-06) | **A Q3-page ruling, recorded here** because this spec is where the two pages' relationship lives — the contract carries it as delta D16. Upstream, the dead portfolio placeholder became a **live navy-ghost button** to `https://intake.wolfstrategyllc.com/portfolio/`, and two application tiles gained a navy-ghost `btn--sm` *"Read the case study"* link placed **after** `.app__blurb`. **Ghost, not coral — and the Q3 coral ration dropped 9 → 8** as a result, enumerated in that page's `css/rates.css` header comment. **Coral counts only ever go down**, on both pages; a ration that moves back up is a regression, not a ruling. **Nothing ports here**: D9 bans the application-screenshot grid on this page, so there is no grid for these buttons to sit in — this page reaches the portfolio through its own closing `#work` section (R14/D15), unchanged. |
+| R15 | Pilot project band (added 2026-08-18) | A full-width band inside `#engagements`, **after `.tiers__caption` and before `#process`**, offering the **$5,000 fixed-fee pilot project** with a single **navy-ghost** button, *"See the pilot project"*, linking `https://intake.wolfstrategyllc.com/pilot-project/` (source in this repo's `pilot-project/`) — Ry, 2026-08-18 (#238). **Unlike R11/R13/R14 this is a MIRROR-SET item, not a delta**: the pilot landed on the Q3 page first by Ry's sequencing ruling (`wp-rates-page#42`) and this page derives from it, so both pages carry the band and its facts must match exactly. **Placed after the curve, never before it** — ahead of the tiers it would anchor every reader at the cheapest number on the page. **States no hours, no weekly commitment, and no effective hourly rate**: $5,000 across two to three weeks divides out beneath the `$140/hr` this page calls *"the deepest rate on the curve"* three lines above, so the band says out loud that a pilot prices a scoped outcome while the curve prices reserved time, rather than leaving a reader to do the division. *"Two to three weeks"* is a **calendar window** — copy says *delivered in*, never *of work*. **Ghost, never coral** (ration spent, as R14), **no new nav item**, and no `target="_blank"` (same-property link, as R11/R14). `/pilot-project/` is `noindex`; linking it from this indexed page does not make it indexable, so the reason it is unlisted is untouched. |
 
 ## 3. Page architecture (in order)
 
@@ -47,10 +44,9 @@ screenshotted, and read out of context.
 
 ### 3.1 Sticky nav
 Same pattern as the Q3 page. Brand → `https://www.wolfstrategyllc.com`. Links:
-**Pilot project · Engagements · How it works · AI Coaching** (no Portfolio — R7; the
-"Terms" link dropped and "Coaching" renamed "AI Coaching" on 2026-07-28, mirroring the Q3
-nav — see the contract's nav entry). **`Pilot project` is first**, linking the `#pilot`
-fragment — added 2026-09-06, R16. Coral CTA: **Book an intro**.
+**Engagements · How it works · AI Coaching** (no Portfolio — R7; the "Terms" link dropped
+and "Coaching" renamed "AI Coaching" on 2026-07-28, mirroring the Q3 nav — see the
+contract's nav entry). Coral CTA: **Book an intro**.
 
 ### 3.2 Hero
 - Kicker (mono `.k` voice): `Rates & engagement guide · last reviewed <Month YYYY>`
@@ -80,22 +76,15 @@ Section lede carries the rate-curve rationale (voice: where a number has a ratio
 the rationale): *one curve — the more time you block off, the less each hour costs; the
 discount is already built into every tier.*
 
-**Order within the section, since 2026-09-06 (R17): tier cards → caption → hourly rail.**
-The pilot section (§3.11a / R15) sits above this whole section and is the page's first price.
-
+- **Hourly rail** — $175/hr · no contract · 4-hour minimum · under 10 hrs/wk · billed on
+  delivery. Perks: 2 bonus hours per 15 booked; upgrade to any tier anytime, pro-rated.
+  (The "$525 kickoff" line is retainer mechanics — stays on the Q3 page, R5.)
 - **Three tier cards** (per R5, each card):
-  - Project · Base — $10,800/mo · 20 hrs/wk · 1 month · effective $125/hr · save 10%
-  - Project · Focus — $12,400/mo · 25 hrs/wk · 2 months · effective $115/hr · save 15% — **featured** (coral border + "Most popular" badge, as on Q3)
-  - Project · Solo — $13,500/mo · 30+ hrs/wk · 3 months · effective $105/hr · save 20% — "Best rate" badge
+  - Project · Base — $13,400/mo · 20 hrs/wk · 1 month · effective $155/hr · save 10%
+  - Project · Focus — $16,200/mo · 25 hrs/wk · 2 months · effective $150/hr · save 15% — **featured** (coral border + "Most popular" badge, as on Q3)
+  - Project · Solo — $18,100/mo · 30+ hrs/wk · 3 months · effective $140/hr · save 20% — "Best rate" badge
   - Tier one-liner feet keep the Q3 spirit (proving ground / sweet spot / full throttle).
-  - Save percentages are **Ry's round numbers** — mirrored as printed, never recomputed.
-- **Hourly rail, LAST** — column label **BASE RATE W/O CONTRACT** — $135/hr · no contract ·
-  4-hour minimum · under 10 hrs/wk · billed on delivery. Perks: 2 bonus hours per 15 booked;
-  upgrade to any tier anytime, pro-rated. (The Q3 page's *"kick off for $500 — the retainer
-  covers your first 4 hours"* line is retainer mechanics — it stays there, R5 / contract D5,
-  and it is a **different $500** from the pilot's kickoff, which covers 6.)
-- **No** kickoff-retainer rows (R5). The **ladder bar chart is gone from both pages** as of
-  2026-09-06 — it was deleted upstream, so it is no longer a delta to hold (contract D5).
+- **No** ladder bar chart, **no** kickoff-retainer rows (R5).
 - Close with the custom-quote reminder if it didn't land in 3.3.
 
 ### 3.5 The call (`#process`) — the conversion engine
@@ -118,10 +107,9 @@ Trim only if the page runs long — the list is proof, and proof budget is thin 
 
 ### 3.7 AI Coaching (`#coaching`)
 - Same positioning lede as Q3 (45-min 1:1 video sessions, no contract, no prerequisites).
-- **All four packs, exact prices** (R6): Single $99 · 3-Pack $269 (≈$90/session, save
-  10%) · 6-Pack $499 (≈$83/session, save 15%) · **10-Pack** $799 (≈$80/session, save 20%).
-  Every 6th session free; packs never expire; nonrefundable. (Repriced 2026-09-06; the
-  fourth card was the "9 + 1 bonus" pack until then.)
+- **All four packs, exact prices** (R6): Single $135 · 3-Pack $365 (≈$122/session, save
+  10%) · 6-Pack $690 ($115/session, save 15%) · 9+1 $1,080 ($108/session, save 20%).
+  Every 6th session free; packs never expire; nonrefundable.
 - **Compressed coupon perk** (R2), one line inside this section (no standalone bridge):
   *Focus and Solo project clients get a shareable 25%-off coaching coupon (terms apply).*
 - **CTA = the calendar link** (R9). No intake link, no "skip the call" note.
@@ -154,60 +142,27 @@ Sits last at Ry's instruction (2026-08-05), so the final section is a considerat
 offramp rather than the booking ask. **No coral** (ration spent — see R14), and no second
 destination beyond the portfolio.
 
-### 3.11a Pilot project section (`#pilot`, above `#engagements`) — R15
-A full-width `<section id="pilot">` sitting **immediately before the projects section**, so it
-is the **first pricing on the page**. Kicker *"Pilot project · 30-day engagement"* · title
-*"What does a pilot project look like?"* · lede *"A pilot is a 30-day working engagement. You
-pay $500 to start, and nothing else until the 30 days are up."* · a **$500 / KICKOFF FEE**
-figure slot · six points · one **navy-ghost** button *"See the pilot project"* →
+### 3.11a Pilot project band (inside `#engagements`) — R15
+A full-width `.bridge` sitting **after the tier caption and before `#process`**: the figure
+slot carries **$5,000 / FIXED FEE**, then *"Start with a pilot project"*, three sentences,
+and one **navy-ghost** button *"See the pilot project"* →
 `https://intake.wolfstrategyllc.com/pilot-project/`.
 
-**The number stays 3.11a although the section moved.** It was numbered out of sequence in the
-first place so that renumbering would not break inbound references to R14/§3.11, and that
-reasoning survives the move: the section now sits ahead of §3.4 in the page, and this heading
-keeps its id.
+It is numbered out of sequence deliberately — it lives inside §3.5's section rather than
+between §3.11 and §3.12, and renumbering the whole list to absorb it would break every
+inbound reference to R14/§3.11.
 
-**The six points, in order** — these are mirror-set facts and must match the Q3 page exactly
-(contract §1):
+**The third sentence is the load-bearing one.** *"A pilot buys a scoped outcome rather than
+reserved time, so it sits off the rate curve above"* is what stops the arithmetic: the band
+publishes a price and a calendar window and no hours at all, because $5,000 over two to
+three weeks divides out beneath the `$140/hr` named three lines up. Never add an hours
+figure, a weekly commitment, or an effective rate to this band.
 
-1. **$500 to get started** — the kickoff fee covers the first **6 hours**.
-2. **$85 / hour after that** — the pilot rate, billed once at the end of the **30 calendar days**.
-3. **You set the ceiling** — cap the hours, name a deliverable, or both; past the 6 covered
-   hours there is no minimum.
-4. **10–20 hours per week is the recommendation** — the range where a real deliverable gets
-   built inside the window. A recommendation, never a commitment.
-5. **The worked example** — 10 hours per week for 30 days is about **$2,900** billed at the end.
-   Kept at "about $2,900" by Ry's ruling on #296 (2026-09-06): the 4-week derivation stands and the
-   example stays under $3,000 by pricing strategy; do not recompute it to 30 days.
-6. **Day 31 is an open door** — a project tier, continued hourly, or stop.
+**Singular throughout** — *one problem*, *a pilot*. One per client is enforced on the call
+and stated nowhere, so nothing here may imply repeatability.
 
-**Guardrails, all of them rules rather than preferences:** list **no inclusions** (no named
-systems, no deliverable inventory — Ry, 2026-09-06); state **no total pilot price**, since
-`≈ $2,900` is the only figure of that shape and it is explicitly an example, and the example's
-all-in total is never printed anywhere; name **no post-pilot rate and no fence**. **Singular
-throughout** — *a pilot*, not *each pilot*: one per client is enforced on the call and stated
-nowhere, so nothing here may imply repeatability. **No measured outcome** of any kind.
-
-**Not coral** — the ration in `rates/css/rates.css` is a closed enumerated list and it is full,
-and a coral button here would outrank the booking CTA. Mirror-set, not a delta: the Q3 page
-carries the same section (`wp-rates-page#50`), it went there first again this round, and the
-facts must match.
-
-⚠️ **THE NO-HOURS RULE IS RETIRED — 2026-09-06, Ry's call. Do not reinstate it, and do not
-restate it as a live rule.** Until that date this spec required the band to state **no hours,
-no weekly commitment and no effective hourly rate**, and to close on the disarm sentence *"a
-pilot buys a scoped outcome rather than reserved time, so it sits off the rate curve above"* —
-because $5,000 over two to three weeks divided out beneath the effective rate named a few lines
-below it. **The rule and the disarm sentence are dead together**: retired, not weakened, not
-softened, and not re-derivable from the new numbers. The $85/hr, the 6 covered hours and the
-10–20 hrs/week recommendation now publish deliberately, above a $135/hr base rate, and Ry made
-the call knowing exactly how the arithmetic reads. His reason, verbatim:
-
-> "I realize this is a big change that offers a big discount, that is why I'm making it and
-> putting it up top."
-
-The old fixed-fee facts — the **$5,000 fee**, the **two-to-three-week window** and the **two
-included systems** — left the mirror set on the same date and are history, not copy.
+**Not coral** (ration spent) and **no new nav item**. Mirror-set, not a delta — the Q3 page
+carries the same band (`wp-rates-page#42`), and the facts must match.
 
 ### 3.12 Footer
 Wordmark · *rates last reviewed \<Month YYYY\>* · link to wolfstrategyllc.com.

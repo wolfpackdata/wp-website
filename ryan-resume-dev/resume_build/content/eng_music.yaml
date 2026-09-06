@@ -22,7 +22,7 @@ meta:
   variant: music                 # picks the role line; header is text since v2.2
   footer_org: Wolfpack Data & Strategy
   title: Ryan Hickey — Résumé (engineering + music)
-  subject: Applied AI Engineer · Data Engineer · COO · Professional Musician
+  subject: AI Engineer · Data & AI Systems Architect · COO · Professional Musician
   source: v2 round plan (docs/v2-plan.md)
 
 sections:
@@ -31,8 +31,8 @@ sections:
     title: Professional Summary
     paragraphs:
       - >-
-        Applied AI engineer, data scientist, software developer, technology operator,
-        and professional musician with 20+ years of coding experience and 17 years
+        AI engineer, data scientist, software developer, technology operator, and
+        professional musician with 20+ years of coding experience and 17 years
         leading technology, analytics, and operational initiatives. Combines deep
         expertise in software architecture, Python development, SQL, cloud
         analytics, financial modeling, automation, and systems design with modern
@@ -97,7 +97,6 @@ sections:
           - Vendor & Partner Management
           - Strategic Planning
           - Operational Scaling
-          - Shopify Plus
       - label: Music Technology
         skills:
           - Ableton Live
@@ -185,10 +184,6 @@ sections:
             Wrote the company’s proprietary pricing and inventory algorithms in
             Python and SQL — the systems behind how the catalog was priced and how
             inventory was bought and held.
-          - >-
-            Ran the company’s Shopify Plus storefront for 10+ years: commerce
-            platform, dynamic pricing, automated inventory, and fulfillment systems
-            on a custom tech stack (Matrixify, Rithum, GCP, SendGrid).
           - >-
             Built the financial planning, forecasting, and operational automation
             systems the business ran on.

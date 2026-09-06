@@ -85,10 +85,6 @@ FIGURES = {
     "36 years": "piano playing and study — a practice span, never a career span",
     "23 years": "paid music performance, since 2003",
     "10 years": "classical piano study with a university professor (D-010; the copy spells it 'Ten years', so this row documents the fact rather than matching a pattern)",
-    # Distinct from "10 years" above, and deliberately a different string: this
-    # one is the Shopify Plus tenure at Auto SOSS, whose dates (2015–2025) are
-    # the ten-year floor it claims.
-    "10+ years": "running the Shopify Plus storefront as COO at Auto SOSS",
     "up to 20 people": "team and vendor span at Auto SOSS",
     "2003": "paid music performance start",
     "2007": "Cornell B.S.",
@@ -117,7 +113,6 @@ SHARED = {
     "the $300K → $30M growth run": r"\$300K to \$30M",
     "the Tromml MRR figure": r"\$20k",
     "the Auto SOSS algorithms were Python and SQL": r"pricing and inventory algorithms in\s+Python and SQL",
-    "the Shopify Plus tenure": r"Shopify Plus storefront for 10\+ years",
     "SetMaster is at v3.0.4, not the prototype": r"v3\.0\.4",
     "the AI dev command center": r"command center",
     # v2.1: RML is named on both, so a reader who searches it finds the same
@@ -246,9 +241,8 @@ def docx_text(path: Path) -> str:
     with zipfile.ZipFile(path) as z:
         xml = z.read("word/document.xml").decode("utf-8")
     runs = re.findall(r"<w:t[^>]*>(.*?)</w:t>", xml, re.S)
-    # Word escapes & < > in run text, so "Software Engineering & Architecture"
-    # is stored as "Software Engineering &amp; …". Unescape or every check on
-    # an ampersand fails.
+    # Word escapes & < > in run text, so "Data & AI Systems Architect" is stored
+    # as "Data &amp; AI …". Unescape or every check on an ampersand fails.
     return re.sub(r"\s+", " ", html.unescape(" ".join(runs)))
 
 
