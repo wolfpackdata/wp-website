@@ -34,7 +34,7 @@ to it, and the rules the old shape needed are retired with it.
 - **The client sets the ceiling** — cap the hours, name a deliverable, or both; past the 6
   covered hours there is no minimum. This is the page's **new spine**, replacing "one problem,
   scoped together".
-- **10–20 hours a week is the recommendation**, not a commitment.
+- **10–20 hours per week is the recommendation**, not a commitment.
 - **~$2,900** (10 hrs/wk for 30 days) is the **only total-shaped figure allowed anywhere on
   this page**, and it is explicitly an example. There is no total pilot price.
 - **Day 31 is an open door** — roll into a project tier, keep going hourly as needed, or stop.
@@ -78,12 +78,22 @@ heading **"Inside the 30 days"**, and promises no fixed duration of build. The t
 keep their own section: the page still needs an example mapping to neither of them, which only
 means something if the reader knows what they are.
 
-### Open item — the social card is now stale by one ruling
+### Open item — RESOLVED 2026-09-06 (P-002)
 
-`pilot-project/img/og-pilot-project.png` bakes in the subtitle
-**"Fixed fee · Two to three weeks · Two systems you keep"**. Two of those three are now false.
-The card is **untouched by this ruling** — P-001 changed the offer, not the art, and the
-`hire/` standing applies: `og:image:alt` describes the card's *pixels*, so it must not move
-until the art does. A rebuild is one `social-cards/build_cards.py` run once Ry approves a new
-subtitle. **Flagged for Ry — the last place on this property still advertising the old
-model.**
+`pilot-project/img/og-pilot-project.png` baked in the subtitle *"Fixed fee · Two to three weeks ·
+Two systems you keep"*, two of which went false with P-001. Left alone at first (the ruling that the
+card carries no price was about a fee change, not a model change), flagged as wp-website#297, and
+**rebuilt the same day** by `social-cards/build_cards.py` with the subtitle Ry named on #297. The
+insets and the title did not change, so `og:image:alt` (which describes the pixels) stayed put.
+
+## P-002 — two rulings on #296 and #297 (Ry, 2026-09-06)
+
+- **The worked example stays "about $2,900"** (wp-website#296). Read literally, 30 calendar days at
+  10 hours per week is ~42.9 hours, ~36.9 billable — a higher total; the copy follows the 4-week
+  derivation (40 hrs · 6 covered · 34 × $85 = $2,890). Ry chose to keep the approximation and the
+  "about": *"I want to be under $3000 for pricing strategy."* Do not recompute it onto any page.
+- **Card subtitle** (wp-website#297): *"Small kickoff price, no contract, invoiced on delivery."*
+  Price-free, so the no-price-on-the-card ruling still holds and a fee change stays an HTML edit.
+- **Wording:** every "hours a week" on the pilot copy became "hours per week" (Ry, same day) —
+  on both rates pages, the pilot page, and every ledger that quotes them.
+
