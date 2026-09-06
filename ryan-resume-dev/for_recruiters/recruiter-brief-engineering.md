@@ -19,7 +19,7 @@ He's a senior data-and-AI engineer who has also been the COO: he architected the
 
 A product I'd advocate for, a team small enough that a generalist owns a surface end to end, and work where I can name the human who is better off. **Open to contract-to-hire.** Founding-engineer roles only where the product is music-adjacent — otherwise an established team, please.
 
-**2. Independent engagement (secondary).** I run **Wolfpack Data & Strategy LLC** and take one client at a time, 1–6 months, against a [published rate card](https://intake.wolfstrategyllc.com/rates_public/): $175/hr hourly, reserved monthly tiers from $13,400/mo (20 hrs/wk) to $18,100/mo (30+ hrs/wk), and a [$5,000 fixed-fee pilot](https://intake.wolfstrategyllc.com/pilot-project/) delivered in two to three weeks.
+**2. Independent engagement (secondary).** I run **Wolfpack Data & Strategy LLC** and take one client at a time, 1–6 months, against a [published rate card](https://intake.wolfstrategyllc.com/rates_public/): $135/hr hourly, reserved monthly tiers from $10,800/mo (20 hrs/wk) to $13,500/mo (30+ hrs/wk), and a [$500-kickoff pilot](https://intake.wolfstrategyllc.com/pilot-project/) that runs 30 days at $85/hr after the six hours the kickoff covers.
 
 ## Compensation
 

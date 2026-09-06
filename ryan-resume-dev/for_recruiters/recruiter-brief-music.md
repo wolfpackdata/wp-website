@@ -23,7 +23,7 @@ I am a paying expert user of the tools these companies make — Native Instrumen
 
 At a music-tech, audio software/hardware, DJ and performance tools, streaming and catalog data, live-events, or creator-tools company. **Open to contract-to-hire**, and — in this vertical specifically — open to a **founding-engineer seat**.
 
-**2. Independent engagement (secondary).** I run **Wolfpack Data & Strategy LLC** and take one client at a time, 1–6 months, against a [published rate card](https://intake.wolfstrategyllc.com/rates_public/): $175/hr hourly, reserved monthly tiers from $13,400/mo (20 hrs/wk) to $18,100/mo (30+ hrs/wk), and a [$5,000 fixed-fee pilot](https://intake.wolfstrategyllc.com/pilot-project/) delivered in two to three weeks.
+**2. Independent engagement (secondary).** I run **Wolfpack Data & Strategy LLC** and take one client at a time, 1–6 months, against a [published rate card](https://intake.wolfstrategyllc.com/rates_public/): $135/hr hourly, reserved monthly tiers from $10,800/mo (20 hrs/wk) to $13,500/mo (30+ hrs/wk), and a [$500-kickoff pilot](https://intake.wolfstrategyllc.com/pilot-project/) that runs 30 days at $85/hr after the six hours the kickoff covers.
 
 ## Compensation
 
