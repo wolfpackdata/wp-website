@@ -78,8 +78,10 @@ sync is a prompted, manual port (see §3).
 
   **The six facts that must match exactly:** the **$500 kickoff fee** · it **covers the first
   6 hours** · **$85 / hour after that**, billed once at the end · **30 calendar days** ·
-  **10–20 hours a week is the recommendation** · the worked example, **≈ $2,900** billed at
-  the end for 10 hrs/week. **Placement is mirrored too**: `#pilot` immediately before the
+  **10–20 hours per week is the recommendation** · the worked example, **≈ $2,900** billed at
+  the end for 10 hrs/week — kept as the 4-week approximation by Ry's ruling on wp-website#296
+  (2026-09-06; he wants the example under $3,000), never recomputed to 30 days.
+  **Placement is mirrored too**: `#pilot` immediately before the
   projects section (the first pricing on the page), `Pilot project` as the first nav item, and a
   single **navy-ghost** CTA — *"See the pilot project"* — linking
   `https://intake.wolfstrategyllc.com/pilot-project/`. Never coral: the ration in

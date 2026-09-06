@@ -153,6 +153,13 @@ reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
 
 ### Changed
 
+- **The pilot social card is rebuilt** with Ry's new subtitle — *"Small kickoff price, no
+  contract, invoiced on delivery."* — replacing the fixed-fee, two-to-three-week line that the
+  model change had made false. Still no price in the image; `og:image:alt` unchanged because the
+  insets and title did not move. (#297)
+- **Pilot copy says "hours per week", not "hours a week"**, on both rates pages and the pilot
+  page (Ry, 2026-09-06). The worked example stays *"about $2,900"* by ruling — Ry wants it under
+  $3,000 — rather than being recomputed to 30 calendar days. (#296)
 - **The 2026 reprice lands on the public rates page.** Hourly goes **$175 → $135**, and the
   three project tiers go **$13,400 / $16,200 / $18,100 → $10,800 / $12,400 / $13,500** at
   effective rates of **$125 / $115 / $105** an hour. Reserved time and contract lengths are
@@ -172,7 +179,7 @@ reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
   may state hours, a weekly commitment, or an effective hourly rate for the pilot, and the
   disarm sentence that carried it — *"a pilot buys a scoped outcome rather than reserved time,
   so it sits off the rate curve above"* — both go with it. The **~$2,900** worked example (10
-  hours a week for 30 days) is the only figure of that shape on either page; there is still no
+  hours per week for 30 days) is the only figure of that shape on either page; there is still no
   total pilot price. (#283, #284 / PRs #292, #291)
 - **`pilot-project/` rewritten to the $500 kickoff model.** Every load-bearing fact on that
   page — fixed fee, no hours, two to three weeks — was false under the new model, so the

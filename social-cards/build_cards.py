@@ -744,24 +744,18 @@ CARDS = [
         # holds, and it is why no fee has ever forced a rebuild here: a price
         # change is a one-line HTML edit.
         #
-        # BUT THIS SUBTITLE IS STALE AS OF 2026-09-06, KNOWINGLY. The offer moved
-        # off the fixed fee to a $500 kickoff covering the first 6 hours, then
-        # $85/hr, over 30 calendar days, and the rates pages no longer list what
-        # the pilot includes. Two of the three phrases below are now false, and
-        # the third ("Two systems you keep") is no longer the page's claim about
-        # what the money buys. A-5 ruled on a FEE change, not a MODEL change, so
-        # it does not cover this one.
-        #
-        # The card is left alone deliberately, awaiting Ry's call on a new
-        # subtitle; a rebuild is then one run of this script. Until that call,
-        # DO NOT edit the page's og:image:alt either -- alt text describes the
-        # card's PIXELS, so moving it before the art moves makes it false (the
-        # hire/ standing since #230). See docs/pilot-project-design-plan.md
-        # (P-001) and CLAUDE.md's pilot-project section.
+        # REBUILT 2026-09-06 with the subtitle Ry named in wp-website#297 after the
+        # offer moved from a fixed fee to a $500 kickoff, $85/hr after six covered
+        # hours, over 30 calendar days. The previous subtitle ("Fixed fee · Two to
+        # three weeks · Two systems you keep") had gone false with the model; A-5
+        # still holds -- the new line names no price, so a fee change stays an HTML
+        # edit. The insets and the title did not change, so og:image:alt (which
+        # describes the pixels) did not need to move. Ledger: P-001/P-002 in
+        # docs/pilot-project-design-plan.md.
         "out": "pilot-project/img/og-pilot-project.png",
         "logo": "pilot-project/img/wolfpack-logo.png",
         "title": "Let’s talk pilot project.",
-        "subtitle": "Fixed fee · Two to three weeks · Two systems you keep",
+        "subtitle": "Small kickoff price, no contract, invoiced on delivery.",
         "max_lines": 2,
         # Both are screenshots and keep framed()'s top anchor — the top of an
         # application window is what identifies it. BQL crops centrally (its

@@ -737,7 +737,7 @@ ledger would be a guess wearing the authority of a record. Flagged for Ry.
 **The model, as it now publishes:** **$500 kickoff fee** covering the client's **first 6
 hours** · **$85 / hour after that**, billed once at the end · **30 calendar days**, and
 nothing else billed until they are up · **the client sets the ceiling** (cap the hours, name
-a deliverable, or both; no minimum past the 6 covered hours) · **10–20 hours a week is the
+a deliverable, or both; no minimum past the 6 covered hours) · **10–20 hours per week is the
 recommendation**, never a commitment · **≈ $2,900** for 10 hrs/week is the **only**
 total-shaped figure allowed anywhere, and it is explicitly an example · **day 31 is an open
 door** — a project tier, continued hourly, or stop, with **no post-pilot rate and no fence
@@ -812,15 +812,13 @@ Conventions the page must keep:
 - **The social card carries no price** (Ry, 2026-08-18 — the A-series ruling
   `build_cards.py` cites as A-5), so a fee change is a one-line HTML edit and never a card
   rebuild. Both inset panels are un-carded elsewhere, so no two Featured tiles read as one
-  duplicated post. ⚠️ **The card is nonetheless STALE as of 2026-09-06, and knowingly so**
-  (design plan **P-001**, decision **D-011**): its subtitle *"Fixed fee · Two to three weeks
-  · Two systems you keep"* is baked into the pixels and two of those three are now false.
-  A-5 was a ruling about a **fee change**, not a **model change**, so it does not cover this
-  — the card was left alone deliberately, awaiting **Ry's call on a new subtitle**, and a
-  rebuild is then one `build_cards.py` run. Until then, **do not edit `og:image:alt`**: it
-  describes the card's *pixels*, and moving it first would make it false (the `hire/`
-  standing since #230). This is the last place on the property still advertising the old
-  model — flagged for Ry.
+  duplicated post. The card **was rebuilt on 2026-09-06** (#297, design plan **P-002**) after
+  the model change made its old subtitle false; the subtitle now reads *"Small kickoff price,
+  no contract, invoiced on delivery."* — still price-free, so A-5 holds. `og:image:alt` did not
+  move because the insets and title did not (alt describes the pixels — the `hire/` standing).
+- **The worked example stays "about $2,900" by ruling** (#296, Ry 2026-09-06). Dividing 30 days by
+  10 hours per week gives a higher figure; the copy follows the 4-week derivation and Ry
+  wants the example under $3,000. Do not "correct" it on any of the three pages.
 
 **The pilot section on the rates pages (restructured 2026-09-06, #283 here,
 `wp-rates-page#50` upstream).** Both rates pages carried a full-width **band** offering the

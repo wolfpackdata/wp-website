@@ -174,9 +174,11 @@ keeps its id.
 2. **$85 / hour after that** — the pilot rate, billed once at the end of the **30 calendar days**.
 3. **You set the ceiling** — cap the hours, name a deliverable, or both; past the 6 covered
    hours there is no minimum.
-4. **10–20 hours a week is the recommendation** — the range where a real deliverable gets
+4. **10–20 hours per week is the recommendation** — the range where a real deliverable gets
    built inside the window. A recommendation, never a commitment.
-5. **The worked example** — 10 hours a week for 30 days is about **$2,900** billed at the end.
+5. **The worked example** — 10 hours per week for 30 days is about **$2,900** billed at the end.
+   Kept at "about $2,900" by Ry's ruling on #296 (2026-09-06): the 4-week derivation stands and the
+   example stays under $3,000 by pricing strategy; do not recompute it to 30 days.
 6. **Day 31 is an open door** — a project tier, continued hourly, or stop.
 
 **Guardrails, all of them rules rather than preferences:** list **no inclusions** (no named
