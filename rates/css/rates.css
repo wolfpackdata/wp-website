@@ -198,7 +198,7 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
    its own right now, so it borrows .rail's surface geometry rather than the
    band component the old pilot used. The price reuses .rail__price — this
    property's entry-price type — and p.pilot__price (specificity raised so it
-   beats .rail__price span above) only restyles the sub-label into the mono
+   beats .rail__price span below) only restyles the sub-label into the mono
    caps every other figure label here wears. No coral anywhere.
    ========================================================================== */
 
