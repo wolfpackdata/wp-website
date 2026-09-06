@@ -211,8 +211,7 @@ reaches the public only as a copy into `wolfpackdata/ai-coaching-intake`.
   consistency contract's mirror set, the design spec's R15 and §3.11a, and a `$5,000` code
   comment in `social-cards/build_cards.py` all move to the new model. **The reversal is written
   down rather than deleted**, with its date, that it was Ry's call, and his reason. Risk-tiered
-  — this is the SOP other agents obey — so it takes the AI-review stage before merge. (#287;
-  PR number not yet assigned at the time of this cut)
+  — this is the SOP other agents obey — so it takes the AI-review stage before merge. (#287 / PR #293)
 - **`CLAUDE.md` and `AGENTS.md` name the reviewer's identity.** Both AI-review blocks now close
   with the sentence the canonical bootstrap templates carry: under `-p review` Codex is the AI
   Reviewer (`main-wolfpack`), and in every other profile it acts under the human's identity as an
