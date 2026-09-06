@@ -65,6 +65,12 @@ sync is a prompted, manual port (see §3).
   **2026-09-06** that band was **replaced on both pages** by a `#pilot` **section above the
   tiers** — upstream `wp-rates-page#50`, ported here as #283. Ry's sequencing ruling holds and
   this round went **Q3-first again**, so the pilot stays a **mirror-set item, not a delta**.
+  ⚠️ **Status at 2026-09-06 (remove when it clears):** `wp-rates-page#50` is open, awaiting the
+  Admin merge (the session's bypass was refused), and `ai-coaching-intake#97` redeploys it. Until
+  both land, `wp-rates-page` `main` (`1736e7a`) and the live `/rates_2026Q3/` still carry v1.0.0 —
+  `$175/hour` and the `$5,000` band. **A sync session in that window reads PR #50's head
+  (`8de9244`), not `main` and not the live page**; this repo's `develop` already carries the
+  mirrored v2.0.0 facts (#292).
   ℹ️ *The 2026-09-06 planning pass mis-read the repo state and asserted that `#42` never
   landed and the Q3 page carried no band. It landed and was live at `/rates_2026Q3/`; the
   sequencing claim recorded here was always true, and the correction is recorded so the misread

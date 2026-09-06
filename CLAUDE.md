@@ -725,7 +725,7 @@ One short page offering a **30-day pilot engagement** — a lower-commitment fir
 project for a prospect not ready for a monthly tier. Six blocks, one screen and a bit,
 at `https://intake.wolfstrategyllc.com/pilot-project/`. **Built and deployed 2026-08-18
 (#236)** as a **$5,000 fixed-fee** offer; **rewritten to the kickoff-plus-hourly model on
-2026-09-06** (#283). Design plan and rulings ledger:
+2026-09-06** (#284 / PR #291; the public-rates port is #283). Design plan and rulings ledger:
 [`docs/pilot-project-design-plan.md`](docs/pilot-project-design-plan.md) — ⚠️ **that file
 was created on 2026-09-06 and its ledger starts at `P-001`.** This section described it as
 the page's *"full design plan and 17-ruling ledger"* from the day the page shipped, but no
