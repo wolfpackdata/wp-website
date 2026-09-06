@@ -740,9 +740,24 @@ CARDS = [
         # inner width with 8% to spare; it does NOT upscale, but it has no room
         # to lose either, so re-check the scale before changing panel geometry.
         #
-        # NO PRICE IN THE IMAGE (plan A-5, Ry 2026-08-18). The subtitle says
-        # "fixed fee" and the page says $5,000, so a fee change is a one-line
-        # HTML edit and never a card rebuild.
+        # NO PRICE IN THE IMAGE (plan A-5, Ry 2026-08-18) -- the ruling still
+        # holds, and it is why no fee has ever forced a rebuild here: a price
+        # change is a one-line HTML edit.
+        #
+        # BUT THIS SUBTITLE IS STALE AS OF 2026-09-06, KNOWINGLY. The offer moved
+        # off the fixed fee to a $500 kickoff covering the first 6 hours, then
+        # $85/hr, over 30 calendar days, and the rates pages no longer list what
+        # the pilot includes. Two of the three phrases below are now false, and
+        # the third ("Two systems you keep") is no longer the page's claim about
+        # what the money buys. A-5 ruled on a FEE change, not a MODEL change, so
+        # it does not cover this one.
+        #
+        # The card is left alone deliberately, awaiting Ry's call on a new
+        # subtitle; a rebuild is then one run of this script. Until that call,
+        # DO NOT edit the page's og:image:alt either -- alt text describes the
+        # card's PIXELS, so moving it before the art moves makes it false (the
+        # hire/ standing since #230). See docs/pilot-project-design-plan.md
+        # (P-001) and CLAUDE.md's pilot-project section.
         "out": "pilot-project/img/og-pilot-project.png",
         "logo": "pilot-project/img/wolfpack-logo.png",
         "title": "Let’s talk pilot project.",

@@ -88,7 +88,7 @@ guarded by `social-cards/check_meta.py`. The canonical public URLs:
 | `sm3-specific-pages/setmaster3/` | `https://intake.wolfstrategyllc.com/setmaster3/` — **indexed**; the product page, two real downloads | 2026-08-05 (#144) |
 | `portfolio/` | `https://intake.wolfstrategyllc.com/portfolio/` | 2026-08-05 (#126) |
 | `github/` | `https://intake.wolfstrategyllc.com/github/` — **`noindex`**, direct-link only; one link, to `github.com/wolfpackdata` | 2026-08-07 (#155) |
-| `pilot-project/` | `https://intake.wolfstrategyllc.com/pilot-project/` — **`noindex`**, direct-link only; the $5,000 fixed-fee pilot offer | 2026-08-18 (#236) |
+| `pilot-project/` | `https://intake.wolfstrategyllc.com/pilot-project/` — **`noindex`**, direct-link only; the $500-kickoff pilot offer | 2026-08-18 (#236) |
 
 `sm3-specific-pages/` deploys as **two folders to the intake root** — the page folder and
 `sm3-assets/` — and `planning/` never deploys. **Copy the git-tracked file list, not the
