@@ -6,11 +6,21 @@
    quarter-stamped direct-link page.
 
    Coral discipline, in one place so it can't drift: coral is allowed on the
-   nav CTA, the hero CTA, the featured tier (border + badge), the call-section
-   CTA, the coaching ghost CTA, the contact CTA, link hover, and the focus
-   ring. Nothing else — the hero kicker is deliberately NOT coral here (unlike
-   the Q3 page). Where coral is a FILL, text on it is navy (5.8:1), never
-   white (fails AA).
+   nav CTA, the hero CTA, the featured tier (border + badge), the PILOT'S
+   KICKOFF BLOCK (border + raised surface), the call-section CTA, the coaching
+   ghost CTA, the contact CTA, link hover, and the focus ring. Nothing else —
+   the hero kicker is deliberately NOT coral here (unlike the Q3 page). Where
+   coral is a FILL, text on it is navy (5.8:1), never white (fails AA).
+
+   ⚠️ THE RATION WENT UP ON 2026-09-08 (#299) — the pilot's kickoff block.
+   That is the first increase THIS sheet has had; its ration comment was
+   written 2026-07-22 (#3) and had not moved since. It is not the property's
+   first — sm3-landing.css moved a count up before it, which is what corrected
+   the ratchet rule to "down by default" rather than "down only"
+   (docs/site-brief.md §2, ruling X-5). Ry authorized this one explicitly, for
+   this block, when he asked for the three-block restyle. It is a decision on
+   one placement, NOT a relaxation: a session still may not add a coral use on
+   its own judgment. The pilot's ghost CTA below stays navy.
    ========================================================================== */
 
 :root {
@@ -193,30 +203,58 @@ h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; lin
 
 /* ==========================================================================
    Pilot project — the first pricing on the page (2026-09-06, #283)
-   Ported verbatim from the pattern library (wp-rates-page/css/rates.css,
-   wp-rates-page#48). A panel, not a `.bridge` band: the pilot is a section in
-   its own right now, so it borrows .rail's surface geometry rather than the
-   band component the old pilot used. The price reuses .rail__price — this
-   property's entry-price type — and p.pilot__price (specificity raised so it
-   beats .rail__price span below) only restyles the sub-label into the mono
-   caps every other figure label here wears. No coral anywhere.
+   THREE BLOCKS since 2026-09-08 (#299), Ry's call. It shipped as one panel
+   with a price rail and six bullets in a single column, ported verbatim from
+   the pattern library (wp-rates-page/css/rates.css, wp-rates-page#48); that
+   read as a wall of text directly above the tier cards. It now borrows .tier's
+   card geometry instead of .rail's panel geometry, so the section and the rate
+   curve below it are built from the same component idea.
+
+   THE Q3 DIRECT-LINK PAGE (wp-rates-page) DELIBERATELY KEEPS THE OLD PANEL.
+   The pilot's six FACTS stay a mirror-set item under
+   docs/public-rates-consistency-contract.md; its layout is not one, and this
+   divergence is intentional rather than drift awaiting a sync.
    ========================================================================== */
 
-.pilot {
+.pblocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.pblock {
   background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 32px 34px;
-  display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+  border-radius: var(--radius); padding: 30px 28px;
+  display: flex; flex-direction: column;
 }
-p.pilot__price span {
+/* Coral — the kickoff block, identical to .tier--featured below. This is the
+   only use the #299 restyle added, and the ration's first increase; every
+   prior movement was downward. Enumerated in the header comment. */
+.pblock--featured { border-color: var(--coral); background: var(--surface-2); }
+
+/* The head is min-heighted so the divider rule under it lands at the same
+   height in all three blocks. Blocks 1 and 2 carry a 2.1rem figure over a mono
+   sub-label; block 3 carries a 1.4rem lead with no sub-label, which without
+   this leaves three rules at three different heights across one row —
+   the single thing that made the first pass read as unfinished.
+   Re-measure if the figure size, the kicker, or the sub-label changes. */
+.pblock__head { min-height: 94px; }
+.pblock__label { display: block; margin-bottom: 12px; }
+.pblock__figure {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 2.1rem; line-height: 1.1;
+}
+.pblock__figure span {
   display: block; font-family: var(--mono); font-size: 0.625rem;
   letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint);
-  margin-top: 6px;
+  margin-top: 6px; font-weight: 400;
 }
-.pilot__points { list-style: none; font-size: 0.9375rem; color: var(--muted); max-width: 68ch; }
-.pilot__points li { padding: 6px 0 6px 20px; position: relative; }
-.pilot__points li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
-.pilot__points strong { color: var(--white); font-weight: 600; }
-.pilot__cta { margin-top: 20px; }
+.pblock__lead { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 1.4rem; line-height: 1.2; }
+.pblock__points, .pblock__body {
+  margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line);
+  font-size: 0.9375rem; color: var(--muted);
+}
+.pblock__points { list-style: none; }
+.pblock__points li { padding: 6px 0 6px 20px; position: relative; }
+.pblock__points li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+.pblock__points strong, .pblock__body strong { color: var(--white); font-weight: 600; }
+/* The CTA stays section-level, below the grid — it belongs to the pilot, not
+   to the "after the 30 days" block it would otherwise sit in. */
+.pilot__cta { margin-top: 24px; }
 
 /* ==========================================================================
    Hourly rail — the low-friction entry point
@@ -419,7 +457,13 @@ p.pilot__price span {
   .section { padding: 56px 0; }
   .tiers, .steps, .packs, .terms-grid { grid-template-columns: 1fr; }
   .tier--featured { order: -1; }
-  .pilot { grid-template-columns: 1fr; gap: 18px; padding: 26px 22px; }
+  /* One column: the heads no longer sit in a row, so the alignment min-height
+     is dead weight that would just pad block 3. Drop it. The blocks keep
+     Ry's order — the kickoff block is already first, so unlike .tier--featured
+     there is nothing to reorder. */
+  .pblocks { grid-template-columns: 1fr; gap: 18px; }
+  .pblock { padding: 26px 22px; }
+  .pblock__head { min-height: 0; }
   .about { grid-template-columns: 1fr; }
   .about__photo { width: 170px; }
 }
