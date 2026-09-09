@@ -197,10 +197,14 @@ all-in total is never printed anywhere; name **no post-pilot rate and no fence**
 throughout** — *a pilot*, not *each pilot*: one per client is enforced on the call and stated
 nowhere, so nothing here may imply repeatability. **No measured outcome** of any kind.
 
-**Not coral** — the ration in `rates/css/rates.css` is a closed enumerated list and it is full,
-and a coral button here would outrank the booking CTA. Mirror-set, not a delta: the Q3 page
+**The CTA is not coral** — a coral button here would outrank the booking CTA, so it stays
+navy-ghost (R15, unchanged by R19). ⚠️ **But this sheet's ration is no longer full**: it went
+**up** on 2026-09-08 (#299) for the pilot's **kickoff block**, which Ry authorized for that one
+placement — see **R19**, `rates/css/rates.css`'s header comment, and `docs/site-brief.md` §2.
+What survives here is a constraint on the **button**, not a claim that the section is coral-free;
+a session still may not add a coral use on its own judgment. Mirror-set, not a delta: the Q3 page
 carries the same section (`wp-rates-page#50`), it went there first again this round, and the
-facts must match.
+facts must match — though since #299 the **layout** deliberately differs (contract D17).
 
 ⚠️ **THE NO-HOURS RULE IS RETIRED — 2026-09-06, Ry's call. Do not reinstate it, and do not
 restate it as a live rule.** Until that date this spec required the band to state **no hours,
