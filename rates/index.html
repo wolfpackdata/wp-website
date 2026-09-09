@@ -138,20 +138,57 @@
         <p class="section__lede">A pilot is a 30-day working engagement. You pay $500 to start, and nothing else until the 30 days are up.</p>
       </div>
 
-      <article class="pilot">
-        <p class="rail__price pilot__price">$500<span>kickoff fee</span></p>
-        <div>
-          <ul class="pilot__points">
+      <!-- Three blocks, not one panel (2026-09-08, #299). Ry's grouping: the
+           kickoff and the rate together, the pace and its worked example
+           together, day 31 on its own.
+
+           THE SIX BULLETS ARE VERBATIM. The only strings this restyle added are
+           the three mono kickers and block 2's sub-label. Block 3's heading is
+           bullet 6's own bold lead-in promoted out of the list, and the rest of
+           that sentence is its body — so nothing is duplicated and no word is
+           rewritten. Editing any of this copy is a mirror-set change under
+           docs/public-rates-consistency-contract.md; the LAYOUT is not, and the
+           Q3 direct-link page (wp-rates-page) deliberately keeps the old single
+           panel. Don't "resync" the two layouts. -->
+      <div class="pblocks">
+        <!-- Coral: the kickoff block takes the border + raised surface that
+             .tier--featured already carries below. This is the one coral use
+             the 2026-09-08 restyle ADDED — the first time this sheet's ration
+             has gone up rather than down. See the header comment in
+             css/rates.css and docs/site-brief.md §2. -->
+        <article class="pblock pblock--featured" aria-labelledby="pilot-b1">
+          <div class="pblock__head">
+            <span class="k pblock__label" id="pilot-b1">Kickoff &amp; rate</span>
+            <p class="pblock__figure">$500<span>kickoff fee</span></p>
+          </div>
+          <ul class="pblock__points">
             <li><strong>$500 to get started.</strong> The kickoff fee covers your first 6 hours.</li>
             <li><strong>$85 / hour after that</strong> — the pilot rate, billed once at the end of the 30 calendar days.</li>
             <li><strong>You set the ceiling.</strong> Cap the hours, name a deliverable, or both. Past the 6 hours the kickoff covers, there is no minimum.</li>
+          </ul>
+        </article>
+
+        <article class="pblock" aria-labelledby="pilot-b2">
+          <div class="pblock__head">
+            <span class="k pblock__label" id="pilot-b2">Recommended pace</span>
+            <p class="pblock__figure">10–20<span>hours per week</span></p>
+          </div>
+          <ul class="pblock__points">
             <li><strong>10–20 hours per week is the recommendation</strong> — the range where a significant deliverable or a working system actually gets built inside the window.</li>
             <li><strong>What that looks like:</strong> 10 hours per week for 30 days works out to about <strong>$2,900</strong> billed at the end.</li>
-            <li><strong>Day 31 is an open door.</strong> Roll into a project tier, keep going hourly as needed, or stop — no obligation.</li>
           </ul>
-          <p class="pilot__cta"><a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/pilot-project/">See the pilot project</a></p>
-        </div>
-      </article>
+        </article>
+
+        <article class="pblock" aria-labelledby="pilot-b3">
+          <div class="pblock__head">
+            <span class="k pblock__label" id="pilot-b3">After the 30 days</span>
+            <p class="pblock__lead">Day 31 is an open door.</p>
+          </div>
+          <p class="pblock__body">Roll into a project tier, keep going hourly as needed, or stop — no obligation.</p>
+        </article>
+      </div>
+
+      <p class="pilot__cta"><a class="btn btn--ghost" href="https://intake.wolfstrategyllc.com/pilot-project/">See the pilot project</a></p>
     </div>
   </section>
 

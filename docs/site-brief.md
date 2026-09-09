@@ -198,11 +198,11 @@ as a fifth category. Same for the time axis, which every lane shares.
 | Field | Value |
 |---|---|
 | **Ration count** | *per page — no site default* |
-| Site-level rule | The *pattern* is site-level: enumerated in the stylesheet header, closed list, count ratchets down only |
+| Site-level rule | The *pattern* is site-level: enumerated in the stylesheet header, closed list, count ratchets down **by default**. An increase is not forbidden — it takes Ry asking for it explicitly, for a named placement, and it is dated in both the sheet and the row below. Two have happened: `sm3-landing.css` (§11, which corrected the ratchet rule — **X-5**) and `rates.css` on 2026-09-08 (#299) |
 
 | Page | Count | Last moved | Enumeration |
 |---|---|---|---|
-| `rates/` | **7** | **2026-07-22** (#3) — never moved since | nav CTA · featured tier (border + badge) · call-section CTA · coaching ghost CTA · contact CTA · link hover · focus ring. **Ruling X-3** — the shipped sheet also lists a hero CTA (8th). Hero kicker is deliberately **not** accent here, unlike the Q3 page |
+| `rates/` | **8** *(shipped sheet enumerates 9 — see Ruling X-3)* | **2026-09-08** (#299) — **UP**, the first increase on this sheet | nav CTA · featured tier (border + badge) · **pilot kickoff block (border + raised surface)** · call-section CTA · coaching ghost CTA · contact CTA · link hover · focus ring. **Ruling X-3** — the shipped sheet also lists a hero CTA, so its own enumeration runs one ahead of this column; the 2026-09-08 addition moved both numbers by one and did **not** resolve the original discrepancy. Hero kicker is deliberately **not** accent here, unlike the Q3 page. **The kickoff block is the increase Ry authorized** when he asked for the three-block pilot restyle; it reuses `.tier--featured`'s exact treatment, and the pilot's ghost CTA stays navy |
 | `ai-coaching/` | **8** — ruled 2026-08-09 | **2026-07-22** (#3) — never moved since | nav CTA · hero kicker · hero solid CTA · contact solid CTA · 24/7 support bridge band · price-band left border · link hover · focus ring. **See the note below** |
 | `hire/` | 8 | 2026-07-30 (set at build) | nav CTA · hero CTA · hero contact-line rule · availability status dot · IN PREPARATION chip · closing contact CTA · link hover · focus ring |
 | `portfolio/` | 6 | **2026-08-04** | nav CTA · closing intro-call button *(was hero CTA until #130 — moved, not duplicated)* · hero rule · IN PREPARATION chip *(live but unused)* · link hover · focus ring |
@@ -228,9 +228,13 @@ does this and is auditable by grep; `coaching.css` does not and is not.
 had their ration comment written on **2026-07-22** (#3) and **neither has been touched
 since** — so the `rates/` 7-vs-8 discrepancy is **original, not drift**: the shipped sheet
 enumerated 8 from day one while the spec planned 7, and the two simply never agreed. Nothing
-grew. `portfolio/` and `github/` both moved *down*, with dates. `sm3-landing.css` is the only
-sheet on the property to have moved a count *up* (§11) — which is what corrected the ratchet
-rule (X-5).
+grew. `portfolio/` and `github/` both moved *down*, with dates. `sm3-landing.css` was for a
+year the **only** sheet on the property to have moved a count *up* (§11) — which is what
+corrected the ratchet rule (X-5). **`rates.css` is now the second, on 2026-09-08 (#299)**: the
+pilot's kickoff block, authorized by Ry in the same breath as the three-block restyle. Two
+increases in the property's history, both explicitly asked for, is the shape X-5 describes —
+the ratchet is a default, not a prohibition, and it still means a session may not add a use on
+its own judgment.
 
 **Nothing else.** The refusals actually on the record:
 

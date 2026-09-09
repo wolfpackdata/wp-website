@@ -84,9 +84,25 @@ sync is a prompted, manual port (see §3).
   **Placement is mirrored too**: `#pilot` immediately before the
   projects section (the first pricing on the page), `Pilot project` as the first nav item, and a
   single **navy-ghost** CTA — *"See the pilot project"* — linking
-  `https://intake.wolfstrategyllc.com/pilot-project/`. Never coral: the ration in
-  `rates/css/rates.css` is a closed enumerated list and it is full. Public-page depth notes:
-  spec R15/R16.
+  `https://intake.wolfstrategyllc.com/pilot-project/`. The CTA is never coral. Public-page depth
+  notes: spec R15/R16.
+
+  ⚠️ **THE INTERNAL LAYOUT NO LONGER MIRRORS — 2026-09-08 (#299), Ry's call. This is
+  deliberate, and it is the first time the two pages diverge on anything but depth.** Both
+  pages shipped the section on 2026-09-06 as one panel with a price rail and six bullets in a
+  single column. This page now renders those same six bullets as **three `.pblock` cards** —
+  kickoff & rate · recommended pace · after the 30 days — echoing the `.tier` cards below it;
+  the Q3 direct-link page **keeps the single panel**, because Ry scoped the restyle to the
+  public page only. **The six facts above still mirror exactly and none of them moved** —
+  no word of the copy changed, and block 3's heading is bullet 6's own bold lead-in promoted
+  out of the list. **Do not "resync" the layouts in either direction**, and do not read the Q3
+  panel as a port that was forgotten. If Ry later wants the three blocks upstream, that is a
+  new instruction and it goes Q3-first like every other pilot change. Recorded as **D17**.
+  ⚠️ **The coral ration statement that stood here is now wrong and has been removed**: it read
+  *"the ration in `rates/css/rates.css` is a closed enumerated list and it is full."* The list
+  is still closed and still enumerated, but it **grew by one on 2026-09-08** — the kickoff
+  block — so "full" is no longer true of the sheet. The CTA rule it was defending is
+  unaffected and still stands on its own.
 
   **Removed from the mirror set on 2026-09-06** — the **$5,000 fixed fee**, the
   **two-to-three-week calendar window**, and the **two included systems** (Wolfpack AI Command
@@ -131,6 +147,7 @@ sync is a prompted, manual port (see §3).
 | D13 | **No skeptic-nudge line** (*"Skeptical of AI hype? Good — run your own numbers."*) above the coaching CTA row — the Q3 page keeps it | Ruled off the public page by Ry, 2026-07-28 (#50) |
 | D14 | The two "Two ways to work with Wolfpack" path cards **are navigation** — heading and image both link to that path's section (`#engagements` / `#coaching`) — a public-only affordance (spec R13) | The framing section is public-only (D4), so its cards have no Q3 counterpart to diverge from; navigation, not a fact — nothing in the mirror set moves |
 | D15 | A closing `#work` section with a navy-ghost **"See recent projects"** button linking `…/portfolio/` (spec R14) — public-only; the Q3 page has no counterpart | **This is how D9 resolves.** D9 dropped the Q3 application-screenshot grid because "proof lives on the upcoming Applications page"; that page shipped 2026-08-05, so the public page links it instead of rebuilding a grid. A link, not a fact — nothing in the mirror set moves, and the Q3 grid stays as it is |
+| D17 | **The pilot section's internal LAYOUT is public-page-only** (added 2026-09-08, #299): this page renders the six pilot bullets as **three `.pblock` cards** — kickoff & rate · recommended pace · after the 30 days — echoing the `.tier` cards below; the Q3 page keeps the **single panel** both pages shipped on 2026-09-06. The kickoff card takes **coral** (border + raised surface), the one use that raised this sheet's ration | **A layout delta, not a fact delta — the first divergence here that is neither depth nor a public-only section.** Ry scoped the restyle to the public page; the six facts still mirror exactly and no copy changed, so nothing in the mirror set moves. This is the row that says the difference is intentional: **don't resync the two layouts**, and if the blocks ever go upstream it is a new instruction, Q3-first as always |
 | D16 | **The Q3 portfolio grid's buttons do not port** (added 2026-09-06): upstream, two application tiles gained a navy-ghost `btn--sm` *"Read the case study"* link and the dead portfolio placeholder became a live navy-ghost button to `…/portfolio/` (`wp-rates-page#50`, spec R18). This page has **no application grid to hang them on** — it reaches the portfolio through its own closing `#work` section instead (D15) | D9 bans the screenshot grid here, so a change *inside* that grid has no public-page counterpart. Not a fact about pricing — nothing in the mirror set moves. The button styling is worth recording anyway: it went **navy-ghost, never coral**, and dropped the Q3 coral ration 9 → 8, matching the ghost discipline R14 set here |
 
 ## 3. Sync workflow (Ry's stated process: update Q3 first, then prompt the port here)

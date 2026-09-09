@@ -222,8 +222,28 @@ Conventions the page must keep:
   `wp-rates-page#39`), the closing `#work` section's *"See recent projects"* link to
   the portfolio (spec R14 / contract D15, #127 — this is how contract D9 resolves), and
   the `#pilot` section's *"See the pilot project"* link (spec R15, #238; the section
-  replaced the band 2026-09-06, #283). **None may become coral**; the ration in
-  `rates/css/rates.css` is fully spent.
+  replaced the band 2026-09-06, #283). **None may become coral** — that has not changed,
+  and the pilot's ghost CTA in particular stays navy.
+- ⚠️ **The coral ration went UP on 2026-09-08 (#299) — the first increase on this sheet,
+  and don't read it as a general licence.** The pilot's kickoff block took coral (border +
+  raised surface, `.tier--featured`'s exact treatment) as part of the three-block restyle
+  below. Ry asked for it explicitly, for that one block. Every prior movement on
+  `rates/css/rates.css` was a use being *removed*, and the rule stands as **down by
+  default**: a session may not add a coral use on its own judgment, here or anywhere. The
+  property's only other increase is `sm3-landing.css`, which is what corrected the ratchet
+  rule from "down only" (`docs/site-brief.md` §2, ruling X-5). The sheet's header comment
+  and the brief's §2 row both carry the new enumeration and the date.
+- **The `#pilot` section is THREE BLOCKS since 2026-09-08 (#299), and the Q3 direct-link
+  page is not.** It shipped 2026-09-06 as one panel with a price rail and six bullets in a
+  column, ported verbatim from the pattern library; Ry had it rebuilt as three `.pblock`
+  cards — kickoff & rate, recommended pace, after the 30 days — echoing the `.tier` cards
+  below. **No copy changed:** all six bullets are verbatim, and block 3's heading is bullet
+  6's own bold lead-in promoted out of the list with the rest of the sentence as its body.
+  The three mono kickers and block 2's `hours per week` sub-label are the only strings the
+  restyle added. ⚠️ **This is the first deliberate LAYOUT divergence from
+  `wp-rates-page`** — the pilot's six *facts* are still a mirror-set item under the
+  consistency contract, its layout is not, and the two pages are meant to differ here.
+  Don't "resync" them, and don't read the Q3 panel as a port that was forgotten.
 - **The pilot is a MIRROR-SET item, not a delta** — unlike R11, R13 and R14, which are
   public-page-only. Ry's sequencing ruling is that the pilot lands on the Q3 direct-link
   page first and this page derives from it: it did on 2026-08-18 (`wp-rates-page#42`,
