@@ -3,7 +3,7 @@ title: "The Wolfpack GitHub SOP: A Program Overview"
 slug: github-sop-program-overview
 excerpt: "A standard operating procedure that governs every git and GitHub action across Wolfpack's 36 repositories — written for a team in which most of the commits are made by AI agents, and designed so that a person can still tell, months later, exactly what happened and who decided it."
 cover: cover.jpg
-cover_alt: PLACEHOLDER — replace when the hero lands.
+cover_alt: "3D illustration on a dark navy ground. On the left, one small faceless silver figure stands inside a glowing loop with a few geometric checkpoints; a single luminous rail runs right and branches into an orderly constellation joining six identical figures on raised bases, with small amber points at every junction."
 date: 2026-09-05
 tags: [AI engineering, engineering leadership, governance, process]
 featured: false
