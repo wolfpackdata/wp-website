@@ -1,7 +1,7 @@
 # Workflow — The Wolfpack GitHub SOP: A Program Overview
 
-Phase: 2 — **two drafts in hand, nothing pushed to Wix** (Ry's instruction). Awaiting his
-pick between them, plus a cover and the batched Phase 2 answers.
+Phase: 3 — **draft in Wix, awaiting Ry's proofread and publish.** Draft 1 shipped; the
+Wix draft is `UNPUBLISHED`.
 
 | | |
 |---|---|
@@ -10,10 +10,10 @@ pick between them, plus a cover and the batched Phase 2 answers.
 | Notion content  | https://app.notion.com/p/3d2c70e5c7b481c9a193df16e616c892  (Blog Post 12) |
 | Notion LinkedIn | https://app.notion.com/p/3d2c70e5c7b481638070ff98f7930380 |
 | Notion task     | https://app.notion.com/p/3d2c70e5c7b48106863ee6c135c93be3 |
-| Wix draft ID    | **(unset — nothing has been pushed)** |
+| Wix draft ID    | **`154a9527-96d5-483c-b4c2-a5a5511e342f`** — pushed 2026-09-10 9:41 AM PT, `UNPUBLISHED` |
 | Live URL        | (unset) |
-| Slug            | `github-sop-program-overview` (draft 1) / `nobody-reads-the-sign` (draft 2) — **provisional, Ry settles** |
-| Cover           | **missing.** Both drafts name `cover.jpg`; none supplied or described |
+| Slug            | `github-sop-program-overview` — draft 1 shipped 2026-09-10; `seoSlug` set. The dashboard preview path reads `/post/the-wolfpack-github-sop-a-program-overview` (title-derived, README fidelity limit 3) |
+| Cover           | `cover.jpg` 1600×900, derived from Ry's `planning/hero-original.png` (1672×941, generated 2026-09-10, prompt in `planning/hero-prompt.md`) |
 
 ## How this one differs from the standard Phase 1
 
@@ -40,9 +40,8 @@ direction. Their absence from `planning/` is the shape of the request, not an om
 | Voice | The report's — third person, declarative, reference-shaped | `applied-ai-engineer`'s — first person, short paragraphs, one running analogy |
 | Relation to source | Whole report, wording preserved | The argument only; six inventories cut |
 
-**Draft 1 is in `post.md` because it is what Ry asked for first, not because it has won.**
-Promoting draft 2 is a file copy; its front matter travels with it, and nothing in this
-ledger assumes which one ships. Its title and slug deliberately differ from draft 1's.
+**Draft 1 shipped on 2026-09-10** — Ry supplied the cover and called `post.md` ready. Draft 2
+stays in `planning/` as a record of the alternative; it was never pushed anywhere.
 
 ### What "verbatim" survived, and the three things that could not
 
@@ -83,27 +82,60 @@ and the Web Property Map needs no entry — unless a CTA is added.
   Left as written — changing it is a voice call, not a mechanical one.
 - **Draft 2 is 4.5 minutes at 230 wpm**, 5.2 at 200. Called a five-minute read either way.
 
+## A re-push is a PATCH, never another POST
+
+**`PATCH /blog/v3/draft-posts/154a9527-96d5-483c-b4c2-a5a5511e342f`.** A `POST` creates a
+second post. The PATCH is partial, so a retitle, excerpt change or cover swap is a two-field
+patch; send a rebuilt body only when the body changed, and hash the live body against a
+fresh build first in case Ry has edited the draft in the dashboard.
+
+| Resolved at push time | |
+|---|---|
+| Cover media | `e00ee6_0b0acc5f4f8c4a4b8e5f1c6bdab1d5f1~mv2.jpg` — uploaded from the feature branch's raw GitHub URL after a sha256 check against the local file; Wix reports 1600 × 900 |
+| `AI engineering` | `1e614466-776a-4b7e-9fa8-5da9e3eee0f3` — existing |
+| `engineering leadership` | `cc7c1304-6a3f-4aa3-b6f6-4518ee1ef4ed` — existing |
+| `governance` | `4ebddc6b-bc34-45c3-8a34-93b199f139c6` — **created by this push** |
+| `process` | `e7e67495-c9ff-4c46-9b4e-2bf7f49c2f7f` — **created by this push** |
+| Author | `e00ee638-af7f-4aac-aa2b-c99d795ecf78`, the converter default |
+| `featured` | false |
+| Destinations | **None.** The post carries no links at all (see above) — no CTA, no `intake.` link, so the Web Property Map needs no entry |
+
+**The body was read back and verified after the push**, not assumed: `GET
+…?fieldsets=RICH_CONTENT` was fingerprinted (top-level node count, per-type counts, total
+text length, and a djb2 hash of every text run) and matched the built payload exactly —
+155 nodes, 16 headings, 2 bulleted + 1 ordered list.
+
 ## Outstanding
 
-Claude's, once Ry answers:
+Claude's:
 
-- **Which draft ships**, and whether the other stays in `planning/` as a record or is deleted.
-- The batched Phase 2 question: tags, `featured`, slug, excerpt, `date`, cover, and whether
-  the post wants a CTA at all.
-- The Wix push, and **recording the returned draft ID in the table above.**
-- **`Add CTAs` is unchecked on the task** and is the one to-do of Claude's still open —
-  neither draft carries a CTA, and whether the post wants one is Ry's call.
-- Renaming the Notion rows and the task if Ry picks draft 2, whose title differs.
+- **`Add CTAs` is still unchecked on the task.** The post shipped to Wix with no CTA and no
+  link of any kind. If that is the decision, Ry checks it (or says so and Claude does); if he
+  wants one, it is a body PATCH — the draft ID above — plus a `post.md` edit, and the Web
+  Property Map then needs the edge once published.
 
 Ry's:
 
-- **The cover.** Both drafts name `cover.jpg` and the converter hard-errors until it lands,
-  which is the intended loud failure — `--list-images` will not run before then.
-- Proofread and publish, the LinkedIn subpost, share / boost.
-- Then Phase 3 bookkeeping. The Web Property Map needs nothing unless a CTA adds an
-  `intake.` link.
+- **Proofread and publish** in the Wix dashboard.
+- **LinkedIn subpost** — no `raw-linkedin-post.md` exists; the LinkedIn Content row is at
+  `Idea`.
+- **Share / boost.**
+
+Then Phase 3 bookkeeping here: Content row → `Published` + URL + date, task to-dos. The Web
+Property Map needs nothing unless a CTA adds an `intake.` link before publication.
 
 ## Log
+
+- 2026-09-10 — **Phase 2 complete: pushed to Wix as an unpublished draft.** Ry supplied the
+  hero (generated 2026-09-10; original and prompt committed under `planning/`), called
+  draft 1 ready, and the placeholder `cover_alt` was replaced with a description of the
+  image. Cover uploaded from the branch's raw URL after a sha256 match; two tags created
+  (`governance`, `process`); `POST /blog/v3/draft-posts` returned
+  `154a9527-96d5-483c-b4c2-a5a5511e342f`, `UNPUBLISHED`, 155 nodes, 10 minutes to read,
+  cover 1600 × 900. Body verified by fingerprint against the built payload. Front matter
+  shipped as it stood on 2026-09-05 (title, slug, excerpt, four tags, `featured: false`,
+  `date: 2026-09-05`) — Ry's "ready" taken as the answer to the batched question; each is a
+  two-field PATCH if he wants it changed. **Nothing published.**
 
 - 2026-09-05 — **Phase 1 and both drafts (local only).** Ry's root-level report moved to
   `planning/source-report.md`; folder created; `post.md` assembled as draft 1 with the tables
@@ -126,8 +158,8 @@ Phase values, in order:
   4 — published, link placement outstanding
   done
 
-Next session: the trigger is Ry picking a draft, plus a cover and his answers to the
-batched question. The Notion trail is still owed and comes first. The push is the
-five-step procedure in blog_posts/README.md — and the returned draft ID goes in the
-table above before anything else happens.
+Next session: the trigger is Ry handing back the live URL (Phase 3). Content row →
+Published + URL + date; task → check Proofread and Publish; ledger → live URL, Phase 4.
+No Web Property Map entry is owed unless a CTA was added first. A re-push is a PATCH to
+the draft ID above, never another POST.
 -->
