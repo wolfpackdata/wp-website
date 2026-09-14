@@ -338,7 +338,9 @@ phrase. Don't reconcile the two tables with the role line in either direction. T
 `.app__*` classes: their proof points are the brief's own wording. Small `summary` card on
 the logo by ruling (plan **D-013**, flagged for Ry). **Deployed 2026-08-24** with the Shopify Plus
 addition (#250, `ai-coaching-intake#88`) — `hire/` deploys as one folder, so that copy took
-all four pages. Full convention list in `hire/README.md`; rulings D-012–D-015 in the plan.
+all four pages. **Re-deployed 2026-09-14** for the ten résumé technology strings (#304,
+`ai-coaching-intake#104`), again all four pages plus the four rebuilt downloads. Full
+convention list in `hire/README.md`; rulings D-012–D-015 in the plan.
 
 Conventions the pages must keep:
 - **`noindex, nofollow`, direct-link only.** Ry sends the URL. Two differently-framed
