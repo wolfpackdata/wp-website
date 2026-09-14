@@ -68,6 +68,8 @@ sections:
           - AI Agent Design
           - Multi-Agent Orchestration
           - Workflow Automation
+          - Claude API
+          - LLM Observability & Evaluation
       - label: Software Engineering & Architecture
         skills:
           - Python
@@ -80,6 +82,14 @@ sections:
           - GitHub Actions & GitFlow
           - CI/CD
           - Systems Design
+          - DuckDB
+          - Parquet
+          - dlt
+          - DuckLake
+          - AWS
+          - Docker
+          - Supabase
+          - Cloudflare
       - label: Quantitative Modeling & Forecasting
         skills:
           - Financial Modeling

@@ -66,6 +66,8 @@ sections:
           - Multi-Agent Orchestration
           - Agentic Development Environments
           - Rapid Prototyping
+          - Claude API
+          - LLM Observability & Evaluation
       - label: Software Engineering & Architecture
         skills:
           - Python
@@ -78,6 +80,10 @@ sections:
           - GitHub Actions & GitFlow
           - CI/CD
           - Technical Documentation
+          - AWS
+          - Docker
+          - Supabase
+          - Cloudflare
       - label: Data & Analytics Engineering
         skills:
           - dbt
@@ -88,6 +94,10 @@ sections:
           - ETL & Analytics Pipelines
           - Warehouse Modeling
           - Cloud Analytics
+          - DuckDB
+          - Parquet
+          - dlt
+          - DuckLake
       - label: Quantitative Modeling & Forecasting
         skills:
           - Financial Modeling
