@@ -1,0 +1,531 @@
+/* ==========================================================================
+   Wolfpack proposal page template · Wolfpack brand
+   Navy #000B29 · coral #F95954 (rationed) · Roboto 700 headings · Montserrat body
+
+   WHAT THIS SHEET IS
+   The design system for a single-page, read-top-to-bottom client proposal. It
+   is a cut-down form of the Wolfpack site pattern library: only the components
+   a proposal uses are kept, so every rule here has a use in index.html. Keep it
+   that way — when you delete an OPTIONAL block from the page, its rules may
+   stay (they are harmless), but do not add new components casually: a proposal
+   that does not read as the same hand as the rest of the property looks bought
+   rather than made.
+
+   COMPONENTS, in page order
+     .skip            skip link — a long document needs a keyboard escape
+     .nav             sticky nav: brand, short in-page links, one CTA
+     .hero            kicker, title, lede, date, logo watermark
+     .section         the section frame: kicker, title, lede, optional CTA row
+     .rail__facts     neutral enumeration — findings, boundaries, terms
+     .check-list      outcomes and asks — WHAT LANDS, as opposed to plain fact
+     .fit__note       a short prose note under a block
+     .paths / .path   two-up cards — "what it is" against "what it is not"
+     .split           two-column split — two related lists side by side
+     .chip            the neutral label object
+     .rtable          the long-form report table (scope / deliverables)
+     .ledger          the pricing statement, an accounting register
+     .teaser          a callout with a coral left rule
+     .vid             a video placeholder panel (link only, never an embed)
+     .dfig            a light figure panel inset in the navy page
+     .rail__price     a large figure for a running-cost line
+     .foot            footer
+
+   CONVENTIONS
+     — Everything is local: fonts come from css/fonts.css and ../fonts/, the
+       only image is img/wolfpack-logo.png. No CDN, no hosted fonts, no remote
+       images. A gated page that phones a third party on load leaks its URL,
+       referrer and the viewer's IP, and the gate does nothing about that.
+     — `--faint` is for LABELS ONLY (kickers, table headers, chips). Prose gets
+       `--muted`; emphasis inside prose gets `--white`.
+     — Negative figures use a true minus sign (U+2212, `&minus;`), never a
+       hyphen — a hyphen in a tabular-nums column sets at a different width.
+     — Rows the argument rests on are marked with weight and a surface lift
+       (`.rtable tbody tr.is-lead`), never with a hue.
+
+   ---------------------------------------------------------------------------
+   CORAL DISCIPLINE — the ration is FIVE, enumerated here so it cannot drift.
+   Every use site carries a "coral use N of 5" comment, in this sheet and in
+   index.html, so the count is greppable rather than merely asserted:
+
+     1. nav CTA fill                    marked here and in index.html
+     2. closing CTA fill                marked here and in index.html
+     3. link hover                      marked HERE ONLY — see below
+     4. focus ring                      marked HERE ONLY — see below
+     5. teaser callout — left rule      marked here and in index.html
+                                        (lives inside the OPTIONAL approach
+                                        block; deleting that block drops the
+                                        page to four uses, which is fine)
+
+   USES 3 AND 4 ARE MARKED IN THIS SHEET ONLY. They are stateful
+   pseudo-classes — `a:hover` and `a:focus-visible` — so they have no markup
+   site. Grepping index.html for "coral use" finds 1, 2 and 5; grepping both
+   files finds all five. Do not hang the missing markers on an arbitrary link.
+
+   The ratchet is down-by-default. Refused: table rows, stat values and prices,
+   section headings, the `.k` kicker, chips, table rules, and the figure, which
+   keeps its own light vocabulary. Adding a coral use for a specific page is a
+   deliberate, explicitly approved exception — record it in that page's copy of
+   this sheet, with the date and the reason, and update the count.
+
+   Where coral is a FILL, text on it is navy (6.10:1), never white (3.19:1,
+   fails AA). Coral as TEXT: 6.10:1 on `--navy`, 5.66:1 on `--surface`.
+   ========================================================================== */
+
+:root {
+  --navy:      #000B29;
+  --coral:     #F95954;
+  --white:     #FFFFFF;
+  --muted:     #BFC2CA;
+  --faint:     #808594;   /* 5.3:1 on navy — AA for normal text, labels only */
+  --surface:   #0A1435;
+  --surface-2: #101B3F;
+  --line:      #222E52;
+  --radius:    4px;
+  --measure:   1100px;
+  --mono:      ui-monospace, "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .skip { transition: none; }
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;         /* never smaller: 16px stops iOS zooming on focus */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--white); }
+a:hover { color: var(--coral); }                                  /* coral use 3 of 5 */
+a:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }  /* coral use 4 of 5 */
+
+h1, h2, h3 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; line-height: 1.15; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+/* Small monospace labels — the "engineering document" voice */
+.k {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ==========================================================================
+   Skip link — this is a long document; a keyboard reader needs the escape
+   ========================================================================== */
+
+.skip {
+  position: absolute; left: 24px; top: -60px; z-index: 30;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px 18px;
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip:focus { top: 12px; color: var(--white); }
+
+/* ==========================================================================
+   Sticky nav
+   ========================================================================== */
+
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(0, 11, 41, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  max-width: var(--measure); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; gap: 28px; height: 58px;
+}
+.nav__brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-right: auto;
+}
+.nav__brand:hover { color: var(--white); }
+.nav__logo { width: 30px; height: 30px; }
+.nav__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700;
+  font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+/* In-page links. Short labels, document order, one per section worth jumping
+   to — not one per section. Every href must match an id that exists on the
+   page; links for OPTIONAL sections are deleted together with the section.
+   Hidden below 1000px, where the brand and the CTA need the row. Hover color
+   comes from the global `a:hover` (coral use 3), so none is set here. */
+.nav__links { display: flex; gap: 22px; list-style: none; }
+.nav__links a { font-size: 0.8125rem; color: var(--muted); text-decoration: none; }
+.nav__cta {                                                       /* coral use 1 of 5 */
+  font-size: 0.8125rem; font-weight: 700; text-decoration: none;
+  background: var(--coral); color: var(--navy) !important;
+  padding: 8px 16px; border-radius: var(--radius);
+}
+.nav__cta:hover { filter: brightness(1.08); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; }
+.hero__watermark {
+  position: absolute; right: 0; top: 24px;
+  width: 380px; height: 380px; opacity: 0.14; pointer-events: none;
+  user-select: none;
+}
+.hero__inner { position: relative; padding: 96px 0 72px; max-width: 720px; }
+.hero__kicker { font-size: 0.9375rem; letter-spacing: 0.18em; margin-bottom: 20px; }
+.hero__title { font-size: clamp(2.3rem, 5.4vw, 3.5rem); margin-bottom: 22px; }
+.hero__lede { font-size: 1.0625rem; color: var(--muted); max-width: 58ch; }
+
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  font-size: 0.9375rem; padding: 13px 26px; border-radius: var(--radius);
+}
+.btn--solid { background: var(--coral); color: var(--navy); }     /* coral use 2 of 5 */
+.btn--solid:hover { color: var(--navy); filter: brightness(1.08); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section { padding: 76px 0; scroll-margin-top: 70px; }
+.section--line { border-top: 1px solid var(--line); }
+.section__head { max-width: 680px; margin-bottom: 44px; }
+.section__kicker { display: block; margin-bottom: 12px; }
+.section__title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
+.section__lede { color: var(--muted); }
+.section__cta { margin-top: 36px; }
+
+/* ==========================================================================
+   Neutral enumeration — findings, boundaries, terms
+   ========================================================================== */
+
+.rail__facts { list-style: none; font-size: 0.875rem; color: var(--muted); }
+.rail__facts li { padding: 5px 0 5px 20px; position: relative; }
+.rail__facts li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+.rail__facts li strong { color: var(--white); font-weight: 600; }
+
+.fit__note { margin-top: 26px; font-size: 0.9375rem; color: var(--muted); max-width: 72ch; }
+.fit__note strong { color: var(--white); font-weight: 600; }
+
+/* The check-list is HOW SOMETHING RUNS or WHAT LANDS; .rail__facts above is
+   plain statement. The two must not look alike, or an outcome starts reading
+   as a caveat and a caveat as a promise. */
+.check-list { list-style: none; }
+.check-list li { padding: 7px 0 7px 26px; position: relative; color: var(--muted); }
+.check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--white); }
+
+/* ==========================================================================
+   Running-cost figures (OPTIONAL section)
+   ========================================================================== */
+
+.rail__price { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 2.1rem; margin: 6px 0 4px; }
+.rail__price span { font-size: 1rem; font-weight: 400; color: var(--muted); font-family: 'Montserrat', sans-serif; }
+
+/* ==========================================================================
+   Two-up cards — "what it is" against "what it is not", or two cost lines
+   ========================================================================== */
+
+.paths { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.path {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 30px;
+}
+.path h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.path p { font-size: 0.9375rem; color: var(--muted); }
+
+/* ==========================================================================
+   Two-column split — e.g. outcomes against rationale, asks against method
+   ========================================================================== */
+
+.split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start; }
+.split h3 { font-size: 1rem; margin-bottom: 14px; }
+
+/* ==========================================================================
+   .chip — the neutral label object
+   ========================================================================== */
+
+.chip {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 5px 10px; white-space: nowrap;
+}
+
+/* ==========================================================================
+   .rtable — the long-form report table (scope / deliverables).
+   Built from the navy system rather than a figure ground: a figure gets the
+   figure ground, a table the reader reads gets the page.
+   ========================================================================== */
+
+.rtable {
+  position: relative;                  /* load-bearing — the overflow trap */
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow-x: auto;                    /* wide content scrolls itself */
+  max-width: 100%; min-width: 0;
+  margin: 28px 0 34px;
+}
+.rtable table {
+  border-collapse: collapse; width: 100%; min-width: 44rem;
+  font-size: 0.875rem; line-height: 1.5;
+}
+.rtable th {
+  font-family: var(--mono); font-size: 0.6875rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+  text-align: left; vertical-align: bottom; white-space: nowrap;
+  padding: 16px 20px; background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+}
+.rtable td {
+  padding: 18px 20px; vertical-align: top; color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+/* The column edge. `+` rather than a border on every cell, so the table has no
+   outer rule fighting the panel border that is already around it. */
+.rtable th + th, .rtable td + td { border-left: 1px solid var(--line); }
+.rtable tbody tr:last-child td { border-bottom: 0; }
+.rtable strong { color: var(--white); font-weight: 600; }
+.rtable a { color: var(--muted); }
+
+.rtable .num {
+  text-align: right; font-family: var(--mono);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.rtable th.num { text-align: right; }
+
+/* The rows the argument rests on, marked with weight and a lift rather than a
+   hue. Never coral: the ration refuses table rows. */
+.rtable tbody tr.is-lead td { background: var(--surface-2); color: var(--white); }
+
+/* A chip under a row's name rather than beside it; at 390px a chip sharing the
+   line pushes the name to three lines. */
+.rtable td .chip { margin-top: 9px; }
+
+/* A note that belongs to the table above it rather than to the prose after it.
+   It is a SIBLING of .rtable, not a child, and that is deliberate: .rtable is
+   the horizontal scroller, so a note inside it would slide out of view exactly
+   when a reader scrolled to the column the note was explaining. It is prose,
+   so it takes the prose color (`--muted`), not the label color. */
+.rtable--noted { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.rtable__note {
+  margin: 0 0 34px;
+  background: var(--surface);
+  border: 1px solid var(--line); border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 16px 20px;
+  font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.04em;
+  line-height: 1.7; color: var(--muted);
+}
+.rtable__note strong { color: var(--muted); font-weight: 600; }
+
+/* ==========================================================================
+   .ledger — the pricing statement.
+
+   .rtable's panel and table, with an accounting register's habits laid over
+   them. What it deliberately does NOT have is as much the point as what it
+   does: no badge, no "best value", no effective hourly rate, no percentage
+   off, no color on any figure. A ladder that decorates itself invites the
+   reader to check the arithmetic for a trick; one that reads like a statement
+   invites them to check it for accuracy.
+   ========================================================================== */
+
+/* The floor is 17rem = 272px, and it is arithmetic rather than taste: the
+   panel's content box is 340px at a 390px viewport, 310px at 360px and 270px
+   at 320px (viewport − 48px of `.wrap` gutter − 2px of panel border). The
+   register's own min-content width is ~15rem, so 17rem holds the two columns
+   apart at every width and never becomes a scroller. Labels wrap; `.amt`
+   keeps nowrap, so no figure ever breaks across two lines. */
+.ledger table { min-width: 17rem; }
+.ledger caption {
+  caption-side: top; text-align: left;
+  font-family: var(--mono); font-size: 0.6875rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+  padding: 16px 20px; background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+}
+/* No per-row hairline and no column rule: a two-column register gets its
+   structure from alignment and from the three explicit rules below. */
+.ledger td { padding: 11px 20px; border-bottom: 0; }
+.ledger td + td { border-left: 0; }
+.ledger .amt {
+  text-align: right; font-family: var(--mono);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.ledger tr.is-sub td { border-top: 1px solid var(--line); color: var(--white); font-weight: 600; }      /* subtotal */
+.ledger tr.is-strong td { border-top: 2px solid var(--faint); color: var(--white); font-weight: 700; }  /* amount invoiced */
+.ledger tr.is-grand td { color: var(--white); font-weight: 700; }                                      /* total */
+.ledger tr.is-strong .amt, .ledger tr.is-grand .amt { font-size: 1.0625rem; }
+
+/* ==========================================================================
+   .teaser — a callout with a coral left rule.
+   Coral is a RULE and a panel edge here, never a fill behind body text: at
+   body size on a coral field the only legible ink is navy, and navy body copy
+   on a coral slab is a warning banner, not a note.
+   ========================================================================== */
+
+.teaser {
+  max-width: 72ch; margin-top: 28px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--coral);                            /* coral use 5 of 5 */
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 22px 26px;
+}
+.teaser p { margin-top: 12px; font-size: 0.9375rem; color: var(--muted); }
+.teaser strong { color: var(--white); font-weight: 600; }
+
+/* ==========================================================================
+   .vid — the video panel (OPTIONAL section).
+   A 16:9 box holding ONE LINK to wherever the recording is hosted. It is not
+   an embed and the template ships no script to make it one: an iframe on a
+   gated page is a third-party request, and any video host is a third-party
+   reference that has to be listed in the publishing manifest. The play glyph
+   is drawn inline in `currentColor`, pinned to `--white` so the global link
+   hover (coral use 3) colors the label and not a 72px disc.
+   ========================================================================== */
+
+.vid {
+  position: relative;
+  max-width: 880px;
+  aspect-ratio: 16 / 9;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.vid__play {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 24px;
+  text-decoration: none; text-align: center;
+  background: var(--surface);
+}
+.vid__play:hover { background: var(--surface-2); }
+.vid__play:focus-visible { outline-offset: -4px; }   /* the box clips; keep the ring (coral use 4) inside it */
+.vid__glyph { width: 72px; height: 72px; color: var(--white); }
+.vid__label { font-family: 'Roboto', system-ui, sans-serif; font-weight: 700; font-size: 1.125rem; }
+.vid__meta { font-size: 0.75rem; }
+
+/* ==========================================================================
+   .dfig — a light figure panel inset in the navy page (OPTIONAL section).
+
+   Framed as a figure (panel, hairline, caption) so a reader never mistakes it
+   for page chrome. Its palette is pinned HERE, on the container, and prefixed
+   --d-* so `--d-line` and `--d-muted` cannot collide with the page tokens
+   `--line` and `--muted`. No dark-mode variant: the figure renders the same
+   whatever the reader's system is set to, which is what a printed proposal
+   needs. Contrast: --d-muted 5.32:1 on --d-bg; --d-line 3.05:1 on --d-bg
+   (WCAG 1.4.11's 3:1 floor for arrows that carry the direction of flow).
+
+   The template ships a three-box placeholder. If you replace it with a real
+   inline SVG that is wider than the panel, wrap it in a horizontal scroller
+   with tabindex="0" and an accessible name, and say in the caption that it
+   scrolls — do not let a hidden edge go undiscovered.
+   ========================================================================== */
+
+.dfig {
+  --d-bg:#fbfaf8; --d-fg:#1c1b19; --d-muted:#6b6862; --d-line:#949086;
+  --d-box:#e8f0f7; --d-boxb:#5b8db8;
+
+  position: relative; min-width: 0;    /* the overflow trap, prevented */
+  margin: 0;
+  background: var(--d-bg);
+  color: var(--d-fg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 26px 26px;
+  font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.dfig__cap { display: block; margin-bottom: 18px; }
+.dfig__title { font-size: 19px; font-weight: 700; margin: 0 0 4px; letter-spacing: -.01em; }
+.dfig__sub { color: var(--d-muted); font-size: 13px; margin: 0; }
+.dfig svg { display: block; width: 100%; height: auto; max-width: 760px; }
+
+.dfig .box { fill: var(--d-box); stroke: var(--d-boxb); stroke-width: 1.5; }
+.dfig .bigt { fill: var(--d-fg); font-size: 18px; font-weight: 600; }
+.dfig .edge { stroke: var(--d-line); stroke-width: 1.6; fill: none; }
+.dfig .arrowhead { fill: var(--d-line); }
+
+.dfig__legend { margin-top: 16px; color: var(--d-muted); font-size: 12.5px; }
+.dfig__legend b { color: var(--d-fg); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot { border-top: 1px solid var(--line); padding: 36px 0 48px; }
+.foot__inner {
+  display: flex; flex-wrap: wrap; gap: 10px 30px;
+  justify-content: space-between; align-items: baseline;
+}
+.foot__wordmark {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.8125rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.foot__meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--faint); }
+.foot__meta a { color: var(--muted); }
+
+/* ==========================================================================
+   Responsive
+
+   Intent at 390px, 375px and 360px: the page body never scrolls sideways.
+   `.rtable` is its own scroller — the scope table slides inside its panel and
+   the page does not move. `.ledger`'s table drops to a 17rem floor, which fits
+   the panel's content box at all three widths, so the register never scrolls.
+   The placeholder figure scales with its panel, and its labels step up in
+   user units at narrow widths so they still render at 12px or more.
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .paths { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; gap: 32px; }
+  .hero__watermark { width: 300px; height: 300px; right: -90px; }
+}
+
+@media (max-width: 1000px) {
+  .nav__links { display: none; }
+}
+
+@media (max-width: 640px) {
+  .hero__inner { padding: 64px 0 52px; }
+  .section { padding: 56px 0; }
+  .rtable { margin: 16px 0 26px; }
+  .dfig { padding: 18px 16px 20px; }
+  .teaser { padding: 18px 20px; }
+  .vid__glyph { width: 56px; height: 56px; }
+  /* A fixed 16:9 box is ~183px tall at 375px, less than the glyph, label
+     and two-line meta need, and the box clips. Let the content set the
+     height instead. */
+  .vid { aspect-ratio: auto; }
+  .vid__play { position: relative; inset: auto; min-height: 220px; }
+  /* The nav row must hold the logo, a two-line wordmark and the CTA at
+     360px without crowding. */
+  .nav__inner { gap: 16px; padding: 0 16px; }
+  .nav__wordmark { font-size: 0.6875rem; letter-spacing: 0.08em; line-height: 1.25; }
+  .nav__cta { white-space: nowrap; }
+  /* Figure labels. The SVG scales to its panel, so a label's rendered size
+     is font-size x (rendered width / viewBox width 560). At 18px a label
+     renders ~9.4px at 375px. 22px holds >= 13px down to ~420px. */
+  .dfig .bigt { font-size: 22px; }
+}
+
+@media (max-width: 420px) {
+  /* 26px renders 13.6px at 375px, 12.9px at 360px and 11px at 320px.
+     Keep step labels to about ten characters so they fit their boxes. */
+  .dfig .bigt { font-size: 26px; }
+}

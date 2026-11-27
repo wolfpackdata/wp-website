@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  WOLFPACK PROPOSAL PAGE TEMPLATE
+  ==========================================================================
+  A single-page, read-top-to-bottom client proposal. Client-neutral: it
+  carries no client content, only placeholders.
+
+  A FILLED-IN PROPOSAL IS CLIENT MATERIAL AND IS NEVER COMMITTED TO THIS
+  REPOSITORY. This template lives in wp-website, which is PUBLIC. Copy the
+  whole folder into the client's private workspace FIRST, and fill it in
+  only there. Publishing, if any, goes only through the gated,
+  manifest-cleared flow.
+
+  HOW TO USE
+    1. COPY this whole folder (index.html, css/, fonts/, img/) into the
+       client's own PRIVATE workspace. Never fill it in here.
+    2. FILL every {{TOKEN}} (see README.md for the full list) and replace
+       every [bracketed instruction] with real copy.
+    3. DELETE what you do not use. Each optional section is wrapped in
+         <!- - OPTIONAL: <name> - -> ... <!- - /OPTIONAL - ->
+       (written here with spaced dashes so this comment stays valid and
+       is not itself caught by the delete pattern in README.md).
+       Each optional section that has a nav link has a matching OPTIONAL
+       block inside the <nav>, named "<name> (nav link)"; delete both
+       together so every nav link still points at a section that exists.
+    4. CHECK before shipping: search the file for "{{" and for "[" — both
+       must come back empty of placeholders. Keep the robots noindex meta,
+       keep the <title> free of the client's name, add no Open Graph or
+       Twitter tags, and add nothing that loads from another host.
+  ==========================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The title is seen out of context (tabs, history, previews): never put the
+     client's name in it. -->
+<title>{{PROPOSAL_TITLE}} — Proposal</title>
+<!-- `noindex` is not access control — the access gate in front of a published
+     page is. It is set anyway because a proposal has no business in an index.
+     There are deliberately NO social-preview meta tags (no Open Graph, no
+     Twitter card) and no canonical link: a preview card exists to render this
+     document's contents inside somebody else's feed. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="img/wolfpack-logo.png">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/proposal.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the proposal</a>
+
+<!-- ========== Sticky nav ==========
+     Brand, a few in-page links, and one CTA. The CTA goes to the same
+     destination as the closing button — the page has a single ask. -->
+<nav class="nav" aria-label="Page">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <img class="nav__logo" src="img/wolfpack-logo.png" alt="" width="30" height="30">
+      <span class="nav__wordmark">Wolfpack Data &amp; Strategy</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#stand">Today</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#outcomes">Outcomes</a></li>
+      <!-- OPTIONAL: approach (nav link) -->
+      <li><a href="#approach">Approach</a></li>
+      <!-- /OPTIONAL -->
+      <!-- OPTIONAL: running costs (nav link) -->
+      <li><a href="#costs">Running costs</a></li>
+      <!-- /OPTIONAL -->
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <!-- coral use 1 of 5 -->
+    <a class="nav__cta" href="{{CTA_URL}}" target="_blank" rel="noopener">{{NAV_CTA_LABEL}}</a>
+  </div>
+</nav>
+
+<!-- ========== Hero ==========
+     The kicker does the framing in the .k engineering-document voice, so it
+     is read first rather than as a footnote. No hero button: the single ask
+     comes once, at the end, after the reader has something to say yes to. -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <img class="hero__watermark" src="img/wolfpack-logo.png" alt="" aria-hidden="true">
+    <div class="hero__inner">
+      <p class="k hero__kicker">Proposal for {{CLIENT_DISPLAY_NAME}}, draft {{DRAFT_NUMBER}}, not a statement of work</p>
+      <h1 class="hero__title">{{HERO_HEADLINE}}</h1>
+      <p class="hero__lede">[Two or three sentences: what this engagement delivers, where it lives when it is done, and that scope, sequence and estimates are directional until agreed.]</p>
+      <p class="k">Prepared {{PREPARED_DATE}}</p>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- OPTIONAL: video walkthrough -->
+  <!-- Delete this block if unused (it has no nav link).
+       A link to a recorded walk through the page. PLACEHOLDER ONLY: the
+       template ships no embed and no script. Any video host is a THIRD-PARTY
+       REFERENCE — it must be listed in the publishing manifest, and it sits
+       outside the page's access gate (its own share settings decide who can
+       watch). An iframe embed would request the host on every page view and
+       normally stays OUT of a gated page; if one is ever used, it is a
+       deliberate, manifest-listed exception. -->
+  <section class="section" id="video" aria-labelledby="video-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Start here</span>
+        <h2 class="section__title" id="video-title">Video walkthrough of this proposal</h2>
+        <p class="section__lede">[One sentence: what the recording covers and where it is hosted.]</p>
+      </div>
+      <div class="vid">
+        <a class="vid__play" href="{{VIDEO_URL}}" target="_blank" rel="noopener">
+          <svg class="vid__glyph" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M26 20 L46 32 L26 44 Z" fill="currentColor"/>
+          </svg>
+          <span class="vid__label">Play the walkthrough</span>
+          <span class="k vid__meta">Hosted on {{VIDEO_HOST}} &middot; opens in a new tab</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- /OPTIONAL -->
+
+  <!-- ========== Where things stand ==========
+       Three or four findings, stated flat. One bold claim per item, then one
+       sentence on why it matters. No hedging adverbs. -->
+  <section class="section section--line" id="stand" aria-labelledby="stand-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Where things stand</span>
+        <h2 class="section__title" id="stand-title">[A short headline, e.g. "Four things are true today"]</h2>
+        <p class="section__lede">[One sentence tying the findings together.]</p>
+      </div>
+      <ul class="rail__facts">
+        <li><strong>[Finding 1, as a plain statement.]</strong> [Why it matters, in one sentence.]</li>
+        <li><strong>[Finding 2, as a plain statement.]</strong> [Why it matters, in one sentence.]</li>
+        <li><strong>[Finding 3, as a plain statement.]</strong> [Why it matters, in one sentence.]</li>
+        <li><strong>[Finding 4 — optional; delete this item if there are only three.]</strong> [Why it matters, in one sentence.]</li>
+      </ul>
+      <p class="fit__note">[One or two sentences of context.] <strong>[The consequence of acting later rather than now.]</strong></p>
+    </div>
+  </section>
+
+  <!-- ========== The proposal ==========
+       "What it is" and "what it is not" as two equal cards. The second card
+       is the more useful one: a proposal that only says what it covers leaves
+       the reader to guess at the edge, and guessing is where a scope argument
+       starts. -->
+  <section class="section section--line" id="proposal" aria-labelledby="proposal-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">The proposal</span>
+        <h2 class="section__title" id="proposal-title">{{ENGAGEMENT_NAME}}</h2>
+        <p class="section__lede">[One or two sentences: what is being proposed now, and how it relates to anything that might follow.]</p>
+      </div>
+      <div class="paths">
+        <article class="path">
+          <h3>What it is</h3>
+          <p>[Two sentences: the thing you will deliver, and where it lives when you are done.]</p>
+        </article>
+        <article class="path">
+          <h3>What it is not</h3>
+          <p>[Two sentences: the nearest thing a reader might assume is included, and why it is not.]</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Scope ==========
+       The workstreams or deliverables. Three example rows — add or delete
+       <tr> rows as needed. Row 1 shows the .is-lead treatment (weight and a
+       surface lift, never a hue) with a .chip label: use it to mark the rows
+       a first stage covers, or remove the class, the chip and the note below
+       if nothing needs marking. Columns are generic; rename the headers to
+       suit the project. -->
+  <section class="section section--line" id="scope" aria-labelledby="scope-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Scope</span>
+        <h2 class="section__title" id="scope-title">[Headline, e.g. "Three workstreams"]</h2>
+        <p class="section__lede"><strong>Total: {{SCOPE_TOTAL}}.</strong> [One sentence on sequencing — what drives the order.]</p>
+      </div>
+
+      <div class="rtable rtable--noted">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Workstream</th>
+              <th scope="col">What you get</th>
+              <th scope="col" class="num">~Hrs</th>
+              <th scope="col" class="num">Week</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="is-lead">
+              <td class="num">1</td>
+              <td><strong>[Workstream name]</strong><div><span class="chip">{{LEAD_ROW_CHIP}}</span></div></td>
+              <td>[One or two sentences: the concrete deliverable, in the client's terms.]</td>
+              <td class="num">[N]</td>
+              <td class="num">[N&ndash;N]</td>
+            </tr>
+            <tr>
+              <td class="num">2</td>
+              <td><strong>[Workstream name]</strong></td>
+              <td>[One or two sentences: the concrete deliverable, in the client's terms.]</td>
+              <td class="num">[N]</td>
+              <td class="num">[N&ndash;N]</td>
+            </tr>
+            <tr>
+              <td class="num">3</td>
+              <td><strong>[Workstream name]</strong></td>
+              <td>[One or two sentences: the concrete deliverable, in the client's terms.]</td>
+              <td class="num">[N]</td>
+              <td class="num">[N&ndash;N]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="rtable__note"><strong>[What the lifted, labeled rows mean, e.g. "Rows marked {{LEAD_ROW_CHIP}} are the first stage."]</strong> [One sentence of clarification.]</p>
+
+      <p class="fit__note">[How the estimates are counted — whose time, at what weekly pace, and what runs in parallel without being itemized.]</p>
+    </div>
+  </section>
+
+  <!-- ========== Outcomes ==========
+       What the client has by the end, as a check-list (what lands), set
+       against the reasoning as plain statements (.rail__facts). The two must
+       not look alike. -->
+  <section class="section section--line" id="outcomes" aria-labelledby="outcomes-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Outcomes</span>
+        <h2 class="section__title" id="outcomes-title">[Headline, e.g. "What you have at the end"]</h2>
+        <p class="section__lede">[One sentence: the outcome the client gets.]</p>
+      </div>
+      <div class="split">
+        <div>
+          <h3>By the end you would have</h3>
+          <ul class="check-list">
+            <li>[Outcome 1 — something the client can point at]</li>
+            <li>[Outcome 2]</li>
+            <li>[Outcome 3]</li>
+            <li>[Outcome 4 — optional]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Why this, and why first</h3>
+          <ul class="rail__facts">
+            <li><strong>[Reason 1, as a plain statement.]</strong> [One or two sentences.]</li>
+            <li><strong>[Reason 2, as a plain statement.]</strong> [One or two sentences.]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Out of scope ========== -->
+  <section class="section section--line" id="outside" aria-labelledby="outside-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Boundaries</span>
+        <h2 class="section__title" id="outside-title">Explicitly out of scope</h2>
+      </div>
+      <ul class="rail__facts">
+        <li>[Exclusion 1]</li>
+        <li>[Exclusion 2]</li>
+        <li>[Exclusion 3]</li>
+      </ul>
+      <p class="fit__note">[Optional: one boundary worth drawing precisely, where in scope and out of scope sit close together.] <strong>[The line, stated plainly.]</strong></p>
+    </div>
+  </section>
+
+  <!-- OPTIONAL: approach -->
+  <!-- Delete this block if unused, together with its nav link.
+       The figure is a PLACEHOLDER: a neutral three-step inline SVG. Replace
+       it with your own inline SVG (never an iframe or a remote image) that
+       carries its own accessible description. The .teaser callout below it
+       is coral use 5 of 5; it goes with this block if the block is deleted. -->
+  <section class="section section--line" id="approach" aria-labelledby="approach-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Approach</span>
+        <h2 class="section__title" id="approach-title">[Headline, e.g. "How it fits together"]</h2>
+        <p class="section__lede">[One or two sentences: what the figure shows and how to read it.]</p>
+      </div>
+
+      <figure class="dfig">
+        <figcaption class="dfig__cap">
+          <p class="dfig__title">[Figure title]</p>
+          <p class="dfig__sub">[One-line subtitle.]</p>
+        </figcaption>
+<svg viewBox="0 0 560 120" role="img" aria-label="[One sentence describing the figure for screen readers.]">
+  <defs>
+    <marker id="dfig-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="arrowhead" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <rect class="box" x="10"  y="30" width="150" height="60" rx="7"/>
+  <rect class="box" x="205" y="30" width="150" height="60" rx="7"/>
+  <rect class="box" x="400" y="30" width="150" height="60" rx="7"/>
+  <text class="bigt" x="85"  y="66" text-anchor="middle">{{STEP_1}}</text>
+  <text class="bigt" x="280" y="66" text-anchor="middle">{{STEP_2}}</text>
+  <text class="bigt" x="475" y="66" text-anchor="middle">{{STEP_3}}</text>
+  <g class="edge" marker-end="url(#dfig-ah)">
+    <path d="M160,60 L203,60"/>
+    <path d="M355,60 L398,60"/>
+  </g>
+</svg>
+        <p class="dfig__legend">[One or two sentences of legend: what the boxes and arrows mean.]</p>
+      </figure>
+
+      <!-- coral use 5 of 5 — the teaser callout. Coral is the left rule of a
+           raised panel, never a fill behind this body copy. -->
+      <div class="teaser">
+        <span class="chip">[Short label]</span>
+        <p><strong>[One bold sentence: the thing worth flagging.]</strong> [One or two sentences of detail.]</p>
+      </div>
+    </div>
+  </section>
+  <!-- /OPTIONAL -->
+
+  <!-- OPTIONAL: next phase teaser -->
+  <!-- Delete this block if unused (it has no nav link).
+       Direction only. It is here so the reader can see where this work leads;
+       it is not being proposed, and the lede says so. -->
+  <section class="section section--line" id="next-phase" aria-labelledby="next-phase-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">What comes after</span>
+        <h2 class="section__title" id="next-phase-title">Next phase teaser</h2>
+        <p class="section__lede">[One sentence: what a following phase would do.] Not proposed now; scoped separately.</p>
+      </div>
+      <ul class="rail__facts">
+        <li><strong>[Direction 1.]</strong> [One sentence.]</li>
+        <li><strong>[Direction 2.]</strong> [One sentence.]</li>
+        <li><strong>[Direction 3.]</strong> [One sentence.]</li>
+      </ul>
+      <p class="fit__note">[Indicative size, and what it depends on.]</p>
+    </div>
+  </section>
+  <!-- /OPTIONAL -->
+
+  <!-- OPTIONAL: running costs -->
+  <!-- Delete this block if unused, together with its nav link.
+       Ongoing non-labor costs: infrastructure, subscriptions, metered usage.
+       Give each figure exactly one home on the page. Say whether a second
+       figure is a total or an increment — it is the most misread line in any
+       cost section. Delete the second card if there is only one figure. -->
+  <section class="section section--line" id="costs" aria-labelledby="costs-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Running costs</span>
+        <h2 class="section__title" id="costs-title">What it costs to run</h2>
+        <p class="section__lede">[One sentence: what these figures include and exclude.]</p>
+      </div>
+      <div class="paths">
+        <article class="path">
+          <span class="k">[Label, e.g. "Ongoing"]</span>
+          <p class="rail__price">[$N]<span> / month</span></p>
+        </article>
+        <article class="path">
+          <span class="k">[Label, e.g. "After next phase"]</span>
+          <p class="rail__price">[$N]<span> / month</span></p>
+        </article>
+      </div>
+      <p class="fit__note"><strong>[Total or increment? Say which.]</strong> [One or two sentences on what drives the figures.]</p>
+    </div>
+  </section>
+  <!-- /OPTIONAL -->
+
+  <!-- ========== Terms and pricing ==========
+       Stated as an accounting statement, not an offer: no effective hourly
+       rate, no percentage off, no badge, no colored figures. Negative amounts
+       use &minus; (a true minus sign), never a hyphen. Add or delete ledger
+       rows as needed; keep the .is-sub / .is-strong / .is-grand rows for the
+       subtotal, the amount invoiced and the total. -->
+  <section class="section section--line" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Terms</span>
+        <h2 class="section__title" id="pricing-title">Terms and pricing</h2>
+        <p class="section__lede">[One sentence: what these terms cover.]</p>
+      </div>
+
+      <ul class="rail__facts">
+        <li><strong>[Rate or fee basis.]</strong> [One sentence of qualification.]</li>
+        <li><strong>[Any up-front fee, and how it is credited.]</strong></li>
+        <li><strong>[Any cap on effort, and who can lift it.]</strong></li>
+        <li><strong>[Invoicing cadence and payment terms.]</strong></li>
+      </ul>
+
+      <div class="rtable ledger">
+        <table>
+          <caption>{{PRICING_CAPTION}}</caption>
+          <tbody>
+            <tr>
+              <td>[Line item]</td>
+              <td class="amt">[$0]</td>
+            </tr>
+            <tr>
+              <td>[Line item]</td>
+              <td class="amt">[$0]</td>
+            </tr>
+            <tr class="is-sub">
+              <td>[Subtotal label]</td>
+              <td class="amt">[$0]</td>
+            </tr>
+            <tr>
+              <td>[Credit or adjustment]</td>
+              <td class="amt">&minus;[$0]</td>
+            </tr>
+            <tr class="is-strong">
+              <td>[Amount invoiced, and when]</td>
+              <td class="amt">[$0]</td>
+            </tr>
+            <tr class="is-grand">
+              <td>[Total label]</td>
+              <td class="amt">[$0]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="fit__note"><strong>[Which figures are estimates and which are fixed.]</strong> [One sentence.]</p>
+    </div>
+  </section>
+
+  <!-- ========== Working together ========== -->
+  <section class="section section--line" id="working" aria-labelledby="working-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Working together</span>
+        <h2 class="section__title" id="working-title">What we&rsquo;d need, and how we work</h2>
+      </div>
+      <div class="split">
+        <div>
+          <h3>What we&rsquo;d need from you</h3>
+          <ul class="check-list">
+            <li>[Access or input needed 1]</li>
+            <li>[Access or input needed 2]</li>
+            <li>[Decision needed]</li>
+            <li>[Time commitment from the client's side]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>How we work</h3>
+          <p class="section__lede">[Two sentences: where the work lives, how progress is reported, and what the client can run without us.]</p>
+          <p class="fit__note"><strong>[Optional: one working principle.]</strong> [One or two sentences.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Next steps ==========
+       One line and one button, to the same destination as the nav CTA. No
+       second argument and no recap. -->
+  <section class="section section--line" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="k section__kicker">Next step</span>
+        <h2 class="section__title" id="next-title">Let&rsquo;s talk it through</h2>
+        <p class="section__lede">[One or two sentences: what the call is for, and that everything above is open to change in it.]</p>
+      </div>
+      <div class="section__cta">
+        <!-- coral use 2 of 5 -->
+        <a class="btn btn--solid" href="{{CTA_URL}}" target="_blank" rel="noopener">{{CLOSING_CTA_LABEL}}</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p class="foot__wordmark">Wolfpack Data &amp; Strategy</p>
+    <p class="foot__meta"><a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a> &middot; <a href="{{WEBSITE_URL}}">{{WEBSITE_LABEL}}</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
