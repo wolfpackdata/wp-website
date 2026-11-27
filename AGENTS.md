@@ -49,6 +49,13 @@ see below), the portfolio landing page (`portfolio/`, see below), the GitHub lin
 below); more site pieces land here as they're built. Verify by opening the
 page in a browser.
 
+`proposal-template/` is **not a site page** — it is the client-proposal template, read
+[`proposal-template/README.md`](proposal-template/README.md) before touching it. It never
+deploys, so the OG-card rule below and the `PAGES` table in `social-cards/check_meta.py` do
+not apply to it (it stays `noindex` with no OG/Twitter tags). **A filled-in proposal is
+client material and is never committed to this public repo** — fill copies only in the
+client's private workspace.
+
 Four exceptions to "no build step", all Python that builds *inputs* rather than the site
 itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the four
 downloads the `hire/` pages link; `blog_posts/tools/` converts blog markdown to the Wix
