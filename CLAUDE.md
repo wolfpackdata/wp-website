@@ -35,7 +35,8 @@ résumé landing pages (`hire/`, see below), the long-form case studies (`case_s
 see below), the portfolio landing page (`portfolio/`, see below), the GitHub link page
 (`github/`, see below), and the pilot-project offer page (`pilot-project/`, see
 below); more site pieces land here as they're built. Verify by opening the
-page in a browser.
+page in a browser. It also holds one folder that is **not a site page**: the
+client-proposal template (`proposal-template/`, see below), which never deploys.
 
 Four exceptions to "no build step", all Python that builds *inputs* rather than the site
 itself: `ryan-resume-dev/` compiles résumé YAML to `.docx`/`.pdf` and stages the four
@@ -106,7 +107,8 @@ is `docs/social-cards-and-linkedin-readiness-plan.md` §9.
 - **A new page folder ships → add its row to `PAGES` in `check_meta.py`, in the same PR.**
   A page missing from that table is a page nothing is guarding, and it will pass silently
   forever. The row is `(repo path, deployed URL path)` — and for four pages those two differ,
-  which is half of what the script is for.
+  which is half of what the script is for. **`proposal-template/` is the exception:** it
+  never deploys, so it gets no row and no OG block (see its section below).
 - **`git ls-files`, not the folder.** The guard tests *tracked*-ness deliberately, because
   the deploy copies the tracked file list; an untracked image passes a local eyeball and 404s
   on the live card.
@@ -863,6 +865,24 @@ was live on `/rates_public/` and `/rates_2026Q3/` well before 2026-08-26, while 
 still said the deploy was owed — wrong for some time, and nothing caught it. **A status
 line in this file is not evidence that something is or isn't live.** That is the whole
 reason the deployment table above carries URLs rather than states.
+
+## `proposal-template/` — the client-proposal page template
+A reusable, **client-neutral** single-page proposal (#311): `{{TOKEN}}` and
+`[bracketed instruction]` placeholders, core sections always present, optional sections in
+`<!-- OPTIONAL -->` blocks. Folder README, with the token list, the section list and the
+pre-ship checklist: [`proposal-template/README.md`](proposal-template/README.md) — read it
+before touching the folder.
+
+- **It never deploys from this repo.** It is not a site page: it has no row in the
+  deployment table above and is never copied into `ai-coaching-intake`. So the **OG-card
+  rule does not apply** — it deliberately carries `noindex, nofollow` and **no** Open Graph
+  or Twitter tags, in the template and in every filled copy — and it gets **no row in
+  `PAGES` in `social-cards/check_meta.py`**. A session that "fixes" either has broken the
+  template. Its coral ration lives in `css/proposal.css`'s header, like every other sheet.
+- **A filled-in proposal is client material and is never committed here.** This repo is
+  public. Copy the whole folder into the client's private workspace **first** and fill it in
+  only there. Only client-neutral changes to the template itself land in this repo; a client
+  name, figure or scope line in any file here is a leak, not a draft.
 
 ## `blog_posts/` — blog content, authored here, pushed to Wix
 The blog runs on **Wix** and stays there. This folder hosts nothing; it moves *authoring*
